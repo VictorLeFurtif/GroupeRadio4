@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
         inGameData = playerData.Instance();
     }
 
+    public void ManageLife(int valueLifeChanger)
+    {
+        healthPlayer += valueLifeChanger;
+    }
+    
     public int healthPlayer // C'est celle là que l'on manipule pour que la vie s'Update
     {
         get => inGameData.health;

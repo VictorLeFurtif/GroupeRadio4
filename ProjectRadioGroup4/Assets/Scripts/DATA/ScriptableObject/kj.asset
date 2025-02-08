@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e779e687ac4feb540b289bb11a738e1f, type: 3}
-  m_Name: Potion
+  m_Name: kj
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Potion
+  <ItemName>k__BackingField: gg
   <Icon>k__BackingField: {fileID: 21300000, guid: ded45701056e2d24d90f3bd9cb44fa59, type: 3}
-  <Quantity>k__BackingField: 0
+  <Description>k__BackingField: hh

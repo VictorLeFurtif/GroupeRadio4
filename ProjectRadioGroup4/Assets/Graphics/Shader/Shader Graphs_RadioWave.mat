@@ -37,12 +37,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _noise_Scale: 0
-    - _noise_amp: 0
+    - _noise_Scale: 32.8
+    - _noise_amp: 4.76
     - _speed: 0.62
     - _waves: 12.7
-    - _waves_Amount: 8.971
-    - _waves_Amp: 0.171
+    - _waves_Amount: 15.971
+    - _waves_Amp: 0.371
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &148708066201681712

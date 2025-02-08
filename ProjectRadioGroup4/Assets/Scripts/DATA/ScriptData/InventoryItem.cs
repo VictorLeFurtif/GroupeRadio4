@@ -11,9 +11,9 @@ public class InventoryItem : ScriptableObject
     [field: Header("Item Icon"), SerializeField]
     public Sprite Icon{get; private set;}
     
-    [field: Header("Item Quantity  "), SerializeField]
-    public int Quantity{get; private set;}
-
+    [field: Header("Item Description"), SerializeField, TextArea(15,20)]
+     public string Description{get; private set;}
+    
     public InventoryItemInstance Instance()
     {
         return new InventoryItemInstance(this);
@@ -24,14 +24,15 @@ public class InventoryItemInstance
 {
     public string itemName;
     public Sprite icon;
-    public int quantity;
+    public string description;
 
     public InventoryItemInstance(InventoryItem data)
     {
         itemName = data.ItemName;
         icon = data.Icon;
-        quantity = data.Quantity;
+        description = data.Description;
     }
+
     
-    
+
 }

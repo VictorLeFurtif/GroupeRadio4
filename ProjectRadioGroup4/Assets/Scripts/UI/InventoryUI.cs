@@ -8,6 +8,13 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private List<Image> slots;
     [SerializeField] private InventoryItem potionItem;
+    public static InventoryUI instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -15,12 +22,16 @@ public class InventoryUI : MonoBehaviour
         UpdateInventoryUI();
     }
 
-    private void UpdateInventoryUI()
+    public void UpdateInventoryUI()
     {
         List<InventoryItemInstance> inventory = InventoryManager.instance.GetInventory();
 
         for (int i = 0; i < slots.Count; i++)
         {
+            if (slots[i] == null)
+            {
+                continue;
+            }
             if (i < inventory.Count)
             {
                 slots[i].sprite = inventory[i].icon;
