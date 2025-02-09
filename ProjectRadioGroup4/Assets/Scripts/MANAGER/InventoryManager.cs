@@ -44,6 +44,10 @@ public class InventoryManager : MonoBehaviour
 
     public void UseItemSelected()
     {
+        if (FightManager.instance.currentFighter != FightManager.FightState.NoFight )
+        {
+            FightManager.instance.EndTurn();
+        }
         //do stuff
         RemoveItem(currentItem);
         InventoryUI.instance.UpdateInventoryUI();

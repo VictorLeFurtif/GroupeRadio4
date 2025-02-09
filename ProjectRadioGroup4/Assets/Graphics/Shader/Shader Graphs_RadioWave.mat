@@ -39,10 +39,10 @@ Material:
     m_Floats:
     - _noise_Scale: 32.8
     - _noise_amp: 4.76
-    - _speed: 0.62
+    - _speed: 0.14
     - _waves: 12.7
     - _waves_Amount: 6.9710007
-    - _waves_Amp: 0.371
+    - _waves_Amp: -0.029
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &148708066201681712

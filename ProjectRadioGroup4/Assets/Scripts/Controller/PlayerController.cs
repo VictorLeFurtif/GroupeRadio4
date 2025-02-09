@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         }
 
         inGameData = playerData.Instance();
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
     public void ManageLife(int valueLifeChanger)

@@ -6,7 +6,6 @@ public class FightManager : MonoBehaviour
 {
     public FightState currentFighter = FightState.NoFight;
     public static FightManager instance; // besoin pour par exemple pour check si le joueur peu bouger, en combat cela sera non
-
     private void Awake()
     {
         if (instance == null) instance = this;
