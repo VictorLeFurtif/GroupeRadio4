@@ -36,6 +36,8 @@ public class InventoryManager : MonoBehaviour
 
     public void SelectItem(int index)
     {
+        if (index < 0 || index >= inventory.Count) return;
+        if (inventory[index] == null) return;
         currentItem = inventory[index];
         panelInventoryAction.SetActive(true);
     }

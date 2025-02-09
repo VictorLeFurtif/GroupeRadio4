@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("Data Player")]
     [SerializeField] private PlayerData playerData; 
-    [SerializeField] private PlayerDataInstance inGameData; 
+    private PlayerDataInstance inGameData; 
     
     public enum PlayerState
     {
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         healthPlayer += valueLifeChanger;
     }
     
-    public int healthPlayer // C'est celle là que l'on manipule pour que la vie s'Update
+    public int healthPlayer 
     {
         get => inGameData.health;
 
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
             inGameData.health = value;
             if (inGameData.IsDead())
             {
+                GameManager.instance.GameOver();
                 //They lose
             }
         }
@@ -67,7 +68,9 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMove()
     {
+        if (FightManager.instance.currentFighter != FightManager.FightState.NoFight) return;
         var x = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
+
     }
 }

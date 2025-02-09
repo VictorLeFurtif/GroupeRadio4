@@ -8,7 +8,7 @@ public class HealItem : InventoryItem
     [field:Header("Heal Value"),SerializeField]
     public int healValue {get ; private set;}
 
-    public HealItemInstance Instance()
+    public HealItemInstance CreateHealInstance()
     {
         return new HealItemInstance(this);
     }

@@ -19,6 +19,13 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         InventoryManager.instance.AddItem(potionItem);
+        InventoryManager.instance.AddItem(potionItem);
+        InventoryManager.instance.AddItem(potionItem);
+        InventoryManager.instance.AddItem(potionItem);
+        InventoryManager.instance.AddItem(potionItem);
+        InventoryManager.instance.AddItem(potionItem);
+        InventoryManager.instance.AddItem(potionItem);
+        
         UpdateInventoryUI();
     }
 
@@ -32,14 +39,8 @@ public class InventoryUI : MonoBehaviour
             {
                 continue;
             }
-            if (i < inventory.Count)
-            {
-                slots[i].sprite = inventory[i].icon;
-            }
-            else
-            {
-                slots[i].sprite = null;
-            }
+
+            slots[i].sprite = i < inventory.Count ? inventory[i].icon : null;
         }
     }
 }
