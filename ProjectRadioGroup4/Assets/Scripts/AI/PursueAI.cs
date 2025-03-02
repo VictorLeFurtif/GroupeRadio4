@@ -42,5 +42,6 @@ namespace AI
             base.Init();
             _iaPursueDataInstance = (IaPursueDataInstance)_abstractEntityDataInstance;
         }
+        
     }
 }

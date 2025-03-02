@@ -15,8 +15,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/StaticAi.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/ScriptData/Entity Data/AI/IaPursueData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/StaticAiData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/InventoryUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/RawImage.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -102,7 +103,7 @@
       <workItem from="1739095291846" duration="3014000" />
       <workItem from="1739104078648" duration="4192000" />
       <workItem from="1739118521175" duration="3314000" />
-      <workItem from="1740914035327" duration="9324000" />
+      <workItem from="1740914035327" duration="11306000" />
     </task>
     <servers />
   </component>
