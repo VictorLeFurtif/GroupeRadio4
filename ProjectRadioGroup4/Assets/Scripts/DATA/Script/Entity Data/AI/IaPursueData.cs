@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DATA.ScriptData.Entity_Data;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SciptableObject/AiPursueData", fileName = "data")]
+[CreateAssetMenu(menuName = "ScriptableObject/AiPursueData", fileName = "data")]
 public class IaPursueData : AbstractEntityData
 {
     [field: Header("Range Sight"), SerializeField]

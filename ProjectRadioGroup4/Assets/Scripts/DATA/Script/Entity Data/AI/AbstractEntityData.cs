@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DATA.ScriptData.Entity_Data
 {
-    [CreateAssetMenu(menuName = "SciptableObject/AbstractIAData", fileName = "data")]
+    [CreateAssetMenu(menuName = "ScriptableObject/AbstractIAData", fileName = "data")]
     public abstract class AbstractEntityData : ScriptableObject
     {
         [field: Header("Life"), SerializeField]

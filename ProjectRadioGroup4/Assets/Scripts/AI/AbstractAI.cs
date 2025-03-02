@@ -15,7 +15,7 @@ namespace AI
             InFight,
             OutFight
         }
-
+        
         private void Update()
         {
             AiShift();
@@ -34,7 +34,7 @@ namespace AI
             _aiFightState = AiFightState.OutFight;
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             // no need to implement virtual/override because in each type of ai the trigger will launch the FightManager
             if (!other.CompareTag("Player")) return;
