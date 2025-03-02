@@ -1,77 +1,79 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using DATA.ScriptData.Entity_Data;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D),typeof(CapsuleCollider2D))]
-public class PlayerController : MonoBehaviour
+namespace Controller
 {
-    public static PlayerController instance;
-    
-    [Header("Speed")] [SerializeField] private float moveSpeed;
-
-    [Header("Rigidbody2D")] [SerializeField]
-    private Rigidbody2D rb;
-    
-    [Header("Data Player")]
-    [SerializeField] private PlayerData playerData; 
-    private PlayerDataInstance inGameData; 
-    
-    public enum PlayerState
+    [RequireComponent(typeof(Rigidbody2D),typeof(CapsuleCollider2D))]
+    public class PlayerController : MonoBehaviour
     {
-        Idle,
-        Running,
-        Walking,
-        Dead
-    }
+        public static PlayerController instance;
     
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
+        [Header("Speed")] [SerializeField] private float moveSpeed;
 
-        if (instance == null)
+        [Header("Rigidbody2D")] [SerializeField]
+        private Rigidbody2D rb;
+
+        [Header("Data Player")] [SerializeField]
+        private AbstractEntityDataInstance _abstractEntityDataInstance;
+        private PlayerDataInstance _inGameData; 
+    
+        public enum PlayerState
         {
-            instance = this;
+            Idle,
+            Running,
+            Walking,
+            Dead
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        inGameData = playerData.Instance();
-        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-    }
-
-    public void ManageLife(int valueLifeChanger)
-    {
-        healthPlayer += valueLifeChanger;
-    }
     
-    public int healthPlayer 
-    {
-        get => inGameData.health;
-
-        set
+        private void Awake()
         {
-            inGameData.health = value;
-            if (inGameData.IsDead())
+            rb = GetComponent<Rigidbody2D>();
+
+            if (instance == null)
             {
-                GameManager.instance.GameOver();
-                //They lose
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        
+            _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
+        
+            rb.interpolation = RigidbodyInterpolation2D.Interpolate; // pour fix le bug lié à la caméra qui faisait trembler le perso
+        }
+
+        public void ManageLife(int valueLifeChanger)
+        {
+            HealthPlayer += valueLifeChanger;
+        }
+
+        private int HealthPlayer 
+        {
+            get => _inGameData.hp;
+
+            set
+            {
+                _inGameData.hp = value;
+                if (_inGameData.IsDead())
+                {
+                    GameManager.instance.GameOver();
+                    //They lose
+                }
             }
         }
-    }
     
-    private void Update()
-    {
-        PlayerMove();
-    }
+        private void Update()
+        {
+            PlayerMove();
+        }
 
-    private void PlayerMove()
-    {
-        if (FightManager.instance.currentFighter != FightManager.FightState.NoFight) return;
-        var x = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
+        private void PlayerMove()
+        {
+            if (FightManager.instance.currentFighter != FightManager.FightState.NoFight) return;
+            var x = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
 
+        }
     }
 }
