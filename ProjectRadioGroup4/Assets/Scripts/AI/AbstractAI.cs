@@ -16,7 +16,12 @@ public abstract class AbstractAI : MonoBehaviour
         InFight,
         OutFight
     }
-    
+
+    private void Update()
+    {
+        AiShift();
+    }
+
     protected abstract void AiShift();
 
     private void Start()

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private List<Image> slots;
-    [SerializeField] private InventoryItem potionItem;
+    
     public static InventoryUI instance;
 
     private void Awake()
@@ -19,14 +19,6 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        InventoryManager.instance.AddItem(potionItem);
-        InventoryManager.instance.AddItem(potionItem);
-        InventoryManager.instance.AddItem(potionItem);
-        InventoryManager.instance.AddItem(potionItem);
-        InventoryManager.instance.AddItem(potionItem);
-        InventoryManager.instance.AddItem(potionItem);
-        InventoryManager.instance.AddItem(potionItem);
-        
         UpdateInventoryUI();
     }
 
