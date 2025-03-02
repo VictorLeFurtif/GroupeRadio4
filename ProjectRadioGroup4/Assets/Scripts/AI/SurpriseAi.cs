@@ -24,7 +24,7 @@ namespace AI
             base.OnTriggerEnter2D(other);
             if (other.CompareTag("Player"))
             {
-                SwitchSpriteRenderer(enemySpriteRenderer);
+                enemySpriteRenderer.enabled = true;
             }
         }
 

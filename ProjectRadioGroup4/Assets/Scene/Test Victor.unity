@@ -133,6 +133,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &104207797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4751606612148127619, guid: 5ad3e840fb66b3348b342d70490e35bd, type: 3}
+  m_PrefabInstance: {fileID: 507682377263186506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951573c07b59df54e847063a819b73c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &140991780 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1526157343814766898, guid: 1c9a32be31cee674ea69b1290ff9fc0a, type: 3}
@@ -512,52 +523,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1545705485
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1545705487}
-  - component: {fileID: 1545705486}
-  m_Layer: 0
-  m_Name: RadioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1545705486
+--- !u!114 &1545705486 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8228953248932618237, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+  m_PrefabInstance: {fileID: 417535015976087111}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545705485}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5b17c605cf88d24ca929c93a6252383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvaRadio: {fileID: 1165474250}
-  imageRadio: {fileID: 1216614917}
---- !u!4 &1545705487
+--- !u!4 &1545705487 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+  m_PrefabInstance: {fileID: 417535015976087111}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545705485}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 594.3409, y: 269, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1881900344}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1650823706
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +763,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &417535015976087111
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1881900344}
+    m_Modifications:
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 594.3409
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 269
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353243052635109921, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228953248932618237, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: canvaRadio
+      value: 
+      objectReference: {fileID: 1165474250}
+    - target: {fileID: 8228953248932618237, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: imageRadio
+      value: 
+      objectReference: {fileID: 1216614917}
+    - target: {fileID: 8228953248932618237, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: maxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228953248932618237, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: minDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228953248932618237, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: listOfEveryEnemy.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228953248932618237, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: listOfEveryEnemy.Array.data[0]
+      value: 
+      objectReference: {fileID: 104207797}
+    - target: {fileID: 8529015320838634144, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
+      propertyPath: m_Name
+      value: RadioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12920561fa90e4b45ba050cb2b39d709, type: 3}
 --- !u!1001 &507682377263186506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -796,11 +858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105971872471996799, guid: 5ad3e840fb66b3348b342d70490e35bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.39
+      value: -15.63
       objectReference: {fileID: 0}
     - target: {fileID: 9105971872471996799, guid: 5ad3e840fb66b3348b342d70490e35bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 5.28
       objectReference: {fileID: 0}
     - target: {fileID: 9105971872471996799, guid: 5ad3e840fb66b3348b342d70490e35bd, type: 3}
       propertyPath: m_LocalPosition.z
