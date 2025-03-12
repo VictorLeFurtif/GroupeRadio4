@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-namespace DATA.ScriptData.Entity_Data
+namespace DATA.Script.Entity_Data.AI
 {
     [CreateAssetMenu(menuName = "ScriptableObject/AbstractIAData", fileName = "data")]
     public abstract class AbstractEntityData : ScriptableObject
@@ -19,6 +20,7 @@ namespace DATA.ScriptData.Entity_Data
         }
     }
 
+    [Serializable]
     public class AbstractEntityDataInstance
     {
         public int hp;

@@ -1,3 +1,4 @@
+using DATA.Script.Entity_Data.AI;
 using UnityEngine;
 
 namespace DATA.ScriptData.Entity_Data

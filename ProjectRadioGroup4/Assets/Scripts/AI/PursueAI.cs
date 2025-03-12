@@ -8,6 +8,7 @@ namespace AI
         private IaPursueDataInstance _iaPursueDataInstance;
         
         private bool isChasing = false;
+        
         protected override void AiShift()
         {
             if (_aiFightState == AiFightState.InFight) return;

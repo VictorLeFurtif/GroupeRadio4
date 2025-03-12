@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
 using UnityEngine;
 

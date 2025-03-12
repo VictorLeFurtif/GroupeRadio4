@@ -1,4 +1,6 @@
+using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
+using MANAGER;
 using UnityEngine;
 
 namespace AI
@@ -8,7 +10,7 @@ namespace AI
     {
         [SerializeField]
         private AbstractEntityData _abstractEntityData;
-        protected AbstractEntityDataInstance _abstractEntityDataInstance;
+        public AbstractEntityDataInstance _abstractEntityDataInstance;
         protected AiFightState _aiFightState;
         protected enum AiFightState
         {
@@ -40,6 +42,8 @@ namespace AI
             if (!other.CompareTag("Player")) return;
             Debug.Log("Player in Fight Zone");
             _aiFightState = AiFightState.InFight;
+            FightManager.instance.fightState = FightManager.FightState.InFight;
+            FightManager.instance.InitialiseList();
         }
     }
 }

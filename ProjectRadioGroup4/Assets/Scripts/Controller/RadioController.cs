@@ -6,6 +6,7 @@ using Controller;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 
 public class RadioController : MonoBehaviour
@@ -23,7 +24,7 @@ public class RadioController : MonoBehaviour
     private AbstractAI currentClosestEnemy;
     
     [Header("Radio detection enemy parameters")]
-    [SerializeField] private List<AbstractAI> listOfEveryEnemy;
+    public List<AbstractAI> listOfEveryEnemy;
 
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;

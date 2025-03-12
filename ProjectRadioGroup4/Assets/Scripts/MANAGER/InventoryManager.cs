@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DATA.ScriptData.Item_link_to_invetory;
+using MANAGER;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -45,9 +46,9 @@ public class InventoryManager : MonoBehaviour
 
     public void UseItemSelected()
     {
-        if (FightManager.instance.currentFighter != FightManager.FightState.NoFight )
+        if (FightManager.instance.fightState != FightManager.FightState.OutFight )
         {
-            FightManager.instance.EndTurn();
+            //FightManager.instance.EndTurn();
         }
         //do stuff
         RemoveItem(currentItem);

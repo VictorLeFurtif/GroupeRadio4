@@ -1,4 +1,6 @@
+using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
+using MANAGER;
 using UnityEngine;
 
 namespace Controller
@@ -13,8 +15,10 @@ namespace Controller
         [Header("Rigidbody2D")] [SerializeField]
         private Rigidbody2D rb;
 
-        [Header("Data Player")] [SerializeField]
-        private AbstractEntityDataInstance _abstractEntityDataInstance;
+        [Header("Data Player")]
+        [SerializeField]
+        private AbstractEntityData _abstractEntityData;
+        public AbstractEntityDataInstance _abstractEntityDataInstance;
         private PlayerDataInstance _inGameData; 
     
         public enum PlayerState
@@ -37,7 +41,8 @@ namespace Controller
             {
                 Destroy(gameObject);
             }
-        
+
+            _abstractEntityDataInstance = _abstractEntityData.Instance(); 
             _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
         
             rb.interpolation = RigidbodyInterpolation2D.Interpolate; // pour fix le bug lié à la caméra qui faisait trembler le perso
@@ -70,7 +75,7 @@ namespace Controller
 
         private void PlayerMove()
         {
-            if (FightManager.instance.currentFighter != FightManager.FightState.NoFight) return;
+            if (FightManager.instance.fightState != FightManager.FightState.OutFight) return;
             var x = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
 
