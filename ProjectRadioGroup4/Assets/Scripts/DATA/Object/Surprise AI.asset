@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Hp>k__BackingField: 49
   <Speed>k__BackingField: 35
+  TurnState: 1
   <SurpriseZoneRange>k__BackingField: 1

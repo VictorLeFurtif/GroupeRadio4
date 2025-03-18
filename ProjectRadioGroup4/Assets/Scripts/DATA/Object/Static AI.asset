@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Hp>k__BackingField: 21
   <Speed>k__BackingField: 15
+  TurnState: 1

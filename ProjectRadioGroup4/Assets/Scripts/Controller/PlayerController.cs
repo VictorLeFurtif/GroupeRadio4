@@ -1,3 +1,5 @@
+using System;
+using AI;
 using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
 using MANAGER;
@@ -19,8 +21,15 @@ namespace Controller
         [SerializeField]
         private AbstractEntityData _abstractEntityData;
         public AbstractEntityDataInstance _abstractEntityDataInstance;
-        private PlayerDataInstance _inGameData; 
-    
+        private PlayerDataInstance _inGameData;
+
+        private SpriteRenderer spriteRendererPlayer;
+
+        [Header("UI")]
+        [SerializeField] private GameObject playerFightCanva;
+
+        [Header("Selected Fighter")] public GameObject selectedEnemy;
+        
         public enum PlayerState
         {
             Idle,
@@ -42,10 +51,11 @@ namespace Controller
                 Destroy(gameObject);
             }
 
-            _abstractEntityDataInstance = _abstractEntityData.Instance(); 
+            _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject); 
             _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
         
             rb.interpolation = RigidbodyInterpolation2D.Interpolate; // pour fix le bug lié à la caméra qui faisait trembler le perso
+            spriteRendererPlayer = GetComponent<SpriteRenderer>();
         }
 
         public void ManageLife(int valueLifeChanger)
@@ -71,14 +81,42 @@ namespace Controller
         private void Update()
         {
             PlayerMove();
+            CheckForFlipX();
+            ManageFight();
         }
 
         private void PlayerMove()
         {
-            if (FightManager.instance.fightState != FightManager.FightState.OutFight) return;
+            if (FightManager.instance.fightState != FightManager.FightState.OutFight)
+            {
+                rb.velocity = new Vector2(0,0);
+                return;
+            }
             var x = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
-
         }
+
+        private void CheckForFlipX() //temporary 
+        {
+            spriteRendererPlayer.flipX = rb.velocity.x < 0;
+        }
+
+        private void ManageFight() //temporary
+        {
+            playerFightCanva.SetActive(_inGameData.turnState == FightManager.TurnState.Turn);
+        }
+
+        
+
+        public void KillInstantEnemy()
+            {
+                if (selectedEnemy == null )
+                {
+                    return;
+                }
+
+                selectedEnemy.GetComponent<AbstractAI>().PvEnemy = -5;
+                FightManager.instance.EndFighterTurn();
+            }
     }
 }

@@ -1,3 +1,4 @@
+using AI;
 using DATA.Script.Entity_Data.AI;
 using UnityEngine;
 
@@ -9,9 +10,9 @@ namespace DATA.ScriptData.Entity_Data
         [field: Header("Move Speed"), SerializeField]
         public int MoveSpeed { get; private set; }
 
-        public override AbstractEntityDataInstance Instance()
+        public override AbstractEntityDataInstance Instance(GameObject entity)
         {
-            return new PlayerDataInstance(this);
+            return new PlayerDataInstance(this,entity);
         }
     }
 
@@ -19,7 +20,7 @@ namespace DATA.ScriptData.Entity_Data
     {
         public int moveSpeed;
 
-        public PlayerDataInstance(PlayerData data) : base(data)
+        public PlayerDataInstance(PlayerData data,GameObject entity) : base(data,entity)
         {
             moveSpeed = data.MoveSpeed;
         }

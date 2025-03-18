@@ -1,4 +1,6 @@
 using System;
+using AI;
+using MANAGER;
 using UnityEngine;
 
 namespace DATA.Script.Entity_Data.AI
@@ -12,11 +14,14 @@ namespace DATA.Script.Entity_Data.AI
     
         [field: Header("Hidden Speed"),SerializeField]
         public int Speed { get; private set; }
+
+        [field: Header("Turn State"), SerializeField]
+        public FightManager.TurnState TurnState;
     
 
-        public virtual AbstractEntityDataInstance Instance()
+        public virtual AbstractEntityDataInstance Instance(GameObject entity)
         {
-            return new AbstractEntityDataInstance(this);
+            return new AbstractEntityDataInstance(this, entity);
         }
     }
 
@@ -25,11 +30,15 @@ namespace DATA.Script.Entity_Data.AI
     {
         public int hp;
         public int speed;
+        public FightManager.TurnState turnState;
+        public GameObject entity;
 
-        public AbstractEntityDataInstance(AbstractEntityData data)
+        public AbstractEntityDataInstance(AbstractEntityData data, GameObject entity)
         {
             hp = data.Hp;
             speed = data.Speed;
+            turnState = data.TurnState;
+            this.entity = entity;
         }
 
         public bool IsDead()

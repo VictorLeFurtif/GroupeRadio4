@@ -38,6 +38,8 @@ namespace MANAGER
 
         [Header("Check for enemy in range of Player")] [SerializeField]
         private float rangeDetectEnemy;
+        
+        private AbstractEntityDataInstance currentFighter;
 
         private void Awake()
         {
@@ -53,16 +55,27 @@ namespace MANAGER
             OutFight,
             InFight
         }
+        
+        public enum TurnState
+        {
+            Turn,
+            NoTurn,
+        }
 
         private void UpdateListOfFighter() //call after each endTurn
         {
             CheckForDeadsFighter();
         }
 
-        private void EndFighterTurn() //take out fighter from list
+        public void EndFighterTurn() //take out fighter from list
         {
-            UpdateListOfFighter();
+            if (currentFighter != null)
+            {
+                currentFighter.turnState = TurnState.NoTurn; 
+            }
             
+            UpdateListOfFighter();
+    
             if (currentOrder.Count != 0)
             {
                 currentOrder.RemoveAt(0);
@@ -73,6 +86,7 @@ namespace MANAGER
                 currentOrder.AddRange(fighterAlive);
             }
 
+            CheckForEndFight();
             StartUnitTurn();
         }
 
@@ -93,8 +107,11 @@ namespace MANAGER
             }
             currentOrder.Add(player._abstractEntityDataInstance);
         
-            currentOrder.Sort((x, y) => x.speed.CompareTo(y.speed));
+            currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
+
             fighterAlive = new List<AbstractEntityDataInstance>(currentOrder); 
+            
+            StartUnitTurn();
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
@@ -108,20 +125,27 @@ namespace MANAGER
             if (fighterAlive.Count == 1 && fighterAlive[0] == player._abstractEntityDataInstance)
             {
                 Debug.Log("Player win");
+                PlayerController.instance._abstractEntityDataInstance.turnState = TurnState.NoTurn;
+                fightState = FightState.OutFight;
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
-                Debug.Log("IA win");
+                Debug.Log("IA win"); //fin de partie
             }
             else
             {
-                Debug.Log("Nobody won");
+                Debug.Log("Nobody won"); //fin de partie
             }
-
         }
     
         private void StartUnitTurn()
         {
+            if (currentOrder.Count > 0)
+            {
+                currentFighter = currentOrder[0]; 
+                currentFighter.turnState = TurnState.Turn; 
+            }
+    
             UpdateUI();
         }
 
