@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35215c01-7b4a-402e-b1e2-04f54be60d44" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/Shader Graphs_RadioWave.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/Shader Graphs_RadioWave.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/Test Victor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Test Victor.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/PlayerData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/PlayerData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Pursue AI Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Pursue AI Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Static AI.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Static AI.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Surprise AI.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Surprise AI.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/AbstractEntityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/AbstractEntityData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/IaPursueData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/IaPursueData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/SurpriseAiData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/SurpriseAiData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/Player/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/Player/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="35215c01-7b4a-402e-b1e2-04f54be60d44" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +111,7 @@
       <workItem from="1739118521175" duration="3314000" />
       <workItem from="1740914035327" duration="20326000" />
       <workItem from="1741780643018" duration="12603000" />
-      <workItem from="1742292749490" duration="10326000" />
+      <workItem from="1742292749490" duration="11110000" />
     </task>
     <servers />
   </component>
