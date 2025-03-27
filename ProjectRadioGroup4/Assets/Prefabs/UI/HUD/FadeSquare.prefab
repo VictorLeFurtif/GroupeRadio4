@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e2fbbd42215c04f849cd7d58bf7f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeInOnExit: 0
-  fadeOutOnEnter: 0
+  fadeInOnEnter: 1
+  fadeOutOnExit: 0
   fadeDuration: 1
   easeType: 4

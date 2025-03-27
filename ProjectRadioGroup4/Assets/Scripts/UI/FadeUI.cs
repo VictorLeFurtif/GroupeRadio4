@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class FadeUI : MonoBehaviour
 {
-    [SerializeField] private bool fadeInOnExit;
-    [SerializeField] private bool fadeOutOnEnter;
+    [SerializeField] private bool fadeInOnEnter;
+    [SerializeField] private bool fadeOutOnExit;
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private Ease easeType = Ease.InOutSine ;
     
@@ -21,10 +21,10 @@ public class FadeUI : MonoBehaviour
 
     private void Start()
     {
-        if(fadeOutOnEnter) FadeOut();
+        if(fadeInOnEnter) FadeIn();
     }
     
-    public void FadeIn()
+    public void FadeOut()
     {
         imageComponent.color = new Color(
             imageComponent.color.r,
@@ -34,11 +34,10 @@ public class FadeUI : MonoBehaviour
         );
 
         imageComponent.DOFade(1f, fadeDuration)
-            .SetEase(easeType)
-            .OnComplete(() => Debug.Log("Fade In terminé !"));
+            .SetEase(easeType);
     }
     
-    public void FadeOut()
+    public void FadeIn()
     {
         imageComponent.color = new Color(
             imageComponent.color.r,
@@ -48,8 +47,7 @@ public class FadeUI : MonoBehaviour
         );
 
         imageComponent.DOFade(0f, fadeDuration)
-            .SetEase(easeType)
-            .OnComplete(() => Debug.Log("Fade Out terminé !"));
+            .SetEase(easeType);
     }
 }
 
