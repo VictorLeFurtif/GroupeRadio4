@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
+public class DialogueUI : MonoBehaviour
 {
     [SerializeField] 
     private TextMeshProUGUI textComponent;
