@@ -23,7 +23,14 @@ namespace DATA.Script.Entity_Data.AI
         
         [field: Header("Wave frequency"),SerializeField, Tooltip("Max 15f please")]
         public float WaveFrequencyEnemy { get; private set; }
+        
+        [field: Header("Seen by Radio"),SerializeField]
+        public bool SeenByRadio { get; private set; }
 
+        [field: Header("Hidden"),SerializeField]
+        public bool NotHidden { get; private set; }
+
+        
         public virtual AbstractEntityDataInstance Instance(GameObject entity)
         {
             return new AbstractEntityDataInstance(this, entity);
@@ -39,6 +46,8 @@ namespace DATA.Script.Entity_Data.AI
         public GameObject entity;
         public float waveAmplitudeEnemy;
         public float waveFrequency;
+        public bool seenByRadio;
+        public bool notHidden;
 
         public AbstractEntityDataInstance(AbstractEntityData data, GameObject entity)
         {
@@ -48,6 +57,8 @@ namespace DATA.Script.Entity_Data.AI
             this.entity = entity;
             waveAmplitudeEnemy = data.WaveAmplitudeEnemy;
             waveFrequency = data.WaveFrequencyEnemy;
+            seenByRadio = data.SeenByRadio;
+            notHidden = data.NotHidden;
         }
 
         public bool IsDead()

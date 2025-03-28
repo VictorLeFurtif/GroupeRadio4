@@ -42,7 +42,7 @@ public class RadioController : MonoBehaviour
     [Header("List of enemies detected"), SerializeField]
     private List<AbstractAI> listOfDetectedEnemy;
 
-    [FormerlySerializedAs("desiredDistanceFm")] [FormerlySerializedAs("desiredDistance")] [Header("Radio's parameter AM")] [SerializeField]
+    [Header("Radio's parameter AM")] [SerializeField]
     private float desiredDistanceAm;
 
     [SerializeField] private float desiredDistanceFm;
@@ -196,13 +196,24 @@ public class RadioController : MonoBehaviour
         if (listOfDetectedEnemy.Count != 0)
         {
             UpdateRadioEnemyAfterDetection();
+            PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
+            ChangeBoolSeenForAi();
         }
         else
         {
             Debug.Log("nobody detected");
+            PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
         }
     }
 
+    private void ChangeBoolSeenForAi()
+    {
+        foreach (AbstractAI enemySeen in listOfDetectedEnemy)
+        {
+            enemySeen._abstractEntityDataInstance.seenByRadio = true;
+        }
+    }
+    
     public void FmButton()
     {
         listOfDetectedEnemy.Clear();
@@ -221,10 +232,13 @@ public class RadioController : MonoBehaviour
         if (listOfDetectedEnemy.Count != 0)
         {
             UpdateRadioEnemyAfterDetection();
+            PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
+            ChangeBoolSeenForAi();
         }
         else
         {
             Debug.Log("nobody detected");
+            PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
         }
     }
     
@@ -244,21 +258,18 @@ public class RadioController : MonoBehaviour
     {
         matRadioEnemy.SetFloat("_waves_Amount", 0);
         matRadioEnemy.SetFloat("_waves_Amp", 0);
-
     }
 
     private void UpdateRadioEnemyAfterDetection()
     {
         float waveAmpMoyenne = 0;
         float waveFreMoyenne = 0;
-
         foreach (AbstractAI enemy in listOfDetectedEnemy)
         {
             waveAmpMoyenne += enemy._abstractEntityDataInstance.waveAmplitudeEnemy;
             waveFreMoyenne += enemy._abstractEntityDataInstance.waveFrequency;
             print(waveAmpMoyenne + " " + waveFreMoyenne);
         }
-
         matRadioEnemy.SetFloat("_waves_Amount", waveFreMoyenne / listOfDetectedEnemy.Count);
         matRadioEnemy.SetFloat("_waves_Amp", waveAmpMoyenne / listOfDetectedEnemy.Count);
     }
@@ -272,5 +283,10 @@ public class RadioController : MonoBehaviour
         Gizmos.DrawLine(player.position, player.position - player.right * desiredDistanceAm); 
         
         Gizmos.DrawWireSphere(PlayerController.instance.transform.position, desiredDistanceFm);
+    }
+
+    private void GuessingOscFreOfEnemies()
+    {
+        
     }
 }

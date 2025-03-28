@@ -14,6 +14,8 @@ namespace AI
         public AbstractEntityDataInstance _abstractEntityDataInstance;
         protected AiFightState _aiFightState;
         
+        private SpriteRenderer enemySpriteRenderer;
+        
         protected enum AiFightState
         {
             InFight,
@@ -50,6 +52,8 @@ namespace AI
         {
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
             _aiFightState = AiFightState.OutFight;
+            enemySpriteRenderer = GetComponent<SpriteRenderer>();
+            enemySpriteRenderer.enabled = false;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -69,6 +73,23 @@ namespace AI
             {
                 PlayerController.instance.selectedEnemy = gameObject;
             }   
+        }
+
+        private void AiBehavior()
+        {
+            if (!_abstractEntityDataInstance.notHidden)
+            {
+                enemySpriteRenderer.enabled = true;
+            }
+        }
+        
+        protected void SwitchSpriteRenderer(SpriteRenderer _spriteRenderer)
+        {
+            _spriteRenderer.enabled = _spriteRenderer.enabled switch
+            {
+                true => false,
+                false => true
+            };
         }
     }
 }

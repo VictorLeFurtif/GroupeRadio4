@@ -6,6 +6,7 @@ using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
 using MANAGER;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Controller
 {
@@ -37,16 +38,26 @@ namespace Controller
         public List<PlayerAttackInstance> listOfPlayerAttackInstance = new List<PlayerAttackInstance>();
 
         public PlayerAttackInstance selectedAttack;
+
+        [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
+        public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
         
         
-        
-        public enum PlayerState
+        public enum PlayerStateAnimation
         {
             Idle,
             Running,
             Walking,
             Dead
         }
+
+        public enum PlayerStateExploration
+        {
+            Exploration,
+            Guessing,
+        }
+        
+        
     
         private void Awake()
         {
@@ -102,7 +113,7 @@ namespace Controller
 
         private void PlayerMove()
         {
-            if (FightManager.instance.fightState != FightManager.FightState.OutFight)
+            if (FightManager.instance.fightState != FightManager.FightState.OutFight || currentPlayerExplorationState == PlayerStateExploration.Guessing)
             {
                 rb.velocity = new Vector2(0,0);
                 return;

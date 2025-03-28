@@ -134,7 +134,7 @@ namespace MANAGER
             }
             else
             {
-                Debug.Log("Nobody won"); //fin de partie
+                Debug.Log("Nobody won");
             }
         }
     
