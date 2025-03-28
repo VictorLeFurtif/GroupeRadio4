@@ -7,6 +7,8 @@ using DATA.ScriptData.Entity_Data;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
 
 namespace Controller
 {
@@ -30,6 +32,7 @@ namespace Controller
 
         [Header("UI")]
         [SerializeField] private GameObject playerFightCanva;
+        [SerializeField] private Slider sliderOscillationPlayer;
 
         [Header("Selected Fighter")] public GameObject selectedEnemy;
 
@@ -41,7 +44,6 @@ namespace Controller
 
         [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
         public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
-        
         
         public enum PlayerStateAnimation
         {
@@ -56,8 +58,6 @@ namespace Controller
             Exploration,
             Guessing,
         }
-        
-        
     
         private void Awake()
         {
@@ -104,13 +104,26 @@ namespace Controller
             PlayerMove();
             CheckForFlipX();
             ManageFight();
+            SliderOscillationPlayerBehavior();
         }
 
         private void Start()
         {
             InitializeListOfAttackPlayer();
+            InitializeSliderOscillationPlayer();
         }
 
+        private void InitializeSliderOscillationPlayer() //wave amp comprit entre 0 et 0.4
+        {
+            sliderOscillationPlayer.maxValue = 0.4f;
+            sliderOscillationPlayer.onValueChanged.AddListener(UpdateAmplitude);
+        }
+       
+        private void UpdateAmplitude(float newValue)
+        {
+            RadioController.instance.matRadioPlayer.SetFloat("_waves_Amp", newValue);
+        }
+        
         private void PlayerMove()
         {
             if (FightManager.instance.fightState != FightManager.FightState.OutFight || currentPlayerExplorationState == PlayerStateExploration.Guessing)
@@ -155,7 +168,36 @@ namespace Controller
                 listOfPlayerAttackInstance.Add(attack.Instance());
             }
         }
+
+        private void SliderOscillationPlayerBehavior()
+        {
+            if (currentPlayerExplorationState == PlayerStateExploration.Guessing)
+            {
+                sliderOscillationPlayer.interactable = true;
+            }
+            else
+            {
+                sliderOscillationPlayer.interactable = false;
+            }
+        }
+
+        [SerializeField]
+        private float epsilonValidationOscillation;
         
-        
+        public void ValidButtonOscillation()
+        {
+            if (!(Mathf.Abs(sliderOscillationPlayer.value -
+                            RadioController.instance.matRadioEnemy.GetFloat("_waves_Amp")) <
+                  epsilonValidationOscillation) ||
+                currentPlayerExplorationState != PlayerStateExploration.Guessing)
+            {
+                return;
+            }
+            Debug.Log("Pass the epsilon");
+            foreach (AbstractAI enemy in RadioController.instance.listOfDetectedEnemy)
+            {
+                enemy._abstractEntityDataInstance.notHidden = true;
+            }
+        }
     }
 }

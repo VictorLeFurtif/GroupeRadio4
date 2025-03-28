@@ -25,6 +25,7 @@ namespace AI
         private void Update()
         {
             AiShift();
+            AiBehavior();
         }
 
         public int PvEnemy
@@ -77,7 +78,7 @@ namespace AI
 
         private void AiBehavior()
         {
-            if (!_abstractEntityDataInstance.notHidden)
+            if (_abstractEntityDataInstance.notHidden)
             {
                 enemySpriteRenderer.enabled = true;
             }

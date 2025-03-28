@@ -19,10 +19,10 @@ public class RadioController : MonoBehaviour
     [FormerlySerializedAs("imageRadio")] [Header("Frequence Radio")] [SerializeField]
     private RawImage imageRadioPlayer;
 
-    private Material matRadioPlayer;
+    public Material matRadioPlayer;
 
     [SerializeField] private RawImage imageRadioEnemy;
-    private Material matRadioEnemy;
+    public Material matRadioEnemy;
 
     private RadioState currentRadioState;
 
@@ -40,7 +40,7 @@ public class RadioController : MonoBehaviour
     [SerializeField] private TMP_Text descriptionAttackSelectedText;
 
     [Header("List of enemies detected"), SerializeField]
-    private List<AbstractAI> listOfDetectedEnemy;
+    public List<AbstractAI> listOfDetectedEnemy;
 
     [Header("Radio's parameter AM")] [SerializeField]
     private float desiredDistanceAm;
@@ -48,12 +48,7 @@ public class RadioController : MonoBehaviour
     [SerializeField] private float desiredDistanceFm;
 
     [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
-
-    private void Update()
-    {
-
-    }
-
+    
     private enum RadioState
     {
         InFight,
@@ -284,9 +279,6 @@ public class RadioController : MonoBehaviour
         
         Gizmos.DrawWireSphere(PlayerController.instance.transform.position, desiredDistanceFm);
     }
-
-    private void GuessingOscFreOfEnemies()
-    {
-        
-    }
+    
+    
 }
