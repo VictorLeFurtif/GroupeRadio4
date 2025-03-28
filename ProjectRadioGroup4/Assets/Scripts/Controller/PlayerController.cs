@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using AI;
+using DATA.Script.Attack_Data;
 using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
 using MANAGER;
@@ -23,12 +25,20 @@ namespace Controller
         public AbstractEntityDataInstance _abstractEntityDataInstance;
         private PlayerDataInstance _inGameData;
 
-        private SpriteRenderer spriteRendererPlayer;
+        public SpriteRenderer spriteRendererPlayer;
 
         [Header("UI")]
         [SerializeField] private GameObject playerFightCanva;
 
         [Header("Selected Fighter")] public GameObject selectedEnemy;
+
+        [Header("Attacks Player")] [SerializeField] private List<PlayerAttack> listOfPlayerAttack;
+        
+        public List<PlayerAttackInstance> listOfPlayerAttackInstance = new List<PlayerAttackInstance>();
+
+        public PlayerAttackInstance selectedAttack;
+        
+        
         
         public enum PlayerState
         {
@@ -85,6 +95,11 @@ namespace Controller
             ManageFight();
         }
 
+        private void Start()
+        {
+            InitializeListOfAttackPlayer();
+        }
+
         private void PlayerMove()
         {
             if (FightManager.instance.fightState != FightManager.FightState.OutFight)
@@ -96,9 +111,15 @@ namespace Controller
             rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
         }
 
-        private void CheckForFlipX() //temporary 
+        private bool wasFacingLeft = false; //bool pour stock là où il regardait
+
+        private void CheckForFlipX()
         {
-            spriteRendererPlayer.flipX = rb.velocity.x < 0;
+            if (Mathf.Abs(rb.velocity.x) > 0.1f)
+            {
+                wasFacingLeft = rb.velocity.x < 0;
+            }
+            spriteRendererPlayer.flipX = wasFacingLeft;
         }
 
         private void ManageFight() //temporary
@@ -106,17 +127,24 @@ namespace Controller
             playerFightCanva.SetActive(_inGameData.turnState == FightManager.TurnState.Turn);
         }
 
-        
-
         public void KillInstantEnemy()
-            {
-                if (selectedEnemy == null )
-                {
-                    return;
-                }
-
-                selectedEnemy.GetComponent<AbstractAI>().PvEnemy = -5;
-                FightManager.instance.EndFighterTurn();
+        {
+            if (selectedEnemy == null ) 
+            { 
+                return;
             }
+            selectedEnemy.GetComponent<AbstractAI>().PvEnemy = -5;
+            FightManager.instance.EndFighterTurn();
+        }
+
+        private void InitializeListOfAttackPlayer()
+        {
+            foreach (PlayerAttack attack in listOfPlayerAttack)
+            {
+                listOfPlayerAttackInstance.Add(attack.Instance());
+            }
+        }
+        
+        
     }
 }

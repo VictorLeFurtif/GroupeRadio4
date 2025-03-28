@@ -18,6 +18,11 @@ namespace DATA.Script.Entity_Data.AI
         [field: Header("Turn State"), SerializeField]
         public FightManager.TurnState TurnState;
     
+        [field: Header("Wave amplitude"),SerializeField,Tooltip("Max O.4f please")]
+        public float WaveAmplitudeEnemy { get; private set; }
+        
+        [field: Header("Wave frequency"),SerializeField, Tooltip("Max 15f please")]
+        public float WaveFrequencyEnemy { get; private set; }
 
         public virtual AbstractEntityDataInstance Instance(GameObject entity)
         {
@@ -32,6 +37,8 @@ namespace DATA.Script.Entity_Data.AI
         public int speed;
         public FightManager.TurnState turnState;
         public GameObject entity;
+        public float waveAmplitudeEnemy;
+        public float waveFrequency;
 
         public AbstractEntityDataInstance(AbstractEntityData data, GameObject entity)
         {
@@ -39,6 +46,8 @@ namespace DATA.Script.Entity_Data.AI
             speed = data.Speed;
             turnState = data.TurnState;
             this.entity = entity;
+            waveAmplitudeEnemy = data.WaveAmplitudeEnemy;
+            waveFrequency = data.WaveFrequencyEnemy;
         }
 
         public bool IsDead()

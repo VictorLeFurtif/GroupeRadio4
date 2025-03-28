@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_RadioWave
+  m_Name: SG RadioWave Enemy
   m_Shader: {fileID: -6465566751694194690, guid: d95944c4683c20c4190af757957f1f55, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,8 +41,8 @@ Material:
     - _noise_amp: 4.76
     - _speed: 0.14
     - _waves: 12.7
-    - _waves_Amount: 15.714719
-    - _waves_Amp: 0.797013
+    - _waves_Amount: 8
+    - _waves_Amp: 0.2
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &148708066201681712

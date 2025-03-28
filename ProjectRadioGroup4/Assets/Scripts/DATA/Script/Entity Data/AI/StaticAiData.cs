@@ -1,3 +1,4 @@
+using System;
 using DATA.ScriptData.Entity_Data;
 using UnityEngine;
 
@@ -8,4 +9,5 @@ namespace DATA.Script.Entity_Data.AI
     {
         
     }
+    
 }

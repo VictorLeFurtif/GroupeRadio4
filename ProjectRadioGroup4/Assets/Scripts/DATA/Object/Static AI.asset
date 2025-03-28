@@ -15,3 +15,5 @@ MonoBehaviour:
   <Hp>k__BackingField: 21
   <Speed>k__BackingField: 15
   TurnState: 1
+  <WaveAmplitudeEnemy>k__BackingField: 0.2
+  <WaveFrequencyEnemy>k__BackingField: 8
