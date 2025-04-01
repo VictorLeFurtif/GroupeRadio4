@@ -193,11 +193,13 @@ namespace Controller
             {
                 return;
             }
+            
             Debug.Log("Pass the epsilon");
-            foreach (AbstractAI enemy in RadioController.instance.listOfDetectedEnemy)
-            {
-                enemy._abstractEntityDataInstance.notHidden = true;
-            }
+
+            RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
+                ._abstractEntityDataInstance.notHidden = true;
+            RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+            
         }
     }
 }

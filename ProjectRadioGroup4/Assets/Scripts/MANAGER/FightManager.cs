@@ -13,13 +13,7 @@ namespace MANAGER
     public class FightManager : MonoBehaviour
     {
         public static FightManager instance;
-    /*
-        [field: Header("Links")]
-        [SerializeField]
-        private TextMeshProUGUI unitTurnText;
-        [SerializeField]
-        private TextMeshProUGUI numberOfUnitText;
-    */
+    
         [field: Header("Specific To Project - WIP")]
         private int numberOfEnemies;
         private int numberOfPlayer;
@@ -41,6 +35,8 @@ namespace MANAGER
         
         private AbstractEntityDataInstance currentFighter;
 
+        [SerializeField] private FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
+
         private void Awake()
         {
             if (instance == null)instance = this;
@@ -49,8 +45,15 @@ namespace MANAGER
             player = PlayerController.instance;
             radio = RadioController.instance;
         }
-
-        public enum FightState // temporaire
+        
+        public enum FightAdvantage
+        {
+            Advantage,
+            Disadvantage,
+            Neutral,
+        }
+        
+        public enum FightState 
         {
             OutFight,
             InFight
@@ -100,9 +103,25 @@ namespace MANAGER
 
             foreach (AbstractAI fighter in radio.listOfEveryEnemy)
             {
-                if (Math.Abs(fighter.gameObject.transform.position.x - player.transform.position.x) < rangeDetectEnemy)
+                if (!(Math.Abs(fighter.gameObject.transform.position.x - player.transform.position.x) <
+                      rangeDetectEnemy)) continue;
+                currentOrder.Add(fighter._abstractEntityDataInstance);
+                fighter._aiFightState = AbstractAI.AiFightState.InFight;
+                if (fighter._abstractEntityDataInstance.seenByRadio && fighter._abstractEntityDataInstance.notHidden
+                                                                    && currentFightAdvantage != FightAdvantage.Disadvantage)
                 {
-                    currentOrder.Add(fighter._abstractEntityDataInstance);  
+                    currentFightAdvantage = FightAdvantage.Advantage;
+                    Debug.Log("Advantage");
+                }
+                else if (!fighter._abstractEntityDataInstance.notHidden && !fighter._abstractEntityDataInstance.seenByRadio)
+                {
+                    currentFightAdvantage = FightAdvantage.Disadvantage;
+                    Debug.Log("Disadvantage");
+                }
+                else
+                {
+                    currentFightAdvantage = FightAdvantage.Neutral;
+                    Debug.Log("Neutral");
                 }
             }
             currentOrder.Add(player._abstractEntityDataInstance);

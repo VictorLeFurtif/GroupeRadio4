@@ -13,6 +13,7 @@ using Random = UnityEngine.Random;
 
 public class RadioController : MonoBehaviour
 {
+    #region VARIABELS
     public static RadioController instance;
     [Header("Canvas")] [SerializeField] private Canvas canvaRadio;
 
@@ -49,6 +50,11 @@ public class RadioController : MonoBehaviour
 
     [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
     
+
+    #endregion
+    
+    
+    
     private enum RadioState
     {
         InFight,
@@ -77,7 +83,7 @@ public class RadioController : MonoBehaviour
         matRadioPlayer = imageRadioPlayer.material;
         matRadioEnemy = imageRadioEnemy.material;
     }
-
+    
     #region OldSystemRadio
 
     private float CheckForClosestPlayer()
@@ -164,12 +170,15 @@ public class RadioController : MonoBehaviour
 
     public void AmButton()
     {
+        int cpt = 0;
         List<AbstractAI> newList = new List<AbstractAI>();
         Vector3 playerPos = PlayerController.instance.transform.position;
         bool isFacingLeft = PlayerController.instance.spriteRendererPlayer.flipX;
 
         foreach (AbstractAI enemy in listOfEveryEnemy.ToList())
         {
+            if (cpt >= 3)break;
+            
             Vector3 enemyPos = enemy.transform.position;
             float distance = Vector3.Distance(playerPos, enemyPos);
             
@@ -182,6 +191,7 @@ public class RadioController : MonoBehaviour
                 if (Random.value <= probability)
                 {
                     newList.Add(enemy);
+                    cpt++;
                 }
             }
         }
@@ -190,7 +200,7 @@ public class RadioController : MonoBehaviour
 
         if (listOfDetectedEnemy.Count != 0)
         {
-            UpdateRadioEnemyAfterDetection();
+            //UpdateRadioEnemyAfterDetection();
             PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
             ChangeBoolSeenForAi();
         }
@@ -211,22 +221,24 @@ public class RadioController : MonoBehaviour
     
     public void FmButton()
     {
+        int cpt = 0;
         listOfDetectedEnemy.Clear();
         Vector3 playerPos = PlayerController.instance.transform.position;
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPos, desiredDistanceFm, enemyLayerMask);
-        Debug.Log(hitColliders.Length);
         foreach (Collider2D  col in hitColliders)
         {
+            if (cpt >= 3)break;
             AbstractAI enemy = col.GetComponent<AbstractAI>();
             if (enemy != null && !IsEnemyAlreadyInList(enemy))
             {
                 listOfDetectedEnemy.Add(enemy);
+                cpt++;
             }
         }
 
         if (listOfDetectedEnemy.Count != 0)
         {
-            UpdateRadioEnemyAfterDetection();
+            //UpdateRadioEnemyAfterDetection();
             PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
             ChangeBoolSeenForAi();
         }
@@ -267,8 +279,33 @@ public class RadioController : MonoBehaviour
         }
         matRadioEnemy.SetFloat("_waves_Amount", waveFreMoyenne / listOfDetectedEnemy.Count);
         matRadioEnemy.SetFloat("_waves_Amp", waveAmpMoyenne / listOfDetectedEnemy.Count);
-    }
+    } //useless but keep it in case
 
+    public void UpdateRadioEnemyWithLight(int index)
+    {
+        if (listOfDetectedEnemy.Count - 1 < index || PlayerController.instance.currentPlayerExplorationState
+            == PlayerController.PlayerStateExploration.Exploration)
+        {
+            InitializeRadioEnemy();
+            return;
+        }
+
+        if (listOfDetectedEnemy[index]._abstractEntityDataInstance.notHidden) // cant had it in the block on top because dependencies with a Singleton
+        {
+            InitializeRadioEnemy();
+            return;
+        }
+        
+        float waveAmp = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveAmplitudeEnemy;
+        float waveFre = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveFrequency;
+        
+        Debug.Log(waveAmp);
+        Debug.Log(waveFre);
+        
+        matRadioEnemy.SetFloat("_waves_Amount", waveFre);
+        matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+    }
+    
     void OnDrawGizmos()
     {
         if (PlayerController.instance == null) return;

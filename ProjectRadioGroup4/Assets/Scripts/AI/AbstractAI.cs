@@ -12,11 +12,11 @@ namespace AI
         [SerializeField]
         private AbstractEntityData _abstractEntityData;
         public AbstractEntityDataInstance _abstractEntityDataInstance;
-        protected AiFightState _aiFightState;
+        public AiFightState _aiFightState;
         
         private SpriteRenderer enemySpriteRenderer;
-        
-        protected enum AiFightState
+
+        public enum AiFightState
         {
             InFight,
             OutFight
@@ -78,7 +78,7 @@ namespace AI
 
         private void AiBehavior()
         {
-            if (_abstractEntityDataInstance.notHidden)
+            if (_abstractEntityDataInstance.notHidden || _aiFightState == AiFightState.InFight)
             {
                 enemySpriteRenderer.enabled = true;
             }
