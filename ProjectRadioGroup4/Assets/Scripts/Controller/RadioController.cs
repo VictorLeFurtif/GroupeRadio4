@@ -65,6 +65,9 @@ public class RadioController : MonoBehaviour
         InitializeSliderFrequency();
         sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
         InitializeRadioEnemy();
+        
+        //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
+        UpdateRadioEnemyWithLight(0);
     }
 
     private void Awake()
@@ -296,9 +299,6 @@ public class RadioController : MonoBehaviour
         
         float waveAmp = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveAmplitudeEnemy;
         float waveFre = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveFrequency;
-        
-        Debug.Log(waveAmp);
-        Debug.Log(waveFre);
         
         matRadioEnemy.SetFloat("_waves_Amount", waveFre);
         matRadioEnemy.SetFloat("_waves_Amp", waveAmp);

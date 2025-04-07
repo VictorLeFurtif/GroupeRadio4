@@ -1,3 +1,4 @@
+using System;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
@@ -15,11 +16,20 @@ namespace AI
         public AiFightState _aiFightState;
         
         private SpriteRenderer enemySpriteRenderer;
+        
+        [SerializeField] private TypeOfAi aiType;
 
         public enum AiFightState
         {
             InFight,
             OutFight
+        }
+        
+        public enum TypeOfAi
+        {
+            AlwaysAttack, //no logic behind
+            SmartAi, // With thought process
+            RandomAiWithCondition, //Pokemon like ai
         }
         
         private void Update()
@@ -78,10 +88,28 @@ namespace AI
 
         private void AiBehavior()
         {
-            if (_abstractEntityDataInstance.notHidden || _aiFightState == AiFightState.InFight)
+            if (!_abstractEntityDataInstance.notHidden && _aiFightState != AiFightState.InFight) return;
+            
+            enemySpriteRenderer.enabled = true;
+            
+            if (_abstractEntityDataInstance.turnState == FightManager.TurnState.NoTurn)
             {
-                enemySpriteRenderer.enabled = true;
+                return;
             }
+
+            switch (aiType)
+            {
+                case TypeOfAi.AlwaysAttack:
+                    AlwaysAttackAiBehavior();
+                    break;
+                case TypeOfAi.SmartAi:
+                    break;
+                case TypeOfAi.RandomAiWithCondition:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            FightManager.instance.EndFighterTurn();
         }
         
         protected void SwitchSpriteRenderer(SpriteRenderer _spriteRenderer)
@@ -91,6 +119,18 @@ namespace AI
                 true => false,
                 false => true
             };
+        }
+
+        private void AlwaysAttackAiBehavior()
+        {
+            if (PlayerController.instance != null)
+            {
+                PlayerController.instance.ManageLife(-5); // temporary
+            }
+            else
+            {
+                Debug.LogError("No player instance found : Singleton problem occured with PlayerController");
+            }
         }
     }
 }

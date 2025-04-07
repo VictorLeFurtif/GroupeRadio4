@@ -79,15 +79,14 @@ namespace MANAGER
             
             UpdateListOfFighter();
     
-            if (currentOrder.Count != 0)
-            {
-                currentOrder.RemoveAt(0);
-            }
-            else
+            currentOrder.RemoveAt(0);
+
+            if (currentOrder.Count == 0)
             {
                 numberOfTurn++;
                 currentOrder.AddRange(fighterAlive);
             }
+
 
             CheckForEndFight();
             StartUnitTurn();
