@@ -53,8 +53,6 @@ public class RadioController : MonoBehaviour
 
     #endregion
     
-    
-    
     private enum RadioState
     {
         InFight,
@@ -85,7 +83,21 @@ public class RadioController : MonoBehaviour
     }
     
     #region OldSystemRadio
-
+    
+    private void UpdateRadioEnemyAfterDetection()
+    {
+        float waveAmpMoyenne = 0;
+        float waveFreMoyenne = 0;
+        foreach (AbstractAI enemy in listOfDetectedEnemy)
+        {
+            waveAmpMoyenne += enemy._abstractEntityDataInstance.waveAmplitudeEnemy;
+            waveFreMoyenne += enemy._abstractEntityDataInstance.waveFrequency;
+            print(waveAmpMoyenne + " " + waveFreMoyenne);
+        }
+        matRadioEnemy.SetFloat("_waves_Amount", waveFreMoyenne / listOfDetectedEnemy.Count);
+        matRadioEnemy.SetFloat("_waves_Amp", waveAmpMoyenne / listOfDetectedEnemy.Count);
+    } //useless but keep it in case
+    
     private float CheckForClosestPlayer()
     {
         float stockDistance = Mathf.Infinity;
@@ -266,21 +278,7 @@ public class RadioController : MonoBehaviour
         matRadioEnemy.SetFloat("_waves_Amount", 0);
         matRadioEnemy.SetFloat("_waves_Amp", 0);
     }
-
-    private void UpdateRadioEnemyAfterDetection()
-    {
-        float waveAmpMoyenne = 0;
-        float waveFreMoyenne = 0;
-        foreach (AbstractAI enemy in listOfDetectedEnemy)
-        {
-            waveAmpMoyenne += enemy._abstractEntityDataInstance.waveAmplitudeEnemy;
-            waveFreMoyenne += enemy._abstractEntityDataInstance.waveFrequency;
-            print(waveAmpMoyenne + " " + waveFreMoyenne);
-        }
-        matRadioEnemy.SetFloat("_waves_Amount", waveFreMoyenne / listOfDetectedEnemy.Count);
-        matRadioEnemy.SetFloat("_waves_Amp", waveAmpMoyenne / listOfDetectedEnemy.Count);
-    } //useless but keep it in case
-
+    
     public void UpdateRadioEnemyWithLight(int index)
     {
         if (listOfDetectedEnemy.Count - 1 < index || PlayerController.instance.currentPlayerExplorationState
