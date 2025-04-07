@@ -167,6 +167,7 @@ namespace AI
 
         private void HandleLowBatteryActions(float randomValue, float healthPercentage)
         {
+            healthPercentage = Mathf.Clamp01(healthPercentage);
             switch (healthPercentage)
             {
                 case < 0.33f:
@@ -198,26 +199,34 @@ namespace AI
 
         private void HandleHighBatteryActions(float randomValue, float healthPercentage)
         {
-            if (healthPercentage < 0.33f)
+            healthPercentage = Mathf.Clamp01(healthPercentage);
+
+            switch (healthPercentage)
             {
-                if (randomValue < 0.15f) HeavyAttack();
-                else if (randomValue < 0.5f) StealBatteries();
-                else if (randomValue < 0.75f) StealALotBatteries();
-                else ElectricalLeak();
-            }
-            else if (healthPercentage < 0.66f)
-            {
-                if (randomValue < 0.33f) HeavyAttack();
-                else if (randomValue < 0.56f) StealBatteries();
-                else if (randomValue < 0.77f) StealALotBatteries();
-                else ElectricalLeak();
-            }
-            else
-            {
-                if (randomValue < 0.35f) HeavyAttack();
-                else if (randomValue < 0.5f) StealBatteries();
-                else if (randomValue < 0.6f) StealALotBatteries();
-                else ElectricalLeak();
+                case < 0.33f:
+                {
+                    if (randomValue < 0.15f) HeavyAttack();
+                    else if (randomValue < 0.5f) StealBatteries();
+                    else if (randomValue < 0.75f) StealALotBatteries();
+                    else ElectricalLeak();
+                    break;
+                }
+                case < 0.66f:
+                {
+                    if (randomValue < 0.33f) HeavyAttack();
+                    else if (randomValue < 0.56f) StealBatteries();
+                    else if (randomValue < 0.77f) StealALotBatteries();
+                    else ElectricalLeak();
+                    break;
+                }
+                default:
+                {
+                    if (randomValue < 0.35f) HeavyAttack();
+                    else if (randomValue < 0.5f) StealBatteries();
+                    else if (randomValue < 0.6f) StealALotBatteries();
+                    else ElectricalLeak();
+                    break;
+                }
             }
         }
 
@@ -233,7 +242,7 @@ namespace AI
         private void ClassicAttack(int _damageDeal, int _batteryGain)
         {
             PlayerController.instance.ManageLife(_damageDeal);
-            _abstractEntityDataInstance.hp += _batteryGain;
+            _abstractEntityDataInstance.battery += _batteryGain;
         }
         private void NormalAttack() => ClassicAttack(-18, 6);
         private void HeavyAttack() => ClassicAttack(-24,8);
