@@ -29,6 +29,9 @@ namespace DATA.Script.Entity_Data.AI
 
         [field: Header("Hidden"),SerializeField]
         public bool NotHidden { get; private set; }
+        
+        [field: Header("Battery "),SerializeField,Tooltip("Only for the AI, start at 0")]
+        public int Battery { get; private set; }
 
         
         public virtual AbstractEntityDataInstance Instance(GameObject entity)
@@ -48,6 +51,7 @@ namespace DATA.Script.Entity_Data.AI
         public float waveFrequency;
         public bool seenByRadio;
         public bool notHidden;
+        public int battery;
 
         public AbstractEntityDataInstance(AbstractEntityData data, GameObject entity)
         {
@@ -59,11 +63,22 @@ namespace DATA.Script.Entity_Data.AI
             waveFrequency = data.WaveFrequencyEnemy;
             seenByRadio = data.SeenByRadio;
             notHidden = data.NotHidden;
+            battery = data.Battery;
         }
 
         public bool IsDead()
         {
             return hp <= 0;
+        }
+
+        public bool IsBatteryMoreThanHundred()
+        {
+            return battery > 100;
+        }
+
+        public bool IsBatteryEqualOrMoreThanFifty()
+        {
+            return battery >= 50;
         }
     }
 }

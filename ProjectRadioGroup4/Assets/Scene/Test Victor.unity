@@ -1084,6 +1084,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 9002175220059808937, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
+      propertyPath: aiType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9154001375764170124, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
       propertyPath: m_Name
       value: Static Ai
@@ -1579,6 +1583,10 @@ PrefabInstance:
     - target: {fileID: 5518081921606556393, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
       propertyPath: m_Offset.y
       value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002175220059808937, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
+      propertyPath: aiType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9002175220059808937, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
       propertyPath: _abstractEntityData

@@ -4,6 +4,8 @@ using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
 using MANAGER;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 namespace AI
 {
@@ -103,6 +105,7 @@ namespace AI
                     AlwaysAttackAiBehavior();
                     break;
                 case TypeOfAi.SmartAi:
+                    SmartAiBehavior();
                     break;
                 case TypeOfAi.RandomAiWithCondition:
                     break;
@@ -132,5 +135,115 @@ namespace AI
                 Debug.LogError("No player instance found : Singleton problem occured with PlayerController");
             }
         }
+
+        private void SmartAiBehavior()
+        {
+            if (PlayerController.instance == null)
+            {
+                Debug.LogError("No player instance found: Singleton problem with PlayerController");
+                return;
+            }
+
+            float randomValue = Random.Range(0f, 1f);
+            
+            if (_abstractEntityDataInstance.IsBatteryMoreThanHundred())
+            {
+                Kamikaze();
+                return;
+            }
+
+            bool isLowBattery = !_abstractEntityDataInstance.IsBatteryEqualOrMoreThanFifty();
+            float healthPercentage = (float)PvEnemy / _abstractEntityData.Hp;
+
+            if (isLowBattery)
+            {
+                HandleLowBatteryActions(randomValue, healthPercentage);
+            }
+            else
+            {
+                HandleHighBatteryActions(randomValue, healthPercentage);
+            }
+        }
+
+        private void HandleLowBatteryActions(float randomValue, float healthPercentage)
+        {
+            switch (healthPercentage)
+            {
+                case < 0.33f:
+                {
+                    if (randomValue < 0.15f) NormalAttack();
+                    else if (randomValue < 0.30f) HeavyAttack();
+                    else if (randomValue < 0.55f) StealBatteries();
+                    else StealALotBatteries();
+                    break;
+                }
+                case < 0.66f:
+                {
+                    if (randomValue < 0.3f) NormalAttack();
+                    else if (randomValue < 0.5f) HeavyAttack();
+                    else if (randomValue < 0.8f) StealBatteries();
+                    else StealALotBatteries();
+                    break;
+                }
+                default:
+                {
+                    if (randomValue < 0.4f) NormalAttack();
+                    else if (randomValue < 0.7f) HeavyAttack();
+                    else if (randomValue < 0.9f) StealBatteries();
+                    else StealALotBatteries();
+                    break;
+                }
+            }
+        }
+
+        private void HandleHighBatteryActions(float randomValue, float healthPercentage)
+        {
+            if (healthPercentage < 0.33f)
+            {
+                if (randomValue < 0.15f) HeavyAttack();
+                else if (randomValue < 0.5f) StealBatteries();
+                else if (randomValue < 0.75f) StealALotBatteries();
+                else ElectricalLeak();
+            }
+            else if (healthPercentage < 0.66f)
+            {
+                if (randomValue < 0.33f) HeavyAttack();
+                else if (randomValue < 0.56f) StealBatteries();
+                else if (randomValue < 0.77f) StealALotBatteries();
+                else ElectricalLeak();
+            }
+            else
+            {
+                if (randomValue < 0.35f) HeavyAttack();
+                else if (randomValue < 0.5f) StealBatteries();
+                else if (randomValue < 0.6f) StealALotBatteries();
+                else ElectricalLeak();
+            }
+        }
+
+
+        #region AI Thought Process
+        
+        private void Kamikaze()
+        {
+            PlayerController.instance.ManageLife(-38); //temporary floating value
+            PvEnemy = 0;
+            Debug.Log("Explode");
+        }
+        private void ClassicAttack(int _damageDeal, int _batteryGain)
+        {
+            PlayerController.instance.ManageLife(_damageDeal);
+            _abstractEntityDataInstance.hp += _batteryGain;
+        }
+        private void NormalAttack() => ClassicAttack(-18, 6);
+        private void HeavyAttack() => ClassicAttack(-24,8);
+        private void StealBatteries() => ClassicAttack(-12,8);
+        private void StealALotBatteries() => ClassicAttack(-18, 18);
+
+        private void ElectricalLeak() => ClassicAttack(-_abstractEntityDataInstance.battery / 5,
+            -_abstractEntityDataInstance.battery / 5);
+
+        #endregion
+
     }
 }
