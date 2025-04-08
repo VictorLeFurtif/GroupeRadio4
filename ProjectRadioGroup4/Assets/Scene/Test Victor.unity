@@ -1088,6 +1088,14 @@ PrefabInstance:
       propertyPath: aiType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9002175220059808937, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
+      propertyPath: _aiFightState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002175220059808937, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
+      propertyPath: _abstractEntityData
+      value: 
+      objectReference: {fileID: 11400000, guid: 34f352df817fe02459cf1dbf4799cf82, type: 2}
     - target: {fileID: 9154001375764170124, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
       propertyPath: m_Name
       value: Static Ai
@@ -1336,6 +1344,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offSett: {x: 0, y: 0, z: -10}
   smoothTime: 0.2
+  defaultShakeDuration: 0.5
+  defaultShakeMagnitude: 0.15
+  shakeRecoverySpeed: 1
 --- !u!114 &1734248860 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3481320399612690470, guid: 674db029357afba4593c22e57e6d13ae, type: 3}
@@ -1589,9 +1600,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9002175220059808937, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
+      propertyPath: _aiFightState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002175220059808937, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
       propertyPath: _abstractEntityData
       value: 
-      objectReference: {fileID: 11400000, guid: 263fae77ce41c59449f3e7adbc82a5b8, type: 2}
+      objectReference: {fileID: 11400000, guid: 34f352df817fe02459cf1dbf4799cf82, type: 2}
     - target: {fileID: 9154001375764170124, guid: f15d789eb29641644a3a4cc93cf5316d, type: 3}
       propertyPath: m_Name
       value: Static Ai (1)

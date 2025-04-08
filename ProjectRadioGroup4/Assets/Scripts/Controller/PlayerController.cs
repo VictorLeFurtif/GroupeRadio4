@@ -83,12 +83,12 @@ namespace Controller
             spriteRendererPlayer = GetComponent<SpriteRenderer>();
         }
 
-        public void ManageLife(int valueLifeChanger)
+        public void ManageLife(float valueLifeChanger)
         {
             HealthPlayer += valueLifeChanger;
         }
 
-        private int HealthPlayer 
+        private float HealthPlayer 
         {
             get => _inGameData.hp;
 

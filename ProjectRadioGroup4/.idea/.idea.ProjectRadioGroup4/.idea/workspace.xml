@@ -6,8 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="35215c01-7b4a-402e-b1e2-04f54be60d44" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/Test Victor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Test Victor.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Pursue AI Data.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Pursue AI Data.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Static AI.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Static AI.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Static Ai V2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Static Ai V2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Surprise AI.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/AI/Surprise AI.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/AbstractEntityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Entity Data/AI/AbstractEntityData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +129,8 @@
       <workItem from="1743845158787" duration="1430000" />
       <workItem from="1744016412120" duration="5285000" />
       <workItem from="1744041161633" duration="5351000" />
-      <workItem from="1744060172863" duration="1125000" />
+      <workItem from="1744060172863" duration="1365000" />
+      <workItem from="1744098496008" duration="5022000" />
     </task>
     <servers />
   </component>

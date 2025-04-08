@@ -38,9 +38,14 @@ namespace AI
         {
             AiShift();
             AiBehavior();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _abstractEntityDataInstance.battery += 10;
+            }
         }
 
-        public int PvEnemy
+        public float PvEnemy
         {
             get => _abstractEntityDataInstance.hp;
             set
@@ -239,18 +244,28 @@ namespace AI
             PvEnemy = 0;
             Debug.Log("Explode");
         }
-        private void ClassicAttack(int _damageDeal, int _batteryGain)
+        private void ClassicAttack(float _damageDeal, float _batteryGain)
         {
             PlayerController.instance.ManageLife(_damageDeal);
             _abstractEntityDataInstance.battery += _batteryGain;
         }
-        private void NormalAttack() => ClassicAttack(-18, 6);
-        private void HeavyAttack() => ClassicAttack(-24,8);
-        private void StealBatteries() => ClassicAttack(-12,8);
-        private void StealALotBatteries() => ClassicAttack(-18, 18);
+        private void NormalAttack() => ClassicAttack(
+            _abstractEntityDataInstance.normalAttack.damage,
+            _abstractEntityDataInstance.normalAttack.batteryGain);
+        
+        private void HeavyAttack() => ClassicAttack(
+            _abstractEntityDataInstance.heavyAttack.damage,
+            _abstractEntityDataInstance.heavyAttack.batteryGain);
+        private void StealBatteries() => ClassicAttack(
+            _abstractEntityDataInstance.stealBatteries.damage,
+            _abstractEntityDataInstance.stealBatteries.batteryGain);
+        private void StealALotBatteries() => ClassicAttack( 
+            _abstractEntityDataInstance.stealALotBatteries.damage,
+            _abstractEntityDataInstance.stealALotBatteries.batteryGain);
 
-        private void ElectricalLeak() => ClassicAttack(-_abstractEntityDataInstance.battery / 5,
-            -_abstractEntityDataInstance.battery / 5);
+        private void ElectricalLeak() => ClassicAttack(
+            -_abstractEntityDataInstance.battery,
+            -_abstractEntityDataInstance.battery);
 
         #endregion
 
