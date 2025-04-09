@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c33b9e58716d144a8ec65bf7cbf819f, type: 3}
-  m_Name: Static Ai V2
+  m_Script: {fileID: 11500000, guid: 134201fa48be89a4c8326dd368e4ed28, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  <Hp>k__BackingField: 35
-  <Speed>k__BackingField: 20
+  <Hp>k__BackingField: 100
+  <Speed>k__BackingField: 30
   TurnState: 1
-  <WaveAmplitudeEnemy>k__BackingField: 0.34
-  <WaveFrequencyEnemy>k__BackingField: 7.16
+  <WaveAmplitudeEnemy>k__BackingField: 0
+  <WaveFrequencyEnemy>k__BackingField: 0
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
+  <Battery>k__BackingField: 0
+  <MoveSpeed>k__BackingField: 3

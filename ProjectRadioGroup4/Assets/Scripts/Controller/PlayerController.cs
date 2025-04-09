@@ -50,7 +50,11 @@ namespace Controller
             Idle,
             Running,
             Walking,
-            Dead
+            Dead,
+            FmExploration,
+            AmExploration,
+            TakingDamage,
+            Attacking,
         }
 
         public enum PlayerStateExploration
@@ -79,18 +83,19 @@ namespace Controller
             spriteRendererPlayer = GetComponent<SpriteRenderer>();
         }
 
-        public void ManageLife(int valueLifeChanger)
+        public void ManageLife(float valueLifeChanger)
         {
             HealthPlayer += valueLifeChanger;
         }
 
-        private int HealthPlayer 
+        private float HealthPlayer 
         {
             get => _inGameData.hp;
 
             set
             {
                 _inGameData.hp = value;
+                Debug.Log(value);
                 if (_inGameData.IsDead())
                 {
                     GameManager.instance.GameOver();

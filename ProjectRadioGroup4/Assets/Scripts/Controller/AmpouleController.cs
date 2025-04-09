@@ -16,20 +16,22 @@ namespace Controller
 
         void Start()
         {
-            EteindreToutes();
+            TurnAllAmpouleOff();
+            //en lien avec le Start dans le radioController pour que se soit initialiser à lampe 0 
+            ChangeAmpoule(0);
         }
 
-        private void ChangerAmpoule(int numeroAmpoule)
+        private void ChangeAmpoule(int numeroAmpoule)
         {
             if (ampouleAllumee == numeroAmpoule) return;
         
-            EteindreToutes();
+            TurnAllAmpouleOff();
         
             ampouleAllumee = numeroAmpoule;
             GetAmpouleImage(numeroAmpoule).sprite = spriteAllume;
         }
 
-        private void EteindreToutes()
+        private void TurnAllAmpouleOff()
         {
             ampoule1.sprite = spriteEteint;
             ampoule2.sprite = spriteEteint;
@@ -48,8 +50,8 @@ namespace Controller
             }
         }
 
-        public void AllumerAmpoule1() => ChangerAmpoule(0);
-        public void AllumerAmpoule2() => ChangerAmpoule(1);
-        public void AllumerAmpoule3() => ChangerAmpoule(2);
+        public void AllumerAmpoule1() => ChangeAmpoule(0);
+        public void AllumerAmpoule2() => ChangeAmpoule(1);
+        public void AllumerAmpoule3() => ChangeAmpoule(2);
     }
 }
