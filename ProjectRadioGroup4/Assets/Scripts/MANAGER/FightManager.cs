@@ -156,11 +156,12 @@ namespace MANAGER
             {
                 Debug.Log("Player win");
                 PlayerController.instance._abstractEntityDataInstance.turnState = TurnState.NoTurn;
-                fightState = FightState.OutFight;
+                ResetFightManagerAfterFight();
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
-                Debug.Log("IA win"); //fin de partie
+                Debug.Log("IA win");
+                ResetFightManagerAfterFight();
             }
             else
             {
@@ -182,6 +183,13 @@ namespace MANAGER
         private void UpdateUI()
         {
         
+        }
+
+        private void ResetFightManagerAfterFight()
+        {
+            currentOrder.Clear();
+            fighterAlive.Clear();
+            fightState = FightState.OutFight;
         }
     }
 }

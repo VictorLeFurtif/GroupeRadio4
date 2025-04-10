@@ -42,6 +42,8 @@ namespace Controller
         [SerializeField] private float maxValueSliderFrequencyAttack;
 
         [SerializeField] private TMP_Text descriptionAttackSelectedText;
+        
+        public Slider sliderOscillationPlayer;
 
         [Header("List of enemies detected"), SerializeField]
         public List<AbstractAI> listOfDetectedEnemy;
@@ -53,7 +55,7 @@ namespace Controller
 
         [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
 
-        public bool selectedAM = false;
+        [FormerlySerializedAs("selectedAM")] public bool selectedAm = false;
 
         #endregion
     
@@ -72,6 +74,7 @@ namespace Controller
         
             //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
             UpdateRadioEnemyWithLight(0);
+            InitializeSliderOscillationPlayer();
         }
 
         private void Awake()
@@ -173,6 +176,18 @@ namespace Controller
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
             ValueChangeCheck();
         }
+        
+        private void InitializeSliderOscillationPlayer() //wave amp comprit entre 0 et 0.4
+        {
+            sliderOscillationPlayer.maxValue = 0.4f;
+            sliderOscillationPlayer.onValueChanged.AddListener(UpdateAmplitude);
+        }
+       
+        private void UpdateAmplitude(float newValue)
+        {
+            Debug.Log(sliderOscillationPlayer.value);
+            matRadioPlayer.SetFloat("_waves_Amp", newValue);
+        }
 
         [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
@@ -197,7 +212,7 @@ namespace Controller
                 {
                     foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
                     {
-                        switch (selectedAM)
+                        switch (selectedAm)
                         {
                             case false :
                                 if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
@@ -244,7 +259,7 @@ namespace Controller
         {
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                selectedAM = true;
+                selectedAm = true;
                 ValueChangeCheck();
                 return;
             }
@@ -302,7 +317,7 @@ namespace Controller
         {
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                selectedAM = false;
+                selectedAm = false;
                 ValueChangeCheck();
                 return;
             }
@@ -387,6 +402,16 @@ namespace Controller
             Gizmos.DrawWireSphere(PlayerController.instance.transform.position, desiredDistanceFm);
         }
     
-    
+        private void SliderOscillationPlayerBehavior() // now useless
+        {
+            if (PlayerController.instance.currentPlayerExplorationState == PlayerController.PlayerStateExploration.Guessing)
+            {
+                sliderOscillationPlayer.interactable = true;
+            }
+            else
+            {
+                sliderOscillationPlayer.interactable = false;
+            }
+        }
     }
 }
