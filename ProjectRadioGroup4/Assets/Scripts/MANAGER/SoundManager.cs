@@ -14,7 +14,7 @@ namespace MANAGER
         [SerializeField]
         private SoundBankData soundBankDataBrut;
 
-        private SoundBankDataInstance soundBankData;
+        public SoundBankDataInstance soundBankData;
         
         
         private void Awake()

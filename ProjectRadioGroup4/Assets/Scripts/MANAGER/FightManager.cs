@@ -94,35 +94,47 @@ namespace MANAGER
 
         public void InitialiseList() // detect every enemy in a rayon
         {
-            Debug.Log("Initialise");
+            
             if (player == null)
             {
                 return;
             }
+            
+            bool hasAdvantage = false;
+            bool hasDisadvantage = false;
 
             foreach (AbstractAI fighter in radio.listOfEveryEnemy)
             {
-                if (!(Math.Abs(fighter.gameObject.transform.position.x - player.transform.position.x) <
-                      rangeDetectEnemy)) continue;
+                if (!(Mathf.Abs(fighter.transform.position.x - player.transform.position.x) < rangeDetectEnemy)) continue;
+
                 currentOrder.Add(fighter._abstractEntityDataInstance);
                 fighter._aiFightState = AbstractAI.AiFightState.InFight;
-                if (fighter._abstractEntityDataInstance.seenByRadio && fighter._abstractEntityDataInstance.notHidden
-                                                                    && currentFightAdvantage != FightAdvantage.Disadvantage)
+
+                if (!fighter._abstractEntityDataInstance.reveal && !fighter._abstractEntityDataInstance.seenByRadio)
                 {
-                    currentFightAdvantage = FightAdvantage.Advantage;
-                    Debug.Log("Advantage");
+                    hasDisadvantage = true;
                 }
-                else if (!fighter._abstractEntityDataInstance.notHidden && !fighter._abstractEntityDataInstance.seenByRadio)
+                else if (fighter._abstractEntityDataInstance.seenByRadio && fighter._abstractEntityDataInstance.reveal)
                 {
-                    currentFightAdvantage = FightAdvantage.Disadvantage;
-                    Debug.Log("Disadvantage");
-                }
-                else
-                {
-                    currentFightAdvantage = FightAdvantage.Neutral;
-                    Debug.Log("Neutral");
+                    hasAdvantage = true;
                 }
             }
+
+            if (hasDisadvantage)
+            {
+                currentFightAdvantage = FightAdvantage.Disadvantage;
+            }
+            else if (hasAdvantage)
+            {
+                currentFightAdvantage = FightAdvantage.Advantage;
+            }
+            else
+            {
+                currentFightAdvantage = FightAdvantage.Neutral;
+            }
+            
+            Debug.Log(currentFightAdvantage);
+            
             currentOrder.Add(player._abstractEntityDataInstance);
         
             currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));

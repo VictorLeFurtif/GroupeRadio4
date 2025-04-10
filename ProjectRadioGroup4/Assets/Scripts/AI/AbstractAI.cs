@@ -31,7 +31,7 @@ namespace AI
         {
             AlwaysAttack, //no logic behind
             SmartAi, // With thought process
-            RandomAiWithCondition, //Pokemon like ai
+            RandomAiWithCondition, //Pokemon like ai even if it bothers Stoian -_-
         }
         
         private void Update()
@@ -42,6 +42,7 @@ namespace AI
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _abstractEntityDataInstance.battery += 10;
+                Debug.Log(_abstractEntityDataInstance.battery.ToString());
             }
         }
 
@@ -78,7 +79,6 @@ namespace AI
         {
             // no need to implement virtual/override because in each type of ai the trigger will launch the FightManager
             if (!other.CompareTag("Player") || _aiFightState == AiFightState.InFight) return;
-            Debug.Log("Player in Fight Zone");
             _aiFightState = AiFightState.InFight;
             FightManager.instance.fightState = FightManager.FightState.InFight;
             FightManager.instance.InitialiseList();
@@ -95,7 +95,7 @@ namespace AI
 
         private void AiBehavior()
         {
-            if (!_abstractEntityDataInstance.notHidden && _aiFightState != AiFightState.InFight) return;
+            if (!_abstractEntityDataInstance.reveal && _aiFightState != AiFightState.InFight) return;
             
             enemySpriteRenderer.enabled = true;
             
@@ -244,28 +244,34 @@ namespace AI
             PvEnemy = 0;
             Debug.Log("Explode");
         }
-        private void ClassicAttack(float _damageDeal, float _batteryGain)
+        private void ClassicAttack(float _damageDeal, float _batteryGain,string _attackName)
         {
             PlayerController.instance.ManageLife(_damageDeal);
             _abstractEntityDataInstance.battery += _batteryGain;
+            Debug.Log(_attackName);
         }
         private void NormalAttack() => ClassicAttack(
             _abstractEntityDataInstance.normalAttack.damage,
-            _abstractEntityDataInstance.normalAttack.batteryGain);
+            _abstractEntityDataInstance.normalAttack.batteryGain,
+            "Normal Attack Done");
         
         private void HeavyAttack() => ClassicAttack(
             _abstractEntityDataInstance.heavyAttack.damage,
-            _abstractEntityDataInstance.heavyAttack.batteryGain);
+            _abstractEntityDataInstance.heavyAttack.batteryGain,
+            "Heavy Attack Done");
         private void StealBatteries() => ClassicAttack(
             _abstractEntityDataInstance.stealBatteries.damage,
-            _abstractEntityDataInstance.stealBatteries.batteryGain);
+            _abstractEntityDataInstance.stealBatteries.batteryGain,
+            "Steal Batteries Done");
         private void StealALotBatteries() => ClassicAttack( 
             _abstractEntityDataInstance.stealALotBatteries.damage,
-            _abstractEntityDataInstance.stealALotBatteries.batteryGain);
+            _abstractEntityDataInstance.stealALotBatteries.batteryGain,
+            "Steal a lot of Batteries Done");
 
         private void ElectricalLeak() => ClassicAttack(
             -_abstractEntityDataInstance.battery,
-            -_abstractEntityDataInstance.battery);
+            -_abstractEntityDataInstance.battery,
+            "Electrical Leak Done");
 
         #endregion
 

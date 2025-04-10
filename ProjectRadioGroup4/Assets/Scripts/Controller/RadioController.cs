@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using AI;
+using DATA.Script.Attack_Data;
+using MANAGER;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -37,6 +39,8 @@ namespace Controller
         [Header("Frequency in fight parameter")] [SerializeField]
         private Slider sliderForFrequencyAttack;
 
+        [SerializeField] private float maxValueSliderFrequencyAttack;
+
         [SerializeField] private TMP_Text descriptionAttackSelectedText;
 
         [Header("List of enemies detected"), SerializeField]
@@ -48,7 +52,8 @@ namespace Controller
         [SerializeField] private float desiredDistanceFm;
 
         [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
-    
+
+        public bool selectedAM = false;
 
         #endregion
     
@@ -165,25 +170,85 @@ namespace Controller
 
         private void InitializeSliderFrequency()
         {
-            sliderForFrequencyAttack.maxValue = PlayerController.instance.listOfPlayerAttackInstance.Count - 1;
+            sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
             ValueChangeCheck();
         }
 
+        [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
         {
-            PlayerController.instance.selectedAttack =
-                PlayerController.instance.listOfPlayerAttackInstance[(int)sliderForFrequencyAttack.value];
+            PlayerController.instance.selectedAttack = null;
+            switch (FightManager.instance.fightState)
+            {
+                //so exploration
+                case FightManager.FightState.OutFight:
+                {
+                    foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    {
+                        if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
+                        {
+                            SelectingAttackPlayer(attackInstance);
+                        }
+                    }
+                    break;
+                }
+                
+                case FightManager.FightState.InFight:
+                {
+                    foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    {
+                        switch (selectedAM)
+                        {
+                            case false :
+                                if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
+                                {
+                                    SelectingAttackPlayer(attackInstance);
+                                }
+                                break;
+                            case true :
+                                if (attackInstance.attack.attackState == PlayerAttack.AttackState.Am)
+                                {
+                                    SelectingAttackPlayer(attackInstance);
+                                }
+                                break;
+                        }
+                    }
+                    break;
+                }
+            }
+
             UpdateFrequenceText();
         }
 
+        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
+        {
+            if (Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
+                < epsilonForSliderAttack)
+            {
+                PlayerController.instance.selectedAttack = _playerAttackInstance;
+                UpdateFrequenceText();
+            }
+        }
+        
         private void UpdateFrequenceText()
         {
-            descriptionAttackSelectedText.text = PlayerController.instance.selectedAttack.name + " " +
-                                                 PlayerController.instance.selectedAttack.frequency;
+            if (PlayerController.instance == null || PlayerController.instance.selectedAttack == null)
+            {
+                descriptionAttackSelectedText.text = "";
+                return;
+            }
+            descriptionAttackSelectedText.text = PlayerController.instance.selectedAttack.attack.name;
         }
 
         public void AmButton()
         {
+            if (FightManager.instance.fightState == FightManager.FightState.InFight)
+            {
+                selectedAM = true;
+                ValueChangeCheck();
+                return;
+            }
+            
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
             Vector3 playerPos = PlayerController.instance.transform.position;
@@ -214,9 +279,9 @@ namespace Controller
 
             if (listOfDetectedEnemy.Count != 0)
             {
-                //UpdateRadioEnemyAfterDetection();
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
                 ChangeBoolSeenForAi();
+                UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
             else
             {
@@ -235,6 +300,13 @@ namespace Controller
     
         public void FmButton()
         {
+            if (FightManager.instance.fightState == FightManager.FightState.InFight)
+            {
+                selectedAM = false;
+                ValueChangeCheck();
+                return;
+            }
+            
             int cpt = 0;
             listOfDetectedEnemy.Clear();
             Vector3 playerPos = PlayerController.instance.transform.position;
@@ -255,6 +327,7 @@ namespace Controller
                 //UpdateRadioEnemyAfterDetection();
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
                 ChangeBoolSeenForAi();
+                UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
             else
             {
@@ -290,7 +363,7 @@ namespace Controller
                 return;
             }
 
-            if (listOfDetectedEnemy[index]._abstractEntityDataInstance.notHidden) // cant had it in the block on top because dependencies with a Singleton
+            if (listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal) // cant add it in the block on top because dependencies with a Singleton
             {
                 InitializeRadioEnemy();
                 return;

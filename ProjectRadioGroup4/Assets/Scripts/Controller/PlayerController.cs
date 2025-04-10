@@ -104,6 +104,10 @@ namespace Controller
             }
         }
     
+        /// <summary>
+        /// Temporary shity Update
+        /// </summary>
+        
         private void Update()
         {
             PlayerMove();
@@ -131,7 +135,7 @@ namespace Controller
         
         private void PlayerMove()
         {
-            if (FightManager.instance.fightState != FightManager.FightState.OutFight || currentPlayerExplorationState == PlayerStateExploration.Guessing)
+            if (FightManager.instance.fightState != FightManager.FightState.OutFight)
             {
                 rb.velocity = new Vector2(0,0);
                 return;
@@ -189,21 +193,31 @@ namespace Controller
         [SerializeField]
         private float epsilonValidationOscillation;
         
-        public void ValidButtonOscillation()
+        public void ValidButton()
         {
-            if (!(Mathf.Abs(sliderOscillationPlayer.value -
-                            RadioController.instance.matRadioEnemy.GetFloat("_waves_Amp")) <
-                  epsilonValidationOscillation) ||
-                currentPlayerExplorationState != PlayerStateExploration.Guessing)
+            if (currentPlayerExplorationState == PlayerStateExploration.Guessing &&
+                FightManager.instance.fightState == FightManager.FightState.OutFight)
             {
-                return;
-            }
-            
-            Debug.Log("Pass the epsilon");
+                if (!(Mathf.Abs(sliderOscillationPlayer.value -
+                                RadioController.instance.matRadioEnemy.GetFloat("_waves_Amp")) <
+                      epsilonValidationOscillation))
+                {
+                    return;
+                }
+                
 
-            RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
-                ._abstractEntityDataInstance.notHidden = true;
-            RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
+                    ._abstractEntityDataInstance.reveal = true;
+                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+            }
+
+            if (FightManager.instance.fightState == FightManager.FightState.InFight &&
+                _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
+                selectedAttack != null && selectedEnemy != null)
+            {
+                Debug.Log("Attaque Logic");
+                FightManager.instance.EndFighterTurn();
+            }
             
         }
     }

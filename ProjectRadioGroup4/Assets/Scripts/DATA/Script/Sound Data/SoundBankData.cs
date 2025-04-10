@@ -6,6 +6,7 @@ namespace DATA.Script.Sound_Data
     public class SoundBankData : ScriptableObject
     {
         //Here will be all the sound we need
+        
 
         public SoundBankDataInstance Instance()
         {
@@ -15,7 +16,8 @@ namespace DATA.Script.Sound_Data
 
     public class SoundBankDataInstance
     {
-
+        
+        
         public SoundBankDataInstance(SoundBankData data)
         {
             

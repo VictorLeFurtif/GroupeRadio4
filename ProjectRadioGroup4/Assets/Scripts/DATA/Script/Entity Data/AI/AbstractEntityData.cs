@@ -2,6 +2,7 @@ using System;
 using AI;
 using MANAGER;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DATA.Script.Entity_Data.AI
 {
@@ -65,7 +66,7 @@ namespace DATA.Script.Entity_Data.AI
         public float waveAmplitudeEnemy;
         public float waveFrequency;
         public bool seenByRadio;
-        public bool notHidden;
+        [FormerlySerializedAs("notHidden")] public bool reveal;
         public float battery;
         public AbstractEntityData.AttackData normalAttack;
         public AbstractEntityData.AttackData heavyAttack;
@@ -81,7 +82,7 @@ namespace DATA.Script.Entity_Data.AI
             waveAmplitudeEnemy = data.WaveAmplitudeEnemy;
             waveFrequency = data.WaveFrequencyEnemy;
             seenByRadio = data.SeenByRadio;
-            notHidden = data.NotHidden;
+            reveal = data.NotHidden;
             battery = data.Battery;
             normalAttack = data.NormalAttack;
             heavyAttack = data.HeavyAttack;
