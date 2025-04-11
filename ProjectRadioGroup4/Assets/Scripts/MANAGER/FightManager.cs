@@ -19,8 +19,9 @@ namespace MANAGER
         private int numberOfPlayer;
     
         [Header("List Parameters")]
-        [SerializeField] private List<AbstractEntityDataInstance> currentOrder;
-        [SerializeField] private List<AbstractEntityDataInstance> fighterAlive;
+        public List<AbstractEntityDataInstance> currentOrder;
+        public List<AbstractEntityDataInstance> fighterAlive;
+        public List<AbstractEntityDataInstance> listOfJustEnemiesAlive;
  
         [Header("StateMachine")]
         public FightState fightState = FightState.OutFight;
@@ -134,6 +135,16 @@ namespace MANAGER
             }
             
             Debug.Log(currentFightAdvantage);
+
+            listOfJustEnemiesAlive.AddRange(currentOrder);
+            
+            // Sort en fonction de la distance avec le player pour que les ampoules soit plus logique
+            
+            listOfJustEnemiesAlive.Sort((x, y) =>
+                Vector3.Distance(PlayerController.instance.transform.position, x.entity.transform.position)
+                    .CompareTo(
+                        Vector3.Distance(PlayerController.instance.transform.position, y.entity.transform.position)));
+
             
             currentOrder.Add(player._abstractEntityDataInstance);
         
@@ -142,12 +153,15 @@ namespace MANAGER
             fighterAlive = new List<AbstractEntityDataInstance>(currentOrder); 
             
             StartUnitTurn();
+            
+            RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
         {
             fighterAlive.RemoveAll(fighter => fighter.IsDead());
             currentOrder.RemoveAll(fighter => fighter.IsDead());
+            listOfJustEnemiesAlive.RemoveAll(fighter => fighter.IsDead());
         }
 
         private void CheckForEndFight() //Check if player Dead or if every enemy Dead in ListAlive
@@ -157,6 +171,7 @@ namespace MANAGER
                 Debug.Log("Player win");
                 PlayerController.instance._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
+                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DeadZone>k__BackingField: 0
   <AttackP>k__BackingField:
-    damage: 10
+    damage: 37.21
     chanceOfOverload: 25
-    damageMaxBonus: 5
+    damageMaxBonus: 22.5
     name: Test Attack
     indexFrequency: 61.48
     attackState: 1
