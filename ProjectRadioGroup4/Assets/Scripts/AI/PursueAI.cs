@@ -1,4 +1,5 @@
 using Controller;
+using DATA.Script.Entity_Data.AI;
 using UnityEngine;
 
 namespace AI
