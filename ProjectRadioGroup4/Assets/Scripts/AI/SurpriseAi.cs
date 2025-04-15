@@ -28,13 +28,6 @@ namespace AI
             }
         }
 
-        private void SwitchSpriteRenderer(SpriteRenderer _spriteRenderer)
-        {
-            _spriteRenderer.enabled = _spriteRenderer.enabled switch
-            {
-                true => false,
-                false => true
-            };
-        }
+        
     }
 }
