@@ -1,16 +1,19 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Controller;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SoundController : MonoBehaviour
 {
-    [Header("WaitBeforePlaying Range")]
+    [Header("Waiting time between sound(s) : Range for random time span")]
    [SerializeField] private float min;
    [SerializeField] private float max;
-   [Header("Minimum Distance with Player before playing")]
+   [Header("Minimum Distance with Player before playing sound(s)")]
    [SerializeField] private float minDistance;
+    [Header("Sound bank")]
+   [SerializeField] private List<AudioClip> audioClips;
 
    private bool isAlreadyPlaying;
    private AudioSource audioSource;
@@ -40,6 +43,8 @@ public class SoundController : MonoBehaviour
         isAlreadyPlaying = true;
         float nextPlayTime = Random.Range(min, max);
         yield return new WaitForSeconds(nextPlayTime);
+        AudioClip randomClip = audioClips[Random.Range(0, audioClips.Count)];
+        audioSource.clip = randomClip;
         audioSource.Play();
         isAlreadyPlaying = false;
     }
