@@ -186,7 +186,6 @@ namespace Controller
        
         private void UpdateAmplitude(float newValue)
         {
-            Debug.Log(sliderOscillationPlayer.value);
             matRadioPlayer.SetFloat("_waves_Amp", newValue);
         }
 

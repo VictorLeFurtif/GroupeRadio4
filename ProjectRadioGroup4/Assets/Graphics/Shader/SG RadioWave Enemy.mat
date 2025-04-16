@@ -42,7 +42,7 @@ Material:
     - _speed: 0.14
     - _waves: 12.7
     - _waves_Amount: 10.45
-    - _waves_Amp: 0.31
+    - _waves_Amp: 0.012504212
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &148708066201681712
