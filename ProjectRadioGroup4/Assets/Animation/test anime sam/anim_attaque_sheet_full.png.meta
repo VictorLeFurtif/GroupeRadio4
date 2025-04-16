@@ -1,0 +1,510 @@
+fileFormatVersion: 2
+guid: 921b307a63af97f4aa2c7ddc20d6abc8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_0
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 26
+        width: 177
+        height: 296
+      alignment: 9
+      pivot: {x: 0.51422834, y: 0.06183497}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63aee3df7bd09884bbcc6fbbf3d76f85
+      internalID: 648966345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_1
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 32
+        width: 180
+        height: 290
+      alignment: 9
+      pivot: {x: 0.52798223, y: 0.06579561}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6ee0c0fd20471459ba202d84b6b1c5
+      internalID: 1700726851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_2
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 33
+        width: 258
+        height: 289
+      alignment: 9
+      pivot: {x: 0.36822414, y: 0.06865016}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c35a9887dbbee01429489420e86f3020
+      internalID: -850568403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_3
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 33
+        width: 307
+        height: 289
+      alignment: 9
+      pivot: {x: 0.30722472, y: 0.08607844}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239c58230193f0d45a0c25f0d5fbc309
+      internalID: -1589002538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_4
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 33
+        width: 238
+        height: 289
+      alignment: 9
+      pivot: {x: 0.37831384, y: 0.0773643}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d59c194b16bbc144a8f04e924a6d010
+      internalID: 383033926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_5
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 33
+        width: 233
+        height: 280
+      alignment: 9
+      pivot: {x: 0.3973195, y: 0.08626512}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784e20356ebb60046804d7d983e99d6d
+      internalID: -1961346133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_6
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 263
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47db26393ee6fd41940ee73c71bcb89
+      internalID: -973027745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_7
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 263
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50f5ad42536ff574e9b09aa84eda02d2
+      internalID: -835997354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_8
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 32
+        width: 204
+        height: 290
+      alignment: 9
+      pivot: {x: 0.4567931, y: 0.087505825}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4298b6d0d72c894898071e8bd771067
+      internalID: -738525228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_9
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 32
+        width: 213
+        height: 286
+      alignment: 9
+      pivot: {x: 0.4172369, y: 0.07733377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcba760063ca583418b2c2a4f9168dd1
+      internalID: -582326325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_10
+      rect:
+        serializedVersion: 2
+        x: 2107
+        y: 33
+        width: 232
+        height: 289
+      alignment: 9
+      pivot: {x: 0.3968769, y: 0.08607844}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d39d8a891f6800438560b9ce05585cd
+      internalID: 2015808813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_11
+      rect:
+        serializedVersion: 2
+        x: 2359
+        y: 33
+        width: 238
+        height: 289
+      alignment: 9
+      pivot: {x: 0.3888955, y: 0.07300723}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793636b8727bf914fb126ad26922722f
+      internalID: -321658415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_12
+      rect:
+        serializedVersion: 2
+        x: 2622
+        y: 33
+        width: 309
+        height: 289
+      alignment: 9
+      pivot: {x: 0.30439752, y: 0.07300723}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def82b2424e33574f84d2410a0de64cd
+      internalID: -2066182070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_13
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 34
+        width: 259
+        height: 290
+      alignment: 9
+      pivot: {x: 0.37359548, y: 0.07013751}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0833727503263ec42887cafde6858290
+      internalID: 1164867492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_14
+      rect:
+        serializedVersion: 2
+        x: 3242
+        y: 33
+        width: 179
+        height: 288
+      alignment: 9
+      pivot: {x: 0.53517395, y: 0.07152469}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab766139a65bc8a42b511b163e73327e
+      internalID: 74226657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_15
+      rect:
+        serializedVersion: 2
+        x: 3493
+        y: 30
+        width: 175
+        height: 295
+      alignment: 9
+      pivot: {x: 0.53597796, y: 0.09449719}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ac10ba4a5d74c946928347c2149e8a3
+      internalID: 317377822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_16
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 196
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1035c118b639a647bd47640cee208b1
+      internalID: -104468687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attaque_sheet_full_17
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 200
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c19b14b1539f6c9409055fce1236b807
+      internalID: 1875888432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      anim_attaque_sheet_full_0: 648966345
+      anim_attaque_sheet_full_1: 1700726851
+      anim_attaque_sheet_full_10: 2015808813
+      anim_attaque_sheet_full_11: -321658415
+      anim_attaque_sheet_full_12: -2066182070
+      anim_attaque_sheet_full_13: 1164867492
+      anim_attaque_sheet_full_14: 74226657
+      anim_attaque_sheet_full_15: 317377822
+      anim_attaque_sheet_full_16: -104468687
+      anim_attaque_sheet_full_17: 1875888432
+      anim_attaque_sheet_full_2: -850568403
+      anim_attaque_sheet_full_3: -1589002538
+      anim_attaque_sheet_full_4: 383033926
+      anim_attaque_sheet_full_5: -1961346133
+      anim_attaque_sheet_full_6: -973027745
+      anim_attaque_sheet_full_7: -835997354
+      anim_attaque_sheet_full_8: -738525228
+      anim_attaque_sheet_full_9: -582326325
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
