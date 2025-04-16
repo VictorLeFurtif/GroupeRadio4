@@ -12,6 +12,7 @@ public class SoundController : MonoBehaviour
    [SerializeField] private float max;
    [Header("Minimum Distance with Player before playing sound(s)")]
    [SerializeField] private float minDistance;
+   [SerializeField] private bool LoopSoundOnFinish;
     [Header("Sound bank")]
    [SerializeField] private List<AudioClip> audioClips;
 
@@ -46,6 +47,11 @@ public class SoundController : MonoBehaviour
         AudioClip randomClip = audioClips[Random.Range(0, audioClips.Count)];
         audioSource.clip = randomClip;
         audioSource.Play();
+        while (LoopSoundOnFinish)
+        {
+            yield return new WaitForSeconds(audioSource.clip.length);
+            audioSource.Play();
+        }
         isAlreadyPlaying = false;
     }
 }
