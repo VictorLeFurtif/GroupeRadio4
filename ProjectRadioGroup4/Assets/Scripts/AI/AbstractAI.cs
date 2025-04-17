@@ -52,11 +52,23 @@ namespace AI
             set
             {
                 _abstractEntityDataInstance.hp = value;
+                
                 if (_abstractEntityDataInstance.IsDead())
                 {
                     RadioController.instance.listOfEveryEnemy.Remove(this);
+                    try
+                    {
+                        RadioController.instance.listOfDetectedEnemy.Remove(this);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
                     Destroy(gameObject);
+                    return;
                 }
+                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
         }
 

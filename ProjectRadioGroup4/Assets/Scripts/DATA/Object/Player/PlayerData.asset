@@ -13,11 +13,23 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <Hp>k__BackingField: 100
-  <Speed>k__BackingField: 30
+  <Speed>k__BackingField: 55
   TurnState: 1
   <WaveAmplitudeEnemy>k__BackingField: 0
   <WaveFrequencyEnemy>k__BackingField: 0
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
   <Battery>k__BackingField: 0
+  <NormalAttack>k__BackingField:
+    damage: 0
+    batteryGain: 0
+  <HeavyAttack>k__BackingField:
+    damage: 0
+    batteryGain: 0
+  <StealBatteries>k__BackingField:
+    damage: 0
+    batteryGain: 0
+  <StealALotBatteries>k__BackingField:
+    damage: 0
+    batteryGain: 0
   <MoveSpeed>k__BackingField: 3

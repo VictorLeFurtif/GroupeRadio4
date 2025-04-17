@@ -60,6 +60,7 @@ namespace DATA.Script.Entity_Data.AI
     public class AbstractEntityDataInstance
     {
         public float hp;
+        public float maxHp { get; private set; }
         public int speed;
         public FightManager.TurnState turnState;
         public GameObject entity;
@@ -88,6 +89,7 @@ namespace DATA.Script.Entity_Data.AI
             heavyAttack = data.HeavyAttack;
             stealBatteries = data.StealBatteries;
             stealALotBatteries = data.StealALotBatteries;
+            maxHp = hp;
         }
 
         public bool IsDead()
