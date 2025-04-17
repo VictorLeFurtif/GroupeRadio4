@@ -1,0 +1,5179 @@
+fileFormatVersion: 2
+guid: 783fffc8195255d448ebd414c8fe00ee
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FX scan autour_0
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 905
+        width: 59
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad7f9fa676afd947a8827d1e667ab29
+      internalID: -1205607720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_1
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 912
+        width: 72
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46c635b8fede08549a3a8838b902b531
+      internalID: -1255322619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_2
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 924
+        width: 29
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1913bf0f86516044fb5da6459e7ac320
+      internalID: 819298655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_3
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 865
+        width: 57
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ce7555cc15da7e4fab59d730932f8ca
+      internalID: -1797961138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_4
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 810
+        width: 249
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6515b65f3cc238b4aabb48339fbb26aa
+      internalID: 1892125390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_5
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 850
+        width: 144
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b36211703573c74688730c02c3f0eae
+      internalID: 550958375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_6
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 822
+        width: 199
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2687f91164055a44f98d0ed3c1b6273d
+      internalID: -1729136533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_7
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 892
+        width: 45
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2846bd2c91901f042b41bd8a427600a0
+      internalID: 1800937781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_8
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 870
+        width: 89
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919e3294ec5c0164cbef22514737dfb2
+      internalID: 2054896099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_9
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 837
+        width: 235
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 357634dffa9a40d4bbce0fa3d31346e6
+      internalID: 1121674010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_10
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 843
+        width: 113
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d774a39a29b396847a4e45f1f3510953
+      internalID: 489202679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_11
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 882
+        width: 34
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7583c61dafa506347b6dc62d475ded41
+      internalID: -1535838314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_14
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 844
+        width: 49
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0eb064f4e740a547adde793f32bb437
+      internalID: 116707731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_15
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 833
+        width: 76
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa64da819e46311458aecf6de5aed54a
+      internalID: 1593033733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_16
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 812
+        width: 118
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b873dc0fe83ffba4bb497de286da926e
+      internalID: 694483158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_17
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 851
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4172af58b6abaa64fa6863abe3b0b33e
+      internalID: 649138210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_18
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 863
+        width: 47
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4d8bb45b084ba42847d8834ede783c
+      internalID: -1879384287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_20
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 857
+        width: 22
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 041a1feb72648cc4695efc1d6bd8f9f7
+      internalID: 812642431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_23
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 850
+        width: 21
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130453fe0baaf4142abdbc927a2eb9b0
+      internalID: -435105944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_24
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 837
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08436c31884a6154f8b6d7279cf063b6
+      internalID: -1586907918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_25
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 845
+        width: 31
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a8451a4aadc514cb4996222d5ef7d4
+      internalID: 1908404487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_26
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 814
+        width: 92
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac684cd0dabc2b8459c684076514f18a
+      internalID: 1566887144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_27
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 808
+        width: 77
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a206acaeb422fd0479a3758cd6750904
+      internalID: 557115959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_28
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 826
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a658fb919171ef44eb6b77b2ae05a463
+      internalID: -2108098713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_29
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 826
+        width: 82
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7abe792206ae9764dbae1e35a6673752
+      internalID: -2000205552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_30
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 839
+        width: 28
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a93d1c2d6d4f3146b43015c94d16e82
+      internalID: 1587066701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_31
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 788
+        width: 110
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5cc52674fbabfb46bc0a9e11d28fea6
+      internalID: 406334392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_32
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 833
+        width: 30
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54696aac298d5854d86e60c37ad80b62
+      internalID: 722134677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_33
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 825
+        width: 32
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e8dcafd49c9b794cad0e3532823391e
+      internalID: -1843997526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_34
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 765
+        width: 174
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e70409194f3fbb14d8a8ff16ad3645e8
+      internalID: -1319338527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_35
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 813
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83483e1e64dd3a84490f93160f1b519e
+      internalID: -766147686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_36
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 824
+        width: 34
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31b2b3ed9a7de2146999618fb3f76b4e
+      internalID: -1766758485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_37
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 777
+        width: 195
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e0d00918673614da85aa6863794f55
+      internalID: -1606142835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_38
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 724
+        width: 259
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e267901b1b0415439a92e367a2163ee
+      internalID: 1888290803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_39
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 801
+        width: 60
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d153ccdae79ac6b45b80e2f561942a8f
+      internalID: 113066752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_40
+      rect:
+        serializedVersion: 2
+        x: 1490
+        y: 796
+        width: 28
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ce5a8d6b9732548afb45d7f3f7a47b
+      internalID: -11443903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_41
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 796
+        width: 70
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54d63c6672066ad438428033b4e8c64c
+      internalID: -862620350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_42
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 733
+        width: 140
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 437edf7f6266d124ea6418ddbbc487a2
+      internalID: 934680607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_43
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 772
+        width: 39
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e987c63b9afc12479b1a891f57f41ec
+      internalID: -1037695077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_44
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 736
+        width: 76
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af2e969b2bd9d6e489607fb700f6e0eb
+      internalID: -805964104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_45
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 765
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0983b08382accbd4488400abe53b0465
+      internalID: -531094606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_46
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 732
+        width: 125
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0edb2d8d37aa2f40919fef0d23c1624
+      internalID: 123125994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_47
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 739
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec205b78176a4eb44987c945b346a257
+      internalID: -888774728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_48
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 749
+        width: 15
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b283af0e61f04504db50c01409aa1398
+      internalID: -296255256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_49
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 728
+        width: 62
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2628b61f13dcec342b8902a7785238b8
+      internalID: 2073027166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_50
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 729
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e163d13700606f84aa23eb4729ae8c4f
+      internalID: 2073700486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_51
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 733
+        width: 24
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43e3fa93ab080964390d22aa916d3f3d
+      internalID: 1127070344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_52
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 716
+        width: 53
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f6b0499ad2bf645b595ba2fa9199ce
+      internalID: -287064751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_53
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 705
+        width: 247
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e197798cf4159b44b81deae647185464
+      internalID: 1205002578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_54
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 723
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 324567a5a41e1334e917f050d7be075b
+      internalID: 1385094838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_55
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 713
+        width: 78
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4bcc3d613bd5e14f9abc0d1ec02b779
+      internalID: -80192816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_56
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 720
+        width: 27
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f1b16adf78b8a4baf12b3a32bddf25
+      internalID: 911576034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_57
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 716
+        width: 56
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333dc800522276b4298137db517594ad
+      internalID: -1331339987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_58
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 714
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa42169e4b2b7945ad69e07f7fb8824
+      internalID: -883334876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_59
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 709
+        width: 41
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e6ce2ec6e6a1b24f976573a49c5c3dd
+      internalID: 2013964666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_60
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 698
+        width: 64
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c69ecf8034189040bd7a44ed27645ed
+      internalID: -1390623600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_61
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 706
+        width: 62
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f1dde8eb5f8fa746b7aa7c22625f60f
+      internalID: -1737313038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_62
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 696
+        width: 70
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 299835f3d1267914aad0bfe1fc6808b5
+      internalID: 539181538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_63
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 697
+        width: 66
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9372cb351b9c0db4fbd26df370c6372d
+      internalID: 1737811384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_64
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 667
+        width: 171
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb61a2a23d061944c9f9d6a09fd1fb8d
+      internalID: 1321177200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_65
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 700
+        width: 27
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7444a69e786cc3447951561be86e68ee
+      internalID: 1069000753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_66
+      rect:
+        serializedVersion: 2
+        x: 1768
+        y: 700
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c11c75a077a154abe1693eca4ad25a
+      internalID: -1408032238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_67
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 687
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45642544c3472184b97b2006c471f4f4
+      internalID: -313694357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_68
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 635
+        width: 223
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebbd2e3cae8db304e8d015f943b496d0
+      internalID: -1049342690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_69
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 646
+        width: 103
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 508d4ad74fd0bad4e9f3d01f28e65dbb
+      internalID: 264222945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_70
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 657
+        width: 72
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161bf34742943484db9cf01accf79e9c
+      internalID: 1191013156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_71
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 653
+        width: 50
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bec2a659db02664da327cd4704c0184
+      internalID: 225137305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_72
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 644
+        width: 29
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce83ddee0a5a9bc4d9eaf6f18e8a064c
+      internalID: 1713316629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_73
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 640
+        width: 29
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b4190bcf45a8c04b9f6fa7d179a1a7b
+      internalID: 665970463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_74
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 630
+        width: 35
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ea129409ca813a47977f50ccd43df7a
+      internalID: -1502312645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_75
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 632
+        width: 64
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2150b6c3d5ea124181c277bb1221f15
+      internalID: 1267980763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_76
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 634
+        width: 60
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d514e9f7a4fbf741977da71dd826b94
+      internalID: 161834098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_77
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 643
+        width: 27
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7f27e9e8bc218409b2cce7be87ae27
+      internalID: 1012124888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_78
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 602
+        width: 51
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45fc213e0e209f4d9dfbf645d3d5236
+      internalID: -1888653160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_79
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 619
+        width: 50
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c790718a016c1b041bfee147efe9521a
+      internalID: -815386617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_80
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 626
+        width: 25
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2402739cc3d826347ae8dd67e3d18a89
+      internalID: 1393788491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_81
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 624
+        width: 87
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baa7f239eb444a64aa5bfab87a7eb53e
+      internalID: 443023660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_82
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 566
+        width: 232
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 693e23e5c355a294bba14fd00a7eca33
+      internalID: -2065255251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_83
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 615
+        width: 24
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1107d991668bed04f81791fe75e78fc5
+      internalID: -311703961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_84
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 596
+        width: 247
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df03a7f3ed591334ab487f95aded224f
+      internalID: -2122318793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_85
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 620
+        width: 22
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d1d5350c0cff44bbae105933fc4168
+      internalID: 506223926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_86
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 612
+        width: 39
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc17a51f7c4dc247af2fda190023ee8
+      internalID: 262027446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_87
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 582
+        width: 277
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a774c34663df8341b1a0edcbccf44aa
+      internalID: -2038271440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_88
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 603
+        width: 91
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec5b4fa0d68baa146b021e9981ae12b2
+      internalID: -1210796595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_89
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 601
+        width: 55
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 442a338880f612142b8cc5b0129f2822
+      internalID: -785337145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_90
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 604
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 427d49f7eff071840984ad6f0f86ec46
+      internalID: 19105530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_91
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 594
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ff420e2f8bca2439aab78e687bd085
+      internalID: -1449456495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_92
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 599
+        width: 26
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e165b613fd7d12438942904d9f453ec
+      internalID: -322479340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_93
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 580
+        width: 103
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb85663ebd2d18459f2d2dd80b3f861
+      internalID: -1774408950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_94
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 589
+        width: 92
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcbe44a2ddd20d4d8c6b37702476475
+      internalID: 1853934403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_95
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 552
+        width: 124
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39076b13fce3164a8eab84c2a4f50df
+      internalID: 1265688967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_96
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 565
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89312ffb954a60a48a09981989d85d2e
+      internalID: -641822567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_97
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 572
+        width: 87
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3c23b3796fc364aa95ee8574ad9f83
+      internalID: 1241187011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_98
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 564
+        width: 119
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda71858ae9ab224dabbd2e192baa5ff
+      internalID: -1123688447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_99
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 567
+        width: 20
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd3f3bded46d3b642ae3bc47b6b8ba79
+      internalID: -1068890779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_100
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 565
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e87676faaf18cce4c971d529964b802a
+      internalID: -924375383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_101
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 557
+        width: 95
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a28efa96a4940345a6e312b50680d7c
+      internalID: 1016063395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_102
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 560
+        width: 63
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 353ae5f7c2bac8348b07ed4e343578f5
+      internalID: 223412600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_103
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 555
+        width: 136
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c1b82b6063b954bbf8af59f20677b8
+      internalID: -417413648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_104
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 557
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26ebca189b399f4bb902a43bf1b5a6b
+      internalID: -2069918517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_105
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 557
+        width: 72
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ee78571e3737b64890e6e1903afb109
+      internalID: -2031439937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_106
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 545
+        width: 106
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc52b47bcd914014d8ec4c2c1073659e
+      internalID: -1491690099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_107
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 538
+        width: 166
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6da91648b98cc4342af604ef13ed8479
+      internalID: -674501130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_108
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 537
+        width: 194
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7081d40ef3211974496ffb86dd7aa2e3
+      internalID: 798948573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_109
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 558
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2760d9d212283a34bb04ee888292869c
+      internalID: -1628845588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_110
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 554
+        width: 39
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 705c2525a5cfaff4fad94e1f8570f3e6
+      internalID: -1025149342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_111
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 549
+        width: 75
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8dfbbe01c760a43a5e6b7e5ee23005
+      internalID: -1686338321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_112
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 555
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b723607a9c0fdf448c4d861b81a4108
+      internalID: -1625705167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_113
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 517
+        width: 351
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62154b37df11cb84c8b49f4e1562476d
+      internalID: 882066286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_114
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 535
+        width: 110
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba9ff6fda8d7fb448f6e5e29a476e53
+      internalID: -846922445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_115
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 546
+        width: 86
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae99fce7a4337b9498b111e495738448
+      internalID: 1325483988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_116
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 528
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dda24367e9caa649bc920bd0063bd19
+      internalID: 545974421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_117
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 537
+        width: 36
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec786a586cb0b6f4b90d5768a9c893c1
+      internalID: 1958326901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_118
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 533
+        width: 49
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eed58b1df34d244caa72e25de09d8d8
+      internalID: 97313899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_119
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 533
+        width: 37
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6105858ec4a7c3a49b5e98b530eab3d6
+      internalID: 1068569588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_120
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 533
+        width: 37
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9132efb173585af449a663f9a121a905
+      internalID: -955827364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_121
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 526
+        width: 52
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec0919f6d1d38234eb4ca789f6b7a44b
+      internalID: 1186142194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_122
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 514
+        width: 78
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045db80fe1cb615418ee01f2c7e3e9ce
+      internalID: -1649858713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_123
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 512
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6631d9237ba347b44ba42797b70c3016
+      internalID: -1851160634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_124
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 507
+        width: 93
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb951106a78d3924d8b50cf7f2c952c3
+      internalID: 2092768887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_125
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 506
+        width: 135
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf292294e413bac48bead76c1bcac633
+      internalID: -1406918645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_126
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 487
+        width: 116
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23ebe3b31a7f2e40a8f64a9147be7e8
+      internalID: 1238101624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_127
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 492
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c1df8f049028c941bcd5dc76c20ba58
+      internalID: 1123998555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_128
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 489
+        width: 63
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 861f9c9fe4d03764dbaabd1c1eec95ed
+      internalID: 498406454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_129
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 496
+        width: 204
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043e1a60064b5c34f94035189cf9d34b
+      internalID: -1412159622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_130
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 500
+        width: 91
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4147801935876b24aa939ae0f8da9f21
+      internalID: 772873538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_131
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 492
+        width: 89
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2250cbfc9a13fd744a4c791ecf59f12f
+      internalID: 1085607371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_132
+      rect:
+        serializedVersion: 2
+        x: 1766
+        y: 495
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9acae6be690d64388ad6d8beb48adf
+      internalID: -1255347391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_133
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 484
+        width: 76
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56397f23bf724d4aadfb68543cb1bc1
+      internalID: -617403183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_134
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 485
+        width: 39
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a332a8bea578ef143a67aed46d01a778
+      internalID: -1665063047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_135
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 451
+        width: 206
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722436a780c2d7e4b92030523aa8038b
+      internalID: 1563861247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_136
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 483
+        width: 124
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbca43f97446ef14f8df97c7b33ddea7
+      internalID: 265603284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_137
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 461
+        width: 171
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e182c9bcd2ed4d4d9d1e34b065acce6
+      internalID: -1881645685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_138
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 468
+        width: 190
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c35c9e3168a9d74f8336a74be2dfc53
+      internalID: 517228123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_139
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 474
+        width: 81
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032e954319f813c42a30301adfb638c1
+      internalID: -244160130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_140
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 475
+        width: 51
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d53481548be9e749b5bbe78cdd350f3
+      internalID: 137865209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_141
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 475
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 606faaa8373ccef4f99527184d5905e3
+      internalID: -198111846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_142
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 337
+        width: 114
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 905446524241c7547b8ea1f71bb463ae
+      internalID: 842016275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_143
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 321
+        width: 338
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1f31312a61f0b4f918f6f77ac2b8c9
+      internalID: -1357826409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_144
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 306
+        width: 163
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a7c9d0ca157b21408f5be332e6c7313
+      internalID: 2072973056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_145
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 292
+        width: 78
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2259abd5379aa5343a045bf285a89d60
+      internalID: -1751059642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_146
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 290
+        width: 63
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54cb144fe36491d4d9a002288c0628fd
+      internalID: -2065273954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_147
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 309
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e46b45f044a7b2c4e9eeccb73b174ba4
+      internalID: -1252287945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_148
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 308
+        width: 158
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b87d40a7d454f94880aca1f19d53235
+      internalID: 391748716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_149
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 287
+        width: 301
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc6da01b5a39b2d41af4c68c513722d6
+      internalID: -2001201130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_150
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 302
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8563ca98125c2c94ab1ff48547265644
+      internalID: 1697843783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_151
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 295
+        width: 64
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2a65246447438a44911b25269ae9e25
+      internalID: -214309105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_152
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 280
+        width: 161
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272fcbbbb87133f4daf53a99f5096c3c
+      internalID: 1269173951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_153
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 292
+        width: 75
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62ba95266d62d2f49990539d64c96df7
+      internalID: 1466984587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_154
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 296
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b57406d393f0b479d2a59f224e9c4c
+      internalID: 1254671170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_155
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 296
+        width: 61
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 058a5b4eb4634744f943e62c4ddf4ba8
+      internalID: 645001300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_156
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 297
+        width: 52
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1b38ece5cb306c4e809de20b08a440f
+      internalID: -45430127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_157
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 281
+        width: 213
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e9f258aefa1b72428457dc180990138
+      internalID: -1926885457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_158
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 305
+        width: 106
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906ccedda1ad1344c8dbc5400602e097
+      internalID: -1390984573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_159
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 281
+        width: 114
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846f723a120862b49bdb8b7a35061aff
+      internalID: 740326415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_160
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 285
+        width: 115
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e65277568b96833489a99250f851f640
+      internalID: 656657401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_161
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 283
+        width: 107
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98d2fba9abf9a143972b5adb81a6659
+      internalID: 1668013798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_162
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 295
+        width: 98
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72792a3ce694fd14091e3e7e6860c52e
+      internalID: 2010589707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_163
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 287
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3703643491bf78542aaf7fd9a07d4cfa
+      internalID: 926714446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_164
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 288
+        width: 39
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea394fc7823cf74ca9a3cf978f8c7a8
+      internalID: 1938305629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_165
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 294
+        width: 17
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6d2852564832b4aa66d87435890267
+      internalID: 125854546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_166
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 290
+        width: 57
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f6287bcb83bbd4bbf03f28c9544346
+      internalID: -1798476164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_167
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 290
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206bf4e37046ecc48b608d3c609a485d
+      internalID: 1432050379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_168
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 286
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b0a1d0d58461840aa87cf28f10c2ec
+      internalID: -1776725522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_169
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 283
+        width: 23
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7a26ed8359158419f3008f2e23057a
+      internalID: 715519542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_170
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 286
+        width: 14
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dace115192de6749887006ce30c33d4
+      internalID: -513261302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_171
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 282
+        width: 229
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1514a4a230ae7d542bcd61fc07d5db0f
+      internalID: 1414959444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_172
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 285
+        width: 74
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae94f56ef4a35844697c8b55e19c7fba
+      internalID: -1691503923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_173
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 287
+        width: 34
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe47effc95ddb744bff9ea9c019029e
+      internalID: -1373239976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_174
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 284
+        width: 58
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52217749b14c3834fb130d6b785c8b18
+      internalID: -1079883218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_175
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 284
+        width: 23
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94995aea055ce94d85ad9b66f7d747d
+      internalID: 2125391495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_176
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 282
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5b60a3b8452b34ea30c82db186c0f7
+      internalID: -1120446405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_177
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 283
+        width: 55
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 744cc38010d9e4b4baffa6026725a32c
+      internalID: -478821293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_178
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 284
+        width: 36
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82f9c90f569fa24c8e13a3f1f6be0a4
+      internalID: -1708190563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_179
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 283
+        width: 76
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc3d4acd02f7de4a85259d7e32a3332
+      internalID: 120317001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_180
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 280
+        width: 17
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc0a48e96b4b834790ace60596e59af
+      internalID: -1566232065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_181
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 281
+        width: 13
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cba8b7a73d58264eb73bbfc95b09d5e
+      internalID: 21393881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_182
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 280
+        width: 23
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c09508539a13f49bdd8c89a43dec42
+      internalID: -54783543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_183
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 283
+        width: 27
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b85f7218f9aae44290c7cf63e51b884
+      internalID: 1085444891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_184
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 155
+        width: 69
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71f26c5eaf0e6d34abc8a6f39928ea14
+      internalID: 882226658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_185
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 143
+        width: 74
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5fff086ed2954c4a9051b6d3da1cdfa
+      internalID: -743006781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_186
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 148
+        width: 143
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be6937aed647d246be8165b9a5a6c2f
+      internalID: 1958231224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_187
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 134
+        width: 79
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b508e263f540f0e428efe1fb2c2ef315
+      internalID: -527468520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_188
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 140
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eaa379ac48cbe441971458009cfd0c2
+      internalID: -1738605863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_189
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 154
+        width: 64
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569dace26c8df654d933b06548ef59a8
+      internalID: -1525302422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_190
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 139
+        width: 65
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69ff9f718022c6340beeb8f034442620
+      internalID: -1357018603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_191
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 154
+        width: 67
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f506875ab3c2ba14093a305c92888147
+      internalID: -786779695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_192
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 145
+        width: 153
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 957cda5ad3ff03f458723c655569f5e4
+      internalID: 1532331372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_193
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 147
+        width: 150
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f19e80274bff9384481c7222ccba89b2
+      internalID: -1414455745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_194
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 144
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9bcf56811b39634181d50bc968ee53d
+      internalID: -1361221706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_195
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 145
+        width: 91
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e7684ce7fd87b4a840d248fd983582
+      internalID: -503114789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_196
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 149
+        width: 56
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6c69eb3858d87f4ab29df2ef98f6fae
+      internalID: -1275377436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_197
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 146
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f110d3ccbbd2543817ab30b930dfed
+      internalID: -866020898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_198
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 146
+        width: 30
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 223039fbd67093549b38bb7e4fc7da6f
+      internalID: 96373598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_199
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 141
+        width: 50
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6108110191a081941a0ca1e6706b0b96
+      internalID: -327921355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_200
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 148
+        width: 57
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bf719d5e1801cc479997f66b53be38c
+      internalID: -879956417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_201
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 147
+        width: 32
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d08ef29e4f57374ea069311b241d80e
+      internalID: -430588888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_202
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 149
+        width: 42
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c803418195f8114c9296e0e51d0d997
+      internalID: 778473558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_203
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 149
+        width: 43
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbc514790c04404f890673a7eca9b92
+      internalID: 1961266707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_204
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 148
+        width: 63
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde006fad229b084b95b8c675286459f
+      internalID: -1840913156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_205
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 144
+        width: 26
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3c7da8e62bce54cb0c0fbded2d605e
+      internalID: -709571605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_206
+      rect:
+        serializedVersion: 2
+        x: 1836
+        y: 146
+        width: 52
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c2175ebd21c3f4d8a349fc5a1f0c46
+      internalID: -407221788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_207
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 144
+        width: 42
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d3f0e88ef69797419003f95a6138807
+      internalID: -1103216915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_208
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 145
+        width: 25
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1254b03e94e5ba244a8367b015d6d028
+      internalID: 1475411105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_209
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 143
+        width: 21
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bda7da1b78ab984e934293c6bbe08fa
+      internalID: 1566850655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_210
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 142
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253b251e94162134382c217db75b373b
+      internalID: 575799631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_211
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 142
+        width: 38
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6199f3988625ec40887cf89a74170d7
+      internalID: -1594098171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_212
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 141
+        width: 33
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e39401f3b971cd409b86b24ed30f3ca
+      internalID: 1860691377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_213
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 137
+        width: 41
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0718dd4c88c8a5348ac00448a8f667d8
+      internalID: 1170901562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_214
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 138
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b90e94c0f88314f86527a0aa4c6639
+      internalID: 2124478591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_215
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 140
+        width: 35
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f3e1c1aa3be4e42a837131dd94e1a0
+      internalID: 1762430045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_216
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 139
+        width: 39
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4265733349237fd44859c2e074e5c47a
+      internalID: 858366131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_217
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 138
+        width: 47
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25751282e3f837b429213b399c3c76e1
+      internalID: 1804521815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_218
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 141
+        width: 32
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01cd88eeeff8fe248bafcc5837818f64
+      internalID: -688097947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_219
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 140
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d7dbae3fa1468c4c92840fbc5f8c5a9
+      internalID: -1229719416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_220
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 136
+        width: 20
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be217091b68db854dae4b997d016a1a4
+      internalID: 723768904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_221
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 134
+        width: 85
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8180c329a90a345bdf116aca516dab
+      internalID: -1843719377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_222
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 48
+        width: 12
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92711d3558535974ab749ede3c3741ac
+      internalID: -1863969887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_223
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 46
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4aec428c6f00448b79f0ade4bb76e8
+      internalID: -169922446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_224
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 48
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608833e690f26dc4e88962a85345061b
+      internalID: 560887588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_225
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 49
+        width: 21
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66301507bded0594db71b7931515aecc
+      internalID: -644608115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_226
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 48
+        width: 14
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daf886529c6b97048befab7e3dc84121
+      internalID: 395111179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_227
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 47
+        width: 67
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9900683ce96cd0f42879fb45fa9e247a
+      internalID: -576072618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_228
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 46
+        width: 33
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 361ff9958649f3b4f9f5bd2114c796fd
+      internalID: 167880781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_229
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 50
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9bc0ac3e5b092e47874e8f5e9784418
+      internalID: 630866770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_230
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 47
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6bcb8a7426cbb34ab549beb7003ab53
+      internalID: -1412368931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_231
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 47
+        width: 29
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c981515de0dcff4408db236b2d34c001
+      internalID: 1264076128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_232
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 46
+        width: 27
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c385d708f637f143b6c9bd57d5b45bd
+      internalID: -874841911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_233
+      rect:
+        serializedVersion: 2
+        x: 1286
+        y: 48
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258592f02c853b5458cf504f02c0457f
+      internalID: -552650423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX scan autour_234
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 47
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf22f1e3141324459c7c15c9a35e1d9
+      internalID: 66217599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FX scan autour_0: -1205607720
+      FX scan autour_1: -1255322619
+      FX scan autour_10: 489202679
+      FX scan autour_100: -924375383
+      FX scan autour_101: 1016063395
+      FX scan autour_102: 223412600
+      FX scan autour_103: -417413648
+      FX scan autour_104: -2069918517
+      FX scan autour_105: -2031439937
+      FX scan autour_106: -1491690099
+      FX scan autour_107: -674501130
+      FX scan autour_108: 798948573
+      FX scan autour_109: -1628845588
+      FX scan autour_11: -1535838314
+      FX scan autour_110: -1025149342
+      FX scan autour_111: -1686338321
+      FX scan autour_112: -1625705167
+      FX scan autour_113: 882066286
+      FX scan autour_114: -846922445
+      FX scan autour_115: 1325483988
+      FX scan autour_116: 545974421
+      FX scan autour_117: 1958326901
+      FX scan autour_118: 97313899
+      FX scan autour_119: 1068569588
+      FX scan autour_12: -327180875
+      FX scan autour_120: -955827364
+      FX scan autour_121: 1186142194
+      FX scan autour_122: -1649858713
+      FX scan autour_123: -1851160634
+      FX scan autour_124: 2092768887
+      FX scan autour_125: -1406918645
+      FX scan autour_126: 1238101624
+      FX scan autour_127: 1123998555
+      FX scan autour_128: 498406454
+      FX scan autour_129: -1412159622
+      FX scan autour_13: -1981138321
+      FX scan autour_130: 772873538
+      FX scan autour_131: 1085607371
+      FX scan autour_132: -1255347391
+      FX scan autour_133: -617403183
+      FX scan autour_134: -1665063047
+      FX scan autour_135: 1563861247
+      FX scan autour_136: 265603284
+      FX scan autour_137: -1881645685
+      FX scan autour_138: 517228123
+      FX scan autour_139: -244160130
+      FX scan autour_14: 116707731
+      FX scan autour_140: 137865209
+      FX scan autour_141: -198111846
+      FX scan autour_142: 842016275
+      FX scan autour_143: -1357826409
+      FX scan autour_144: 2072973056
+      FX scan autour_145: -1751059642
+      FX scan autour_146: -2065273954
+      FX scan autour_147: -1252287945
+      FX scan autour_148: 391748716
+      FX scan autour_149: -2001201130
+      FX scan autour_15: 1593033733
+      FX scan autour_150: 1697843783
+      FX scan autour_151: -214309105
+      FX scan autour_152: 1269173951
+      FX scan autour_153: 1466984587
+      FX scan autour_154: 1254671170
+      FX scan autour_155: 645001300
+      FX scan autour_156: -45430127
+      FX scan autour_157: -1926885457
+      FX scan autour_158: -1390984573
+      FX scan autour_159: 740326415
+      FX scan autour_16: 694483158
+      FX scan autour_160: 656657401
+      FX scan autour_161: 1668013798
+      FX scan autour_162: 2010589707
+      FX scan autour_163: 926714446
+      FX scan autour_164: 1938305629
+      FX scan autour_165: 125854546
+      FX scan autour_166: -1798476164
+      FX scan autour_167: 1432050379
+      FX scan autour_168: -1776725522
+      FX scan autour_169: 715519542
+      FX scan autour_17: 649138210
+      FX scan autour_170: -513261302
+      FX scan autour_171: 1414959444
+      FX scan autour_172: -1691503923
+      FX scan autour_173: -1373239976
+      FX scan autour_174: -1079883218
+      FX scan autour_175: 2125391495
+      FX scan autour_176: -1120446405
+      FX scan autour_177: -478821293
+      FX scan autour_178: -1708190563
+      FX scan autour_179: 120317001
+      FX scan autour_18: -1879384287
+      FX scan autour_180: -1566232065
+      FX scan autour_181: 21393881
+      FX scan autour_182: -54783543
+      FX scan autour_183: 1085444891
+      FX scan autour_184: 882226658
+      FX scan autour_185: -743006781
+      FX scan autour_186: 1958231224
+      FX scan autour_187: -527468520
+      FX scan autour_188: -1738605863
+      FX scan autour_189: -1525302422
+      FX scan autour_19: -450996926
+      FX scan autour_190: -1357018603
+      FX scan autour_191: -786779695
+      FX scan autour_192: 1532331372
+      FX scan autour_193: -1414455745
+      FX scan autour_194: -1361221706
+      FX scan autour_195: -503114789
+      FX scan autour_196: -1275377436
+      FX scan autour_197: -866020898
+      FX scan autour_198: 96373598
+      FX scan autour_199: -327921355
+      FX scan autour_2: 819298655
+      FX scan autour_20: 812642431
+      FX scan autour_200: -879956417
+      FX scan autour_201: -430588888
+      FX scan autour_202: 778473558
+      FX scan autour_203: 1961266707
+      FX scan autour_204: -1840913156
+      FX scan autour_205: -709571605
+      FX scan autour_206: -407221788
+      FX scan autour_207: -1103216915
+      FX scan autour_208: 1475411105
+      FX scan autour_209: 1566850655
+      FX scan autour_21: -1648943265
+      FX scan autour_210: 575799631
+      FX scan autour_211: -1594098171
+      FX scan autour_212: 1860691377
+      FX scan autour_213: 1170901562
+      FX scan autour_214: 2124478591
+      FX scan autour_215: 1762430045
+      FX scan autour_216: 858366131
+      FX scan autour_217: 1804521815
+      FX scan autour_218: -688097947
+      FX scan autour_219: -1229719416
+      FX scan autour_22: 1057286200
+      FX scan autour_220: 723768904
+      FX scan autour_221: -1843719377
+      FX scan autour_222: -1863969887
+      FX scan autour_223: -169922446
+      FX scan autour_224: 560887588
+      FX scan autour_225: -644608115
+      FX scan autour_226: 395111179
+      FX scan autour_227: -576072618
+      FX scan autour_228: 167880781
+      FX scan autour_229: 630866770
+      FX scan autour_23: -435105944
+      FX scan autour_230: -1412368931
+      FX scan autour_231: 1264076128
+      FX scan autour_232: -874841911
+      FX scan autour_233: -552650423
+      FX scan autour_234: 66217599
+      FX scan autour_24: -1586907918
+      FX scan autour_25: 1908404487
+      FX scan autour_26: 1566887144
+      FX scan autour_27: 557115959
+      FX scan autour_28: -2108098713
+      FX scan autour_29: -2000205552
+      FX scan autour_3: -1797961138
+      FX scan autour_30: 1587066701
+      FX scan autour_31: 406334392
+      FX scan autour_32: 722134677
+      FX scan autour_33: -1843997526
+      FX scan autour_34: -1319338527
+      FX scan autour_35: -766147686
+      FX scan autour_36: -1766758485
+      FX scan autour_37: -1606142835
+      FX scan autour_38: 1888290803
+      FX scan autour_39: 113066752
+      FX scan autour_4: 1892125390
+      FX scan autour_40: -11443903
+      FX scan autour_41: -862620350
+      FX scan autour_42: 934680607
+      FX scan autour_43: -1037695077
+      FX scan autour_44: -805964104
+      FX scan autour_45: -531094606
+      FX scan autour_46: 123125994
+      FX scan autour_47: -888774728
+      FX scan autour_48: -296255256
+      FX scan autour_49: 2073027166
+      FX scan autour_5: 550958375
+      FX scan autour_50: 2073700486
+      FX scan autour_51: 1127070344
+      FX scan autour_52: -287064751
+      FX scan autour_53: 1205002578
+      FX scan autour_54: 1385094838
+      FX scan autour_55: -80192816
+      FX scan autour_56: 911576034
+      FX scan autour_57: -1331339987
+      FX scan autour_58: -883334876
+      FX scan autour_59: 2013964666
+      FX scan autour_6: -1729136533
+      FX scan autour_60: -1390623600
+      FX scan autour_61: -1737313038
+      FX scan autour_62: 539181538
+      FX scan autour_63: 1737811384
+      FX scan autour_64: 1321177200
+      FX scan autour_65: 1069000753
+      FX scan autour_66: -1408032238
+      FX scan autour_67: -313694357
+      FX scan autour_68: -1049342690
+      FX scan autour_69: 264222945
+      FX scan autour_7: 1800937781
+      FX scan autour_70: 1191013156
+      FX scan autour_71: 225137305
+      FX scan autour_72: 1713316629
+      FX scan autour_73: 665970463
+      FX scan autour_74: -1502312645
+      FX scan autour_75: 1267980763
+      FX scan autour_76: 161834098
+      FX scan autour_77: 1012124888
+      FX scan autour_78: -1888653160
+      FX scan autour_79: -815386617
+      FX scan autour_8: 2054896099
+      FX scan autour_80: 1393788491
+      FX scan autour_81: 443023660
+      FX scan autour_82: -2065255251
+      FX scan autour_83: -311703961
+      FX scan autour_84: -2122318793
+      FX scan autour_85: 506223926
+      FX scan autour_86: 262027446
+      FX scan autour_87: -2038271440
+      FX scan autour_88: -1210796595
+      FX scan autour_89: -785337145
+      FX scan autour_9: 1121674010
+      FX scan autour_90: 19105530
+      FX scan autour_91: -1449456495
+      FX scan autour_92: -322479340
+      FX scan autour_93: -1774408950
+      FX scan autour_94: 1853934403
+      FX scan autour_95: 1265688967
+      FX scan autour_96: -641822567
+      FX scan autour_97: 1241187011
+      FX scan autour_98: -1123688447
+      FX scan autour_99: -1068890779
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
