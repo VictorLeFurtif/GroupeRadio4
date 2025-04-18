@@ -6,6 +6,7 @@ using Controller;
 using DATA.Script.Entity_Data.AI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MANAGER
 {
@@ -180,6 +181,12 @@ namespace MANAGER
             else
             {
                 Debug.Log("Nobody won");
+                if (RadioController.instance == null)
+                {
+                    Debug.LogError("No radioController seen");
+                    return;
+                }
+                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
         }
     
@@ -204,6 +211,9 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            //temporary
+            int index = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(index);
         }
     }
 }

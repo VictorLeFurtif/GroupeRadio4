@@ -87,7 +87,7 @@ namespace Controller
             }
             else
             {
-                animatorPlayer.Play("TakeDamage");
+                //Player.Play("TakeDamage");
             }
         }
 
@@ -107,7 +107,7 @@ namespace Controller
                 {
                     canMove = false;
                     rb.velocity = Vector2.zero;
-                    animatorPlayer.Play("Death");
+                    //animatorPlayer.Play("Death");
                     GameManager.instance.GameOver();
                 }
             }
@@ -143,7 +143,7 @@ namespace Controller
             {
                 rb.velocity = new Vector2(x  * moveSpeedRunning,rb.velocity.y);
             }
-            animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
+            //Player.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
         }
         
         private bool wasFacingLeft = false; //bool pour stock là où il regardait
@@ -224,7 +224,7 @@ namespace Controller
                 
                 //TODO link EnfighterTurn to the animation attack
                 
-                animatorPlayer.Play("Attack"); 
+                //Player.Play("Attack"); 
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
                 FightManager.instance.EndFighterTurn();
             }
@@ -233,7 +233,7 @@ namespace Controller
 
         IEnumerator TakeDamageAfterOverload()
         {
-            animatorPlayer.Play("TakeDamage");
+            //animatorPlayer.Play("TakeDamage");
             yield return new WaitForSeconds(_inGameData.takeDamageAnimation.clip.length);
             FightManager.instance.EndFighterTurn();
         }

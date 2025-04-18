@@ -273,7 +273,7 @@ namespace Controller
                 return;
             }
             
-            PlayerController.instance.animatorPlayer.Play("AmAttack");
+            //PlayerController.instance.animatorPlayer.Play("AmAttack");
             var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
             StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
             int cpt = 0;
@@ -355,7 +355,7 @@ namespace Controller
                 return;
             }
             
-            PlayerController.instance.animatorPlayer.Play("FmAttack");
+            //PlayerController.instance.animatorPlayer.Play("FmAttack");
             var timeCantMove = PlayerController.instance._inGameData.fmAnimation.clip.length;
             StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
             
