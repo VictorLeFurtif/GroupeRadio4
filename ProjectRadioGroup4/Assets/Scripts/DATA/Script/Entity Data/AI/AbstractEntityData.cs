@@ -44,10 +44,17 @@ namespace DATA.Script.Entity_Data.AI
             public float batteryGain;
         }
         
+        [Serializable] public struct PostZeroDeal
+        {
+            public bool postZeroBomb;
+            public float damageStockForAfterDeath;
+        }
+        
         [field: Header("Normal Attack"),SerializeField] public AttackData NormalAttack { get; private set; }
         [field: Header("Heavy Attack"),SerializeField] public AttackData HeavyAttack { get; private set; }
         [field: Header("Steal Batteries"),SerializeField] public AttackData StealBatteries { get; private set; }
         [field: Header("Steal a lot of Batteries"),SerializeField] public AttackData StealALotBatteries { get; private set; }
+        
         
         
         public virtual AbstractEntityDataInstance Instance(GameObject entity)
@@ -73,6 +80,8 @@ namespace DATA.Script.Entity_Data.AI
         public AbstractEntityData.AttackData heavyAttack;
         public AbstractEntityData.AttackData stealBatteries;
         public AbstractEntityData.AttackData stealALotBatteries;
+        public bool flashed;
+        public AbstractEntityData.PostZeroDeal postZeroDeal;
 
         public AbstractEntityDataInstance(AbstractEntityData data, GameObject entity)
         {
@@ -90,6 +99,7 @@ namespace DATA.Script.Entity_Data.AI
             stealBatteries = data.StealBatteries;
             stealALotBatteries = data.StealALotBatteries;
             maxHp = hp;
+            flashed = false;
         }
 
         public bool IsDead()

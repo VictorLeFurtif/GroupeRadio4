@@ -761,6 +761,88 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1084474016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084474017}
+  - component: {fileID: 1084474018}
+  m_Layer: 0
+  m_Name: lampTorch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1084474017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084474016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.2, y: 0.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1366998522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &1084474018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084474016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.529
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 3.06
+  m_LightVolumeIntensity: 0.1
+  m_LightVolumeIntensityEnabled: 1
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensity: 0.562
+  m_ShadowVolumeIntensityEnabled: 1
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 13.515339
+  m_PointLightOuterAngle: 127.800995
+  m_PointLightInnerRadius: 4
+  m_PointLightOuterRadius: 5.8
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1086051339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1165,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5422223, y: 2.4791768}
   m_EdgeRadius: 0
+--- !u!4 &1366998522 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 353815956720992489, guid: c2bddca3058d02d4f82acfdc32b71759, type: 3}
+  m_PrefabInstance: {fileID: 8370179950304826428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1512636823 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4829043246483209873, guid: 674db029357afba4593c22e57e6d13ae, type: 3}
@@ -2000,6 +2087,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8113595643916894624, guid: c2bddca3058d02d4f82acfdc32b71759, type: 3}
+      propertyPath: lampTorch
+      value: 
+      objectReference: {fileID: 1084474018}
+    - target: {fileID: 8113595643916894624, guid: c2bddca3058d02d4f82acfdc32b71759, type: 3}
+      propertyPath: lampTorchOnValue
+      value: 3.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113595643916894624, guid: c2bddca3058d02d4f82acfdc32b71759, type: 3}
       propertyPath: playerFightCanva
       value: 
       objectReference: {fileID: 690973262}
@@ -2049,7 +2144,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 353815956720992489, guid: c2bddca3058d02d4f82acfdc32b71759, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1084474017}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8522659208739532651, guid: c2bddca3058d02d4f82acfdc32b71759, type: 3}
       insertIndex: -1

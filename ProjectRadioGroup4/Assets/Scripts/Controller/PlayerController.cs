@@ -7,6 +7,7 @@ using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
 using MANAGER;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
@@ -47,10 +48,15 @@ namespace Controller
 
         [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
         public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
+        
+        [Header("Animation")]
 
         public Animator animatorPlayer;
-        
 
+        [Header("Lighting")] public Light2D lampTorch;
+        public float lampTorchOnValue;
+        public bool isLampTorchOn;
+        
         public enum PlayerStateExploration
         {
             Exploration,
@@ -128,6 +134,7 @@ namespace Controller
         private void Start()
         {
             InitializeListOfAttackPlayer();
+            lampTorch.intensity = 0;
         }
         
         private void PlayerMove()
@@ -155,6 +162,7 @@ namespace Controller
                 wasFacingLeft = rb.velocity.x < 0;
             }
             spriteRendererPlayer.flipX = wasFacingLeft;
+            lampTorch.transform.localRotation = Quaternion.Euler(wasFacingLeft ? new Vector3(0,180,-90) : new Vector3(0,0,-90));
         }
 
         private void ManageFight() //temporary
@@ -220,8 +228,9 @@ namespace Controller
                     StartCoroutine(TakeDamageAfterOverload());
                     return;
                 }
-                selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
                 
+                selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
+                selectedAttack.ProcessAttackEffect();
                 //TODO link EnfighterTurn to the animation attack
                 
                 //Player.Play("Attack"); 
@@ -237,6 +246,8 @@ namespace Controller
             yield return new WaitForSeconds(_inGameData.takeDamageAnimation.clip.length);
             FightManager.instance.EndFighterTurn();
         }
+        
+        
         
     }
 }

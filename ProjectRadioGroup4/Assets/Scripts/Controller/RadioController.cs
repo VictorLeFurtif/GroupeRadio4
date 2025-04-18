@@ -71,7 +71,7 @@ namespace Controller
         {
             currentRadioState = RadioState.OutFight;
             InitializeSliderFrequency();
-            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck(); EffectInExploration();});
             InitializeRadioEnemy();
         
             //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
@@ -176,6 +176,19 @@ namespace Controller
 
         #endregion
 
+        private void EffectInExploration()
+        {
+            if (PlayerController.instance != null)
+            {
+                PlayerController.instance.lampTorch.intensity = 0;
+            }
+            
+            if (PlayerController.instance.selectedAttack != null)
+            {
+                PlayerController.instance.selectedAttack.ProcessAttackEffect();
+            }
+        }
+        
         private void InitializeSliderFrequency()
         {
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
@@ -274,8 +287,8 @@ namespace Controller
             }
             
             //PlayerController.instance.animatorPlayer.Play("AmAttack");
-            var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
-            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
+            //var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
+            //StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
             Vector3 playerPos = PlayerController.instance.transform.position;

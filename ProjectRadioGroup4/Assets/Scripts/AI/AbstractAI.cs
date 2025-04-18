@@ -54,6 +54,13 @@ namespace AI
                 
                 if (_abstractEntityDataInstance.IsDead())
                 {
+                    if (_abstractEntityDataInstance.postZeroDeal.postZeroBomb)
+                    {
+                        foreach (AbstractEntityDataInstance enemies in FightManager.instance.listOfJustEnemiesAlive)
+                        {
+                            enemies.hp -= _abstractEntityDataInstance.postZeroDeal.damageStockForAfterDeath;
+                        }
+                    }
                     RadioController.instance.listOfEveryEnemy.Remove(this);
                     try
                     {
@@ -159,7 +166,16 @@ namespace AI
                 Debug.LogError("No player instance found: Singleton problem with PlayerController");
                 return;
             }
+            
+            float randomValueForFlash = Random.Range(0f, 1f);
 
+            if (randomValueForFlash < 0.25f && _abstractEntityDataInstance.flashed)
+            {
+                Debug.Log("Flashed so cant attack");
+                _abstractEntityDataInstance.flashed = false;
+                return;
+            }
+            
             float randomValue = Random.Range(0f, 1f);
             
             if (_abstractEntityDataInstance.IsBatteryMoreThanHundred())
