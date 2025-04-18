@@ -1,7 +1,6 @@
 using System;
 using Controller;
 using DATA.Script.Entity_Data.AI;
-using DATA.ScriptData.Entity_Data;
 using MANAGER;
 using UnityEngine;
 using Random = UnityEngine.Random;

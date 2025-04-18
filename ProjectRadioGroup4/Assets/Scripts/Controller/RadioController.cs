@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
@@ -76,6 +77,9 @@ namespace Controller
             //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
             UpdateRadioEnemyWithLight(0);
             InitializeSliderOscillationPlayer();
+            
+            UpdateAmplitude(0);
+
         }
 
         private void Awake()
@@ -257,6 +261,11 @@ namespace Controller
 
         public void AmButton()
         {
+            if (PlayerController.instance == null)
+            {
+                return;
+            }
+            
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 selectedAm = true;
@@ -264,6 +273,9 @@ namespace Controller
                 return;
             }
             
+            PlayerController.instance.animatorPlayer.Play("AmAttack");
+            var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
+            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
             Vector3 playerPos = PlayerController.instance.transform.position;
@@ -295,6 +307,13 @@ namespace Controller
             AmFmActionIfListNotEmpty();
         }
 
+        IEnumerator ChangeBoolPlayerCanMove(float _time)
+        {
+            PlayerController.instance.canMove = false;
+            yield return new WaitForSeconds(_time);
+            PlayerController.instance.canMove = true;
+        }
+        
         private void ChangeBoolSeenForAi()
         {
             foreach (AbstractAI enemySeen in listOfDetectedEnemy)
@@ -324,12 +343,21 @@ namespace Controller
     
         public void FmButton()
         {
+            if (PlayerController.instance == null)
+            {
+                return;
+            }
+            
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 selectedAm = false;
                 ValueChangeCheck();
                 return;
             }
+            
+            PlayerController.instance.animatorPlayer.Play("FmAttack");
+            var timeCantMove = PlayerController.instance._inGameData.fmAnimation.clip.length;
+            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
             
             int cpt = 0;
             listOfDetectedEnemy.Clear();

@@ -1,9 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using AI;
 using DATA.Script.Attack_Data;
 using DATA.Script.Entity_Data.AI;
-using DATA.ScriptData.Entity_Data;
+using DATA.Script.Entity_Data.Player;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -19,15 +20,17 @@ namespace Controller
         public static PlayerController instance;
     
         [Header("Speed")] [SerializeField] private float moveSpeed;
+        [SerializeField] private float moveSpeedRunning;
+        public bool canMove = true;
 
         [Header("Rigidbody2D")] [SerializeField]
-        private Rigidbody2D rb;
+        public Rigidbody2D rb;
 
         [Header("Data Player")]
         [SerializeField]
         private AbstractEntityData _abstractEntityData;
         public AbstractEntityDataInstance _abstractEntityDataInstance;
-        private PlayerDataInstance _inGameData;
+        public PlayerDataInstance _inGameData;
 
         public SpriteRenderer spriteRendererPlayer;
 
@@ -44,18 +47,9 @@ namespace Controller
 
         [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
         public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
+
+        public Animator animatorPlayer;
         
-        public enum PlayerStateAnimation
-        {
-            Idle,
-            Running,
-            Walking,
-            Dead,
-            FmExploration,
-            AmExploration,
-            TakingDamage,
-            Attacking,
-        }
 
         public enum PlayerStateExploration
         {
@@ -83,9 +77,18 @@ namespace Controller
             spriteRendererPlayer = GetComponent<SpriteRenderer>();
         }
 
-        public void ManageLife(float valueLifeChanger)
+        public void ManageLife(float valueLifeChanger) 
         {
             HealthPlayer += valueLifeChanger;
+
+            if (valueLifeChanger >= 0)
+            {
+                //No animation for heal
+            }
+            else
+            {
+                animatorPlayer.Play("TakeDamage");
+            }
         }
 
         private float HealthPlayer 
@@ -98,11 +101,13 @@ namespace Controller
                     Debug.LogError(" _inGameData est NULL !");
                     return;
                 }
-
+                
                 _inGameData.hp = Mathf.Max(0, value); 
-                Debug.Log(_inGameData.hp);
                 if (_inGameData.IsDead())
                 {
+                    canMove = false;
+                    rb.velocity = Vector2.zero;
+                    animatorPlayer.Play("Death");
                     GameManager.instance.GameOver();
                 }
             }
@@ -127,15 +132,20 @@ namespace Controller
         
         private void PlayerMove()
         {
-            if (FightManager.instance.fightState != FightManager.FightState.OutFight)
+            if (!canMove || FightManager.instance.fightState != FightManager.FightState.OutFight)
             {
                 rb.velocity = new Vector2(0,0);
                 return;
             }
             var x = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                rb.velocity = new Vector2(x  * moveSpeedRunning,rb.velocity.y);
+            }
+            animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
         }
-
+        
         private bool wasFacingLeft = false; //bool pour stock là où il regardait
 
         private void CheckForFlipX()
@@ -193,8 +203,6 @@ namespace Controller
                 _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
                 selectedAttack != null && selectedEnemy != null)
             {
-                Debug.Log("Attaque Logic");
-                
                 PlayerAttack.AttackClassic attackData = selectedAttack.attack;
                 float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
                 float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
@@ -209,14 +217,26 @@ namespace Controller
                 {
                     Debug.Log("OVERLOAD déclenché ");
                     //Add damage against player
-                    FightManager.instance.EndFighterTurn();
+                    StartCoroutine(TakeDamageAfterOverload());
                     return;
                 }
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
+                
+                //TODO link EnfighterTurn to the animation attack
+                
+                animatorPlayer.Play("Attack"); 
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
                 FightManager.instance.EndFighterTurn();
             }
             
         }
+
+        IEnumerator TakeDamageAfterOverload()
+        {
+            animatorPlayer.Play("TakeDamage");
+            yield return new WaitForSeconds(_inGameData.takeDamageAnimation.clip.length);
+            FightManager.instance.EndFighterTurn();
+        }
+        
     }
 }

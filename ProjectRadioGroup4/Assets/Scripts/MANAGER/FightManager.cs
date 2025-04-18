@@ -4,7 +4,6 @@ using System.Linq;
 using AI;
 using Controller;
 using DATA.Script.Entity_Data.AI;
-using DATA.ScriptData.Entity_Data;
 using TMPro;
 using UnityEngine;
 
