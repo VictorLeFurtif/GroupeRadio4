@@ -743,11 +743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: max
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: min
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: Volume
@@ -755,11 +755,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: minDistance
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: LoopSoundOnFinish
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: audioClips.Array.size

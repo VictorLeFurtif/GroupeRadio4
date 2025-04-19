@@ -42,6 +42,8 @@ public class SoundController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (volumeBasedOnDistance) VolumeBasedOnDistance();
+        if (dynamicStereoRange != 0) StereoPan();
         if (!isAlreadyPlaying && IsPlayerCloseEnough())
         {
             StartCoroutine(PlaySound());
@@ -56,19 +58,16 @@ public class SoundController : MonoBehaviour
         AudioClip randomClip = audioClips[Random.Range(0, audioClips.Count)];
         audioSource.clip = randomClip;
         audioSource.Play();
-        if (LoopSoundOnFinish) // loop even false
+        if (LoopSoundOnFinish) // loop even when false ??
         {
-            while (true) // look sketchy as fuck
+            while (true)
             {
                 yield return new WaitForSeconds(audioSource.clip.length);
-                if (volumeBasedOnDistance) VolumeBasedOnDistance();
-                if (dynamicStereoRange != 0) StereoPan();
                 audioSource.Play();
             }
         }
-        if (volumeBasedOnDistance) VolumeBasedOnDistance();
-        if (dynamicStereoRange != 0) StereoPan();
         audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
         isAlreadyPlaying = false;
     }
 
@@ -76,11 +75,12 @@ public class SoundController : MonoBehaviour
     {
         Vector3 playerPosition = PlayerController.instance.transform.position;
         distanceWithPlayer = Vector3.Distance(playerPosition, transform.position);
-        float unchangedVolume = minDistance - distanceWithPlayer;
-        audioSource.volume = unchangedVolume * Volume; // doesn't seem to change either
+        float unModifiedVolume = minDistance - (distanceWithPlayer / minDistance);
+        audioSource.volume = unModifiedVolume * Volume;
+        Debug.Log(distanceWithPlayer); // only return "(object)"
     }
 
-    private void StereoPan() // I dont have any idea about how to make this work
+    private void StereoPan() // I don't have any idea about how to make this work
     {
         Vector3 playerPosition = PlayerController.instance.transform.position;
         distanceWithPlayer = Vector3.Distance(playerPosition, transform.position);
