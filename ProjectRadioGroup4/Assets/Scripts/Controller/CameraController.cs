@@ -1,4 +1,5 @@
 using System.Collections;
+using MANAGER;
 using UnityEngine;
 
 namespace Controller
@@ -17,6 +18,7 @@ namespace Controller
         [SerializeField] private float shakeRecoverySpeed = 1f;
 
         private Transform target;
+        private FightManager fightManager;
         private Vector3 velocity = Vector3.zero;
         private Vector3 originalLocalPos;
         private Coroutine shakeRoutine;
@@ -26,6 +28,7 @@ namespace Controller
         {
             target = PlayerController.instance.gameObject.transform;
             originalLocalPos = transform.localPosition;
+            fightManager = FightManager.instance;
         }
 
         #region FollowPlayer
@@ -36,9 +39,48 @@ namespace Controller
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition + shakeOffset, ref velocity, smoothTime);
         }
 
+        private void CameraBehavior()
+        {
+            if (fightManager.fightState == FightManager.FightState.OutFight)
+            {
+                FollowPlayer();
+            }
+            else
+            {
+                FollowCombatView();
+            }
+        }
+        
+        private void FollowCombatView()
+        {
+            if (FightManager.instance.listOfJustEnemiesAlive.Count == 0)
+            {
+                FollowPlayer(); 
+                return;
+            }
+
+            Transform playerTransform = PlayerController.instance.transform;
+            Transform lastEnemyTransform = FightManager.instance.listOfJustEnemiesAlive[^1].entity.transform;
+
+            Vector3 middlePoint = (playerTransform.position + lastEnemyTransform.position) / 2f;
+
+            if (FightManager.instance.currentOrder != null && FightManager.instance.currentOrder.Count > 0)
+            {
+                Transform currentFighter = FightManager.instance.currentOrder[0].entity?.transform;
+                if (currentFighter != null)
+                {
+                    middlePoint = Vector3.Lerp(middlePoint, currentFighter.position, 0.25f);
+                }
+            }
+            
+            Vector3 targetPosition = middlePoint + offSett;
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition + shakeOffset, ref velocity, smoothTime);
+        }
+
+
         private void LateUpdate()
         {
-            FollowPlayer();
+            CameraBehavior();
         }
 
         #endregion

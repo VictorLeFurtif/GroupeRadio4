@@ -155,6 +155,10 @@ namespace MANAGER
             StartUnitTurn();
             
             RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+
+            player.selectedAttack?.CancelEffectWhenEnterFight();
+
+
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool

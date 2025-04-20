@@ -86,15 +86,6 @@ namespace Controller
         public void ManageLife(float valueLifeChanger) 
         {
             HealthPlayer += valueLifeChanger;
-
-            if (valueLifeChanger >= 0)
-            {
-                //No animation for heal
-            }
-            else
-            {
-                //Player.Play("TakeDamage");
-            }
         }
 
         private float HealthPlayer 

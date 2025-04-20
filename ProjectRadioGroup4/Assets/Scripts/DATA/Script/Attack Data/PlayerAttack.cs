@@ -42,10 +42,8 @@ namespace DATA.Script.Attack_Data
         }
         
         [field:Header("Concern only for Post Zero"),SerializeField] public float DamageBomb { get; private set; }
-        [field:Header("Concern only for Post Zero"),SerializeField] public float DamageBombBonus { get; private set; }
         
         [field: Header("Attack Player"),SerializeField] public AttackClassic AttackP { get; private set; }
-        //[Header("Use only if its ")]
 
         public PlayerAttackInstance Instance()
         {
@@ -57,13 +55,13 @@ namespace DATA.Script.Attack_Data
     public class PlayerAttackInstance
     {
         public PlayerAttack.AttackClassic attack;
-        public bool deadZone;
         public float damageBomb;
-        public float damageBombBonus;
+        
         
         public PlayerAttackInstance(PlayerAttack data)
         {
             attack = data.AttackP;
+            damageBomb = data.DamageBomb;
         }
 
         public void ProcessAttackEffect()
@@ -73,14 +71,13 @@ namespace DATA.Script.Attack_Data
                 Debug.LogError("No FighManager or PlayerController instances were Found");
                 return;
             }
-
             PlayerController player = PlayerController.instance;
             
             //SECOND CONDITION IS ALWAYS OUTFIGHT LOGIC
             switch (attack.attackEffect)
             {
                 case PlayerAttack.AttackEffect.Skylight:
-                    if (FightManager.instance.fightState == FightManager.FightState.InFight)
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
                         player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance
                             .flashed = true;
@@ -98,7 +95,7 @@ namespace DATA.Script.Attack_Data
                 case PlayerAttack.AttackEffect.SilenceRadio:
                     break;
                 case PlayerAttack.AttackEffect.PostZero:
-                    if (FightManager.instance.fightState == FightManager.FightState.InFight)
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
                         var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
                         enemySelectedData.postZeroDeal.postZeroBomb = true;
@@ -111,6 +108,31 @@ namespace DATA.Script.Attack_Data
                 case PlayerAttack.AttackEffect.CherieBomb:
                     break;
                 case PlayerAttack.AttackEffect.Enigma:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void CancelEffectWhenEnterFight() // always FM for exploration impact
+        {
+            if (PlayerController.instance == null || PlayerController.instance.selectedAttack == null)
+            {
+                return;
+            }
+            
+            PlayerController player = PlayerController.instance;
+            
+            switch (attack.attackEffect)
+            {
+                case PlayerAttack.AttackEffect.Skylight:
+                    player.lampTorch.intensity = 0;
+                    break;
+                case PlayerAttack.AttackEffect.LeGrosBouclier:
+                    break;
+                case PlayerAttack.AttackEffect.ClassiqueEcho:
+                    break;
+                case PlayerAttack.AttackEffect.SilenceRadio:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -1,0 +1,58 @@
+using System;
+using MANAGER;
+using UnityEngine;
+
+namespace Controller
+{
+    public class BatteryPlayer : MonoBehaviour
+    {
+        private PlayerController player;
+        private float _timer;
+        [SerializeField] private float batteryCheckInterval = 1f;
+
+        private void Start()
+        {
+            player = PlayerController.instance;
+
+            if (player == null)
+            {
+                Debug.LogWarning("No Player Controller instance was found");
+            }
+        }
+
+        private void Update()
+        {
+            TickBatteryTimer();
+        }
+
+        private void TickBatteryTimer()
+        {
+            if (!CanConsumeBattery()) return;
+
+            _timer += Time.deltaTime;
+
+            if (!(_timer >= batteryCheckInterval)) return;
+            _timer = 0f;
+            ApplyBatteryCost();
+        }
+
+        private bool CanConsumeBattery()
+        {
+            return player != null
+                   && player.selectedAttack != null
+                   && FightManager.instance != null
+                   && FightManager.instance.fightState != FightManager.FightState.InFight;
+        }
+
+        private void ApplyBatteryCost()
+        {
+            float cost = player.selectedAttack.attack.costBattery;
+
+            if (cost <= 0f) return;
+
+            player.ManageLife(-cost);
+
+            Debug.Log($" -{cost} batterie consommée pour l'attaque : {player.selectedAttack.attack.name}");
+        }
+    }
+}

@@ -25,8 +25,8 @@ namespace AI
             InFight,
             OutFight
         }
-        
-        public enum TypeOfAi
+
+        private enum TypeOfAi
         {
             AlwaysAttack, //no logic behind
             SmartAi, // With thought process
@@ -37,12 +37,6 @@ namespace AI
         {
             AiShift();
             AiBehavior();
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _abstractEntityDataInstance.battery += 10;
-                Debug.Log(_abstractEntityDataInstance.battery.ToString());
-            }
         }
 
         public float PvEnemy
@@ -51,32 +45,63 @@ namespace AI
             set
             {
                 _abstractEntityDataInstance.hp = value;
-                
+
                 if (_abstractEntityDataInstance.IsDead())
                 {
-                    if (_abstractEntityDataInstance.postZeroDeal.postZeroBomb)
-                    {
-                        foreach (AbstractEntityDataInstance enemies in FightManager.instance.listOfJustEnemiesAlive)
-                        {
-                            enemies.hp -= _abstractEntityDataInstance.postZeroDeal.damageStockForAfterDeath;
-                        }
-                    }
-                    RadioController.instance.listOfEveryEnemy.Remove(this);
-                    try
-                    {
-                        RadioController.instance.listOfDetectedEnemy.Remove(this);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
-                    Destroy(gameObject);
-                    return;
+                    HandleDeath();
                 }
-                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                else
+                {
+                    RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                }
             }
         }
+
+        #region Relier a PvEnemy pour moins profondeur ducoup plus de lisibilité
+
+        private void HandleDeath()
+        {
+            TryPostZeroBombEffect();
+
+            RadioController.instance.listOfEveryEnemy.Remove(this);
+    
+            TryRemoveFromDetectedList();
+
+            Destroy(gameObject);
+        }
+
+        private void TryPostZeroBombEffect()
+        {
+            if (!_abstractEntityDataInstance.postZeroDeal.postZeroBomb) return;
+            _abstractEntityDataInstance.postZeroDeal.postZeroBomb = false;
+            Debug.Log("Caboum");
+            foreach (AbstractEntityDataInstance enemyInstance in FightManager.instance.listOfJustEnemiesAlive)
+            {
+                AbstractAI enemyAI = enemyInstance.entity.GetComponent<AbstractAI>();
+                if (enemyAI != null)
+                {
+                    enemyAI.PvEnemy -= _abstractEntityDataInstance.postZeroDeal.damageStockForAfterDeath;
+                }
+            }
+
+            
+        }
+
+        private void TryRemoveFromDetectedList()
+        {
+            try
+            {
+                RadioController.instance.listOfDetectedEnemy.Remove(this);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        #endregion
+        
 
         protected abstract void AiShift();
 

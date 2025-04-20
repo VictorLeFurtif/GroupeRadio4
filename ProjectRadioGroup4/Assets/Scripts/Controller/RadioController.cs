@@ -183,7 +183,7 @@ namespace Controller
                 PlayerController.instance.lampTorch.intensity = 0;
             }
             
-            if (PlayerController.instance.selectedAttack != null)
+            if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
             {
                 PlayerController.instance.selectedAttack.ProcessAttackEffect();
             }
