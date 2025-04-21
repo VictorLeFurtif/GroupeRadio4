@@ -13,20 +13,15 @@ namespace MANAGER
     public class FightManager : MonoBehaviour
     {
         public static FightManager instance;
-    /*
-        [field: Header("Links")]
-        [SerializeField]
-        private TextMeshProUGUI unitTurnText;
-        [SerializeField]
-        private TextMeshProUGUI numberOfUnitText;
-    */
+    
         [field: Header("Specific To Project - WIP")]
         private int numberOfEnemies;
         private int numberOfPlayer;
     
         [Header("List Parameters")]
-        [SerializeField] private List<AbstractEntityDataInstance> currentOrder;
-        [SerializeField] private List<AbstractEntityDataInstance> fighterAlive;
+        public List<AbstractEntityDataInstance> currentOrder;
+        public List<AbstractEntityDataInstance> fighterAlive;
+        public List<AbstractEntityDataInstance> listOfJustEnemiesAlive;
  
         [Header("StateMachine")]
         public FightState fightState = FightState.OutFight;
@@ -38,6 +33,10 @@ namespace MANAGER
 
         [Header("Check for enemy in range of Player")] [SerializeField]
         private float rangeDetectEnemy;
+        
+        private AbstractEntityDataInstance currentFighter;
+
+        [SerializeField] private FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
         private void Awake()
         {
@@ -47,11 +46,24 @@ namespace MANAGER
             player = PlayerController.instance;
             radio = RadioController.instance;
         }
-
-        public enum FightState // temporaire
+        
+        public enum FightAdvantage
+        {
+            Advantage,
+            Disadvantage,
+            Neutral,
+        }
+        
+        public enum FightState 
         {
             OutFight,
             InFight
+        }
+        
+        public enum TurnState
+        {
+            Turn,
+            NoTurn,
         }
 
         private void UpdateListOfFighter() //call after each endTurn
@@ -59,48 +71,97 @@ namespace MANAGER
             CheckForDeadsFighter();
         }
 
-        private void EndFighterTurn() //take out fighter from list
+        public void EndFighterTurn() //take out fighter from list
         {
-            UpdateListOfFighter();
-            
-            if (currentOrder.Count != 0)
+            if (currentFighter != null)
             {
-                currentOrder.RemoveAt(0);
+                currentFighter.turnState = TurnState.NoTurn; 
             }
-            else
+            
+            UpdateListOfFighter();
+    
+            currentOrder.RemoveAt(0);
+
+            if (currentOrder.Count == 0)
             {
                 numberOfTurn++;
                 currentOrder.AddRange(fighterAlive);
             }
 
+
+            CheckForEndFight();
             StartUnitTurn();
         }
 
         public void InitialiseList() // detect every enemy in a rayon
         {
-            Debug.Log("Initialise");
+            
             if (player == null)
             {
                 return;
             }
+            
+            bool hasAdvantage = false;
+            bool hasDisadvantage = false;
 
             foreach (AbstractAI fighter in radio.listOfEveryEnemy)
             {
-                if (Math.Abs(fighter.gameObject.transform.position.x - player.transform.position.x) < rangeDetectEnemy)
+                if (!(Mathf.Abs(fighter.transform.position.x - player.transform.position.x) < rangeDetectEnemy)) continue;
+
+                currentOrder.Add(fighter._abstractEntityDataInstance);
+                fighter._aiFightState = AbstractAI.AiFightState.InFight;
+
+                if (!fighter._abstractEntityDataInstance.reveal && !fighter._abstractEntityDataInstance.seenByRadio)
                 {
-                    currentOrder.Add(fighter._abstractEntityDataInstance);  
+                    hasDisadvantage = true;
+                }
+                else if (fighter._abstractEntityDataInstance.seenByRadio && fighter._abstractEntityDataInstance.reveal)
+                {
+                    hasAdvantage = true;
                 }
             }
+
+            if (hasDisadvantage)
+            {
+                currentFightAdvantage = FightAdvantage.Disadvantage;
+            }
+            else if (hasAdvantage)
+            {
+                currentFightAdvantage = FightAdvantage.Advantage;
+            }
+            else
+            {
+                currentFightAdvantage = FightAdvantage.Neutral;
+            }
+            
+            Debug.Log(currentFightAdvantage);
+
+            listOfJustEnemiesAlive.AddRange(currentOrder);
+            
+            // Sort en fonction de la distance avec le player pour que les ampoules soit plus logique
+            
+            listOfJustEnemiesAlive.Sort((x, y) =>
+                Vector3.Distance(PlayerController.instance.transform.position, x.entity.transform.position)
+                    .CompareTo(
+                        Vector3.Distance(PlayerController.instance.transform.position, y.entity.transform.position)));
+
+            
             currentOrder.Add(player._abstractEntityDataInstance);
         
-            currentOrder.Sort((x, y) => x.speed.CompareTo(y.speed));
+            currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
+
             fighterAlive = new List<AbstractEntityDataInstance>(currentOrder); 
+            
+            StartUnitTurn();
+            
+            RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
         {
             fighterAlive.RemoveAll(fighter => fighter.IsDead());
             currentOrder.RemoveAll(fighter => fighter.IsDead());
+            listOfJustEnemiesAlive.RemoveAll(fighter => fighter.IsDead());
         }
 
         private void CheckForEndFight() //Check if player Dead or if every enemy Dead in ListAlive
@@ -108,26 +169,42 @@ namespace MANAGER
             if (fighterAlive.Count == 1 && fighterAlive[0] == player._abstractEntityDataInstance)
             {
                 Debug.Log("Player win");
+                PlayerController.instance._abstractEntityDataInstance.turnState = TurnState.NoTurn;
+                ResetFightManagerAfterFight();
+                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
                 Debug.Log("IA win");
+                ResetFightManagerAfterFight();
             }
             else
             {
                 Debug.Log("Nobody won");
             }
-
         }
     
         private void StartUnitTurn()
         {
+            if (currentOrder.Count > 0)
+            {
+                currentFighter = currentOrder[0]; 
+                currentFighter.turnState = TurnState.Turn; 
+            }
+    
             UpdateUI();
         }
 
         private void UpdateUI()
         {
         
+        }
+
+        private void ResetFightManagerAfterFight()
+        {
+            currentOrder.Clear();
+            fighterAlive.Clear();
+            fightState = FightState.OutFight;
         }
     }
 }

@@ -1,0 +1,312 @@
+fileFormatVersion: 2
+guid: 24dc71bb77eaa4f42b0440eebeb9b0a6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 33
+        width: 149
+        height: 253
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f9f92949648d844b40bdda37f73d6e
+      internalID: 710496675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_1
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 38
+        width: 153
+        height: 248
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbec414766c627e459acd19d0d6045f7
+      internalID: 2118055488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_2
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 38
+        width: 223
+        height: 248
+      alignment: 9
+      pivot: {x: 0.39951137, y: 0.004517909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ed5a0e496c9c84e8b47f95b371aae5
+      internalID: 2035784564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_3
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 38
+        width: 265
+        height: 248
+      alignment: 9
+      pivot: {x: 0.3224197, y: 0.01658072}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a99b2ba001fe5c449304f6fc63342b8
+      internalID: 702012482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_4
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 39
+        width: 204
+        height: 247
+      alignment: 9
+      pivot: {x: 0.40662968, y: 0.018144956}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0244fb3ceb82649439e37fa749ee5a50
+      internalID: 2028837637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_5
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 39
+        width: 199
+        height: 239
+      alignment: 9
+      pivot: {x: 0.3705012, y: 0.0030648618}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9ada8876c525249a52134cbfb5e477
+      internalID: -72622125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_6
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 38
+        width: 184
+        height: 248
+      alignment: 9
+      pivot: {x: 0.5, y: 0.034652464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8261fb9778db6cf41bc93f8e3a847e0e
+      internalID: -832158103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_7
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 38
+        width: 182
+        height: 245
+      alignment: 9
+      pivot: {x: 0.43228117, y: 0.03352761}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4906d0c3263eea943909aa4eefdc7156
+      internalID: -510855833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test anim ivanov tir lineup_8
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 39
+        width: 199
+        height: 247
+      alignment: 9
+      pivot: {x: 0.40991396, y: 0.032768637}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f0973b3150fac9478609916c44d499e
+      internalID: -1563104329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      test anim ivanov tir lineup_0: 710496675
+      test anim ivanov tir lineup_1: 2118055488
+      test anim ivanov tir lineup_2: 2035784564
+      test anim ivanov tir lineup_3: 702012482
+      test anim ivanov tir lineup_4: 2028837637
+      test anim ivanov tir lineup_5: -72622125
+      test anim ivanov tir lineup_6: -832158103
+      test anim ivanov tir lineup_7: -510855833
+      test anim ivanov tir lineup_8: -1563104329
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

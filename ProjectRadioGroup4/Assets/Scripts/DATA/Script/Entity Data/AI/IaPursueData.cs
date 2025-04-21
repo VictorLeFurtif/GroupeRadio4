@@ -1,37 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
-using DATA.Script.Entity_Data.AI;
-using DATA.ScriptData.Entity_Data;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObject/AiPursueData", fileName = "data")]
-public class IaPursueData : AbstractEntityData
+namespace DATA.Script.Entity_Data.AI
 {
-    [field: Header("Range Sight"), SerializeField]
-    public int RangeSight { get; private set; }
-    
-    [field: Header("Move Speed"), SerializeField]
-    public float MoveSpeed { get; private set; }
-    
-    [field: Header("Range Sight after Seeing Player"), SerializeField]
-    public int RangeSightAsp { get; private set; }
-
-    public override AbstractEntityDataInstance Instance()
+    [CreateAssetMenu(menuName = "ScriptableObject/AiPursueData", fileName = "data")]
+    public class IaPursueData : AbstractEntityData
     {
-        return new IaPursueDataInstance(this);
+        [field: Header("Range Sight"), SerializeField]
+        public int RangeSight { get; private set; }
+    
+        [field: Header("Move Speed"), SerializeField]
+        public float MoveSpeed { get; private set; }
+    
+        [field: Header("Range Sight after Seeing Player"), SerializeField]
+        public int RangeSightAsp { get; private set; }
+
+        public override AbstractEntityDataInstance Instance(GameObject entity)
+        {
+            return new IaPursueDataInstance(this,entity);
+        }
     }
-}
 
-public class IaPursueDataInstance : AbstractEntityDataInstance
-{
-    public int rangeSight;
-    public float moveSpeed;
-    public int rangeSightAsp;
-    
-    public IaPursueDataInstance(IaPursueData data) : base(data)
+    public class IaPursueDataInstance : AbstractEntityDataInstance
     {
-        rangeSight = data.RangeSight;
-        moveSpeed = data.MoveSpeed;
-        rangeSightAsp = data.RangeSightAsp;
+        public int rangeSight;
+        public float moveSpeed;
+        public int rangeSightAsp;
+    
+        public IaPursueDataInstance(IaPursueData data, GameObject entity) : base(data,entity)
+        {
+            rangeSight = data.RangeSight;
+            moveSpeed = data.MoveSpeed;
+            rangeSightAsp = data.RangeSightAsp;
+        }
     }
 }

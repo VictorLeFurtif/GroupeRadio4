@@ -1,7 +1,15 @@
+using System;
+using System.Collections.Generic;
+using AI;
+using DATA.Script.Attack_Data;
 using DATA.Script.Entity_Data.AI;
 using DATA.ScriptData.Entity_Data;
 using MANAGER;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
+using Slider = UnityEngine.UI.Slider;
 
 namespace Controller
 {
@@ -19,14 +27,40 @@ namespace Controller
         [SerializeField]
         private AbstractEntityData _abstractEntityData;
         public AbstractEntityDataInstance _abstractEntityDataInstance;
-        private PlayerDataInstance _inGameData; 
-    
-        public enum PlayerState
+        private PlayerDataInstance _inGameData;
+
+        public SpriteRenderer spriteRendererPlayer;
+
+        [Header("UI")]
+        [SerializeField] private GameObject playerFightCanva;
+
+        [Header("Selected Fighter")] public GameObject selectedEnemy;
+
+        [Header("Attacks Player")] [SerializeField] private List<PlayerAttack> listOfPlayerAttack;
+        
+        public List<PlayerAttackInstance> listOfPlayerAttackInstance = new List<PlayerAttackInstance>();
+
+        public PlayerAttackInstance selectedAttack;
+
+        [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
+        public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
+        
+        public enum PlayerStateAnimation
         {
             Idle,
             Running,
             Walking,
-            Dead
+            Dead,
+            FmExploration,
+            AmExploration,
+            TakingDamage,
+            Attacking,
+        }
+
+        public enum PlayerStateExploration
+        {
+            Exploration,
+            Guessing,
         }
     
         private void Awake()
@@ -42,43 +76,147 @@ namespace Controller
                 Destroy(gameObject);
             }
 
-            _abstractEntityDataInstance = _abstractEntityData.Instance(); 
+            _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject); 
             _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
         
             rb.interpolation = RigidbodyInterpolation2D.Interpolate; // pour fix le bug lié à la caméra qui faisait trembler le perso
+            spriteRendererPlayer = GetComponent<SpriteRenderer>();
         }
 
-        public void ManageLife(int valueLifeChanger)
+        public void ManageLife(float valueLifeChanger)
         {
             HealthPlayer += valueLifeChanger;
         }
 
-        private int HealthPlayer 
+        private float HealthPlayer 
         {
-            get => _inGameData.hp;
-
+            get => _inGameData != null ? _inGameData.hp : 0f;
             set
             {
-                _inGameData.hp = value;
+                if (_inGameData == null)
+                {
+                    Debug.LogError(" _inGameData est NULL !");
+                    return;
+                }
+
+                _inGameData.hp = Mathf.Max(0, value); 
+                Debug.Log(_inGameData.hp);
                 if (_inGameData.IsDead())
                 {
                     GameManager.instance.GameOver();
-                    //They lose
                 }
             }
         }
+
     
+        /// <summary>
+        /// Temporary shity Update
+        /// </summary>
+        
         private void Update()
         {
             PlayerMove();
+            CheckForFlipX();
+            ManageFight();
         }
 
+        private void Start()
+        {
+            InitializeListOfAttackPlayer();
+        }
+        
         private void PlayerMove()
         {
-            if (FightManager.instance.fightState != FightManager.FightState.OutFight) return;
+            if (FightManager.instance.fightState != FightManager.FightState.OutFight)
+            {
+                rb.velocity = new Vector2(0,0);
+                return;
+            }
             var x = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
+        }
 
+        private bool wasFacingLeft = false; //bool pour stock là où il regardait
+
+        private void CheckForFlipX()
+        {
+            if (Mathf.Abs(rb.velocity.x) > 0.1f)
+            {
+                wasFacingLeft = rb.velocity.x < 0;
+            }
+            spriteRendererPlayer.flipX = wasFacingLeft;
+        }
+
+        private void ManageFight() //temporary
+        {
+            playerFightCanva.SetActive(_inGameData.turnState == FightManager.TurnState.Turn);
+        }
+
+        public void KillInstantEnemy()
+        {
+            if (selectedEnemy == null ) 
+            { 
+                return;
+            }
+            selectedEnemy.GetComponent<AbstractAI>().PvEnemy = -5;
+            FightManager.instance.EndFighterTurn();
+        }
+
+        private void InitializeListOfAttackPlayer()
+        {
+            foreach (PlayerAttack attack in listOfPlayerAttack)
+            {
+                listOfPlayerAttackInstance.Add(attack.Instance());
+            }
+        }
+
+        [SerializeField]
+        private float epsilonValidationOscillation;
+        
+        public void ValidButton()
+        {
+            if (currentPlayerExplorationState == PlayerStateExploration.Guessing &&
+                FightManager.instance.fightState == FightManager.FightState.OutFight) //HORS FIGHT DC EXPLO
+            {
+                if (!(Mathf.Abs(RadioController.instance.sliderOscillationPlayer.value - 
+                    RadioController.instance.matRadioEnemy.GetFloat("_waves_Amp")) 
+                 < epsilonValidationOscillation))
+                {
+                    return;
+                }
+                RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
+                    ._abstractEntityDataInstance.reveal = true;
+                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+            }
+
+            if (FightManager.instance.fightState == FightManager.FightState.InFight &&
+                _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
+                selectedAttack != null && selectedEnemy != null)
+            {
+                Debug.Log("Attaque Logic");
+                
+                PlayerAttack.AttackClassic attackData = selectedAttack.attack;
+                float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
+                float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
+
+                
+                float finalDamage = attackData.damageMaxBonus * ratio + attackData.damage;
+                float currentOverloadChance = attackData.chanceOfOverload * ratio;
+                
+                bool isOverload = Random.Range(0f, 100f) <= currentOverloadChance;
+                
+                if (isOverload)
+                {
+                    Debug.Log("OVERLOAD déclenché ");
+                    //Add damage against player
+                    FightManager.instance.EndFighterTurn();
+                    return;
+                }
+                selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
+                Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
+                FightManager.instance.EndFighterTurn();
+            }
+            
         }
     }
 }
