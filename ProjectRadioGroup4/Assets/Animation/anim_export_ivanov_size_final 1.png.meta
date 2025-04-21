@@ -1,0 +1,334 @@
+fileFormatVersion: 2
+guid: 5b3de8ffcce9d694290263941e9e81c1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_0
+      rect:
+        serializedVersion: 2
+        x: 1482
+        y: 411
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: addfb14e4beec2846aca8970b5e5acb6
+      internalID: 2045596275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_1
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 149
+        width: 185
+        height: 234
+      alignment: 9
+      pivot: {x: 0.4273223, y: 0.006811093}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2195f8c54eefa4c9d58dc219ed28b0
+      internalID: -1033249756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_2
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 274
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62bc35842c24196478dec03e42856847
+      internalID: -1505108005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_3
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 131
+        width: 190
+        height: 233
+      alignment: 9
+      pivot: {x: 0.40564656, y: 0.0046945335}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dccbaafef06bf341aa6c22f61c17f7c
+      internalID: -1288640607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_4
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 134
+        width: 177
+        height: 226
+      alignment: 9
+      pivot: {x: 0.20881024, y: 0.004226482}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd966f8ed8d572f409b6f73a4eeafa9c
+      internalID: 281543354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_5
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 133
+        width: 188
+        height: 242
+      alignment: 9
+      pivot: {x: 0.39272323, y: 0.0045952285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 173cb875497295141983c945576692b0
+      internalID: 1749626305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_6
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 152
+        width: 192
+        height: 228
+      alignment: 9
+      pivot: {x: 0.41830125, y: 0.0036609718}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb31df781a4eb3546a0098b23096b7de
+      internalID: -913103645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_7
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 132
+        width: 195
+        height: 239
+      alignment: 9
+      pivot: {x: 0.43679574, y: -0.0016233053}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3da66fd9b324748b3d05aaa4aa81e7
+      internalID: -1114114013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_8
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 134
+        width: 172
+        height: 230
+      alignment: 9
+      pivot: {x: 0.18731761, y: 0.012848497}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b4facb1488cf1458dd1fdd1dbaa60f
+      internalID: -2050652497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_export_ivanov_size_final 1_9
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 132
+        width: 191
+        height: 240
+      alignment: 9
+      pivot: {x: 0.43547145, y: 0.005135218}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f65f301a2d7b67428e4219f6218acd3
+      internalID: -1715734087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      anim_export_ivanov_size_final 1_0: 2045596275
+      anim_export_ivanov_size_final 1_1: -1033249756
+      anim_export_ivanov_size_final 1_2: -1505108005
+      anim_export_ivanov_size_final 1_3: -1288640607
+      anim_export_ivanov_size_final 1_4: 281543354
+      anim_export_ivanov_size_final 1_5: 1749626305
+      anim_export_ivanov_size_final 1_6: -913103645
+      anim_export_ivanov_size_final 1_7: -1114114013
+      anim_export_ivanov_size_final 1_8: -2050652497
+      anim_export_ivanov_size_final 1_9: -1715734087
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
