@@ -1,3 +1,4 @@
+using System;
 using DATA.Script.Entity_Data.AI;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ namespace DATA.Script.Entity_Data.Player
         
         [field: Header("Animation Am"), SerializeField]
         public Animation AmAnimation{ get; private set; }
+        
+        [field: Header("Boolean pour activer désactiver le gros bouclier"),SerializeField]
+        public bool GrosBouclier { get; private set; }
 
         public override AbstractEntityDataInstance Instance(GameObject entity)
         {
@@ -24,12 +28,14 @@ namespace DATA.Script.Entity_Data.Player
         }
     }
 
+    [Serializable]
     public class PlayerDataInstance : AbstractEntityDataInstance
     {
         public int moveSpeed;
         public readonly Animation takeDamageAnimation;
         public readonly Animation fmAnimation;
         public readonly Animation amAnimation;
+        public bool grosBouclier;
 
         public PlayerDataInstance(PlayerData data,GameObject entity) : base(data,entity)
         {
@@ -37,6 +43,7 @@ namespace DATA.Script.Entity_Data.Player
             takeDamageAnimation = data.TakeDamageAnimationPlayer;
             fmAnimation = data.FmAnimation;
             amAnimation = data.AmAnimation;
+            grosBouclier = data.GrosBouclier;
         }
     
     }

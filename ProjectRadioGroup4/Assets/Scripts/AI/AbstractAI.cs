@@ -18,6 +18,8 @@ namespace AI
         
         private SpriteRenderer enemySpriteRenderer;
         
+        private Collider2D myCollider;
+        
         [SerializeField] private TypeOfAi aiType;
 
         public enum AiFightState
@@ -108,6 +110,7 @@ namespace AI
         private void Start()
         {
             Init();
+            myCollider = GetComponent<Collider2D>();
         }
 
         protected virtual void Init()
@@ -120,6 +123,12 @@ namespace AI
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.CompareTag("Shield"))
+            {
+                Physics2D.IgnoreCollision(myCollider, other, true);
+                return;
+            }
+            
             // no need to implement virtual/override because in each type of ai the trigger will launch the FightManager
             if (!other.CompareTag("Player") || _aiFightState == AiFightState.InFight) return;
             _aiFightState = AiFightState.InFight;
@@ -210,7 +219,7 @@ namespace AI
             }
 
             bool isLowBattery = !_abstractEntityDataInstance.IsBatteryEqualOrMoreThanFifty();
-            float healthPercentage = (float)PvEnemy / _abstractEntityData.Hp;
+            float healthPercentage = PvEnemy / _abstractEntityData.Hp;
 
             if (isLowBattery)
             {
@@ -298,6 +307,15 @@ namespace AI
         }
         private void ClassicAttack(float _damageDeal, float _batteryGain,string _attackName)
         {
+            if (PlayerController.instance._inGameData.grosBouclier)
+            {
+                float damageEnemy = _damageDeal / 2;
+                PlayerController.instance.ManageLife(damageEnemy);
+                _abstractEntityDataInstance.battery += _batteryGain;
+                Debug.Log(_attackName);
+                return;
+            }
+            
             PlayerController.instance.ManageLife(_damageDeal);
             _abstractEntityDataInstance.battery += _batteryGain;
             Debug.Log(_attackName);

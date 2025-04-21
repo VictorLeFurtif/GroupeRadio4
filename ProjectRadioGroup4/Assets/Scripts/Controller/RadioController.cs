@@ -181,6 +181,7 @@ namespace Controller
             if (PlayerController.instance != null)
             {
                 PlayerController.instance.lampTorch.intensity = 0;
+                PlayerController.instance.tag = "Player";
             }
             
             if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)

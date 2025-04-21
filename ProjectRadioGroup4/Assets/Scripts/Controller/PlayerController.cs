@@ -184,6 +184,11 @@ namespace Controller
         
         public void ValidButton()
         {
+            if (_inGameData.grosBouclier)
+            {
+                _inGameData.grosBouclier = false;
+            }
+            
             if (currentPlayerExplorationState == PlayerStateExploration.Guessing &&
                 FightManager.instance.fightState == FightManager.FightState.OutFight) //HORS FIGHT DC EXPLO
             {

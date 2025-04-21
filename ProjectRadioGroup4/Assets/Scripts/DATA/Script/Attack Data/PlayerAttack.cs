@@ -89,6 +89,14 @@ namespace DATA.Script.Attack_Data
 
                     break;
                 case PlayerAttack.AttackEffect.LeGrosBouclier:
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
+                    {
+                        player._inGameData.grosBouclier = true;
+                    }
+                    else if (FightManager.instance.fightState == FightManager.FightState.OutFight)
+                    {
+                        player.tag = "Shield";
+                    }
                     break;
                 case PlayerAttack.AttackEffect.ClassiqueEcho:
                     break;
@@ -100,7 +108,6 @@ namespace DATA.Script.Attack_Data
                         var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
                         enemySelectedData.postZeroDeal.postZeroBomb = true;
                         enemySelectedData.postZeroDeal.damageStockForAfterDeath = damageBomb;
-
                     }
                     break;
                 case PlayerAttack.AttackEffect.DeadHandSignal:
@@ -129,6 +136,7 @@ namespace DATA.Script.Attack_Data
                     player.lampTorch.intensity = 0;
                     break;
                 case PlayerAttack.AttackEffect.LeGrosBouclier:
+                    player.tag = "PLayer";
                     break;
                 case PlayerAttack.AttackEffect.ClassiqueEcho:
                     break;
