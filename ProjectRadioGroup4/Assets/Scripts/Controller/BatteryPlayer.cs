@@ -37,7 +37,7 @@ namespace Controller
                 Debug.LogWarning("No PlayerController Was Found");
                 return;
             }
-            lifeText.text = PlayerController.instance._abstractEntityDataInstance.hp.ToString(CultureInfo.InvariantCulture);
+            lifeText.text = PlayerController.instance._abstractEntityDataInstance.hp.ToString(CultureInfo.InvariantCulture) + "%";
         }
         
         private void TickBatteryTimer()
@@ -61,7 +61,7 @@ namespace Controller
 
         private void ApplyBatteryCost()
         {
-            float cost = player.selectedAttack.attack.costBattery;
+            float cost = player.selectedAttack.attack.costBatteryExploration;
 
             if (cost <= 0f) return;
 

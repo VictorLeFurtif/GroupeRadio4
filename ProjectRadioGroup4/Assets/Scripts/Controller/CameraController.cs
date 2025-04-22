@@ -53,29 +53,46 @@ namespace Controller
         
         private void FollowCombatView()
         {
-            if (FightManager.instance.listOfJustEnemiesAlive.Count == 0)
+            if (FightManager.instance == null || 
+                FightManager.instance.listOfJustEnemiesAlive.Count == 0 || 
+                PlayerController.instance == null )
             {
-                FollowPlayer(); 
+                FollowPlayer();
+                return;
+            }
+
+            var lastEnemyWrapper = FightManager.instance.listOfJustEnemiesAlive[^1];
+            
+            if (lastEnemyWrapper == null || lastEnemyWrapper.entity == null)
+            {
+                FollowPlayer();
                 return;
             }
 
             Transform playerTransform = PlayerController.instance.transform;
-            Transform lastEnemyTransform = FightManager.instance.listOfJustEnemiesAlive[^1].entity.transform;
+            Transform lastEnemyTransform = lastEnemyWrapper.entity.transform;
+
+            if (lastEnemyTransform == null)
+            {
+                FollowPlayer();
+                return;
+            }
 
             Vector3 middlePoint = (playerTransform.position + lastEnemyTransform.position) / 2f;
 
             if (FightManager.instance.currentOrder != null && FightManager.instance.currentOrder.Count > 0)
             {
-                Transform currentFighter = FightManager.instance.currentOrder[0].entity?.transform;
-                if (currentFighter != null)
+                var firstInOrder = FightManager.instance.currentOrder[0];
+                if (firstInOrder != null && firstInOrder.entity != null && firstInOrder.entity.transform != null)
                 {
-                    middlePoint = Vector3.Lerp(middlePoint, currentFighter.position, 0.25f);
+                    middlePoint = Vector3.Lerp(middlePoint, firstInOrder.entity.transform.position, 0.25f);
                 }
             }
-            
+
             Vector3 targetPosition = middlePoint + offSett;
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition + shakeOffset, ref velocity, smoothTime);
         }
+
 
 
         private void LateUpdate()

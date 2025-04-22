@@ -103,15 +103,18 @@ namespace Controller
                     return;
                 }
                 
-                _inGameData.hp = Mathf.Max(0, value); 
+                _inGameData.hp = Mathf.Max(0, value);
+                
                 if (_inGameData.IsDead())
                 {
                     canMove = false;
                     rb.velocity = Vector2.zero;
                     //animatorPlayer.Play("Death");
                     GameManager.instance.GameOver();
+                    return;
                 }
                 playerBattery.UpdateLifeText();
+                animatorPlayer.Play("HitReceived");
             }
         }
 
@@ -239,12 +242,12 @@ namespace Controller
                 }
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
+                
                 selectedAttack.ProcessAttackEffect(finalDamage);
                 
-                animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "test anim attaque" : "anime attaque spé");
+                animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
             }
-            
         }
         
         public void EndFighterTurnForPlayer()

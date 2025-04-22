@@ -287,9 +287,7 @@ namespace Controller
                 return;
             }
             
-            PlayerController.instance.animatorPlayer.Play("AmAttack");
-            var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
-            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
+            PlayerController.instance.animatorPlayer.Play("ScanbeforePlayer");
             
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
@@ -370,9 +368,7 @@ namespace Controller
                 return;
             }
             
-            //PlayerController.instance.animatorPlayer.Play("FmAttack");
-            var timeCantMove = PlayerController.instance._inGameData.fmAnimation.clip.length;
-            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
+            PlayerController.instance.animatorPlayer.Play("ScanAround");
             
             int cpt = 0;
             listOfDetectedEnemy.Clear();
@@ -410,45 +406,67 @@ namespace Controller
             matRadioEnemy.SetFloat("_waves_Amp", 0);
         }
     
+        private Coroutine transitionCoroutine;
+
         public void UpdateRadioEnemyWithLight(int index)
         {
+            if (transitionCoroutine != null)
+                StopCoroutine(transitionCoroutine);
+
             if (FightManager.instance.fightState == FightManager.FightState.OutFight)
             {
-                if (listOfDetectedEnemy.Count - 1 < index)
+                if (listOfDetectedEnemy.Count - 1 < index || listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal)
                 {
-                    InitializeRadioEnemy();
+                    transitionCoroutine = StartCoroutine(SmoothTransitionRadio(0f, 0f));
                     return;
                 }
 
-                if (listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal) // cant add it in the block on top because dependencies with a Singleton
-                {
-                    InitializeRadioEnemy();
-                    return;
-                }
-        
-                float waveAmp = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveAmplitudeEnemy;
-                float waveFre = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveFrequency;
-        
-                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
-                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+                var enemy = listOfDetectedEnemy[index]._abstractEntityDataInstance;
+                transitionCoroutine = StartCoroutine(SmoothTransitionRadio(enemy.waveFrequency, enemy.waveAmplitudeEnemy));
             }
-            
-            if (FightManager.instance.fightState == FightManager.FightState.InFight)
+            else if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 if (FightManager.instance.listOfJustEnemiesAlive.Count - 1 < index)
                 {
-                    InitializeRadioEnemy();
+                    transitionCoroutine = StartCoroutine(SmoothTransitionRadio(0f, 0f));
                     return;
                 }
-                
-                AbstractEntityDataInstance enemy = FightManager.instance.listOfJustEnemiesAlive[index];
-                float waveAmp = (enemy.hp / enemy.maxHp) * 0.4f; //TODO in future change magic number
-                float waveFre = enemy.waveFrequency;
-        
-                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
-                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+
+                var enemy = FightManager.instance.listOfJustEnemiesAlive[index];
+                float amp = (enemy.hp / enemy.maxHp) * 0.4f;
+                float freq = enemy.waveFrequency;
+                transitionCoroutine = StartCoroutine(SmoothTransitionRadio(freq, amp));
             }
         }
+
+
+        [SerializeField]
+        private float durationTimeLerpRadio;
+        private IEnumerator SmoothTransitionRadio(float targetFreq, float targetAmp)
+        {
+            float elapsed = 0f;
+
+            float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
+            float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
+
+            while (elapsed < durationTimeLerpRadio)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / durationTimeLerpRadio;
+
+                float currentFreq = Mathf.Lerp(startFreq, targetFreq, t);
+                float currentAmp = Mathf.Lerp(startAmp, targetAmp, t);
+
+                matRadioEnemy.SetFloat("_waves_Amount", currentFreq);
+                matRadioEnemy.SetFloat("_waves_Amp", currentAmp);
+
+                yield return null;
+            }
+
+            matRadioEnemy.SetFloat("_waves_Amount", targetFreq);
+            matRadioEnemy.SetFloat("_waves_Amp", targetAmp);
+        }
+
     
         void OnDrawGizmos()
         {

@@ -38,7 +38,9 @@ namespace DATA.Script.Attack_Data
             public AttackEffect attackEffect;
             public float indexFrequency;
             public AttackState attackState;
-            public float costBattery;
+            public float costBatteryExploration;
+            public float costBatteryInFightMax;
+            public float costBatteryInFight;
         }
         
         [field:Header("Concern only for Post Zero"),SerializeField] public float DamageBomb { get; private set; }
@@ -86,7 +88,6 @@ namespace DATA.Script.Attack_Data
                     {
                         player.lampTorch.intensity = player.lampTorchOnValue;
                     }
-
                     break;
                 case PlayerAttack.AttackEffect.LeGrosBouclier:
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
@@ -102,7 +103,7 @@ namespace DATA.Script.Attack_Data
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
                         player._inGameData.classicEcho = true;
-                        attack.costBattery *= 1.75f;
+                        attack.costBatteryInFight *= 1.75f; // Magic number Todo dégager cela
                     }
                     else if (FightManager.instance.fightState == FightManager.FightState.OutFight)
                     {
