@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SG RadioWave Enemy
-  m_Shader: {fileID: -6465566751694194690, guid: d95944c4683c20c4190af757957f1f55, type: 3}
+  m_Name: Shader Graphs_dithering
+  m_Shader: {fileID: -6465566751694194690, guid: 9352407db5b0a2544a7cb4acc9aaf57a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,24 +37,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _noise_Scale: 32.8
-    - _noise_amp: 4.76
-    - _speed: 0.1
-    - _waves: 12.7
-    - _waves_Amount: 10.45
-    - _waves_Amp: 0.4
-    m_Colors: []
+    - _Float: 1
+    - _color_resolution: 8
+    - _dither_spread: 0.1
+    m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_1: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &148708066201681712
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
