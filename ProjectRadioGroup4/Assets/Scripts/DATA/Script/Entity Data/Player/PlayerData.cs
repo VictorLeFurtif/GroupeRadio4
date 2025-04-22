@@ -24,6 +24,8 @@ namespace DATA.Script.Entity_Data.Player
         
         [field: Header("Boolean pour activer désactiver le Classic Echo"),SerializeField]
         public bool ClassicEcho { get; private set; }
+        
+        [field: Header("Cherie Bomb"),SerializeField] public bool CherieBomb { get; private set; }
 
         public override AbstractEntityDataInstance Instance(GameObject entity)
         {
@@ -40,6 +42,7 @@ namespace DATA.Script.Entity_Data.Player
         public readonly Animation amAnimation;
         public bool grosBouclier;
         public bool classicEcho;
+        public bool cherieBomb;
 
         public PlayerDataInstance(PlayerData data,GameObject entity) : base(data,entity)
         {
@@ -49,6 +52,7 @@ namespace DATA.Script.Entity_Data.Player
             amAnimation = data.AmAnimation;
             grosBouclier = data.GrosBouclier;
             classicEcho = data.ClassicEcho;
+            cherieBomb = data.CherieBomb;
         }
     
     }

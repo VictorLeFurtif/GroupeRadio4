@@ -239,7 +239,7 @@ namespace Controller
                 }
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
-                selectedAttack.ProcessAttackEffect();
+                selectedAttack.ProcessAttackEffect(finalDamage);
                 
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "test anim attaque" : "anime attaque spé");
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");

@@ -200,6 +200,20 @@ namespace AI
                 return;
             }
             
+            if (_abstractEntityDataInstance.vodkaOndeRadio.isVodka)
+            {
+                foreach (var enemyAI in FightManager.instance.listOfJustEnemiesAlive)
+                {
+                    enemyAI.entity.GetComponent<AbstractAI>().PvEnemy -= 15; //MAGIC NUMBER !!!!!
+                }
+                _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka++;
+                if (_abstractEntityDataInstance.vodkaOndeRadio.compteurVodka == 3)
+                {
+                    _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka = 0;
+                    _abstractEntityDataInstance.vodkaOndeRadio.isVodka = false;
+                }
+            }
+            
             float randomValueForFlash = Random.Range(0f, 1f);
 
             if (randomValueForFlash < 0.25f && _abstractEntityDataInstance.flashed)

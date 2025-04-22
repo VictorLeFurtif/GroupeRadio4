@@ -26,7 +26,7 @@ namespace DATA.Script.Attack_Data
             PostZero,
             DeadHandSignal,
             CherieBomb,
-            Enigma,
+            VodkaOndeRadio,
         }
         
         [Serializable] public struct AttackClassic
@@ -64,7 +64,7 @@ namespace DATA.Script.Attack_Data
             damageBomb = data.DamageBomb;
         }
 
-        public void ProcessAttackEffect()
+        public void ProcessAttackEffect(float _damage)
         {
             if (FightManager.instance == null || PlayerController.instance == null)
             {
@@ -122,8 +122,29 @@ namespace DATA.Script.Attack_Data
                 case PlayerAttack.AttackEffect.DeadHandSignal:
                     break;
                 case PlayerAttack.AttackEffect.CherieBomb:
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
+                    {
+                        var selectedEnemyAbstractAi = player.selectedEnemy.GetComponent<AbstractAI>();
+                        
+                        foreach (var enemies in FightManager.instance.listOfJustEnemiesAlive)
+                        {
+                            var enemy = enemies.entity.GetComponent<AbstractAI>();
+                            
+                            if (enemy == selectedEnemyAbstractAi)
+                            {
+                                continue;
+                            }
+
+                            enemy.PvEnemy -= _damage / 2 ;
+                        }
+                    }
                     break;
-                case PlayerAttack.AttackEffect.Enigma:
+                case PlayerAttack.AttackEffect.VodkaOndeRadio:
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
+                    {
+                        var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
+                        enemySelectedData.vodkaOndeRadio.isVodka = true;
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
