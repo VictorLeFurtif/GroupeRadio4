@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8979729774658088733}
   - component: {fileID: 8113595643916894624}
   - component: {fileID: 1243374267581536794}
+  - component: {fileID: 533619625459662032}
+  - component: {fileID: 8186670234064678888}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -77,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 15378ffd8c90bcd4da723b01864dd04a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -194,8 +196,35 @@ MonoBehaviour:
     postZeroDeal:
       postZeroBomb: 0
       damageStockForAfterDeath: 0
+  _inGameData:
+    hp: 0
+    speed: 0
+    turnState: 0
+    entity: {fileID: 0}
+    waveAmplitudeEnemy: 0
+    waveFrequency: 0
+    seenByRadio: 0
+    reveal: 0
+    battery: 0
+    normalAttack:
+      damage: 0
+      batteryGain: 0
+    heavyAttack:
+      damage: 0
+      batteryGain: 0
+    stealBatteries:
+      damage: 0
+      batteryGain: 0
+    stealALotBatteries:
+      damage: 0
+      batteryGain: 0
+    flashed: 0
+    postZeroDeal:
+      postZeroBomb: 0
+      damageStockForAfterDeath: 0
+    moveSpeed: 0
+    grosBouclier: 0
   spriteRendererPlayer: {fileID: 0}
-  playerFightCanva: {fileID: 0}
   selectedEnemy: {fileID: 0}
   listOfPlayerAttack:
   - {fileID: 11400000, guid: 08d594c9a1727b04abe0d76677966df6, type: 2}
@@ -214,9 +243,7 @@ MonoBehaviour:
       indexFrequency: 0
       attackState: 0
       costBattery: 0
-    deadZone: 0
     damageBomb: 0
-    damageBombBonus: 0
   currentPlayerExplorationState: 0
   animatorPlayer: {fileID: 0}
   lampTorch: {fileID: 5213452711014371218}
@@ -268,6 +295,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5422223, y: 2.4791768}
   m_EdgeRadius: 0
+--- !u!114 &533619625459662032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522659208739532651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd57e40e3ae37ea4490cbb04dfefd2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batteryCheckInterval: 1
+--- !u!95 &8186670234064678888
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522659208739532651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c74b6e6038da6641885af67248212e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8523373328064371317
 GameObject:
   m_ObjectHideFlags: 0

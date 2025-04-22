@@ -17,6 +17,8 @@ namespace AI
         public AiFightState _aiFightState;
         
         private SpriteRenderer enemySpriteRenderer;
+
+        private Animator animatorEnemyAi;
         
         private Collider2D myCollider;
         
@@ -47,7 +49,9 @@ namespace AI
             set
             {
                 _abstractEntityDataInstance.hp = value;
-
+                
+                animatorEnemyAi.Play("takeDamageMonster");
+                
                 if (_abstractEntityDataInstance.IsDead())
                 {
                     HandleDeath();
@@ -111,6 +115,7 @@ namespace AI
         {
             Init();
             myCollider = GetComponent<Collider2D>();
+            animatorEnemyAi = GetComponent<Animator>();
         }
 
         protected virtual void Init()
@@ -123,14 +128,8 @@ namespace AI
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Shield"))
-            {
-                Physics2D.IgnoreCollision(myCollider, other, true);
-                return;
-            }
-            
             // no need to implement virtual/override because in each type of ai the trigger will launch the FightManager
-            if (!other.CompareTag("Player") || _aiFightState == AiFightState.InFight) return;
+            if (other.gameObject.layer != 6 || _aiFightState == AiFightState.InFight) return;
             _aiFightState = AiFightState.InFight;
             FightManager.instance.fightState = FightManager.FightState.InFight;
             FightManager.instance.InitialiseList();
@@ -313,12 +312,21 @@ namespace AI
                 PlayerController.instance.ManageLife(damageEnemy);
                 _abstractEntityDataInstance.battery += _batteryGain;
                 Debug.Log(_attackName);
-                return;
             }
-            
-            PlayerController.instance.ManageLife(_damageDeal);
-            _abstractEntityDataInstance.battery += _batteryGain;
-            Debug.Log(_attackName);
+            else if (PlayerController.instance._inGameData.classicEcho)
+            {
+                float damageEnemy = _damageDeal * 0.75f;
+                float damageForEnemy = _damageDeal * 0.25f;
+                PlayerController.instance.ManageLife(damageEnemy);
+                _abstractEntityDataInstance.battery += _batteryGain;
+                PvEnemy -= damageForEnemy;
+            }
+            else
+            {
+                PlayerController.instance.ManageLife(_damageDeal);
+                _abstractEntityDataInstance.battery += _batteryGain;
+                Debug.Log(_attackName);
+            }
         }
         private void NormalAttack() => ClassicAttack(
             _abstractEntityDataInstance.normalAttack.damage,

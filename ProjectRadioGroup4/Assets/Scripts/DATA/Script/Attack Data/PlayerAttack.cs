@@ -95,10 +95,19 @@ namespace DATA.Script.Attack_Data
                     }
                     else if (FightManager.instance.fightState == FightManager.FightState.OutFight)
                     {
-                        player.tag = "Shield";
+                        player.gameObject.layer = 7;
                     }
                     break;
                 case PlayerAttack.AttackEffect.ClassiqueEcho:
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
+                    {
+                        player._inGameData.classicEcho = true;
+                        attack.costBattery *= 1.75f;
+                    }
+                    else if (FightManager.instance.fightState == FightManager.FightState.OutFight)
+                    {
+                        player._inGameData.classicEcho = true;
+                    }
                     break;
                 case PlayerAttack.AttackEffect.SilenceRadio:
                     break;
@@ -136,9 +145,10 @@ namespace DATA.Script.Attack_Data
                     player.lampTorch.intensity = 0;
                     break;
                 case PlayerAttack.AttackEffect.LeGrosBouclier:
-                    player.tag = "PLayer";
+                    player.gameObject.layer = 6;
                     break;
                 case PlayerAttack.AttackEffect.ClassiqueEcho:
+                    player._inGameData.classicEcho = false;
                     break;
                 case PlayerAttack.AttackEffect.SilenceRadio:
                     break;
@@ -146,5 +156,8 @@ namespace DATA.Script.Attack_Data
                     throw new ArgumentOutOfRangeException();
             }
         }
+        
+        
+        
     }
 }

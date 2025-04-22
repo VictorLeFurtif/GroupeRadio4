@@ -36,7 +36,7 @@ namespace Controller
         public SpriteRenderer spriteRendererPlayer;
 
         [Header("UI")]
-        [SerializeField] private GameObject playerFightCanva;
+       // [SerializeField] private GameObject playerFightCanva;
 
         [Header("Selected Fighter")] public GameObject selectedEnemy;
 
@@ -56,6 +56,8 @@ namespace Controller
         [Header("Lighting")] public Light2D lampTorch;
         public float lampTorchOnValue;
         public bool isLampTorchOn;
+
+        [Header("Battery")] private BatteryPlayer playerBattery;
         
         public enum PlayerStateExploration
         {
@@ -81,6 +83,8 @@ namespace Controller
         
             rb.interpolation = RigidbodyInterpolation2D.Interpolate; // pour fix le bug lié à la caméra qui faisait trembler le perso
             spriteRendererPlayer = GetComponent<SpriteRenderer>();
+            animatorPlayer = GetComponent<Animator>();
+            playerBattery = GetComponent<BatteryPlayer>();
         }
 
         public void ManageLife(float valueLifeChanger) 
@@ -107,6 +111,7 @@ namespace Controller
                     //animatorPlayer.Play("Death");
                     GameManager.instance.GameOver();
                 }
+                playerBattery.UpdateLifeText();
             }
         }
 
@@ -119,7 +124,12 @@ namespace Controller
         {
             PlayerMove();
             CheckForFlipX();
-            ManageFight();
+            //ManageFight();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log(rb.velocity);
+            }
         }
 
         private void Start()
@@ -133,6 +143,7 @@ namespace Controller
             if (!canMove || FightManager.instance.fightState != FightManager.FightState.OutFight)
             {
                 rb.velocity = new Vector2(0,0);
+                animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
                 return;
             }
             var x = Input.GetAxisRaw("Horizontal");
@@ -141,7 +152,7 @@ namespace Controller
             {
                 rb.velocity = new Vector2(x  * moveSpeedRunning,rb.velocity.y);
             }
-            //Player.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
+            animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
         }
         
         private bool wasFacingLeft = false; //bool pour stock là où il regardait
@@ -156,20 +167,22 @@ namespace Controller
             lampTorch.transform.localRotation = Quaternion.Euler(wasFacingLeft ? new Vector3(0,180,-90) : new Vector3(0,0,-90));
         }
 
+        /*
         private void ManageFight() //temporary
         {
             playerFightCanva.SetActive(_inGameData.turnState == FightManager.TurnState.Turn);
         }
 
+
         public void KillInstantEnemy()
         {
-            if (selectedEnemy == null ) 
-            { 
+            if (selectedEnemy == null )
+            {
                 return;
             }
             selectedEnemy.GetComponent<AbstractAI>().PvEnemy = -5;
             FightManager.instance.EndFighterTurn();
-        }
+        }*/
 
         private void InitializeListOfAttackPlayer()
         {
@@ -221,29 +234,28 @@ namespace Controller
                 {
                     Debug.Log("OVERLOAD déclenché ");
                     //Add damage against player
-                    StartCoroutine(TakeDamageAfterOverload());
+                    animatorPlayer.Play("Overload");
                     return;
                 }
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
                 selectedAttack.ProcessAttackEffect();
-                //TODO link EnfighterTurn to the animation attack
                 
-                //Player.Play("Attack"); 
+                animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "test anim attaque" : "anime attaque spé");
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
-                FightManager.instance.EndFighterTurn();
             }
             
         }
-
-        IEnumerator TakeDamageAfterOverload()
+        
+        public void EndFighterTurnForPlayer()
         {
-            //animatorPlayer.Play("TakeDamage");
-            yield return new WaitForSeconds(_inGameData.takeDamageAnimation.clip.length);
+            if (FightManager.instance == null)
+            {
+                Debug.LogWarning("No FightManager Detected");
+                return;
+            }
             FightManager.instance.EndFighterTurn();
         }
-        
-        
         
     }
 }

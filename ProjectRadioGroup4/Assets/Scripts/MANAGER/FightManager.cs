@@ -133,6 +133,12 @@ namespace MANAGER
             {
                 currentFightAdvantage = FightAdvantage.Neutral;
             }
+
+            
+            if (PlayerController.instance._inGameData.classicEcho)
+            {
+                currentFightAdvantage = FightAdvantage.Advantage;
+            }
             
             Debug.Log(currentFightAdvantage);
 
@@ -157,8 +163,6 @@ namespace MANAGER
             RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
 
             player.selectedAttack?.CancelEffectWhenEnterFight();
-
-
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool

@@ -181,7 +181,7 @@ namespace Controller
             if (PlayerController.instance != null)
             {
                 PlayerController.instance.lampTorch.intensity = 0;
-                PlayerController.instance.tag = "Player";
+                PlayerController.instance.gameObject.layer = 6;
             }
             
             if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
@@ -287,9 +287,10 @@ namespace Controller
                 return;
             }
             
-            //PlayerController.instance.animatorPlayer.Play("AmAttack");
-            //var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
-            //StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
+            PlayerController.instance.animatorPlayer.Play("AmAttack");
+            var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
+            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
+            
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
             Vector3 playerPos = PlayerController.instance.transform.position;

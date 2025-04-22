@@ -21,6 +21,9 @@ namespace DATA.Script.Entity_Data.Player
         
         [field: Header("Boolean pour activer désactiver le gros bouclier"),SerializeField]
         public bool GrosBouclier { get; private set; }
+        
+        [field: Header("Boolean pour activer désactiver le Classic Echo"),SerializeField]
+        public bool ClassicEcho { get; private set; }
 
         public override AbstractEntityDataInstance Instance(GameObject entity)
         {
@@ -36,6 +39,7 @@ namespace DATA.Script.Entity_Data.Player
         public readonly Animation fmAnimation;
         public readonly Animation amAnimation;
         public bool grosBouclier;
+        public bool classicEcho;
 
         public PlayerDataInstance(PlayerData data,GameObject entity) : base(data,entity)
         {
@@ -44,6 +48,7 @@ namespace DATA.Script.Entity_Data.Player
             fmAnimation = data.FmAnimation;
             amAnimation = data.AmAnimation;
             grosBouclier = data.GrosBouclier;
+            classicEcho = data.ClassicEcho;
         }
     
     }

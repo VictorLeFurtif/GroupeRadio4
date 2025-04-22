@@ -1,5 +1,7 @@
 using System;
+using System.Globalization;
 using MANAGER;
+using TMPro;
 using UnityEngine;
 
 namespace Controller
@@ -9,6 +11,7 @@ namespace Controller
         private PlayerController player;
         private float _timer;
         [SerializeField] private float batteryCheckInterval = 1f;
+        [SerializeField] private TMP_Text lifeText;
 
         private void Start()
         {
@@ -18,6 +21,8 @@ namespace Controller
             {
                 Debug.LogWarning("No Player Controller instance was found");
             }
+
+            UpdateLifeText();
         }
 
         private void Update()
@@ -25,6 +30,16 @@ namespace Controller
             TickBatteryTimer();
         }
 
+        public void UpdateLifeText()
+        {
+            if (PlayerController.instance == null)
+            {
+                Debug.LogWarning("No PlayerController Was Found");
+                return;
+            }
+            lifeText.text = PlayerController.instance._abstractEntityDataInstance.hp.ToString(CultureInfo.InvariantCulture);
+        }
+        
         private void TickBatteryTimer()
         {
             if (!CanConsumeBattery()) return;
