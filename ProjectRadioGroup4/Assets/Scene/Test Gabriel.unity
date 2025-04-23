@@ -854,6 +854,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
+      propertyPath: DontStopOnExit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: LoopImmediately
       value: 1
       objectReference: {fileID: 0}
@@ -880,11 +884,11 @@ PrefabInstance:
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: audioClips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 175eb190548e1644883bbbf01e6dc0d3, type: 3}
+      objectReference: {fileID: 8300000, guid: 926859030aad05e4e9ed5dfcea16327e, type: 3}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: audioClips.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 5f2fc48ad72f7a048aad0ea9c36668ba, type: 3}
+      objectReference: {fileID: 8300000, guid: 926859030aad05e4e9ed5dfcea16327e, type: 3}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: audioClips.Array.data[3]
       value: 

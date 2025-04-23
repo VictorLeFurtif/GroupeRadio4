@@ -12,6 +12,8 @@ public class SoundController : MonoBehaviour
    [SerializeField] private float min;
    [SerializeField] private float max;
    [SerializeField] private bool PlaySoundOnlyOnce;
+   [Header("Allows the sound to keep playing at volume 0 so\nit doesn't start all over when player come close again\n( ! Expensive Method ! )")]
+   [SerializeField] private bool DontStopOnExit;
    [Header("Will wait for current sound to end\nbefore starting countdown for next sound")]
    [SerializeField] private bool waitForFinish;
    [Header("Waiting times will be ignored if enabled")]
@@ -32,16 +34,30 @@ public class SoundController : MonoBehaviour
 
     private void Update()
     {
-        if (CanReplay && IsPlayerCloseEnough())
+        if (DontStopOnExit)
         {
-            StartCoroutine(PlaySound());
-        }
-        else if (!IsPlayerCloseEnough() && audioSource.isPlaying)
-        {
-            audioSource.Stop();
-            if (!PlaySoundOnlyOnce)
+            if (CanReplay && IsPlayerCloseEnough() && !audioSource.isPlaying)
+            {
+                StartCoroutine(PlaySound());
+            }
+            else if (!audioSource.isPlaying && !PlaySoundOnlyOnce)
             {
                 CanReplay = true;
+            }
+        }
+        else
+        {
+            if (CanReplay && IsPlayerCloseEnough())
+            {
+                StartCoroutine(PlaySound());
+            }
+            else if (!IsPlayerCloseEnough() && audioSource.isPlaying)
+            {
+                audioSource.Pause();
+                if (!PlaySoundOnlyOnce)
+                {
+                    CanReplay = true;
+                }
             }
         }
     }
