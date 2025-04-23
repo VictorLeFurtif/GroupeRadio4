@@ -695,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: rolloffMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.size

@@ -49,10 +49,10 @@ public class SoundController : MonoBehaviour
     private bool IsPlayerCloseEnough()
     {
         if (PlayerController.instance == null) return false;
-        
-        Vector3 playerPosition = PlayerController.instance.transform.position;
-        distanceWithPlayer = Vector3.Distance(playerPosition, transform.position);
-        return distanceWithPlayer < audioSource.maxDistance;
+    
+        float distance = Vector3.Distance(PlayerController.instance.transform.position, transform.position);
+        audioSource.volume = Mathf.Clamp01(1 - (distance / audioSource.maxDistance));
+        return distance < audioSource.maxDistance;
     }
     
     private IEnumerator PlaySound()
