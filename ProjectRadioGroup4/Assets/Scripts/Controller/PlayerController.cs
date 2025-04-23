@@ -115,7 +115,11 @@ namespace Controller
                     return;
                 }
                 playerBattery.UpdateLifeText();
-                animatorPlayer.Play("HitReceived");
+
+                if (FightManager.instance != null && FightManager.instance.fightState == FightManager.FightState.InFight && _inGameData.turnState != FightManager.TurnState.Turn)
+                {
+                    animatorPlayer.Play("HitReceived");
+                }
             }
         }
 
@@ -170,23 +174,7 @@ namespace Controller
             spriteRendererPlayer.flipX = wasFacingLeft;
             lampTorch.transform.localRotation = Quaternion.Euler(wasFacingLeft ? new Vector3(0,180,-90) : new Vector3(0,0,-90));
         }
-
-        /*
-        private void ManageFight() //temporary
-        {
-            playerFightCanva.SetActive(_inGameData.turnState == FightManager.TurnState.Turn);
-        }
-
-
-        public void KillInstantEnemy()
-        {
-            if (selectedEnemy == null )
-            {
-                return;
-            }
-            selectedEnemy.GetComponent<AbstractAI>().PvEnemy = -5;
-            FightManager.instance.EndFighterTurn();
-        }*/
+        
 
         private void InitializeListOfAttackPlayer()
         {
@@ -238,15 +226,24 @@ namespace Controller
                 if (isOverload)
                 {
                     Debug.Log("OVERLOAD déclenché ");
-                    //Add damage against player
+                    ManageLife(-finalDamage / 2);
                     animatorPlayer.Play("Overload");
                     return;
                 }
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
                 
-                selectedAttackEffect.ProcessAttackEffect(finalDamage);
-                
+                selectedAttack.ProcessAttackLogic();
+                selectedAttack.TakeLifeFromPlayer();
+
+                if (selectedAttackEffect != null)
+                {
+                    float lifeTaken = selectedAttack.attack.costBatteryInFight *
+                                      selectedAttackEffect.multiplicatorLifeTaken;
+                    selectedAttackEffect.ProcessAttackEffect();
+                    selectedAttackEffect.TakeLifeFromPlayer(lifeTaken);
+                }
+
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
             }

@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c98cba2e9c9ac0f43a4d943b05b93ae1, type: 3}
-  m_Name: Le Gros Bouclier
+  m_Name: Post Zero
   m_EditorClassIdentifier: 
-  <DamageBomb>k__BackingField: 0
+  <DamageBomb>k__BackingField: 15
   <AttackP>k__BackingField:
-    damage: 0
-    chanceOfOverload: 75
-    damageMaxBonus: 0
-    name: Le Gros Bouclier
-    attackEffect: 1
-    indexFrequency: 50
-    attackState: 1
-    costBattery: 0
+    damage: 20
+    chanceOfOverload: 65
+    damageMaxBonus: 20
+    name: Post Zero
+    attackEffect: 4
+    indexFrequency: 200
+    attackState: 0
+    costBatteryExploration: 0
+    costBatteryInFightMax: 13
+    costBatteryInFight: 13

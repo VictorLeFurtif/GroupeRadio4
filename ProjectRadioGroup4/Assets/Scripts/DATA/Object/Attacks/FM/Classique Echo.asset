@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c98cba2e9c9ac0f43a4d943b05b93ae1, type: 3}
-  m_Name: Post Zero
+  m_Name: Classique Echo
   m_EditorClassIdentifier: 
-  <DamageBomb>k__BackingField: 15
+  <DamageBomb>k__BackingField: 0
   <AttackP>k__BackingField:
-    damage: 20
-    chanceOfOverload: 65
-    damageMaxBonus: 20
-    name: Post Zero
-    attackEffect: 4
-    indexFrequency: 38.4
-    attackState: 0
-    costBattery: 13
+    damage: 0
+    chanceOfOverload: 0
+    damageMaxBonus: 0
+    name: Classique Echo
+    attackEffect: 2
+    indexFrequency: 250
+    attackState: 1
+    costBatteryExploration: 5
+    costBatteryInFightMax: 0
+    costBatteryInFight: 0

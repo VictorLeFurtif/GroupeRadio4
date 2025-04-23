@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98cba2e9c9ac0f43a4d943b05b93ae1, type: 3}
   m_Name: SkyLight
   m_EditorClassIdentifier: 
-  <DeadZone>k__BackingField: 0
+  <DamageBomb>k__BackingField: 0
   <AttackP>k__BackingField:
-    damage: 15
-    chanceOfOverload: 25
+    damage: 0
+    chanceOfOverload: 0
+    damageMaxBonus: 0
     name: SkyLight
-    indexFrequency: 15
+    attackEffect: 0
+    indexFrequency: 50
     attackState: 1
+    costBatteryExploration: 0.5
+    costBatteryInFightMax: 0
+    costBatteryInFight: 0

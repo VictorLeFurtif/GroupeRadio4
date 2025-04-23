@@ -10,12 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c98cba2e9c9ac0f43a4d943b05b93ae1, type: 3}
-  m_Name: Dead Hand Signal
+  m_Name: Vodka Onde Radio
   m_EditorClassIdentifier: 
-  <DeadZone>k__BackingField: 0
+  <DamageBomb>k__BackingField: 0
   <AttackP>k__BackingField:
     damage: 15
     chanceOfOverload: 25
-    name: Dead Hand Signal
-    indexFrequency: 70.7
+    damageMaxBonus: 15
+    name: Vodka Onde Radio
+    attackEffect: 7
+    indexFrequency: 100
     attackState: 0
+    costBatteryExploration: 0
+    costBatteryInFightMax: 14
+    costBatteryInFight: 14

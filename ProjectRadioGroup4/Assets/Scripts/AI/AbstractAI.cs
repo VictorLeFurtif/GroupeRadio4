@@ -202,7 +202,7 @@ namespace AI
             if (!canAttack) return;
 
             PlayerController.instance.ManageLife(-5); 
-            animatorEnemyAi.Play("AttackAi"); 
+            animatorEnemyAi.Play("attackAi"); 
             canAttack = false; 
         }
 
@@ -345,7 +345,7 @@ namespace AI
             if (!canAttack) return;
 
             canAttack = false; 
-            animatorEnemyAi.Play("AttackAi");
+            animatorEnemyAi.Play("attackAi");
 
             if (PlayerController.instance._inGameData.grosBouclier)
             {

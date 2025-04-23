@@ -189,7 +189,7 @@ namespace Controller
             
             if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
             {
-                PlayerController.instance.selectedAttack.ProcessAttackEffect(5f); // on s'en fout du param
+                PlayerController.instance.selectedAttack.ProcessAttackEffect();
             }
         }
         
