@@ -58,6 +58,9 @@ namespace Controller
         [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
 
         [FormerlySerializedAs("selectedAM")] public bool selectedAm = false;
+        
+        [SerializeField] private TMP_Text descriptionEffectSelectedText;
+
 
         #endregion
     
@@ -249,28 +252,51 @@ namespace Controller
                     break;
                 }
             }
-
             UpdateFrequenceText();
         }
-
-        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
+        
+        public void SelectEffectFMButton()
         {
-            if (Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
-                < epsilonForSliderAttack)
+            if (FightManager.instance.fightState != FightManager.FightState.InFight)
+                return;
+
+            foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
             {
-                PlayerController.instance.selectedAttack = _playerAttackInstance;
-                UpdateFrequenceText();
+                if (attackInstance.attack.attackState != PlayerAttack.AttackState.Fm) continue;
+                if (!(Mathf.Abs(sliderForFrequencyAttack.value - attackInstance.attack.indexFrequency) <
+                      epsilonForSliderAttack)) continue;
+                PlayerController.instance.selectedAttackEffect = attackInstance;
+                UpdateEffectFMText(attackInstance);
+                break;
             }
         }
         
+        private void UpdateEffectFMText(PlayerAttackInstance effectInstance)
+        {
+            descriptionEffectSelectedText.text = effectInstance == null ?
+                "Aucun effet sélectionné" : $"Effet : {effectInstance.attack.name}";
+        }
+
         private void UpdateFrequenceText()
         {
-            if (PlayerController.instance == null || PlayerController.instance.selectedAttack == null)
-            {
-                descriptionAttackSelectedText.text = "";
-                return;
-            }
-            descriptionAttackSelectedText.text = PlayerController.instance.selectedAttack.attack.name;
+            string amText = PlayerController.instance.selectedAttack != null
+                ? $"Attaque : {PlayerController.instance.selectedAttack.attack.name}"
+                : "Attaque : aucune";
+
+            string fmText = PlayerController.instance.selectedAttackEffect != null
+                ? $" | Effet : {PlayerController.instance.selectedAttackEffect.attack.name}"
+                : " | Effet : aucun";
+
+            descriptionAttackSelectedText.text = amText + fmText;
+        }
+
+        
+        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
+        {
+            if (!(Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
+                  < epsilonForSliderAttack)) return;
+            PlayerController.instance.selectedAttack = _playerAttackInstance;
+            UpdateFrequenceText();
         }
 
         public void AmButton()

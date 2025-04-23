@@ -21,6 +21,8 @@ namespace AI
         private Animator animatorEnemyAi;
         
         private Collider2D myCollider;
+
+        private bool canAttack = true;
         
         [SerializeField] private TypeOfAi aiType;
 
@@ -50,15 +52,16 @@ namespace AI
             {
                 _abstractEntityDataInstance.hp = value;
                 
-                animatorEnemyAi.Play("takeDamageMonster");
                 
                 if (_abstractEntityDataInstance.IsDead())
                 {
                     HandleDeath();
+                    animatorEnemyAi.Play("DeathAi");
                 }
                 else
                 {
                     RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                    animatorEnemyAi.Play("takeDamageMonster");
                 }
             }
         }
@@ -131,8 +134,10 @@ namespace AI
             // no need to implement virtual/override because in each type of ai the trigger will launch the FightManager
             if (other.gameObject.layer != 6 || _aiFightState == AiFightState.InFight) return;
             _aiFightState = AiFightState.InFight;
+            enemySpriteRenderer.enabled = true;
             FightManager.instance.fightState = FightManager.FightState.InFight;
             FightManager.instance.InitialiseList();
+            animatorEnemyAi.Play("SpawnAi");
         }
         
         private void OnMouseUpAsButton()
@@ -146,11 +151,14 @@ namespace AI
 
         private void AiBehavior()
         {
-            if (!_abstractEntityDataInstance.reveal && _aiFightState != AiFightState.InFight) return;
-            
+            if (!_abstractEntityDataInstance.reveal && _aiFightState != AiFightState.InFight)
+            {
+                return;
+            }
+
             enemySpriteRenderer.enabled = true;
-            
-            if (_abstractEntityDataInstance.turnState == FightManager.TurnState.NoTurn)
+
+            if (_abstractEntityDataInstance.turnState == FightManager.TurnState.NoTurn || !canAttack)
             {
                 return;
             }
@@ -165,10 +173,19 @@ namespace AI
                     break;
                 case TypeOfAi.RandomAiWithCondition:
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+
+        public void EndAiTurn()
+        {
+            if (FightManager.instance == null)
+            {
+                Debug.LogError("No Fucking FightManager found");
+                return;
             }
             FightManager.instance.EndFighterTurn();
+            canAttack = true;
         }
         
         protected void SwitchSpriteRenderer(SpriteRenderer _spriteRenderer)
@@ -182,21 +199,25 @@ namespace AI
 
         private void AlwaysAttackAiBehavior()
         {
-            if (PlayerController.instance != null)
-            {
-                PlayerController.instance.ManageLife(-5); // temporary
-            }
-            else
-            {
-                Debug.LogError("No player instance found : Singleton problem occured with PlayerController");
-            }
+            if (!canAttack) return;
+
+            PlayerController.instance.ManageLife(-5); 
+            animatorEnemyAi.Play("AttackAi"); 
+            canAttack = false; 
         }
+
 
         private void SmartAiBehavior()
         {
             if (PlayerController.instance == null)
             {
                 Debug.LogError("No player instance found: Singleton problem with PlayerController");
+                return;
+            }
+
+            if (!canAttack)
+            {
+                Debug.Log("Cant attack in Smart");
                 return;
             }
             
@@ -317,15 +338,21 @@ namespace AI
             PlayerController.instance.ManageLife(-38); //temporary floating value
             PvEnemy = 0;
             Debug.Log("Explode");
+            canAttack = false;
         }
-        private void ClassicAttack(float _damageDeal, float _batteryGain,string _attackName)
+        private void ClassicAttack(float _damageDeal, float _batteryGain, string _attackName)
         {
+            if (!canAttack) return;
+
+            canAttack = false; 
+            animatorEnemyAi.Play("AttackAi");
+
             if (PlayerController.instance._inGameData.grosBouclier)
             {
                 float damageEnemy = _damageDeal / 2;
                 PlayerController.instance.ManageLife(damageEnemy);
                 _abstractEntityDataInstance.battery += _batteryGain;
-                Debug.Log(_attackName);
+                Debug.Log(_attackName + " (bouclier)");
             }
             else if (PlayerController.instance._inGameData.classicEcho)
             {
@@ -334,6 +361,7 @@ namespace AI
                 PlayerController.instance.ManageLife(damageEnemy);
                 _abstractEntityDataInstance.battery += _batteryGain;
                 PvEnemy -= damageForEnemy;
+                Debug.Log(_attackName + " (echo)");
             }
             else
             {
@@ -342,6 +370,7 @@ namespace AI
                 Debug.Log(_attackName);
             }
         }
+
         private void NormalAttack() => ClassicAttack(
             _abstractEntityDataInstance.normalAttack.damage,
             _abstractEntityDataInstance.normalAttack.batteryGain,
