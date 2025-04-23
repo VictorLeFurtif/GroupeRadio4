@@ -8,6 +8,7 @@ using MANAGER;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 using Slider = UnityEngine.UI.Slider;
 
 namespace Controller
@@ -32,7 +33,6 @@ namespace Controller
 
         [Header("UI")]
         [SerializeField] private GameObject playerFightCanva;
-        [SerializeField] private Slider sliderOscillationPlayer;
 
         [Header("Selected Fighter")] public GameObject selectedEnemy;
 
@@ -90,19 +90,24 @@ namespace Controller
 
         private float HealthPlayer 
         {
-            get => _inGameData.hp;
-
+            get => _inGameData != null ? _inGameData.hp : 0f;
             set
             {
-                _inGameData.hp = value;
-                Debug.Log(value);
+                if (_inGameData == null)
+                {
+                    Debug.LogError(" _inGameData est NULL !");
+                    return;
+                }
+
+                _inGameData.hp = Mathf.Max(0, value); 
+                Debug.Log(_inGameData.hp);
                 if (_inGameData.IsDead())
                 {
                     GameManager.instance.GameOver();
-                    //They lose
                 }
             }
         }
+
     
         /// <summary>
         /// Temporary shity Update
@@ -113,24 +118,11 @@ namespace Controller
             PlayerMove();
             CheckForFlipX();
             ManageFight();
-            SliderOscillationPlayerBehavior();
         }
 
         private void Start()
         {
             InitializeListOfAttackPlayer();
-            InitializeSliderOscillationPlayer();
-        }
-
-        private void InitializeSliderOscillationPlayer() //wave amp comprit entre 0 et 0.4
-        {
-            sliderOscillationPlayer.maxValue = 0.4f;
-            sliderOscillationPlayer.onValueChanged.AddListener(UpdateAmplitude);
-        }
-       
-        private void UpdateAmplitude(float newValue)
-        {
-            RadioController.instance.matRadioPlayer.SetFloat("_waves_Amp", newValue);
         }
         
         private void PlayerMove()
@@ -178,34 +170,20 @@ namespace Controller
             }
         }
 
-        private void SliderOscillationPlayerBehavior()
-        {
-            if (currentPlayerExplorationState == PlayerStateExploration.Guessing)
-            {
-                sliderOscillationPlayer.interactable = true;
-            }
-            else
-            {
-                sliderOscillationPlayer.interactable = false;
-            }
-        }
-
         [SerializeField]
         private float epsilonValidationOscillation;
         
         public void ValidButton()
         {
             if (currentPlayerExplorationState == PlayerStateExploration.Guessing &&
-                FightManager.instance.fightState == FightManager.FightState.OutFight)
+                FightManager.instance.fightState == FightManager.FightState.OutFight) //HORS FIGHT DC EXPLO
             {
-                if (!(Mathf.Abs(sliderOscillationPlayer.value -
-                                RadioController.instance.matRadioEnemy.GetFloat("_waves_Amp")) <
-                      epsilonValidationOscillation))
+                if (!(Mathf.Abs(RadioController.instance.sliderOscillationPlayer.value - 
+                    RadioController.instance.matRadioEnemy.GetFloat("_waves_Amp")) 
+                 < epsilonValidationOscillation))
                 {
                     return;
                 }
-                
-
                 RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
                     ._abstractEntityDataInstance.reveal = true;
                 RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
@@ -216,6 +194,26 @@ namespace Controller
                 selectedAttack != null && selectedEnemy != null)
             {
                 Debug.Log("Attaque Logic");
+                
+                PlayerAttack.AttackClassic attackData = selectedAttack.attack;
+                float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
+                float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
+
+                
+                float finalDamage = attackData.damageMaxBonus * ratio + attackData.damage;
+                float currentOverloadChance = attackData.chanceOfOverload * ratio;
+                
+                bool isOverload = Random.Range(0f, 100f) <= currentOverloadChance;
+                
+                if (isOverload)
+                {
+                    Debug.Log("OVERLOAD déclenché ");
+                    //Add damage against player
+                    FightManager.instance.EndFighterTurn();
+                    return;
+                }
+                selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
+                Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
                 FightManager.instance.EndFighterTurn();
             }
             

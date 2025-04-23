@@ -9,27 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 134201fa48be89a4c8326dd368e4ed28, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 3c33b9e58716d144a8ec65bf7cbf819f, type: 3}
+  m_Name: Static AI Data V2
   m_EditorClassIdentifier: 
   <Hp>k__BackingField: 100
-  <Speed>k__BackingField: 55
+  <Speed>k__BackingField: 40
   TurnState: 1
-  <WaveAmplitudeEnemy>k__BackingField: 0
-  <WaveFrequencyEnemy>k__BackingField: 0
+  <WaveAmplitudeEnemy>k__BackingField: 0.31
+  <WaveFrequencyEnemy>k__BackingField: 10.45
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
   <Battery>k__BackingField: 0
   <NormalAttack>k__BackingField:
-    damage: 0
-    batteryGain: 0
+    damage: -18
+    batteryGain: 6
   <HeavyAttack>k__BackingField:
-    damage: 0
-    batteryGain: 0
+    damage: -24
+    batteryGain: 8
   <StealBatteries>k__BackingField:
-    damage: 0
-    batteryGain: 0
+    damage: -12
+    batteryGain: 8
   <StealALotBatteries>k__BackingField:
-    damage: 0
-    batteryGain: 0
-  <MoveSpeed>k__BackingField: 3
+    damage: -18
+    batteryGain: 18
