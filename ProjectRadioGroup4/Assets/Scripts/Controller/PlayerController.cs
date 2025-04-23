@@ -229,6 +229,7 @@ namespace Controller
                 float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
 
                 
+                //TODO MEC FINAL DAMAGE AUCUN SENS AVEC LOGIQUE
                 float finalDamage = attackData.damageMaxBonus * ratio + attackData.damage;
                 float currentOverloadChance = attackData.chanceOfOverload * ratio;
                 
@@ -244,7 +245,7 @@ namespace Controller
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
                 
-                selectedAttack.ProcessAttackEffect(finalDamage);
+                selectedAttackEffect.ProcessAttackEffect(finalDamage);
                 
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
