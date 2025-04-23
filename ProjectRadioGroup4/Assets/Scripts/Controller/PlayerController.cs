@@ -45,6 +45,7 @@ namespace Controller
         public List<PlayerAttackInstance> listOfPlayerAttackInstance = new List<PlayerAttackInstance>();
 
         public PlayerAttackInstance selectedAttack;
+        public PlayerAttackInstance selectedAttackEffect;
 
         [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
         public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
