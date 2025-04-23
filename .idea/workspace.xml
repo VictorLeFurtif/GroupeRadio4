@@ -12,10 +12,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ProjectRadioGroup4/Assets/Scripts/Controller/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProjectRadioGroup4/Assets/Scripts/Controller/SoundController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2udBocva6SyCKpVWxIgDqIugQAd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,7 +26,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "<unknown>",
+    "git-widget-placeholder": "dev/Gabriel",
     "ignore.virus.scanning.warn.message": "true",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -40,6 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742568746495</updated>
       <workItem from="1742568747969" duration="63000" />
+      <workItem from="1745309476448" duration="46000" />
     </task>
     <servers />
   </component>

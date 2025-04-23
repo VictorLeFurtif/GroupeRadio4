@@ -8,82 +8,80 @@ using Random = UnityEngine.Random;
 
 public class SoundController : MonoBehaviour
 {
-    [Header("Waiting time between sound(s) : Range for random time span")]
+    [Header("Waiting time between sound(s) :\nRange for random time span")]
    [SerializeField] private float min;
    [SerializeField] private float max;
-   [Header("Minimum Distance with Player before playing sound(s)")]
-   [SerializeField] private float minDistance;
-   [SerializeField] private bool LoopSoundOnFinish;
+   [SerializeField] private bool PlaySoundOnlyOnce;
+   [Header("Will wait for current sound to end\nbefore starting countdown for next sound")]
+   [SerializeField] private bool waitForFinish;
+   [Header("Waiting times will be ignored if enabled")]
+   [SerializeField] private bool LoopImmediately;
+   
 
-   [Header("Spatialization")] 
-   [SerializeField] private bool volumeBasedOnDistance;
-   [SerializeField] [Range(0f,1f)] private float Volume;
-   [SerializeField] [Range(0f,1f)] private float dynamicStereoRange;
-   
-   
     [Header("Sound bank")]
    [SerializeField] private List<AudioClip> audioClips;
 
-   private bool isAlreadyPlaying;
-   float distanceWithPlayer; //does not seem to change
+   private bool CanReplay = true;
+   private float distanceWithPlayer;
    private AudioSource audioSource;
 
-   private void Awake()
-   {
-       audioSource = GetComponent<AudioSource>();
-   }
-
-    private bool IsPlayerCloseEnough()
+    private void Awake()
     {
-        Vector3 playerPosition = PlayerController.instance.transform.position;
-        distanceWithPlayer = Vector3.Distance(playerPosition, transform.position);
-        return distanceWithPlayer < minDistance;
+       audioSource = GetComponent<AudioSource>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (volumeBasedOnDistance) VolumeBasedOnDistance();
-        if (dynamicStereoRange != 0) StereoPan();
-        if (!isAlreadyPlaying && IsPlayerCloseEnough())
+        if (CanReplay && IsPlayerCloseEnough())
         {
             StartCoroutine(PlaySound());
         }
+        else if (!IsPlayerCloseEnough() && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+            if (!PlaySoundOnlyOnce)
+            {
+                CanReplay = true;
+            }
+        }
     }
 
+    private bool IsPlayerCloseEnough()
+    {
+        if (PlayerController.instance == null) return false;
+        
+        Vector3 playerPosition = PlayerController.instance.transform.position;
+        distanceWithPlayer = Vector3.Distance(playerPosition, transform.position);
+        return distanceWithPlayer < audioSource.maxDistance;
+    }
+    
     private IEnumerator PlaySound()
     {
-        isAlreadyPlaying = true;
+        CanReplay = false;
         float nextPlayTime = Random.Range(min, max);
         yield return new WaitForSeconds(nextPlayTime);
         AudioClip randomClip = audioClips[Random.Range(0, audioClips.Count)];
         audioSource.clip = randomClip;
-        audioSource.Play();
-        if (LoopSoundOnFinish) // loop even when false ??
+        if (LoopImmediately)
         {
-            while (true)
+            while (IsPlayerCloseEnough())
             {
-                yield return new WaitForSeconds(audioSource.clip.length);
                 audioSource.Play();
+                yield return new WaitForSeconds(audioSource.clip.length);
             }
         }
-        audioSource.Play();
-        yield return new WaitForSeconds(audioSource.clip.length);
-        isAlreadyPlaying = false;
+        else
+        { 
+            audioSource.Play();
+            if (waitForFinish)
+            {
+                yield return new WaitForSeconds(audioSource.clip.length);
+            }
+            if (!PlaySoundOnlyOnce)
+            {
+                CanReplay = true;
+            }
+        }
+        
     }
-
-    private void VolumeBasedOnDistance()
-    {
-        Vector3 playerPosition = PlayerController.instance.transform.position;
-        distanceWithPlayer = Vector3.Distance(playerPosition, transform.position);
-        float unModifiedVolume = minDistance - (distanceWithPlayer / minDistance);
-        audioSource.volume = unModifiedVolume * Volume;
-        Debug.Log(distanceWithPlayer); // only return "(object)"
-    }
-
-    private void StereoPan() // I don't have any idea about how to make this work
-    {
-        Vector3 playerPosition = PlayerController.instance.transform.position;
-        distanceWithPlayer = Vector3.Distance(playerPosition, transform.position);
-    }
-    
 }
