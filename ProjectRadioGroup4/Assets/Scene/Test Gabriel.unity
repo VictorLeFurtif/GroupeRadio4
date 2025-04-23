@@ -682,16 +682,12 @@ PrefabInstance:
       value: SoundEmitter
       objectReference: {fileID: 0}
     - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: Pan2D
-      value: 0
+      propertyPath: Priority
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: MaxDistance
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: MinDistance
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: rolloffMode
@@ -719,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
-      value: 0.22939004
+      value: 0.22222222
       objectReference: {fileID: 0}
     - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].value
@@ -789,10 +785,6 @@ PrefabInstance:
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5261275308880498317, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
-      value: 1.0071678
-      objectReference: {fileID: 0}
     - target: {fileID: 5733051036169470842, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.73
@@ -835,75 +827,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
       propertyPath: max
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: min
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: minDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: waitForFinish
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: DontStopOnExit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: LoopImmediately
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: LoopSoundOnFinish
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: PlaySoundOnlyOnce
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: audioClips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: volumeBasedOnDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: audioClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 926859030aad05e4e9ed5dfcea16327e, type: 3}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: audioClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 926859030aad05e4e9ed5dfcea16327e, type: 3}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: audioClips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 926859030aad05e4e9ed5dfcea16327e, type: 3}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: audioClips.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: dcd5322225396484b8c2d95eb0b30e5f, type: 3}
-    - target: {fileID: 7030941122203545865, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      propertyPath: audioClips.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 178ef8b580422a14ebf36eab54d0e855, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3252376568077161525, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1774441215}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
 --- !u!114 &998429610 stripped
 MonoBehaviour:
@@ -1598,63 +1527,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748345491}
   m_CullTransparentMesh: 1
---- !u!1 &1774441214 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3252376568077161525, guid: 4efaf55dc05217f4bbacbc4e42f75faf, type: 3}
-  m_PrefabInstance: {fileID: 766977038}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1774441215
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774441214}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.6462264, g: 1, b: 0.93490016, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!114 &1798971444 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8684288886486728418, guid: 674db029357afba4593c22e57e6d13ae, type: 3}
