@@ -18,6 +18,7 @@ namespace DATA.Script.Attack_Data
         {
             public float damage;
             public float chanceOfOverload;
+            public float damageMaxBonus;
             public string name;
             //potentiel effet
             public float indexFrequency;

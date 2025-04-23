@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AI;
 using DATA.Script.Attack_Data;
+using DATA.Script.Entity_Data.AI;
 using MANAGER;
 using TMPro;
 using UnityEngine;
@@ -42,6 +43,8 @@ namespace Controller
         [SerializeField] private float maxValueSliderFrequencyAttack;
 
         [SerializeField] private TMP_Text descriptionAttackSelectedText;
+        
+        public Slider sliderOscillationPlayer;
 
         [Header("List of enemies detected"), SerializeField]
         public List<AbstractAI> listOfDetectedEnemy;
@@ -53,7 +56,7 @@ namespace Controller
 
         [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
 
-        public bool selectedAM = false;
+        [FormerlySerializedAs("selectedAM")] public bool selectedAm = false;
 
         #endregion
     
@@ -72,6 +75,7 @@ namespace Controller
         
             //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
             UpdateRadioEnemyWithLight(0);
+            InitializeSliderOscillationPlayer();
         }
 
         private void Awake()
@@ -173,6 +177,17 @@ namespace Controller
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
             ValueChangeCheck();
         }
+        
+        private void InitializeSliderOscillationPlayer() //wave amp comprit entre 0 et 0.4
+        {
+            sliderOscillationPlayer.maxValue = 0.4f;
+            sliderOscillationPlayer.onValueChanged.AddListener(UpdateAmplitude);
+        }
+       
+        private void UpdateAmplitude(float newValue)
+        {
+            matRadioPlayer.SetFloat("_waves_Amp", newValue);
+        }
 
         [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
@@ -197,7 +212,7 @@ namespace Controller
                 {
                     foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
                     {
-                        switch (selectedAM)
+                        switch (selectedAm)
                         {
                             case false :
                                 if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
@@ -244,7 +259,7 @@ namespace Controller
         {
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                selectedAM = true;
+                selectedAm = true;
                 ValueChangeCheck();
                 return;
             }
@@ -277,8 +292,25 @@ namespace Controller
 
             listOfDetectedEnemy = newList;
 
+            AmFmActionIfListNotEmpty();
+        }
+
+        private void ChangeBoolSeenForAi()
+        {
+            foreach (AbstractAI enemySeen in listOfDetectedEnemy)
+            {
+                enemySeen._abstractEntityDataInstance.seenByRadio = true;
+            }
+        }
+
+        private void AmFmActionIfListNotEmpty()
+        {
             if (listOfDetectedEnemy.Count != 0)
             {
+                listOfDetectedEnemy.Sort((x, y) =>
+                    Vector3.Distance(PlayerController.instance.transform.position, x._abstractEntityDataInstance.entity.transform.position)
+                        .CompareTo(
+                            Vector3.Distance(PlayerController.instance.transform.position, y._abstractEntityDataInstance.entity.transform.position)));
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
                 ChangeBoolSeenForAi();
                 UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
@@ -289,20 +321,12 @@ namespace Controller
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
             }
         }
-
-        private void ChangeBoolSeenForAi()
-        {
-            foreach (AbstractAI enemySeen in listOfDetectedEnemy)
-            {
-                enemySeen._abstractEntityDataInstance.seenByRadio = true;
-            }
-        }
     
         public void FmButton()
         {
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                selectedAM = false;
+                selectedAm = false;
                 ValueChangeCheck();
                 return;
             }
@@ -322,18 +346,7 @@ namespace Controller
                 }
             }
 
-            if (listOfDetectedEnemy.Count != 0)
-            {
-                //UpdateRadioEnemyAfterDetection();
-                PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
-                ChangeBoolSeenForAi();
-                UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
-            }
-            else
-            {
-                Debug.Log("nobody detected");
-                PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
-            }
+            AmFmActionIfListNotEmpty();
         }
     
         private bool IsEnemyAlreadyInList(AbstractAI enemyToCheck)
@@ -356,24 +369,42 @@ namespace Controller
     
         public void UpdateRadioEnemyWithLight(int index)
         {
-            if (listOfDetectedEnemy.Count - 1 < index || PlayerController.instance.currentPlayerExplorationState
-                == PlayerController.PlayerStateExploration.Exploration)
+            if (FightManager.instance.fightState == FightManager.FightState.OutFight)
             {
-                InitializeRadioEnemy();
-                return;
-            }
+                if (listOfDetectedEnemy.Count - 1 < index)
+                {
+                    InitializeRadioEnemy();
+                    return;
+                }
 
-            if (listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal) // cant add it in the block on top because dependencies with a Singleton
-            {
-                InitializeRadioEnemy();
-                return;
+                if (listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal) // cant add it in the block on top because dependencies with a Singleton
+                {
+                    InitializeRadioEnemy();
+                    return;
+                }
+        
+                float waveAmp = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveAmplitudeEnemy;
+                float waveFre = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveFrequency;
+        
+                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
+                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
             }
+            
+            if (FightManager.instance.fightState == FightManager.FightState.InFight)
+            {
+                if (FightManager.instance.listOfJustEnemiesAlive.Count - 1 < index)
+                {
+                    InitializeRadioEnemy();
+                    return;
+                }
+                
+                AbstractEntityDataInstance enemy = FightManager.instance.listOfJustEnemiesAlive[index];
+                float waveAmp = (enemy.hp / enemy.maxHp) * 0.4f; //TODO in future change magic number
+                float waveFre = enemy.waveFrequency;
         
-            float waveAmp = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveAmplitudeEnemy;
-            float waveFre = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveFrequency;
-        
-            matRadioEnemy.SetFloat("_waves_Amount", waveFre);
-            matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
+                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+            }
         }
     
         void OnDrawGizmos()
@@ -387,6 +418,16 @@ namespace Controller
             Gizmos.DrawWireSphere(PlayerController.instance.transform.position, desiredDistanceFm);
         }
     
-    
+        private void SliderOscillationPlayerBehavior() // now useless
+        {
+            if (PlayerController.instance.currentPlayerExplorationState == PlayerController.PlayerStateExploration.Guessing)
+            {
+                sliderOscillationPlayer.interactable = true;
+            }
+            else
+            {
+                sliderOscillationPlayer.interactable = false;
+            }
+        }
     }
 }

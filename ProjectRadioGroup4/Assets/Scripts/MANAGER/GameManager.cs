@@ -24,3 +24,4 @@ public class GameManager : MonoBehaviour
         currentGameState = GameState.GameOver;
     }
 }
+
