@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Enemy.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Player.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Test FP.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Test FP.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Classique Echo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Classique Echo.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Le Gros Bouclier.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Le Gros Bouclier.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/SkyLight.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/SkyLight.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,20 +26,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev/Victor",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev/Victor&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
@@ -103,6 +99,8 @@
       <workItem from="1745397967802" duration="14844000" />
       <workItem from="1745438578304" duration="8285000" />
       <workItem from="1745482982615" duration="1177000" />
+      <workItem from="1745484180154" duration="7125000" />
+      <workItem from="1745508639850" duration="809000" />
     </task>
     <servers />
   </component>
