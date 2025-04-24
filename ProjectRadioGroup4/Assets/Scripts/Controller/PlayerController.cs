@@ -205,6 +205,8 @@ namespace Controller
                 }
                 RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
                     ._abstractEntityDataInstance.reveal = true;
+                RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
+                                    .animatorEnemyAi.Play("SpawnAi");
                 RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
 

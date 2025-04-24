@@ -82,9 +82,16 @@ namespace Controller
             InitializeSliderOscillationPlayer();
             
             UpdateAmplitude(0);
-
+            InitializeTextEffectFm();
         }
 
+        private void InitializeTextEffectFm()
+        {
+            if (PlayerController.instance == null) return;
+            PlayerController.instance.selectedAttackEffect = null;
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+        }
+        
         private void Awake()
         {
             if (instance == null)
@@ -98,7 +105,11 @@ namespace Controller
 
             matRadioPlayer = imageRadioPlayer.material;
             matRadioEnemy = imageRadioEnemy.material;
+            
+            
+
         }
+        
     
         #region OldSystemRadio
     
@@ -257,24 +268,30 @@ namespace Controller
         
         public void SelectEffectFMButton()
         {
-            if (FightManager.instance.fightState != FightManager.FightState.InFight)
+            if (FightManager.instance.fightState != FightManager.FightState.InFight ||
+                PlayerController.instance == null)
+            {
                 return;
-
+            }
+            
+            PlayerController.instance.selectedAttackEffect = null;
+            
             foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
             {
                 if (attackInstance.attack.attackState != PlayerAttack.AttackState.Fm) continue;
                 if (!(Mathf.Abs(sliderForFrequencyAttack.value - attackInstance.attack.indexFrequency) <
                       epsilonForSliderAttack)) continue;
                 PlayerController.instance.selectedAttackEffect = attackInstance;
-                UpdateEffectFMText(attackInstance);
                 break;
             }
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
         private void UpdateEffectFMText(PlayerAttackInstance effectInstance)
         {
+            Debug.Log(effectInstance);
             descriptionEffectSelectedText.text = effectInstance == null ?
-                "Aucun effet sélectionné" : $"Effet : {effectInstance.attack.name}";
+                "No Effect selected" : $"Effet select : {effectInstance.attack.name}";
         }
 
         private void UpdateFrequenceText()

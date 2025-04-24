@@ -18,7 +18,7 @@ namespace AI
         
         private SpriteRenderer enemySpriteRenderer;
 
-        private Animator animatorEnemyAi;
+        public Animator animatorEnemyAi;
         
         private Collider2D myCollider;
 
@@ -137,7 +137,11 @@ namespace AI
             enemySpriteRenderer.enabled = true;
             FightManager.instance.fightState = FightManager.FightState.InFight;
             FightManager.instance.InitialiseList();
-            animatorEnemyAi.Play("SpawnAi");
+            if (!_abstractEntityDataInstance.reveal)
+            {
+                animatorEnemyAi.Play("SpawnAi");
+            }
+            
         }
         
         private void OnMouseUpAsButton()
@@ -155,7 +159,7 @@ namespace AI
             {
                 return;
             }
-
+            
             enemySpriteRenderer.enabled = true;
 
             if (_abstractEntityDataInstance.turnState == FightManager.TurnState.NoTurn || !canAttack)

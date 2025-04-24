@@ -24,3 +24,4 @@ MonoBehaviour:
     costBatteryExploration: 5
     costBatteryInFightMax: 0
     costBatteryInFight: 0
+  <MultiplicatorLifeTaken>k__BackingField: 1.75

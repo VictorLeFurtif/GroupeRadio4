@@ -5,29 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/AttackAi.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/AttackAi.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/DeathAi.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/DeathAi.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/IdleMonster.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/IdleMonster.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/SpawnAi.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/SpawnAi.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/takeDamageMonster.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/takeDamageMonster.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/Anime dégats monstre sprite sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/Anime dégats monstre sprite sheet.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/Anime idle monstre sprite sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/Anime idle monstre sprite sheet.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/anim_apparition_sprite_shit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/anim_apparition_sprite_shit.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/anim_attack_sprite_shit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/anim_attack_sprite_shit.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/anim_mortsprite_shit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/spriteSheet/anim_mortsprite_shit.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Enemy.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Test FP.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Test FP.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Classique Echo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Classique Echo.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Le Gros Bouclier.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/Le Gros Bouclier.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/SkyLight.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Attacks/FM/SkyLight.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "<unknown>",
+    "git-widget-placeholder": "dev/Victor",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -62,7 +46,7 @@
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -70,7 +54,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -118,6 +102,7 @@
       <workItem from="1745348359089" duration="10503000" />
       <workItem from="1745397967802" duration="14844000" />
       <workItem from="1745438578304" duration="8285000" />
+      <workItem from="1745482982615" duration="1177000" />
     </task>
     <servers />
   </component>
