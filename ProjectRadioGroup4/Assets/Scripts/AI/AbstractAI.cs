@@ -15,6 +15,8 @@ namespace AI
         private AbstractEntityData _abstractEntityData;
         public AbstractEntityDataInstance _abstractEntityDataInstance;
         public AiFightState _aiFightState;
+
+        public bool isAiForTuto;
         
         private SpriteRenderer enemySpriteRenderer;
 
@@ -133,6 +135,13 @@ namespace AI
         {
             // no need to implement virtual/override because in each type of ai the trigger will launch the FightManager
             if (other.gameObject.layer != 6 || _aiFightState == AiFightState.InFight) return;
+            
+            if (isAiForTuto && TutorialFightManager.instance != null)
+            {
+                TutorialFightManager.instance.isInTutorialCombat = true;
+                TutorialFightManager.instance.ShowCurrentStep();
+            }
+            
             _aiFightState = AiFightState.InFight;
             enemySpriteRenderer.enabled = true;
             FightManager.instance.fightState = FightManager.FightState.InFight;

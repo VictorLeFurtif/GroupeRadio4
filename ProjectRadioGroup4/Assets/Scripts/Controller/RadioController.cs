@@ -283,8 +283,8 @@ namespace Controller
                       epsilonForSliderAttack)) continue;
                 PlayerController.instance.selectedAttackEffect = attackInstance;
                 
-                if (TutorialFightManager.isInTutorialCombat &&
-                    TutorialFightManager.currentStep == CombatTutorialStep.ExplainLockFM)
+                if (TutorialFightManager.instance.isInTutorialCombat &&
+                    TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainLockFM)
                 {
                     TutorialFightManager.instance.AdvanceStep();
                 }

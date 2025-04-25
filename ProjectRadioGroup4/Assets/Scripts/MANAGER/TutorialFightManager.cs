@@ -10,8 +10,8 @@ namespace MANAGER
     {
         public static TutorialFightManager instance;
 
-        public static bool isInTutorialCombat = true;
-        public static CombatTutorialStep currentStep = CombatTutorialStep.ExplainBattery;
+        public bool isInTutorialCombat = false;
+        public CombatTutorialStep currentStep = CombatTutorialStep.ExplainBattery;
         
         public FightTutorialTextData tutorialText;
 
@@ -82,7 +82,11 @@ namespace MANAGER
 
         public void ShowCurrentStep()
         {
-            if (!isInTutorialCombat) return;
+            if (!isInTutorialCombat)
+            {
+                tutoPanel.SetActive(false);
+                return;
+            }
 
             tutoPanel.SetActive(true);
             string message = "";
@@ -161,6 +165,7 @@ namespace MANAGER
             tutoPanel.SetActive(false);
             Debug.Log("Tutoriel terminé !");
         }
+        
     }
 
     public enum CombatTutorialStep
@@ -185,4 +190,6 @@ namespace MANAGER
         [Header("Step Behavior")] 
         public bool requiresPlayerAction; 
     }
+    
+    
 }
