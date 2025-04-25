@@ -1,0 +1,508 @@
+fileFormatVersion: 2
+guid: 99127b0708d671447ba064fd5cb1a745
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Anim ivanov tir_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 727
+        width: 175
+        height: 294
+      alignment: 9
+      pivot: {x: 0.39535478, y: 0.1984444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66ecc80d4cb59d3479e4dfc6837a93ad
+      internalID: 1928584009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_1
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 732
+        width: 177
+        height: 287
+      alignment: 9
+      pivot: {x: 0.38614807, y: 0.19573463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30301805d95dd444ea46de98656a20f9
+      internalID: -1947431942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_2
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 732
+        width: 256
+        height: 287
+      alignment: 9
+      pivot: {x: 0.26548672, y: 0.19573463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5caa9e54d67eb24595c5339b2568d3c
+      internalID: 1529311960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_3
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 732
+        width: 304
+        height: 287
+      alignment: 9
+      pivot: {x: 0.22794041, y: 0.19427192}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af686fc2ae21c714a9ac175c81a47580
+      internalID: 1843426658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_4
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 732
+        width: 237
+        height: 286
+      alignment: 9
+      pivot: {x: 0.29274315, y: 0.19613883}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e11021c30c263f246ab2094b0be89723
+      internalID: 1341382328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_5
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 732
+        width: 231
+        height: 276
+      alignment: 9
+      pivot: {x: 0.29644695, y: 0.20338263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ecc1f6187df14b46ac1165d47be9cc3
+      internalID: -1686339661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_12
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 376
+        width: 240
+        height: 278
+      alignment: 9
+      pivot: {x: 0.2825241, y: 0.19881961}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e90ddfb8e2d71428540f11067e1b8a
+      internalID: -345177783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_13
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 378
+        width: 289
+        height: 289
+      alignment: 9
+      pivot: {x: 0.24790855, y: 0.19147046}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e51afdbf0fe52b4ab73aad44347178b
+      internalID: -1723828879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_14
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 376
+        width: 324
+        height: 295
+      alignment: 9
+      pivot: {x: 0.21137473, y: 0.19037351}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df40c4af924056044a69761b5fe150e8
+      internalID: 1148586225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_16
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 376
+        width: 387
+        height: 288
+      alignment: 9
+      pivot: {x: 0.17828164, y: 0.1960624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8bdee5ca67e294a9abd84c02af41e4
+      internalID: 1762947664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_17
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 376
+        width: 442
+        height: 288
+      alignment: 9
+      pivot: {x: 0.15927137, y: 0.19417477}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84dca89afb143fa43b75edcbf0ed6609
+      internalID: -573995465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_23
+      rect:
+        serializedVersion: 2
+        x: 2689
+        y: 570
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8afdd2cddbe3ba4ebb53326b63df789
+      internalID: 1692321971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_27
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 61
+        width: 235
+        height: 285
+      alignment: 9
+      pivot: {x: 0.28946498, y: 0.19095561}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f69e39ae513b3354eb72bfbcabb14bbc
+      internalID: -2071320134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_28
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 60
+        width: 304
+        height: 287
+      alignment: 9
+      pivot: {x: 0.22815524, y: 0.19310923}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f5bf68fc7ed91941aac75f6a5486aec
+      internalID: -1332241121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_29
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 61
+        width: 258
+        height: 287
+      alignment: 9
+      pivot: {x: 0.2724089, y: 0.19310914}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850abb4b03773d84a9ac44a7c176d193
+      internalID: -1893182826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_30
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 61
+        width: 177
+        height: 287
+      alignment: 9
+      pivot: {x: 0.38941842, y: 0.18932037}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f3825901dbc994ebc43d12ab1a0413
+      internalID: -1656329627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anim ivanov tir_31
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 55
+        width: 175
+        height: 294
+      alignment: 9
+      pivot: {x: 0.39436802, y: 0.20411476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9accb0ea11c7346824af8249527476
+      internalID: 117626205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Anim ivanov tir_0: 1928584009
+      Anim ivanov tir_1: -1947431942
+      Anim ivanov tir_10: 419894753
+      Anim ivanov tir_11: -66775009
+      Anim ivanov tir_12: -345177783
+      Anim ivanov tir_13: -1723828879
+      Anim ivanov tir_14: 1148586225
+      Anim ivanov tir_15: -1528387845
+      Anim ivanov tir_16: 1762947664
+      Anim ivanov tir_17: -573995465
+      Anim ivanov tir_18: -754524903
+      Anim ivanov tir_19: 266045217
+      Anim ivanov tir_2: 1529311960
+      Anim ivanov tir_20: -770954188
+      Anim ivanov tir_21: -1750169476
+      Anim ivanov tir_22: -1859278492
+      Anim ivanov tir_23: 1692321971
+      Anim ivanov tir_24: -1426371980
+      Anim ivanov tir_25: -1860174943
+      Anim ivanov tir_26: -319441764
+      Anim ivanov tir_27: -2071320134
+      Anim ivanov tir_28: -1332241121
+      Anim ivanov tir_29: -1893182826
+      Anim ivanov tir_3: 1843426658
+      Anim ivanov tir_30: -1656329627
+      Anim ivanov tir_31: 117626205
+      Anim ivanov tir_32: -759355562
+      Anim ivanov tir_33: -200485058
+      Anim ivanov tir_34: 1696771333
+      Anim ivanov tir_35: 607034707
+      Anim ivanov tir_36: -1830706605
+      Anim ivanov tir_4: 1341382328
+      Anim ivanov tir_5: -1686339661
+      Anim ivanov tir_6: 320310746
+      Anim ivanov tir_7: -989529548
+      Anim ivanov tir_8: -1287655904
+      Anim ivanov tir_9: -1986070993
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

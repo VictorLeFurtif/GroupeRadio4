@@ -219,6 +219,15 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+
+            if (PlayerController.instance != null)
+            {
+                foreach (var attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                {
+                    attackInstance.attack.costBatteryInFight = attackInstance.attack.costBatteryInFightMax;
+                }
+            }
+            
             //temporary
             int index = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(index);

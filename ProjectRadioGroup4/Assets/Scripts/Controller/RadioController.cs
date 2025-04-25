@@ -58,6 +58,9 @@ namespace Controller
         [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
 
         [FormerlySerializedAs("selectedAM")] public bool selectedAm = false;
+        
+        [SerializeField] private TMP_Text descriptionEffectSelectedText;
+
 
         #endregion
     
@@ -79,9 +82,16 @@ namespace Controller
             InitializeSliderOscillationPlayer();
             
             UpdateAmplitude(0);
-
+            InitializeTextEffectFm();
         }
 
+        private void InitializeTextEffectFm()
+        {
+            if (PlayerController.instance == null) return;
+            PlayerController.instance.selectedAttackEffect = null;
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+        }
+        
         private void Awake()
         {
             if (instance == null)
@@ -95,7 +105,11 @@ namespace Controller
 
             matRadioPlayer = imageRadioPlayer.material;
             matRadioEnemy = imageRadioEnemy.material;
+            
+            
+
         }
+        
     
         #region OldSystemRadio
     
@@ -249,28 +263,64 @@ namespace Controller
                     break;
                 }
             }
-
             UpdateFrequenceText();
         }
-
-        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
-        {
-            if (Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
-                < epsilonForSliderAttack)
-            {
-                PlayerController.instance.selectedAttack = _playerAttackInstance;
-                UpdateFrequenceText();
-            }
-        }
         
-        private void UpdateFrequenceText()
+        public void SelectEffectFMButton()
         {
-            if (PlayerController.instance == null || PlayerController.instance.selectedAttack == null)
+            if (FightManager.instance.fightState != FightManager.FightState.InFight ||
+                PlayerController.instance == null)
             {
-                descriptionAttackSelectedText.text = "";
                 return;
             }
-            descriptionAttackSelectedText.text = PlayerController.instance.selectedAttack.attack.name;
+            
+            PlayerController.instance.selectedAttackEffect = null;
+            
+            foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+            {
+                if (attackInstance.attack.attackState != PlayerAttack.AttackState.Fm) continue;
+                if (!(Mathf.Abs(sliderForFrequencyAttack.value - attackInstance.attack.indexFrequency) <
+                      epsilonForSliderAttack)) continue;
+                PlayerController.instance.selectedAttackEffect = attackInstance;
+                
+                if (TutorialFightManager.instance.isInTutorialCombat &&
+                    TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainLockFM)
+                {
+                    TutorialFightManager.instance.AdvanceStep();
+                }
+                
+                break;
+            }
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+        }
+        
+        private void UpdateEffectFMText(PlayerAttackInstance effectInstance)
+        {
+            Debug.Log(effectInstance);
+            descriptionEffectSelectedText.text = effectInstance == null ?
+                "No Effect selected" : $"Effet select : {effectInstance.attack.name}";
+        }
+
+        private void UpdateFrequenceText()
+        {
+            string amText = PlayerController.instance.selectedAttack != null
+                ? $"Attaque : {PlayerController.instance.selectedAttack.attack.name}"
+                : "Attaque : aucune";
+
+            string fmText = PlayerController.instance.selectedAttackEffect != null
+                ? $" | Effet : {PlayerController.instance.selectedAttackEffect.attack.name}"
+                : " | Effet : aucun";
+
+            descriptionAttackSelectedText.text = amText + fmText;
+        }
+
+        
+        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
+        {
+            if (!(Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
+                  < epsilonForSliderAttack)) return;
+            PlayerController.instance.selectedAttack = _playerAttackInstance;
+            UpdateFrequenceText();
         }
 
         public void AmButton()
@@ -287,9 +337,7 @@ namespace Controller
                 return;
             }
             
-            PlayerController.instance.animatorPlayer.Play("AmAttack");
-            var timeCantMove = PlayerController.instance._inGameData.amAnimation.clip.length;
-            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
+            PlayerController.instance.animatorPlayer.Play("ScanbeforePlayer");
             
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
@@ -370,9 +418,7 @@ namespace Controller
                 return;
             }
             
-            //PlayerController.instance.animatorPlayer.Play("FmAttack");
-            var timeCantMove = PlayerController.instance._inGameData.fmAnimation.clip.length;
-            StartCoroutine(ChangeBoolPlayerCanMove(timeCantMove));
+            PlayerController.instance.animatorPlayer.Play("ScanAround");
             
             int cpt = 0;
             listOfDetectedEnemy.Clear();
@@ -410,45 +456,67 @@ namespace Controller
             matRadioEnemy.SetFloat("_waves_Amp", 0);
         }
     
+        private Coroutine transitionCoroutine;
+
         public void UpdateRadioEnemyWithLight(int index)
         {
+            if (transitionCoroutine != null)
+                StopCoroutine(transitionCoroutine);
+
             if (FightManager.instance.fightState == FightManager.FightState.OutFight)
             {
-                if (listOfDetectedEnemy.Count - 1 < index)
+                if (listOfDetectedEnemy.Count - 1 < index || listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal)
                 {
-                    InitializeRadioEnemy();
+                    transitionCoroutine = StartCoroutine(SmoothTransitionRadio(0f, 0f));
                     return;
                 }
 
-                if (listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal) // cant add it in the block on top because dependencies with a Singleton
-                {
-                    InitializeRadioEnemy();
-                    return;
-                }
-        
-                float waveAmp = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveAmplitudeEnemy;
-                float waveFre = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveFrequency;
-        
-                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
-                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+                var enemy = listOfDetectedEnemy[index]._abstractEntityDataInstance;
+                transitionCoroutine = StartCoroutine(SmoothTransitionRadio(enemy.waveFrequency, enemy.waveAmplitudeEnemy));
             }
-            
-            if (FightManager.instance.fightState == FightManager.FightState.InFight)
+            else if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 if (FightManager.instance.listOfJustEnemiesAlive.Count - 1 < index)
                 {
-                    InitializeRadioEnemy();
+                    transitionCoroutine = StartCoroutine(SmoothTransitionRadio(0f, 0f));
                     return;
                 }
-                
-                AbstractEntityDataInstance enemy = FightManager.instance.listOfJustEnemiesAlive[index];
-                float waveAmp = (enemy.hp / enemy.maxHp) * 0.4f; //TODO in future change magic number
-                float waveFre = enemy.waveFrequency;
-        
-                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
-                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+
+                var enemy = FightManager.instance.listOfJustEnemiesAlive[index];
+                float amp = (enemy.hp / enemy.maxHp) * 0.4f;
+                float freq = enemy.waveFrequency;
+                transitionCoroutine = StartCoroutine(SmoothTransitionRadio(freq, amp));
             }
         }
+
+
+        [SerializeField]
+        private float durationTimeLerpRadio;
+        private IEnumerator SmoothTransitionRadio(float targetFreq, float targetAmp)
+        {
+            float elapsed = 0f;
+
+            float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
+            float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
+
+            while (elapsed < durationTimeLerpRadio)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / durationTimeLerpRadio;
+
+                float currentFreq = Mathf.Lerp(startFreq, targetFreq, t);
+                float currentAmp = Mathf.Lerp(startAmp, targetAmp, t);
+
+                matRadioEnemy.SetFloat("_waves_Amount", currentFreq);
+                matRadioEnemy.SetFloat("_waves_Amp", currentAmp);
+
+                yield return null;
+            }
+
+            matRadioEnemy.SetFloat("_waves_Amount", targetFreq);
+            matRadioEnemy.SetFloat("_waves_Amp", targetAmp);
+        }
+
     
         void OnDrawGizmos()
         {

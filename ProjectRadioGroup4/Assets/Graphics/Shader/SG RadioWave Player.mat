@@ -43,7 +43,8 @@ Material:
     - _waves: 12.7
     - _waves_Amount: 12.171223
     - _waves_Amp: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0, g: 0, b: 791.0902, a: 0.95686275}
   m_BuildTextureStacks: []
 --- !u!114 &148708066201681712
 MonoBehaviour:

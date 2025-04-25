@@ -26,7 +26,7 @@ namespace DATA.Script.Attack_Data
             PostZero,
             DeadHandSignal,
             CherieBomb,
-            Enigma,
+            VodkaOndeRadio,
         }
         
         [Serializable] public struct AttackClassic
@@ -38,12 +38,15 @@ namespace DATA.Script.Attack_Data
             public AttackEffect attackEffect;
             public float indexFrequency;
             public AttackState attackState;
-            public float costBattery;
+            public float costBatteryExploration;
+            public float costBatteryInFightMax;
+            public float costBatteryInFight;
         }
         
         [field:Header("Concern only for Post Zero"),SerializeField] public float DamageBomb { get; private set; }
-        
         [field: Header("Attack Player"),SerializeField] public AttackClassic AttackP { get; private set; }
+        
+        [field: Header("Multiplicateur de vie prise"),SerializeField] public float MultiplicatorLifeTaken { get; private set; }
 
         public PlayerAttackInstance Instance()
         {
@@ -56,12 +59,14 @@ namespace DATA.Script.Attack_Data
     {
         public PlayerAttack.AttackClassic attack;
         public float damageBomb;
+        public float multiplicatorLifeTaken;
         
         
         public PlayerAttackInstance(PlayerAttack data)
         {
             attack = data.AttackP;
             damageBomb = data.DamageBomb;
+            multiplicatorLifeTaken = data.MultiplicatorLifeTaken;
         }
 
         public void ProcessAttackEffect()
@@ -71,9 +76,9 @@ namespace DATA.Script.Attack_Data
                 Debug.LogError("No FighManager or PlayerController instances were Found");
                 return;
             }
+            
             PlayerController player = PlayerController.instance;
             
-            //SECOND CONDITION IS ALWAYS OUTFIGHT LOGIC
             switch (attack.attackEffect)
             {
                 case PlayerAttack.AttackEffect.Skylight:
@@ -86,7 +91,6 @@ namespace DATA.Script.Attack_Data
                     {
                         player.lampTorch.intensity = player.lampTorchOnValue;
                     }
-
                     break;
                 case PlayerAttack.AttackEffect.LeGrosBouclier:
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
@@ -102,28 +106,11 @@ namespace DATA.Script.Attack_Data
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
                         player._inGameData.classicEcho = true;
-                        attack.costBattery *= 1.75f;
                     }
                     else if (FightManager.instance.fightState == FightManager.FightState.OutFight)
                     {
                         player._inGameData.classicEcho = true;
                     }
-                    break;
-                case PlayerAttack.AttackEffect.SilenceRadio:
-                    break;
-                case PlayerAttack.AttackEffect.PostZero:
-                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
-                    {
-                        var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
-                        enemySelectedData.postZeroDeal.postZeroBomb = true;
-                        enemySelectedData.postZeroDeal.damageStockForAfterDeath = damageBomb;
-                    }
-                    break;
-                case PlayerAttack.AttackEffect.DeadHandSignal:
-                    break;
-                case PlayerAttack.AttackEffect.CherieBomb:
-                    break;
-                case PlayerAttack.AttackEffect.Enigma:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -156,8 +143,69 @@ namespace DATA.Script.Attack_Data
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        public void ProcessAttackLogic()
+        {
+            PlayerController player = PlayerController.instance;
+            switch (attack.attackEffect)
+            {
+                case PlayerAttack.AttackEffect.PostZero:
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
+                    {
+                        var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
+                        enemySelectedData.postZeroDeal.postZeroBomb = true;
+                        enemySelectedData.postZeroDeal.damageStockForAfterDeath = damageBomb;
+                    }
+                    break;
+                case PlayerAttack.AttackEffect.DeadHandSignal:
+                    break;
+                case PlayerAttack.AttackEffect.CherieBomb:
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
+                    {
+                        var selectedEnemyAbstractAi = player.selectedEnemy.GetComponent<AbstractAI>();
+                        
+                        foreach (var enemies in FightManager.instance.listOfJustEnemiesAlive)
+                        {
+                            var enemy = enemies.entity.GetComponent<AbstractAI>();
+                            float damageOtherEnemy =
+                                PlayerController.instance.selectedAttackEffect.attack.damage / 2;
+                            if (enemy == selectedEnemyAbstractAi)
+                            {
+                                continue;
+                            }
+                            enemy.PvEnemy -= damageOtherEnemy;
+                        }
+                    }
+                    break;
+                case PlayerAttack.AttackEffect.VodkaOndeRadio:
+                    if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
+                    {
+                        var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
+                        enemySelectedData.vodkaOndeRadio.isVodka = true;
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void TakeLifeFromPlayer()
+        {
+            if (PlayerController.instance != null)
+            {
+                Debug.Log(-attack.costBatteryInFightMax + "Attack ");
+                PlayerController.instance.ManageLife(-attack.costBatteryInFightMax);
+            }
+        }
         
-        
+        public void TakeLifeFromPlayer(float damage)
+        {
+            if (PlayerController.instance != null)
+            {
+                PlayerController.instance.ManageLife(-damage);
+                Debug.Log(-damage + "Effect");
+            }
+        }
         
     }
 }

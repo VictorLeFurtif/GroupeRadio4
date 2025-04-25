@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3304af135914f73499c56dcd82ed12ae, type: 3}
+  m_Name: CombatTutorialText
+  m_EditorClassIdentifier: 
+  <explainBattery>k__BackingField: Batterie c'est de la merde
+  <explainEnemyOscillation>k__BackingField: enemy oscillation c'est de la merde
+  <explainAMFM>k__BackingField: AM ET FM c'est de la merde
+  <explainRadioSlider>k__BackingField: Radio slider c'est de la merde
+  <explainLockFM>k__BackingField: LOCKER FM c'est de la merde
+  <explainPlayerOscillation>k__BackingField: OSCILLATION PLAYER c'est de la merde
+  <explainPlayButton>k__BackingField: PLAY BUTTON c'est de la merde
+  <finished>k__BackingField: T'AS FINI LE TUTO ET c'est de la merde

@@ -45,6 +45,7 @@ namespace Controller
         public List<PlayerAttackInstance> listOfPlayerAttackInstance = new List<PlayerAttackInstance>();
 
         public PlayerAttackInstance selectedAttack;
+        public PlayerAttackInstance selectedAttackEffect;
 
         [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
         public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
@@ -103,15 +104,22 @@ namespace Controller
                     return;
                 }
                 
-                _inGameData.hp = Mathf.Max(0, value); 
+                _inGameData.hp = Mathf.Max(0, value);
+                
                 if (_inGameData.IsDead())
                 {
                     canMove = false;
                     rb.velocity = Vector2.zero;
                     //animatorPlayer.Play("Death");
                     GameManager.instance.GameOver();
+                    return;
                 }
                 playerBattery.UpdateLifeText();
+
+                if (FightManager.instance != null && FightManager.instance.fightState == FightManager.FightState.InFight && _inGameData.turnState != FightManager.TurnState.Turn)
+                {
+                    animatorPlayer.Play("HitReceived");
+                }
             }
         }
 
@@ -166,23 +174,7 @@ namespace Controller
             spriteRendererPlayer.flipX = wasFacingLeft;
             lampTorch.transform.localRotation = Quaternion.Euler(wasFacingLeft ? new Vector3(0,180,-90) : new Vector3(0,0,-90));
         }
-
-        /*
-        private void ManageFight() //temporary
-        {
-            playerFightCanva.SetActive(_inGameData.turnState == FightManager.TurnState.Turn);
-        }
-
-
-        public void KillInstantEnemy()
-        {
-            if (selectedEnemy == null )
-            {
-                return;
-            }
-            selectedEnemy.GetComponent<AbstractAI>().PvEnemy = -5;
-            FightManager.instance.EndFighterTurn();
-        }*/
+        
 
         private void InitializeListOfAttackPlayer()
         {
@@ -197,6 +189,7 @@ namespace Controller
         
         public void ValidButton()
         {
+            Debug.Log("On Clcik");
             if (_inGameData.grosBouclier)
             {
                 _inGameData.grosBouclier = false;
@@ -213,6 +206,8 @@ namespace Controller
                 }
                 RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
                     ._abstractEntityDataInstance.reveal = true;
+                RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]
+                                    .animatorEnemyAi.Play("SpawnAi");
                 RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
 
@@ -225,6 +220,7 @@ namespace Controller
                 float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
 
                 
+                //TODO MEC FINAL DAMAGE AUCUN SENS AVEC LOGIQUE
                 float finalDamage = attackData.damageMaxBonus * ratio + attackData.damage;
                 float currentOverloadChance = attackData.chanceOfOverload * ratio;
                 
@@ -233,18 +229,41 @@ namespace Controller
                 if (isOverload)
                 {
                     Debug.Log("OVERLOAD déclenché ");
-                    //Add damage against player
+                    ManageLife(-finalDamage / 2);
                     animatorPlayer.Play("Overload");
                     return;
                 }
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
-                selectedAttack.ProcessAttackEffect();
                 
-                animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "test anim attaque" : "anime attaque spé");
+                selectedAttack.ProcessAttackLogic();
+                selectedAttack.TakeLifeFromPlayer();
+
+                if (selectedAttackEffect != null)
+                {
+                    float lifeTaken = selectedAttack.attack.costBatteryInFight *
+                                      selectedAttackEffect.multiplicatorLifeTaken;
+                    selectedAttackEffect.ProcessAttackEffect();
+                    selectedAttackEffect.TakeLifeFromPlayer(lifeTaken);
+                }
+
+                animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
+                
+                if (TutorialFightManager.instance.isInTutorialCombat &&
+                    TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainPlayButton)
+                {
+                    TutorialFightManager.instance.AdvanceStep();
+                }
+                
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
             }
-            
+            else
+            {
+                Debug.Log("Attaque pas");
+                Debug.Log(selectedAttack);
+                Debug.Log(selectedAttackEffect);
+                
+            }
         }
         
         public void EndFighterTurnForPlayer()

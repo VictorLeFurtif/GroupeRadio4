@@ -50,10 +50,19 @@ namespace DATA.Script.Entity_Data.AI
             public float damageStockForAfterDeath;
         }
         
+        [Serializable] public struct Vodka
+        {
+            public int compteurVodka;
+            public bool isVodka;
+        }
+        
+        [field: Header("Vodka Onde Radio"),SerializeField] public Vodka VodkaOndeRadio { get; private set; }
         [field: Header("Normal Attack"),SerializeField] public AttackData NormalAttack { get; private set; }
         [field: Header("Heavy Attack"),SerializeField] public AttackData HeavyAttack { get; private set; }
         [field: Header("Steal Batteries"),SerializeField] public AttackData StealBatteries { get; private set; }
         [field: Header("Steal a lot of Batteries"),SerializeField] public AttackData StealALotBatteries { get; private set; }
+        
+        
         
         
         
@@ -82,6 +91,8 @@ namespace DATA.Script.Entity_Data.AI
         public AbstractEntityData.AttackData stealALotBatteries;
         public bool flashed;
         public AbstractEntityData.PostZeroDeal postZeroDeal;
+        public AbstractEntityData.Vodka vodkaOndeRadio;
+        
 
         public AbstractEntityDataInstance(AbstractEntityData data, GameObject entity)
         {
@@ -100,6 +111,8 @@ namespace DATA.Script.Entity_Data.AI
             stealALotBatteries = data.StealALotBatteries;
             maxHp = hp;
             flashed = false;
+            vodkaOndeRadio = data.VodkaOndeRadio;
+            
         }
 
         public bool IsDead()
