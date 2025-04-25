@@ -189,6 +189,7 @@ namespace Controller
         
         public void ValidButton()
         {
+            
             if (_inGameData.grosBouclier)
             {
                 _inGameData.grosBouclier = false;
@@ -247,6 +248,13 @@ namespace Controller
                 }
 
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
+                
+                if (TutorialFightManager.isInTutorialCombat &&
+                    TutorialFightManager.currentStep == CombatTutorialStep.ExplainPlayButton)
+                {
+                    TutorialFightManager.instance.AdvanceStep();
+                }
+                    
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
             }
         }

@@ -282,6 +282,13 @@ namespace Controller
                 if (!(Mathf.Abs(sliderForFrequencyAttack.value - attackInstance.attack.indexFrequency) <
                       epsilonForSliderAttack)) continue;
                 PlayerController.instance.selectedAttackEffect = attackInstance;
+                
+                if (TutorialFightManager.isInTutorialCombat &&
+                    TutorialFightManager.currentStep == CombatTutorialStep.ExplainLockFM)
+                {
+                    TutorialFightManager.instance.AdvanceStep();
+                }
+                
                 break;
             }
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
