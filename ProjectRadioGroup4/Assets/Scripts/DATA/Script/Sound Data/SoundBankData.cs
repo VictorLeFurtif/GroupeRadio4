@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DATA.Script.Sound_Data
 {
     [CreateAssetMenu(menuName = "ScriptableObject/BankDataSound", fileName = "dataSound")]
     public class SoundBankData : ScriptableObject
     {
+        [Serializable]
         public class AvatarSound
         {
             public AudioClip attackLowWave;
@@ -13,26 +17,17 @@ namespace DATA.Script.Sound_Data
             public AudioClip ScanSlow;
             public AudioClip ScanFast;
         }
-
+        [Serializable]
         public class EnemySound
         {
-            public AudioClip attackEnemy1;
-            public AudioClip attackEnemy2;
-            public AudioClip attackEnemy3;
-            public AudioClip attackEnemy4;
-            public AudioClip attackEnemy5;
-            public AudioClip attackEnemy6;
+            public List<AudioClip> listEnemyAttack;
+            public List<AudioClip> listVocalEnemy;
 
             public AudioClip enemySound;
             
-            public AudioClip vocalEnemy1;
-            public AudioClip vocalEnemy2;
-            public AudioClip vocalEnemy3;
-            public AudioClip vocalEnemy4;
-            public AudioClip vocalEnemy5;
-            public AudioClip vocalEnemy6;
+            
         }
-
+        [Serializable]
         public class EnviroSound
         {
             public AudioClip whiteNoiseVentilation;
@@ -75,7 +70,7 @@ namespace DATA.Script.Sound_Data
             public AudioClip woodCreakig10;
             
         }
-
+        [Serializable]
         public class UxSound
         {
             public AudioClip click;
@@ -105,6 +100,12 @@ namespace DATA.Script.Sound_Data
             enemySound = data.EnemySoundData;
             enviroSound = data.EnviroSoundData;
             uxSound = data.UxSoundData;
+        }
+
+        public AudioClip SelectRandomSoundFromList(List<AudioClip>list)
+        {
+            int rnd = Random.Range(0, list.Count - 1);
+            return list[rnd];
         }
     }
 }

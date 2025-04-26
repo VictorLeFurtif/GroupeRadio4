@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/FirstPlayable Test/Test FP.unity
+    guid: d0f1a437b80a56b418b7b46cf63e296b
+  - enabled: 1
     path: Assets/Scene/Test Victor.unity
     guid: 5528e8096f9fb6b41af3ab3bce3112c2
   - enabled: 1

@@ -28,14 +28,20 @@ namespace MANAGER
         private void Start()
         {
             soundBankData = soundBankDataBrut.Instance();
+            InitialisationAudioObjectDestroyAtEnd(soundBankData.enviroSound.whiteNoiseVentilation,true,true,1f);
         }
 
         public void PlayMusicOneShot(AudioClip _audioClip)
         {
+            if (_audioClip == null)
+            {
+                Debug.LogError("The audioClip you tried to play is null");
+                return;
+            }
             audioSource.PlayOneShot(_audioClip);
         }
         
-        //horror in kind of optimisation
+        //horror in kind of optimisation but cool for music general
         private void InitialisationAudioObjectDestroyAtEnd(AudioClip audioClipTarget, bool looping, bool playingAwake, float volumeSound)
         {
             GameObject emptyObject = new GameObject

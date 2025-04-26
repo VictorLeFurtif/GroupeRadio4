@@ -253,7 +253,7 @@ namespace Controller
                 }
 
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
-                
+
                 if (TutorialFightManager.instance.isInTutorialCombat &&
                     TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainPlayButton)
                 {
@@ -262,13 +262,17 @@ namespace Controller
                 
                 Debug.Log($"Dégâts infligés : {finalDamage} | Chance d'Overload : {currentOverloadChance}%");
             }
-            else
-            {
-                Debug.Log("Attaque pas");
-                Debug.Log(selectedAttack);
-                Debug.Log(selectedAttackEffect);
-                
-            }
+            
+        }
+
+        public void PlaySoundAttackPlayerLow()
+        {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.attackLowWave);
+        }
+        
+        public void PlaySoundAttackPlayerStrong()
+        {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.attackStrongWave);
         }
         
         public void EndFighterTurnForPlayer()

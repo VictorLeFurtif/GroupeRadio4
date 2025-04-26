@@ -146,6 +146,10 @@ namespace AI
             enemySpriteRenderer.enabled = true;
             FightManager.instance.fightState = FightManager.FightState.InFight;
             FightManager.instance.InitialiseList();
+            
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList
+                (SoundManager.instance.soundBankData.enemySound.listVocalEnemy));
+            
             if (!_abstractEntityDataInstance.reveal)
             {
                 animatorEnemyAi.Play("SpawnAi");
@@ -343,13 +347,19 @@ namespace AI
             }
         }
 
-
+        public void PlayAttackAiSound()
+        {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList
+                (SoundManager.instance.soundBankData.enemySound.listEnemyAttack));
+        }
+        
         #region AI Thought Process
         
         private void Kamikaze()
         {
             PlayerController.instance.ManageLife(-38); //temporary floating value
             PvEnemy = 0;
+            animatorEnemyAi.Play("attackAi");
             Debug.Log("Explode");
             canAttack = false;
         }
