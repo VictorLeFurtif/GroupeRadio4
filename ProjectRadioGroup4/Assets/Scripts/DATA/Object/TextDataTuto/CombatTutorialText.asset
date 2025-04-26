@@ -12,11 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3304af135914f73499c56dcd82ed12ae, type: 3}
   m_Name: CombatTutorialText
   m_EditorClassIdentifier: 
-  <explainBattery>k__BackingField: Batterie c'est de la merde
-  <explainEnemyOscillation>k__BackingField: enemy oscillation c'est de la merde
-  <explainAMFM>k__BackingField: AM ET FM c'est de la merde
-  <explainRadioSlider>k__BackingField: Radio slider c'est de la merde
-  <explainLockFM>k__BackingField: LOCKER FM c'est de la merde
-  <explainPlayerOscillation>k__BackingField: OSCILLATION PLAYER c'est de la merde
-  <explainPlayButton>k__BackingField: PLAY BUTTON c'est de la merde
-  <finished>k__BackingField: T'AS FINI LE TUTO ET c'est de la merde
+  <explainBattery>k__BackingField: "Vous \xEAtes maintenant en combat. Ce combat
+    va \xEAtre guid\xE9 pour que vous preniez en main le fonctionnement de votre
+    radio."
+  <explainEnemyOscillation>k__BackingField: "Les vagues rouges repr\xE9sentent l'\xE9tat
+    actuel de l'ennemi. La hauteur des vagues repr\xE9sente la vie restante, tandis
+    que l'espace entre chaque vague repr\xE9sente l'intensit\xE9 de la prochaine
+    attaque."
+  <explainAMFM>k__BackingField: "Vous avez acc\xE8s \xE0 deux menus. Le bouton FM
+    vous donnera acc\xE8s aux effets qui se rajouteront aux attaques s\xE9lectionnables
+    avec le bouton AM."
+  <explainRadioSlider>k__BackingField: Utilisez le triangle de la ligne verte pour
+    selectionner un effet.
+  <explainLockFM>k__BackingField: "Une fois que vous \xEAtes pr\xEAts, utilisez le
+    petit bouton play pour verrouiller votre choix d'effet."
+  <explainPlayerOscillation>k__BackingField: "Utilisez le slider \xE0 droite de la
+    ligne/vague bleue pour amplifier votre attaque. Ceci augmentera vos d\xE9g\xE2ts,
+    mais aussi la chance de surcharger et de prendre des d\xE9g\xE2ts, annulant votre
+    attaque."
+  <explainPlayButton>k__BackingField: "Quand vous \xEAtes pr\xEAts, appuyez sur le
+    gros bouton play."
+  <finished>k__BackingField: "Bravo! Vous avez fini le tutoriel. Vainquez l'ennemi
+    pour progresser dans le bunker et trouver votre fille perdue\u2026"
