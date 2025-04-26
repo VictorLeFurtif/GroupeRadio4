@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 1243374267581536794}
   - component: {fileID: 533619625459662032}
   - component: {fileID: 8186670234064678888}
-  m_Layer: 0
+  - component: {fileID: 3716005004462590967}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -34,7 +35,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.32, y: 2.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 601346492744691113}
   m_Father: {fileID: 0}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 15378ffd8c90bcd4da723b01864dd04a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -150,8 +151,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.6}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -0.08749771, y: 1.3819675}
+  m_Size: {x: 1.9054146, y: 2.9552526}
   m_Direction: 0
 --- !u!114 &8113595643916894624
 MonoBehaviour:
@@ -196,6 +197,9 @@ MonoBehaviour:
     postZeroDeal:
       postZeroBomb: 0
       damageStockForAfterDeath: 0
+    vodkaOndeRadio:
+      compteurVodka: 0
+      isVodka: 0
   _inGameData:
     hp: 0
     speed: 0
@@ -222,16 +226,22 @@ MonoBehaviour:
     postZeroDeal:
       postZeroBomb: 0
       damageStockForAfterDeath: 0
+    vodkaOndeRadio:
+      compteurVodka: 0
+      isVodka: 0
     moveSpeed: 0
     grosBouclier: 0
+    classicEcho: 0
+    cherieBomb: 0
   spriteRendererPlayer: {fileID: 0}
   selectedEnemy: {fileID: 0}
   listOfPlayerAttack:
+  - {fileID: 11400000, guid: cff1f3c188f371a42b0d52216b8a35d7, type: 2}
   - {fileID: 11400000, guid: 08d594c9a1727b04abe0d76677966df6, type: 2}
   - {fileID: 11400000, guid: a595a4835fd44844d866a2f426b56935, type: 2}
+  - {fileID: 11400000, guid: 599732ef1e5af6f40a0ad2451ba2f948, type: 2}
   - {fileID: 11400000, guid: e575689c2e6f98741a2ceeeeebb914ac, type: 2}
-  - {fileID: 11400000, guid: b81507b93baab5b408358711bc296891, type: 2}
-  - {fileID: 11400000, guid: 5247c98c96373674b9f7cfa048190979, type: 2}
+  - {fileID: 11400000, guid: 261f94bb6520fb8459551df89f94a752, type: 2}
   listOfPlayerAttackInstance: []
   selectedAttack:
     attack:
@@ -242,8 +252,25 @@ MonoBehaviour:
       attackEffect: 0
       indexFrequency: 0
       attackState: 0
-      costBattery: 0
+      costBatteryExploration: 0
+      costBatteryInFightMax: 0
+      costBatteryInFight: 0
     damageBomb: 0
+    multiplicatorLifeTaken: 0
+  selectedAttackEffect:
+    attack:
+      damage: 0
+      chanceOfOverload: 0
+      damageMaxBonus: 0
+      name: 
+      attackEffect: 0
+      indexFrequency: 0
+      attackState: 0
+      costBatteryExploration: 0
+      costBatteryInFightMax: 0
+      costBatteryInFight: 0
+    damageBomb: 0
+    multiplicatorLifeTaken: 0
   currentPlayerExplorationState: 0
   animatorPlayer: {fileID: 0}
   lampTorch: {fileID: 5213452711014371218}
@@ -282,7 +309,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.016828895, y: 0.7461655}
+  m_Offset: {x: -0.11095762, y: 1.4645162}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5109121, y: 0.19902688}
@@ -293,7 +320,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5422223, y: 2.4791768}
+  m_Size: {x: 2.2655268, y: 3.3808308}
   m_EdgeRadius: 0
 --- !u!114 &533619625459662032
 MonoBehaviour:
@@ -308,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batteryCheckInterval: 1
+  lifeText: {fileID: 0}
 --- !u!95 &8186670234064678888
 Animator:
   serializedVersion: 5
@@ -329,6 +357,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3716005004462590967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522659208739532651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.5993099, y: 0.08032751, z: 0}
+  - {x: -0.49713516, y: 2.410172, z: 0}
+  - {x: 0.3141451, y: 2.355155, z: 0}
+  - {x: 0.36916208, y: 0.103906155, z: 0}
+  m_ShapePathHash: -1156423123
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 28814
+  m_LocalBounds:
+    m_Center: {x: -0.11507392, y: 1.2452497, z: 0}
+    m_Extent: {x: 0.484236, y: 1.1649222, z: 0}
 --- !u!1 &8523373328064371317
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601346492744691113}
   - component: {fileID: 5213452711014371218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lampTorch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -183,7 +183,12 @@ namespace Controller
                 listOfPlayerAttackInstance.Add(attack.Instance());
             }
         }
-
+        
+        public void ChangeBoolPlayerCanMove(float active)
+        {
+            canMove = active > 0.5f;
+        }
+        
         [SerializeField]
         private float epsilonValidationOscillation;
         

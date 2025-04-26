@@ -204,7 +204,9 @@ MonoBehaviour:
       compteurVodka: 0
       isVodka: 0
   _aiFightState: 1
-  aiType: 1
+  isAiForTuto: 1
+  animatorEnemyAi: {fileID: 0}
+  aiType: 0
 --- !u!70 &5518081921606556393
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

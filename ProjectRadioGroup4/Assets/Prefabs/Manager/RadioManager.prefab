@@ -51,12 +51,10 @@ MonoBehaviour:
   matRadioEnemy: {fileID: 0}
   listOfEveryEnemy:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   minDistance: 1
   maxDistance: 20
   sliderForFrequencyAttack: {fileID: 0}
-  maxValueSliderFrequencyAttack: 100
+  maxValueSliderFrequencyAttack: 350
   descriptionAttackSelectedText: {fileID: 0}
   sliderOscillationPlayer: {fileID: 0}
   listOfDetectedEnemy: []
@@ -66,4 +64,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   selectedAm: 0
+  descriptionEffectSelectedText: {fileID: 0}
+  backgroundSliderFrequency: {fileID: 0}
+  colorSliderAttackAm: {r: 0.16078432, g: 0.60784316, b: 0.91764706, a: 1}
+  colorSliderAttackFm: {r: 1, g: 0.5411765, b: 0.13725491, a: 1}
   epsilonForSliderAttack: 2
+  durationTimeLerpRadio: 1

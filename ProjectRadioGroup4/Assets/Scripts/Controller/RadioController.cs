@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,12 @@ namespace Controller
         [FormerlySerializedAs("selectedAM")] public bool selectedAm = false;
         
         [SerializeField] private TMP_Text descriptionEffectSelectedText;
+
+        [SerializeField]
+        private Image backgroundSliderFrequency;
+
+        [Header("Color")] [Tooltip("Sélectione la couleur pour Attack/Effet")] [SerializeField] private Color colorSliderAttackAm;
+        [SerializeField] private Color colorSliderAttackFm;
 
 
         #endregion
@@ -207,6 +214,7 @@ namespace Controller
         private void InitializeSliderFrequency()
         {
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
+            backgroundSliderFrequency.color = colorSliderAttackFm;
             ValueChangeCheck();
         }
         
@@ -333,11 +341,12 @@ namespace Controller
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 selectedAm = true;
+                backgroundSliderFrequency.color = colorSliderAttackAm;
                 ValueChangeCheck();
                 return;
             }
             
-            PlayerController.instance.animatorPlayer.Play("ScanbeforePlayer");
+            PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
             
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
@@ -370,12 +379,7 @@ namespace Controller
             AmFmActionIfListNotEmpty();
         }
 
-        IEnumerator ChangeBoolPlayerCanMove(float _time)
-        {
-            PlayerController.instance.canMove = false;
-            yield return new WaitForSeconds(_time);
-            PlayerController.instance.canMove = true;
-        }
+       
         
         private void ChangeBoolSeenForAi()
         {
@@ -400,6 +404,7 @@ namespace Controller
             else
             {
                 Debug.Log("nobody detected");
+                UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);   
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
             }
         }
@@ -414,6 +419,7 @@ namespace Controller
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 selectedAm = false;
+                backgroundSliderFrequency.color = colorSliderAttackFm;
                 ValueChangeCheck();
                 return;
             }
