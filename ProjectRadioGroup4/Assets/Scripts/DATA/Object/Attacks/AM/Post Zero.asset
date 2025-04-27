@@ -16,7 +16,7 @@ MonoBehaviour:
   <AttackP>k__BackingField:
     damage: 20
     chanceOfOverload: 65
-    damageMaxBonus: 20
+    damageMaxBonus: 7
     name: Post Zero
     attackEffect: 4
     indexFrequency: 200
@@ -24,3 +24,4 @@ MonoBehaviour:
     costBatteryExploration: 0
     costBatteryInFightMax: 13
     costBatteryInFight: 13
+  <MultiplicatorLifeTaken>k__BackingField: 0

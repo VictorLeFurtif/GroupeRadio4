@@ -22,7 +22,7 @@ MonoBehaviour:
   <explainAMFM>k__BackingField: "Vous avez acc\xE8s \xE0 deux menus. Le bouton FM
     vous donnera acc\xE8s aux effets qui se rajouteront aux attaques s\xE9lectionnables
     avec le bouton AM."
-  <explainRadioSlider>k__BackingField: Utilisez le triangle de la ligne verte pour
+  <explainRadioSlider>k__BackingField: Utilisez le triangle de la ligne orange pour
     selectionner un effet.
   <explainLockFM>k__BackingField: "Une fois que vous \xEAtes pr\xEAts, utilisez le
     petit bouton play pour verrouiller votre choix d'effet."

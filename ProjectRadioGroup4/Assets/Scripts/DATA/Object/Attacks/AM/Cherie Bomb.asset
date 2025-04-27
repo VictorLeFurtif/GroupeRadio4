@@ -16,11 +16,12 @@ MonoBehaviour:
   <AttackP>k__BackingField:
     damage: 30
     chanceOfOverload: 45
-    damageMaxBonus: 20
+    damageMaxBonus: 10
     name: Cherie Bomb
     attackEffect: 6
     indexFrequency: 300
     attackState: 0
     costBatteryExploration: 0
-    costBatteryInFightMax: 18
-    costBatteryInFight: 18
+    costBatteryInFightMax: 10
+    costBatteryInFight: 10
+  <MultiplicatorLifeTaken>k__BackingField: 0

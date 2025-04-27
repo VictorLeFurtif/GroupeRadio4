@@ -16,7 +16,7 @@ MonoBehaviour:
   <AttackP>k__BackingField:
     damage: 15
     chanceOfOverload: 25
-    damageMaxBonus: 15
+    damageMaxBonus: 10
     name: Vodka Onde Radio
     attackEffect: 7
     indexFrequency: 100
@@ -24,3 +24,4 @@ MonoBehaviour:
     costBatteryExploration: 0
     costBatteryInFightMax: 14
     costBatteryInFight: 14
+  <MultiplicatorLifeTaken>k__BackingField: 0
