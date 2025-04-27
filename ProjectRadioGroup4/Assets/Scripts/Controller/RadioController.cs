@@ -19,7 +19,7 @@ namespace Controller
     {
         #region VARIABELS
         public static RadioController instance;
-        [Header("Canvas")] [SerializeField] private Canvas canvaRadio;
+        [Header("Canvas")] public Canvas canvaRadio;
 
         [FormerlySerializedAs("imageRadio")] [Header("Frequence Radio")] [SerializeField]
         private RawImage imageRadioPlayer;

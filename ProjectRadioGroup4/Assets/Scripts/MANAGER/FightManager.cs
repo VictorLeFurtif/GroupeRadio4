@@ -140,7 +140,6 @@ namespace MANAGER
                 currentFightAdvantage = FightAdvantage.Advantage;
             }
             
-            Debug.Log(currentFightAdvantage);
 
             listOfJustEnemiesAlive.AddRange(currentOrder);
             
@@ -188,7 +187,7 @@ namespace MANAGER
             }
             else
             {
-                Debug.Log("Nobody won");
+                
                 if (RadioController.instance == null)
                 {
                     Debug.LogError("No radioController seen");
@@ -219,18 +218,10 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
-
-            if (PlayerController.instance != null)
-            {
-                foreach (var attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
-                {
-                    attackInstance.attack.costBatteryInFight = attackInstance.attack.costBatteryInFightMax;
-                }
-            }
             
-            //temporary
+            /*temporary
             int index = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(index);
+            SceneManager.LoadScene(index);*/
         }
     }
 }

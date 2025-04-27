@@ -193,7 +193,6 @@ namespace DATA.Script.Attack_Data
         {
             if (PlayerController.instance != null)
             {
-                Debug.Log(-attack.costBatteryInFightMax + "Attack ");
                 PlayerController.instance.ManageLife(-attack.costBatteryInFightMax);
             }
         }
@@ -203,7 +202,6 @@ namespace DATA.Script.Attack_Data
             if (PlayerController.instance != null)
             {
                 PlayerController.instance.ManageLife(-damage);
-                Debug.Log(-damage + "Effect");
             }
         }
         

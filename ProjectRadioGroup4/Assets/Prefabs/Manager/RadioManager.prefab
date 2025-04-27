@@ -58,7 +58,7 @@ MonoBehaviour:
   descriptionAttackSelectedText: {fileID: 0}
   sliderOscillationPlayer: {fileID: 0}
   listOfDetectedEnemy: []
-  desiredDistanceAm: 100
+  desiredDistanceAm: 15
   desiredDistanceFm: 4
   enemyLayerMask:
     serializedVersion: 2
@@ -68,5 +68,6 @@ MonoBehaviour:
   backgroundSliderFrequency: {fileID: 0}
   colorSliderAttackAm: {r: 0.16078432, g: 0.60784316, b: 0.91764706, a: 1}
   colorSliderAttackFm: {r: 1, g: 0.5411765, b: 0.13725491, a: 1}
+  ampouleManager: {fileID: 0}
   epsilonForSliderAttack: 2
   durationTimeLerpRadio: 1

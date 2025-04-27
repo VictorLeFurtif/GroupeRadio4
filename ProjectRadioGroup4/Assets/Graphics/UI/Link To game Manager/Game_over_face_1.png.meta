@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 99f19f08e9a9ce74aa30911c462e1a34
+guid: 86f1de075a91577488ac8718abe3f3e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,91 +95,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: damage hit 1_0
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 639
-        width: 174
-        height: 291
-      alignment: 9
-      pivot: {x: 0.5265252, y: 0.055907995}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e135576d782e1a54a99eeeb27ac542a7
-      internalID: -846067700
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: damage hit 1_1
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 638
-        width: 195
-        height: 295
-      alignment: 9
-      pivot: {x: 0.5828404, y: 0.054106943}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbbc73aac22c2074189b95af050bd0de
-      internalID: 784246525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: damage hit 1_2
-      rect:
-        serializedVersion: 2
-        x: 626
-        y: 641
-        width: 207
-        height: 290
-      alignment: 9
-      pivot: {x: 0.62263113, y: 0.07029188}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dbb2415d5e4b7546af73ae3208c3d2d
-      internalID: 638907308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: damage hit 1_3
-      rect:
-        serializedVersion: 2
-        x: 915
-        y: 643
-        width: 212
-        height: 303
-      alignment: 9
-      pivot: {x: 0.58708274, y: 0.0734958}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 669a8d37445e92e4fa85c9fac9adca83
-      internalID: 590943605
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -190,11 +106,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      damage hit 1_0: -846067700
-      damage hit 1_1: 784246525
-      damage hit 1_2: 638907308
-      damage hit 1_3: 590943605
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

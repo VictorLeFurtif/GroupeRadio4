@@ -95,7 +95,7 @@ namespace Controller
 
         private float HealthPlayer 
         {
-            get => _inGameData != null ? _inGameData.hp : 0f;
+            get => _inGameData?.hp ?? 0f;
             set
             {
                 if (_inGameData == null)
@@ -106,38 +106,40 @@ namespace Controller
                 
                 _inGameData.hp = Mathf.Max(0, value);
                 
+                playerBattery.UpdateLifeText();
                 if (_inGameData.IsDead())
                 {
                     canMove = false;
                     rb.velocity = Vector2.zero;
-                    //animatorPlayer.Play("Death");
-                    GameManager.instance.GameOver();
+                    animatorPlayer.Play("Death");
                     return;
                 }
-                playerBattery.UpdateLifeText();
+                
 
-                if (FightManager.instance != null && FightManager.instance.fightState == FightManager.FightState.InFight && _inGameData.turnState != FightManager.TurnState.Turn)
+                if (FightManager.instance != null && FightManager.instance.fightState == 
+                    FightManager.FightState.InFight && _inGameData.turnState != FightManager.TurnState.Turn)
                 {
                     animatorPlayer.Play("HitReceived");
                 }
             }
         }
 
-    
+
         /// <summary>
         /// Temporary shity Update
         /// </summary>
+
+        public void PlayGameOver()
+        {
+            Debug.Log("Stoian");
+            GameManager.instance?.GameOver();
+        }
         
         private void Update()
         {
             PlayerMove();
             CheckForFlipX();
-            //ManageFight();
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log(rb.velocity);
-            }
+            
         }
 
         private void Start()
@@ -194,7 +196,6 @@ namespace Controller
         
         public void ValidButton()
         {
-            Debug.Log("On Clcik");
             if (_inGameData.grosBouclier)
             {
                 _inGameData.grosBouclier = false;
@@ -252,6 +253,11 @@ namespace Controller
                     selectedAttackEffect.TakeLifeFromPlayer(lifeTaken);
                 }
 
+                if (_inGameData.hp == 0)
+                {
+                    return;
+                }
+                
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
 
                 if (TutorialFightManager.instance.isInTutorialCombat &&

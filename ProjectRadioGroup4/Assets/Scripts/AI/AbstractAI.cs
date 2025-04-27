@@ -272,13 +272,17 @@ namespace AI
             
             float randomValueForFlash = Random.Range(0f, 1f);
 
-            if (randomValueForFlash < 0.25f && _abstractEntityDataInstance.flashed)
+            if (randomValueForFlash < 0.99f && _abstractEntityDataInstance.flashed)
             {
                 Debug.Log("Flashed so cant attack");
+                animatorEnemyAi.Play("Flashed");
                 _abstractEntityDataInstance.flashed = false;
+                canAttack = false;
                 return;
             }
-            
+
+            _abstractEntityDataInstance.flashed = false;
+
             float randomValue = Random.Range(0f, 1f);
             
             if (_abstractEntityDataInstance.IsBatteryMoreThanHundred())
@@ -387,6 +391,7 @@ namespace AI
 
             canAttack = false; 
             animatorEnemyAi.Play("attackAi");
+            Debug.Log(_attackName);
 
             if (PlayerController.instance._inGameData.grosBouclier)
             {
