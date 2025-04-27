@@ -68,6 +68,9 @@ namespace Controller
         [Header("Color")] [Tooltip("Sélectione la couleur pour Attack/Effet")] [SerializeField] private Color colorSliderAttackAm;
         [SerializeField] private Color colorSliderAttackFm;
 
+        [Header("Ampoule Manager")]
+        public AmpouleManager ampouleManager;
+
 
         #endregion
     
@@ -304,7 +307,6 @@ namespace Controller
         
         private void UpdateEffectFMText(PlayerAttackInstance effectInstance)
         {
-            Debug.Log(effectInstance);
             descriptionEffectSelectedText.text = effectInstance == null ?
                 "No Effect selected" : $"Effet select : {effectInstance.attack.name}";
         }
@@ -312,14 +314,10 @@ namespace Controller
         private void UpdateFrequenceText()
         {
             string amText = PlayerController.instance.selectedAttack != null
-                ? $"Attaque : {PlayerController.instance.selectedAttack.attack.name}"
-                : "Attaque : aucune";
-
-            string fmText = PlayerController.instance.selectedAttackEffect != null
-                ? $" | Effet : {PlayerController.instance.selectedAttackEffect.attack.name}"
-                : " | Effet : aucun";
-
-            descriptionAttackSelectedText.text = amText + fmText;
+                ? $"Attaque or Effect : {PlayerController.instance.selectedAttack.attack.name}"
+                : "Attaque or Effect : aucune";
+            
+            descriptionAttackSelectedText.text = amText;
         }
 
         

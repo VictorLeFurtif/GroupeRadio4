@@ -46,7 +46,6 @@ namespace MANAGER
             
             if (Time.frameCount == _lastAdvanceFrame) return;
             _lastAdvanceFrame = Time.frameCount;
-            Debug.Log("=== AdvanceStep Called === From step: " + currentStep);
             
             if (currentStep >= CombatTutorialStep.Finished)
             {
@@ -58,12 +57,10 @@ namespace MANAGER
 
             if (nextStep < CombatTutorialStep.Finished && StepRequiresPlayerAction(nextStep))
             {
-                Debug.Log("New current State" + nextStep);
                 currentStep = nextStep;
                 ShowCurrentStep();
                 return;
             }
-            Debug.Log("Gros caca");
             currentStep = nextStep;
             ShowCurrentStep();
         }

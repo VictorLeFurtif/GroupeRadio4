@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using MANAGER;
@@ -23,10 +24,13 @@ namespace AI
         public Animator animatorEnemyAi;
         
         private Collider2D myCollider;
-
         private bool canAttack = true;
+        private bool waitingForAction = false;
+
         
         [SerializeField] private TypeOfAi aiType;
+
+        [SerializeField] private float timeForAiTurn;
 
         public enum AiFightState
         {
@@ -44,8 +48,22 @@ namespace AI
         private void Update()
         {
             AiShift();
-            AiBehavior();
+
+            if (_abstractEntityDataInstance.turnState == FightManager.TurnState.Turn && canAttack && !waitingForAction)
+            {
+                StartCoroutine(DelayedAiBehavior());
+            }
         }
+
+
+        private IEnumerator DelayedAiBehavior()
+        {
+            waitingForAction = true; 
+            yield return new WaitForSeconds(timeForAiTurn);
+            AiBehavior();
+            waitingForAction = false;
+        }
+        
 
         public float PvEnemy
         {
@@ -192,7 +210,7 @@ namespace AI
                     break;
             }
         }
-
+        
 
         public void EndAiTurn()
         {
