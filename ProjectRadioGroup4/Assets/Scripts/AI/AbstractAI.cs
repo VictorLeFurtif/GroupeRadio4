@@ -272,7 +272,7 @@ namespace AI
             
             float randomValueForFlash = Random.Range(0f, 1f);
 
-            if (randomValueForFlash < 0.99f && _abstractEntityDataInstance.flashed)
+            if (randomValueForFlash < 0.25f && _abstractEntityDataInstance.flashed)
             {
                 Debug.Log("Flashed so cant attack");
                 animatorEnemyAi.Play("Flashed");
