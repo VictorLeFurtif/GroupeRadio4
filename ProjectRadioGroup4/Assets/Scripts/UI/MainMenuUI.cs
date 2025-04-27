@@ -25,12 +25,13 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private TMP_Text completionPercentageText;
     [SerializeField] private TMP_Text playTimeText;
-    private void Update()
+    private void Start()
     {
+        ChangeWindowMode(true);
         //PlayTimeText = 
         //CompletionPercentageText = 
     }
-
+    
     public void NewGame()
     {
         
@@ -63,5 +64,11 @@ public class MainMenuUI : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ChangeWindowMode(bool fullscreen)
+    {
+        if (fullscreen) Screen.fullScreen = true;
+        if (!fullscreen) Screen.fullScreen = false;
     }
 }
