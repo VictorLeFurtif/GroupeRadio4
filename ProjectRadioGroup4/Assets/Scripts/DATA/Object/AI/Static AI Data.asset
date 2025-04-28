@@ -25,13 +25,13 @@ MonoBehaviour:
     isVodka: 0
   <NormalAttack>k__BackingField:
     damage: -7
-    batteryGain: 6
+    batteryGain: 2
   <HeavyAttack>k__BackingField:
     damage: -9
-    batteryGain: 8
+    batteryGain: 6
   <StealBatteries>k__BackingField:
     damage: -6
-    batteryGain: 8
+    batteryGain: 6
   <StealALotBatteries>k__BackingField:
-    damage: -18
-    batteryGain: 18
+    damage: -8
+    batteryGain: 8
