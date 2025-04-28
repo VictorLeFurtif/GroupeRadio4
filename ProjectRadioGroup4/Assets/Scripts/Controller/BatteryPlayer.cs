@@ -37,7 +37,7 @@ namespace Controller
                 Debug.LogWarning("No PlayerController Was Found");
                 return;
             }
-            lifeText.text = PlayerController.instance._abstractEntityDataInstance.hp.ToString(CultureInfo.InvariantCulture) + "%";
+            lifeText.text = PlayerController.instance._abstractEntityDataInstance.hp.ToString("00.00",CultureInfo.InvariantCulture) + "%";
         }
         
         private void TickBatteryTimer()

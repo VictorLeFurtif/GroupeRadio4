@@ -60,6 +60,8 @@ namespace Controller
 
         [Header("Battery")] private BatteryPlayer playerBattery;
         
+        private float nextFootstepTime;
+        
         public enum PlayerStateExploration
         {
             Exploration,
@@ -130,8 +132,7 @@ namespace Controller
         /// </summary>
 
         public void PlayGameOver()
-        {
-            Debug.Log("Stoian");
+        {    
             GameManager.instance?.GameOver();
         }
         
@@ -158,11 +159,13 @@ namespace Controller
             }
             var x = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                rb.velocity = new Vector2(x  * moveSpeedRunning,rb.velocity.y);
-            }
             animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
+            
+            if (Mathf.Abs(x) > 0.1f && Time.time > nextFootstepTime)
+            {
+                SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.walk);
+                nextFootstepTime = Time.time + 0.35f; 
+            }
         }
         
         private bool wasFacingLeft = false; //bool pour stock là où il regardait
@@ -193,9 +196,13 @@ namespace Controller
         
         [SerializeField]
         private float epsilonValidationOscillation;
+
+        public bool canAttack = true;
         
         public void ValidButton()
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
+            
             if (_inGameData.grosBouclier)
             {
                 _inGameData.grosBouclier = false;
@@ -220,12 +227,12 @@ namespace Controller
 
             if (FightManager.instance.fightState == FightManager.FightState.InFight &&
                 _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
-                selectedAttack != null && selectedEnemy != null)
+                selectedAttack != null && selectedEnemy != null && canAttack)
             {
                 PlayerAttack.AttackClassic attackData = selectedAttack.attack;
                 float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
                 float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
-
+                canAttack = false;
                 
                 //TODO MEC FINAL DAMAGE AUCUN SENS AVEC LOGIQUE
                 float finalDamage = attackData.damageMaxBonus * ratio + attackData.damage;
@@ -289,6 +296,8 @@ namespace Controller
                 Debug.LogWarning("No FightManager Detected");
                 return;
             }
+
+            canAttack = true;
             FightManager.instance.EndFighterTurn();
         }
         

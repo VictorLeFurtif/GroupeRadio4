@@ -16,6 +16,8 @@ namespace DATA.Script.Sound_Data
 
             public AudioClip ScanSlow;
             public AudioClip ScanFast;
+            
+            public AudioClip walk;
         }
         [Serializable]
         public class EnemySound

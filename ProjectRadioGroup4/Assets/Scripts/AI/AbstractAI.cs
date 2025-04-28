@@ -202,7 +202,8 @@ namespace AI
             {
                 return;
             }
-
+            
+            
             switch (aiType)
             {
                 case TypeOfAi.AlwaysAttack:
@@ -245,7 +246,34 @@ namespace AI
         {
             if (!canAttack) return;
 
-            PlayerController.instance.ManageLife(-5); 
+            if (_abstractEntityDataInstance.vodkaOndeRadio.isVodka)
+            {
+                foreach (var enemyAI in FightManager.instance.listOfJustEnemiesAlive)
+                {
+                    enemyAI.entity.GetComponent<AbstractAI>().PvEnemy -= 15; 
+                }
+                _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka++;
+                if (_abstractEntityDataInstance.vodkaOndeRadio.compteurVodka == 3)
+                {
+                    _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka = 0;
+                    _abstractEntityDataInstance.vodkaOndeRadio.isVodka = false;
+                }
+            }
+            
+            float randomValueForFlash = Random.Range(0f, 1f);
+
+            if (randomValueForFlash < 0.25f && _abstractEntityDataInstance.flashed)
+            {
+                Debug.Log("Flashed so cant attack");
+                animatorEnemyAi.Play("Flashed");
+                _abstractEntityDataInstance.flashed = false;
+                canAttack = false;
+                return;
+            }
+
+            _abstractEntityDataInstance.flashed = false;
+            
+            PlayerController.instance.ManageLife(-1); 
             animatorEnemyAi.Play("attackAi"); 
             canAttack = false; 
         }
