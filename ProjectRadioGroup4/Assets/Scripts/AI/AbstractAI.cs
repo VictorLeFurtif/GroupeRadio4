@@ -109,6 +109,10 @@ namespace AI
                 AbstractAI enemyAI = enemyInstance.entity.GetComponent<AbstractAI>();
                 if (enemyAI != null)
                 {
+                    if (enemyAI == this)
+                    {
+                        continue;
+                    }
                     enemyAI.PvEnemy -= _abstractEntityDataInstance.postZeroDeal.damageStockForAfterDeath;
                 }
             }

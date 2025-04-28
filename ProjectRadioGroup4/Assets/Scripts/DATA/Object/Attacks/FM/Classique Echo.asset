@@ -20,7 +20,7 @@ MonoBehaviour:
     name: Classique Echo
     attackEffect: 2
     indexFrequency: 250
-    attackState: 1
+    attackState: 2
     costBatteryExploration: 5
     costBatteryInFightMax: 0
     costBatteryInFight: 0

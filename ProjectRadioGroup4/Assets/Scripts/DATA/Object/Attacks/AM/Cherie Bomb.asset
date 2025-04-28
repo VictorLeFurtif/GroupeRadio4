@@ -20,7 +20,7 @@ MonoBehaviour:
     name: Cherie Bomb
     attackEffect: 6
     indexFrequency: 300
-    attackState: 0
+    attackState: 1
     costBatteryExploration: 0
     costBatteryInFightMax: 2
     costBatteryInFight: 2

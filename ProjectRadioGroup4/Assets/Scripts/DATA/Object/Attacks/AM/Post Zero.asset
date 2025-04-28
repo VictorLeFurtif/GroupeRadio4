@@ -20,7 +20,7 @@ MonoBehaviour:
     name: Post Zero
     attackEffect: 4
     indexFrequency: 200
-    attackState: 0
+    attackState: 1
     costBatteryExploration: 0
     costBatteryInFightMax: 3
     costBatteryInFight: 3

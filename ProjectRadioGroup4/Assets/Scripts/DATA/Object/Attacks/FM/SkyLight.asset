@@ -20,7 +20,7 @@ MonoBehaviour:
     name: SkyLight
     attackEffect: 0
     indexFrequency: 50
-    attackState: 1
+    attackState: 2
     costBatteryExploration: 0.5
     costBatteryInFightMax: 0
     costBatteryInFight: 0

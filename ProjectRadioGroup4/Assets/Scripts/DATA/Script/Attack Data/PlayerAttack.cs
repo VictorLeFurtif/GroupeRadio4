@@ -13,6 +13,7 @@ namespace DATA.Script.Attack_Data
     {
         public enum AttackState
         {
+            Default,
             Am,
             Fm,
         }

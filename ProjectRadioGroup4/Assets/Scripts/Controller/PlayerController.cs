@@ -227,7 +227,7 @@ namespace Controller
 
             if (FightManager.instance.fightState == FightManager.FightState.InFight &&
                 _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
-                selectedAttack != null && selectedEnemy != null && canAttack)
+                selectedAttack != null && selectedEnemy != null && canAttack && selectedAttack.attack.attackState == PlayerAttack.AttackState.Am)
             {
                 PlayerAttack.AttackClassic attackData = selectedAttack.attack;
                 float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
@@ -249,11 +249,19 @@ namespace Controller
                 }
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
-                
-                selectedAttack.ProcessAttackLogic();
-                selectedAttack.TakeLifeFromPlayer();
 
-                if (selectedAttackEffect != null)
+                if (selectedAttack is { attack: { attackState: PlayerAttack.AttackState.Am } })
+                {
+                    selectedAttack.ProcessAttackLogic();
+                    selectedAttack.TakeLifeFromPlayer();
+                }
+                else
+                {
+                    return;
+                }
+                
+
+                if (selectedAttackEffect != null && selectedAttack is { attack: { attackState: PlayerAttack.AttackState.Am } })
                 {
                     float lifeTaken = selectedAttack.attack.costBatteryInFight *
                                       selectedAttackEffect.multiplicatorLifeTaken;
