@@ -544,5 +544,17 @@ namespace Controller
                 sliderOscillationPlayer.interactable = false;
             }
         }
+
+        public void SelectEnemyByLight()
+        {
+            if (PlayerController.instance == null || FightManager.instance == null || 
+                FightManager.instance.fightState == FightManager.FightState.OutFight || AmpouleManager.ampouleAllumee 
+                >  FightManager.instance.listOfJustEnemiesAlive.Count - 1)
+            {
+             return;
+            }
+            PlayerController.instance.selectedEnemy =
+                FightManager.instance.listOfJustEnemiesAlive[AmpouleManager.ampouleAllumee].entity;
+        }
     }
 }

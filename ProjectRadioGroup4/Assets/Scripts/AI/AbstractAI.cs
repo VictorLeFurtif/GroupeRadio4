@@ -171,7 +171,8 @@ namespace AI
             {
                 animatorEnemyAi.Play("SpawnAi");
             }
-            
+
+            RadioController.instance?.SelectEnemyByLight();
         }
         
         private void OnMouseUpAsButton()
