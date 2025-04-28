@@ -55,6 +55,10 @@ namespace MANAGER
             audioSourceGeneral.playOnAwake = playingAwake;
             audioSourceGeneral.Play();
             audioSourceGeneral.volume = volumeSound;
+            if (looping)
+            {
+                return;
+            }
             Destroy(emptyObject,audioClipTarget.length);
         }
     }

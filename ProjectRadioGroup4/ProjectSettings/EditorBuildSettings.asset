@@ -11,37 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Test Victor.unity
     guid: 5528e8096f9fb6b41af3ab3bce3112c2
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/1.0.unity
-    guid: 414ecb484bed9044eb459c866dd8f0af
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/1.1.unity
-    guid: 7efa75f241c41fb4ab289e1e98381ab5
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/2.0.unity
-    guid: ae7fb47a7e2004b4a91665f3cc008924
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/2.1.unity
-    guid: e3e4fe3b5073b3a4e8d6e4a022460e66
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/3.0.unity
-    guid: 70d7a2eb9db5fb5499a514836ae0fd7b
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/3.1.unity
-    guid: 54abe079832380d4c8e358e1a30362a2
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/4.0.unity
-    guid: 23517fc0f15c20548a032de02e595e84
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/4.1.unity
-    guid: a74c6a49dffd4904d8d4620992322965
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/5.0.unity
-    guid: b6979ef379224f04c8401e2c3b95b433
-  - enabled: 1
-    path: Assets/Scene/Test Ethan/5.1.unity
-    guid: 79f8205ccfe53394d9a4aaa75e571801
   m_configObjects: {}

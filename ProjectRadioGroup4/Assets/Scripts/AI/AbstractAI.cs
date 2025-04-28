@@ -48,7 +48,7 @@ namespace AI
         private void Update()
         {
             AiShift();
-
+            AiIfReveal();
             if (_abstractEntityDataInstance.turnState == FightManager.TurnState.Turn && canAttack && !waitingForAction)
             {
                 StartCoroutine(DelayedAiBehavior());
@@ -75,7 +75,6 @@ namespace AI
                 
                 if (_abstractEntityDataInstance.IsDead())
                 {
-                    HandleDeath();
                     animatorEnemyAi.Play("DeathAi");
                 }
                 else
@@ -184,7 +183,7 @@ namespace AI
             }   
         }
 
-        private void AiBehavior()
+        private void AiIfReveal()
         {
             if (!_abstractEntityDataInstance.reveal && _aiFightState != AiFightState.InFight)
             {
@@ -192,6 +191,11 @@ namespace AI
             }
             
             enemySpriteRenderer.enabled = true;
+        }
+        
+        private void AiBehavior()
+        {
+            
 
             if (_abstractEntityDataInstance.turnState == FightManager.TurnState.NoTurn || !canAttack)
             {
