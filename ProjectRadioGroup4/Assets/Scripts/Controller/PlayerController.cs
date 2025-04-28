@@ -196,6 +196,8 @@ namespace Controller
         
         [SerializeField]
         private float epsilonValidationOscillation;
+
+        public bool canAttack = true;
         
         public void ValidButton()
         {
@@ -225,12 +227,12 @@ namespace Controller
 
             if (FightManager.instance.fightState == FightManager.FightState.InFight &&
                 _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
-                selectedAttack != null && selectedEnemy != null)
+                selectedAttack != null && selectedEnemy != null && canAttack)
             {
                 PlayerAttack.AttackClassic attackData = selectedAttack.attack;
                 float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
                 float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
-
+                canAttack = false;
                 
                 //TODO MEC FINAL DAMAGE AUCUN SENS AVEC LOGIQUE
                 float finalDamage = attackData.damageMaxBonus * ratio + attackData.damage;
@@ -294,6 +296,8 @@ namespace Controller
                 Debug.LogWarning("No FightManager Detected");
                 return;
             }
+
+            canAttack = true;
             FightManager.instance.EndFighterTurn();
         }
         

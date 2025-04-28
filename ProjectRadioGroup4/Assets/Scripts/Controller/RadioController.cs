@@ -317,6 +317,11 @@ namespace Controller
             string amText = PlayerController.instance.selectedAttack != null
                 ? $"Attaque or Effect : {PlayerController.instance.selectedAttack.attack.name}"
                 : "Attaque or Effect : aucune";
+
+            if (PlayerController.instance.selectedAttack != null && PlayerController.instance.selectedAttack.attack.attackState == PlayerAttack.AttackState.Am)
+            {
+                amText += $" Damage flat : {PlayerController.instance.selectedAttack.attack.damage}";
+            }
             
             descriptionAttackSelectedText.text = amText;
         }
