@@ -51,7 +51,8 @@ MonoBehaviour:
   DontStopOnExit: 0
   waitForFinish: 0
   LoopImmediately: 0
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: 926859030aad05e4e9ed5dfcea16327e, type: 3}
 --- !u!82 &5261275308880498317
 AudioSource:
   m_ObjectHideFlags: 0
