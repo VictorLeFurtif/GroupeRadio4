@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DamageBomb>k__BackingField: 0
   <AttackP>k__BackingField:
-    damage: 30
+    damage: 20
     chanceOfOverload: 45
     damageMaxBonus: 10
     name: Cherie Bomb
