@@ -771,7 +771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.9, y: -8.3}
+  m_AnchoredPosition: {x: 13, y: -15}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132793499
@@ -796,8 +796,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Fullscreen
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
-  m_sharedMaterial: {fileID: -4468752383258955811, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
+  m_sharedMaterial: {fileID: -3653012361419241435, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1745,7 +1745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231.04715, y: 109}
+  m_AnchoredPosition: {x: 239, y: 68}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520548076
@@ -1770,8 +1770,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LOAD SAVE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cb405517e415dfc4ab7b61c30f719a97, type: 2}
-  m_sharedMaterial: {fileID: 7895854123815058866, guid: cb405517e415dfc4ab7b61c30f719a97, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
+  m_sharedMaterial: {fileID: -3653012361419241435, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1795,18 +1795,18 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: -15.5
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -2954,8 +2954,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sound Effects
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
-  m_sharedMaterial: {fileID: -4468752383258955811, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
+  m_sharedMaterial: {fileID: -3653012361419241435, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2989,8 +2989,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 2.17
-  m_wordSpacing: 0
+  m_characterSpacing: 2.19
+  m_wordSpacing: -17.64
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -3516,7 +3516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -225}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -36.288704, y: -568.8772}
+  m_AnchoredPosition: {x: -36.28888, y: -568.8772}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973816723
@@ -4343,7 +4343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231.04715, y: 2}
+  m_AnchoredPosition: {x: 223, y: -58.999973}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424868392
@@ -4366,10 +4366,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00:00:00
+  m_text: 00:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cb405517e415dfc4ab7b61c30f719a97, type: 2}
-  m_sharedMaterial: {fileID: 7895854123815058866, guid: cb405517e415dfc4ab7b61c30f719a97, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
+  m_sharedMaterial: {fileID: -4468752383258955811, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4393,8 +4393,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 36.6
+  m_fontSizeBase: 36.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4429,7 +4429,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -56.06949, w: -55.71438}
+  m_margin: {x: 0, y: 0, z: 80.86043, w: -4.969759}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4552,7 +4552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231.04715, y: -102}
+  m_AnchoredPosition: {x: 158, y: -56.99995}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1503762397
@@ -4577,8 +4577,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100%
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cb405517e415dfc4ab7b61c30f719a97, type: 2}
-  m_sharedMaterial: {fileID: 7895854123815058866, guid: cb405517e415dfc4ab7b61c30f719a97, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
+  m_sharedMaterial: {fileID: -4468752383258955811, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4602,14 +4602,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 36.6
+  m_fontSizeBase: 36.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4638,7 +4638,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -56.06949, w: -55.71438}
+  m_margin: {x: 142.06471, y: 0, z: -56.06949, w: -4.9697647}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4865,8 +4865,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Master
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
-  m_sharedMaterial: {fileID: -4468752383258955811, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
+  m_sharedMaterial: {fileID: -3653012361419241435, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4900,8 +4900,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 2.17
-  m_wordSpacing: 0
+  m_characterSpacing: 2.19
+  m_wordSpacing: -17.64
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -5212,8 +5212,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Music
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
-  m_sharedMaterial: {fileID: -4468752383258955811, guid: ddf91191d52914f439c71cca7d75e451, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
+  m_sharedMaterial: {fileID: -3653012361419241435, guid: 1c40911ad855d5c41b7ef99f20c62d56, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5247,8 +5247,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 2.17
-  m_wordSpacing: 0
+  m_characterSpacing: 2.19
+  m_wordSpacing: -17.64
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
