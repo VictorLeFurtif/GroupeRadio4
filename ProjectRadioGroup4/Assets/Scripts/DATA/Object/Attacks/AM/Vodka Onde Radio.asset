@@ -22,6 +22,6 @@ MonoBehaviour:
     indexFrequency: 100
     attackState: 0
     costBatteryExploration: 0
-    costBatteryInFightMax: 14
-    costBatteryInFight: 14
+    costBatteryInFightMax: 5
+    costBatteryInFight: 5
   <MultiplicatorLifeTaken>k__BackingField: 0
