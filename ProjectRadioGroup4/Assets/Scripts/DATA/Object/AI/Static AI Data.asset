@@ -20,14 +20,17 @@ MonoBehaviour:
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
   <Battery>k__BackingField: 0
+  <VodkaOndeRadio>k__BackingField:
+    compteurVodka: 0
+    isVodka: 0
   <NormalAttack>k__BackingField:
-    damage: -18
+    damage: -7
     batteryGain: 6
   <HeavyAttack>k__BackingField:
-    damage: -24
+    damage: -9
     batteryGain: 8
   <StealBatteries>k__BackingField:
-    damage: -12
+    damage: -6
     batteryGain: 8
   <StealALotBatteries>k__BackingField:
     damage: -18
