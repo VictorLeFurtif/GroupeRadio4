@@ -25,11 +25,13 @@ MonoBehaviour:
   <explainRadioSlider>k__BackingField: Utilisez le triangle de la ligne orange pour
     selectionner un effet.
   <explainLockFM>k__BackingField: "Une fois que vous \xEAtes pr\xEAts, utilisez le
-    petit bouton play pour verrouiller votre choix d'effet."
-  <explainPlayerOscillation>k__BackingField: "Utilisez le slider \xE0 droite de la
-    ligne/vague bleue pour amplifier votre attaque. Ceci augmentera vos d\xE9g\xE2ts,
-    mais aussi la chance de surcharger et de prendre des d\xE9g\xE2ts, annulant votre
-    attaque."
+    petit bouton play pour verrouiller votre choix d'effet.\n\nS\xE9lectionnez un
+    effet et lockez le avec le petit bouton play."
+  <explainPlayerOscillation>k__BackingField: "En appuyant sur le bouton AM, vous
+    pouvez s\xE9lectionner une attaque. De plus, vous pouvez utiliser le slider \xE0
+    droite de la ligne/vague bleue pour amplifier votre attaque. Ceci augmentera
+    vos d\xE9g\xE2ts, mais \xE9galement la chance de surcharger et de prendre des
+    d\xE9g\xE2ts, annulant votre attaque."
   <explainPlayButton>k__BackingField: "Quand vous \xEAtes pr\xEAts, appuyez sur le
     gros bouton play."
   <finished>k__BackingField: "Bravo! Vous avez fini le tutoriel. Vainquez l'ennemi
