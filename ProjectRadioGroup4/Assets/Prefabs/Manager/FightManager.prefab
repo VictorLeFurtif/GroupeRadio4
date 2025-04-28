@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64372aaf748182948aa1b1e884cad3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentOrder: []
+  fighterAlive: []
+  listOfJustEnemiesAlive: []
+  fightState: 0
+  rangeDetectEnemy: 7
+  currentFightAdvantage: 2

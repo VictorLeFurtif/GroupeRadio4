@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947173966dac438ea78293e3cb62a6e6, type: 3}
+  m_Name: dataSound
+  m_EditorClassIdentifier: 
+  AvatarSoundData:
+    attackLowWave: {fileID: 8300000, guid: 9be6f0fe2b76d8946a3770d94dea0e14, type: 3}
+    attackStrongWave: {fileID: 8300000, guid: e06e7a5342489b046b7d37019a85a88d, type: 3}
+    ScanSlow: {fileID: 8300000, guid: ed98013c30bcea34ea6bd73f704fbf56, type: 3}
+    ScanFast: {fileID: 8300000, guid: b5b57ecfd692f3940abb35d7f6f9b8d6, type: 3}
+  EnemySoundData:
+    listEnemyAttack:
+    - {fileID: 8300000, guid: 95aba308ec26aee4783d9a3f4d8198ba, type: 3}
+    - {fileID: 8300000, guid: 2ae2d54a086131e4ab4716342aefd767, type: 3}
+    - {fileID: 8300000, guid: 87b682d7e77f873479631247b5d9f032, type: 3}
+    - {fileID: 8300000, guid: 8ffd2a1954157824186673ec1a1d073e, type: 3}
+    - {fileID: 8300000, guid: 63c00f414f23e8b4f88509b061c05370, type: 3}
+    - {fileID: 8300000, guid: 0ab0e95c0126c2147b949c3886f24099, type: 3}
+    listVocalEnemy:
+    - {fileID: 8300000, guid: 8c7ac1645670c964a90bb03b64537a47, type: 3}
+    - {fileID: 8300000, guid: ebf2025a35173904c9b1bf4b0c4b60e6, type: 3}
+    - {fileID: 8300000, guid: 46ee4ae73bf27d44dbd11968d7453080, type: 3}
+    - {fileID: 8300000, guid: df351667b9f24ee4c94b2088a6b60238, type: 3}
+    - {fileID: 8300000, guid: bfb37e548b609e04e89deb0a838c8fa6, type: 3}
+    - {fileID: 8300000, guid: 7c99c422376a8534581993405edbc86f, type: 3}
+    enemySound: {fileID: 8300000, guid: 5cfb66b296e1884488efb29729331a1f, type: 3}
+  EnviroSoundData:
+    whiteNoiseVentilation: {fileID: 8300000, guid: d007f77f93da24b44b1151a33e25961a, type: 3}
+    NeonBuzz: {fileID: 8300000, guid: a639b622632dc0747bd40d481d432f69, type: 3}
+    mice1: {fileID: 8300000, guid: 0f3cba58d23afb54f85caaa168edb443, type: 3}
+    mice2: {fileID: 8300000, guid: 17718b537c77439438dedf768155e0cf, type: 3}
+    mice3: {fileID: 8300000, guid: ab37f0555b666be4ca31e80ba792eff7, type: 3}
+    mice4: {fileID: 8300000, guid: b5d0f563bcdc0ce4a845794a708e4a16, type: 3}
+    mice5: {fileID: 8300000, guid: 45e3a3af61a6ade4bbe794ff20e97639, type: 3}
+    mice6: {fileID: 8300000, guid: 0d8bf3c8ff403404b8c9716a5c44393f, type: 3}
+    mice7: {fileID: 8300000, guid: a38fb6589031f5e4ebcc4e2985751a99, type: 3}
+    mice8: {fileID: 8300000, guid: d5b3ec729b4113f428380d35c2e43fa2, type: 3}
+    mice9: {fileID: 8300000, guid: 6bade1e6c9c24884daca894f7bd35edc, type: 3}
+    waterDroplet1: {fileID: 8300000, guid: 6ccd1e0b7658fce409f168fb9f06ad5c, type: 3}
+    waterDroplet2: {fileID: 8300000, guid: 175eb190548e1644883bbbf01e6dc0d3, type: 3}
+    waterDroplet3: {fileID: 8300000, guid: 5f2fc48ad72f7a048aad0ea9c36668ba, type: 3}
+    waterDroplet4: {fileID: 8300000, guid: dcd5322225396484b8c2d95eb0b30e5f, type: 3}
+    waterDroplet5: {fileID: 8300000, guid: 178ef8b580422a14ebf36eab54d0e855, type: 3}
+    waterDroplet6: {fileID: 8300000, guid: c21f044aa2d8fa44b8665834a3a4cf78, type: 3}
+    waterDroplet7: {fileID: 8300000, guid: 7dfd649f598af9e41a66623c521e847a, type: 3}
+    waterDroplet8: {fileID: 8300000, guid: e398b4152363cfe4697bb1c64f204882, type: 3}
+    waterDroplet9: {fileID: 8300000, guid: e5f1eb6c63f8a5b43b750465b04a63fa, type: 3}
+    waterDroplet10: {fileID: 8300000, guid: 402f1b6bd154dcb438f5ca5f4b5aeb24, type: 3}
+    waterDroplet11: {fileID: 8300000, guid: 32f603239f79e494ea3382fb55ef4664, type: 3}
+    waterDroplet12: {fileID: 8300000, guid: 5931a7990a4dd934fb55dec27c2bdb1f, type: 3}
+    waterDroplet13: {fileID: 8300000, guid: 41d261a2fef3ab44bbe55ee97147772b, type: 3}
+    waterDroplet14: {fileID: 8300000, guid: 5555699272d0a0148abb58b3715e3cec, type: 3}
+    woodCreakig1: {fileID: 8300000, guid: fd456baaf9aacf4408921f2dc72c8a7c, type: 3}
+    woodCreakig2: {fileID: 8300000, guid: b7d51a7ebff1d6c46aaf852eeaa8a51a, type: 3}
+    woodCreakig3: {fileID: 8300000, guid: d16abdaae3fb56948b516e4ab97b7269, type: 3}
+    woodCreakig4: {fileID: 8300000, guid: 5a1028ed4b08d8c47992ef93316e7d41, type: 3}
+    woodCreakig5: {fileID: 8300000, guid: 6cdc2ca98b9b01941858680208cbcf6d, type: 3}
+    woodCreakig6: {fileID: 8300000, guid: df1922bd0f6b40d4aaf7cd4100f36a9b, type: 3}
+    woodCreakig7: {fileID: 8300000, guid: 2e068b3cdf3ecdd4bb177218d6b6efca, type: 3}
+    woodCreakig8: {fileID: 8300000, guid: 0e0b7fd3b2c17a144a70320e14876491, type: 3}
+    woodCreakig9: {fileID: 8300000, guid: e8ce7d3afb0e8be47b1d181a87cb615e, type: 3}
+    woodCreakig10: {fileID: 8300000, guid: 8fa06abdeb6c87b49aaf6d7bc81c3de6, type: 3}
+  UxSoundData:
+    click: {fileID: 8300000, guid: 4fc40399fad352a4ab9afdb2cfbeabeb, type: 3}

@@ -1,0 +1,642 @@
+fileFormatVersion: 2
+guid: 03f4f4108a8a75c41961f78e9a849dd7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: export bonne taile fx anim_0
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1787
+        width: 179
+        height: 297
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7eae615d61710418ef5a8c1de84863
+      internalID: -1577492212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_1
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 1785
+        width: 179
+        height: 296
+      alignment: 9
+      pivot: {x: 0.66675097, y: 0.018334053}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ec282cf98fcaa4bafb367f7fdf0492
+      internalID: -159331565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_2
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 1789
+        width: 173
+        height: 292
+      alignment: 9
+      pivot: {x: 0.6803769, y: 0.01212802}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70217a45ff9d4ca4a826d38ce54dbdf4
+      internalID: -480616552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_3
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1777
+        width: 176
+        height: 307
+      alignment: 9
+      pivot: {x: 0.67730194, y: 0.027126648}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e9f7e7045b1e8438ad6bfbb378e3a4
+      internalID: 1701391250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_4
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1783
+        width: 131
+        height: 299
+      alignment: 9
+      pivot: {x: 0.35500377, y: 0.028087603}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c09f446ebf54c42b1c43650d67506b
+      internalID: -904395953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_5
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 1787
+        width: 221
+        height: 293
+      alignment: 9
+      pivot: {x: 0.26671314, y: 0.032315303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e2e3c76bf7e7246bdeb6b62d0f0755
+      internalID: -1261298956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_6
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 1790
+        width: 242
+        height: 294
+      alignment: 9
+      pivot: {x: 0.22528681, y: 0.024676472}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ae1487694f6b14e85809951d332ce5
+      internalID: 966077591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_7
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1790
+        width: 271
+        height: 294
+      alignment: 9
+      pivot: {x: 0.2146325, y: 0.024676472}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e85b630686a3d742b7d086fce0ab3e4
+      internalID: 572002442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1418
+        width: 327
+        height: 293
+      alignment: 9
+      pivot: {x: 0.28839707, y: 0.041576397}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db83214cb95515742ba6ccd180f82d07
+      internalID: -1661849088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_10
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1416
+        width: 395
+        height: 299
+      alignment: 9
+      pivot: {x: 0.38665137, y: 0.014474518}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 967a12643ebe40f4089e9a7d2e7d0799
+      internalID: -669552700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_12
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 1417
+        width: 380
+        height: 293
+      alignment: 9
+      pivot: {x: 0.4285924, y: 0.032315303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11e761db499443a41aabd1674d837510
+      internalID: -849459760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_13
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 1415
+        width: 399
+        height: 296
+      alignment: 9
+      pivot: {x: 0.44219345, y: 0.018720884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955d1d697a9596847b0c20c623c62c1f
+      internalID: -1361262693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1078
+        width: 459
+        height: 295
+      alignment: 9
+      pivot: {x: 0.5798087, y: 0.053882662}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e790b4486ef3a954aa4b838c988222a8
+      internalID: -2003141973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_22
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 1077
+        width: 909
+        height: 296
+      alignment: 9
+      pivot: {x: 0.4880594, y: 0.046222582}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9012b9a4d6ef5ea46a77a9f2880c05ff
+      internalID: 1700886030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_39
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 701
+        width: 965
+        height: 295
+      alignment: 9
+      pivot: {x: 0.4873464, y: 0.049283303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebde7047965a9d459a7ba4d869eb4d9
+      internalID: 727462983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_45
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 700
+        width: 756
+        height: 296
+      alignment: 9
+      pivot: {x: 0.44077685, y: 0.03247194}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bcd7c8e02d1a784f833d133e0261785
+      internalID: 388746288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_79
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 338
+        width: 559
+        height: 302
+      alignment: 9
+      pivot: {x: 0.41747868, y: 0.0013275146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5cf31c6be96b84cb3bdb1de4bab201
+      internalID: -400056104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_86
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 332
+        width: 436
+        height: 308
+      alignment: 9
+      pivot: {x: 0.4782173, y: 0.05068712}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6584562a9fdf94345b77dc7457d7f9f2
+      internalID: 1442768003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_93
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 341
+        width: 540
+        height: 298
+      alignment: 9
+      pivot: {x: 0.4974874, y: 0.04926807}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2258d067ce324438d3aadb46d03bfb
+      internalID: 1150905376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: export bonne taile fx anim_104
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 5
+        width: 560
+        height: 297
+      alignment: 9
+      pivot: {x: 0.49757734, y: 0.034045964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970c929668d11544fbb351b674149bc4
+      internalID: -671575329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      export bonne taile fx anim_0: -1577492212
+      export bonne taile fx anim_1: -159331565
+      export bonne taile fx anim_10: -669552700
+      export bonne taile fx anim_100: -1311572933
+      export bonne taile fx anim_101: -1745266147
+      export bonne taile fx anim_102: 522897422
+      export bonne taile fx anim_103: 1460603197
+      export bonne taile fx anim_104: -671575329
+      export bonne taile fx anim_105: 1274300177
+      export bonne taile fx anim_106: -483449362
+      export bonne taile fx anim_107: 7691619
+      export bonne taile fx anim_11: -116369487
+      export bonne taile fx anim_12: -849459760
+      export bonne taile fx anim_13: -1361262693
+      export bonne taile fx anim_14: -1526250765
+      export bonne taile fx anim_15: 22838058
+      export bonne taile fx anim_16: -812432320
+      export bonne taile fx anim_17: -1519781421
+      export bonne taile fx anim_18: 1828392678
+      export bonne taile fx anim_19: -176559779
+      export bonne taile fx anim_2: -480616552
+      export bonne taile fx anim_20: -298402000
+      export bonne taile fx anim_21: -2003141973
+      export bonne taile fx anim_22: 1700886030
+      export bonne taile fx anim_23: -2049777459
+      export bonne taile fx anim_24: -118125244
+      export bonne taile fx anim_25: 128353765
+      export bonne taile fx anim_26: 122701041
+      export bonne taile fx anim_27: -1280946972
+      export bonne taile fx anim_28: 1754381308
+      export bonne taile fx anim_29: 1027042467
+      export bonne taile fx anim_3: 1701391250
+      export bonne taile fx anim_30: -116550164
+      export bonne taile fx anim_31: 1290449259
+      export bonne taile fx anim_32: 547570875
+      export bonne taile fx anim_33: 1432801778
+      export bonne taile fx anim_34: 361357840
+      export bonne taile fx anim_35: -1156152858
+      export bonne taile fx anim_36: -235699290
+      export bonne taile fx anim_37: 2090506303
+      export bonne taile fx anim_38: -865277503
+      export bonne taile fx anim_39: 727462983
+      export bonne taile fx anim_4: -904395953
+      export bonne taile fx anim_40: 170630634
+      export bonne taile fx anim_41: -375301867
+      export bonne taile fx anim_42: 1252471296
+      export bonne taile fx anim_43: -781177871
+      export bonne taile fx anim_44: 826244929
+      export bonne taile fx anim_45: 388746288
+      export bonne taile fx anim_46: -1026304564
+      export bonne taile fx anim_47: -533064719
+      export bonne taile fx anim_48: 186151982
+      export bonne taile fx anim_49: -1568220311
+      export bonne taile fx anim_5: -1261298956
+      export bonne taile fx anim_50: -773180788
+      export bonne taile fx anim_51: -1306691047
+      export bonne taile fx anim_52: 1507289117
+      export bonne taile fx anim_53: 2093107163
+      export bonne taile fx anim_54: -1786066218
+      export bonne taile fx anim_55: -1863401682
+      export bonne taile fx anim_56: -596302263
+      export bonne taile fx anim_57: -744196514
+      export bonne taile fx anim_58: 176133104
+      export bonne taile fx anim_59: -956068762
+      export bonne taile fx anim_6: 966077591
+      export bonne taile fx anim_60: -107431376
+      export bonne taile fx anim_61: -802545320
+      export bonne taile fx anim_62: -1543046084
+      export bonne taile fx anim_63: -1512155019
+      export bonne taile fx anim_64: 579351114
+      export bonne taile fx anim_65: 2049604689
+      export bonne taile fx anim_66: -300288249
+      export bonne taile fx anim_67: 1836462774
+      export bonne taile fx anim_68: -82157148
+      export bonne taile fx anim_69: 1789190128
+      export bonne taile fx anim_7: 572002442
+      export bonne taile fx anim_70: 1830754587
+      export bonne taile fx anim_71: 1469613134
+      export bonne taile fx anim_72: -1344282706
+      export bonne taile fx anim_73: 1812263623
+      export bonne taile fx anim_74: 1510467251
+      export bonne taile fx anim_75: -97350954
+      export bonne taile fx anim_76: 1316516659
+      export bonne taile fx anim_77: -1243260346
+      export bonne taile fx anim_78: 249376691
+      export bonne taile fx anim_79: -400056104
+      export bonne taile fx anim_8: -1661849088
+      export bonne taile fx anim_80: -987406962
+      export bonne taile fx anim_81: 1352514207
+      export bonne taile fx anim_82: 1574645233
+      export bonne taile fx anim_83: 1513981471
+      export bonne taile fx anim_84: 1782481183
+      export bonne taile fx anim_85: 514786723
+      export bonne taile fx anim_86: 1442768003
+      export bonne taile fx anim_87: -81246297
+      export bonne taile fx anim_88: -912837144
+      export bonne taile fx anim_89: 716114416
+      export bonne taile fx anim_9: -190015926
+      export bonne taile fx anim_90: 171384463
+      export bonne taile fx anim_91: -1455066996
+      export bonne taile fx anim_92: 553871905
+      export bonne taile fx anim_93: 1150905376
+      export bonne taile fx anim_94: -1947448509
+      export bonne taile fx anim_95: -784995798
+      export bonne taile fx anim_96: -1570300327
+      export bonne taile fx anim_97: 842254140
+      export bonne taile fx anim_98: 930718463
+      export bonne taile fx anim_99: 312082155
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

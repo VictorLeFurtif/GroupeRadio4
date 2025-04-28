@@ -1,0 +1,486 @@
+fileFormatVersion: 2
+guid: 9beb184d2fc10bf4d92391dd16aeb61f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sheet_attaque 1_6
+      rect:
+        serializedVersion: 2
+        x: 3104
+        y: 1185
+        width: 291
+        height: 493
+      alignment: 9
+      pivot: {x: 0.3901468, y: 0.20408992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c61f6e9bcfff944b812646b7e2e07c
+      internalID: 1340064659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_7
+      rect:
+        serializedVersion: 2
+        x: 3449
+        y: 1197
+        width: 297
+        height: 478
+      alignment: 9
+      pivot: {x: 0.3856723, y: 0.19175075}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81662587e8621d345ac503abf990b304
+      internalID: 1386631872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_8
+      rect:
+        serializedVersion: 2
+        x: 3825
+        y: 1198
+        width: 431
+        height: 478
+      alignment: 9
+      pivot: {x: 0.26077673, y: 0.18951519}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86d74feb29985c8408fe538662a0971f
+      internalID: 791607884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_9
+      rect:
+        serializedVersion: 2
+        x: 4277
+        y: 1193
+        width: 509
+        height: 481
+      alignment: 9
+      pivot: {x: 0.22436284, y: 0.19517851}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e82f411847a8a54e96c1f1174c5aeaf
+      internalID: -738628927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_10
+      rect:
+        serializedVersion: 2
+        x: 4817
+        y: 1194
+        width: 396
+        height: 481
+      alignment: 9
+      pivot: {x: 0.28933993, y: 0.19517851}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a02bb22fe5ec34ca3c09db6d3d97b4
+      internalID: 1344485824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_11
+      rect:
+        serializedVersion: 2
+        x: 5264
+        y: 1194
+        width: 386
+        height: 466
+      alignment: 9
+      pivot: {x: 0.30353004, y: 0.1989285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6803029109e6edc45a5942ca7b8eb3d5
+      internalID: 2106224688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_19
+      rect:
+        serializedVersion: 2
+        x: 3083
+        y: 599
+        width: 428
+        height: 467
+      alignment: 9
+      pivot: {x: 0.2713937, y: 0.20014997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a400605c0a701334ba878f09f5d7c2c2
+      internalID: 1281839298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_20
+      rect:
+        serializedVersion: 2
+        x: 3523
+        y: 599
+        width: 486
+        height: 486
+      alignment: 9
+      pivot: {x: 0.23910359, y: 0.19084299}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37556d730ad886a43981804bc80baeff
+      internalID: -758578124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_22
+      rect:
+        serializedVersion: 2
+        x: 4059
+        y: 599
+        width: 537
+        height: 479
+      alignment: 9
+      pivot: {x: 0.21265331, y: 0.19657296}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a914da12700d744d9c9fa665bb1ee8d
+      internalID: 319809751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_24
+      rect:
+        serializedVersion: 2
+        x: 4636
+        y: 599
+        width: 656
+        height: 482
+      alignment: 9
+      pivot: {x: 0.17966665, y: 0.19434759}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebbb01ff32af174786c68febaffec49
+      internalID: 407476365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_25
+      rect:
+        serializedVersion: 2
+        x: 5300
+        y: 600
+        width: 750
+        height: 482
+      alignment: 9
+      pivot: {x: 0.15527995, y: 0.1925749}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce984109eb7b6d4482d04542df40df6
+      internalID: -1558092990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_31
+      rect:
+        serializedVersion: 2
+        x: 3080
+        y: 70
+        width: 398
+        height: 479
+      alignment: 9
+      pivot: {x: 0.2933098, y: 0.19468854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d6d7b145754585479653381b694112b
+      internalID: 1403143298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_32
+      rect:
+        serializedVersion: 2
+        x: 3532
+        y: 70
+        width: 509
+        height: 482
+      alignment: 9
+      pivot: {x: 0.22791511, y: 0.19150563}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a75ebe1a41fbd444b68ab7c86581701
+      internalID: -1478375076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_33
+      rect:
+        serializedVersion: 2
+        x: 4080
+        y: 73
+        width: 431
+        height: 479
+      alignment: 9
+      pivot: {x: 0.27082163, y: 0.18940493}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68404b5ee5b25ad47a4634ca26f85165
+      internalID: 352463209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_34
+      rect:
+        serializedVersion: 2
+        x: 4559
+        y: 73
+        width: 299
+        height: 481
+      alignment: 9
+      pivot: {x: 0.39041597, y: 0.18973559}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91539a2d986588842a6a6da546911b63
+      internalID: -169406974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque 1_35
+      rect:
+        serializedVersion: 2
+        x: 4969
+        y: 61
+        width: 294
+        height: 495
+      alignment: 9
+      pivot: {x: 0.39671192, y: 0.20524912}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4df87587daf68459a9ca8b4c0c10ac
+      internalID: 1623164824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sheet_attaque 1_0: 300361602
+      sheet_attaque 1_1: -1903202260
+      sheet_attaque 1_10: 1344485824
+      sheet_attaque 1_11: 2106224688
+      sheet_attaque 1_12: 2137091275
+      sheet_attaque 1_13: -375173697
+      sheet_attaque 1_14: -39359875
+      sheet_attaque 1_15: -219767263
+      sheet_attaque 1_16: 642420444
+      sheet_attaque 1_17: 1895584901
+      sheet_attaque 1_18: -44065480
+      sheet_attaque 1_19: 1281839298
+      sheet_attaque 1_2: 231767752
+      sheet_attaque 1_20: -758578124
+      sheet_attaque 1_21: -1802795542
+      sheet_attaque 1_22: 319809751
+      sheet_attaque 1_23: 1273995401
+      sheet_attaque 1_24: 407476365
+      sheet_attaque 1_25: -1558092990
+      sheet_attaque 1_26: -1137941704
+      sheet_attaque 1_27: -1851813422
+      sheet_attaque 1_28: -878758793
+      sheet_attaque 1_29: -1025499181
+      sheet_attaque 1_3: 1223442176
+      sheet_attaque 1_30: -494785706
+      sheet_attaque 1_31: 1403143298
+      sheet_attaque 1_32: -1478375076
+      sheet_attaque 1_33: 352463209
+      sheet_attaque 1_34: -169406974
+      sheet_attaque 1_35: 1623164824
+      sheet_attaque 1_4: 1741737858
+      sheet_attaque 1_5: -1375971905
+      sheet_attaque 1_6: 1340064659
+      sheet_attaque 1_7: 1386631872
+      sheet_attaque 1_8: 791607884
+      sheet_attaque 1_9: -738628927
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

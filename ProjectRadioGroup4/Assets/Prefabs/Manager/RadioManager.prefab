@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8529015320838634144}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 594.3409, y: 269, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,7 +45,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvaRadio: {fileID: 0}
-  imageRadio: {fileID: 0}
-  listOfEveryEnemy: []
-  minDistance: 0
-  maxDistance: 0
+  imageRadioPlayer: {fileID: 0}
+  matRadioPlayer: {fileID: 0}
+  imageRadioEnemy: {fileID: 0}
+  matRadioEnemy: {fileID: 0}
+  listOfEveryEnemy:
+  - {fileID: 0}
+  - {fileID: 0}
+  minDistance: 1
+  maxDistance: 20
+  sliderForFrequencyAttack: {fileID: 0}
+  maxValueSliderFrequencyAttack: 350
+  descriptionAttackSelectedText: {fileID: 0}
+  sliderOscillationPlayer: {fileID: 0}
+  listOfDetectedEnemy: []
+  desiredDistanceAm: 30
+  desiredDistanceFm: 5.5
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  selectedAm: 0
+  descriptionEffectSelectedText: {fileID: 0}
+  backgroundSliderFrequency: {fileID: 0}
+  colorSliderAttackAm: {r: 0.16078432, g: 0.60784316, b: 0.91764706, a: 1}
+  colorSliderAttackFm: {r: 1, g: 0.5411765, b: 0.13725491, a: 1}
+  ampouleManager: {fileID: 0}
+  epsilonForSliderAttack: 20
+  durationTimeLerpRadio: 1

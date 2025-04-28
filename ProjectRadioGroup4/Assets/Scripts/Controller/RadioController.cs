@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
@@ -17,7 +19,7 @@ namespace Controller
     {
         #region VARIABELS
         public static RadioController instance;
-        [Header("Canvas")] [SerializeField] private Canvas canvaRadio;
+        [Header("Canvas")] public Canvas canvaRadio;
 
         [FormerlySerializedAs("imageRadio")] [Header("Frequence Radio")] [SerializeField]
         private RawImage imageRadioPlayer;
@@ -57,6 +59,18 @@ namespace Controller
         [Header("Layer Mask"), SerializeField] private LayerMask enemyLayerMask;
 
         [FormerlySerializedAs("selectedAM")] public bool selectedAm = false;
+        
+        [SerializeField] private TMP_Text descriptionEffectSelectedText;
+
+        [SerializeField]
+        private Image backgroundSliderFrequency;
+
+        [Header("Color")] [Tooltip("Sélectione la couleur pour Attack/Effet")] [SerializeField] private Color colorSliderAttackAm;
+        [SerializeField] private Color colorSliderAttackFm;
+
+        [Header("Ampoule Manager")]
+        public AmpouleManager ampouleManager;
+
 
         #endregion
     
@@ -70,14 +84,24 @@ namespace Controller
         {
             currentRadioState = RadioState.OutFight;
             InitializeSliderFrequency();
-            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck(); EffectInExploration();});
             InitializeRadioEnemy();
         
             //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
             UpdateRadioEnemyWithLight(0);
             InitializeSliderOscillationPlayer();
+            
+            UpdateAmplitude(0);
+            InitializeTextEffectFm();
         }
 
+        private void InitializeTextEffectFm()
+        {
+            if (PlayerController.instance == null) return;
+            PlayerController.instance.selectedAttackEffect = null;
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+        }
+        
         private void Awake()
         {
             if (instance == null)
@@ -91,7 +115,11 @@ namespace Controller
 
             matRadioPlayer = imageRadioPlayer.material;
             matRadioEnemy = imageRadioEnemy.material;
+            
+            
+
         }
+        
     
         #region OldSystemRadio
     
@@ -172,9 +200,24 @@ namespace Controller
 
         #endregion
 
+        private void EffectInExploration()
+        {
+            if (PlayerController.instance != null)
+            {
+                PlayerController.instance.lampTorch.intensity = 0;
+                PlayerController.instance.gameObject.layer = 6;
+            }
+            
+            if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
+            {
+                PlayerController.instance.selectedAttack.ProcessAttackEffect();
+            }
+        }
+        
         private void InitializeSliderFrequency()
         {
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
+            backgroundSliderFrequency.color = colorSliderAttackFm;
             ValueChangeCheck();
         }
         
@@ -186,7 +229,6 @@ namespace Controller
        
         private void UpdateAmplitude(float newValue)
         {
-            Debug.Log(sliderOscillationPlayer.value);
             matRadioPlayer.SetFloat("_waves_Amp", newValue);
         }
 
@@ -232,38 +274,77 @@ namespace Controller
                     break;
                 }
             }
-
             UpdateFrequenceText();
         }
-
-        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
-        {
-            if (Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
-                < epsilonForSliderAttack)
-            {
-                PlayerController.instance.selectedAttack = _playerAttackInstance;
-                UpdateFrequenceText();
-            }
-        }
         
-        private void UpdateFrequenceText()
+        public void SelectEffectFMButton()
         {
-            if (PlayerController.instance == null || PlayerController.instance.selectedAttack == null)
+            if (FightManager.instance.fightState != FightManager.FightState.InFight ||
+                PlayerController.instance == null)
             {
-                descriptionAttackSelectedText.text = "";
                 return;
             }
-            descriptionAttackSelectedText.text = PlayerController.instance.selectedAttack.attack.name;
+            
+            PlayerController.instance.selectedAttackEffect = null;
+            
+            foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+            {
+                if (attackInstance.attack.attackState != PlayerAttack.AttackState.Fm) continue;
+                if (!(Mathf.Abs(sliderForFrequencyAttack.value - attackInstance.attack.indexFrequency) <
+                      epsilonForSliderAttack)) continue;
+                PlayerController.instance.selectedAttackEffect = attackInstance;
+                
+                if (TutorialFightManager.instance.isInTutorialCombat &&
+                    TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainLockFM)
+                {
+                    TutorialFightManager.instance.AdvanceStep();
+                }
+                
+                break;
+            }
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+        }
+        
+        private void UpdateEffectFMText(PlayerAttackInstance effectInstance)
+        {
+            descriptionEffectSelectedText.text = effectInstance == null ?
+                "No Effect selected" : $"Effet select : {effectInstance.attack.name}";
+        }
+
+        private void UpdateFrequenceText()
+        {
+            string amText = PlayerController.instance.selectedAttack != null
+                ? $"Attaque or Effect : {PlayerController.instance.selectedAttack.attack.name}"
+                : "Attaque or Effect : aucune";
+            
+            descriptionAttackSelectedText.text = amText;
+        }
+
+        
+        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
+        {
+            if (!(Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
+                  < epsilonForSliderAttack)) return;
+            PlayerController.instance.selectedAttack = _playerAttackInstance;
+            UpdateFrequenceText();
         }
 
         public void AmButton()
         {
+            if (PlayerController.instance == null)
+            {
+                return;
+            }
+            
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 selectedAm = true;
+                backgroundSliderFrequency.color = colorSliderAttackAm;
                 ValueChangeCheck();
                 return;
             }
+            
+            PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
             
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
@@ -296,6 +377,8 @@ namespace Controller
             AmFmActionIfListNotEmpty();
         }
 
+       
+        
         private void ChangeBoolSeenForAi()
         {
             foreach (AbstractAI enemySeen in listOfDetectedEnemy)
@@ -319,18 +402,27 @@ namespace Controller
             else
             {
                 Debug.Log("nobody detected");
+                UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);   
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
             }
         }
     
         public void FmButton()
         {
+            if (PlayerController.instance == null)
+            {
+                return;
+            }
+            
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 selectedAm = false;
+                backgroundSliderFrequency.color = colorSliderAttackFm;
                 ValueChangeCheck();
                 return;
             }
+            
+            PlayerController.instance.animatorPlayer.Play("ScanAround");
             
             int cpt = 0;
             listOfDetectedEnemy.Clear();
@@ -368,45 +460,67 @@ namespace Controller
             matRadioEnemy.SetFloat("_waves_Amp", 0);
         }
     
+        private Coroutine transitionCoroutine;
+
         public void UpdateRadioEnemyWithLight(int index)
         {
+            if (transitionCoroutine != null)
+                StopCoroutine(transitionCoroutine);
+
             if (FightManager.instance.fightState == FightManager.FightState.OutFight)
             {
-                if (listOfDetectedEnemy.Count - 1 < index)
+                if (listOfDetectedEnemy.Count - 1 < index || listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal)
                 {
-                    InitializeRadioEnemy();
+                    transitionCoroutine = StartCoroutine(SmoothTransitionRadio(0f, 0f));
                     return;
                 }
 
-                if (listOfDetectedEnemy[index]._abstractEntityDataInstance.reveal) // cant add it in the block on top because dependencies with a Singleton
-                {
-                    InitializeRadioEnemy();
-                    return;
-                }
-        
-                float waveAmp = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveAmplitudeEnemy;
-                float waveFre = listOfDetectedEnemy[index]._abstractEntityDataInstance.waveFrequency;
-        
-                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
-                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+                var enemy = listOfDetectedEnemy[index]._abstractEntityDataInstance;
+                transitionCoroutine = StartCoroutine(SmoothTransitionRadio(enemy.waveFrequency, enemy.waveAmplitudeEnemy));
             }
-            
-            if (FightManager.instance.fightState == FightManager.FightState.InFight)
+            else if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 if (FightManager.instance.listOfJustEnemiesAlive.Count - 1 < index)
                 {
-                    InitializeRadioEnemy();
+                    transitionCoroutine = StartCoroutine(SmoothTransitionRadio(0f, 0f));
                     return;
                 }
-                
-                AbstractEntityDataInstance enemy = FightManager.instance.listOfJustEnemiesAlive[index];
-                float waveAmp = (enemy.hp / enemy.maxHp) * 0.4f; //TODO in future change magic number
-                float waveFre = enemy.waveFrequency;
-        
-                matRadioEnemy.SetFloat("_waves_Amount", waveFre);
-                matRadioEnemy.SetFloat("_waves_Amp", waveAmp);
+
+                var enemy = FightManager.instance.listOfJustEnemiesAlive[index];
+                float amp = (enemy.hp / enemy.maxHp) * 0.4f;
+                float freq = enemy.waveFrequency;
+                transitionCoroutine = StartCoroutine(SmoothTransitionRadio(freq, amp));
             }
         }
+
+
+        [SerializeField]
+        private float durationTimeLerpRadio;
+        private IEnumerator SmoothTransitionRadio(float targetFreq, float targetAmp)
+        {
+            float elapsed = 0f;
+
+            float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
+            float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
+
+            while (elapsed < durationTimeLerpRadio)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / durationTimeLerpRadio;
+
+                float currentFreq = Mathf.Lerp(startFreq, targetFreq, t);
+                float currentAmp = Mathf.Lerp(startAmp, targetAmp, t);
+
+                matRadioEnemy.SetFloat("_waves_Amount", currentFreq);
+                matRadioEnemy.SetFloat("_waves_Amp", currentAmp);
+
+                yield return null;
+            }
+
+            matRadioEnemy.SetFloat("_waves_Amount", targetFreq);
+            matRadioEnemy.SetFloat("_waves_Amp", targetAmp);
+        }
+
     
         void OnDrawGizmos()
         {
@@ -429,6 +543,18 @@ namespace Controller
             {
                 sliderOscillationPlayer.interactable = false;
             }
+        }
+
+        public void SelectEnemyByLight()
+        {
+            if (PlayerController.instance == null || FightManager.instance == null || 
+                FightManager.instance.fightState == FightManager.FightState.OutFight || AmpouleManager.ampouleAllumee 
+                >  FightManager.instance.listOfJustEnemiesAlive.Count - 1)
+            {
+             return;
+            }
+            PlayerController.instance.selectedEnemy =
+                FightManager.instance.listOfJustEnemiesAlive[AmpouleManager.ampouleAllumee].entity;
         }
     }
 }
