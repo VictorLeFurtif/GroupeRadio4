@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using MANAGER;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Controller
 {
@@ -23,6 +25,20 @@ namespace Controller
         private Vector3 originalLocalPos;
         private Coroutine shakeRoutine;
         private Vector3 shakeOffset;
+
+        public static CameraController instance;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
@@ -106,7 +122,6 @@ namespace Controller
 
         public void Shake(ShakeMode mode, float duration = -1f, float magnitude = -1f)
         {
-            //implemant defaultshake value thanks to a tutorial I saw
             if (duration < 0) duration = defaultShakeDuration;
             if (magnitude < 0) magnitude = defaultShakeMagnitude;
 

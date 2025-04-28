@@ -208,6 +208,7 @@ namespace Controller
                     RadioController.instance.matRadioEnemy.GetFloat("_waves_Amp")) 
                  < epsilonValidationOscillation))
                 {
+                    CameraController.instance?.Shake(CameraController.ShakeMode.Both,1f,10f);
                     return;
                 }
                 RadioController.instance.listOfDetectedEnemy[AmpouleManager.ampouleAllumee]

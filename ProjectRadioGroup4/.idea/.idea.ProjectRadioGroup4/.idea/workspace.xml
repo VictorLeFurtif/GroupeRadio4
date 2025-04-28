@@ -6,25 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/Animator IA 1st Version.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/Animator IA 1st Version.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/New Version Animation Battery enemy 1/DeathAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/animation/New Version Animation Battery enemy 1/DeathAi.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/Player Animator Test.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/Player Animator Test.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Death.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Death.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/anim scan avant.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/anim scan avant.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Enemy.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/SG RadioWave Player.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Tuto.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Tuto.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AbstractAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpriteOutline/material shader slected enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpriteOutline/material shader slected enemy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +130,7 @@
       <workItem from="1745743362379" duration="9420000" />
       <workItem from="1745766881365" duration="6907000" />
       <workItem from="1745828059920" duration="109000" />
-      <workItem from="1745828192643" duration="5941000" />
+      <workItem from="1745828192643" duration="8077000" />
     </task>
     <servers />
   </component>

@@ -42,7 +42,7 @@ namespace AI
         {
             AlwaysAttack, //no logic behind
             SmartAi, // With thought process
-            RandomAiWithCondition, //Pokemon like ai even if it bothers Stoian -_-
+            Brouilleur,
         }
         
         private void Update()
@@ -210,12 +210,11 @@ namespace AI
                 case TypeOfAi.SmartAi:
                     SmartAiBehavior();
                     break;
-                case TypeOfAi.RandomAiWithCondition:
+                case TypeOfAi.Brouilleur:
                     break;
             }
         }
         
-
         public void EndAiTurn()
         {
             if (FightManager.instance == null)
@@ -236,6 +235,11 @@ namespace AI
             };
         }
 
+        private void BrouilleurBehavior()
+        {
+            
+        }
+        
         private void AlwaysAttackAiBehavior()
         {
             if (!canAttack) return;
