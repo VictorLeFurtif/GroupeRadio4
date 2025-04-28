@@ -279,6 +279,7 @@ namespace Controller
         
         public void SelectEffectFMButton()
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
             if (FightManager.instance.fightState != FightManager.FightState.InFight ||
                 PlayerController.instance == null)
             {
@@ -331,6 +332,8 @@ namespace Controller
 
         public void AmButton()
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
+            
             if (PlayerController.instance == null)
             {
                 return;
@@ -345,6 +348,7 @@ namespace Controller
             }
             
             PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanFast);
             
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
@@ -409,6 +413,8 @@ namespace Controller
     
         public void FmButton()
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
+            
             if (PlayerController.instance == null)
             {
                 return;
@@ -423,7 +429,7 @@ namespace Controller
             }
             
             PlayerController.instance.animatorPlayer.Play("ScanAround");
-            
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanSlow);
             int cpt = 0;
             listOfDetectedEnemy.Clear();
             Vector3 playerPos = PlayerController.instance.transform.position;
@@ -464,6 +470,7 @@ namespace Controller
 
         public void UpdateRadioEnemyWithLight(int index)
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
             if (transitionCoroutine != null)
                 StopCoroutine(transitionCoroutine);
 
