@@ -20,8 +20,8 @@ MonoBehaviour:
     name: Le Gros Bouclier
     attackEffect: 1
     indexFrequency: 150
-    attackState: 2
-    costBatteryExploration: 2
+    attackState: 1
+    costBatteryExploration: 1
     costBatteryInFightMax: 0
     costBatteryInFight: 0
   <MultiplicatorLifeTaken>k__BackingField: 1.5

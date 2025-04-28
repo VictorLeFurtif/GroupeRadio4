@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DamageBomb>k__BackingField: 0
   <AttackP>k__BackingField:
-    damage: 15
+    damage: 10
     chanceOfOverload: 25
-    damageMaxBonus: 10
+    damageMaxBonus: 5
     name: Vodka Onde Radio
     attackEffect: 7
     indexFrequency: 100

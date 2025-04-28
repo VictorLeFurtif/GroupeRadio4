@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DamageBomb>k__BackingField: 15
   <AttackP>k__BackingField:
-    damage: 20
+    damage: 18
     chanceOfOverload: 65
-    damageMaxBonus: 7
+    damageMaxBonus: 8
     name: Post Zero
     attackEffect: 4
     indexFrequency: 200
