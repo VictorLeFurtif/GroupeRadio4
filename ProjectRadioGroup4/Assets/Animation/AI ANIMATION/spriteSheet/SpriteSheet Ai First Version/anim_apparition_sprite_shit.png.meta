@@ -1,0 +1,383 @@
+fileFormatVersion: 2
+guid: a6b4cfde4cc1d3446b36593589510475
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_0
+      rect:
+        serializedVersion: 2
+        x: 1950
+        y: 205
+        width: 522
+        height: 583
+      alignment: 9
+      pivot: {x: 0.4932651, y: 0.050764866}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23e1ae29cee4ee4586fbc2b5d6ec163
+      internalID: -1020444617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_2
+      rect:
+        serializedVersion: 2
+        x: 3422
+        y: 187
+        width: 445
+        height: 617
+      alignment: 9
+      pivot: {x: 0.58294964, y: 0.05842699}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f569528d8a53d4f8fcc2cb3b038966
+      internalID: 1407543551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_3
+      rect:
+        serializedVersion: 2
+        x: 3857
+        y: 180
+        width: 387
+        height: 628
+      alignment: 9
+      pivot: {x: 0.60446507, y: 0.052166667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2f2f9d81eb5c24ba9192ae6ccc3fb8
+      internalID: 973385202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_4
+      rect:
+        serializedVersion: 2
+        x: 4263
+        y: 185
+        width: 396
+        height: 635
+      alignment: 9
+      pivot: {x: 0.51775444, y: 0.059871573}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e83c791178a96945ac0f51dde04da3d
+      internalID: -509785252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_5
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 205
+        width: 439
+        height: 544
+      alignment: 9
+      pivot: {x: 0.508008, y: 0.031483285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5064ba7ce8cb4cd41b37b7ee40dee82b
+      internalID: 67531918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_6
+      rect:
+        serializedVersion: 2
+        x: 2480
+        y: 203
+        width: 482
+        height: 596
+      alignment: 9
+      pivot: {x: 0.4635324, y: 0.0782591}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b490c5167412eaa49a6ad4b72cd437cd
+      internalID: 1194350735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_8
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 205
+        width: 421
+        height: 466
+      alignment: 9
+      pivot: {x: 0.54592687, y: 0.039817777}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9719a06f35c10044488d487a5277f214
+      internalID: 1168682903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_12
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 308
+        width: 167
+        height: 195
+      alignment: 9
+      pivot: {x: 0.48947453, y: 0.08535219}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160ba451e87d2b94782049825f6f7d76
+      internalID: 1453903733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_13
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 361
+        width: 103
+        height: 117
+      alignment: 9
+      pivot: {x: 0.5341305, y: 0.15446042}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178ac2d1371520846b1dfc7b484832a4
+      internalID: -631674172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_14
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 304
+        width: 194
+        height: 236
+      alignment: 9
+      pivot: {x: 0.50906044, y: 0.03821926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 097becd566f821f4b8a5b157596ee6dd
+      internalID: 1690668708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_15
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 304
+        width: 343
+        height: 270
+      alignment: 9
+      pivot: {x: 0.5102491, y: 0.109389916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3723568eae7a60b438d4f06daec18e06
+      internalID: -1316634824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_apparition_sprite_shit_1
+      rect:
+        serializedVersion: 2
+        x: 2968
+        y: 201
+        width: 440
+        height: 603
+      alignment: 9
+      pivot: {x: 0.5439431, y: 0.07440985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db320a64509798a478f6578ae4489bff
+      internalID: 1963337505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      anim_apparition_sprite_shit_0: -1020444617
+      anim_apparition_sprite_shit_1: 1963337505
+      anim_apparition_sprite_shit_10: -166929715
+      anim_apparition_sprite_shit_11: 728503779
+      anim_apparition_sprite_shit_12: 1453903733
+      anim_apparition_sprite_shit_13: -631674172
+      anim_apparition_sprite_shit_14: 1690668708
+      anim_apparition_sprite_shit_15: -1316634824
+      anim_apparition_sprite_shit_16: 39302420
+      anim_apparition_sprite_shit_2: 1407543551
+      anim_apparition_sprite_shit_3: 973385202
+      anim_apparition_sprite_shit_4: -509785252
+      anim_apparition_sprite_shit_5: 67531918
+      anim_apparition_sprite_shit_6: 1194350735
+      anim_apparition_sprite_shit_7: -326858030
+      anim_apparition_sprite_shit_8: 1168682903
+      anim_apparition_sprite_shit_9: -672960030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: e0919ee96197933408a70340e605eb5a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 709
+        height: 1080
+      alignment: 9
+      pivot: {x: 0.5400996, y: 0.058330804}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64cf12c0a93d2a443bcbdd610d9ea9de
+      internalID: -375174117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_1
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 12
+        width: 654
+        height: 1061
+      alignment: 9
+      pivot: {x: 0.54830235, y: 0.050421495}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62a8e218314e514d9a863b8d7e8dc6b
+      internalID: 1842546226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_2
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 14
+        width: 751
+        height: 1045
+      alignment: 9
+      pivot: {x: 0.6093649, y: 0.049584065}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdba055bea79163469c1b0cbd487d1f2
+      internalID: 249027278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_6
+      rect:
+        serializedVersion: 2
+        x: 3710
+        y: 44
+        width: 884
+        height: 981
+      alignment: 9
+      pivot: {x: 0.47498608, y: 0.068501055}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72b6ea2c6bbe0044bc8a5fe3ce354cd
+      internalID: 1615959480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_8
+      rect:
+        serializedVersion: 2
+        x: 2181
+        y: 43
+        width: 762
+        height: 849
+      alignment: 9
+      pivot: {x: 0.55803883, y: 0.049783453}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ac6f563d60e1e4999c02798a3c2d92
+      internalID: 2140718675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_9
+      rect:
+        serializedVersion: 2
+        x: 2905
+        y: 44
+        width: 801
+        height: 932
+      alignment: 9
+      pivot: {x: 0.39746216, y: 0.076319866}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733c1e52295a8604ca8032c8da052149
+      internalID: 936077368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_10
+      rect:
+        serializedVersion: 2
+        x: 4606
+        y: 43
+        width: 740
+        height: 918
+      alignment: 9
+      pivot: {x: 0.5341513, y: 0.052652888}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c956ffb76e64d2a4ab9478a16363b61b
+      internalID: -1401544978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_13
+      rect:
+        serializedVersion: 2
+        x: 5411
+        y: 44
+        width: 712
+        height: 785
+      alignment: 9
+      pivot: {x: 0.55324185, y: 0.06136774}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 519716dccdbd9014993f06fa4b97d32e
+      internalID: -592751740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_17
+      rect:
+        serializedVersion: 2
+        x: 6208
+        y: 206
+        width: 578
+        height: 460
+      alignment: 9
+      pivot: {x: 0.52186286, y: 0.06736045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0a37df4e541834495f26ebd1f5691d
+      internalID: 1848335615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_18
+      rect:
+        serializedVersion: 2
+        x: 6881
+        y: 207
+        width: 329
+        height: 399
+      alignment: 9
+      pivot: {x: 0.5000015, y: 0.08830632}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dceed3b73e2dbbc4689c32d4b86aeaf4
+      internalID: 2097672639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_19
+      rect:
+        serializedVersion: 2
+        x: 7476
+        y: 217
+        width: 265
+        height: 317
+      alignment: 9
+      pivot: {x: 0.59536594, y: 0.08146321}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daafd2d93f41b0b488de17d231e43356
+      internalID: -424269663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_mort_sprite_shit_v2_21
+      rect:
+        serializedVersion: 2
+        x: 7270
+        y: 304
+        width: 174
+        height: 200
+      alignment: 9
+      pivot: {x: 0.4818494, y: 0.15251511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a82016d9cc68b04aab8f18ca4d0f3f1
+      internalID: -1110389116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      anim_mort_sprite_shit_v2_0: -375174117
+      anim_mort_sprite_shit_v2_1: 1842546226
+      anim_mort_sprite_shit_v2_10: -1401544978
+      anim_mort_sprite_shit_v2_11: -1449176898
+      anim_mort_sprite_shit_v2_12: 279526266
+      anim_mort_sprite_shit_v2_13: -592751740
+      anim_mort_sprite_shit_v2_14: 2138446483
+      anim_mort_sprite_shit_v2_15: 1856857156
+      anim_mort_sprite_shit_v2_16: -504792028
+      anim_mort_sprite_shit_v2_17: 1848335615
+      anim_mort_sprite_shit_v2_18: 2097672639
+      anim_mort_sprite_shit_v2_19: -424269663
+      anim_mort_sprite_shit_v2_2: 249027278
+      anim_mort_sprite_shit_v2_20: 619338472
+      anim_mort_sprite_shit_v2_21: -1110389116
+      anim_mort_sprite_shit_v2_3: -1791214246
+      anim_mort_sprite_shit_v2_4: -1447158847
+      anim_mort_sprite_shit_v2_5: -1461987946
+      anim_mort_sprite_shit_v2_6: 1615959480
+      anim_mort_sprite_shit_v2_7: -1715713744
+      anim_mort_sprite_shit_v2_8: 2140718675
+      anim_mort_sprite_shit_v2_9: 936077368
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

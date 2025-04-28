@@ -4,9 +4,9 @@ using System.Linq;
 using AI;
 using Controller;
 using DATA.Script.Entity_Data.AI;
-using DATA.ScriptData.Entity_Data;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MANAGER
 {
@@ -133,8 +133,13 @@ namespace MANAGER
             {
                 currentFightAdvantage = FightAdvantage.Neutral;
             }
+
             
-            Debug.Log(currentFightAdvantage);
+            if (PlayerController.instance._inGameData.classicEcho)
+            {
+                currentFightAdvantage = FightAdvantage.Advantage;
+            }
+            
 
             listOfJustEnemiesAlive.AddRange(currentOrder);
             
@@ -155,6 +160,8 @@ namespace MANAGER
             StartUnitTurn();
             
             RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+
+            player.selectedAttack?.CancelEffectWhenEnterFight();
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
@@ -180,7 +187,13 @@ namespace MANAGER
             }
             else
             {
-                Debug.Log("Nobody won");
+                
+                if (RadioController.instance == null)
+                {
+                    Debug.LogError("No radioController seen");
+                    return;
+                }
+                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
         }
     
@@ -205,6 +218,10 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            
+            /*temporary
+            int index = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(index);*/
         }
     }
 }

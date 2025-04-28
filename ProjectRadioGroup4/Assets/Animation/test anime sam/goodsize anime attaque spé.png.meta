@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: 52cdf5aa6b59f2748810d061784ee9e8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_6"
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 727
+        width: 175
+        height: 294
+      alignment: 9
+      pivot: {x: 0.38936245, y: 0.20300709}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18f5621c8dcccc42bfc2f5da9206b01
+      internalID: -1372223184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_7"
+      rect:
+        serializedVersion: 2
+        x: 2085
+        y: 732
+        width: 177
+        height: 287
+      alignment: 9
+      pivot: {x: 0.3846677, y: 0.1980425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e00f2105131069489b8d178726b32d2
+      internalID: -149430191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_8"
+      rect:
+        serializedVersion: 2
+        x: 2309
+        y: 732
+        width: 257
+        height: 287
+      alignment: 9
+      pivot: {x: 0.26620352, y: 0.19535865}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dbe57a31f4128b4485486168c624870
+      internalID: 1513508085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_9"
+      rect:
+        serializedVersion: 2
+        x: 2579
+        y: 732
+        width: 303
+        height: 287
+      alignment: 9
+      pivot: {x: 0.22797014, y: 0.19535865}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c857507adfb41ee48a6a9adcfe66e3d1
+      internalID: -414086930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_10"
+      rect:
+        serializedVersion: 2
+        x: 2902
+        y: 732
+        width: 236
+        height: 285
+      alignment: 9
+      pivot: {x: 0.2959936, y: 0.1959237}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047bf04c6a120fd479e879ef0d58577d
+      internalID: -11638603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_11"
+      rect:
+        serializedVersion: 2
+        x: 3170
+        y: 732
+        width: 231
+        height: 276
+      alignment: 9
+      pivot: {x: 0.2899101, y: 0.20135874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e927d4d12ee1dfe4391246f52ed482ec
+      internalID: 1314562105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_18"
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 376
+        width: 254
+        height: 278
+      alignment: 9
+      pivot: {x: 0.26799, y: 0.20186093}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1b178130304f9b43bef929903fd601e
+      internalID: 1922452052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_19"
+      rect:
+        serializedVersion: 2
+        x: 2129
+        y: 376
+        width: 286
+        height: 293
+      alignment: 9
+      pivot: {x: 0.23944646, y: 0.19246978}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b087bc1a88c706a49a21c9f5c8dc0adf
+      internalID: -978081082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_21"
+      rect:
+        serializedVersion: 2
+        x: 2448
+        y: 376
+        width: 332
+        height: 293
+      alignment: 9
+      pivot: {x: 0.20678711, y: 0.19199952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b115453fd27e545ba3e412b494a2f1
+      internalID: -458634359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_24"
+      rect:
+        serializedVersion: 2
+        x: 2795
+        y: 376
+        width: 390
+        height: 288
+      alignment: 9
+      pivot: {x: 0.17647485, y: 0.19245508}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 514fd4fd3273f03418e9375e37ffb8c3
+      internalID: 474740732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_25"
+      rect:
+        serializedVersion: 2
+        x: 3191
+        y: 376
+        width: 447
+        height: 288
+      alignment: 9
+      pivot: {x: 0.15323783, y: 0.19390573}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d97eee19531794280ebe607fdc6f07
+      internalID: -1034992013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_32"
+      rect:
+        serializedVersion: 2
+        x: 1865
+        y: 60
+        width: 236
+        height: 286
+      alignment: 9
+      pivot: {x: 0.29341048, y: 0.19195257}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3fbaca875f9be4f94ededb8baa2dbd
+      internalID: -1684581864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_33"
+      rect:
+        serializedVersion: 2
+        x: 2134
+        y: 60
+        width: 303
+        height: 287
+      alignment: 9
+      pivot: {x: 0.22523302, y: 0.19103903}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cb291ff65c26e45bdd34c6020bcbdc
+      internalID: 377928516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_34"
+      rect:
+        serializedVersion: 2
+        x: 2461
+        y: 61
+        width: 258
+        height: 287
+      alignment: 9
+      pivot: {x: 0.2723474, y: 0.19103903}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd7acc04e077f742ac4f423d9a13624
+      internalID: 1936079580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_35"
+      rect:
+        serializedVersion: 2
+        x: 2750
+        y: 61
+        width: 175
+        height: 287
+      alignment: 9
+      pivot: {x: 0.39247072, y: 0.19004558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1500ef999d493849a204bf69e68a1e2
+      internalID: -1690210362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "goodsize anime attaque sp\xE9_36"
+      rect:
+        serializedVersion: 2
+        x: 2994
+        y: 55
+        width: 173
+        height: 294
+      alignment: 9
+      pivot: {x: 0.3978194, y: 0.20324416}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca10d22f64a0df74fa71731948f6fd20
+      internalID: 1517483133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      "goodsize anime attaque sp\xE9_0": 2032537518
+      "goodsize anime attaque sp\xE9_1": 449578409
+      "goodsize anime attaque sp\xE9_10": -11638603
+      "goodsize anime attaque sp\xE9_11": 1314562105
+      "goodsize anime attaque sp\xE9_12": 1104188640
+      "goodsize anime attaque sp\xE9_13": 975773141
+      "goodsize anime attaque sp\xE9_14": -1643451018
+      "goodsize anime attaque sp\xE9_15": 1715565007
+      "goodsize anime attaque sp\xE9_16": 2119804659
+      "goodsize anime attaque sp\xE9_17": 1233698607
+      "goodsize anime attaque sp\xE9_18": 1922452052
+      "goodsize anime attaque sp\xE9_19": -978081082
+      "goodsize anime attaque sp\xE9_2": 1795481693
+      "goodsize anime attaque sp\xE9_20": 599424422
+      "goodsize anime attaque sp\xE9_21": -458634359
+      "goodsize anime attaque sp\xE9_22": 2113142471
+      "goodsize anime attaque sp\xE9_23": 2040187217
+      "goodsize anime attaque sp\xE9_24": 474740732
+      "goodsize anime attaque sp\xE9_25": -1034992013
+      "goodsize anime attaque sp\xE9_26": 1205596447
+      "goodsize anime attaque sp\xE9_27": -298286852
+      "goodsize anime attaque sp\xE9_28": -860028313
+      "goodsize anime attaque sp\xE9_29": 1710742328
+      "goodsize anime attaque sp\xE9_3": 243846715
+      "goodsize anime attaque sp\xE9_30": 419283881
+      "goodsize anime attaque sp\xE9_31": -1451053653
+      "goodsize anime attaque sp\xE9_32": -1684581864
+      "goodsize anime attaque sp\xE9_33": 377928516
+      "goodsize anime attaque sp\xE9_34": 1936079580
+      "goodsize anime attaque sp\xE9_35": -1690210362
+      "goodsize anime attaque sp\xE9_36": 1517483133
+      "goodsize anime attaque sp\xE9_4": -1129353967
+      "goodsize anime attaque sp\xE9_5": -446699776
+      "goodsize anime attaque sp\xE9_6": -1372223184
+      "goodsize anime attaque sp\xE9_7": -149430191
+      "goodsize anime attaque sp\xE9_8": 1513508085
+      "goodsize anime attaque sp\xE9_9": -414086930
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

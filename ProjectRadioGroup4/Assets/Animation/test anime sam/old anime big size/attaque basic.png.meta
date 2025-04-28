@@ -1,0 +1,486 @@
+fileFormatVersion: 2
+guid: 2e1d935e2f6bdb1419014bf8e2900eb0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sheet_attaque_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1185
+        width: 291
+        height: 493
+      alignment: 9
+      pivot: {x: 0.3965383, y: 0.20453091}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df103d2fd431234593edb58718a5668
+      internalID: -1800880594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_1
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1197
+        width: 297
+        height: 478
+      alignment: 9
+      pivot: {x: 0.3902695, y: 0.19806215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33c470a8aba7beb4b9ac110dc2edc123
+      internalID: -241495418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_2
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 1197
+        width: 431
+        height: 478
+      alignment: 9
+      pivot: {x: 0.26775542, y: 0.19440974}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a9a8bba4f323d41b19cb73a8dca6bd
+      internalID: 1735755477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_3
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1194
+        width: 509
+        height: 481
+      alignment: 9
+      pivot: {x: 0.22902788, y: 0.1963157}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9bef2a6f3510f4081a9fbade706be6
+      internalID: 1498097708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_4
+      rect:
+        serializedVersion: 2
+        x: 1771
+        y: 1194
+        width: 398
+        height: 481
+      alignment: 9
+      pivot: {x: 0.2952896, y: 0.19510567}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ed99f08e344044fa61ac04d3009962
+      internalID: 1465905220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_5
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 1194
+        width: 388
+        height: 466
+      alignment: 9
+      pivot: {x: 0.30201265, y: 0.20402429}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8675f2755a4c481459096738d9f3636f
+      internalID: 364427761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_12
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 599
+        width: 405
+        height: 467
+      alignment: 9
+      pivot: {x: 0.28589565, y: 0.20341188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4abda2896848ab343852867b5368b7e0
+      internalID: 37659808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_13
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 599
+        width: 474
+        height: 483
+      alignment: 9
+      pivot: {x: 0.24339674, y: 0.1927537}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbb1ae64ae57df47a77928242608861
+      internalID: -581049836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_15
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 599
+        width: 540
+        height: 483
+      alignment: 9
+      pivot: {x: 0.2133303, y: 0.19516352}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b96723c0477d84cabf214978aefdc7
+      internalID: 827466223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_17
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 599
+        width: 645
+        height: 482
+      alignment: 9
+      pivot: {x: 0.17969583, y: 0.19332354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c535b2828ed9a664faa34e5fc59af931
+      internalID: 1540414403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_18
+      rect:
+        serializedVersion: 2
+        x: 2253
+        y: 599
+        width: 741
+        height: 482
+      alignment: 9
+      pivot: {x: 0.15757746, y: 0.19694576}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d8d635724ee6e43b52e596467396bb
+      internalID: -1457724248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_26
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 70
+        width: 396
+        height: 479
+      alignment: 9
+      pivot: {x: 0.29107285, y: 0.20105337}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec79c698e8514d48a5a0f4ff21b6ead
+      internalID: -217852202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_27
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 70
+        width: 509
+        height: 482
+      alignment: 9
+      pivot: {x: 0.22867559, y: 0.19631217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa01f9ed8c6f6474d91bf6c2989fe329
+      internalID: -1711893766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_28
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 73
+        width: 431
+        height: 479
+      alignment: 9
+      pivot: {x: 0.27112356, y: 0.19308153}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 661e3958b4273cd4a958be06fca397c9
+      internalID: 1116665264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_29
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 73
+        width: 297
+        height: 481
+      alignment: 9
+      pivot: {x: 0.3864294, y: 0.19171146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30286d3c3496b974e8568f54f0ac22e2
+      internalID: 550557533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_attaque_30
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 62
+        width: 294
+        height: 495
+      alignment: 9
+      pivot: {x: 0.39609408, y: 0.20428778}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6938c89dfeff9847a10ddece8d866fd
+      internalID: 765382889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sheet_attaque_0: -1800880594
+      sheet_attaque_1: -241495418
+      sheet_attaque_10: 317261955
+      sheet_attaque_11: 1131183974
+      sheet_attaque_12: 37659808
+      sheet_attaque_13: -581049836
+      sheet_attaque_14: 1760459406
+      sheet_attaque_15: 827466223
+      sheet_attaque_16: -1197258891
+      sheet_attaque_17: 1540414403
+      sheet_attaque_18: -1457724248
+      sheet_attaque_19: -1020432554
+      sheet_attaque_2: 1735755477
+      sheet_attaque_20: 908598874
+      sheet_attaque_21: -991344095
+      sheet_attaque_22: 910460117
+      sheet_attaque_23: 830812661
+      sheet_attaque_24: 1253311469
+      sheet_attaque_25: -1760674780
+      sheet_attaque_26: -217852202
+      sheet_attaque_27: -1711893766
+      sheet_attaque_28: 1116665264
+      sheet_attaque_29: 550557533
+      sheet_attaque_3: 1498097708
+      sheet_attaque_30: 765382889
+      sheet_attaque_31: -617858182
+      sheet_attaque_32: -1588786314
+      sheet_attaque_33: 1394864545
+      sheet_attaque_34: -327323136
+      sheet_attaque_35: 1769887547
+      sheet_attaque_4: 1465905220
+      sheet_attaque_5: 364427761
+      sheet_attaque_6: 543530415
+      sheet_attaque_7: -229510176
+      sheet_attaque_8: -1812405223
+      sheet_attaque_9: 392236629
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

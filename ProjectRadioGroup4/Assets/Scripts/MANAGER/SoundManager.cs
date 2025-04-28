@@ -20,28 +20,40 @@ namespace MANAGER
         private void Awake()
         {
             if (instance == null)
+            {
                 instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            
             else
-                Destroy(this.gameObject);
+                Destroy(gameObject);
         }
         
         private void Start()
         {
             soundBankData = soundBankDataBrut.Instance();
+            InitialisationAudioObjectDestroyAtEnd(soundBankData.enviroSound.whiteNoiseVentilation,true,true,1f);
         }
 
         public void PlayMusicOneShot(AudioClip _audioClip)
         {
+            if (_audioClip == null)
+            {
+                Debug.LogError("The audioClip you tried to play is null");
+                return;
+            }
             audioSource.PlayOneShot(_audioClip);
         }
         
-        //horror in kind of optimisation
+        //horror in kind of optimisation but cool for music general
         private void InitialisationAudioObjectDestroyAtEnd(AudioClip audioClipTarget, bool looping, bool playingAwake, float volumeSound)
         {
             GameObject emptyObject = new GameObject
             {
                 name = "Sound Effect"
             };
+
+            emptyObject.transform.SetParent(gameObject.transform);
             
             AudioSource audioSourceGeneral = emptyObject.AddComponent<AudioSource>();
             audioSourceGeneral.clip = audioClipTarget;
@@ -49,6 +61,10 @@ namespace MANAGER
             audioSourceGeneral.playOnAwake = playingAwake;
             audioSourceGeneral.Play();
             audioSourceGeneral.volume = volumeSound;
+            if (looping)
+            {
+                return;
+            }
             Destroy(emptyObject,audioClipTarget.length);
         }
     }

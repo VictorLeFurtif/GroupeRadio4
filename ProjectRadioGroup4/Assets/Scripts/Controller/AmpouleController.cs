@@ -21,7 +21,7 @@ namespace Controller
             ChangeAmpoule(0);
         }
 
-        private void ChangeAmpoule(int numeroAmpoule)
+        public void ChangeAmpoule(int numeroAmpoule)
         {
             if (ampouleAllumee == numeroAmpoule) return;
         

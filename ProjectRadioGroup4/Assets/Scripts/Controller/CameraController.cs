@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
+using MANAGER;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Controller
 {
@@ -17,15 +20,31 @@ namespace Controller
         [SerializeField] private float shakeRecoverySpeed = 1f;
 
         private Transform target;
+        private FightManager fightManager;
         private Vector3 velocity = Vector3.zero;
         private Vector3 originalLocalPos;
         private Coroutine shakeRoutine;
         private Vector3 shakeOffset;
 
+        public static CameraController instance;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
         private void Start()
         {
             target = PlayerController.instance.gameObject.transform;
             originalLocalPos = transform.localPosition;
+            fightManager = FightManager.instance;
         }
 
         #region FollowPlayer
@@ -36,9 +55,65 @@ namespace Controller
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition + shakeOffset, ref velocity, smoothTime);
         }
 
+        private void CameraBehavior()
+        {
+            if (fightManager.fightState == FightManager.FightState.OutFight)
+            {
+                FollowPlayer();
+            }
+            else
+            {
+                FollowCombatView();
+            }
+        }
+        
+        private void FollowCombatView()
+        {
+            if (FightManager.instance == null || 
+                FightManager.instance.listOfJustEnemiesAlive.Count == 0 || 
+                PlayerController.instance == null )
+            {
+                FollowPlayer();
+                return;
+            }
+
+            var lastEnemyWrapper = FightManager.instance.listOfJustEnemiesAlive[^1];
+            
+            if (lastEnemyWrapper == null || lastEnemyWrapper.entity == null)
+            {
+                FollowPlayer();
+                return;
+            }
+
+            Transform playerTransform = PlayerController.instance.transform;
+            Transform lastEnemyTransform = lastEnemyWrapper.entity.transform;
+
+            if (lastEnemyTransform == null)
+            {
+                FollowPlayer();
+                return;
+            }
+
+            Vector3 middlePoint = (playerTransform.position + lastEnemyTransform.position) / 2f;
+
+            if (FightManager.instance.currentOrder != null && FightManager.instance.currentOrder.Count > 0)
+            {
+                var firstInOrder = FightManager.instance.currentOrder[0];
+                if (firstInOrder != null && firstInOrder.entity != null && firstInOrder.entity.transform != null)
+                {
+                    middlePoint = Vector3.Lerp(middlePoint, firstInOrder.entity.transform.position, 0.25f);
+                }
+            }
+
+            Vector3 targetPosition = middlePoint + offSett;
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition + shakeOffset, ref velocity, smoothTime);
+        }
+
+
+
         private void LateUpdate()
         {
-            FollowPlayer();
+            CameraBehavior();
         }
 
         #endregion
@@ -47,7 +122,6 @@ namespace Controller
 
         public void Shake(ShakeMode mode, float duration = -1f, float magnitude = -1f)
         {
-            //implemant defaultshake value thanks to a tutorial I saw
             if (duration < 0) duration = defaultShakeDuration;
             if (magnitude < 0) magnitude = defaultShakeMagnitude;
 
