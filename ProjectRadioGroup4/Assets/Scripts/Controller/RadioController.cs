@@ -475,7 +475,7 @@ namespace Controller
 
         public void UpdateRadioEnemyWithLight(int index)
         {
-            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.clickAmpoule);
+
             if (transitionCoroutine != null)
                 StopCoroutine(transitionCoroutine);
 

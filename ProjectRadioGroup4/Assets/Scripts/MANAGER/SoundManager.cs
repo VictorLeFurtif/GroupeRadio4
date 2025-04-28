@@ -32,7 +32,7 @@ namespace MANAGER
         private void Start()
         {
             soundBankData = soundBankDataBrut.Instance();
-            InitialisationAudioObjectDestroyAtEnd(soundBankData.enviroSound.whiteNoiseVentilation,true,true,1f);
+            InitialisationAudioObjectDestroyAtEnd(soundBankData.enviroSound.whiteNoiseVentilation,true,true,1f,"Main Sound");
         }
 
         public void PlayMusicOneShot(AudioClip _audioClip)
@@ -46,27 +46,30 @@ namespace MANAGER
         }
         
         //horror in kind of optimisation but cool for music general
-        private void InitialisationAudioObjectDestroyAtEnd(AudioClip audioClipTarget, bool looping, bool playingAwake, float volumeSound)
+        public GameObject InitialisationAudioObjectDestroyAtEnd(AudioClip audioClipTarget, bool looping, bool playingAwake, float volumeSound, string _name)
         {
             GameObject emptyObject = new GameObject
             {
-                name = "Sound Effect"
+                name = _name
             };
 
             emptyObject.transform.SetParent(gameObject.transform);
-            
+
             AudioSource audioSourceGeneral = emptyObject.AddComponent<AudioSource>();
             audioSourceGeneral.clip = audioClipTarget;
             audioSourceGeneral.loop = looping;
             audioSourceGeneral.playOnAwake = playingAwake;
-            audioSourceGeneral.Play();
             audioSourceGeneral.volume = volumeSound;
-            if (looping)
+            audioSourceGeneral.Play();
+
+            if (!looping)
             {
-                return;
+                Destroy(emptyObject, audioClipTarget.length);
             }
-            Destroy(emptyObject,audioClipTarget.length);
+
+            return emptyObject;
         }
+
         
     }
 }

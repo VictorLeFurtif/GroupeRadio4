@@ -38,6 +38,7 @@ namespace MANAGER
 
         [SerializeField] private FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
+        private GameObject soundForFight;
         private void Awake()
         {
             if (instance == null)instance = this;
@@ -162,6 +163,18 @@ namespace MANAGER
             RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
 
             player.selectedAttack?.CancelEffectWhenEnterFight();
+
+            if (soundForFight == null)
+            {
+                soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(SoundManager.instance.soundBankData.enemySound.
+                    enemySound,true,true,1f,"FightSound");
+            }
+            else
+            {
+                soundForFight.SetActive(true);
+            }
+            
+             
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
@@ -179,11 +192,13 @@ namespace MANAGER
                 PlayerController.instance._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                soundForFight.SetActive(false);
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
                 Debug.Log("IA win");
                 ResetFightManagerAfterFight();
+                soundForFight.SetActive(false);
             }
             else
             {
