@@ -72,7 +72,8 @@ namespace AI
             {
                 _abstractEntityDataInstance.hp = value;
                 
-                
+                SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList
+                    (SoundManager.instance.soundBankData.enemySound.listVocalEnemy));
                 if (_abstractEntityDataInstance.IsDead())
                 {
                     animatorEnemyAi.Play("DeathAi");

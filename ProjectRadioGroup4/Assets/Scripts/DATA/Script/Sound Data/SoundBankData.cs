@@ -76,6 +76,7 @@ namespace DATA.Script.Sound_Data
         public class UxSound
         {
             public AudioClip click;
+            public AudioClip clickAmpoule;
         }
 
         public AvatarSound AvatarSoundData = new AvatarSound();

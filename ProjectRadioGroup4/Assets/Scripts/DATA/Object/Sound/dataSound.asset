@@ -72,3 +72,4 @@ MonoBehaviour:
     woodCreakig10: {fileID: 8300000, guid: 8fa06abdeb6c87b49aaf6d7bc81c3de6, type: 3}
   UxSoundData:
     click: {fileID: 8300000, guid: 4fc40399fad352a4ab9afdb2cfbeabeb, type: 3}
+    clickAmpoule: {fileID: 8300000, guid: 53b074a4cde9fc8469e04f4fce3e7feb, type: 3}
