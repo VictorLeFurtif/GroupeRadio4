@@ -24,14 +24,14 @@ MonoBehaviour:
     compteurVodka: 0
     isVodka: 0
   <NormalAttack>k__BackingField:
-    damage: 1
+    damage: -1
     batteryGain: 0
   <HeavyAttack>k__BackingField:
-    damage: 1
+    damage: -1
     batteryGain: 0
   <StealBatteries>k__BackingField:
-    damage: 1
+    damage: -1
     batteryGain: 0
   <StealALotBatteries>k__BackingField:
-    damage: 1
+    damage: -1
     batteryGain: 0

@@ -298,9 +298,14 @@ namespace AI
                 foreach (var enemyAI in FightManager.instance.listOfJustEnemiesAlive)
                 {
                     enemyAI.entity.GetComponent<AbstractAI>().PvEnemy -= 15; //MAGIC NUMBER !!!!!
+                    if (enemyAI.IsDead())
+                    {
+                        return;
+                    }
                 }
                 _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka++;
-                if (_abstractEntityDataInstance.vodkaOndeRadio.compteurVodka == 3)
+                
+                if (_abstractEntityDataInstance.vodkaOndeRadio.compteurVodka == 2)
                 {
                     _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka = 0;
                     _abstractEntityDataInstance.vodkaOndeRadio.isVodka = false;

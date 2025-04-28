@@ -168,7 +168,7 @@ namespace DATA.Script.Attack_Data
                         {
                             var enemy = enemies.entity.GetComponent<AbstractAI>();
                             float damageOtherEnemy =
-                                PlayerController.instance.selectedAttackEffect.attack.damage / 2;
+                                PlayerController.instance.selectedAttack.attack.damage / 2;
                             if (enemy == selectedEnemyAbstractAi)
                             {
                                 continue;
@@ -182,6 +182,7 @@ namespace DATA.Script.Attack_Data
                     {
                         var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
                         enemySelectedData.vodkaOndeRadio.isVodka = true;
+                        enemySelectedData.vodkaOndeRadio.compteurVodka = 0;
                     }
                     break;
                 default:
