@@ -20,9 +20,13 @@ namespace MANAGER
         private void Awake()
         {
             if (instance == null)
+            {
                 instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            
             else
-                Destroy(this.gameObject);
+                Destroy(gameObject);
         }
         
         private void Start()
@@ -48,6 +52,8 @@ namespace MANAGER
             {
                 name = "Sound Effect"
             };
+
+            emptyObject.transform.SetParent(gameObject.transform);
             
             AudioSource audioSourceGeneral = emptyObject.AddComponent<AudioSource>();
             audioSourceGeneral.clip = audioClipTarget;

@@ -11,14 +11,7 @@ using Image = UnityEngine.UI.Image;
 
 public class MainMenuUI : MonoBehaviour
 {
-    //[SerializeField] private Image newGameButtonImage;
-    //[SerializeField] private Image continueButtonImage;
-    //[SerializeField] private Image optionsButtonImage;
-    //[SerializeField] private Image quitButtonImage;
-    //[SerializeField] private Image onSelectNewGameButtonImage;
-    //[SerializeField] private Image onSelectContinueButtonImage;
-    //[SerializeField] private Image onSelectOptionsButtonImage;
-    //[SerializeField] private Image onSelectQuitButtonImage;
+    
     
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject continueScreenPanel;
@@ -30,11 +23,12 @@ public class MainMenuUI : MonoBehaviour
         ChangeWindowMode(true);
         //PlayTimeText = 
         //CompletionPercentageText = 
+        DontDestroyOnLoad(gameObject);
     }
-    
-    public void NewGame()
+
+    public void LoadGameByNameScene(string _nameScene)
     {
-        
+        SceneManager.LoadScene(_nameScene);
     }
 
     public void Continue()
