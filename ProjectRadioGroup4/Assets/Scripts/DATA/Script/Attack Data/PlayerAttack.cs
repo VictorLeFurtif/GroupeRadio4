@@ -44,6 +44,7 @@ namespace DATA.Script.Attack_Data
             public float costBatteryInFight;
         }
         
+        
         [field:Header("Concern only for Post Zero"),SerializeField] public float DamageBomb { get; private set; }
         [field: Header("Attack Player"),SerializeField] public AttackClassic AttackP { get; private set; }
         

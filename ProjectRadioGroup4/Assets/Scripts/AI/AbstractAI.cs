@@ -86,7 +86,7 @@ namespace AI
                 {
                     RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
 
-                    if (!isPerformingAttack) // <<<<<<< AJOUT ici
+                    if (!isPerformingAttack) 
                     {
                         animatorEnemyAi.Play("takeDamageMonster");
                     }
@@ -106,10 +106,22 @@ namespace AI
             RadioController.instance.listOfEveryEnemy.Remove(this);
     
             TryRemoveFromDetectedList();
-
+            
+            TryRemoveFromListFighterAlive();
+            
             Destroy(gameObject);
+            
         }
 
+        private void TryRemoveFromListFighterAlive()
+        {
+            if (FightManager.instance == null )
+            {
+                return;
+            }
+            
+        }
+        
         private void TryPostZeroBombEffect()
         {
             if (!_abstractEntityDataInstance.postZeroDeal.postZeroBomb) return;
@@ -127,10 +139,8 @@ namespace AI
                     enemyAI.PvEnemy -= _abstractEntityDataInstance.postZeroDeal.damageStockForAfterDeath;
                 }
             }
-
-            
         }
-
+        
         private void TryRemoveFromDetectedList()
         {
             try
