@@ -31,6 +31,9 @@ namespace AI
         [SerializeField] private TypeOfAi aiType;
 
         [SerializeField] private float timeForAiTurn;
+        
+        private bool isPerformingAttack = false;
+
 
         public enum AiFightState
         {
@@ -71,9 +74,10 @@ namespace AI
             set
             {
                 _abstractEntityDataInstance.hp = value;
-                
+
                 SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList
                     (SoundManager.instance.soundBankData.enemySound.listVocalEnemy));
+
                 if (_abstractEntityDataInstance.IsDead())
                 {
                     animatorEnemyAi.Play("DeathAi");
@@ -81,10 +85,17 @@ namespace AI
                 else
                 {
                     RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
-                    animatorEnemyAi.Play("takeDamageMonster");
+
+                    if (!isPerformingAttack) // <<<<<<< AJOUT ici
+                    {
+                        animatorEnemyAi.Play("takeDamageMonster");
+                    }
                 }
+
             }
         }
+
+
 
         #region Relier a PvEnemy pour moins profondeur ducoup plus de lisibilité
 
@@ -279,8 +290,9 @@ namespace AI
             _abstractEntityDataInstance.flashed = false;
             
             PlayerController.instance.ManageLife(-1); 
-            animatorEnemyAi.Play("attackAi"); 
-            canAttack = false; 
+            animatorEnemyAi.Play("attackAi");
+            isPerformingAttack = true;
+            canAttack = false;
         }
 
 
@@ -427,19 +439,22 @@ namespace AI
         private void Kamikaze()
         {
             PlayerController.instance.ManageLife(-38); //temporary floating value
-            PvEnemy = 0;
             animatorEnemyAi.Play("attackAi");
-            Debug.Log("Explode");
+            isPerformingAttack = true;
+            PvEnemy = 0;
             canAttack = false;
+
         }
         private void ClassicAttack(float _damageDeal, float _batteryGain, string _attackName)
         {
             if (!canAttack) return;
 
-            canAttack = false; 
+            canAttack = false;
+            isPerformingAttack = true; 
+    
             animatorEnemyAi.Play("attackAi");
             Debug.Log(_attackName);
-
+            
             if (PlayerController.instance._inGameData.grosBouclier)
             {
                 float damageEnemy = _damageDeal / 2;
@@ -452,8 +467,8 @@ namespace AI
                 float damageEnemy = _damageDeal * 0.75f;
                 float damageForEnemy = _damageDeal * 0.25f;
                 PlayerController.instance.ManageLife(damageEnemy);
-                _abstractEntityDataInstance.battery += _batteryGain;
                 PvEnemy -= damageForEnemy;
+                _abstractEntityDataInstance.battery += _batteryGain;
                 Debug.Log(_attackName + " (echo)");
             }
             else
@@ -463,6 +478,7 @@ namespace AI
                 Debug.Log(_attackName);
             }
         }
+
 
         private void NormalAttack() => ClassicAttack(
             _abstractEntityDataInstance.normalAttack.damage,

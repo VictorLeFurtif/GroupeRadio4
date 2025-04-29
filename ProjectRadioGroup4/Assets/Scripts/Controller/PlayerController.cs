@@ -242,7 +242,6 @@ namespace Controller
                 
                 if (isOverload)
                 {
-                    Debug.Log("OVERLOAD déclenché ");
                     ManageLife(-finalDamage / 2);
                     animatorPlayer.Play("Overload");
                     return;
@@ -276,7 +275,7 @@ namespace Controller
                 
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
 
-                if (TutorialFightManager.instance.isInTutorialCombat &&
+                if (TutorialFightManager.instance != null && TutorialFightManager.instance.isInTutorialCombat &&
                     TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainPlayButton)
                 {
                     TutorialFightManager.instance.AdvanceStep();

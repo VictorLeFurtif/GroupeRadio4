@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scene/FirstPlayable Test/Tuto.unity
     guid: d6d167cc14ab6b54fb3e33fa6c4e3154
   - enabled: 1
-    path: Assets/Scene/FirstPlayable Test/First Playable.unity
-    guid: 5148968c41f898f48a7b01f136cef2f7
+    path: Assets/Scene/FirstPlayable Test/Salle 1.unity
+    guid: 6212eddf841f1be489090880027f1ca7
   m_configObjects: {}
