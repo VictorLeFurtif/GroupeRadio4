@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using AI;
 using DATA.Script.Attack_Data;
+using DATA.Script.Attack_Data.New_System_Attack_Player;
+using DATA.Script.Attack_Data.Old_System_Attack_Player;
 using DATA.Script.Entity_Data.AI;
+using INTERFACE;
 using MANAGER;
 using TMPro;
 using UnityEngine;
@@ -210,7 +213,10 @@ namespace Controller
             
             if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
             {
-                PlayerController.instance.selectedAttack.ProcessAttackEffect();
+                if (PlayerController.instance.selectedAttack is IPLayerEffect effect)
+                {
+                    effect.ProcessEffect();    
+                }
             }
         }
         
@@ -241,9 +247,9 @@ namespace Controller
                 //so exploration
                 case FightManager.FightState.OutFight:
                 {
-                    foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
                     {
-                        if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
+                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
                         {
                             SelectingAttackPlayer(attackInstance);
                         }
@@ -253,18 +259,18 @@ namespace Controller
                 
                 case FightManager.FightState.InFight:
                 {
-                    foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
                     {
                         switch (selectedAm)
                         {
                             case false :
-                                if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
+                                if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
                                 {
                                     SelectingAttackPlayer(attackInstance);
                                 }
                                 break;
                             case true :
-                                if (attackInstance.attack.attackState == PlayerAttack.AttackState.Am)
+                                if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Am)
                                 {
                                     SelectingAttackPlayer(attackInstance);
                                 }
@@ -288,9 +294,9 @@ namespace Controller
             
             PlayerController.instance.selectedAttackEffect = null;
             
-            foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+            foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
             {
-                if (attackInstance.attack.attackState != PlayerAttack.AttackState.Fm) continue;
+                if (attackInstance.attack.attackState != PlayerAttackAbstract.AttackState.Fm) continue;
                 if (!(Mathf.Abs(sliderForFrequencyAttack.value - attackInstance.attack.indexFrequency) <
                       epsilonForSliderAttack)) continue;
                 PlayerController.instance.selectedAttackEffect = attackInstance;
@@ -306,7 +312,7 @@ namespace Controller
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
-        private void UpdateEffectFMText(PlayerAttackInstance effectInstance)
+        private void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
         {
             descriptionEffectSelectedText.text = effectInstance == null ?
                 "No Effect selected" : $"Effet select : {effectInstance.attack.name}";
@@ -318,7 +324,7 @@ namespace Controller
                 ? $"Attaque or Effect : {PlayerController.instance.selectedAttack.attack.name}"
                 : "Attaque or Effect : aucune";
 
-            if (PlayerController.instance.selectedAttack != null && PlayerController.instance.selectedAttack.attack.attackState == PlayerAttack.AttackState.Am)
+            if (PlayerController.instance.selectedAttack != null && PlayerController.instance.selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
             {
                 amText += $" Damage flat : {PlayerController.instance.selectedAttack.attack.damage}";
             }
@@ -327,7 +333,7 @@ namespace Controller
         }
 
         
-        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
+        private void SelectingAttackPlayer(PlayerAttackAbstractInstance _playerAttackInstance)
         {
             if (!(Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
                   < epsilonForSliderAttack)) return;

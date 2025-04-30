@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d3abc5f8954da7bb2e58ed1d26b5d1, type: 3}
+  m_Name: Classique Echo
+  m_EditorClassIdentifier: 
+  <AttackP>k__BackingField:
+    damage: 0
+    chanceOfOverload: 0
+    damageMaxBonus: 0
+    name: Classique Echo
+    attackState: 2
+    indexFrequency: 250
+    costBatteryExploration: 2
+    costBatteryInFightMax: 0
+    costBatteryInFight: 0
+  <MultiplicatorLifeTaken>k__BackingField: 1.75

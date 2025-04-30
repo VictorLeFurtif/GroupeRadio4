@@ -3,11 +3,9 @@ using AI;
 using Controller;
 using MANAGER;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace DATA.Script.Attack_Data
+namespace DATA.Script.Attack_Data.Old_System_Attack_Player
 {
-    
     [CreateAssetMenu(menuName = "ScriptableObject/PlayerAttack", fileName = "playerAttack")]
     public class PlayerAttack : ScriptableObject
     {

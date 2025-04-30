@@ -1,17 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using AI;
 using DATA.Script.Attack_Data;
+using DATA.Script.Attack_Data.New_System_Attack_Player;
+using DATA.Script.Attack_Data.Old_System_Attack_Player;
 using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
+using INTERFACE;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
-using Slider = UnityEngine.UI.Slider;
+
 
 namespace Controller
 {
@@ -34,18 +34,16 @@ namespace Controller
         public PlayerDataInstance _inGameData;
 
         public SpriteRenderer spriteRendererPlayer;
-
-        [Header("UI")]
-       // [SerializeField] private GameObject playerFightCanva;
-
+        
+        
         [Header("Selected Fighter")] public GameObject selectedEnemy;
 
-        [Header("Attacks Player")] [SerializeField] private List<PlayerAttack> listOfPlayerAttack;
+        [Header("Attacks Player")] [SerializeField] private List<PlayerAttackAbstract> listOfPlayerAttack;
+        public List<PlayerAttackAbstractInstance> listOfPlayerAttackInstance = new List<PlayerAttackAbstractInstance>();
         
-        public List<PlayerAttackInstance> listOfPlayerAttackInstance = new List<PlayerAttackInstance>();
-
-        public PlayerAttackInstance selectedAttack;
-        public PlayerAttackInstance selectedAttackEffect;
+        public PlayerAttackAbstractInstance selectedAttack;
+        public PlayerAttackAbstractInstance selectedAttackEffect;
+        
 
         [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
         public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
@@ -183,7 +181,7 @@ namespace Controller
 
         private void InitializeListOfAttackPlayer()
         {
-            foreach (PlayerAttack attack in listOfPlayerAttack)
+            foreach (PlayerAttackAbstract attack in listOfPlayerAttack)
             {
                 listOfPlayerAttackInstance.Add(attack.Instance());
             }
@@ -227,9 +225,9 @@ namespace Controller
 
             if (FightManager.instance.fightState == FightManager.FightState.InFight &&
                 _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
-                selectedAttack != null && selectedEnemy != null && canAttack && selectedAttack.attack.attackState == PlayerAttack.AttackState.Am)
+                selectedAttack != null && selectedEnemy != null && canAttack && selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
             {
-                PlayerAttack.AttackClassic attackData = selectedAttack.attack;
+                PlayerAttackAbstract.AttackClassic attackData = selectedAttack.attack;
                 float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
                 float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
                 canAttack = false;
@@ -249,10 +247,13 @@ namespace Controller
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
 
-                if (selectedAttack is { attack: { attackState: PlayerAttack.AttackState.Am } })
+                if (selectedAttack is { attack: { attackState: PlayerAttackAbstract.AttackState.Am } })
                 {
-                    selectedAttack.ProcessAttackLogic();
-                    selectedAttack.TakeLifeFromPlayer();
+                    if (selectedAttack is IPlayerAttack attackSelectedByPlayer)
+                    {
+                        attackSelectedByPlayer.ProcessAttack();
+                        selectedAttack.TakeLifeFromPlayer();
+                    }
                 }
                 else
                 {
@@ -260,14 +261,17 @@ namespace Controller
                 }
                 
 
-                if (selectedAttackEffect != null && selectedAttack is { attack: { attackState: PlayerAttack.AttackState.Am } })
+                if (selectedAttackEffect != null && selectedAttack is { attack: { attackState: PlayerAttackAbstract.AttackState.Am } })
                 {
-                    float lifeTaken = selectedAttack.attack.costBatteryInFight *
-                                      selectedAttackEffect.multiplicatorLifeTaken;
-                    selectedAttackEffect.ProcessAttackEffect();
-                    selectedAttackEffect.TakeLifeFromPlayer(lifeTaken);
+                    if (selectedAttackEffect is IPLayerEffect effect)
+                    {
+                        effect.ProcessEffect();
+                        float lifeTaken = selectedAttack.attack.costBatteryInFight *
+                                          selectedAttackEffect.multiplicatorLifeTaken;
+                        selectedAttackEffect.TakeLifeFromPlayer(lifeTaken);
+                    }
                 }
-
+                
                 if (_inGameData.hp == 0)
                 {
                     return;

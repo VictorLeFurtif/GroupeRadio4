@@ -2,8 +2,9 @@ using System;
 using Controller;
 using UnityEngine;
 
-namespace DATA.Script.Attack_Data
+namespace DATA.Script.Attack_Data.New_System_Attack_Player
 {
+    [CreateAssetMenu(menuName = "Attack Player/ AbstractAttack", fileName = "data")]
     public abstract class PlayerAttackAbstract : ScriptableObject
     {
         public enum AttackState
@@ -19,7 +20,7 @@ namespace DATA.Script.Attack_Data
             public float chanceOfOverload;
             public float damageMaxBonus;
             public string name;
-            public AttackState attackEffect;
+            public AttackState attackState;
             public float indexFrequency;
             public float costBatteryExploration;
             public float costBatteryInFightMax;
@@ -27,6 +28,7 @@ namespace DATA.Script.Attack_Data
         }
         
         [field: Header("Attack Player"),SerializeField] public AttackClassic AttackP { get; private set; }
+        
         [field: Header("Multiplicateur de vie prise"),SerializeField] public float MultiplicatorLifeTaken { get; private set; }
         
         public virtual PlayerAttackAbstractInstance Instance()
@@ -63,6 +65,7 @@ namespace DATA.Script.Attack_Data
                 PlayerController.instance.ManageLife(-damage);
             }
         }
+
         
     }
 }

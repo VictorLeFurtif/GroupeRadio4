@@ -4,6 +4,7 @@ using System.Linq;
 using AI;
 using Controller;
 using DATA.Script.Entity_Data.AI;
+using INTERFACE;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -162,7 +163,11 @@ namespace MANAGER
             
             RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
 
-            player.selectedAttack?.CancelEffectWhenEnterFight();
+            if (player.selectedAttack is IPLayerEffect effect)
+            {
+                effect.CancelEffectWhenEnterFight();
+            }
+            
 
             if (soundForFight == null)
             {
