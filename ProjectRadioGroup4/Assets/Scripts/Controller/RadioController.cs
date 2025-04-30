@@ -34,8 +34,6 @@ namespace Controller
 
         private RadioState currentRadioState;
 
-        private AbstractAI currentClosestEnemy;
-
         [Header("Radio detection enemy parameters")]
         public List<AbstractAI> listOfEveryEnemy;
 
@@ -119,89 +117,8 @@ namespace Controller
             matRadioPlayer = imageRadioPlayer.material;
             matRadioEnemy = imageRadioEnemy.material;
             
-            
-
         }
         
-    
-        #region OldSystemRadio
-    
-        private void UpdateRadioEnemyAfterDetection()
-        {
-            float waveAmpMoyenne = 0;
-            float waveFreMoyenne = 0;
-            foreach (AbstractAI enemy in listOfDetectedEnemy)
-            {
-                waveAmpMoyenne += enemy._abstractEntityDataInstance.waveAmplitudeEnemy;
-                waveFreMoyenne += enemy._abstractEntityDataInstance.waveFrequency;
-                print(waveAmpMoyenne + " " + waveFreMoyenne);
-            }
-            matRadioEnemy.SetFloat("_waves_Amount", waveFreMoyenne / listOfDetectedEnemy.Count);
-            matRadioEnemy.SetFloat("_waves_Amp", waveAmpMoyenne / listOfDetectedEnemy.Count);
-        } //useless but keep it in case
-    
-        private float CheckForClosestPlayer()
-        {
-            float stockDistance = Mathf.Infinity;
-            AbstractAI stockEntity = null;
-            float playerX = PlayerController.instance.transform.position.x;
-
-            foreach (AbstractAI enemy in listOfEveryEnemy)
-            {
-                float enemyX = enemy.transform.position.x;
-                float distance = Mathf.Abs(enemyX - playerX);
-                if (distance < stockDistance)
-                {
-                    stockDistance = distance;
-                    stockEntity = enemy;
-                }
-            }
-
-            currentClosestEnemy = stockEntity;
-            return stockDistance;
-        }
-
-        public void AddWave(float i)
-        {
-            var value = matRadioPlayer.GetFloat("_waves_Amount");
-            matRadioPlayer.SetFloat("_waves_Amount", value + i);
-        }
-
-        public void AddWaveAmp(float i)
-        {
-            var value = matRadioPlayer.GetFloat("_waves_Amp");
-            matRadioPlayer.SetFloat("_waves_Amp", value + i);
-        }
-
-        private void UpdateRadioUiInExploration()
-        {
-            if (listOfEveryEnemy.Count == 0 || currentRadioState == RadioState.InFight)
-            {
-                return;
-            }
-
-            var distance = CheckForClosestPlayer();
-
-            float waveAmp = CalculateWaveAmplitude(distance, minDistance, maxDistance);
-            float waveAmount = CalculateWaveAmount(distance, minDistance, maxDistance);
-
-            matRadioPlayer.SetFloat("_waves_Amp", waveAmp);
-            matRadioPlayer.SetFloat("_waves_Amount", waveAmount);
-        }
-
-        private float CalculateWaveAmplitude(float distance, float _minDistance, float _maxDistance)
-        {
-            float normalizedDistance = Mathf.InverseLerp(_minDistance, _maxDistance, distance);
-            return Mathf.Lerp(1f, 0.1f, normalizedDistance);
-        }
-
-        private float CalculateWaveAmount(float distance, float _minDistance, float _maxDistance)
-        {
-            float normalizedDistance = Mathf.InverseLerp(_minDistance, _maxDistance, distance);
-            return Mathf.Lerp(20f, 1f, normalizedDistance);
-        }
-
-        #endregion
 
         private void EffectInExploration()
         {
@@ -241,46 +158,62 @@ namespace Controller
         [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
         {
-            PlayerController.instance.selectedAttack = null;
-            switch (FightManager.instance.fightState)
+            PlayerController _player = PlayerController.instance;
+            
+            if (_player == null) return;
+    
+            _player.selectedAttack = null;
+            _player.selectedAttackEffect = null;
+    
+            var currentAttackState = GetCurrentAttackStateFilter();
+            
+            foreach (var attackInstance in _player.listOfPlayerAttackInstance)
             {
-                //so exploration
-                case FightManager.FightState.OutFight:
+                if (attackInstance.attack.attackState == currentAttackState && 
+                    IsFrequencyMatch(attackInstance.attack.indexFrequency))
                 {
-                    foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    _player.selectedAttack = attackInstance;
+            
+                    // Gestion tutoriel
+                    if (currentAttackState == PlayerAttackAbstract.AttackState.Fm &&
+                        TutorialFightManager.instance != null && 
+                        TutorialFightManager.instance.isInTutorialCombat &&
+                        TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainLockFM)
                     {
-                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
-                        {
-                            SelectingAttackPlayer(attackInstance);
-                        }
+                        TutorialFightManager.instance.AdvanceStep();
                     }
-                    break;
-                }
-                
-                case FightManager.FightState.InFight:
-                {
-                    foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
-                    {
-                        switch (selectedAm)
-                        {
-                            case false :
-                                if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
-                                {
-                                    SelectingAttackPlayer(attackInstance);
-                                }
-                                break;
-                            case true :
-                                if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Am)
-                                {
-                                    SelectingAttackPlayer(attackInstance);
-                                }
-                                break;
-                        }
-                    }
+            
                     break;
                 }
             }
+    
+            UpdateUI();
+        }
+
+        private PlayerAttackAbstract.AttackState GetCurrentAttackStateFilter()
+        {
+            var _fightManager = FightManager.instance;
+            if (_fightManager.fightState == FightManager.FightState.OutFight)
+                return PlayerAttackAbstract.AttackState.Fm;
+    
+            return selectedAm ? PlayerAttackAbstract.AttackState.Am : PlayerAttackAbstract.AttackState.Fm;
+        }
+
+        private bool IsFrequencyMatch(float attackFrequency)
+        {
+            return Mathf.Abs(sliderForFrequencyAttack.value - attackFrequency) < epsilonForSliderAttack;
+        }
+
+        private void UpdateUI()
+        {
+            PlayerController _player = PlayerController.instance;
             UpdateFrequenceText();
+            UpdateEffectFMText(_player.selectedAttackEffect);
+            
+            if (_player.selectedAttack is { attack: { attackState: PlayerAttackAbstract.AttackState.Fm } })
+            {
+                EffectInExploration();
+            }
         }
         
         public void SelectEffectFMButton()
