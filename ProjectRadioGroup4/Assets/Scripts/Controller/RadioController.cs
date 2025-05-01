@@ -157,64 +157,48 @@ namespace Controller
 
         [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
-        {
-            PlayerController _player = PlayerController.instance;
-            
-            if (_player == null) return;
-    
-            _player.selectedAttack = null;
-            _player.selectedAttackEffect = null;
-    
-            var currentAttackState = GetCurrentAttackStateFilter();
-            
-            foreach (var attackInstance in _player.listOfPlayerAttackInstance)
-            {
-                if (attackInstance.attack.attackState == currentAttackState && 
-                    IsFrequencyMatch(attackInstance.attack.indexFrequency))
                 {
-                    _player.selectedAttack = attackInstance;
-            
-                    // Gestion tutoriel
-                    if (currentAttackState == PlayerAttackAbstract.AttackState.Fm &&
-                        TutorialFightManager.instance != null && 
-                        TutorialFightManager.instance.isInTutorialCombat &&
-                        TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainLockFM)
+                    PlayerController.instance.selectedAttack = null;
+                    switch (FightManager.instance.fightState)
                     {
-                        TutorialFightManager.instance.AdvanceStep();
+                        //so exploration
+                        case FightManager.FightState.OutFight:
+                        {
+                            foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                            {
+                                if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
+                                {
+                                    SelectingAttackPlayer(attackInstance);
+                                }
+                            }
+                            break;
+                        }
+                        
+                        case FightManager.FightState.InFight:
+                        {
+                            foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                            {
+                                switch (selectedAm)
+                                {
+                                    case false :
+                                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
+                                        {
+                                            SelectingAttackPlayer(attackInstance);
+                                        }
+                                        break;
+                                    case true :
+                                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Am)
+                                        {
+                                            SelectingAttackPlayer(attackInstance);
+                                        }
+                                        break;
+                                }
+                            }
+                            break;
+                        }
                     }
-            
-                    break;
+                    UpdateFrequenceText();
                 }
-            }
-    
-            UpdateUI();
-        }
-
-        private PlayerAttackAbstract.AttackState GetCurrentAttackStateFilter()
-        {
-            var _fightManager = FightManager.instance;
-            if (_fightManager.fightState == FightManager.FightState.OutFight)
-                return PlayerAttackAbstract.AttackState.Fm;
-    
-            return selectedAm ? PlayerAttackAbstract.AttackState.Am : PlayerAttackAbstract.AttackState.Fm;
-        }
-
-        private bool IsFrequencyMatch(float attackFrequency)
-        {
-            return Mathf.Abs(sliderForFrequencyAttack.value - attackFrequency) < epsilonForSliderAttack;
-        }
-
-        private void UpdateUI()
-        {
-            PlayerController _player = PlayerController.instance;
-            UpdateFrequenceText();
-            UpdateEffectFMText(_player.selectedAttackEffect);
-            
-            if (_player.selectedAttack is { attack: { attackState: PlayerAttackAbstract.AttackState.Fm } })
-            {
-                EffectInExploration();
-            }
-        }
         
         public void SelectEffectFMButton()
         {
@@ -324,8 +308,6 @@ namespace Controller
 
             AmFmActionIfListNotEmpty();
         }
-
-       
         
         private void ChangeBoolSeenForAi()
         {
@@ -471,8 +453,6 @@ namespace Controller
             matRadioEnemy.SetFloat("_waves_Amount", targetFreq);
             matRadioEnemy.SetFloat("_waves_Amp", targetAmp);
         }
-
-    
         void OnDrawGizmos()
         {
             if (PlayerController.instance == null) return;
@@ -483,19 +463,7 @@ namespace Controller
         
             Gizmos.DrawWireSphere(PlayerController.instance.transform.position, desiredDistanceFm);
         }
-    
-        private void SliderOscillationPlayerBehavior() // now useless
-        {
-            if (PlayerController.instance.currentPlayerExplorationState == PlayerController.PlayerStateExploration.Guessing)
-            {
-                sliderOscillationPlayer.interactable = true;
-            }
-            else
-            {
-                sliderOscillationPlayer.interactable = false;
-            }
-        }
-
+        
         public void SelectEnemyByLight()
         {
             if (PlayerController.instance == null || FightManager.instance == null || 

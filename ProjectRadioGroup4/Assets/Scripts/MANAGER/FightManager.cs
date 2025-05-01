@@ -73,16 +73,20 @@ namespace MANAGER
             CheckForDeadsFighter();
         }
 
-        public void EndFighterTurn() //take out fighter from list
+        public void EndFighterTurn()
         {
             if (currentFighter != null)
             {
-                currentFighter.turnState = TurnState.NoTurn; 
+                currentFighter.turnState = TurnState.NoTurn;
             }
-            
+
             UpdateListOfFighter();
-    
-            currentOrder.RemoveAt(0);
+
+            
+            if (currentOrder.Count > 0 && currentOrder[0] == currentFighter)
+            {
+                currentOrder.RemoveAt(0);
+            }
 
             if (currentOrder.Count == 0)
             {
@@ -90,10 +94,10 @@ namespace MANAGER
                 currentOrder.AddRange(fighterAlive);
             }
 
-
             CheckForEndFight();
             StartUnitTurn();
         }
+
 
         public void InitialiseList() // detect every enemy in a rayon
         {
