@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Globalization;
 using MANAGER;
 using TMPro;
@@ -30,14 +31,43 @@ namespace Controller
             TickBatteryTimer();
         }
 
+        private Coroutine transitionCoroutineLife;
+        private float currentDisplayedLife; 
+
         public void UpdateLifeText()
         {
+            if (transitionCoroutineLife != null)
+                StopCoroutine(transitionCoroutineLife);
+    
             if (PlayerController.instance == null)
             {
                 Debug.LogWarning("No PlayerController Was Found");
                 return;
             }
-            lifeText.text = PlayerController.instance._abstractEntityDataInstance.hp.ToString("00.00",CultureInfo.InvariantCulture) + "%";
+            
+            transitionCoroutineLife = StartCoroutine(SmoothTransitionLife(PlayerController.instance._abstractEntityDataInstance.hp));
+        }
+
+        [SerializeField]
+        private float durationTimeLerpLife = 0.5f;
+
+        private IEnumerator SmoothTransitionLife(float targetLife)
+        {
+            float elapsed = 0f;
+            float startLife = currentDisplayedLife; 
+
+            while (elapsed < durationTimeLerpLife)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / durationTimeLerpLife); 
+
+                currentDisplayedLife = Mathf.Lerp(startLife, targetLife, t);
+                lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%";
+
+                yield return null;
+            }
+            currentDisplayedLife = targetLife;
+            lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%";
         }
         
         private void TickBatteryTimer()
