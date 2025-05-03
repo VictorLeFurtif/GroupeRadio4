@@ -157,48 +157,47 @@ namespace Controller
 
         [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
-                {
-                    PlayerController.instance.selectedAttack = null;
-                    switch (FightManager.instance.fightState)
+        {
+            // Ne réinitialise pas les sélections existantes
+            switch (FightManager.instance.fightState)
+            {
+                case FightManager.FightState.OutFight:
+                    // ... (code existant)
+                    break;
+            
+                case FightManager.FightState.InFight:
+                    if (selectedAm)
                     {
-                        //so exploration
-                        case FightManager.FightState.OutFight:
+                        // Met à jour seulement l'attaque AM
+                        foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
                         {
-                            foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                            if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Am && 
+                                Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
                             {
-                                if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
-                                {
-                                    SelectingAttackPlayer(attackInstance);
-                                }
+                                PlayerController.instance.selectedAttack = attack;
+                                break;
                             }
-                            break;
-                        }
-                        
-                        case FightManager.FightState.InFight:
-                        {
-                            foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
-                            {
-                                switch (selectedAm)
-                                {
-                                    case false :
-                                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
-                                        {
-                                            SelectingAttackPlayer(attackInstance);
-                                        }
-                                        break;
-                                    case true :
-                                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Am)
-                                        {
-                                            SelectingAttackPlayer(attackInstance);
-                                        }
-                                        break;
-                                }
-                            }
-                            break;
                         }
                     }
-                    UpdateFrequenceText();
-                }
+                    else
+                    {
+                        // Met à jour seulement l'effet FM
+                        foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
+                        {
+                            if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Fm && 
+                                Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
+                            {
+                                PlayerController.instance.selectedAttackEffect = attack;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+            }
+    
+            UpdateFrequenceText();
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+        }
         
         public void SelectEffectFMButton()
         {
@@ -229,24 +228,28 @@ namespace Controller
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
-        private void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
-        {
-            descriptionEffectSelectedText.text = effectInstance == null ?
-                "No Effect selected" : $"Effet select : {effectInstance.attack.name}";
-        }
-
         private void UpdateFrequenceText()
         {
-            string amText = PlayerController.instance.selectedAttack != null
-                ? $"Attaque or Effect : {PlayerController.instance.selectedAttack.attack.name}"
-                : "Attaque or Effect : aucune";
-
-            if (PlayerController.instance.selectedAttack != null && PlayerController.instance.selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
+            string attackText = PlayerController.instance.selectedAttack != null
+                ? $"Attaque: {PlayerController.instance.selectedAttack.attack.name}"
+                : "Aucune attaque";
+    
+            if (PlayerController.instance.selectedAttack != null && 
+                PlayerController.instance.selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
             {
-                amText += $" Damage flat : {PlayerController.instance.selectedAttack.attack.damage}";
+                attackText += $"\nDégâts: {PlayerController.instance.selectedAttack.attack.damage}";
             }
-            
-            descriptionAttackSelectedText.text = amText;
+    
+            descriptionAttackSelectedText.text = attackText;
+        }
+
+        private void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
+        {
+            string effectText = effectInstance != null
+                ? $"Effet: {effectInstance.attack.name}"
+                : "Aucun effet";
+    
+            descriptionEffectSelectedText.text = effectText;
         }
 
         
@@ -260,24 +263,39 @@ namespace Controller
 
         public void AmButton()
         {
-            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
-            
-            if (PlayerController.instance == null)
-            {
-                return;
-            }
-            
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
+                // Sauvegarde l'effet FM actuel
+                var previousEffect = PlayerController.instance.selectedAttackEffect;
+        
+                // Passe en mode AM
                 selectedAm = true;
                 backgroundSliderFrequency.color = colorSliderAttackAm;
-                ValueChangeCheck();
+        
+                // Recherche l'attaque AM correspondante
+                PlayerController.instance.selectedAttack = null;
+                foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
+                {
+                    if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Am && 
+                        Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
+                    {
+                        PlayerController.instance.selectedAttack = attack;
+                        break;
+                    }
+                }
+        
+                // Restaure l'effet FM
+                PlayerController.instance.selectedAttackEffect = previousEffect;
+        
+                UpdateFrequenceText();
+                UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
                 return;
             }
-            
+
+            // Exploration logic (inchangée)
             PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanFast);
-            
+
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
             Vector3 playerPos = PlayerController.instance.transform.position;
@@ -285,13 +303,12 @@ namespace Controller
 
             foreach (AbstractAI enemy in listOfEveryEnemy.ToList())
             {
-                if (cpt >= 3)break;
-            
+                if (cpt >= 3) break;
+
                 Vector3 enemyPos = enemy.transform.position;
                 float distance = Vector3.Distance(playerPos, enemyPos);
-            
-                bool isEnemyOnCorrectSide = (isFacingLeft && enemyPos.x < playerPos.x) || 
-                                            (!isFacingLeft && enemyPos.x > playerPos.x);
+
+                bool isEnemyOnCorrectSide = (isFacingLeft && enemyPos.x < playerPos.x) || (!isFacingLeft && enemyPos.x > playerPos.x);
 
                 if (distance <= desiredDistanceAm && isEnemyOnCorrectSide)
                 {
@@ -305,9 +322,9 @@ namespace Controller
             }
 
             listOfDetectedEnemy = newList;
-
             AmFmActionIfListNotEmpty();
         }
+
         
         private void ChangeBoolSeenForAi()
         {
@@ -340,29 +357,52 @@ namespace Controller
         public void FmButton()
         {
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
-            
+
             if (PlayerController.instance == null)
-            {
                 return;
-            }
-            
+
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
+                // Sauvegarde l'attaque AM actuelle
+                var previousAttack = PlayerController.instance.selectedAttack;
+        
+                // Passe en mode FM
                 selectedAm = false;
                 backgroundSliderFrequency.color = colorSliderAttackFm;
-                ValueChangeCheck();
+        
+                // Recherche l'effet FM correspondant
+                PlayerController.instance.selectedAttackEffect = null;
+                foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
+                {
+                    if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Fm && 
+                        Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
+                    {
+                        PlayerController.instance.selectedAttackEffect = attack;
+                        break;
+                    }
+                }
+        
+                // Restaure l'attaque AM
+                PlayerController.instance.selectedAttack = previousAttack;
+        
+                UpdateFrequenceText();
+                UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
                 return;
             }
-            
+
+            // Exploration logic (inchangée)
             PlayerController.instance.animatorPlayer.Play("ScanAround");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanSlow);
+
             int cpt = 0;
             listOfDetectedEnemy.Clear();
             Vector3 playerPos = PlayerController.instance.transform.position;
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPos, desiredDistanceFm, enemyLayerMask);
-            foreach (Collider2D  col in hitColliders)
+
+            foreach (Collider2D col in hitColliders)
             {
-                if (cpt >= 3)break;
+                if (cpt >= 3) break;
+
                 AbstractAI enemy = col.GetComponent<AbstractAI>();
                 if (enemy != null && !IsEnemyAlreadyInList(enemy))
                 {
@@ -373,6 +413,7 @@ namespace Controller
 
             AmFmActionIfListNotEmpty();
         }
+
     
         private bool IsEnemyAlreadyInList(AbstractAI enemyToCheck)
         {
