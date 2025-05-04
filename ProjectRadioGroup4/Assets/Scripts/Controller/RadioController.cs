@@ -158,17 +158,24 @@ namespace Controller
         [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
         {
-            // Ne réinitialise pas les sélections existantes
+            
             switch (FightManager.instance.fightState)
             {
                 case FightManager.FightState.OutFight:
-                    // ... (code existant)
+                    PlayerController.instance.selectedAttack = null;
+                    foreach (var attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    {
+                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
+                        {
+                            SelectingAttackPlayer(attackInstance);
+                        }
+                    }
                     break;
             
                 case FightManager.FightState.InFight:
                     if (selectedAm)
                     {
-                        // Met à jour seulement l'attaque AM
+                        PlayerController.instance.selectedAttack = null;
                         foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
                         {
                             if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Am && 
@@ -181,7 +188,7 @@ namespace Controller
                     }
                     else
                     {
-                        // Met à jour seulement l'effet FM
+                        PlayerController.instance.selectedAttackEffect = null;
                         foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
                         {
                             if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Fm && 
@@ -265,14 +272,11 @@ namespace Controller
         {
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                // Sauvegarde l'effet FM actuel
                 var previousEffect = PlayerController.instance.selectedAttackEffect;
-        
-                // Passe en mode AM
+                
                 selectedAm = true;
                 backgroundSliderFrequency.color = colorSliderAttackAm;
-        
-                // Recherche l'attaque AM correspondante
+                
                 PlayerController.instance.selectedAttack = null;
                 foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
                 {
@@ -283,16 +287,14 @@ namespace Controller
                         break;
                     }
                 }
-        
-                // Restaure l'effet FM
+                
                 PlayerController.instance.selectedAttackEffect = previousEffect;
         
                 UpdateFrequenceText();
                 UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
                 return;
             }
-
-            // Exploration logic (inchangée)
+            
             PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanFast);
 

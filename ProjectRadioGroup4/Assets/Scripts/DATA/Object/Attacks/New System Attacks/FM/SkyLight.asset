@@ -22,4 +22,8 @@ MonoBehaviour:
     costBatteryExploration: 0.25
     costBatteryInFightMax: 0
     costBatteryInFight: 0
+  <DescriptionAttackAndEffect>k__BackingField:
+    descriptionAttack: 
+    descriptionEffectOutFight: "la lumi\xE8re f\xE9 mal au zieux la"
+    descriptionEffectInFight: 
   <MultiplicatorLifeTaken>k__BackingField: 1.25
