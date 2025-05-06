@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4274996387584803923}
   - component: {fileID: 3931206338051829689}
   - component: {fileID: 2528030900428465688}
-  - component: {fileID: 9002175220059808937}
   - component: {fileID: 5518081921606556393}
   - component: {fileID: 5896134477531493745}
+  - component: {fileID: 4045920939062899000}
   m_Layer: 3
   m_Name: Static Ai
   m_TagString: Untagged
@@ -161,53 +161,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.4744053, y: 2.8944643}
   m_EdgeRadius: 0
---- !u!114 &9002175220059808937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9154001375764170124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75a90f26ffdb49d45bb624dd7a6a55a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _abstractEntityData: {fileID: 11400000, guid: 34f352df817fe02459cf1dbf4799cf82, type: 2}
-  _abstractEntityDataInstance:
-    hp: 0
-    speed: 0
-    turnState: 0
-    entity: {fileID: 0}
-    waveAmplitudeEnemy: 0
-    waveFrequency: 0
-    seenByRadio: 0
-    reveal: 0
-    battery: 0
-    normalAttack:
-      damage: 0
-      batteryGain: 0
-    heavyAttack:
-      damage: 0
-      batteryGain: 0
-    stealBatteries:
-      damage: 0
-      batteryGain: 0
-    stealALotBatteries:
-      damage: 0
-      batteryGain: 0
-    flashed: 0
-    postZeroDeal:
-      postZeroBomb: 0
-      damageStockForAfterDeath: 0
-    vodkaOndeRadio:
-      compteurVodka: 0
-      isVodka: 0
-  _aiFightState: 1
-  isAiForTuto: 1
-  animatorEnemyAi: {fileID: 0}
-  aiType: 1
-  timeForAiTurn: 2
 --- !u!70 &5518081921606556393
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -264,3 +217,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4045920939062899000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9154001375764170124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d4f08469f44737a80dd2359c70228c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abstractEntityData: {fileID: 11400000, guid: 318ee8df3444a534384b0a01c6701110, type: 2}
+  _abstractEntityDataInstance:
+    hp: 0
+    speed: 0
+    turnState: 0
+    entity: {fileID: 0}
+    waveAmplitudeEnemy: 0
+    waveFrequency: 0
+    seenByRadio: 0
+    reveal: 0
+    battery: 0
+    normalAttack:
+      damage: 0
+      batteryGain: 0
+    heavyAttack:
+      damage: 0
+      batteryGain: 0
+    stealBatteries:
+      damage: 0
+      batteryGain: 0
+    stealALotBatteries:
+      damage: 0
+      batteryGain: 0
+    flashed: 0
+    postZeroDeal:
+      postZeroBomb: 0
+      damageStockForAfterDeath: 0
+    vodkaOndeRadio:
+      compteurVodka: 0
+      isVodka: 0
+  _aiFightState: 1
+  isAiForTuto: 0
+  animatorEnemyAi: {fileID: 0}
+  timeForAiTurn: 2

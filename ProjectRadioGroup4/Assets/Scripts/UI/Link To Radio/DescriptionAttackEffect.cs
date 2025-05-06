@@ -1,11 +1,11 @@
 using System;
+using System.Collections;
 using Controller;
-using DATA.Script.Attack_Data.New_System_Attack_Player;
 using MANAGER;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Link_To_Radio
 {
     public class DescriptionAttackEffect : MonoBehaviour
     {
@@ -84,5 +84,6 @@ namespace UI
                    $"Overload Chance: {overloadChance:0.00}%\n" +
                    $"Total Resource Cost: {totalCost:0.00}";
         }
+        
     }
 }
