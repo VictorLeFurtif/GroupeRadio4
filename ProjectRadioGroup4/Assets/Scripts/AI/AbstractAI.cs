@@ -4,6 +4,7 @@ using Controller;
 using DATA.Script.Entity_Data.AI;
 using INTERFACE;
 using MANAGER;
+using UI.Link_To_Radio;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -244,6 +245,7 @@ namespace AI
                 animatorEnemyAi.Play("Flashed");
                 _abstractEntityDataInstance.flashed = false;
                 canAttack = false;
+                CallBackFeedBackPlayer.Instance.ShowMessage("Enemy is flashed");
                 return;
             }
 

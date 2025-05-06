@@ -10,6 +10,7 @@ using DATA.Script.Entity_Data.AI;
 using INTERFACE;
 using MANAGER;
 using TMPro;
+using UI.Link_To_Radio;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -347,10 +348,12 @@ namespace Controller
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
                 ChangeBoolSeenForAi();
                 UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                CallBackFeedBackPlayer.Instance.ShowMessage($"{listOfDetectedEnemy.Count} enemies found");
             }
             else
             {
                 Debug.Log("nobody detected");
+                CallBackFeedBackPlayer.Instance.ShowMessage("Nobody detected");
                 UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);   
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
             }
@@ -365,14 +368,10 @@ namespace Controller
 
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                // Sauvegarde l'attaque AM actuelle
                 var previousAttack = PlayerController.instance.selectedAttack;
-        
-                // Passe en mode FM
                 selectedAm = false;
                 backgroundSliderFrequency.color = colorSliderAttackFm;
-        
-                // Recherche l'effet FM correspondant
+                
                 PlayerController.instance.selectedAttackEffect = null;
                 foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
                 {
@@ -383,16 +382,14 @@ namespace Controller
                         break;
                     }
                 }
-        
-                // Restaure l'attaque AM
+                
                 PlayerController.instance.selectedAttack = previousAttack;
         
                 UpdateFrequenceText();
                 UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
                 return;
             }
-
-            // Exploration logic (inchangée)
+            
             PlayerController.instance.animatorPlayer.Play("ScanAround");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanSlow);
 

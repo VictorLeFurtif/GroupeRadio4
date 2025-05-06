@@ -1,4 +1,5 @@
 ﻿using Controller;
+using UI.Link_To_Radio;
 using UnityEngine;
 
 namespace AI
@@ -103,7 +104,7 @@ namespace AI
             isPerformingAttack = true;
             PvEnemy = 0;
             canAttack = false;
-
+            CallBackFeedBackPlayer.Instance.ShowMessage("Enemy Exploded");
         }
         
         private void ClassicAttack(float _damageDeal, float _batteryGain, string _attackName)
@@ -114,6 +115,7 @@ namespace AI
             isPerformingAttack = true; 
     
             animatorEnemyAi.Play("attackAi");
+            CallBackFeedBackPlayer.Instance.ShowMessage($"Enemy use {_attackName}");
             Debug.Log(_attackName);
             
             if (PlayerController.instance._inGameData.grosBouclier)

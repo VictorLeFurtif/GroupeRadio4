@@ -10,8 +10,17 @@ namespace UI.Link_To_Radio
     public class DescriptionAttackEffect : MonoBehaviour
     {
         [SerializeField] private TMP_Text textDescriptionAttackEffect;
+        private bool isOpen = false;
+        [SerializeField] private GameObject codex;
+
+        private void Awake()
+        {
+            codex.SetActive(isOpen);
+        }
 
         private void Update() => DisplayDescriptionBasedOnFightState();
+
+        #region Display
 
         private void DisplayDescriptionBasedOnFightState()
         {
@@ -83,6 +92,14 @@ namespace UI.Link_To_Radio
             return $"Projected Damage: {damage:0.00}\n" +
                    $"Overload Chance: {overloadChance:0.00}%\n" +
                    $"Total Resource Cost: {totalCost:0.00}";
+        }
+
+        #endregion
+
+        public void ToggleSwitchCodex()
+        {
+            isOpen = !isOpen;
+            codex.SetActive(isOpen);
         }
         
     }

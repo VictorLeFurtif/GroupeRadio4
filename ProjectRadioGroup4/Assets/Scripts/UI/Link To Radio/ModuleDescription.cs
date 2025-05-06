@@ -1,8 +1,7 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Utility;
+using DG.Tweening;
 
 namespace UI.Link_To_Radio
 {
@@ -10,54 +9,65 @@ namespace UI.Link_To_Radio
     {
         [SerializeField] private TMP_Text textDescription;
         [TextArea][SerializeField] private string description;
-        [SerializeField] private string defaultText = "";
+        [SerializeField] private string defaultText = "no module detected";
+        [SerializeField] private float typingSpeed = 0.02f;
+        [SerializeField] private float disappearSpeed = 0.01f;
         
-        private Coroutine typingCoroutine;
+        private Sequence currentSequence;
 
         private void Start()
         {
-            if (textDescription != null) textDescription.text = defaultText;
+            Init();
         }
 
-        private void ResetText(TMP_Text targetText)
+        private void Init()
         {
-            targetText.text = "";
+            if (textDescription != null) 
+            {
+                textDescription.text = defaultText;
+                textDescription.maxVisibleCharacters = defaultText.Length;
+            }
         }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (textDescription != null)
-            {
-                ResetText(textDescription);
-                if (typingCoroutine != null)
-                {
-                    StopCoroutine(typingCoroutine);
-                }
-                typingCoroutine = StartCoroutine(TypeText(description));
-            }
+            if (textDescription == null) return;
+            
+            currentSequence?.Kill();
+            AnimateTextTransition(description);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (textDescription != null)
-            {
-                ResetText(textDescription);
-               
-                if (typingCoroutine != null)
-                {
-                    StopCoroutine(typingCoroutine);
-                }
-            }
-        }
-        
-        private IEnumerator TypeText( string fullText, float delay = 0.02f)
-        {
+            if (textDescription == null) return;
             
-            foreach (char c in fullText)
-            {
-                textDescription.text += c;
-                yield return new WaitForSeconds(delay);
-            }
+            currentSequence?.Kill();
+            AnimateTextTransition(defaultText);
+        }
+
+        private void AnimateTextTransition(string targetText)
+        {
+            currentSequence = DOTween.Sequence();
+            
+            currentSequence.Append(
+                DOTween.To(
+                    () => textDescription.maxVisibleCharacters,
+                    x => textDescription.maxVisibleCharacters = x,
+                    0,
+                    textDescription.text.Length * disappearSpeed)
+                .OnComplete(() => textDescription.text = targetText));
+            
+            currentSequence.Append(
+                DOTween.To(
+                    () => textDescription.maxVisibleCharacters,
+                    x => textDescription.maxVisibleCharacters = x,
+                    targetText.Length,
+                    targetText.Length * typingSpeed));
+        }
+
+        private void OnDestroy()
+        {
+            currentSequence?.Kill();
         }
     }
 }
