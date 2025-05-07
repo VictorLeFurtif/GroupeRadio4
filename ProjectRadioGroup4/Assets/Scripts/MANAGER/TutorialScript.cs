@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+// JACQUES gronde pas victor c'est Ethan GD qui as fait le script.
+
 public class TutorialScript : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
