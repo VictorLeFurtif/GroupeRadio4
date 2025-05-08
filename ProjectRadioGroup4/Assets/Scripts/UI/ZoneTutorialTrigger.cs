@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// JACQUES gronde pas victor c'est Ethan GD qui as modifié le script.
+// JACQUES ne gronde pas victor c'est Ethan en GD qui a modifié le script.
 
 namespace UI
 {
@@ -17,7 +18,7 @@ namespace UI
 
         [SerializeField] private TutorialUIManager tutorialUI;
 
-        private bool playerInside = false;
+        private bool playerInside;
 
         private void Start()
         {
@@ -39,26 +40,29 @@ namespace UI
             tutorialUI.HideTutorial();
         }
 
-        //C'est moi qui ai fait tout seul comme un grand ! c'est pour changer le texte avec un bouton
+        //C'est moi qui ai fait tout seul comme un grand !, c'est pour changer le texte avec un bouton.
         public void StepForward()
         {
-            Debug.Log("step forward");
-            Debug.Log($"CLICK at time {Time.time}");
-
             if (!playerInside) return;
 
-            if (readerID < text.Count)
+            if (readerID + 1 < text.Count)
             {
                 readerID++;
-                Debug.Log(readerID);
                 tutorialMessage = text[readerID];
                 tutorialUI.ShowTutorial(tutorialMessage);
             }
             else
             {
                 readerID = 0;
-                tutorialUI.HideTutorial(); // ou text[0] si tu veux boucler
+                tutorialUI.HideTutorial();
             }
+            StartCoroutine(ClickCooldown());
+        }
+        IEnumerator ClickCooldown() //Cooldown du bouton 
+        {
+            nextButton.interactable = false;
+            yield return new WaitForSeconds(0.2f);
+            nextButton.interactable = true;
         }
     }
 }
