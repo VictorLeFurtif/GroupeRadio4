@@ -10,13 +10,6 @@ namespace UI.Link_To_Radio
     public class DescriptionAttackEffect : MonoBehaviour
     {
         [SerializeField] private TMP_Text textDescriptionAttackEffect;
-        private bool isOpen = false;
-        [SerializeField] private GameObject codex;
-
-        private void Awake()
-        {
-            codex.SetActive(isOpen);
-        }
 
         private void Update() => DisplayDescriptionBasedOnFightState();
 
@@ -96,11 +89,7 @@ namespace UI.Link_To_Radio
 
         #endregion
 
-        public void ToggleSwitchCodex()
-        {
-            isOpen = !isOpen;
-            codex.SetActive(isOpen);
-        }
+        
         
     }
 }

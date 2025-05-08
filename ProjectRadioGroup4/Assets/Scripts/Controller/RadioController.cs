@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
-using DATA.Script.Attack_Data;
 using DATA.Script.Attack_Data.New_System_Attack_Player;
-using DATA.Script.Attack_Data.Old_System_Attack_Player;
-using DATA.Script.Entity_Data.AI;
 using INTERFACE;
 using MANAGER;
 using TMPro;
@@ -67,8 +64,12 @@ namespace Controller
         [SerializeField]
         private Image backgroundSliderFrequency;
 
-        [Header("Color")] [Tooltip("Sélectione la couleur pour Attack/Effet")] [SerializeField] private Color colorSliderAttackAm;
-        [SerializeField] private Color colorSliderAttackFm;
+        [Header("Sprites")] 
+        [Tooltip("Sélectionne le sprite pour Attack/Effet")]
+        [SerializeField] private Sprite spriteSliderAttackAm;
+
+        [SerializeField] private Sprite spriteSliderAttackFm;
+
 
         [Header("Ampoule Manager")]
         public AmpouleManager ampouleManager;
@@ -141,7 +142,7 @@ namespace Controller
         private void InitializeSliderFrequency()
         {
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
-            backgroundSliderFrequency.color = colorSliderAttackFm;
+            backgroundSliderFrequency.sprite = spriteSliderAttackFm;
             ValueChangeCheck();
         }
         
@@ -276,7 +277,7 @@ namespace Controller
                 var previousEffect = PlayerController.instance.selectedAttackEffect;
                 
                 selectedAm = true;
-                backgroundSliderFrequency.color = colorSliderAttackAm;
+                backgroundSliderFrequency.sprite = spriteSliderAttackAm;
                 
                 PlayerController.instance.selectedAttack = null;
                 foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
@@ -370,7 +371,7 @@ namespace Controller
             {
                 var previousAttack = PlayerController.instance.selectedAttack;
                 selectedAm = false;
-                backgroundSliderFrequency.color = colorSliderAttackFm;
+                backgroundSliderFrequency.sprite = spriteSliderAttackFm;
                 
                 PlayerController.instance.selectedAttackEffect = null;
                 foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
