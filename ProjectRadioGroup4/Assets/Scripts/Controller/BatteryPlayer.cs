@@ -1,4 +1,5 @@
-using System;
+using UnityEngine.UI;
+using System.Collections;
 using System.Globalization;
 using MANAGER;
 using TMPro;
@@ -12,6 +13,16 @@ namespace Controller
         private float _timer;
         [SerializeField] private float batteryCheckInterval = 1f;
         [SerializeField] private TMP_Text lifeText;
+        
+        private Coroutine transitionCoroutineLife;
+        private float currentDisplayedLife; 
+        
+        [SerializeField] private Slider lifeSlider;
+        [SerializeField] private Image lifeSliderFill;
+        [SerializeField] private Color fullLifeColor = Color.green;
+        [SerializeField] private Color noLifeColor = Color.red;
+        
+        private Coroutine transitionCoroutineSlider;
 
         private void Start()
         {
@@ -30,14 +41,42 @@ namespace Controller
             TickBatteryTimer();
         }
 
+        
+
         public void UpdateLifeText()
         {
+            if (transitionCoroutineLife != null)
+                StopCoroutine(transitionCoroutineLife);
+    
             if (PlayerController.instance == null)
             {
                 Debug.LogWarning("No PlayerController Was Found");
                 return;
             }
-            lifeText.text = PlayerController.instance._abstractEntityDataInstance.hp.ToString(CultureInfo.InvariantCulture) + "%";
+            
+            transitionCoroutineLife = StartCoroutine(SmoothTransitionLife(PlayerController.instance._abstractEntityDataInstance.hp));
+        }
+
+        [SerializeField]
+        private float durationTimeLerpLife = 0.5f;
+
+        private IEnumerator SmoothTransitionLife(float targetLife)
+        {
+            float elapsed = 0f;
+            float startLife = currentDisplayedLife; 
+
+            while (elapsed < durationTimeLerpLife)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / durationTimeLerpLife); 
+
+                currentDisplayedLife = Mathf.Lerp(startLife, targetLife, t);
+                lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%"; //RIDER CONSEIL CULTURE INFO JE PENSE C'EST POUR LES TRAD
+
+                yield return null;
+            }
+            currentDisplayedLife = targetLife;
+            lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%";
         }
         
         private void TickBatteryTimer()
@@ -68,6 +107,37 @@ namespace Controller
             player.ManageLife(-cost);
 
             Debug.Log($" -{cost} batterie consommée pour l'attaque : {player.selectedAttack.attack.name}");
+        }
+        
+        public void UpdateLifeSlider(float targetLife)
+        {
+            if (transitionCoroutineSlider != null)
+                StopCoroutine(transitionCoroutineSlider);
+
+            transitionCoroutineSlider = StartCoroutine(SmoothTransitionSlider(targetLife));
+        }
+        
+        private IEnumerator SmoothTransitionSlider(float targetLife)
+        {
+            float elapsed = 0f;
+            float startValue = lifeSlider.value;
+            float normalizedTarget = Mathf.Clamp01(targetLife / 100f);
+
+            while (elapsed < durationTimeLerpLife)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / durationTimeLerpLife);
+
+                float currentValue = Mathf.Lerp(startValue, normalizedTarget, t);
+                lifeSlider.value = currentValue;
+
+                lifeSliderFill.color = Color.Lerp(noLifeColor, fullLifeColor, currentValue);
+
+                yield return null;
+            }
+
+            lifeSlider.value = normalizedTarget;
+            lifeSliderFill.color = Color.Lerp(noLifeColor, fullLifeColor, normalizedTarget);
         }
     }
 }

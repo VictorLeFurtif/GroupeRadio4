@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,427 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: scan autour 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1787
+        width: 203
+        height: 317
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b30cc06e49388094e9c90f7084a30d6b
+      internalID: 2126903285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_1
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1784
+        width: 212
+        height: 324
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c604df44dab7094aa5add2ba2c2b0da
+      internalID: 1214248774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_2
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 1776
+        width: 200
+        height: 333
+      alignment: 9
+      pivot: {x: 0.5852414, y: 0.025014516}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba344696b866cd14087a3bb5720134a3
+      internalID: 1401804771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_3
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 1777
+        width: 205
+        height: 334
+      alignment: 9
+      pivot: {x: 0.58778256, y: 0.05479349}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d295176f34b26c4485cfc4cfeb83156
+      internalID: 1785923070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_4
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 1770
+        width: 208
+        height: 342
+      alignment: 9
+      pivot: {x: 0.44535798, y: 0.0679771}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577964f8e6c898e4db4aa30fdbe015a5
+      internalID: -1753056405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_5
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1780
+        width: 245
+        height: 330
+      alignment: 9
+      pivot: {x: 0.3956229, y: 0.032176625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70cc128c0161b504f99d82091dc9ee6f
+      internalID: -839839807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_6
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 1782
+        width: 264
+        height: 331
+      alignment: 9
+      pivot: {x: 0.32420766, y: 0.03931291}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc8c862805a3d143bf379d8179615af
+      internalID: 1778780284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_7
+      rect:
+        serializedVersion: 2
+        x: 1624
+        y: 1785
+        width: 286
+        height: 329
+      alignment: 9
+      pivot: {x: 0.33441803, y: 0.030754669}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18fc91ed984195b458bdfb758135744d
+      internalID: -2112557851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_8
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1411
+        width: 334
+        height: 309
+      alignment: 9
+      pivot: {x: 0.29299325, y: 0.043294664}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e32f2dae3e38a3a4f8d7ed26cc304cf7
+      internalID: 480974714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_9
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1417
+        width: 387
+        height: 303
+      alignment: 9
+      pivot: {x: 0.42168447, y: 0.021747854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34dd29b5c1a2819449b4d52860760be6
+      internalID: 1526039081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_10
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1416
+        width: 400
+        height: 304
+      alignment: 9
+      pivot: {x: 0.44080445, y: 0.03266746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f503a3d5eba2d4896bc452a2e360ef
+      internalID: -1278813446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_11
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 1409
+        width: 405
+        height: 313
+      alignment: 9
+      pivot: {x: 0.42282686, y: 0.03400146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3438ca20e67f404c88c407eceb1cfe5
+      internalID: -876748426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_12
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1069
+        width: 485
+        height: 311
+      alignment: 9
+      pivot: {x: 0.5312454, y: 0.049277157}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccbf166c72aad344ab7a0f4ecb650ecf
+      internalID: -731773571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_13
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 1076
+        width: 907
+        height: 299
+      alignment: 9
+      pivot: {x: 0.49791148, y: 0.056529168}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d76dda7d0c93cb142b6ac77501047925
+      internalID: -408485221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_14
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 701
+        width: 955
+        height: 326
+      alignment: 9
+      pivot: {x: 0.48377717, y: 0.06549185}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd4c30a08850be47a1cce57f624ac8c
+      internalID: 989353564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_15
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 697
+        width: 753
+        height: 335
+      alignment: 9
+      pivot: {x: 0.4323967, y: 0.057344805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6baeec63e3a75b24a9f85d32460e02cd
+      internalID: -1286382666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_16
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 336
+        width: 583
+        height: 308
+      alignment: 9
+      pivot: {x: 0.43925846, y: 0.04009861}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01118559af209645a0ebef40a476cbb
+      internalID: -873877470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_17
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 338
+        width: 470
+        height: 315
+      alignment: 9
+      pivot: {x: 0.48116365, y: 0.0854499}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244231935c02574499d5134a850905bc
+      internalID: -923651878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_18
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 336
+        width: 565
+        height: 317
+      alignment: 9
+      pivot: {x: 0.5156693, y: 0.053155843}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e173096f196dce74bb0726f22d3fe86d
+      internalID: 2112185602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan autour 1_19
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 2
+        width: 591
+        height: 307
+      alignment: 9
+      pivot: {x: 0.5112351, y: 0.060228795}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e80f34b5ffba22442abf7883613e63a5
+      internalID: -218743875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +526,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      scan autour 1_0: 2126903285
+      scan autour 1_1: 1214248774
+      scan autour 1_10: -1278813446
+      scan autour 1_11: -876748426
+      scan autour 1_12: -731773571
+      scan autour 1_13: -408485221
+      scan autour 1_14: 989353564
+      scan autour 1_15: -1286382666
+      scan autour 1_16: -873877470
+      scan autour 1_17: -923651878
+      scan autour 1_18: 2112185602
+      scan autour 1_19: -218743875
+      scan autour 1_2: 1401804771
+      scan autour 1_3: 1785923070
+      scan autour 1_4: -1753056405
+      scan autour 1_5: -839839807
+      scan autour 1_6: 1778780284
+      scan autour 1_7: -2112557851
+      scan autour 1_8: 480974714
+      scan autour 1_9: 1526039081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

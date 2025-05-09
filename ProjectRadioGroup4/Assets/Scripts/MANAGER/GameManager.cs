@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Controller;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,6 +54,17 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         CurrentGameState = GameState.GameOver;
+    }
+
+    public void ReloadActualScene()
+    {
+        string nameScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(nameScene);
+    }
+    
+    public void LoadSceneByName(string _name)
+    {
+        SceneManager.LoadScene(_name);
     }
 }
 

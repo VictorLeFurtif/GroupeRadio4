@@ -15,8 +15,9 @@ MonoBehaviour:
   AvatarSoundData:
     attackLowWave: {fileID: 8300000, guid: 9be6f0fe2b76d8946a3770d94dea0e14, type: 3}
     attackStrongWave: {fileID: 8300000, guid: e06e7a5342489b046b7d37019a85a88d, type: 3}
-    ScanSlow: {fileID: 8300000, guid: ed98013c30bcea34ea6bd73f704fbf56, type: 3}
-    ScanFast: {fileID: 8300000, guid: b5b57ecfd692f3940abb35d7f6f9b8d6, type: 3}
+    ScanSlow: {fileID: 8300000, guid: ea83bade801965b47a26e5db91985097, type: 3}
+    ScanFast: {fileID: 8300000, guid: fbaaa3d36a57612458411035848ee955, type: 3}
+    walk: {fileID: 8300000, guid: 6214cfbdf708c2e408fd77d20c5a0fc8, type: 3}
   EnemySoundData:
     listEnemyAttack:
     - {fileID: 8300000, guid: 95aba308ec26aee4783d9a3f4d8198ba, type: 3}
@@ -71,3 +72,4 @@ MonoBehaviour:
     woodCreakig10: {fileID: 8300000, guid: 8fa06abdeb6c87b49aaf6d7bc81c3de6, type: 3}
   UxSoundData:
     click: {fileID: 8300000, guid: 4fc40399fad352a4ab9afdb2cfbeabeb, type: 3}
+    clickAmpoule: {fileID: 8300000, guid: 53b074a4cde9fc8469e04f4fce3e7feb, type: 3}

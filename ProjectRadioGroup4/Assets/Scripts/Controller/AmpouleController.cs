@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MANAGER;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Controller
@@ -23,6 +24,8 @@ namespace Controller
 
         public void ChangeAmpoule(int numeroAmpoule)
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.clickAmpoule);
+            
             if (ampouleAllumee == numeroAmpoule) return;
         
             TurnAllAmpouleOff();

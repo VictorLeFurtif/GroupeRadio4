@@ -2,35 +2,33 @@ using System;
 using System.Collections;
 using Controller;
 using DATA.Script.Entity_Data.AI;
+using INTERFACE;
 using MANAGER;
+using UI.Link_To_Radio;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-
 namespace AI
 {
-    [RequireComponent(typeof(Rigidbody2D),(typeof(BoxCollider2D)))]
-    public abstract class AbstractAI : MonoBehaviour
+    [RequireComponent(typeof(Rigidbody2D), (typeof(BoxCollider2D)))]
+    public abstract class AbstractAI : MonoBehaviour, IAi
     {
-        [SerializeField]
-        private AbstractEntityData _abstractEntityData;
+        [SerializeField] protected AbstractEntityData _abstractEntityData;
         public AbstractEntityDataInstance _abstractEntityDataInstance;
-        public AiFightState _aiFightState;
+        public AiFightState _aiFightState = AiFightState.OutFight;
 
         public bool isAiForTuto;
-        
+
         private SpriteRenderer enemySpriteRenderer;
-
         public Animator animatorEnemyAi;
-        
         private Collider2D myCollider;
-        private bool canAttack = true;
+
+        protected bool canAttack = true;
         private bool waitingForAction = false;
-
-        
-        [SerializeField] private TypeOfAi aiType;
-
         [SerializeField] private float timeForAiTurn;
+        protected bool isPerformingAttack = false;
+
+        private bool isDead = false;
 
         public enum AiFightState
         {
@@ -38,81 +36,106 @@ namespace AI
             OutFight
         }
 
-        private enum TypeOfAi
-        {
-            AlwaysAttack, //no logic behind
-            SmartAi, // With thought process
-            Brouilleur,
-        }
-        
         private void Update()
         {
-            AiShift();
+            if (isDead) return;
+
             AiIfReveal();
+
             if (_abstractEntityDataInstance.turnState == FightManager.TurnState.Turn && canAttack && !waitingForAction)
             {
                 StartCoroutine(DelayedAiBehavior());
             }
         }
 
-
         private IEnumerator DelayedAiBehavior()
         {
-            waitingForAction = true; 
+            waitingForAction = true;
             yield return new WaitForSeconds(timeForAiTurn);
-            AiBehavior();
+            if (!isDead) AiBehavior();
             waitingForAction = false;
         }
-        
 
         public float PvEnemy
         {
             get => _abstractEntityDataInstance.hp;
             set
             {
+                if (isDead) return;
+
                 _abstractEntityDataInstance.hp = value;
-                
-                
+
+                SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList(
+                    SoundManager.instance.soundBankData.enemySound.listVocalEnemy));
+
                 if (_abstractEntityDataInstance.IsDead())
                 {
-                    animatorEnemyAi.Play("DeathAi");
+                    Die();
                 }
                 else
                 {
                     RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
-                    animatorEnemyAi.Play("takeDamageMonster");
+                    if (!isPerformingAttack)
+                    {
+                        animatorEnemyAi.Play("takeDamageMonster");
+                    }
                 }
             }
         }
 
-        #region Relier a PvEnemy pour moins profondeur ducoup plus de lisibilité
+        private void Die()
+        {
+            if (isDead) return;
+
+            isDead = true;
+            canAttack = false;
+
+            animatorEnemyAi.Play("DeathAi");
+
+            if (_aiFightState == AiFightState.InFight)
+            {
+                EndAiTurn();
+            }
+
+            StartCoroutine(DelayedDeath(1.2f)); // <-- adapte au timing de ton anim
+        }
+
+        private IEnumerator DelayedDeath(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            HandleDeath();
+        }
 
         private void HandleDeath()
         {
             TryPostZeroBombEffect();
-
             RadioController.instance.listOfEveryEnemy.Remove(this);
-    
             TryRemoveFromDetectedList();
-
+            TryRemoveFromListFighterAlive();
             Destroy(gameObject);
+        }
+
+        private void TryRemoveFromListFighterAlive()
+        {
+            if (FightManager.instance == null) return;
+            // Ici tu peux implémenter si besoin
         }
 
         private void TryPostZeroBombEffect()
         {
             if (!_abstractEntityDataInstance.postZeroDeal.postZeroBomb) return;
+
             _abstractEntityDataInstance.postZeroDeal.postZeroBomb = false;
             Debug.Log("Caboum");
+
             foreach (AbstractEntityDataInstance enemyInstance in FightManager.instance.listOfJustEnemiesAlive)
             {
                 AbstractAI enemyAI = enemyInstance.entity.GetComponent<AbstractAI>();
-                if (enemyAI != null)
+                if (enemyAI != null && enemyAI != this)
                 {
                     enemyAI.PvEnemy -= _abstractEntityDataInstance.postZeroDeal.damageStockForAfterDeath;
                 }
             }
-
-            
         }
 
         private void TryRemoveFromDetectedList()
@@ -128,11 +151,6 @@ namespace AI
             }
         }
 
-        #endregion
-        
-
-        protected abstract void AiShift();
-
         private void Start()
         {
             Init();
@@ -146,309 +164,117 @@ namespace AI
             _aiFightState = AiFightState.OutFight;
             enemySpriteRenderer = GetComponent<SpriteRenderer>();
             enemySpriteRenderer.enabled = false;
+            AddAiToListOfEveryEnemy();
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            // no need to implement virtual/override because in each type of ai the trigger will launch the FightManager
             if (other.gameObject.layer != 6 || _aiFightState == AiFightState.InFight) return;
-            
+
             if (isAiForTuto && TutorialFightManager.instance != null)
             {
                 TutorialFightManager.instance.isInTutorialCombat = true;
                 TutorialFightManager.instance.ShowCurrentStep();
             }
-            
+
             _aiFightState = AiFightState.InFight;
             enemySpriteRenderer.enabled = true;
             FightManager.instance.fightState = FightManager.FightState.InFight;
             FightManager.instance.InitialiseList();
-            
-            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList
-                (SoundManager.instance.soundBankData.enemySound.listVocalEnemy));
-            
+
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList(
+                SoundManager.instance.soundBankData.enemySound.listVocalEnemy));
+
             if (!_abstractEntityDataInstance.reveal)
             {
                 animatorEnemyAi.Play("SpawnAi");
             }
-            
+
+            RadioController.instance?.SelectEnemyByLight();
         }
-        
+
         private void OnMouseUpAsButton()
         {
-            if (PlayerController.instance._abstractEntityDataInstance.turnState == FightManager.TurnState.Turn 
-                && FightManager.instance.fightState == FightManager.FightState.InFight)
+            if (isDead) return;
+
+            if (PlayerController.instance._abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
+                FightManager.instance.fightState == FightManager.FightState.InFight)
             {
                 PlayerController.instance.selectedEnemy = gameObject;
-            }   
+            }
         }
 
         private void AiIfReveal()
         {
-            if (!_abstractEntityDataInstance.reveal && _aiFightState != AiFightState.InFight)
-            {
-                return;
-            }
-            
+            if (!_abstractEntityDataInstance.reveal && _aiFightState != AiFightState.InFight) return;
             enemySpriteRenderer.enabled = true;
         }
-        
-        private void AiBehavior()
-        {
-            
 
-            if (_abstractEntityDataInstance.turnState == FightManager.TurnState.NoTurn || !canAttack)
-            {
-                return;
-            }
-
-            switch (aiType)
-            {
-                case TypeOfAi.AlwaysAttack:
-                    AlwaysAttackAiBehavior();
-                    break;
-                case TypeOfAi.SmartAi:
-                    SmartAiBehavior();
-                    break;
-                case TypeOfAi.Brouilleur:
-                    break;
-            }
-        }
-        
-        public void EndAiTurn()
+        protected virtual void AiBehavior()
         {
-            if (FightManager.instance == null)
-            {
-                Debug.LogError("No Fucking FightManager found");
-                return;
-            }
-            FightManager.instance.EndFighterTurn();
-            canAttack = true;
-        }
-        
-        protected void SwitchSpriteRenderer(SpriteRenderer _spriteRenderer)
-        {
-            _spriteRenderer.enabled = _spriteRenderer.enabled switch
-            {
-                true => false,
-                false => true
-            };
-        }
+            if (isDead || _abstractEntityDataInstance.turnState == FightManager.TurnState.NoTurn || !canAttack) return;
 
-        private void BrouilleurBehavior()
-        {
-            
-        }
-        
-        private void AlwaysAttackAiBehavior()
-        {
-            if (!canAttack) return;
-
-            PlayerController.instance.ManageLife(-5); 
-            animatorEnemyAi.Play("attackAi"); 
-            canAttack = false; 
-        }
-
-
-        private void SmartAiBehavior()
-        {
             if (PlayerController.instance == null)
             {
                 Debug.LogError("No player instance found: Singleton problem with PlayerController");
                 return;
             }
 
-            if (!canAttack)
-            {
-                Debug.Log("Cant attack in Smart");
-                return;
-            }
-            
             if (_abstractEntityDataInstance.vodkaOndeRadio.isVodka)
             {
                 foreach (var enemyAI in FightManager.instance.listOfJustEnemiesAlive)
                 {
-                    enemyAI.entity.GetComponent<AbstractAI>().PvEnemy -= 15; //MAGIC NUMBER !!!!!
+                    enemyAI.entity.GetComponent<AbstractAI>().PvEnemy -= 15; // MAGIC NUMBER
+                    if (enemyAI.IsDead()) return;
                 }
+
                 _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka++;
-                if (_abstractEntityDataInstance.vodkaOndeRadio.compteurVodka == 3)
+
+                if (_abstractEntityDataInstance.vodkaOndeRadio.compteurVodka == 2)
                 {
                     _abstractEntityDataInstance.vodkaOndeRadio.compteurVodka = 0;
                     _abstractEntityDataInstance.vodkaOndeRadio.isVodka = false;
                 }
             }
-            
+
             float randomValueForFlash = Random.Range(0f, 1f);
 
             if (randomValueForFlash < 0.25f && _abstractEntityDataInstance.flashed)
             {
-                Debug.Log("Flashed so cant attack");
+                Debug.Log("Flashed so can't attack");
                 animatorEnemyAi.Play("Flashed");
                 _abstractEntityDataInstance.flashed = false;
                 canAttack = false;
+                CallBackFeedBackPlayer.Instance.ShowMessage("Enemy is flashed");
                 return;
             }
 
             _abstractEntityDataInstance.flashed = false;
+        }
 
-            float randomValue = Random.Range(0f, 1f);
-            
-            if (_abstractEntityDataInstance.IsBatteryMoreThanHundred())
+        public void EndAiTurn()
+        {
+            if (FightManager.instance == null)
             {
-                Kamikaze();
+                Debug.LogError("No FightManager found");
                 return;
             }
 
-            bool isLowBattery = !_abstractEntityDataInstance.IsBatteryEqualOrMoreThanFifty();
-            float healthPercentage = PvEnemy / _abstractEntityData.Hp;
-
-            if (isLowBattery)
-            {
-                HandleLowBatteryActions(randomValue, healthPercentage);
-            }
-            else
-            {
-                HandleHighBatteryActions(randomValue, healthPercentage);
-            }
-        }
-
-        private void HandleLowBatteryActions(float randomValue, float healthPercentage)
-        {
-            healthPercentage = Mathf.Clamp01(healthPercentage);
-            switch (healthPercentage)
-            {
-                case < 0.33f:
-                {
-                    if (randomValue < 0.15f) NormalAttack();
-                    else if (randomValue < 0.30f) HeavyAttack();
-                    else if (randomValue < 0.55f) StealBatteries();
-                    else StealALotBatteries();
-                    break;
-                }
-                case < 0.66f:
-                {
-                    if (randomValue < 0.3f) NormalAttack();
-                    else if (randomValue < 0.5f) HeavyAttack();
-                    else if (randomValue < 0.8f) StealBatteries();
-                    else StealALotBatteries();
-                    break;
-                }
-                default:
-                {
-                    if (randomValue < 0.4f) NormalAttack();
-                    else if (randomValue < 0.7f) HeavyAttack();
-                    else if (randomValue < 0.9f) StealBatteries();
-                    else StealALotBatteries();
-                    break;
-                }
-            }
-        }
-
-        private void HandleHighBatteryActions(float randomValue, float healthPercentage)
-        {
-            healthPercentage = Mathf.Clamp01(healthPercentage);
-
-            switch (healthPercentage)
-            {
-                case < 0.33f:
-                {
-                    if (randomValue < 0.15f) HeavyAttack();
-                    else if (randomValue < 0.5f) StealBatteries();
-                    else if (randomValue < 0.75f) StealALotBatteries();
-                    else ElectricalLeak();
-                    break;
-                }
-                case < 0.66f:
-                {
-                    if (randomValue < 0.33f) HeavyAttack();
-                    else if (randomValue < 0.56f) StealBatteries();
-                    else if (randomValue < 0.77f) StealALotBatteries();
-                    else ElectricalLeak();
-                    break;
-                }
-                default:
-                {
-                    if (randomValue < 0.35f) HeavyAttack();
-                    else if (randomValue < 0.5f) StealBatteries();
-                    else if (randomValue < 0.6f) StealALotBatteries();
-                    else ElectricalLeak();
-                    break;
-                }
-            }
+            FightManager.instance.EndFighterTurn();
+            canAttack = true;
         }
 
         public void PlayAttackAiSound()
         {
-            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList
-                (SoundManager.instance.soundBankData.enemySound.listEnemyAttack));
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList(
+                SoundManager.instance.soundBankData.enemySound.listEnemyAttack));
         }
-        
-        #region AI Thought Process
-        
-        private void Kamikaze()
+
+        public void AddAiToListOfEveryEnemy()
         {
-            PlayerController.instance.ManageLife(-38); //temporary floating value
-            PvEnemy = 0;
-            animatorEnemyAi.Play("attackAi");
-            Debug.Log("Explode");
-            canAttack = false;
+            if (RadioController.instance == null) return;
+            RadioController.instance.listOfEveryEnemy.Remove(this);
+            RadioController.instance.listOfEveryEnemy.Add(this);
         }
-        private void ClassicAttack(float _damageDeal, float _batteryGain, string _attackName)
-        {
-            if (!canAttack) return;
-
-            canAttack = false; 
-            animatorEnemyAi.Play("attackAi");
-            Debug.Log(_attackName);
-
-            if (PlayerController.instance._inGameData.grosBouclier)
-            {
-                float damageEnemy = _damageDeal / 2;
-                PlayerController.instance.ManageLife(damageEnemy);
-                _abstractEntityDataInstance.battery += _batteryGain;
-                Debug.Log(_attackName + " (bouclier)");
-            }
-            else if (PlayerController.instance._inGameData.classicEcho)
-            {
-                float damageEnemy = _damageDeal * 0.75f;
-                float damageForEnemy = _damageDeal * 0.25f;
-                PlayerController.instance.ManageLife(damageEnemy);
-                _abstractEntityDataInstance.battery += _batteryGain;
-                PvEnemy -= damageForEnemy;
-                Debug.Log(_attackName + " (echo)");
-            }
-            else
-            {
-                PlayerController.instance.ManageLife(_damageDeal);
-                _abstractEntityDataInstance.battery += _batteryGain;
-                Debug.Log(_attackName);
-            }
-        }
-
-        private void NormalAttack() => ClassicAttack(
-            _abstractEntityDataInstance.normalAttack.damage,
-            _abstractEntityDataInstance.normalAttack.batteryGain,
-            "Normal Attack Done");
-        
-        private void HeavyAttack() => ClassicAttack(
-            _abstractEntityDataInstance.heavyAttack.damage,
-            _abstractEntityDataInstance.heavyAttack.batteryGain,
-            "Heavy Attack Done");
-        private void StealBatteries() => ClassicAttack(
-            _abstractEntityDataInstance.stealBatteries.damage,
-            _abstractEntityDataInstance.stealBatteries.batteryGain,
-            "Steal Batteries Done");
-        private void StealALotBatteries() => ClassicAttack( 
-            _abstractEntityDataInstance.stealALotBatteries.damage,
-            _abstractEntityDataInstance.stealALotBatteries.batteryGain,
-            "Steal a lot of Batteries Done");
-
-        private void ElectricalLeak() => ClassicAttack(
-            -_abstractEntityDataInstance.battery,
-            -_abstractEntityDataInstance.battery,
-            "Electrical Leak Done");
-
-        #endregion
-
     }
 }

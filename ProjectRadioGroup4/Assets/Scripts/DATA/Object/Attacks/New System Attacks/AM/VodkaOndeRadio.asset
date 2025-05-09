@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e8b4b05ff14088897d645b197761d1, type: 3}
+  m_Name: VodkaOndeRadio
+  m_EditorClassIdentifier: 
+  <AttackP>k__BackingField:
+    damage: 10
+    chanceOfOverload: 25
+    damageMaxBonus: 5
+    name: Vodka Onde Radio
+    attackState: 1
+    indexFrequency: 100
+    costBatteryExploration: 0
+    costBatteryInFightMax: 5
+    costBatteryInFight: 5
+  <MultiplicatorLifeTaken>k__BackingField: 0

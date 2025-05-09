@@ -16,6 +16,8 @@ namespace DATA.Script.Sound_Data
 
             public AudioClip ScanSlow;
             public AudioClip ScanFast;
+            
+            public AudioClip walk;
         }
         [Serializable]
         public class EnemySound
@@ -74,6 +76,7 @@ namespace DATA.Script.Sound_Data
         public class UxSound
         {
             public AudioClip click;
+            public AudioClip clickAmpoule;
         }
 
         public AvatarSound AvatarSoundData = new AvatarSound();

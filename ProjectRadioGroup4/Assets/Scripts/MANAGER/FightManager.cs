@@ -4,6 +4,7 @@ using System.Linq;
 using AI;
 using Controller;
 using DATA.Script.Entity_Data.AI;
+using INTERFACE;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,7 @@ namespace MANAGER
 
         [SerializeField] private FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
+        private GameObject soundForFight;
         private void Awake()
         {
             if (instance == null)instance = this;
@@ -71,16 +73,20 @@ namespace MANAGER
             CheckForDeadsFighter();
         }
 
-        public void EndFighterTurn() //take out fighter from list
+        public void EndFighterTurn()
         {
             if (currentFighter != null)
             {
-                currentFighter.turnState = TurnState.NoTurn; 
+                currentFighter.turnState = TurnState.NoTurn;
             }
-            
+
             UpdateListOfFighter();
-    
-            currentOrder.RemoveAt(0);
+
+            
+            if (currentOrder.Count > 0 && currentOrder[0] == currentFighter)
+            {
+                currentOrder.RemoveAt(0);
+            }
 
             if (currentOrder.Count == 0)
             {
@@ -88,10 +94,10 @@ namespace MANAGER
                 currentOrder.AddRange(fighterAlive);
             }
 
-
             CheckForEndFight();
             StartUnitTurn();
         }
+
 
         public void InitialiseList() // detect every enemy in a rayon
         {
@@ -161,7 +167,23 @@ namespace MANAGER
             
             RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
 
-            player.selectedAttack?.CancelEffectWhenEnterFight();
+            if (player.selectedAttack is IPLayerEffect effect)
+            {
+                effect.CancelEffectWhenEnterFight();
+            }
+            
+
+            if (soundForFight == null)
+            {
+                soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(SoundManager.instance.soundBankData.enemySound.
+                    enemySound,true,true,1f,"FightSound");
+            }
+            else
+            {
+                soundForFight.SetActive(true);
+            }
+            
+             
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
@@ -179,11 +201,13 @@ namespace MANAGER
                 PlayerController.instance._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                soundForFight.SetActive(false);
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
                 Debug.Log("IA win");
                 ResetFightManagerAfterFight();
+                soundForFight.SetActive(false);
             }
             else
             {

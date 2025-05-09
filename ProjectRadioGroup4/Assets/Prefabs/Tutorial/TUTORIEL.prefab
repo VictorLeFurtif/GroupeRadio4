@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 655c87512a18e104da020385d54734d3, type: 2}
-  m_sharedMaterial: {fileID: 8795478446722622882, guid: 655c87512a18e104da020385d54734d3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -161,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 969312329334827831}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.96, y: -0.27619523, z: 0.015777934}
+  m_LocalPosition: {x: 20.48, y: -0.27619523, z: 0.015777934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -181,7 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialMessage: "En utilisant le slider sur la droite de la ligne bleue, vous
     pouvez correspondre la vague \xE0 celle d'en dessous qui correspond \xE0 la vague
-    de l'ennemi d\xE9tect\xE9. Puis, appuyez sur le gros bouton play."
+    de l'ennemi d\xE9tect\xE9. Puis, appuyez sur le gros bouton play afin de faire
+    appara\xEEtre l'ennemi."
   tutorialUI: {fileID: 7806382412214612724}
 --- !u!61 &4892200682982914460
 BoxCollider2D:
@@ -581,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 1957558761503059260}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.78, y: -0.27619523, z: 0.015777934}
+  m_LocalPosition: {x: 13.87, y: -0.27619523, z: 0.015777934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -600,7 +601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialMessage: "Les ampoules situ\xE9es \xE0 droite de la radio peuvent \xEAtre
-    utilis\xE9es pour s\xE9lectionner jusqu'\xE0 3 ennemis, de gauche \xE0 droite."
+    utilis\xE9es pour s\xE9lectionner jusqu'\xE0 3 potentiels \xE9nnemis d\xE9tect\xE9,
+    de gauche \xE0 droite."
   tutorialUI: {fileID: 7806382412214612724}
 --- !u!61 &3668632817093848157
 BoxCollider2D:
@@ -674,7 +676,7 @@ Transform:
   m_GameObject: {fileID: 3069075346949373713}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.66, y: -0.27619523, z: 0.015777934}
+  m_LocalPosition: {x: -5.96, y: -0.27619523, z: 0.015777934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -692,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2f7eebc3f24ffeb6e50e6064964106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialMessage: "Utilisez la fl\xE8che sur la ligne verte pour s\xE9lectionner
+  tutorialMessage: "Utilisez la fl\xE8che sur la ligne orange pour s\xE9lectionner
     un outil."
   tutorialUI: {fileID: 7806382412214612724}
 --- !u!61 &4185292127344647781
@@ -992,7 +994,7 @@ Transform:
   m_GameObject: {fileID: 5775113650735511144}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.09, y: -0.27619523, z: 0.015777934}
+  m_LocalPosition: {x: 7.660001, y: -0.27619523, z: 0.015777934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1200,7 +1202,7 @@ Transform:
   m_GameObject: {fileID: 6269750610035184716}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.36, y: -0.27619523, z: 0.015777934}
+  m_LocalPosition: {x: 0.93, y: -0.27619523, z: 0.015777934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1218,7 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2f7eebc3f24ffeb6e50e6064964106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialMessage: "L'utilisation d'outils vous draine de la batterie, ce qui repr\xE9sente
+  tutorialMessage: "L'utilisation d'outils vous draine de la batterie, qui repr\xE9sente
     votre vie."
   tutorialUI: {fileID: 7806382412214612724}
 --- !u!61 &3043368175576140374
@@ -1650,7 +1652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.1882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

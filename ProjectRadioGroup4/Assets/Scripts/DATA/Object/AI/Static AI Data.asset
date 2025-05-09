@@ -12,23 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c33b9e58716d144a8ec65bf7cbf819f, type: 3}
   m_Name: Static AI Data
   m_EditorClassIdentifier: 
-  <Hp>k__BackingField: 100
+  <Hp>k__BackingField: 70
   <Speed>k__BackingField: 25
   TurnState: 1
-  <WaveAmplitudeEnemy>k__BackingField: 0.31
-  <WaveFrequencyEnemy>k__BackingField: 10.45
+  <WaveAmplitudeEnemy>k__BackingField: 0.15
+  <WaveFrequencyEnemy>k__BackingField: 9.45
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
   <Battery>k__BackingField: 0
+  <VodkaOndeRadio>k__BackingField:
+    compteurVodka: 0
+    isVodka: 0
   <NormalAttack>k__BackingField:
-    damage: -18
-    batteryGain: 6
+    damage: -7
+    batteryGain: 2
   <HeavyAttack>k__BackingField:
-    damage: -24
-    batteryGain: 8
+    damage: -9
+    batteryGain: 6
   <StealBatteries>k__BackingField:
-    damage: -12
-    batteryGain: 8
+    damage: -6
+    batteryGain: 6
   <StealALotBatteries>k__BackingField:
-    damage: -18
-    batteryGain: 18
+    damage: -8
+    batteryGain: 8

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
-using DATA.Script.Attack_Data;
-using DATA.Script.Entity_Data.AI;
+using DATA.Script.Attack_Data.New_System_Attack_Player;
+using INTERFACE;
 using MANAGER;
 using TMPro;
+using UI.Link_To_Radio;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -30,8 +31,6 @@ namespace Controller
         public Material matRadioEnemy;
 
         private RadioState currentRadioState;
-
-        private AbstractAI currentClosestEnemy;
 
         [Header("Radio detection enemy parameters")]
         public List<AbstractAI> listOfEveryEnemy;
@@ -65,11 +64,17 @@ namespace Controller
         [SerializeField]
         private Image backgroundSliderFrequency;
 
-        [Header("Color")] [Tooltip("Sélectione la couleur pour Attack/Effet")] [SerializeField] private Color colorSliderAttackAm;
-        [SerializeField] private Color colorSliderAttackFm;
+        [Header("Sprites")] 
+        [Tooltip("Sélectionne le sprite pour Attack/Effet")]
+        [SerializeField] private Sprite spriteSliderAttackAm;
 
-        [Header("Ampoule Manager")]
+        [SerializeField] private Sprite spriteSliderAttackFm;
+
+
+        [Header("Manager & Controller")]
         public AmpouleManager ampouleManager;
+
+        
 
 
         #endregion
@@ -116,89 +121,8 @@ namespace Controller
             matRadioPlayer = imageRadioPlayer.material;
             matRadioEnemy = imageRadioEnemy.material;
             
-            
-
         }
         
-    
-        #region OldSystemRadio
-    
-        private void UpdateRadioEnemyAfterDetection()
-        {
-            float waveAmpMoyenne = 0;
-            float waveFreMoyenne = 0;
-            foreach (AbstractAI enemy in listOfDetectedEnemy)
-            {
-                waveAmpMoyenne += enemy._abstractEntityDataInstance.waveAmplitudeEnemy;
-                waveFreMoyenne += enemy._abstractEntityDataInstance.waveFrequency;
-                print(waveAmpMoyenne + " " + waveFreMoyenne);
-            }
-            matRadioEnemy.SetFloat("_waves_Amount", waveFreMoyenne / listOfDetectedEnemy.Count);
-            matRadioEnemy.SetFloat("_waves_Amp", waveAmpMoyenne / listOfDetectedEnemy.Count);
-        } //useless but keep it in case
-    
-        private float CheckForClosestPlayer()
-        {
-            float stockDistance = Mathf.Infinity;
-            AbstractAI stockEntity = null;
-            float playerX = PlayerController.instance.transform.position.x;
-
-            foreach (AbstractAI enemy in listOfEveryEnemy)
-            {
-                float enemyX = enemy.transform.position.x;
-                float distance = Mathf.Abs(enemyX - playerX);
-                if (distance < stockDistance)
-                {
-                    stockDistance = distance;
-                    stockEntity = enemy;
-                }
-            }
-
-            currentClosestEnemy = stockEntity;
-            return stockDistance;
-        }
-
-        public void AddWave(float i)
-        {
-            var value = matRadioPlayer.GetFloat("_waves_Amount");
-            matRadioPlayer.SetFloat("_waves_Amount", value + i);
-        }
-
-        public void AddWaveAmp(float i)
-        {
-            var value = matRadioPlayer.GetFloat("_waves_Amp");
-            matRadioPlayer.SetFloat("_waves_Amp", value + i);
-        }
-
-        private void UpdateRadioUiInExploration()
-        {
-            if (listOfEveryEnemy.Count == 0 || currentRadioState == RadioState.InFight)
-            {
-                return;
-            }
-
-            var distance = CheckForClosestPlayer();
-
-            float waveAmp = CalculateWaveAmplitude(distance, minDistance, maxDistance);
-            float waveAmount = CalculateWaveAmount(distance, minDistance, maxDistance);
-
-            matRadioPlayer.SetFloat("_waves_Amp", waveAmp);
-            matRadioPlayer.SetFloat("_waves_Amount", waveAmount);
-        }
-
-        private float CalculateWaveAmplitude(float distance, float _minDistance, float _maxDistance)
-        {
-            float normalizedDistance = Mathf.InverseLerp(_minDistance, _maxDistance, distance);
-            return Mathf.Lerp(1f, 0.1f, normalizedDistance);
-        }
-
-        private float CalculateWaveAmount(float distance, float _minDistance, float _maxDistance)
-        {
-            float normalizedDistance = Mathf.InverseLerp(_minDistance, _maxDistance, distance);
-            return Mathf.Lerp(20f, 1f, normalizedDistance);
-        }
-
-        #endregion
 
         private void EffectInExploration()
         {
@@ -210,14 +134,17 @@ namespace Controller
             
             if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
             {
-                PlayerController.instance.selectedAttack.ProcessAttackEffect();
+                if (PlayerController.instance.selectedAttack is IPLayerEffect effect)
+                {
+                    effect.ProcessEffect();    
+                }
             }
         }
         
         private void InitializeSliderFrequency()
         {
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
-            backgroundSliderFrequency.color = colorSliderAttackFm;
+            backgroundSliderFrequency.sprite = spriteSliderAttackFm;
             ValueChangeCheck();
         }
         
@@ -235,50 +162,57 @@ namespace Controller
         [SerializeField] private float epsilonForSliderAttack;
         private void ValueChangeCheck()
         {
-            PlayerController.instance.selectedAttack = null;
+            
             switch (FightManager.instance.fightState)
             {
-                //so exploration
                 case FightManager.FightState.OutFight:
-                {
-                    foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    PlayerController.instance.selectedAttack = null;
+                    foreach (var attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
                     {
-                        if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
+                        if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
                         {
                             SelectingAttackPlayer(attackInstance);
                         }
                     }
                     break;
-                }
-                
+            
                 case FightManager.FightState.InFight:
-                {
-                    foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+                    if (selectedAm)
                     {
-                        switch (selectedAm)
+                        PlayerController.instance.selectedAttack = null;
+                        foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
                         {
-                            case false :
-                                if (attackInstance.attack.attackState == PlayerAttack.AttackState.Fm)
-                                {
-                                    SelectingAttackPlayer(attackInstance);
-                                }
+                            if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Am && 
+                                Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
+                            {
+                                PlayerController.instance.selectedAttack = attack;
                                 break;
-                            case true :
-                                if (attackInstance.attack.attackState == PlayerAttack.AttackState.Am)
-                                {
-                                    SelectingAttackPlayer(attackInstance);
-                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        PlayerController.instance.selectedAttackEffect = null;
+                        foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
+                        {
+                            if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Fm && 
+                                Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
+                            {
+                                PlayerController.instance.selectedAttackEffect = attack;
                                 break;
+                            }
                         }
                     }
                     break;
-                }
             }
+    
             UpdateFrequenceText();
+            UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
         public void SelectEffectFMButton()
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
             if (FightManager.instance.fightState != FightManager.FightState.InFight ||
                 PlayerController.instance == null)
             {
@@ -287,14 +221,14 @@ namespace Controller
             
             PlayerController.instance.selectedAttackEffect = null;
             
-            foreach (PlayerAttackInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
+            foreach (PlayerAttackAbstractInstance attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
             {
-                if (attackInstance.attack.attackState != PlayerAttack.AttackState.Fm) continue;
+                if (attackInstance.attack.attackState != PlayerAttackAbstract.AttackState.Fm) continue;
                 if (!(Mathf.Abs(sliderForFrequencyAttack.value - attackInstance.attack.indexFrequency) <
                       epsilonForSliderAttack)) continue;
                 PlayerController.instance.selectedAttackEffect = attackInstance;
                 
-                if (TutorialFightManager.instance.isInTutorialCombat &&
+                if (TutorialFightManager.instance != null && TutorialFightManager.instance.isInTutorialCombat &&
                     TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainLockFM)
                 {
                     TutorialFightManager.instance.AdvanceStep();
@@ -305,23 +239,32 @@ namespace Controller
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
-        private void UpdateEffectFMText(PlayerAttackInstance effectInstance)
-        {
-            descriptionEffectSelectedText.text = effectInstance == null ?
-                "No Effect selected" : $"Effet select : {effectInstance.attack.name}";
-        }
-
         private void UpdateFrequenceText()
         {
-            string amText = PlayerController.instance.selectedAttack != null
-                ? $"Attaque or Effect : {PlayerController.instance.selectedAttack.attack.name}"
-                : "Attaque or Effect : aucune";
-            
-            descriptionAttackSelectedText.text = amText;
+            string attackText = PlayerController.instance.selectedAttack != null
+                ? $"Attaque: {PlayerController.instance.selectedAttack.attack.name}"
+                : "Aucune attaque";
+    
+            if (PlayerController.instance.selectedAttack != null && 
+                PlayerController.instance.selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
+            {
+                attackText += $"\nDégâts: {PlayerController.instance.selectedAttack.attack.damage}";
+            }
+    
+            descriptionAttackSelectedText.text = attackText;
+        }
+
+        private void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
+        {
+            string effectText = effectInstance != null
+                ? $"Effet: {effectInstance.attack.name}"
+                : "Aucun effet";
+    
+            descriptionEffectSelectedText.text = effectText;
         }
 
         
-        private void SelectingAttackPlayer(PlayerAttackInstance _playerAttackInstance)
+        private void SelectingAttackPlayer(PlayerAttackAbstractInstance _playerAttackInstance)
         {
             if (!(Mathf.Abs(sliderForFrequencyAttack.value - _playerAttackInstance.attack.indexFrequency)
                   < epsilonForSliderAttack)) return;
@@ -331,21 +274,34 @@ namespace Controller
 
         public void AmButton()
         {
-            if (PlayerController.instance == null)
-            {
-                return;
-            }
-            
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
+                var previousEffect = PlayerController.instance.selectedAttackEffect;
+                
                 selectedAm = true;
-                backgroundSliderFrequency.color = colorSliderAttackAm;
-                ValueChangeCheck();
+                backgroundSliderFrequency.sprite = spriteSliderAttackAm;
+                
+                PlayerController.instance.selectedAttack = null;
+                foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
+                {
+                    if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Am && 
+                        Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
+                    {
+                        PlayerController.instance.selectedAttack = attack;
+                        break;
+                    }
+                }
+                
+                PlayerController.instance.selectedAttackEffect = previousEffect;
+        
+                UpdateFrequenceText();
+                UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
                 return;
             }
             
             PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
-            
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanFast);
+
             int cpt = 0;
             List<AbstractAI> newList = new List<AbstractAI>();
             Vector3 playerPos = PlayerController.instance.transform.position;
@@ -353,13 +309,12 @@ namespace Controller
 
             foreach (AbstractAI enemy in listOfEveryEnemy.ToList())
             {
-                if (cpt >= 3)break;
-            
+                if (cpt >= 3) break;
+
                 Vector3 enemyPos = enemy.transform.position;
                 float distance = Vector3.Distance(playerPos, enemyPos);
-            
-                bool isEnemyOnCorrectSide = (isFacingLeft && enemyPos.x < playerPos.x) || 
-                                            (!isFacingLeft && enemyPos.x > playerPos.x);
+
+                bool isEnemyOnCorrectSide = (isFacingLeft && enemyPos.x < playerPos.x) || (!isFacingLeft && enemyPos.x > playerPos.x);
 
                 if (distance <= desiredDistanceAm && isEnemyOnCorrectSide)
                 {
@@ -373,11 +328,9 @@ namespace Controller
             }
 
             listOfDetectedEnemy = newList;
-
             AmFmActionIfListNotEmpty();
         }
 
-       
         
         private void ChangeBoolSeenForAi()
         {
@@ -398,10 +351,12 @@ namespace Controller
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
                 ChangeBoolSeenForAi();
                 UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                CallBackFeedBackPlayer.Instance.ShowMessage($"{listOfDetectedEnemy.Count} enemies found");
             }
             else
             {
                 Debug.Log("nobody detected");
+                CallBackFeedBackPlayer.Instance.ShowMessage("Nobody detected");
                 UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);   
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
             }
@@ -409,28 +364,47 @@ namespace Controller
     
         public void FmButton()
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
+
             if (PlayerController.instance == null)
-            {
                 return;
-            }
-            
+
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
+                var previousAttack = PlayerController.instance.selectedAttack;
                 selectedAm = false;
-                backgroundSliderFrequency.color = colorSliderAttackFm;
-                ValueChangeCheck();
+                backgroundSliderFrequency.sprite = spriteSliderAttackFm;
+                
+                PlayerController.instance.selectedAttackEffect = null;
+                foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
+                {
+                    if (attack.attack.attackState == PlayerAttackAbstract.AttackState.Fm && 
+                        Mathf.Abs(sliderForFrequencyAttack.value - attack.attack.indexFrequency) < epsilonForSliderAttack)
+                    {
+                        PlayerController.instance.selectedAttackEffect = attack;
+                        break;
+                    }
+                }
+                
+                PlayerController.instance.selectedAttack = previousAttack;
+        
+                UpdateFrequenceText();
+                UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
                 return;
             }
             
             PlayerController.instance.animatorPlayer.Play("ScanAround");
-            
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanSlow);
+
             int cpt = 0;
             listOfDetectedEnemy.Clear();
             Vector3 playerPos = PlayerController.instance.transform.position;
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPos, desiredDistanceFm, enemyLayerMask);
-            foreach (Collider2D  col in hitColliders)
+
+            foreach (Collider2D col in hitColliders)
             {
-                if (cpt >= 3)break;
+                if (cpt >= 3) break;
+
                 AbstractAI enemy = col.GetComponent<AbstractAI>();
                 if (enemy != null && !IsEnemyAlreadyInList(enemy))
                 {
@@ -441,6 +415,7 @@ namespace Controller
 
             AmFmActionIfListNotEmpty();
         }
+
     
         private bool IsEnemyAlreadyInList(AbstractAI enemyToCheck)
         {
@@ -464,6 +439,7 @@ namespace Controller
 
         public void UpdateRadioEnemyWithLight(int index)
         {
+
             if (transitionCoroutine != null)
                 StopCoroutine(transitionCoroutine);
 
@@ -520,8 +496,6 @@ namespace Controller
             matRadioEnemy.SetFloat("_waves_Amount", targetFreq);
             matRadioEnemy.SetFloat("_waves_Amp", targetAmp);
         }
-
-    
         void OnDrawGizmos()
         {
             if (PlayerController.instance == null) return;
@@ -532,17 +506,17 @@ namespace Controller
         
             Gizmos.DrawWireSphere(PlayerController.instance.transform.position, desiredDistanceFm);
         }
-    
-        private void SliderOscillationPlayerBehavior() // now useless
+        
+        public void SelectEnemyByLight()
         {
-            if (PlayerController.instance.currentPlayerExplorationState == PlayerController.PlayerStateExploration.Guessing)
+            if (PlayerController.instance == null || FightManager.instance == null || 
+                FightManager.instance.fightState == FightManager.FightState.OutFight || AmpouleManager.ampouleAllumee 
+                >  FightManager.instance.listOfJustEnemiesAlive.Count - 1)
             {
-                sliderOscillationPlayer.interactable = true;
+             return;
             }
-            else
-            {
-                sliderOscillationPlayer.interactable = false;
-            }
+            PlayerController.instance.selectedEnemy =
+                FightManager.instance.listOfJustEnemiesAlive[AmpouleManager.ampouleAllumee].entity;
         }
     }
 }

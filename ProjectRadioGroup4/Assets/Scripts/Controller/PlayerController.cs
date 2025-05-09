@@ -1,17 +1,18 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using AI;
 using DATA.Script.Attack_Data;
+using DATA.Script.Attack_Data.New_System_Attack_Player;
+using DATA.Script.Attack_Data.Old_System_Attack_Player;
 using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
+using INTERFACE;
 using MANAGER;
+using UI.Link_To_Radio;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
-using Slider = UnityEngine.UI.Slider;
+
 
 namespace Controller
 {
@@ -34,18 +35,16 @@ namespace Controller
         public PlayerDataInstance _inGameData;
 
         public SpriteRenderer spriteRendererPlayer;
-
-        [Header("UI")]
-       // [SerializeField] private GameObject playerFightCanva;
-
+        
+        
         [Header("Selected Fighter")] public GameObject selectedEnemy;
 
-        [Header("Attacks Player")] [SerializeField] private List<PlayerAttack> listOfPlayerAttack;
+        [Header("Attacks Player")] [SerializeField] private List<PlayerAttackAbstract> listOfPlayerAttack;
+        public List<PlayerAttackAbstractInstance> listOfPlayerAttackInstance = new List<PlayerAttackAbstractInstance>();
         
-        public List<PlayerAttackInstance> listOfPlayerAttackInstance = new List<PlayerAttackInstance>();
-
-        public PlayerAttackInstance selectedAttack;
-        public PlayerAttackInstance selectedAttackEffect;
+        public PlayerAttackAbstractInstance selectedAttack;
+        public PlayerAttackAbstractInstance selectedAttackEffect;
+        
 
         [FormerlySerializedAs("currentPlayerCoreGameState")] [Header("State Machine")]
         public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
@@ -59,6 +58,8 @@ namespace Controller
         public bool isLampTorchOn;
 
         [Header("Battery")] private BatteryPlayer playerBattery;
+        
+        private float nextFootstepTime;
         
         public enum PlayerStateExploration
         {
@@ -107,6 +108,8 @@ namespace Controller
                 _inGameData.hp = Mathf.Max(0, value);
                 
                 playerBattery.UpdateLifeText();
+                playerBattery.UpdateLifeSlider(_inGameData.hp);
+                
                 if (_inGameData.IsDead())
                 {
                     canMove = false;
@@ -130,8 +133,7 @@ namespace Controller
         /// </summary>
 
         public void PlayGameOver()
-        {
-            Debug.Log("Stoian");
+        {    
             GameManager.instance?.GameOver();
         }
         
@@ -158,11 +160,13 @@ namespace Controller
             }
             var x = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(x  * moveSpeed,rb.velocity.y);
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                rb.velocity = new Vector2(x  * moveSpeedRunning,rb.velocity.y);
-            }
             animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
+            
+            if (Mathf.Abs(x) > 0.1f && Time.time > nextFootstepTime)
+            {
+                SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.walk);
+                nextFootstepTime = Time.time + 0.35f; 
+            }
         }
         
         private bool wasFacingLeft = false; //bool pour stock là où il regardait
@@ -180,7 +184,7 @@ namespace Controller
 
         private void InitializeListOfAttackPlayer()
         {
-            foreach (PlayerAttack attack in listOfPlayerAttack)
+            foreach (PlayerAttackAbstract attack in listOfPlayerAttack)
             {
                 listOfPlayerAttackInstance.Add(attack.Instance());
             }
@@ -193,9 +197,13 @@ namespace Controller
         
         [SerializeField]
         private float epsilonValidationOscillation;
+
+        public bool canAttack = true;
         
         public void ValidButton()
         {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
+            
             if (_inGameData.grosBouclier)
             {
                 _inGameData.grosBouclier = false;
@@ -220,12 +228,12 @@ namespace Controller
 
             if (FightManager.instance.fightState == FightManager.FightState.InFight &&
                 _abstractEntityDataInstance.turnState == FightManager.TurnState.Turn &&
-                selectedAttack != null && selectedEnemy != null)
+                selectedAttack != null && selectedEnemy != null && canAttack && selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
             {
-                PlayerAttack.AttackClassic attackData = selectedAttack.attack;
+                PlayerAttackAbstract.AttackClassic attackData = selectedAttack.attack;
                 float sliderMax = RadioController.instance.sliderOscillationPlayer.maxValue;
                 float ratio = sliderMax > 0 ? RadioController.instance.sliderOscillationPlayer.value / sliderMax : 0f;
-
+                canAttack = false;
                 
                 //TODO MEC FINAL DAMAGE AUCUN SENS AVEC LOGIQUE
                 float finalDamage = attackData.damageMaxBonus * ratio + attackData.damage;
@@ -235,25 +243,39 @@ namespace Controller
                 
                 if (isOverload)
                 {
-                    Debug.Log("OVERLOAD déclenché ");
+                    CallBackFeedBackPlayer.Instance.ShowMessage("Overload on player");
                     ManageLife(-finalDamage / 2);
                     animatorPlayer.Play("Overload");
                     return;
                 }
                 
                 selectedEnemy.GetComponent<AbstractAI>().PvEnemy -= finalDamage;
-                
-                selectedAttack.ProcessAttackLogic();
-                selectedAttack.TakeLifeFromPlayer();
 
-                if (selectedAttackEffect != null)
+                if (selectedAttack is { attack: { attackState: PlayerAttackAbstract.AttackState.Am } })
                 {
-                    float lifeTaken = selectedAttack.attack.costBatteryInFight *
-                                      selectedAttackEffect.multiplicatorLifeTaken;
-                    selectedAttackEffect.ProcessAttackEffect();
-                    selectedAttackEffect.TakeLifeFromPlayer(lifeTaken);
+                    if (selectedAttack is IPlayerAttack attackSelectedByPlayer)
+                    {
+                        attackSelectedByPlayer.ProcessAttack();
+                        selectedAttack.TakeLifeFromPlayer();
+                    }
                 }
+                else
+                {
+                    return;
+                }
+                
 
+                if (selectedAttackEffect != null && selectedAttack is { attack: { attackState: PlayerAttackAbstract.AttackState.Am } })
+                {
+                    if (selectedAttackEffect is IPLayerEffect effect)
+                    {
+                        effect.ProcessEffect();
+                        float lifeTaken = selectedAttack.attack.costBatteryInFight *
+                                          selectedAttackEffect.multiplicatorLifeTaken;
+                        selectedAttackEffect.TakeLifeFromPlayer(lifeTaken);
+                    }
+                }
+                
                 if (_inGameData.hp == 0)
                 {
                     return;
@@ -261,7 +283,11 @@ namespace Controller
                 
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
 
-                if (TutorialFightManager.instance.isInTutorialCombat &&
+                CallBackFeedBackPlayer.Instance.ShowMessage(selectedAttackEffect != null
+                    ? $"You apply {selectedAttack.attack.name} and {selectedAttackEffect.attack.name}"
+                    : $"You apply {selectedAttack.attack.name} ");
+
+                if (TutorialFightManager.instance != null && TutorialFightManager.instance.isInTutorialCombat &&
                     TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainPlayButton)
                 {
                     TutorialFightManager.instance.AdvanceStep();
@@ -289,6 +315,8 @@ namespace Controller
                 Debug.LogWarning("No FightManager Detected");
                 return;
             }
+
+            canAttack = true;
             FightManager.instance.EndFighterTurn();
         }
         

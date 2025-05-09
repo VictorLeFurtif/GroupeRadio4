@@ -236,12 +236,12 @@ MonoBehaviour:
   spriteRendererPlayer: {fileID: 0}
   selectedEnemy: {fileID: 0}
   listOfPlayerAttack:
-  - {fileID: 11400000, guid: cff1f3c188f371a42b0d52216b8a35d7, type: 2}
-  - {fileID: 11400000, guid: 08d594c9a1727b04abe0d76677966df6, type: 2}
-  - {fileID: 11400000, guid: a595a4835fd44844d866a2f426b56935, type: 2}
-  - {fileID: 11400000, guid: 599732ef1e5af6f40a0ad2451ba2f948, type: 2}
-  - {fileID: 11400000, guid: e575689c2e6f98741a2ceeeeebb914ac, type: 2}
-  - {fileID: 11400000, guid: 261f94bb6520fb8459551df89f94a752, type: 2}
+  - {fileID: 11400000, guid: c567cec65da1a1642b4233425c33d67a, type: 2}
+  - {fileID: 11400000, guid: 2abfa693b4f063749bc82baf9a861544, type: 2}
+  - {fileID: 11400000, guid: f6cf7f5ab52df3a4cafe441120604034, type: 2}
+  - {fileID: 11400000, guid: d8c98f9d3773a3248835d1d3ffd890de, type: 2}
+  - {fileID: 11400000, guid: d68749e72d7722045a674eeeee542d39, type: 2}
+  - {fileID: 11400000, guid: b5f99fa83b1b3a94e8208520d7d0f883, type: 2}
   listOfPlayerAttackInstance: []
   selectedAttack:
     attack:
@@ -249,13 +249,11 @@ MonoBehaviour:
       chanceOfOverload: 0
       damageMaxBonus: 0
       name: 
-      attackEffect: 0
-      indexFrequency: 0
       attackState: 0
+      indexFrequency: 0
       costBatteryExploration: 0
       costBatteryInFightMax: 0
       costBatteryInFight: 0
-    damageBomb: 0
     multiplicatorLifeTaken: 0
   selectedAttackEffect:
     attack:
@@ -263,13 +261,11 @@ MonoBehaviour:
       chanceOfOverload: 0
       damageMaxBonus: 0
       name: 
-      attackEffect: 0
-      indexFrequency: 0
       attackState: 0
+      indexFrequency: 0
       costBatteryExploration: 0
       costBatteryInFightMax: 0
       costBatteryInFight: 0
-    damageBomb: 0
     multiplicatorLifeTaken: 0
   currentPlayerExplorationState: 0
   animatorPlayer: {fileID: 0}
@@ -277,6 +273,7 @@ MonoBehaviour:
   lampTorchOnValue: 3.03
   isLampTorchOn: 0
   epsilonValidationOscillation: 0.07
+  canAttack: 1
 --- !u!61 &1243374267581536794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -383,7 +380,7 @@ MonoBehaviour:
   - {x: 0.36916208, y: 0.103906155, z: 0}
   m_ShapePathHash: -1156423123
   m_Mesh: {fileID: 0}
-  m_InstanceId: 28814
+  m_InstanceId: -1668
   m_LocalBounds:
     m_Center: {x: -0.11507392, y: 1.2452497, z: 0}
     m_Extent: {x: 0.484236, y: 1.1649222, z: 0}
