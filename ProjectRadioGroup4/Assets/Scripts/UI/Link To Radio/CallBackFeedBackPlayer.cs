@@ -22,6 +22,7 @@ namespace UI.Link_To_Radio
                 return;
             }
             Instance = this;
+            ShowMessage("");
         }
         
         public void ShowMessage(string message)

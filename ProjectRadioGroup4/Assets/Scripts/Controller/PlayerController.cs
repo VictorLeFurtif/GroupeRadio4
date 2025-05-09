@@ -108,6 +108,8 @@ namespace Controller
                 _inGameData.hp = Mathf.Max(0, value);
                 
                 playerBattery.UpdateLifeText();
+                playerBattery.UpdateLifeSlider(_inGameData.hp);
+                
                 if (_inGameData.IsDead())
                 {
                     canMove = false;

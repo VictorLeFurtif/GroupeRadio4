@@ -71,8 +71,10 @@ namespace Controller
         [SerializeField] private Sprite spriteSliderAttackFm;
 
 
-        [Header("Ampoule Manager")]
+        [Header("Manager & Controller")]
         public AmpouleManager ampouleManager;
+
+        
 
 
         #endregion
