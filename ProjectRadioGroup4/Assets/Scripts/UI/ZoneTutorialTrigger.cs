@@ -10,11 +10,13 @@ namespace UI
     public class ZoneTutorialTrigger : MonoBehaviour
     {
         [TextArea]
-        [SerializeField] private List<string> text;
+        [SerializeField]
+        public List<string> text;
         public string tutorialMessage;
-        [SerializeField] private int readerID;
+        public int readerID;
         
         public Button nextButton;
+        [SerializeField] private float cooldown = 0.2f;
 
         [SerializeField] private TutorialUIManager tutorialUI;
 
@@ -61,7 +63,7 @@ namespace UI
         IEnumerator ClickCooldown() //Cooldown du bouton 
         {
             nextButton.interactable = false;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(cooldown);
             nextButton.interactable = true;
         }
     }

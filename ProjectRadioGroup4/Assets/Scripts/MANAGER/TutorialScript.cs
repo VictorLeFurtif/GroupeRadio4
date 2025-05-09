@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -8,6 +9,8 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Light2D light;
     [SerializeField] private Light2D torchLight;
+    [SerializeField] private string succesMessage;
+    [SerializeField] private TutorialUIManager tutorialUI;
     
     private bool done;
 
@@ -25,6 +28,7 @@ public class TutorialScript : MonoBehaviour
         if (other.gameObject == player && torchLight.intensity != 0f)
         {
             light.intensity = 1f;
+            tutorialUI.ShowTutorial(succesMessage);
         }
     }
 }
