@@ -913,7 +913,7 @@ MonoBehaviour:
       compteurVodka: 0
       isVodka: 0
   _aiFightState: 1
-  isAiForTuto: 0
+  isAiForTuto: 1
   animatorEnemyAi: {fileID: 0}
   timeForAiTurn: 0
 --- !u!4 &204541049 stripped
@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 310102186}
   - component: {fileID: 310102185}
   m_Layer: 0
-  m_Name: "Sc\xE8ne 1 - Into (2)"
+  m_Name: "Sc\xE8ne -2 - turn away"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text:
-  - Il faut fair demi-tour !
+  - "La fin du couloir est \xE0 DROITE !"
   tutorialMessage: 
   readerID: 0
   nextButton: {fileID: 432905115}
@@ -2154,10 +2154,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text:
-  - Voyez-vous ce bug devant vous ?
-  - "Avant de vous pr\xE9cipiter dessus, activez le scanner  avec le bouton FM pour
+  - Tenez, voyez-vous ce bug devant vous ?
+  - "Avant de vous pr\xE9cipiter dessus, activez le scanner avec le bouton FM pour
     v\xE9rifier qu\u2019il ne s\u2019agit pas d\u2019une entit\xE9 cach\xE9e."
   - "ATTENTION Utilisation excessive = perte rapide de batterie. Vous \xEAtes pr\xE9venu."
+  - "Si vous perdez toute votre batterie votre radio s'\xE9teindra... (et vous de
+    m\xEAme)."
+  - Alors tachez de garder vos bateries pleines ^^
   tutorialMessage: 
   readerID: 0
   nextButton: {fileID: 432905115}
@@ -2177,10 +2180,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radio: {fileID: 327871760}
   scanMessage:
-  - "Une fr\xE9quence est apparue !"
+  - "Regardez vos \xE9cran de droite. Une fr\xE9quence est apparue ! (En rouge)"
   - "Cela signifie qu\u2019une entit\xE9 est proche."
-  - "Faites correspondre votre oscillation \xE0 la sienne pour le faire appara\xEEtre
-    devant vous puis approchez vous pour neutraliser l'anomalie !"
+  - "Si vous vous approchez tout de suite vous serez d\xE9savantager pour la neutraliser..."
+  - "Avec le slider \xE0 cot\xE9 de l'\xE9cran vous pouvez moduler votre onde (en
+    bleue)"
+  - "Faites correspondre la hauteur de votre oscillation en bleu \xE0 la sienne en
+    rouge."
+  - "Une fois fait appuiyez sur le bouton rouge de lecture (en bas). Cela devrai
+    faire appar\xE2itre l'entit\xE9."
+  - "Vous pouvez d\xE9sormais la neutraliser."
   tutorialUI: {fileID: 7806382413522080700}
 --- !u!1 &1004829955
 GameObject:
@@ -2275,8 +2284,7 @@ MonoBehaviour:
   player: {fileID: 8135165002532565006}
   light: {fileID: 891899569}
   torchLight: {fileID: 5691036505712759031}
-  succesMessage: "Et voil\xE0 ! la lumi\xE8re f\xFBt ! Gr\xE2ce \xE0 la Radio 2000\u2122
-    !"
+  succesMessage: "Et voil\xE0 ! la lumi\xE8re f\xFBt !"
   tutorialUI: {fileID: 7806382413522080700}
 --- !u!1001 &1063612907
 PrefabInstance:
@@ -2408,8 +2416,8 @@ Transform:
   m_GameObject: {fileID: 1140826389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 1}
-  m_LocalScale: {x: 66.887314, y: 7.397212, z: 1}
+  m_LocalPosition: {x: 20.0008, y: -0.4298, z: 1}
+  m_LocalScale: {x: 1.337362, y: 0.115555264, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1704459702}
@@ -2455,7 +2463,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac8bd48741177c345a6ff0e306560b65, type: 3}
   m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2523,7 +2531,317 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3c8fb81aceaa5246b07479e805d872d, type: 3}
---- !u!43 &1230045239
+--- !u!1 &1247718483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247718485}
+  - component: {fileID: 1247718484}
+  m_Layer: 0
+  m_Name: SPT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1247718484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247718483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 4
+  m_BlendStyleIndex: 2
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.01
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 11.6
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &1247718485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247718483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.23, y: 2.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1319048433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1319048434}
+  - component: {fileID: 1319048436}
+  - component: {fileID: 1319048435}
+  m_Layer: 0
+  m_Name: "Sc\xE8ne -1 - turn away"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1319048434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319048433}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -21.02, y: -0.27619523, z: 0.015777934}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 481648307697244644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1319048435
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319048433}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6479048, y: 0.34259284}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.9776282, y: 3.0555565}
+  m_EdgeRadius: 0
+--- !u!114 &1319048436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319048433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2f7eebc3f24ffeb6e50e6064964106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text:
+  - "Oh pardonez moi je me suis mal exprim\xE9. La fin du manuel d'utilisation se
+    trouve au bout du couloir \xE0 droite."
+  tutorialMessage: 
+  readerID: 0
+  nextButton: {fileID: 432905115}
+  cooldown: 0.2
+  tutorialUI: {fileID: 7806382413522080700}
+--- !u!1 &1366684450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1366684451}
+  - component: {fileID: 1366684454}
+  - component: {fileID: 1366684453}
+  - component: {fileID: 1366684452}
+  m_Layer: 0
+  m_Name: "Sc\xE8ne 4 - fin"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1366684451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366684450}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.87, y: -0.27619523, z: 0.015777934}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 481648307697244644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1366684452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366684450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8920a8bfdb79c4386cf606ce66bef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radio: {fileID: 327871760}
+  scanMessage:
+  - "Regardez vos \xE9cran de droite. Une fr\xE9quence est apparue ! (En rouge)"
+  - "Cela signifie qu\u2019une entit\xE9 est proche."
+  - "Si vous vous approchez tout de suite vous serez d\xE9savantager pour la neutraliser..."
+  - "Avec le slider \xE0 cot\xE9 de l'\xE9cran vous pouvez moduler votre onde (en
+    bleue)"
+  - "Faites correspondre la hauteur de votre oscillation en bleu \xE0 la sienne en
+    rouge."
+  - "Une fois fait appuiyez sur le bouton rouge de lecture (en bas). Cela devrai
+    faire appar\xE2itre l'entit\xE9."
+  - "Vous pouvez d\xE9sormais la neutraliser."
+  tutorialUI: {fileID: 7806382413522080700}
+--- !u!61 &1366684453
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366684450}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6479048, y: 0.34259284}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.9776282, y: 3.0555565}
+  m_EdgeRadius: 0
+--- !u!114 &1366684454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366684450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2f7eebc3f24ffeb6e50e6064964106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text:
+  - "Bravos \xE0 vous ! Vous avez atteint la fin du couloir et donc la fin du manuel
+    d'utilisation."
+  - Vous savez maintenent utiliser les rudiment de votre Radio 2000!
+  - "Pour tout autre questions veuillez vous r\xE9f\xE9rer \xE0 votre codexe \xE0
+    la droite de votre radio."
+  - "Ou bien utilisez l'\xE9cran en haut \xE0 gauche (en le tiran) pour avoir des
+    informations compl\xE9mentaires."
+  - Au revoir et merci de votre visionage cher agent !
+  tutorialMessage: 
+  readerID: 0
+  nextButton: {fileID: 432905115}
+  cooldown: 0.2
+  tutorialUI: {fileID: 7806382413522080700}
+--- !u!43 &1403549776
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2688,185 +3006,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1247718483
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1247718485}
-  - component: {fileID: 1247718484}
-  m_Layer: 0
-  m_Name: SPT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1247718484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247718483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_LightType: 4
-  m_BlendStyleIndex: 2
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.01
-  m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 0}
-  m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
-  m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
-  m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
-  m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 11.6
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
---- !u!4 &1247718485
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247718483}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.23, y: 2.54, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1319048433
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1319048434}
-  - component: {fileID: 1319048436}
-  - component: {fileID: 1319048435}
-  m_Layer: 0
-  m_Name: "Sc\xE8ne 1 - Into (1)"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1319048434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319048433}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.02, y: -0.27619523, z: 0.015777934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 481648307697244644}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1319048435
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319048433}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.6479048, y: 0.34259284}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.9776282, y: 3.0555565}
-  m_EdgeRadius: 0
---- !u!114 &1319048436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319048433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2f7eebc3f24ffeb6e50e6064964106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text:
-  - Oh non ce n'est pas la bonne direction
-  tutorialMessage: 
-  readerID: 0
-  nextButton: {fileID: 432905115}
-  cooldown: 0.2
-  tutorialUI: {fileID: 7806382413522080700}
 --- !u!1 &1435718745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,7 +3415,7 @@ GameObject:
   - component: {fileID: 1580059940}
   - component: {fileID: 1580059939}
   m_Layer: 0
-  m_Name: "Sc\xE8ne 2 - Lights off (1)"
+  m_Name: "Sc\xE8ne 2b - Lights off"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3355,8 +3494,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text:
+  - "Vous voyez le curseur \xE0 cot\xE9 des boutons AM et FM ?"
+  - "Ils permet de s\xE9l\xE9ctionner une chaine radio."
   - "S\xE9lectionnez la station Skylight parmi toute la panoplie disponible !"
   - Cela devrai activer le module lampe torche de votre super radio.
+  - Dans le futur vous pourrez essayer les autres chaines radio.
+  - "Pour en connaitre les effets n'h\xE9sitez pas \xE0 consulter votre codexe sity\xE9
+    \xE0 cot\xE9 de la radio."
   tutorialMessage: 
   readerID: 0
   nextButton: {fileID: 432905115}
@@ -3628,8 +3772,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text:
   - "Oh non ! la lumi\xE8re a soudainement disparue !"
-  - "Pas de panique ! Voici... la Radio 2000\u2122\r\n\rUn outil indispensable pour
-    toutes les situations !"
+  - "Pas de panique ! Gr\xE2ce \xE0 la la Radio 2000\u2122.\r\n\rUn outil indispensable
+    pour toutes les situations !"
   - 'Fiable. Solide. Polyvalente. Et presque sans effets secondaires. Haha '
   tutorialMessage: 
   readerID: 0
@@ -4306,7 +4450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 62bbf6c0099f7ed4ab783252c007b2f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c609ae4c2aa1aa94eaff0861110d979e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4387,7 +4531,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text:
   - Bienvenue dans la zone de test.
-  - Sentez-vous libre d'avancer dans ce couloir.
+  - "Je suis radioman et je vais vous expliquer comment vous servir de votre Radio
+    2000\u2122."
+  - "Le manuel d'utilisation vid\xE9oludique prendra fin au bout de ce couloir."
+  - "Le manuel d'utilisation vid\xE9oludique prendra fin au bout de ce couloir."
   tutorialMessage: 
   readerID: 0
   nextButton: {fileID: 432905115}
@@ -4545,13 +4692,14 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8866996216183512073}
-  - {fileID: 6759499337017804738}
-  - {fileID: 1319048434}
+  - {fileID: 4539382623310454051}
   - {fileID: 310102184}
+  - {fileID: 1319048434}
+  - {fileID: 6759499337017804738}
   - {fileID: 1720930971}
   - {fileID: 1580059937}
   - {fileID: 901889784}
-  - {fileID: 4539382623310454051}
+  - {fileID: 1366684451}
   - {fileID: 5411430359485324362}
   - {fileID: 303788278433775474}
   m_Father: {fileID: 0}
@@ -6131,7 +6279,7 @@ Transform:
   m_GameObject: {fileID: 5928745176749544647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7360325, y: 0.45568097, z: 186}
+  m_LocalPosition: {x: 14.52, y: 0.45568097, z: 186}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
