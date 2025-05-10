@@ -165,6 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83c09f5929a6f744a41905540fd18b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDoorType: 1
-  sceneName: 
+  currentDoorType: 0
+  sceneName: Salle 1
   positionForPlayer: {x: 0, y: 0, z: 0}
