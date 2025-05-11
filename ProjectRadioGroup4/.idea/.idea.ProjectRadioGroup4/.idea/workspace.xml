@@ -69,7 +69,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Build First Playable Echo 42\ProjectRadioGroup4.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD RADIO\ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -160,6 +160,7 @@
       <workItem from="1746735998522" duration="2026000" />
       <workItem from="1746781871567" duration="1574000" />
       <workItem from="1746881496058" duration="906000" />
+      <workItem from="1746983096240" duration="10588000" />
     </task>
     <servers />
   </component>

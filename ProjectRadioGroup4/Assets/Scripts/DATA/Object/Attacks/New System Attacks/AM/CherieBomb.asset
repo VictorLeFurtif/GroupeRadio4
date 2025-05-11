@@ -22,4 +22,9 @@ MonoBehaviour:
     costBatteryExploration: 0
     costBatteryInFightMax: 2
     costBatteryInFight: 2
+  <DescriptionAttackAndEffect>k__BackingField:
+    descriptionAttack: "Explose sur impact, ce qui fait des d\xE9g\xE2ts \xE0 plus
+      d\u2019un ennemi. Fait des d\xE9g\xE2ts \xE9lev\xE9s."
+    descriptionEffectOutFight: 
+    descriptionEffectInFight: 
   <MultiplicatorLifeTaken>k__BackingField: 0
