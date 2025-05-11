@@ -305,3 +305,4 @@ MonoBehaviour:
     feur
   - "Text two apagnan j\xE9paraison ^^"
   textSpeed: 0.1
+  offset: 0

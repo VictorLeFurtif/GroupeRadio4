@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 using TMPro;
 
@@ -12,6 +13,7 @@ public class DialogueUI : MonoBehaviour
     private string[] lines;
     [SerializeField] [Header("lower value = faster")] 
     private float textSpeed;
+    [SerializeField] private float offset;
     
     private int index;
 
@@ -35,6 +37,20 @@ public class DialogueUI : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (PlayerController.instance == null)
+        {
+            textComponent.text = "playerController.Instance == null";
+            return;
+        }
+        
+        Vector2 currentPos = gameObject.transform.position;
+        currentPos = PlayerController.instance.transform.position;
+        currentPos.y += offset;
+        gameObject.transform.position = currentPos;
     }
 
     private void StartDialogue()
