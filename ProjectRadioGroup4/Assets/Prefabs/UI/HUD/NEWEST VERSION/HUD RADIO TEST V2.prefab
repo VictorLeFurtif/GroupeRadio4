@@ -256,8 +256,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est le bouton AM
-  defaultText: No module detected
+  descriptionOutOfCombat: "Sert \xE0 scanner en avant lors de l\u2019exploration"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Permet de s\xE9lectionner le catalogue d\u2019attaques"
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
 --- !u!1 &180729301097374102
@@ -419,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4530801228321391395}
   - component: {fileID: 6011663927359273736}
+  - component: {fileID: 947332182904728034}
   m_Layer: 5
   m_Name: Slider Selection Attack
   m_TagString: Untagged
@@ -499,6 +502,26 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &947332182904728034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234829097350613771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Permet de s\xE9lectionner un outil"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Sa couleur indique quel catalogue est actif. Il vous permet
+    aussi de s\xE9lectionner une attaque ou un effet"
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &247792734034790122
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +569,7 @@ GameObject:
   - component: {fileID: 4917338154952188367}
   - component: {fileID: 7318946600535345025}
   - component: {fileID: 8486851788051461586}
+  - component: {fileID: 3447820484975098420}
   m_Layer: 5
   m_Name: TEXT MODULE
   m_TagString: Untagged
@@ -569,8 +593,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -715, y: 400.3}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -669, y: 398}
+  m_SizeDelta: {x: 326.3066, y: 109.4998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7318946600535345025
 CanvasRenderer:
@@ -663,12 +687,31 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -10.53656, y: -18.453674, z: -121.619446, w: -19.402618}
+  m_margin: {x: 6.1651306, y: 6.598877, z: 10.950348, w: 5.649933}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3447820484975098420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655367135555969807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Affiche des d\xE9tails sur chaque module de la radio"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Affiche des d\xE9tails sur chaque module de la radio"
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &849891703111932710
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +744,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5637849845839536491}
+  - {fileID: 7091272314709840865}
+  - {fileID: 1213038361489627865}
   - {fileID: 1290311174892337371}
   - {fileID: 2121033322648401552}
   - {fileID: 4159985435854203969}
@@ -791,6 +836,7 @@ GameObject:
   - component: {fileID: 7509805488628785097}
   - component: {fileID: 3921916452162304185}
   - component: {fileID: 4681218653195934032}
+  - component: {fileID: 3111190973448605446}
   m_Layer: 5
   m_Name: Button Play Radio
   m_TagString: Untagged
@@ -814,7 +860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 135, y: -4}
+  m_AnchoredPosition: {x: 204, y: -6}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7509805488628785097
@@ -911,6 +957,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3111190973448605446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905519798415856879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Permet de v\xE9rifier si les deux oscillations correspondent."
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Lance l\u2019attaque avec l\u2019effet s\xE9lectionn\xE9."
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &977518078097140205
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,6 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2616647398058766639}
   - component: {fileID: 7789484166229118267}
+  - component: {fileID: 4487812814428370916}
   m_Layer: 5
   m_Name: Slider Player Oscillation
   m_TagString: Untagged
@@ -1000,6 +1066,26 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4487812814428370916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977518078097140205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Vous permet de modifier l\u2019amplification de votre
+    oscillation."
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Vous permet de modifier l\u2019amplification de votre oscillation."
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &1063861006281476418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,9 +1283,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Controller.AmpouleManager, Assembly-CSharp
-        m_MethodName: AllumerAmpoule3
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Controller.RadioController, Assembly-CSharp
+        m_MethodName: UpdateRadioEnemyWithLight
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1210,8 +1296,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Controller.RadioController, Assembly-CSharp
-        m_MethodName: UpdateRadioEnemyWithLight
-        m_Mode: 3
+        m_MethodName: SelectEnemyByLight
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1221,8 +1307,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Controller.RadioController, Assembly-CSharp
-        m_MethodName: SelectEnemyByLight
+        m_TargetAssemblyTypeName: Controller.AmpouleManager, Assembly-CSharp
+        m_MethodName: AllumerAmpoule3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1245,8 +1331,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est la lampe
-  defaultText: No module detected
+  descriptionOutOfCombat: "Pernet de s\xE9lectionner un ennemi."
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Pernet de s\xE9lectionner un ennemi."
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
 --- !u!1 &1502346086592335500
@@ -1335,8 +1423,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est oscillation player
-  defaultText: No module detected
+  descriptionOutOfCombat: "Utile pour faire correspondre votre oscillation \xE0 celle
+    de l\u2019ennemi pour le sortir de l\u2019immat\xE9riel"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Vous sert \xE0 faire plus de d\xE9g\xE2ts au prix d\u2019une
+    augmentation dans la chance de surcharger et de vous retourner les d\xE9g\xE2ts."
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
 --- !u!1 &1765835215686242541
@@ -1857,8 +1949,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est la vie
-  defaultText: No module detected
+  descriptionOutOfCombat: 
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: 
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
 --- !u!1 &2960558129931285850
@@ -2011,6 +2105,92 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4293503887559577632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7091272314709840865}
+  - component: {fileID: 5543203595803037088}
+  - component: {fileID: 3879843398814280899}
+  - component: {fileID: 8493942571016550354}
+  m_Layer: 5
+  m_Name: Warning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7091272314709840865
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293503887559577632}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4913963714874673837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -58, y: 216.36}
+  m_SizeDelta: {x: 731.9684, y: 540.7177}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5543203595803037088
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293503887559577632}
+  m_CullTransparentMesh: 1
+--- !u!114 &3879843398814280899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293503887559577632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 4e8047bbee174214aae9aeabaf989044, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!114 &8493942571016550354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293503887559577632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6fc24f4d1489a448119e9940f42f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTime: 2.5
 --- !u!1 &4447926712264622354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +2202,7 @@ GameObject:
   - component: {fileID: 5376898602103897960}
   - component: {fileID: 1137839315974124462}
   - component: {fileID: 7933800631354261047}
+  - component: {fileID: 1133300592083511566}
   m_Layer: 5
   m_Name: Description Attack
   m_TagString: Untagged
@@ -2145,6 +2326,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1133300592083511566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447926712264622354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Le nom de l\u2019outil s\xE9lectionn\xE9."
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Le nom de l\u2019attaque (en vert) et de l\u2019effet (bleu)
+    s\xE9lectionn\xE9"
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &4646840179649564437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,8 +2432,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est l'oscsilation enemy
-  defaultText: No module detected
+  descriptionOutOfCombat: "Lorsque vous scannez un ennemi, son oscillation s\u2019affichera
+    ici"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Repr\xE9sente l\u2019\xE9tat actuel de l\u2019ennemi. La
+    hauteur repr\xE9sente sa vie tandis que la fr\xE9quence des vagues repr\xE9sente
+    sa prochaine attaque"
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
 --- !u!1 &4783873926399861020
@@ -2246,6 +2452,7 @@ GameObject:
   - component: {fileID: 5466390318369703938}
   - component: {fileID: 1543730738309751965}
   - component: {fileID: 4762232153183291185}
+  - component: {fileID: 5722264305733046991}
   m_Layer: 5
   m_Name: Description Effect
   m_TagString: Untagged
@@ -2369,6 +2576,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5722264305733046991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783873926399861020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Le nom de l\u2019outil s\xE9lectionn\xE9"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Le nom de l\u2019attaque (en vert) et de l\u2019effet (bleu)
+    s\xE9lectionn\xE9"
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &5166211752899084260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -319, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7407429248010793942
@@ -2509,7 +2736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e6ff9bfc4f414414e891c30dc970ecd3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c8890a89d383e8a4485ef7d39b4105aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2665,8 +2892,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est le bouton FM
-  defaultText: No module detected
+  descriptionOutOfCombat: "Vous permet d\u2019activer ou de d\xE9sactiver votre outil"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Permet de s\xE9lectionner le catalogue d\u2019effets."
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
 --- !u!1 &5670562546255141085
@@ -2873,6 +3102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3549919797510314298}
   - component: {fileID: 2225777792073240035}
+  - component: {fileID: 7182303625211659847}
   m_Layer: 5
   m_Name: Slider LIFE
   m_TagString: Untagged
@@ -2953,6 +3183,27 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7182303625211659847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900295304753498565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Repr\xE9sente votre vie. Chaque action co\xFBte un peu
+    de votre vie"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Repr\xE9sente votre vie. Chaque action co\xFBte un peu de
+    votre vie"
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &5971263796432236343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,8 +3238,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -715, y: 419.3}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -697.18, y: 460.41068}
+  m_SizeDelta: {x: 269.9384, y: 30.0717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &75480763853633947
 CanvasRenderer:
@@ -3081,7 +3332,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -10.53656, y: -25.28778, z: -121.619446, w: 52.73459}
+  m_margin: {x: 4.0774384, y: 4.9839478, z: 7.818817, w: 5.761017}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3152,7 +3403,7 @@ RectTransform:
   m_GameObject: {fileID: 6323390381114783364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.09, y: 1.09, z: 1.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4677671161945344430}
@@ -3161,7 +3412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 104, y: 30}
+  m_AnchoredPosition: {x: 103, y: 11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6479702142312365635
@@ -3198,8 +3449,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -715, y: 253}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -673.26, y: 298.4}
+  m_SizeDelta: {x: 317.7809, y: 28.104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6376807260039314048
 CanvasRenderer:
@@ -3292,7 +3543,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -10.53656, y: -25.28778, z: -121.619446, w: 52.73459}
+  m_margin: {x: 3.8728027, y: 2.277954, z: 5.5589905, w: 5.121002}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3537,6 +3788,7 @@ GameObject:
   - component: {fileID: 8487855033856053310}
   - component: {fileID: 5947634560385455413}
   - component: {fileID: 5417127433342597192}
+  - component: {fileID: 4255657898424396887}
   m_Layer: 5
   m_Name: TEXT ATTACK/EFFECT
   m_TagString: Untagged
@@ -3560,8 +3812,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40.581, y: -187.6}
-  m_SizeDelta: {x: 181.1614, y: 66.0761}
+  m_AnchoredPosition: {x: -11.9167, y: -292.6567}
+  m_SizeDelta: {x: 280.3278, y: 259.1895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5947634560385455413
 CanvasRenderer:
@@ -3618,8 +3870,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.79
-  m_fontSizeBase: 18.79
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3630,7 +3882,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 1.91
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3654,12 +3906,31 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 3.3641663, w: -198.16588}
+  m_margin: {x: 0, y: 0, z: 15.899681, w: 5.3861084}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4255657898424396887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7052258820672367846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Donne plus de d\xE9tails sur l\u2019outil s\xE9lectionn\xE9"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Donne plus de d\xE9tails sur les attaques et les effets s\xE9lectionn\xE9s"
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &7252667174487983928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,18 +4053,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Controller.AmpouleManager, Assembly-CSharp
-        m_MethodName: AllumerAmpoule2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Controller.RadioController, Assembly-CSharp
         m_MethodName: UpdateRadioEnemyWithLight
         m_Mode: 3
@@ -3808,6 +4067,18 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Controller.RadioController, Assembly-CSharp
         m_MethodName: SelectEnemyByLight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Controller.AmpouleManager, Assembly-CSharp
+        m_MethodName: AllumerAmpoule2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3830,8 +4101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est la lampe
-  defaultText: No module detected
+  descriptionOutOfCombat: "Pernet de s\xE9lectionner un ennemi."
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Pernet de s\xE9lectionner un ennemi."
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
 --- !u!1 &7430409030221314748
@@ -3984,6 +4257,78 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8257233576347218581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213038361489627865}
+  - component: {fileID: 3849141233915062189}
+  - component: {fileID: 4442394497919209277}
+  m_Layer: 5
+  m_Name: TV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1213038361489627865
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257233576347218581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4913963714874673837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3849141233915062189
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257233576347218581}
+  m_CullTransparentMesh: 1
+--- !u!114 &4442394497919209277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257233576347218581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: c609ae4c2aa1aa94eaff0861110d979e, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &9005177773835326573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3995,6 +4340,7 @@ GameObject:
   - component: {fileID: 3779680063343714524}
   - component: {fileID: 5688913000455139444}
   - component: {fileID: 156948379181919137}
+  - component: {fileID: 8799517077722441833}
   m_Layer: 5
   m_Name: TEXT FEEDBACKPLAYER
   m_TagString: Untagged
@@ -4018,8 +4364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -724.6, y: 278.8}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -657.0662, y: 228.7}
+  m_SizeDelta: {x: 338.4553, y: 105.1315}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5688913000455139444
 CanvasRenderer:
@@ -4112,12 +4458,31 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 26.576843, z: -122.20166, w: -68.410484}
+  m_margin: {x: 0, y: 2.7700195, z: -0.035247803, w: 1.1303482}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8799517077722441833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005177773835326573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7e8350641bd3b4ab94d76173f4e425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDescription: {fileID: 8486851788051461586}
+  descriptionOutOfCombat: "Affiche l\u2019\xE9tat actuel du jeu"
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Affiche l\u2019\xE9tat actuel du jeu"
+  defaultTextInCombat: select module
+  typingSpeed: 0.02
+  disappearSpeed: 0.01
 --- !u!1 &9020527454767531690
 GameObject:
   m_ObjectHideFlags: 0
@@ -4240,18 +4605,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Controller.AmpouleManager, Assembly-CSharp
-        m_MethodName: AllumerAmpoule1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Controller.RadioController, Assembly-CSharp
         m_MethodName: UpdateRadioEnemyWithLight
         m_Mode: 3
@@ -4275,6 +4628,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Controller.AmpouleManager, Assembly-CSharp
+        m_MethodName: AllumerAmpoule1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1054252048491125600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4288,7 +4653,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDescription: {fileID: 8486851788051461586}
-  description: C'est la lampe
-  defaultText: No module detected
+  descriptionOutOfCombat: "Pernet de s\xE9lectionner un ennemi."
+  defaultTextOutOfCombat: no module detected
+  descriptionInCombat: "Pernet de s\xE9lectionner un ennemi."
+  defaultTextInCombat: select module
   typingSpeed: 0.02
   disappearSpeed: 0.01
