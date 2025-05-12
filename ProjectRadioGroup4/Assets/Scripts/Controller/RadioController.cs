@@ -74,6 +74,8 @@ namespace Controller
         [Header("Manager & Controller")]
         public AmpouleManager ampouleManager;
 
+        public bool canTakeBattery = false;
+
         
 
 
@@ -89,7 +91,7 @@ namespace Controller
         {
             currentRadioState = RadioState.OutFight;
             InitializeSliderFrequency();
-            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck(); EffectInExploration();});
+            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck();});
             InitializeRadioEnemy();
         
             //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
@@ -132,13 +134,6 @@ namespace Controller
                 PlayerController.instance.gameObject.layer = 6;
             }
             
-            if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
-            {
-                if (PlayerController.instance.selectedAttack is IPLayerEffect effect)
-                {
-                    effect.ProcessEffect();    
-                }
-            }
         }
         
         private void InitializeSliderFrequency()
@@ -166,7 +161,15 @@ namespace Controller
             switch (FightManager.instance.fightState)
             {
                 case FightManager.FightState.OutFight:
+                    
+                    if (PlayerController.instance.selectedAttack is IPLayerEffect)
+                    {
+                        DisableActiveEffect();
+                        canTakeBattery = false;
+                    }
+                    
                     PlayerController.instance.selectedAttack = null;
+                    
                     foreach (var attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
                     {
                         if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
@@ -210,6 +213,13 @@ namespace Controller
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
+        private void DisableActiveEffect()
+        {
+            PlayerController.instance._inGameData.classicEcho = false;
+            PlayerController.instance.lampTorch.intensity = 0;
+            PlayerController.instance.gameObject.layer = 6;
+        }
+        
         public void SelectEffectFMButton()
         {
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
@@ -239,22 +249,24 @@ namespace Controller
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
-        private void UpdateFrequenceText()
+        public void UpdateFrequenceText()
         {
             string attackText = PlayerController.instance.selectedAttack != null
                 ? $"Attaque: {PlayerController.instance.selectedAttack.attack.name}"
                 : "Aucune attaque";
     
+            //USELESS NOW FOR V2 FP
+            /*
             if (PlayerController.instance.selectedAttack != null && 
                 PlayerController.instance.selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
             {
                 attackText += $"\nDégâts: {PlayerController.instance.selectedAttack.attack.damage}";
-            }
+            }*/
     
             descriptionAttackSelectedText.text = attackText;
         }
 
-        private void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
+        public void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
         {
             string effectText = effectInstance != null
                 ? $"Effet: {effectInstance.attack.name}"
@@ -299,7 +311,7 @@ namespace Controller
                 return;
             }
             
-            PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
+            PlayerController.instance.animatorPlayer.Play("ScanAround");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanFast);
 
             int cpt = 0;
@@ -393,6 +405,25 @@ namespace Controller
                 return;
             }
             
+            if (FightManager.instance.fightState == FightManager.FightState.OutFight)
+            {
+                var selectedEffect = PlayerController.instance.selectedAttack;
+                if (selectedEffect is IPLayerEffect effect)
+                {
+                    effect.ProcessEffect();
+                    CallBackFeedBackPlayer.Instance.ShowMessage("Effet déclenché !");
+                    canTakeBattery = true;
+                }
+                else
+                {
+                    CallBackFeedBackPlayer.Instance.ShowMessage("Aucun effet sélectionné.");
+                }
+            }
+
+            #region Useless FM
+
+            //USELESS FOR NOW AFTER V2 FP
+            /*
             PlayerController.instance.animatorPlayer.Play("ScanAround");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanSlow);
 
@@ -413,7 +444,9 @@ namespace Controller
                 }
             }
 
-            AmFmActionIfListNotEmpty();
+            AmFmActionIfListNotEmpty();*/
+
+            #endregion
         }
 
     

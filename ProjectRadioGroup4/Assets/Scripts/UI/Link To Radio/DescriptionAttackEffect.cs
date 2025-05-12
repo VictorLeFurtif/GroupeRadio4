@@ -30,13 +30,12 @@ namespace UI.Link_To_Radio
         private string GetOutOfFightDescription()
         {
             if (PlayerController.instance?.selectedAttack == null)
-                return "No effect selected";
+                return "<i>No effect selected</i>";
 
             var attack = PlayerController.instance.selectedAttack;
-            return $"{attack.descriptionAttackEffect.descriptionEffectOutFight}\n" +
-                   $"The cost of this effect is {attack.attack.costBatteryExploration}";
+            return $"<b><u color=#5E0000>{attack.attack.name}</u></b> : \n" +
+                   $"{attack.descriptionAttackEffect.descriptionEffectOutFight}\n";
         }
-
         private string GetInFightDescription()
         {
             var attackDescription = GetAttackDescription();
@@ -49,11 +48,10 @@ namespace UI.Link_To_Radio
         private string GetAttackDescription()
         {
             if (PlayerController.instance?.selectedAttack == null)
-                return "No attack selected";
+                return "<i>No attack selected</i>";
 
             var attack = PlayerController.instance.selectedAttack;
-            return $"Attack Description: {attack.descriptionAttackEffect.descriptionAttack}\n" +
-                   $"Cost: {attack.attack.costBatteryInFight}";
+            return $"<b><u color=#5E0000>{attack.attack.name}</u></b>: {attack.descriptionAttackEffect.descriptionAttack}\n";
         }
 
         private string GetEffectDescription()
@@ -62,14 +60,12 @@ namespace UI.Link_To_Radio
                 return "No effect";
 
             var effect = PlayerController.instance.selectedAttackEffect;
-            return $"Effect Description: {effect.descriptionAttackEffect.descriptionEffectInFight}\n" +
-                   $"Cost Multiplier: {effect.multiplicatorLifeTaken}x attack cost";
+            return $"<b><u color=#5E0000>{effect.attack.name}</u></b>: {effect.descriptionAttackEffect.descriptionEffectInFight}\n";
         }
 
         private string GetCombatDetails()
         {
-            if (PlayerController.instance?.selectedAttack == null || 
-                PlayerController.instance.selectedAttackEffect == null)
+            if (PlayerController.instance?.selectedAttack == null)
                 return string.Empty;
 
             var attackData = PlayerController.instance.selectedAttack.attack;
@@ -78,18 +74,19 @@ namespace UI.Link_To_Radio
             float ratio = slider.maxValue > 0 ? slider.value / slider.maxValue : 0f;
             float damage = attackData.damage + (attackData.damageMaxBonus * ratio);
             float overloadChance = attackData.chanceOfOverload * ratio;
-            float lifeCost = attackData.costBatteryInFight * 
-                           PlayerController.instance.selectedAttackEffect.multiplicatorLifeTaken;
+
+            float lifeCost = 0;
+            if (PlayerController.instance.selectedAttackEffect != null)
+            {
+                lifeCost = attackData.costBatteryInFight * 
+                         PlayerController.instance.selectedAttackEffect.multiplicatorLifeTaken;
+            }
+            
             float totalCost = lifeCost + attackData.costBatteryInFight;
 
-            return $"Projected Damage: {damage:0.00}\n" +
-                   $"Overload Chance: {overloadChance:0.00}%\n" +
-                   $"Total Resource Cost: {totalCost:0.00}";
+            return $"Je vais faire {damage:0.00} dégâts, ce qui coûtera {totalCost:0.00}% mais j'ai {overloadChance:0.00}% de chance de surcharger";
         }
 
         #endregion
-
-        
-        
     }
 }

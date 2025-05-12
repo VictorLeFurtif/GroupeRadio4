@@ -22,5 +22,10 @@ MonoBehaviour:
     costBatteryExploration: 0
     costBatteryInFightMax: 3
     costBatteryInFight: 3
+  <DescriptionAttackAndEffect>k__BackingField:
+    descriptionAttack: "Fais exploser l\u2019ennemi apr\xE8s sa mort. Fait des d\xE9g\xE2ts
+      moyens."
+    descriptionEffectOutFight: 
+    descriptionEffectInFight: 
   <MultiplicatorLifeTaken>k__BackingField: 0
   <DamageBomb>k__BackingField: 15

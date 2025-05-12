@@ -2,14 +2,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using MANAGER;
 
 namespace UI.Link_To_Radio
 {
     public class ModuleDescription : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private TMP_Text textDescription;
-        [TextArea][SerializeField] private string description;
-        [SerializeField] private string defaultText = "no module detected";
+        [Header("Hors Combat")]
+        [TextArea][SerializeField] private string descriptionOutOfCombat;
+        [TextArea][SerializeField] private string defaultTextOutOfCombat = "no module detected";
+        [Header("En Combat")]
+        [TextArea][SerializeField] private string descriptionInCombat;
+        [TextArea][SerializeField] private string defaultTextInCombat = "select module";
         [SerializeField] private float typingSpeed = 0.02f;
         [SerializeField] private float disappearSpeed = 0.01f;
         
@@ -24,8 +29,8 @@ namespace UI.Link_To_Radio
         {
             if (textDescription != null) 
             {
-                textDescription.text = defaultText;
-                textDescription.maxVisibleCharacters = defaultText.Length;
+                textDescription.text = GetDefaultText();
+                textDescription.maxVisibleCharacters = textDescription.text.Length;
             }
         }
         
@@ -34,7 +39,7 @@ namespace UI.Link_To_Radio
             if (textDescription == null) return;
             
             currentSequence?.Kill();
-            AnimateTextTransition(description);
+            AnimateTextTransition(GetDescription());
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -42,7 +47,7 @@ namespace UI.Link_To_Radio
             if (textDescription == null) return;
             
             currentSequence?.Kill();
-            AnimateTextTransition(defaultText);
+            AnimateTextTransition(GetDefaultText());
         }
 
         private void AnimateTextTransition(string targetText)
@@ -63,6 +68,20 @@ namespace UI.Link_To_Radio
                     x => textDescription.maxVisibleCharacters = x,
                     targetText.Length,
                     targetText.Length * typingSpeed));
+        }
+
+        private string GetDescription()
+        {
+            return FightManager.instance != null && FightManager.instance.fightState == FightManager.FightState.InFight 
+                ? descriptionInCombat 
+                : descriptionOutOfCombat;
+        }
+
+        private string GetDefaultText()
+        {
+            return FightManager.instance != null && FightManager.instance.fightState == FightManager.FightState.InFight 
+                ? defaultTextInCombat 
+                : defaultTextOutOfCombat;
         }
 
         private void OnDestroy()

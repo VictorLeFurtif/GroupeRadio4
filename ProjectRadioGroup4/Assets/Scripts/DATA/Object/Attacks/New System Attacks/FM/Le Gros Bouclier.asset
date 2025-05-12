@@ -22,4 +22,10 @@ MonoBehaviour:
     costBatteryExploration: 1
     costBatteryInFightMax: 0
     costBatteryInFight: 0
+  <DescriptionAttackAndEffect>k__BackingField:
+    descriptionAttack: 
+    descriptionEffectOutFight: "Me prot\xE8ge de combats potentiels lorsqu\u2019il
+      est actif. \xC0 des co\xFBts faibles par seconde."
+    descriptionEffectInFight: "Absorbe une partie des d\xE9g\xE2ts, mais multiplie
+      mon co\xFBt."
   <MultiplicatorLifeTaken>k__BackingField: 1.5

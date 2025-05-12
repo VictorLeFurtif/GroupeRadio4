@@ -21,6 +21,7 @@ namespace Controller
         [SerializeField] private Image lifeSliderFill;
         [SerializeField] private Color fullLifeColor = Color.green;
         [SerializeField] private Color noLifeColor = Color.red;
+        [SerializeField] private Color midLifeColor = Color.yellow;
         
         private Coroutine transitionCoroutineSlider;
 
@@ -102,7 +103,8 @@ namespace Controller
         {
             float cost = player.selectedAttack.attack.costBatteryExploration;
 
-            if (cost <= 0f) return;
+            if (RadioController.instance == null)return;
+            if (cost <= 0f || !RadioController.instance.canTakeBattery) return;
 
             player.ManageLife(-cost);
 
@@ -131,13 +133,20 @@ namespace Controller
                 float currentValue = Mathf.Lerp(startValue, normalizedTarget, t);
                 lifeSlider.value = currentValue;
 
-                lifeSliderFill.color = Color.Lerp(noLifeColor, fullLifeColor, currentValue);
+                lifeSliderFill.color = EvaluateLifeColor(currentValue);
 
                 yield return null;
             }
 
             lifeSlider.value = normalizedTarget;
-            lifeSliderFill.color = Color.Lerp(noLifeColor, fullLifeColor, normalizedTarget);
+            lifeSliderFill.color = EvaluateLifeColor(normalizedTarget);
         }
+
+        private Color EvaluateLifeColor(float normalizedValue)
+        {
+            return normalizedValue < 0.5f ? Color.Lerp(noLifeColor, midLifeColor, normalizedValue / 0.5f)
+                : Color.Lerp(midLifeColor, fullLifeColor, (normalizedValue - 0.5f) / 0.5f);
+        }
+
     }
 }

@@ -24,6 +24,8 @@ MonoBehaviour:
     costBatteryInFight: 0
   <DescriptionAttackAndEffect>k__BackingField:
     descriptionAttack: 
-    descriptionEffectOutFight: "la lumi\xE8re f\xE9 mal au zieux la"
-    descriptionEffectInFight: 
+    descriptionEffectOutFight: "Me sert de lampe torche. \xC0 des co\xFBts faibles
+      par seconde."
+    descriptionEffectInFight: "A une chance de paralyser l\u2019ennemi pendant un
+      tour. Multiplie mon co\xFBt de peu."
   <MultiplicatorLifeTaken>k__BackingField: 1.25

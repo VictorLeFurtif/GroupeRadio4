@@ -183,7 +183,7 @@ namespace MANAGER
                 soundForFight.SetActive(true);
             }
             
-             
+            BehaviorPlayerEnteringFight();
         }
 
         private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
@@ -220,7 +220,17 @@ namespace MANAGER
                 RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
             }
         }
-    
+
+        private void BehaviorPlayerEnteringFight()
+        {
+            if (PlayerController.instance?.selectedAttack == null ||
+                PlayerController.instance?.selectedAttack is not IPLayerEffect) return;
+            PlayerController.instance.selectedAttackEffect = PlayerController.instance.selectedAttack;
+            PlayerController.instance.selectedAttack = null;
+            RadioController.instance?.UpdateFrequenceText();
+            RadioController.instance?.UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+        }
+        
         private void StartUnitTurn()
         {
             if (currentOrder.Count > 0)
