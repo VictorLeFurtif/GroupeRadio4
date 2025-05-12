@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scene/FirstPlayable Test/Victor Test For FP.unity
     guid: dc65abbf1e5ce794b90c6f210657e956
   - enabled: 1
-    path: Assets/Scene/FirstPlayable Test/Salle 1.unity
-    guid: 6212eddf841f1be489090880027f1ca7
+    path: Assets/Scene/Tuto/Tuto cartoon V1.unity
+    guid: 7b48b1ff3edc5634983e03286405bb59
   m_configObjects: {}
