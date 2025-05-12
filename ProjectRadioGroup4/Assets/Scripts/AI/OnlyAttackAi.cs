@@ -1,4 +1,5 @@
 ﻿using Controller;
+using UI.Link_To_Radio;
 
 namespace AI
 {
@@ -11,6 +12,7 @@ namespace AI
             animatorEnemyAi.Play("attackAi");
             isPerformingAttack = true;
             canAttack = false;
+            CallBackFeedBackPlayer.Instance.ShowMessage("Enemy Attack");
         }
     }
 }

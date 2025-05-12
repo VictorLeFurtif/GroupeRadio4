@@ -22,4 +22,9 @@ MonoBehaviour:
     costBatteryExploration: 0
     costBatteryInFightMax: 5
     costBatteryInFight: 5
+  <DescriptionAttackAndEffect>k__BackingField:
+    descriptionAttack: "Empoisonne l\u2019ennemi, ce qui lui fait des d\xE9g\xE2ts
+      faibles chaque tour. Fait aussi des d\xE9g\xE2ts faibles lors de l\u2019impact."
+    descriptionEffectOutFight: 
+    descriptionEffectInFight: 
   <MultiplicatorLifeTaken>k__BackingField: 0

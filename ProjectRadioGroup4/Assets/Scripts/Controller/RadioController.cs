@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
-using DATA.Script.Attack_Data;
 using DATA.Script.Attack_Data.New_System_Attack_Player;
-using DATA.Script.Attack_Data.Old_System_Attack_Player;
-using DATA.Script.Entity_Data.AI;
 using INTERFACE;
 using MANAGER;
 using TMPro;
+using UI.Link_To_Radio;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -66,11 +64,19 @@ namespace Controller
         [SerializeField]
         private Image backgroundSliderFrequency;
 
-        [Header("Color")] [Tooltip("Sélectione la couleur pour Attack/Effet")] [SerializeField] private Color colorSliderAttackAm;
-        [SerializeField] private Color colorSliderAttackFm;
+        [Header("Sprites")] 
+        [Tooltip("Sélectionne le sprite pour Attack/Effet")]
+        [SerializeField] private Sprite spriteSliderAttackAm;
 
-        [Header("Ampoule Manager")]
+        [SerializeField] private Sprite spriteSliderAttackFm;
+
+
+        [Header("Manager & Controller")]
         public AmpouleManager ampouleManager;
+
+        public bool canTakeBattery = false;
+
+        
 
 
         #endregion
@@ -85,7 +91,7 @@ namespace Controller
         {
             currentRadioState = RadioState.OutFight;
             InitializeSliderFrequency();
-            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck(); EffectInExploration();});
+            sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck();});
             InitializeRadioEnemy();
         
             //Intéressant au Start de placer la light sur l'élément 0. Pas plus de justification c'est moi qui décide
@@ -128,19 +134,12 @@ namespace Controller
                 PlayerController.instance.gameObject.layer = 6;
             }
             
-            if (PlayerController.instance.selectedAttack != null && FightManager.instance.fightState != FightManager.FightState.InFight)
-            {
-                if (PlayerController.instance.selectedAttack is IPLayerEffect effect)
-                {
-                    effect.ProcessEffect();    
-                }
-            }
         }
         
         private void InitializeSliderFrequency()
         {
             sliderForFrequencyAttack.maxValue = maxValueSliderFrequencyAttack;
-            backgroundSliderFrequency.color = colorSliderAttackFm;
+            backgroundSliderFrequency.sprite = spriteSliderAttackFm;
             ValueChangeCheck();
         }
         
@@ -162,7 +161,15 @@ namespace Controller
             switch (FightManager.instance.fightState)
             {
                 case FightManager.FightState.OutFight:
+                    
+                    if (PlayerController.instance.selectedAttack is IPLayerEffect)
+                    {
+                        DisableActiveEffect();
+                        canTakeBattery = false;
+                    }
+                    
                     PlayerController.instance.selectedAttack = null;
+                    
                     foreach (var attackInstance in PlayerController.instance.listOfPlayerAttackInstance)
                     {
                         if (attackInstance.attack.attackState == PlayerAttackAbstract.AttackState.Fm)
@@ -206,6 +213,13 @@ namespace Controller
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
+        private void DisableActiveEffect()
+        {
+            PlayerController.instance._inGameData.classicEcho = false;
+            PlayerController.instance.lampTorch.intensity = 0;
+            PlayerController.instance.gameObject.layer = 6;
+        }
+        
         public void SelectEffectFMButton()
         {
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
@@ -235,22 +249,24 @@ namespace Controller
             UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
         }
         
-        private void UpdateFrequenceText()
+        public void UpdateFrequenceText()
         {
             string attackText = PlayerController.instance.selectedAttack != null
                 ? $"Attaque: {PlayerController.instance.selectedAttack.attack.name}"
                 : "Aucune attaque";
     
+            //USELESS NOW FOR V2 FP
+            /*
             if (PlayerController.instance.selectedAttack != null && 
                 PlayerController.instance.selectedAttack.attack.attackState == PlayerAttackAbstract.AttackState.Am)
             {
                 attackText += $"\nDégâts: {PlayerController.instance.selectedAttack.attack.damage}";
-            }
+            }*/
     
             descriptionAttackSelectedText.text = attackText;
         }
 
-        private void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
+        public void UpdateEffectFMText(PlayerAttackAbstractInstance effectInstance)
         {
             string effectText = effectInstance != null
                 ? $"Effet: {effectInstance.attack.name}"
@@ -275,7 +291,7 @@ namespace Controller
                 var previousEffect = PlayerController.instance.selectedAttackEffect;
                 
                 selectedAm = true;
-                backgroundSliderFrequency.color = colorSliderAttackAm;
+                backgroundSliderFrequency.sprite = spriteSliderAttackAm;
                 
                 PlayerController.instance.selectedAttack = null;
                 foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
@@ -295,7 +311,7 @@ namespace Controller
                 return;
             }
             
-            PlayerController.instance.animatorPlayer.Play("scanPlayerFront");
+            PlayerController.instance.animatorPlayer.Play("ScanAround");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanFast);
 
             int cpt = 0;
@@ -347,10 +363,12 @@ namespace Controller
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Guessing;
                 ChangeBoolSeenForAi();
                 UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                CallBackFeedBackPlayer.Instance.ShowMessage($"{listOfDetectedEnemy.Count} enemies found");
             }
             else
             {
                 Debug.Log("nobody detected");
+                CallBackFeedBackPlayer.Instance.ShowMessage("Nobody detected");
                 UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);   
                 PlayerController.instance.currentPlayerExplorationState = PlayerController.PlayerStateExploration.Exploration;
             }
@@ -365,14 +383,10 @@ namespace Controller
 
             if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                // Sauvegarde l'attaque AM actuelle
                 var previousAttack = PlayerController.instance.selectedAttack;
-        
-                // Passe en mode FM
                 selectedAm = false;
-                backgroundSliderFrequency.color = colorSliderAttackFm;
-        
-                // Recherche l'effet FM correspondant
+                backgroundSliderFrequency.sprite = spriteSliderAttackFm;
+                
                 PlayerController.instance.selectedAttackEffect = null;
                 foreach (var attack in PlayerController.instance.listOfPlayerAttackInstance)
                 {
@@ -383,16 +397,33 @@ namespace Controller
                         break;
                     }
                 }
-        
-                // Restaure l'attaque AM
+                
                 PlayerController.instance.selectedAttack = previousAttack;
         
                 UpdateFrequenceText();
                 UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
                 return;
             }
+            
+            if (FightManager.instance.fightState == FightManager.FightState.OutFight)
+            {
+                var selectedEffect = PlayerController.instance.selectedAttack;
+                if (selectedEffect is IPLayerEffect effect)
+                {
+                    effect.ProcessEffect();
+                    CallBackFeedBackPlayer.Instance.ShowMessage("Effet déclenché !");
+                    canTakeBattery = true;
+                }
+                else
+                {
+                    CallBackFeedBackPlayer.Instance.ShowMessage("Aucun effet sélectionné.");
+                }
+            }
 
-            // Exploration logic (inchangée)
+            #region Useless FM
+
+            //USELESS FOR NOW AFTER V2 FP
+            /*
             PlayerController.instance.animatorPlayer.Play("ScanAround");
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.ScanSlow);
 
@@ -413,7 +444,9 @@ namespace Controller
                 }
             }
 
-            AmFmActionIfListNotEmpty();
+            AmFmActionIfListNotEmpty();*/
+
+            #endregion
         }
 
     

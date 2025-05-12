@@ -7,6 +7,7 @@ using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
 using INTERFACE;
 using MANAGER;
+using UI.Link_To_Radio;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
@@ -107,6 +108,8 @@ namespace Controller
                 _inGameData.hp = Mathf.Max(0, value);
                 
                 playerBattery.UpdateLifeText();
+                playerBattery.UpdateLifeSlider(_inGameData.hp);
+                
                 if (_inGameData.IsDead())
                 {
                     canMove = false;
@@ -240,6 +243,7 @@ namespace Controller
                 
                 if (isOverload)
                 {
+                    CallBackFeedBackPlayer.Instance.ShowMessage("Overload on player");
                     ManageLife(-finalDamage / 2);
                     animatorPlayer.Play("Overload");
                     return;
@@ -278,6 +282,10 @@ namespace Controller
                 }
                 
                 animatorPlayer.Play(attackData.damageMaxBonus * ratio == 0 ? "goodsize anime attaque" : "goodsize anime attaque spé");
+
+                CallBackFeedBackPlayer.Instance.ShowMessage(selectedAttackEffect != null
+                    ? $"You apply {selectedAttack.attack.name} and {selectedAttackEffect.attack.name}"
+                    : $"You apply {selectedAttack.attack.name} ");
 
                 if (TutorialFightManager.instance != null && TutorialFightManager.instance.isInTutorialCombat &&
                     TutorialFightManager.instance.currentStep == CombatTutorialStep.ExplainPlayButton)
