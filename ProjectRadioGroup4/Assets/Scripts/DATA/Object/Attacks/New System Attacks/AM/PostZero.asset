@@ -20,8 +20,8 @@ MonoBehaviour:
     attackState: 1
     indexFrequency: 200
     costBatteryExploration: 0
-    costBatteryInFightMax: 3
-    costBatteryInFight: 3
+    costBatteryInFightMax: 2
+    costBatteryInFight: 2
   <DescriptionAttackAndEffect>k__BackingField:
     descriptionAttack: "Fais exploser l\u2019ennemi apr\xE8s sa mort. Fait des d\xE9g\xE2ts
       moyens."

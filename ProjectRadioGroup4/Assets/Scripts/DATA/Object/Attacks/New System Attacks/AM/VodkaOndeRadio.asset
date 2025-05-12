@@ -20,8 +20,8 @@ MonoBehaviour:
     attackState: 1
     indexFrequency: 100
     costBatteryExploration: 0
-    costBatteryInFightMax: 5
-    costBatteryInFight: 5
+    costBatteryInFightMax: 3
+    costBatteryInFight: 3
   <DescriptionAttackAndEffect>k__BackingField:
     descriptionAttack: "Empoisonne l\u2019ennemi, ce qui lui fait des d\xE9g\xE2ts
       faibles chaque tour. Fait aussi des d\xE9g\xE2ts faibles lors de l\u2019impact."

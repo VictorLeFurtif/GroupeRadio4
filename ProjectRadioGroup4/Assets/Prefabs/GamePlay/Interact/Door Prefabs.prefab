@@ -168,3 +168,4 @@ MonoBehaviour:
   currentDoorType: 0
   sceneName: Salle 1
   positionForPlayer: {x: 0, y: 0, z: 0}
+  triggerDoor: 4
