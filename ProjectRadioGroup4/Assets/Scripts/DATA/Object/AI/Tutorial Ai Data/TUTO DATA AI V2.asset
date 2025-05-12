@@ -15,8 +15,8 @@ MonoBehaviour:
   <Hp>k__BackingField: 50
   <Speed>k__BackingField: 10
   TurnState: 1
-  <WaveAmplitudeEnemy>k__BackingField: 0.4
-  <WaveFrequencyEnemy>k__BackingField: 5
+  <WaveAmplitudeEnemy>k__BackingField: 0.25
+  <WaveFrequencyEnemy>k__BackingField: 8
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
   <Battery>k__BackingField: 0

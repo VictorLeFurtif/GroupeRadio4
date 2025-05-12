@@ -12,27 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3304af135914f73499c56dcd82ed12ae, type: 3}
   m_Name: CombatTutorialText
   m_EditorClassIdentifier: 
-  <explainBattery>k__BackingField: "Vous \xEAtes maintenant en combat. Ce combat
-    va \xEAtre guid\xE9 pour que vous preniez en main le fonctionnement de votre
-    radio."
-  <explainEnemyOscillation>k__BackingField: "Les vagues rouges repr\xE9sentent l'\xE9tat
+  <explainBattery>k__BackingField: "Vous voila en combat. Je vais vous \xEAtre guid\xE9
+    pour que vous preniez en main le fonctionnement de votre radio."
+  <explainEnemyOscillation>k__BackingField: "La vague rouge repr\xE9sente l'\xE9tat
     actuel de l'ennemi. La hauteur des vagues repr\xE9sente la vie restante, tandis
     que l'espace entre chaque vague repr\xE9sente l'intensit\xE9 de la prochaine
     attaque."
-  <explainAMFM>k__BackingField: "Vous avez acc\xE8s \xE0 deux menus. Le bouton FM
-    vous donnera acc\xE8s aux effets qui se rajouteront aux attaques s\xE9lectionnables
-    avec le bouton AM."
-  <explainRadioSlider>k__BackingField: Utilisez le triangle de la ligne orange pour
-    selectionner un effet.
-  <explainLockFM>k__BackingField: "Une fois que vous \xEAtes pr\xEAts, utilisez le
-    petit bouton play pour verrouiller votre choix d'effet."
-  <explainPlayerOscillation>k__BackingField: "En appuyant sur le bouton AM, vous
-    pouvez s\xE9lectionner une attaque. De plus, vous pouvez utiliser le slider \xE0
-    droite de la ligne/vague bleue pour amplifier votre attaque. Ceci augmentera
-    vos d\xE9g\xE2ts, mais \xE9galement la chance de surcharger et de prendre des
-    d\xE9g\xE2ts, annulant votre attaque."
-  <explainPlayButton>k__BackingField: "Quand vous \xEAtes pr\xEAts, appuyez sur le
-    gros bouton play."
+  <explainAMFM>k__BackingField: "Vous avez acc\xE8s \xE0 deux menus. Le bouton AM
+    vous donnera acc\xE8s aux attaques et FM rajoute un effet supl\xE9mentaire."
+  <explainRadioSlider>k__BackingField: "Les effets des attaques et effets choisis
+    sont sp\xE9cifi\xE9s dans le codex \xE0 droite de la radio."
+  <explainLockFM>k__BackingField: "Vous pouvez aussi utiliser le slider \xE0 gauche
+    de la ligne/vague bleue pour amplifier votre attaque. Ceci augmentera vos d\xE9g\xE2ts,
+    mais \xE9galement la chance de rater votre attaque."
+  <explainPlayerOscillation>k__BackingField: "Vous pouvez choisir votre cible gr\xE2ce
+    aux ampoules en bas de votre radio."
+  <explainPlayButton>k__BackingField: "Quand vous \xEAtes pr\xEAts appuyez sur le
+    bouton play."
   <finished>k__BackingField: "Bravo! Vous avez lancer votre premi\xE8re attaque.
     Notez que l'oscillation en rouge \xE0 baiss\xE9e. Continuez ainsi jusqu'a rendre
-    cette oscillation plate."
+    l'oscillation rouge plate."
