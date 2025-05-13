@@ -16,6 +16,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private float offset;
     
     private int index;
+    private bool playerControllerIsNull;
 
     private void Start()
     {
@@ -37,6 +38,14 @@ public class DialogueUI : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
+
+        if (!playerControllerIsNull)
+        {
+            Vector2 currentPos = gameObject.transform.position;
+            currentPos = PlayerController.instance.transform.position;
+            currentPos.y += offset;
+            gameObject.transform.position = currentPos;
+        }
     }
 
     private void FixedUpdate()
@@ -44,13 +53,8 @@ public class DialogueUI : MonoBehaviour
         if (PlayerController.instance == null)
         {
             textComponent.text = "playerController.Instance == null";
-            return;
+            playerControllerIsNull = true;
         }
-        
-        Vector2 currentPos = gameObject.transform.position;
-        currentPos = PlayerController.instance.transform.position;
-        currentPos.y += offset;
-        gameObject.transform.position = currentPos;
     }
 
     private void StartDialogue()
