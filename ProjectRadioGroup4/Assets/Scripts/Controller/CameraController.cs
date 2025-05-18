@@ -42,7 +42,7 @@ namespace Controller
 
         private void Start()
         {
-            target = PlayerController.instance.gameObject.transform;
+            target = NewPlayerController.instance.gameObject.transform;
             originalLocalPos = transform.localPosition;
             fightManager = FightManager.instance;
         }
@@ -71,7 +71,7 @@ namespace Controller
         {
             if (FightManager.instance == null || 
                 FightManager.instance.listOfJustEnemiesAlive.Count == 0 || 
-                PlayerController.instance == null )
+                target == null )
             {
                 FollowPlayer();
                 return;
@@ -85,7 +85,7 @@ namespace Controller
                 return;
             }
 
-            Transform playerTransform = PlayerController.instance.transform;
+            Transform playerTransform = target.transform;
             Transform lastEnemyTransform = lastEnemyWrapper.entity.transform;
 
             if (lastEnemyTransform == null)

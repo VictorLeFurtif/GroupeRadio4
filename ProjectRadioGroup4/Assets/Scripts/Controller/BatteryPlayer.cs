@@ -9,7 +9,7 @@ namespace Controller
 {
     public class BatteryPlayer : MonoBehaviour
     {
-        private PlayerController player;
+        private NewPlayerController player;
         private float _timer;
         [SerializeField] private float batteryCheckInterval = 1f;
         [SerializeField] private TMP_Text lifeText;
@@ -27,7 +27,12 @@ namespace Controller
 
         private void Start()
         {
-            player = PlayerController.instance;
+            Init();
+        }
+
+        private void Init()
+        {
+            player = NewPlayerController.instance;
 
             if (player == null)
             {
@@ -36,26 +41,25 @@ namespace Controller
 
             UpdateLifeText();
         }
-
         private void Update()
         {
-            TickBatteryTimer();
+            //TickBatteryTimer();
         }
 
-        
+        #region LifeText
 
         public void UpdateLifeText()
         {
             if (transitionCoroutineLife != null)
                 StopCoroutine(transitionCoroutineLife);
     
-            if (PlayerController.instance == null)
+            if (player == null)
             {
                 Debug.LogWarning("No PlayerController Was Found");
                 return;
             }
             
-            transitionCoroutineLife = StartCoroutine(SmoothTransitionLife(PlayerController.instance._abstractEntityDataInstance.hp));
+            transitionCoroutineLife = StartCoroutine(SmoothTransitionLife(player._abstractEntityDataInstance.hp));
         }
 
         [SerializeField]
@@ -79,38 +83,11 @@ namespace Controller
             currentDisplayedLife = targetLife;
             lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%";
         }
-        
-        private void TickBatteryTimer()
-        {
-            if (!CanConsumeBattery()) return;
 
-            _timer += Time.deltaTime;
+        #endregion
 
-            if (!(_timer >= batteryCheckInterval)) return;
-            _timer = 0f;
-            ApplyBatteryCost();
-        }
+        #region SliderLife
 
-        private bool CanConsumeBattery()
-        {
-            return player != null
-                   && player.selectedAttack != null
-                   && FightManager.instance != null
-                   && FightManager.instance.fightState != FightManager.FightState.InFight;
-        }
-
-        private void ApplyBatteryCost()
-        {
-            float cost = player.selectedAttack.attack.costBatteryExploration;
-
-            if (RadioController.instance == null)return;
-            if (cost <= 0f || !RadioController.instance.canTakeBattery) return;
-
-            player.ManageLife(-cost);
-
-            Debug.Log($" -{cost} batterie consommée pour l'attaque : {player.selectedAttack.attack.name}");
-        }
-        
         public void UpdateLifeSlider(float targetLife)
         {
             if (transitionCoroutineSlider != null)
@@ -147,6 +124,39 @@ namespace Controller
             return normalizedValue < 0.5f ? Color.Lerp(noLifeColor, midLifeColor, normalizedValue / 0.5f)
                 : Color.Lerp(midLifeColor, fullLifeColor, (normalizedValue - 0.5f) / 0.5f);
         }
+
+        #endregion
+        
+        /*
+        private void TickBatteryTimer()
+        {
+            if (!CanConsumeBattery()) return;
+
+            _timer += Time.deltaTime;
+
+            if (!(_timer >= batteryCheckInterval)) return;
+            _timer = 0f;
+            ApplyBatteryCost();
+        }
+
+        private bool CanConsumeBattery()
+        {
+            return player != null
+                   && FightManager.instance != null
+                   && FightManager.instance.fightState != FightManager.FightState.InFight;
+        }
+
+        private void ApplyBatteryCost()
+        {
+            float cost = player.selectedAttack.attack.costBatteryExploration;
+
+            if (RadioController.instance == null)return;
+            if (cost <= 0f || !RadioController.instance.canTakeBattery) return;
+
+            player.ManageLife(-cost);
+
+            Debug.Log($" -{cost} batterie consommée pour l'attaque : {player.selectedAttack.attack.name}");
+        }*/
 
     }
 }
