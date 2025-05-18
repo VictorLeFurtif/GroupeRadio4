@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
+using INTERACT;
+using INTERFACE;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class NewPlayerController : MonoBehaviour
 {
@@ -26,7 +30,7 @@ public class NewPlayerController : MonoBehaviour
         public SpriteRenderer spriteRendererPlayer;
 
         [Header("State Machine")]
-        public PlayerStateExploration currentPlayerExplorationState = PlayerStateExploration.Exploration;
+        public Phase2Module currentPhase2ModuleState = Phase2Module.Off;
 
         [Header("Animation")]
         public Animator animatorPlayer;
@@ -37,12 +41,37 @@ public class NewPlayerController : MonoBehaviour
         private float epsilonValidationOscillation;
         
         private float nextFootstepTime;
+        
+        [Header("LIST")] 
+        public List<IInteractable> ListOfEveryElementInteractables = new List<IInteractable>();
+        
+        [Header("Scan Settings")]
+        public ScanType currentScanType = ScanType.Type1;
+        
+        
+        [Header("Phase 2 Module UI")]
+        [SerializeField] private Button phase2Button;
+        [SerializeField] private Image buttonImage;
+        [SerializeField] private Color disabledColor = Color.gray;
 
-        public enum PlayerStateExploration
+
+        [SerializeField] private bool canTurnOnPhase2Module;
+        
+        [Header("Current Selector")] 
+        public IInteractable currentInteractableInRange = null;
+
+        public enum ScanType
         {
-            Exploration,
-            Guessing,
+            Type1 = 0, 
+            Type2 = 1, 
+            Type3 = 2  
         }
+        
+       public enum Phase2Module
+       {
+           On,
+           Off
+       }
 
         private void Awake()
         {
@@ -57,19 +86,21 @@ public class NewPlayerController : MonoBehaviour
 
         private void Init()
         {
-            rb = GetComponent<Rigidbody2D>();
-
+            
             if (instance == null)
                 instance = this;
             else
                 Destroy(gameObject);
 
+            rb = GetComponent<Rigidbody2D>();
+            CanTurnOnPhase2Module = false;
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
             _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
 
             rb.interpolation = RigidbodyInterpolation2D.Interpolate;
             spriteRendererPlayer = GetComponent<SpriteRenderer>();
             animatorPlayer = GetComponent<Animator>();
+            UpdatePhase2ButtonState();
         }
 
         #region LifeHandle
@@ -156,4 +187,68 @@ public class NewPlayerController : MonoBehaviour
         }
 
         #endregion
+
+        #region Scan
+
+        private void Scan(ScanType scanType)
+        {
+            currentScanType = scanType;
+            foreach (var interactable in ListOfEveryElementInteractables)
+            {
+                interactable.OnScan();
+            }
+        }
+
+        public void ScanWeak() => Scan(ScanType.Type3);
+        public void ScanMid() => Scan(ScanType.Type2);
+        public void ScanStrong() => Scan(ScanType.Type1);
+
+        #endregion
+
+        #region ModulePhase2
+
+        //TODO THE COST ??????
+        public void SwitchRadioPhaseTwo()
+        {
+            if (!CanTurnOnPhase2Module || currentInteractableInRange == null) return;
+
+            if (currentInteractableInRange is IWaveInteractable waveInteractable)
+            {
+                if (currentPhase2ModuleState == Phase2Module.Off && waveInteractable.CanBeActivated())
+                {
+                    currentPhase2ModuleState = Phase2Module.On;
+                    NewRadioManager.instance.StartMatchingGame();
+                }
+                else if (currentPhase2ModuleState == Phase2Module.On)
+                {
+                    currentPhase2ModuleState = Phase2Module.Off;
+                    NewRadioManager.instance.StopMatchingGame();
+                }
+            }
+        }
+
+        public bool CanTurnOnPhase2Module
+        {
+            get => canTurnOnPhase2Module;
+            set
+            {
+                if (canTurnOnPhase2Module != value)
+                {
+                    canTurnOnPhase2Module = value;
+                    UpdatePhase2ButtonState(); 
+                }
+            }
+        }
+        
+        private void UpdatePhase2ButtonState()
+        {
+            if (phase2Button == null) return;
+            phase2Button.interactable = CanTurnOnPhase2Module;
+            if (buttonImage != null)
+                buttonImage.color = CanTurnOnPhase2Module ? Color.white : disabledColor;
+        }
+
+        #endregion
+        
+    
 }
