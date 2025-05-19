@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Controller;
 using INTERACT;
 using INTERFACE;
 using UnityEngine;
@@ -121,10 +122,12 @@ namespace MANAGER
             
             waveInteractable.MoveToNextPattern();
 
-            if (!waveInteractable.HasRemainingPatterns())
+            if (!waveInteractable.HasRemainingPatterns()) //CEST WIN ICI ATTENTION
             {
                 waveInteractable.MarkAsUsed();
                 waveInteractable.Detected = true;
+                var controller = NewPlayerController.instance;
+                if (controller != null) controller.canMove = true;
                 yield return HandleRadioTransition(new WaveSettings()); 
                 yield break;
             }

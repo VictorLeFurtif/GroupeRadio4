@@ -208,7 +208,7 @@ public class NewPlayerController : MonoBehaviour
 
         #region ModulePhase2
 
-        //TODO THE COST ??????
+    
         public void SwitchRadioPhaseTwo()
         {
             if (!CanTurnOnPhase2Module || currentInteractableInRange == null) return;

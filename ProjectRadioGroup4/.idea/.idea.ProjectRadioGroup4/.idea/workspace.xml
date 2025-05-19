@@ -6,29 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/Ivanov_final_version.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/Ivanov_final_version.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/RadioV2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/RadioV2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/ambiance_finale_F.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/ambiance_finale_F.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/ampoule (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/ampoule (1).png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/ampoule.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/ampoule.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/brouilleur_donde_retake.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/brouilleur_donde_retake.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/enviro_fianle_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/enviro_fianle_2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/image-removebg-preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/image-removebg-preview.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/radio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Test Victor Picture Ref/radio.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Interact/Door Prefabs.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Interact/Door Prefabs.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController/NewPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController/NewPlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/INTERACT/BatteryInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/INTERACT/BatteryInteract.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -176,7 +154,7 @@
       <workItem from="1747124267153" duration="2958000" />
       <workItem from="1747236217759" duration="450000" />
       <workItem from="1747561573588" duration="24349000" />
-      <workItem from="1747643493044" duration="5081000" />
+      <workItem from="1747643493044" duration="6123000" />
     </task>
     <servers />
   </component>
