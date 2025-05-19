@@ -11,9 +11,16 @@ namespace INTERACT
         public float frequency;
         public float amplitude;
         public float step;
+        
+        public WaveSettings(float freq, float amp, float st)
+        {
+            frequency = freq;
+            amplitude = amp;
+            step = st;
+        }
     }
     
-    public class BatteryInteract : MonoBehaviour, IInteractable, IWaveInteractable
+    public class BatteryInteract : MonoBehaviour,IWaveInteractable
     {
         [SerializeField] private List<WaveSettings> wavePatterns = new List<WaveSettings>();
         private int currentPatternIndex = 0;
@@ -22,17 +29,55 @@ namespace INTERACT
         private int currentActiveZone = -1;
         private bool activationUsed = false;
 
+        [Header("Reward")]
         [SerializeField] private float lifeAmountToGive;
+        
+        [Header("Wave Generation Settings")]
+        [SerializeField] private int basePatternCount = 3;
+        [SerializeField] private int maxPatternCount = 5;
+        [SerializeField] private float minFrequency = 0.2f;
+        [SerializeField] private float maxFrequency = 1f;
+        [SerializeField] private float minAmplitude = 0.1f;
+        [SerializeField] private float maxAmplitude = 0.4f;
+        [SerializeField] private float minStep = 0.1f;
+        [SerializeField] private float maxStep = 1f;
+        [SerializeField] private float generationRadius = 10f;
         
         private SpriteRenderer spriteRenderer;
         private bool detected;
+        private Transform playerTransform;
 
         private void Start()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+            playerTransform = NewPlayerController.instance?.transform;
             DisableAllZones();
             AddToInteractList();
             UpdateSpriteVisibility();
+        }
+        
+        public void GenerateWavePatterns()
+        {
+            wavePatterns.Clear();
+            currentPatternIndex = 0;
+
+            if (playerTransform == null) return;
+            
+            float distance = Vector3.Distance(transform.position, playerTransform.position);
+            int patternCount = Mathf.Clamp(
+                basePatternCount + Mathf.FloorToInt(distance / generationRadius * (maxPatternCount - basePatternCount)),
+                basePatternCount,
+                maxPatternCount
+            );
+            
+            for (int i = 0; i < patternCount; i++)
+            {
+                wavePatterns.Add(new WaveSettings(
+                    Random.Range(minFrequency, maxFrequency),
+                    Random.Range(minAmplitude, maxAmplitude),
+                    Random.Range(minStep, maxStep)
+                ));
+            }
         }
         
         #region ZoneHandler
@@ -40,6 +85,11 @@ namespace INTERACT
         public bool CanBeActivated()
         {
             return !activationUsed;
+        }
+
+        public void Activate()
+        {
+            GenerateWavePatterns();
         }
         
         public void MarkAsUsed()

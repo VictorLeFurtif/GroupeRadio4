@@ -410,3 +410,12 @@ MonoBehaviour:
   - {fileID: 3250338329085815677}
   - {fileID: 3876789675050767561}
   lifeAmountToGive: 15
+  basePatternCount: 3
+  maxPatternCount: 6
+  minFrequency: 1
+  maxFrequency: 15
+  minAmplitude: 0.1
+  maxAmplitude: 0.4
+  minStep: 0.1
+  maxStep: 6.28
+  generationRadius: 10

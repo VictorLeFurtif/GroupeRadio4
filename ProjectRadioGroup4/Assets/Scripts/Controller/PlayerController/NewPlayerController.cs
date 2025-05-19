@@ -226,6 +226,7 @@ public class NewPlayerController : MonoBehaviour
                     canMove = true;
                     currentPhase2ModuleState = Phase2Module.Off;
                     NewRadioManager.instance.StopMatchingGame();
+                    waveInteractable.MarkAsUsed();
                 }
             }
         }

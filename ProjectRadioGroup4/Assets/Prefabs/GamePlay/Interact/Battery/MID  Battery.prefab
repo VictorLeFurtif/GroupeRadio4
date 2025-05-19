@@ -179,6 +179,15 @@ MonoBehaviour:
   - {fileID: 8158956932000803118}
   - {fileID: 8657480094961208294}
   lifeAmountToGive: 10
+  basePatternCount: 2
+  maxPatternCount: 5
+  minFrequency: 1
+  maxFrequency: 15
+  minAmplitude: 0.1
+  maxAmplitude: 0.4
+  minStep: 0.1
+  maxStep: 6.28
+  generationRadius: 10
 --- !u!1 &7285527319686612492
 GameObject:
   m_ObjectHideFlags: 0

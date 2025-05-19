@@ -11,5 +11,6 @@ namespace INTERFACE
         void MarkAsUsed();
 
         public bool Detected { get; set; }
+        void Activate();
     }
 }

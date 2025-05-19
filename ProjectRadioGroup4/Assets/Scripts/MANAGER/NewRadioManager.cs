@@ -128,14 +128,15 @@ namespace MANAGER
                 waveInteractable.Detected = true;
                 var controller = NewPlayerController.instance;
                 if (controller != null) controller.canMove = true;
-                yield return HandleRadioTransition(new WaveSettings()); 
+                yield return HandleRadioTransition(new WaveSettings(0,0,0)); 
                 yield break;
             }
             
             yield return HandleRadioTransition(waveInteractable.GetCurrentWaveSettings());
             isMatching = true;
         }
-
+        
+        
         private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {
             float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
@@ -172,7 +173,7 @@ namespace MANAGER
         private IEnumerator StopMatchingRoutine()
         {
             isMatching = false;
-            yield return HandleRadioTransition(new WaveSettings()); // J le reset a 0
+            yield return HandleRadioTransition(new WaveSettings(0,0,0)); // J le reset a 0
         }
 
         #endregion
@@ -182,7 +183,11 @@ namespace MANAGER
         public void StartMatchingGame()
         {
             var waveInteractable = NewPlayerController.instance.currentInteractableInRange as IWaveInteractable;
-            if (waveInteractable == null || !waveInteractable.HasRemainingPatterns()) return;
+            if (waveInteractable == null || !waveInteractable.CanBeActivated()) return;
+
+            waveInteractable.Activate();
+    
+            if (!waveInteractable.HasRemainingPatterns()) return;
 
             if (currentTransition != null)
                 StopCoroutine(currentTransition);
