@@ -159,6 +159,7 @@ namespace INTERACT
         public void AddToInteractList()
         {
             NewPlayerController.instance?.ListOfEveryElementInteractables.Add(this);
+            Debug.Log("IN");
         }
 
         #region PhysicsAndContact
@@ -241,6 +242,9 @@ namespace INTERACT
                 spriteRenderer.enabled = detected;
             }
         }
+
+        #region  Handle Position collider
+
         
         private void PositionTriggerZonesRandomly()
         {
@@ -267,5 +271,8 @@ namespace INTERACT
             
             return new Vector2(randomX, randomY);
         }
+        #endregion
+        
+        
     }
 }

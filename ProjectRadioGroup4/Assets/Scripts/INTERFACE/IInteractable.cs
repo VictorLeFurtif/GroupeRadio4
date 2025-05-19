@@ -1,5 +1,6 @@
 ﻿namespace INTERFACE
 {
+    
     public interface IInteractable
     {
         public void AddToInteractList();

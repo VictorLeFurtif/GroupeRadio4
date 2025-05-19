@@ -1,3 +1,4 @@
+using Controller;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
 using INTERACT;
@@ -95,8 +96,9 @@ namespace AI.NEW_AI
 
         protected override void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log("JE SUIS LA ICI");
             base.OnTriggerEnter2D(other);
-            
+            Debug.Log("JE SUIS LA");
             
             if (!other.CompareTag("Player") || _aiFightState == AiFightState.InFight) return;
             
@@ -152,7 +154,12 @@ namespace AI.NEW_AI
             fightManager.currentFightAdvantage = Detected ? 
                 FightManager.FightAdvantage.Advantage : 
                 FightManager.FightAdvantage.Disadvantage;
-                
+
+            if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
+            {
+                CameraController.instance?.Shake(CameraController.ShakeMode.Both);
+            }
+            
             fightManager.InitialiseList();
         }
         

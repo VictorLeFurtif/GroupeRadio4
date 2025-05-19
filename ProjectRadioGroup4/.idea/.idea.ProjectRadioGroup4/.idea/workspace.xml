@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Interact/Battery/BIG Battery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Interact/Battery/BIG Battery.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/INTERACT/BatteryInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/INTERACT/BatteryInteract.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/INTERFACE/IInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/INTERFACE/IInteractable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +158,7 @@
       <workItem from="1747124267153" duration="2958000" />
       <workItem from="1747236217759" duration="450000" />
       <workItem from="1747561573588" duration="24349000" />
-      <workItem from="1747643493044" duration="15225000" />
+      <workItem from="1747643493044" duration="19554000" />
     </task>
     <servers />
   </component>
