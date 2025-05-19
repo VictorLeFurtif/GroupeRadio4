@@ -101,6 +101,7 @@ public class NewPlayerController : MonoBehaviour
             spriteRendererPlayer = GetComponent<SpriteRenderer>();
             animatorPlayer = GetComponent<Animator>();
             UpdatePhase2ButtonState();
+            playerBattery = GetComponent<BatteryPlayer>();
         }
 
         #region LifeHandle

@@ -9,5 +9,7 @@ namespace INTERFACE
         bool HasRemainingPatterns();
         bool CanBeActivated();
         void MarkAsUsed();
+
+        public bool Detected { get; set; }
     }
 }

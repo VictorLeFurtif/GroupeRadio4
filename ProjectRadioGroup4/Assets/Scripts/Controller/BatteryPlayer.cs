@@ -24,6 +24,10 @@ namespace Controller
         [SerializeField] private Color midLifeColor = Color.yellow;
         
         private Coroutine transitionCoroutineSlider;
+        
+        [Header("Phase 2 Drain")]
+        [SerializeField] private float phase2BatteryDrainPerSecond = 1f;
+        private float drainTimer;
 
         private void Start()
         {
@@ -43,7 +47,7 @@ namespace Controller
         }
         private void Update()
         {
-            //TickBatteryTimer();
+            HandlePhase2BatteryDrain();
         }
 
         #region LifeText
@@ -127,6 +131,30 @@ namespace Controller
 
         #endregion
         
+        private void HandlePhase2BatteryDrain()
+        {
+            if (!NewRadioManager.instance.IsActive) return;
+    
+            drainTimer += Time.deltaTime;
+            if (drainTimer >= 1f)
+            {
+                drainTimer = 0f;
+                ConsumeBattery(phase2BatteryDrainPerSecond);
+            }
+        }
+
+        public void ConsumeBattery(float amount)
+        {
+            if (player == null) return;
+    
+            player.ManageLife(-amount);
+    
+            if (player._abstractEntityDataInstance.hp <= 0)
+            {
+                NewRadioManager.instance.StopMatchingGame();
+            }
+        }
+        
         /*
         private void TickBatteryTimer()
         {
@@ -139,12 +167,6 @@ namespace Controller
             ApplyBatteryCost();
         }
 
-        private bool CanConsumeBattery()
-        {
-            return player != null
-                   && FightManager.instance != null
-                   && FightManager.instance.fightState != FightManager.FightState.InFight;
-        }
 
         private void ApplyBatteryCost()
         {

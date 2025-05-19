@@ -6,12 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/ANIMATOR/Player Animator Test.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/ANIMATOR/Player Animator Test.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/IdlePlayer.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/IdlePlayer.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/runPlayerv2 1.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/runPlayerv2 1.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/runPlayerv2.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/runPlayerv2.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Victor Test For FP.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FirstPlayable Test/Victor Test For FP.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/BatteryPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/BatteryPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/INTERACT/BatteryInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/INTERACT/BatteryInteract.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/INTERFACE/IWaveInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/INTERFACE/IWaveInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +51,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "<unknown>",
+    "git-widget-placeholder": "dev/Victor",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -62,7 +64,7 @@
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD RADIO\ProjectRadioGroup4.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD FP V2 ECHO 42\ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -70,7 +72,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -78,7 +80,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -158,6 +160,7 @@
       <workItem from="1747124267153" duration="2958000" />
       <workItem from="1747236217759" duration="450000" />
       <workItem from="1747561573588" duration="24349000" />
+      <workItem from="1747643493044" duration="3594000" />
     </task>
     <servers />
   </component>

@@ -20,8 +20,9 @@ namespace INTERACT
         
         [SerializeField] private GameObject[] triggerZones = new GameObject[3];
         private int currentActiveZone = -1;
-        private bool detected;
         private bool activationUsed = false;
+
+        [SerializeField] private float lifeAmountToGive;
 
         private void Start()
         {
@@ -41,6 +42,9 @@ namespace INTERACT
             activationUsed = true;
             DisableAllZones();
         }
+
+        public bool Detected { get; set; }
+
         public void OnScan()
         {
             if (NewPlayerController.instance == null) return;
@@ -98,18 +102,16 @@ namespace INTERACT
         {
             if (!other.gameObject.CompareTag("Player")) return;
             
-            if (detected)
+            if (Detected)
             {
-                //LOGIC IF PLAYER FOUND IT   
+                ContactWithPlayerAfterDetected();  
             }
-            else
-            {
-                NewPlayerController.instance.ListOfEveryElementInteractables.Remove(this);
-                NewPlayerController.instance.CanTurnOnPhase2Module = false;
-                NewPlayerController.instance.currentInteractableInRange = null;
-                NewPlayerController.instance.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
-                Destroy(gameObject);
-            }
+            
+            NewPlayerController.instance.ListOfEveryElementInteractables.Remove(this);
+            NewPlayerController.instance.CanTurnOnPhase2Module = false;
+            NewPlayerController.instance.currentInteractableInRange = null;
+            NewPlayerController.instance.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
+            Destroy(gameObject);
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -155,6 +157,11 @@ namespace INTERACT
         public bool HasRemainingPatterns() => wavePatterns.Count > 0;
         
         #endregion
+
+        private void ContactWithPlayerAfterDetected()
+        {
+            NewPlayerController.instance?.ManageLife(lifeAmountToGive);
+        }
         
     }
 }

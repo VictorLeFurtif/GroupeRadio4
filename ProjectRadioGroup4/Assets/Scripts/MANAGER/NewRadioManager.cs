@@ -62,16 +62,19 @@ namespace MANAGER
                 enemyBaseColor = matRadioEnemy.GetColor("_Color");
             }
         }
+        
+        public bool IsActive => isMatching;
 
         private void Update()
         {
             if (!isMatching) return;
-
+    
             if (Time.time - lastCheckTime > checkInterval)
             {
                 CheckWaveMatch();
                 lastCheckTime = Time.time;
             }
+            
         }
 
         private void Start()
@@ -100,38 +103,14 @@ namespace MANAGER
                 sliderStep.onValueChanged.AddListener((value) => UpdateShaderParam("_Step", value));
             }
         }
+        
 
-        public void StartMatchingGame()
-        {
-            var waveInteractable = NewPlayerController.instance.currentInteractableInRange as IWaveInteractable;
-            if (waveInteractable == null || !waveInteractable.HasRemainingPatterns()) return;
-
-            if (currentTransition != null)
-                StopCoroutine(currentTransition);
-
-            currentTransition = StartCoroutine(StartMatchingRoutine(waveInteractable));
-        }
+        #region Coroutine
 
         private IEnumerator StartMatchingRoutine(IWaveInteractable waveInteractable)
         {
             isMatching = true;
             yield return HandleRadioTransition(waveInteractable.GetCurrentWaveSettings());
-        }
-
-        private void CheckWaveMatch()
-        {
-            var waveInteractable = NewPlayerController.instance.currentInteractableInRange as IWaveInteractable;
-
-            var settings = waveInteractable?.GetCurrentWaveSettings();
-            if (settings == null) return;
-
-            if (IsMatch(settings))
-            {
-                if (currentTransition != null)
-                    StopCoroutine(currentTransition);
-                    
-                currentTransition = StartCoroutine(HandlePatternMatched(waveInteractable));
-            }
         }
 
         private IEnumerator HandlePatternMatched(IWaveInteractable waveInteractable)
@@ -145,6 +124,7 @@ namespace MANAGER
             if (!waveInteractable.HasRemainingPatterns())
             {
                 waveInteractable.MarkAsUsed();
+                waveInteractable.Detected = true;
                 yield return HandleRadioTransition(new WaveSettings()); 
                 yield break;
             }
@@ -185,6 +165,27 @@ namespace MANAGER
             yield return new WaitForSeconds(pulseDuration);
             matRadioPlayer.SetColor("_Color", playerBaseColor);
         }
+        
+        private IEnumerator StopMatchingRoutine()
+        {
+            isMatching = false;
+            yield return HandleRadioTransition(new WaveSettings()); // J le reset a 0
+        }
+
+        #endregion
+
+        #region DealWithGameState
+        
+        public void StartMatchingGame()
+        {
+            var waveInteractable = NewPlayerController.instance.currentInteractableInRange as IWaveInteractable;
+            if (waveInteractable == null || !waveInteractable.HasRemainingPatterns()) return;
+
+            if (currentTransition != null)
+                StopCoroutine(currentTransition);
+
+            currentTransition = StartCoroutine(StartMatchingRoutine(waveInteractable));
+        }
 
         public void StopMatchingGame()
         {
@@ -193,13 +194,23 @@ namespace MANAGER
 
             StartCoroutine(StopMatchingRoutine());
         }
-
-        private IEnumerator StopMatchingRoutine()
+        
+        private void CheckWaveMatch()
         {
-            isMatching = false;
-            yield return HandleRadioTransition(new WaveSettings()); // J le reset a 0
-        }
+            var waveInteractable = NewPlayerController.instance.currentInteractableInRange as IWaveInteractable;
 
+            var settings = waveInteractable?.GetCurrentWaveSettings();
+            if (settings == null) return;
+
+            if (IsMatch(settings))
+            {
+                if (currentTransition != null)
+                    StopCoroutine(currentTransition);
+                    
+                currentTransition = StartCoroutine(HandlePatternMatched(waveInteractable));
+            }
+        }
+        
         private bool IsMatch(WaveSettings settings)
         {
             float freqDiff = Mathf.Abs(matRadioPlayer.GetFloat("_waves_Amount") - settings.frequency);
@@ -209,6 +220,10 @@ namespace MANAGER
             return freqDiff < matchThreshold && ampDiff < matchThreshold && stepDiff < matchThreshold;
         }
 
+        #endregion
+
+        #region DealWithShader
+        
         private void ApplySettingsImmediate(Material mat, WaveSettings settings)
         {
             mat.SetFloat("_waves_Amount", settings.frequency);
@@ -234,5 +249,11 @@ namespace MANAGER
             mat.SetFloat("_Step", 0);
             mat.SetColor("_Color", _color);
         }
+        #endregion
+        
+
+        
+
+        
     }
 }
