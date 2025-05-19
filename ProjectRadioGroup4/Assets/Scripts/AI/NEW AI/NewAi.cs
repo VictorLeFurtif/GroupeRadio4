@@ -16,7 +16,7 @@ namespace AI.NEW_AI
         
         [Header("Attack Settings")]
         [SerializeField] private float attackTriggerDelay = 2f; 
-        private float attackTimer;
+        [SerializeField] private float attackTimer;
         private bool isTimerRunning;
         
         [Header("State Machine")]
@@ -96,9 +96,7 @@ namespace AI.NEW_AI
 
         protected override void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("JE SUIS LA ICI");
             base.OnTriggerEnter2D(other);
-            Debug.Log("JE SUIS LA");
             
             if (!other.CompareTag("Player") || _aiFightState == AiFightState.InFight) return;
             
