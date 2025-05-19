@@ -161,7 +161,7 @@ namespace INTERACT
 
         #region PhysicsAndContact
 
-        private void OnCollisionEnter2D(Collision2D other)
+        protected virtual void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.CompareTag("Player")) return;
             
@@ -170,13 +170,19 @@ namespace INTERACT
                 ContactWithPlayerAfterDetected();  
             }
             
+            CancelInteractionAfterContact();
+            Destroy(gameObject);
+        }
+
+        protected void CancelInteractionAfterContact()
+        {
             NewPlayerController.instance.ListOfEveryElementInteractables.Remove(this);
             NewPlayerController.instance.CanTurnOnPhase2Module = false;
             NewPlayerController.instance.currentInteractableInRange = null;
             NewPlayerController.instance.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
-            Destroy(gameObject);
         }
-        private void OnTriggerEnter2D(Collider2D other)
+        
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (other == null || NewPlayerController.instance == null) return;
             if (other.CompareTag("Player"))
@@ -186,7 +192,7 @@ namespace INTERACT
             }
         }
 
-        private void OnTriggerExit2D(Collider2D other)
+        protected virtual void OnTriggerExit2D(Collider2D other)
         {
             if (other == null || NewPlayerController.instance == null) return;
 
@@ -221,7 +227,7 @@ namespace INTERACT
         
         #endregion
 
-        private void ContactWithPlayerAfterDetected()
+        protected virtual void ContactWithPlayerAfterDetected()
         {
             NewPlayerController.instance?.ManageLife(lifeAmountToGive);
         }

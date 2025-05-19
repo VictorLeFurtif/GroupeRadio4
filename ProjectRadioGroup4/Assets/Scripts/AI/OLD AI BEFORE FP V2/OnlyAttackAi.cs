@@ -1,7 +1,7 @@
 ﻿using Controller;
 using UI.Link_To_Radio;
 
-namespace AI
+namespace AI.OLD_AI_BEFORE_FP_V2
 {
     public class OnlyAttackAi : AbstractAI
     {

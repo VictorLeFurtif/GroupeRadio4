@@ -8,7 +8,7 @@ using UI.Link_To_Radio;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace AI
+namespace AI.OLD_AI_BEFORE_FP_V2
 {
     [RequireComponent(typeof(Rigidbody2D), (typeof(BoxCollider2D)))]
     public abstract class AbstractAI : MonoBehaviour, IAi

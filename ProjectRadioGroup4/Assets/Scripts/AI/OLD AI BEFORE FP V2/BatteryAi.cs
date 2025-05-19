@@ -2,7 +2,7 @@
 using UI.Link_To_Radio;
 using UnityEngine;
 
-namespace AI
+namespace AI.OLD_AI_BEFORE_FP_V2
 {
     public class BatteryAi : AbstractAI
     {

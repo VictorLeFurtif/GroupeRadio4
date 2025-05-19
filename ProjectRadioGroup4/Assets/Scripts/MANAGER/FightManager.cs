@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
+using AI.OLD_AI_BEFORE_FP_V2;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using INTERFACE;
@@ -37,7 +38,7 @@ namespace MANAGER
         
         private AbstractEntityDataInstance currentFighter;
 
-        [SerializeField] private FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
+        public FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
         private GameObject soundForFight;
         private void Awake()
@@ -107,46 +108,6 @@ namespace MANAGER
                 return;
             }
             
-            bool hasAdvantage = false;
-            bool hasDisadvantage = false;
-
-            foreach (AbstractAI fighter in radio.listOfEveryEnemy)
-            {
-                if (!(Mathf.Abs(fighter.transform.position.x - player.transform.position.x) < rangeDetectEnemy)) continue;
-
-                currentOrder.Add(fighter._abstractEntityDataInstance);
-                fighter._aiFightState = AbstractAI.AiFightState.InFight;
-
-                if (!fighter._abstractEntityDataInstance.reveal && !fighter._abstractEntityDataInstance.seenByRadio)
-                {
-                    hasDisadvantage = true;
-                }
-                else if (fighter._abstractEntityDataInstance.seenByRadio && fighter._abstractEntityDataInstance.reveal)
-                {
-                    hasAdvantage = true;
-                }
-            }
-
-            if (hasDisadvantage)
-            {
-                currentFightAdvantage = FightAdvantage.Disadvantage;
-            }
-            else if (hasAdvantage)
-            {
-                currentFightAdvantage = FightAdvantage.Advantage;
-            }
-            else
-            {
-                currentFightAdvantage = FightAdvantage.Neutral;
-            }
-
-            
-            if (PlayerController.instance._inGameData.classicEcho)
-            {
-                currentFightAdvantage = FightAdvantage.Advantage;
-            }
-            
-
             listOfJustEnemiesAlive.AddRange(currentOrder);
             
             // Sort en fonction de la distance avec le player pour que les ampoules soit plus logique
@@ -165,12 +126,7 @@ namespace MANAGER
             
             StartUnitTurn();
             
-            RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
-
-            if (player.selectedAttack is IPLayerEffect effect)
-            {
-                effect.CancelEffectWhenEnterFight();
-            }
+            
             
 
             if (soundForFight == null)
@@ -212,23 +168,13 @@ namespace MANAGER
             else
             {
                 
-                if (RadioController.instance == null)
-                {
-                    Debug.LogError("No radioController seen");
-                    return;
-                }
-                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
+                //TODO ON A ENLEVER L'ANCIENNE LOGIQUE BON DIEU
             }
         }
 
         private void BehaviorPlayerEnteringFight()
         {
-            if (PlayerController.instance?.selectedAttack == null ||
-                PlayerController.instance?.selectedAttack is not IPLayerEffect) return;
-            PlayerController.instance.selectedAttackEffect = PlayerController.instance.selectedAttack;
-            PlayerController.instance.selectedAttack = null;
-            RadioController.instance?.UpdateFrequenceText();
-            RadioController.instance?.UpdateEffectFMText(PlayerController.instance.selectedAttackEffect);
+            
         }
         
         private void StartUnitTurn()
