@@ -191,6 +191,12 @@ namespace MANAGER
         {
             if (currentTransition != null)
                 StopCoroutine(currentTransition);
+            
+            if (NewPlayerController.instance != null)
+            {
+                NewPlayerController.instance.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
+                NewPlayerController.instance.canMove = true;
+            }
 
             StartCoroutine(StopMatchingRoutine());
         }

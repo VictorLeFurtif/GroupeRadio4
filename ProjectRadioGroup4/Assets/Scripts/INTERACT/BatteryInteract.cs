@@ -23,11 +23,16 @@ namespace INTERACT
         private bool activationUsed = false;
 
         [SerializeField] private float lifeAmountToGive;
+        
+        private SpriteRenderer spriteRenderer;
+        private bool detected;
 
         private void Start()
         {
+            spriteRenderer = GetComponent<SpriteRenderer>();
             DisableAllZones();
             AddToInteractList();
+            UpdateSpriteVisibility();
         }
         
         #region ZoneHandler
@@ -43,7 +48,15 @@ namespace INTERACT
             DisableAllZones();
         }
 
-        public bool Detected { get; set; }
+        public bool Detected 
+        { 
+            get => detected;
+            set
+            {
+                detected = value;
+                UpdateSpriteVisibility();
+            }
+        }
 
         public void OnScan()
         {
@@ -161,6 +174,14 @@ namespace INTERACT
         private void ContactWithPlayerAfterDetected()
         {
             NewPlayerController.instance?.ManageLife(lifeAmountToGive);
+        }
+        
+        private void UpdateSpriteVisibility()
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.enabled = detected;
+            }
         }
         
     }

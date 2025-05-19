@@ -217,11 +217,13 @@ public class NewPlayerController : MonoBehaviour
             {
                 if (currentPhase2ModuleState == Phase2Module.Off && waveInteractable.CanBeActivated())
                 {
+                    canMove = false;
                     currentPhase2ModuleState = Phase2Module.On;
                     NewRadioManager.instance.StartMatchingGame();
                 }
                 else if (currentPhase2ModuleState == Phase2Module.On)
                 {
+                    canMove = true;
                     currentPhase2ModuleState = Phase2Module.Off;
                     NewRadioManager.instance.StopMatchingGame();
                 }
