@@ -46,6 +46,7 @@ namespace INTERACT
         private SpriteRenderer spriteRenderer;
         private bool detected;
         private Transform playerTransform;
+        
 
         private void Start()
         {
@@ -54,6 +55,7 @@ namespace INTERACT
             DisableAllZones();
             AddToInteractList();
             UpdateSpriteVisibility();
+            PositionTriggerZonesRandomly();
         }
         
         public void GenerateWavePatterns()
@@ -240,5 +242,30 @@ namespace INTERACT
             }
         }
         
+        private void PositionTriggerZonesRandomly()
+        {
+            foreach (GameObject zone in triggerZones)
+            {
+                if (zone == null) continue;
+                
+                BoxCollider2D collider = zone.GetComponent<BoxCollider2D>();
+                if (collider == null) continue;
+                
+                Vector2 randomLocalPos = GetRandomPositionInsideCollider(collider);
+                
+                zone.transform.localPosition = randomLocalPos;
+            }
+        }
+        
+        private Vector2 GetRandomPositionInsideCollider(BoxCollider2D collider)
+        {
+            float maxX = collider.size.x * 0.5f;
+            float maxY = collider.size.y * 0.5f;
+            
+            float randomX = Random.Range(-maxX, maxX);
+            float randomY = Random.Range(-maxY, maxY);
+            
+            return new Vector2(randomX, randomY);
+        }
     }
 }

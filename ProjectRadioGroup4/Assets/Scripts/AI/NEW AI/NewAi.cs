@@ -87,8 +87,8 @@ namespace AI.NEW_AI
             
             if (fightManager != null) 
             {
-                fightManager.currentFightAdvantage = Detected ?
-                FightManager.FightAdvantage.Advantage : FightManager.FightAdvantage.Disadvantage;
+                fightManager.currentFightAdvantage = FightManager.FightAdvantage.Disadvantage;
+                fightManager.fightState = FightManager.FightState.InFight;
                 fightManager.InitialiseList();
             }
         }
@@ -129,9 +129,6 @@ namespace AI.NEW_AI
             
             transform.position = combatPosition;
             FacePlayer();
-            
-            if (visualComponent != null)
-                visualComponent.SetActive(true);
             
             InitiateCombat();
         }
