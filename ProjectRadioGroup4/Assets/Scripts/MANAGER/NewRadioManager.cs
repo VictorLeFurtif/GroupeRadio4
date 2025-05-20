@@ -5,6 +5,7 @@ using AI.NEW_AI;
 using Controller;
 using INTERACT;
 using INTERFACE;
+using MANAGER;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,11 @@ namespace MANAGER
 {
     public class NewRadioManager : MonoBehaviour
     {
+        #region Singleton
+        public static NewRadioManager instance;
+        #endregion
+
+        #region Fields
         [Header("Shader Material Player")]
         [SerializeField] private RawImage imageRadioPlayer;
         [SerializeField] private RawImage imageRadioEnemy;
@@ -39,17 +45,19 @@ namespace MANAGER
         
         private Coroutine currentTransition;
 
-        public static NewRadioManager instance;
-        
         [Header("Canvas")] public Canvas canvaRadio;
         
-        [Header("List")] public List<NewAi> listOfEveryEnemy ;
-        
-        
+        [Header("List")] public List<NewAi> listOfEveryEnemy;
         
         private float lastCheckTime;
         private bool isMatching;
+        #endregion
 
+        #region Properties
+        public bool IsActive => isMatching;
+        #endregion
+
+        #region Unity Methods
         private void Awake()
         {
             if (instance == null)
@@ -69,8 +77,6 @@ namespace MANAGER
                 enemyBaseColor = matRadioEnemy.GetColor("_Color");
             }
         }
-        
-        public bool IsActive => isMatching;
 
         private void Update()
         {
@@ -81,7 +87,6 @@ namespace MANAGER
                 CheckWaveMatch();
                 lastCheckTime = Time.time;
             }
-            
         }
 
         private void Start()
@@ -89,7 +94,9 @@ namespace MANAGER
             InitializeSliders();
             ResetMaterials();
         }
+        #endregion
 
+        #region Initialization
         private void InitializeSliders()
         {
             if (sliderAmplitude != null)
@@ -110,10 +117,9 @@ namespace MANAGER
                 sliderStep.onValueChanged.AddListener((value) => UpdateShaderParam("_Step", value));
             }
         }
-        
+        #endregion
 
-        #region Coroutine
-
+        #region Coroutines
         private IEnumerator StartMatchingRoutine(IWaveInteractable waveInteractable)
         {
             isMatching = true;
@@ -128,7 +134,7 @@ namespace MANAGER
             
             waveInteractable.MoveToNextPattern();
 
-            if (!waveInteractable.HasRemainingPatterns()) //CEST WIN ICI ATTENTION
+            if (!waveInteractable.HasRemainingPatterns())
             {
                 waveInteractable.MarkAsUsed();
                 waveInteractable.Detected = true;
@@ -141,7 +147,6 @@ namespace MANAGER
             yield return HandleRadioTransition(waveInteractable.GetCurrentWaveSettings());
             isMatching = true;
         }
-        
         
         private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {
@@ -179,20 +184,24 @@ namespace MANAGER
         private IEnumerator StopMatchingRoutine()
         {
             isMatching = false;
-            yield return HandleRadioTransition(new WaveSettings(0,0,0)); // J le reset a 0
+            yield return HandleRadioTransition(new WaveSettings(0,0,0));
         }
-
         #endregion
 
-        #region DealWithGameState
-        
+        #region Game State Management
         public void StartMatchingGame()
         {
-            var waveInteractable = NewPlayerController.instance.currentInteractableInRange as IWaveInteractable;
-            if (waveInteractable == null || !waveInteractable.CanBeActivated()) return;
+            if (NewPlayerController.instance.currentInteractableInRange is not
+                    IWaveInteractable waveInteractable || !waveInteractable.CanBeActivated()) return;
 
             waveInteractable.Activate();
-    
+
+            if (waveInteractable is NewAi ai)
+            {
+                ai.attackTimer = ai.attackTriggerDelay;
+                ai.isTimerRunning = true;
+            }
+            
             if (!waveInteractable.HasRemainingPatterns()) return;
 
             if (currentTransition != null)
@@ -239,11 +248,9 @@ namespace MANAGER
 
             return freqDiff < matchThreshold && ampDiff < matchThreshold && stepDiff < matchThreshold;
         }
-
         #endregion
 
-        #region DealWithShader
-        
+        #region Shader Management
         private void ApplySettingsImmediate(Material mat, WaveSettings settings)
         {
             mat.SetFloat("_waves_Amount", settings.frequency);
@@ -270,10 +277,5 @@ namespace MANAGER
             mat.SetColor("_Color", _color);
         }
         #endregion
-        
-
-        
-
-        
     }
 }

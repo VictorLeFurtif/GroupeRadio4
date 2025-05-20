@@ -8,16 +8,13 @@ using UnityEngine;
 
 namespace AI.NEW_AI
 {
-    //NORMAL NEWAI HAS A LOT IN COMMON WITH THE BATTERY I SUPPOSE PLEASE IN THE FUTURE IF THE FIGHTMANAGER FUCKED UP 
-    // EVERYTHING I M GONNA HANG MY SELF
-    
-    public class NewAi : BatteryInteract,IAi
+    public class NewAi : BatteryInteract, IAi
     {
-        
+        #region Fields
         [Header("Attack Settings")]
-        [SerializeField] private float attackTriggerDelay = 2f; 
-        [SerializeField] private float attackTimer;
-        private bool isTimerRunning;
+        public float attackTriggerDelay = 2f; 
+        public float attackTimer;
+        public bool isTimerRunning;
         
         [Header("State Machine")]
         public AiFightState _aiFightState = AiFightState.OutFight;
@@ -32,8 +29,11 @@ namespace AI.NEW_AI
         [Header("Combat Settings")]
         [SerializeField] private float combatDistance = 2f; 
         [SerializeField] private GameObject visualComponent;
+        
+        
+        #endregion
 
-
+        #region Unity Methods
         private void Update()
         {
             TimerIfInteractWithPlayer();
@@ -44,9 +44,9 @@ namespace AI.NEW_AI
             base.Start();
             AddAiToListOfEveryEnemy();
         }
+        #endregion
 
-        #region LIFE HANDLER
-
+        #region Life Handler
         public float PvEnemy
         {
             get => _abstractEntityDataInstance.hp;
@@ -56,12 +56,10 @@ namespace AI.NEW_AI
 
                 _abstractEntityDataInstance.hp = value;
 
-
                 if (_abstractEntityDataInstance.IsDead())
                 {
                     Die();
                 }
-                
             }
         }
         
@@ -77,12 +75,9 @@ namespace AI.NEW_AI
                 EndAiTurn();
             }
         }
-
         #endregion
         
-        
-        #region OVERRIDE METHODE
-        
+        #region Collision Handling
         protected override void OnCollisionEnter2D(Collision2D other)
         {
             var fightManager = FightManager.instance;
@@ -100,21 +95,13 @@ namespace AI.NEW_AI
 
         protected override void OnTriggerEnter2D(Collider2D other)
         {
-            
             if (_aiFightState != AiFightState.OutFight) return;
             base.OnTriggerEnter2D(other);
             
-            if (!other.CompareTag("Player") || _aiFightState == AiFightState.InFight) return;
-            
-            attackTimer = attackTriggerDelay;
-            isTimerRunning = true;
         }
-
-
         #endregion
 
-        #region INIT FIGHT
-
+        #region Combat Management
         private void TimerIfInteractWithPlayer()
         {
             if (!isTimerRunning) return;
@@ -128,19 +115,17 @@ namespace AI.NEW_AI
         
         private void StartCombatSequence()
         {
+            NewRadioManager.instance?.StopMatchingGame();
             var player = NewPlayerController.instance;
             if (player == null) return;
 
-            
             Vector3 combatPosition = player.transform.position + 
-                                     player.transform.right * combatDistance * 
-                                     (player.spriteRendererPlayer.flipX ? -1 : 1);
+                                 player.transform.right * combatDistance * 
+                                 (player.spriteRendererPlayer.flipX ? -1 : 1);
             
             transform.position = combatPosition;
             FacePlayer();
-            
             InitiateCombat();
-            
         }
         
         private void FacePlayer()
@@ -149,7 +134,7 @@ namespace AI.NEW_AI
             if (player == null) return;
             
             transform.localScale = transform.position.x > 
-                                   player.transform.position.x ? new Vector3(-1, 1, 1) : Vector3.one;
+                               player.transform.position.x ? new Vector3(-1, 1, 1) : Vector3.one;
         }
 
         private void InitiateCombat()
@@ -170,9 +155,9 @@ namespace AI.NEW_AI
             
             fightManager.InitialiseList();
         }
-
         #endregion
         
+        #region AI Methods
         public void EndAiTurn()
         {
             if (FightManager.instance == null)
@@ -197,5 +182,6 @@ namespace AI.NEW_AI
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
             Debug.Log($"Enemy {name} added to NewRadioManager list");
         }
+        #endregion
     }
 }

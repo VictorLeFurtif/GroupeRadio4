@@ -15,8 +15,11 @@ namespace MANAGER
 {
     public class FightManager : MonoBehaviour
     {
+        #region Singleton
         public static FightManager instance;
-    
+        #endregion
+
+        #region Fields
         [field: Header("Specific To Project - WIP")]
         private int numberOfEnemies;
         private int numberOfPlayer;
@@ -34,23 +37,17 @@ namespace MANAGER
         private NewPlayerController player;
         private NewRadioManager radio;
 
-        [Header("Check for enemy in range of Player")] [SerializeField]
-        private float rangeDetectEnemy;
+        [Header("Check for enemy in range of Player")] 
+        [SerializeField] private float rangeDetectEnemy;
         
         private AbstractEntityDataInstance currentFighter;
 
         public FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
         private GameObject soundForFight;
-        private void Awake()
-        {
-            if (instance == null)instance = this;
-            else Destroy(gameObject);
+        #endregion
 
-            player = NewPlayerController.instance;
-            radio = NewRadioManager.instance;
-        }
-        
+        #region Enums
         public enum FightAdvantage
         {
             Advantage,
@@ -69,12 +66,20 @@ namespace MANAGER
             Turn,
             NoTurn,
         }
+        #endregion
 
-        private void UpdateListOfFighter() //call after each endTurn
+        #region Unity Methods
+        private void Awake()
         {
-            CheckForDeadsFighter();
-        }
+            if (instance == null) instance = this;
+            else Destroy(gameObject);
 
+            player = NewPlayerController.instance;
+            radio = NewRadioManager.instance;
+        }
+        #endregion
+
+        #region Fight Management
         public void EndFighterTurn()
         {
             if (currentFighter != null)
@@ -84,7 +89,6 @@ namespace MANAGER
 
             UpdateListOfFighter();
 
-            
             if (currentOrder.Count > 0 && currentOrder[0] == currentFighter)
             {
                 currentOrder.RemoveAt(0);
@@ -100,10 +104,8 @@ namespace MANAGER
             StartUnitTurn();
         }
 
-
         public void InitialiseList() 
         {
-            
             if (player == null) 
             {
                 Debug.LogError("Player reference is null!");
@@ -114,7 +116,6 @@ namespace MANAGER
             listOfJustEnemiesAlive.Clear();
             
             currentOrder.Add(player._abstractEntityDataInstance);
-            Debug.Log($"Player added to currentOrder: {player._abstractEntityDataInstance.entity.name}");
             
             if (NewRadioManager.instance != null)
             {
@@ -125,7 +126,6 @@ namespace MANAGER
                     {
                         currentOrder.Add(fighter._abstractEntityDataInstance);
                         fighter._aiFightState = AiFightState.InFight;
-                        Debug.Log($"Enemy added: {fighter.name} at distance {distance}");
                     }
                 }
             }
@@ -135,27 +135,29 @@ namespace MANAGER
             }
             
             listOfJustEnemiesAlive.AddRange(currentOrder.Where(x => x != player._abstractEntityDataInstance));
-            
             currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
-            
             fighterAlive = new List<AbstractEntityDataInstance>(currentOrder);
 
-            Debug.Log($"Total fighters: {currentOrder.Count} (Player + {listOfJustEnemiesAlive.Count} enemies)");
+            
     
             StartUnitTurn();
             
-            
             if (soundForFight == null)
             {
-                soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(SoundManager.instance.soundBankData.enemySound.
-                    enemySound,true,true,1f,"FightSound");
+                soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.enemySound.enemySound, true, true, 1f, "FightSound");
             }
             else
             {
                 soundForFight.SetActive(true);
             }
-            
-             
+        }
+        #endregion
+
+        #region Helper Methods
+        private void UpdateListOfFighter()
+        {
+            CheckForDeadsFighter();
         }
 
         private void CheckForDeadsFighter() 
@@ -191,7 +193,6 @@ namespace MANAGER
             if (currentOrder.Count <= 0) return;
             currentFighter = currentOrder[0]; 
             currentFighter.turnState = TurnState.Turn;
-
         }
         
         private void ResetFightManagerAfterFight()
@@ -199,7 +200,7 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
-            
         }
+        #endregion
     }
 }

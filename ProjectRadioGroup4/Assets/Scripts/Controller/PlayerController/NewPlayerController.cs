@@ -13,246 +13,243 @@ using UnityEngine.UI;
 
 public class NewPlayerController : MonoBehaviour
 {
+    #region Singleton
     public static NewPlayerController instance;
+    #endregion
 
-        [Header("Speed")]
-        [SerializeField] private float moveSpeed;
-        public bool canMove = true;
+    #region Fields
+    [Header("Speed")]
+    [SerializeField] private float moveSpeed;
+    public bool canMove = true;
 
-        [Header("Rigidbody2D")]
-        public Rigidbody2D rb;
+    [Header("Rigidbody2D")]
+    public Rigidbody2D rb;
 
-        [Header("Data Player")]
-        [SerializeField] private AbstractEntityData _abstractEntityData;
-        public AbstractEntityDataInstance _abstractEntityDataInstance;
-        public PlayerDataInstance _inGameData;
+    [Header("Data Player")]
+    [SerializeField] private AbstractEntityData _abstractEntityData;
+    public AbstractEntityDataInstance _abstractEntityDataInstance;
+    public PlayerDataInstance _inGameData;
 
-        public SpriteRenderer spriteRendererPlayer;
+    public SpriteRenderer spriteRendererPlayer;
 
-        [Header("State Machine")]
-        public Phase2Module currentPhase2ModuleState = Phase2Module.Off;
+    [Header("State Machine")]
+    public Phase2Module currentPhase2ModuleState = Phase2Module.Off;
 
-        [Header("Animation")]
-        public Animator animatorPlayer;
-        
-        [Header("Battery")] private BatteryPlayer playerBattery;
-        
-        [SerializeField]
-        private float epsilonValidationOscillation;
-        
-        private float nextFootstepTime;
-        
-        [Header("LIST")] 
-        public List<IInteractable> ListOfEveryElementInteractables = new List<IInteractable>();
-        
-        [Header("Scan Settings")]
-        public ScanType currentScanType = ScanType.Type1;
-        
-        
-        [Header("Phase 2 Module UI")]
-        [SerializeField] private Button phase2Button;
-        [SerializeField] private Image buttonImage;
-        [SerializeField] private Color disabledColor = Color.gray;
+    [Header("Animation")]
+    public Animator animatorPlayer;
+    
+    [Header("Battery")] 
+    private BatteryPlayer playerBattery;
+    
+    [SerializeField]
+    private float epsilonValidationOscillation;
+    
+    private float nextFootstepTime;
+    
+    [Header("LIST")] 
+    public List<IInteractable> ListOfEveryElementInteractables = new List<IInteractable>();
+    
+    [Header("Scan Settings")]
+    public ScanType currentScanType = ScanType.Type1;
+    
+    [Header("Phase 2 Module UI")]
+    [SerializeField] private Button phase2Button;
+    [SerializeField] private Image buttonImage;
+    [SerializeField] private Color disabledColor = Color.gray;
 
+    [SerializeField] private bool canTurnOnPhase2Module;
+    
+    [Header("Current Selector")] 
+    public IInteractable currentInteractableInRange = null;
+    #endregion
 
-        [SerializeField] private bool canTurnOnPhase2Module;
-        
-        [Header("Current Selector")] 
-        public IInteractable currentInteractableInRange = null;
+    #region Enums
+    public enum ScanType
+    {
+        Type1 = 0, 
+        Type2 = 1, 
+        Type3 = 2  
+    }
+    
+    public enum Phase2Module
+    {
+        On,
+        Off
+    }
+    #endregion
 
-        public enum ScanType
+    #region Unity Methods
+    private void Awake()
+    {
+        Init();
+    }
+    
+    private void Update()
+    {
+        PlayerMove();
+        CheckForFlipX();
+    }
+    #endregion
+
+    #region Initialization
+    private void Init()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        rb = GetComponent<Rigidbody2D>();
+        CanTurnOnPhase2Module = false;
+        _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
+        _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
+
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        spriteRendererPlayer = GetComponent<SpriteRenderer>();
+        animatorPlayer = GetComponent<Animator>();
+        UpdatePhase2ButtonState();
+        playerBattery = GetComponent<BatteryPlayer>();
+    }
+    #endregion
+
+    #region Life Management
+    public void ManageLife(float valueLifeChanger) 
+    {
+        HealthPlayer += valueLifeChanger;
+    }
+    
+    private float HealthPlayer 
+    {
+        get => _inGameData?.hp ?? 0f;
+        set
         {
-            Type1 = 0, 
-            Type2 = 1, 
-            Type3 = 2  
-        }
-        
-       public enum Phase2Module
-       {
-           On,
-           Off
-       }
-
-        private void Awake()
-        {
-            Init();
-        }
-        
-        private void Update()
-        {
-            PlayerMove();
-            CheckForFlipX();
-        }
-
-        private void Init()
-        {
-            
-            if (instance == null)
-                instance = this;
-            else
-                Destroy(gameObject);
-
-            rb = GetComponent<Rigidbody2D>();
-            CanTurnOnPhase2Module = false;
-            _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
-            _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
-
-            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-            spriteRendererPlayer = GetComponent<SpriteRenderer>();
-            animatorPlayer = GetComponent<Animator>();
-            UpdatePhase2ButtonState();
-            playerBattery = GetComponent<BatteryPlayer>();
-        }
-
-        #region LifeHandle
-
-        public void ManageLife(float valueLifeChanger) 
-        {
-            HealthPlayer += valueLifeChanger;
-        }
-        private float HealthPlayer 
-        {
-            get => _inGameData?.hp ?? 0f;
-            set
+            if (_inGameData == null)
             {
-                if (_inGameData == null)
-                {
-                    Debug.LogError(" _inGameData est NULL !");
-                    return;
-                }
-                
-                _inGameData.hp = Mathf.Max(0, value);
-                
-                playerBattery.UpdateLifeText();
-                playerBattery.UpdateLifeSlider(_inGameData.hp);
-                
-                if (_inGameData.IsDead())
-                {
-                    canMove = false;
-                    rb.velocity = Vector2.zero;
-                    animatorPlayer.Play("Death");
-                    return;
-                }
-                
-
-                if (FightManager.instance != null && FightManager.instance.fightState == 
-                    FightManager.FightState.InFight && _inGameData.turnState != FightManager.TurnState.Turn)
-                {
-                    animatorPlayer.Play("HitReceived");
-                }
-            }
-        }
-        
-        public void PlayGameOver()
-        {    
-            GameManager.instance?.GameOver();
-        }
-
-        #endregion
-        
-        #region Movement
-
-        private void PlayerMove()
-        {
-            if (!canMove)
-            {
-                rb.velocity = Vector2.zero;
-                animatorPlayer.SetFloat("MoveSpeed", 0);
+                Debug.LogError(" _inGameData est NULL !");
                 return;
             }
-
-            float x = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
-            animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
-
-            if (Mathf.Abs(x) > 0.1f && Time.time > nextFootstepTime)
+            
+            _inGameData.hp = Mathf.Max(0, value);
+            
+            playerBattery.UpdateLifeText();
+            playerBattery.UpdateLifeSlider(_inGameData.hp);
+            
+            if (_inGameData.IsDead())
             {
-                SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.walk);
-                nextFootstepTime = Time.time + 0.35f;
+                canMove = false;
+                rb.velocity = Vector2.zero;
+                animatorPlayer.Play("Death");
+                return;
+            }
+            
+            if (FightManager.instance != null && FightManager.instance.fightState == 
+                FightManager.FightState.InFight && _inGameData.turnState != FightManager.TurnState.Turn)
+            {
+                animatorPlayer.Play("HitReceived");
             }
         }
-
-        private bool wasFacingLeft = false;
-
-        private void CheckForFlipX()
-        {
-            if (Mathf.Abs(rb.velocity.x) > 0.1f)
-                wasFacingLeft = rb.velocity.x < 0;
-
-            spriteRendererPlayer.flipX = wasFacingLeft;
-        }
-
-        public void ChangeBoolPlayerCanMove(float active)
-        {
-            canMove = active > 0.5f;
-        }
-
-        #endregion
-
-        #region Scan
-
-        private void Scan(ScanType scanType)
-        {
-            currentScanType = scanType;
-            foreach (var interactable in ListOfEveryElementInteractables)
-            {
-                interactable.OnScan();
-            }
-        }
-
-        public void ScanWeak() => Scan(ScanType.Type3);
-        public void ScanMid() => Scan(ScanType.Type2);
-        public void ScanStrong() => Scan(ScanType.Type1);
-
-        #endregion
-
-        #region ModulePhase2
-
+    }
     
-        public void SwitchRadioPhaseTwo()
-        {
-            if (!CanTurnOnPhase2Module || currentInteractableInRange == null) return;
-
-            if (currentInteractableInRange is IWaveInteractable waveInteractable)
-            {
-                if (currentPhase2ModuleState == Phase2Module.Off && waveInteractable.CanBeActivated())
-                {
-                    canMove = false;
-                    currentPhase2ModuleState = Phase2Module.On;
-                    NewRadioManager.instance.StartMatchingGame();
-                }
-                else if (currentPhase2ModuleState == Phase2Module.On)
-                {
-                    canMove = true;
-                    currentPhase2ModuleState = Phase2Module.Off;
-                    NewRadioManager.instance.StopMatchingGame();
-                    waveInteractable.MarkAsUsed();
-                }
-            }
-        }
-
-        public bool CanTurnOnPhase2Module
-        {
-            get => canTurnOnPhase2Module;
-            set
-            {
-                if (canTurnOnPhase2Module != value)
-                {
-                    canTurnOnPhase2Module = value;
-                    UpdatePhase2ButtonState(); 
-                }
-            }
-        }
-        
-        private void UpdatePhase2ButtonState()
-        {
-            if (phase2Button == null) return;
-            phase2Button.interactable = CanTurnOnPhase2Module;
-            if (buttonImage != null)
-                buttonImage.color = CanTurnOnPhase2Module ? Color.white : disabledColor;
-        }
-
-        #endregion
-        
+    public void PlayGameOver()
+    {    
+        GameManager.instance?.GameOver();
+    }
+    #endregion
     
+    #region Movement
+    private void PlayerMove()
+    {
+        if (!canMove)
+        {
+            rb.velocity = Vector2.zero;
+            animatorPlayer.SetFloat("MoveSpeed", 0);
+            return;
+        }
+
+        float x = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
+        animatorPlayer.SetFloat("MoveSpeed", Mathf.Abs(rb.velocity.x));
+
+        if (Mathf.Abs(x) > 0.1f && Time.time > nextFootstepTime)
+        {
+            SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.walk);
+            nextFootstepTime = Time.time + 0.35f;
+        }
+    }
+
+    private bool wasFacingLeft = false;
+
+    private void CheckForFlipX()
+    {
+        if (Mathf.Abs(rb.velocity.x) > 0.1f)
+            wasFacingLeft = rb.velocity.x < 0;
+
+        spriteRendererPlayer.flipX = wasFacingLeft;
+    }
+
+    public void ChangeBoolPlayerCanMove(float active)
+    {
+        canMove = active > 0.5f;
+    }
+    #endregion
+
+    #region Scanning
+    private void Scan(ScanType scanType)
+    {
+        currentScanType = scanType;
+        foreach (var interactable in ListOfEveryElementInteractables)
+        {
+            interactable.OnScan();
+        }
+    }
+
+    public void ScanWeak() => Scan(ScanType.Type3);
+    public void ScanMid() => Scan(ScanType.Type2);
+    public void ScanStrong() => Scan(ScanType.Type1);
+    #endregion
+
+    #region Phase 2 Module
+    public void SwitchRadioPhaseTwo()
+    {
+        if (!CanTurnOnPhase2Module || currentInteractableInRange == null) return;
+
+        if (currentInteractableInRange is IWaveInteractable waveInteractable)
+        {
+            if (currentPhase2ModuleState == Phase2Module.Off && waveInteractable.CanBeActivated())
+            {
+                canMove = false;
+                currentPhase2ModuleState = Phase2Module.On;
+                NewRadioManager.instance.StartMatchingGame();
+            }
+            else if (currentPhase2ModuleState == Phase2Module.On)
+            {
+                canMove = true;
+                currentPhase2ModuleState = Phase2Module.Off;
+                NewRadioManager.instance.StopMatchingGame();
+                waveInteractable.MarkAsUsed();
+            }
+        }
+    }
+
+    public bool CanTurnOnPhase2Module
+    {
+        get => canTurnOnPhase2Module;
+        set
+        {
+            if (canTurnOnPhase2Module != value)
+            {
+                canTurnOnPhase2Module = value;
+                UpdatePhase2ButtonState(); 
+            }
+        }
+    }
+    
+    private void UpdatePhase2ButtonState()
+    {
+        if (phase2Button == null) return;
+        phase2Button.interactable = CanTurnOnPhase2Module;
+        if (buttonImage != null)
+            buttonImage.color = CanTurnOnPhase2Module ? Color.white : disabledColor;
+    }
+    #endregion
 }
