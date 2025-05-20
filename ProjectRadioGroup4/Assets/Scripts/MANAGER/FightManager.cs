@@ -138,8 +138,8 @@ namespace MANAGER
             currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
             fighterAlive = new List<AbstractEntityDataInstance>(currentOrder);
 
+            player.canMove = false;
             
-    
             StartUnitTurn();
             
             if (soundForFight == null)
@@ -175,6 +175,7 @@ namespace MANAGER
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 soundForFight.SetActive(false);
+                player.canMove = true;
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {

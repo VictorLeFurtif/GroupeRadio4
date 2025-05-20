@@ -189,7 +189,9 @@ namespace MANAGER
         #endregion
 
         #region Game State Management
-        public void StartMatchingGame()
+        
+        
+        public void StartMatchingGameOutFight()
         {
             if (NewPlayerController.instance.currentInteractableInRange is not
                     IWaveInteractable waveInteractable || !waveInteractable.CanBeActivated()) return;
@@ -208,6 +210,21 @@ namespace MANAGER
                 StopCoroutine(currentTransition);
 
             currentTransition = StartCoroutine(StartMatchingRoutine(waveInteractable));
+        }
+
+        public void StartMatchingGameInFight()
+        {
+            if (NewPlayerController.instance.currentInteractableInRange is not
+                (IWaveInteractable and NewAi ai)) return;
+            
+            ai.Activate();
+            
+            if (!ai.HasRemainingPatterns()) return;
+            
+            if (currentTransition != null)
+                StopCoroutine(currentTransition);
+            
+            currentTransition = StartCoroutine(StartMatchingRoutine(ai));
         }
 
         public void StopMatchingGame()

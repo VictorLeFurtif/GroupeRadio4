@@ -219,7 +219,7 @@ public class NewPlayerController : MonoBehaviour
             {
                 canMove = false;
                 currentPhase2ModuleState = Phase2Module.On;
-                NewRadioManager.instance.StartMatchingGame();
+                NewRadioManager.instance.StartMatchingGameOutFight();
             }
             else if (currentPhase2ModuleState == Phase2Module.On)
             {

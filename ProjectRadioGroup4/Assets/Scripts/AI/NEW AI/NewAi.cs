@@ -85,12 +85,7 @@ namespace AI.NEW_AI
             
             CancelInteractionAfterContact();
             
-            if (fightManager != null) 
-            {
-                fightManager.currentFightAdvantage = FightManager.FightAdvantage.Disadvantage;
-                fightManager.fightState = FightManager.FightState.InFight;
-                fightManager.InitialiseList();
-            }
+            StartCombatSequence();
         }
 
         protected override void OnTriggerEnter2D(Collider2D other)
@@ -116,6 +111,7 @@ namespace AI.NEW_AI
         private void StartCombatSequence()
         {
             NewRadioManager.instance?.StopMatchingGame();
+            spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;
             if (player == null) return;
 
@@ -139,10 +135,13 @@ namespace AI.NEW_AI
 
         private void InitiateCombat()
         {
+            NewRadioManager.instance?.StartMatchingGameInFight();
+            spriteRenderer.enabled = true;
             var fightManager = FightManager.instance;
             if (fightManager == null) return;
 
             _aiFightState = AiFightState.InFight;
+            fightManager.fightState = FightManager.FightState.InFight;
             
             fightManager.currentFightAdvantage = Detected ? 
                 FightManager.FightAdvantage.Advantage : 
@@ -150,7 +149,7 @@ namespace AI.NEW_AI
 
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
-                CameraController.instance?.Shake(CameraController.ShakeMode.Both);
+                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,100);
             }
             
             fightManager.InitialiseList();

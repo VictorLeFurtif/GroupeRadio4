@@ -43,7 +43,7 @@ namespace INTERACT
         [SerializeField] private float maxStep = 1f;
         [SerializeField] private float generationRadius = 10f;
         
-        private SpriteRenderer spriteRenderer;
+        protected SpriteRenderer spriteRenderer;
         private bool detected;
         private Transform playerTransform;
         
@@ -159,7 +159,6 @@ namespace INTERACT
         public void AddToInteractList()
         {
             NewPlayerController.instance?.ListOfEveryElementInteractables.Add(this);
-            Debug.Log("IN");
         }
 
         #region PhysicsAndContact
