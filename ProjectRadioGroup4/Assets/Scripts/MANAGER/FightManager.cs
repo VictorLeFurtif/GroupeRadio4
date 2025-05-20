@@ -45,6 +45,11 @@ namespace MANAGER
         public FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
         private GameObject soundForFight;
+        
+        [Header("Combat Timing")]
+        public float playerTurnDuration = 60f; 
+        private float playerTurnTimer;
+        private bool playerSuccess = false;
         #endregion
 
         #region Enums
@@ -192,8 +197,24 @@ namespace MANAGER
         private void StartUnitTurn()
         {
             if (currentOrder.Count <= 0) return;
-            currentFighter = currentOrder[0]; 
+    
+            currentFighter = currentOrder[0];
             currentFighter.turnState = TurnState.Turn;
+            
+            if (currentFighter == player._abstractEntityDataInstance)
+            {
+                playerTurnTimer = playerTurnDuration;
+                playerSuccess = false;
+                NewRadioManager.instance.StartMatchingGameInFight(); 
+            }
+            else 
+            {
+                if (!playerSuccess) 
+                {
+                    AttackPlayer(currentFighter); 
+                }
+                EndFighterTurn();
+            }
         }
         
         private void ResetFightManagerAfterFight()
@@ -203,5 +224,41 @@ namespace MANAGER
             fightState = FightState.OutFight;
         }
         #endregion
+        
+        private void Update()
+        {
+            if (fightState != FightState.InFight) return;
+            
+            if (currentFighter == player._abstractEntityDataInstance && playerTurnTimer > 0)
+            {
+                playerTurnTimer -= Time.deltaTime;
+        
+                if (playerTurnTimer <= 0 && !playerSuccess)
+                {
+                    NewRadioManager.instance.StopMatchingGame();
+                    Debug.Log("Temps écoulé !");
+                    EndFighterTurn();
+                }
+            }
+        }
+
+        private void AttackPlayer(AbstractEntityDataInstance attacker)
+        {
+            player._abstractEntityDataInstance.hp -= 10; 
+            Debug.Log("L'IA attaque le joueur !");
+        }
+        
+        public void PlayerSuccess()
+        {
+            playerSuccess = true;
+            NewAi ai = currentOrder[1].entity.GetComponent<NewAi>();
+            if (ai != null)
+            {
+                ai.PvEnemy -= 10; //MAGIC NUMBER
+            }
+            
+            
+            EndFighterTurn();
+        }
     }
 }

@@ -214,8 +214,11 @@ namespace MANAGER
 
         public void StartMatchingGameInFight()
         {
-            if (NewPlayerController.instance.currentInteractableInRange is not
-                (IWaveInteractable and NewAi ai)) return;
+            if (!(NewPlayerController.instance.currentInteractableInRange is NewAi ai) || 
+                !(ai is IWaveInteractable)) 
+            {
+                return;
+            }
             
             ai.Activate();
             
@@ -244,17 +247,15 @@ namespace MANAGER
         private void CheckWaveMatch()
         {
             var waveInteractable = NewPlayerController.instance.currentInteractableInRange as IWaveInteractable;
-
             var settings = waveInteractable?.GetCurrentWaveSettings();
-            if (settings == null) return;
 
-            if (IsMatch(settings))
+            if (settings == null || !IsMatch(settings)) return;
+            if (FightManager.instance.fightState == FightManager.FightState.InFight)
             {
-                if (currentTransition != null)
-                    StopCoroutine(currentTransition);
-                    
-                currentTransition = StartCoroutine(HandlePatternMatched(waveInteractable));
+                FightManager.instance.PlayerSuccess(); 
             }
+        
+            StartCoroutine(HandlePatternMatched(waveInteractable));
         }
         
         private bool IsMatch(WaveSettings settings)
@@ -268,6 +269,7 @@ namespace MANAGER
         #endregion
 
         #region Shader Management
+        
         private void ApplySettingsImmediate(Material mat, WaveSettings settings)
         {
             mat.SetFloat("_waves_Amount", settings.frequency);

@@ -80,7 +80,7 @@ namespace Controller
                 float t = Mathf.Clamp01(elapsed / durationTimeLerpLife); 
 
                 currentDisplayedLife = Mathf.Lerp(startLife, targetLife, t);
-                lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%"; //RIDER CONSEIL CULTURE INFO JE PENSE C'EST POUR LES TRAD
+                lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%"; 
 
                 yield return null;
             }
@@ -133,7 +133,7 @@ namespace Controller
         
         private void HandlePhase2BatteryDrain()
         {
-            if (!NewRadioManager.instance.IsActive) return;
+            if (!NewRadioManager.instance.IsActive || FightManager.instance?.fightState == FightManager.FightState.InFight) return;
     
             drainTimer += Time.deltaTime;
             if (drainTimer >= 1f)

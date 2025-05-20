@@ -57,7 +57,7 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] private Image buttonImage;
     [SerializeField] private Color disabledColor = Color.gray;
 
-    [SerializeField] private bool canTurnOnPhase2Module;
+    [SerializeField] private bool canTurnOnPhase2Module; 
     
     [Header("Current Selector")] 
     public IInteractable currentInteractableInRange = null;

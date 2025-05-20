@@ -43,6 +43,7 @@ namespace AI.NEW_AI
         {
             base.Start();
             AddAiToListOfEveryEnemy();
+            _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
         }
         #endregion
 
@@ -135,6 +136,9 @@ namespace AI.NEW_AI
 
         private void InitiateCombat()
         {
+            var instance = NewPlayerController.instance;
+            if (instance != null) instance.currentInteractableInRange = this;
+            
             NewRadioManager.instance?.StartMatchingGameInFight();
             spriteRenderer.enabled = true;
             var fightManager = FightManager.instance;
@@ -179,7 +183,6 @@ namespace AI.NEW_AI
             
             NewRadioManager.instance.listOfEveryEnemy.Remove(this);
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
-            Debug.Log($"Enemy {name} added to NewRadioManager list");
         }
         #endregion
     }
