@@ -39,10 +39,14 @@ namespace MANAGER
         [SerializeField] private Color enemyBaseColor;
         
         [Header("Game Settings")]
-        [SerializeField] private float matchThreshold = 0.1f;
         [SerializeField] private float checkInterval = 0.5f;
         [SerializeField] private float transitionDuration = 1f;
         [SerializeField] private float pulseDuration = 0.2f;
+        
+        [Header("Matching Thresholds")]
+        [SerializeField] private float amplitudeThreshold = 0.05f;
+        [SerializeField] private float frequencyThreshold = 1f; 
+        [SerializeField] private float stepThreshold = 1f;
         
         private Coroutine currentTransition;
 
@@ -126,23 +130,40 @@ namespace MANAGER
         private IEnumerator HandlePatternMatched(IWaveInteractable waveInteractable)
         {
             isMatching = false;
-            
+    
             yield return PulseEffect();
-            
+    
             waveInteractable.MoveToNextPattern();
 
             if (!waveInteractable.HasRemainingPatterns())
             {
-                waveInteractable.MarkAsUsed();
                 waveInteractable.Detected = true;
+        
+                if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+                {
+                    
+                    FightManager.instance.StartCoroutine(CompleteAllPatternsRoutine());
+                }
+
                 var controller = NewPlayerController.instance;
-                if (controller != null) controller.canMove = true;
-                yield return HandleRadioTransition(new WaveSettings(0,0,0)); 
-                yield break;
+                if (controller != null) 
+                {
+                    controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
+                }
+        
+                yield return HandleRadioTransition(new WaveSettings(0,0,0));
             }
-            
-            yield return HandleRadioTransition(waveInteractable.GetCurrentWaveSettings());
-            isMatching = true;
+            else
+            {
+                yield return HandleRadioTransition(waveInteractable.GetCurrentWaveSettings());
+                isMatching = true;
+            }
+        }
+
+        private IEnumerator CompleteAllPatternsRoutine()
+        {
+            yield return new WaitForSeconds(0.5f); 
+            FightManager.instance.PlayerSuccess();
         }
         
         private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
@@ -211,8 +232,7 @@ namespace MANAGER
 
         public void StartMatchingGameInFight()
         {
-            if (!(NewPlayerController.instance.currentInteractableInRange is NewAi ai) || 
-                !(ai is IWaveInteractable)) 
+            if (NewPlayerController.instance.currentInteractableInRange is not NewAi ai) 
             {
                 return;
             }
@@ -247,11 +267,7 @@ namespace MANAGER
             var settings = waveInteractable?.GetCurrentWaveSettings();
 
             if (settings == null || !IsMatch(settings)) return;
-            if (FightManager.instance.fightState == FightManager.FightState.InFight)
-            {
-                FightManager.instance.PlayerSuccess(); 
-            }
-        
+            
             StartCoroutine(HandlePatternMatched(waveInteractable));
         }
         
@@ -261,7 +277,9 @@ namespace MANAGER
             float ampDiff = Mathf.Abs(matRadioPlayer.GetFloat("_waves_Amp") - settings.amplitude);
             float stepDiff = Mathf.Abs(matRadioPlayer.GetFloat("_Step") - settings.step);
 
-            return freqDiff < matchThreshold && ampDiff < matchThreshold && stepDiff < matchThreshold;
+            return freqDiff < frequencyThreshold 
+                   && ampDiff < amplitudeThreshold 
+                   && stepDiff < stepThreshold;
         }
         #endregion
 

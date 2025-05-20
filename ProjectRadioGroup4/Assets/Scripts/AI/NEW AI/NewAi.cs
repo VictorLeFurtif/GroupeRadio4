@@ -137,16 +137,20 @@ namespace AI.NEW_AI
         private void InitiateCombat()
         {
             var instance = NewPlayerController.instance;
-            if (instance != null) instance.currentInteractableInRange = this;
-            
-            NewRadioManager.instance?.StartMatchingGameInFight();
+            if (instance != null) 
+            {
+                instance.currentInteractableInRange = this;
+                instance.canMove = false; 
+            }
+
             spriteRenderer.enabled = true;
+    
             var fightManager = FightManager.instance;
             if (fightManager == null) return;
 
             _aiFightState = AiFightState.InFight;
             fightManager.fightState = FightManager.FightState.InFight;
-            
+    
             fightManager.currentFightAdvantage = Detected ? 
                 FightManager.FightAdvantage.Advantage : 
                 FightManager.FightAdvantage.Disadvantage;
@@ -155,8 +159,10 @@ namespace AI.NEW_AI
             {
                 CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,100);
             }
-            
+    
             fightManager.InitialiseList();
+            
+            NewRadioManager.instance?.StartMatchingGameInFight();
         }
         #endregion
         

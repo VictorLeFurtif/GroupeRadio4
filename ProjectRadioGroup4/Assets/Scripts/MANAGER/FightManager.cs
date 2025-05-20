@@ -50,6 +50,10 @@ namespace MANAGER
         public float playerTurnDuration = 60f; 
         public float playerTurnTimer { get; private set; }
         private bool playerSuccess = false;
+        
+        [Header("Pattern Completion")]
+        private int patternsCompleted = 0;
+        private int totalPatternsToComplete = 3;
         #endregion
 
         #region Enums
@@ -98,7 +102,13 @@ namespace MANAGER
             {
                 currentFighter.turnState = TurnState.NoTurn;
             }
-
+            
+            if (currentFighter == player._abstractEntityDataInstance)
+            {
+                NewRadioManager.instance.StopMatchingGame();
+                player.canMove = false;
+            }
+            
             UpdateListOfFighter();
 
             if (currentOrder.Count > 0 && currentOrder[0] == currentFighter)
@@ -204,15 +214,21 @@ namespace MANAGER
         private void StartUnitTurn()
         {
             if (currentOrder.Count <= 0) return;
-    
+
             currentFighter = currentOrder[0];
             currentFighter.turnState = TurnState.Turn;
-            
+    
             if (currentFighter == player._abstractEntityDataInstance)
             {
                 playerTurnTimer = playerTurnDuration;
                 playerSuccess = false;
-                NewRadioManager.instance.StartMatchingGameInFight(); 
+                
+                NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
+                if (ai != null)
+                {
+                    ai.GenerateWavePatterns();
+                    NewRadioManager.instance.StartMatchingGameInFight();
+                }
             }
             else 
             {
@@ -239,15 +255,16 @@ namespace MANAGER
         
         public void PlayerSuccess()
         {
-            playerSuccess = true;
-            NewAi ai = currentOrder[1].entity.GetComponent<NewAi>();
+            NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
-                ai.PvEnemy -= 10; //MAGIC NUMBER
+                ai.PvEnemy -= 10;
+        
+                ai.GenerateWavePatterns();
             }
-            
-            
-            EndFighterTurn();
+    
+            playerSuccess = true;
+            EndFighterTurn(); 
         }
         #endregion
 
@@ -261,6 +278,7 @@ namespace MANAGER
             if (!(playerTurnTimer <= 0) || playerSuccess) return;
             NewRadioManager.instance.StopMatchingGame();
             Debug.Log("Temps écoulé !");
+            patternsCompleted = 0; 
             EndFighterTurn();
         }
 

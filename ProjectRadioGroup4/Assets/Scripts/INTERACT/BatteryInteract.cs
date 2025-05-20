@@ -22,8 +22,8 @@ namespace INTERACT
     
     public class BatteryInteract : MonoBehaviour,IWaveInteractable
     {
-        [SerializeField] private List<WaveSettings> wavePatterns = new List<WaveSettings>();
-        private int currentPatternIndex = 0;
+        public List<WaveSettings> wavePatterns = new List<WaveSettings>();
+        public int currentPatternIndex = 0;
         
         [SerializeField] private GameObject[] triggerZones = new GameObject[3];
         private int currentActiveZone = -1;
