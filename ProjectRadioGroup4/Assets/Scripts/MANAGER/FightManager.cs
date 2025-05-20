@@ -48,7 +48,7 @@ namespace MANAGER
         
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
-        private float playerTurnTimer;
+        public float playerTurnTimer { get; private set; }
         private bool playerSuccess = false;
         #endregion
 
@@ -81,6 +81,13 @@ namespace MANAGER
 
             player = NewPlayerController.instance;
             radio = NewRadioManager.instance;
+        }
+        
+        private void Update()
+        {
+            if (fightState != FightState.InFight) return;
+            HandleTimerPlayerForPlay();
+            
         }
         #endregion
 
@@ -223,28 +230,10 @@ namespace MANAGER
             fighterAlive.Clear();
             fightState = FightState.OutFight;
         }
-        #endregion
         
-        private void Update()
-        {
-            if (fightState != FightState.InFight) return;
-            
-            if (currentFighter == player._abstractEntityDataInstance && playerTurnTimer > 0)
-            {
-                playerTurnTimer -= Time.deltaTime;
-        
-                if (playerTurnTimer <= 0 && !playerSuccess)
-                {
-                    NewRadioManager.instance.StopMatchingGame();
-                    Debug.Log("Temps écoulé !");
-                    EndFighterTurn();
-                }
-            }
-        }
-
         private void AttackPlayer(AbstractEntityDataInstance attacker)
         {
-            player._abstractEntityDataInstance.hp -= 10; 
+            player.ManageLife(-10);
             Debug.Log("L'IA attaque le joueur !");
         }
         
@@ -260,5 +249,23 @@ namespace MANAGER
             
             EndFighterTurn();
         }
+        #endregion
+
+        #region Time Related
+
+        private void HandleTimerPlayerForPlay()
+        {
+            if (currentFighter != player._abstractEntityDataInstance || !(playerTurnTimer > 0)) return;
+            playerTurnTimer -= Time.deltaTime;
+
+            if (!(playerTurnTimer <= 0) || playerSuccess) return;
+            NewRadioManager.instance.StopMatchingGame();
+            Debug.Log("Temps écoulé !");
+            EndFighterTurn();
+        }
+
+        #endregion
+
+        
     }
 }

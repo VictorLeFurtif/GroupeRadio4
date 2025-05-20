@@ -37,13 +37,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Step: 4.9468355
+    - _Step: 4.9266334
     - _noise_Scale: 3.1
     - _noise_amp: 4.76
     - _speed: 0.02
     - _waves: 12.7
-    - _waves_Amount: 9.551511
-    - _waves_Amp: 0.12100549
+    - _waves_Amount: 6.771064
+    - _waves_Amp: 0.33926806
     m_Colors:
     - _Color: {r: 0.70261496, g: 0.006482259, b: 0, a: 1}
   m_BuildTextureStacks: []

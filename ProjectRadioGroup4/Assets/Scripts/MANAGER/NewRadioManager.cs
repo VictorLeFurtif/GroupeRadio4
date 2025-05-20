@@ -6,6 +6,7 @@ using Controller;
 using INTERACT;
 using INTERFACE;
 using MANAGER;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +46,8 @@ namespace MANAGER
         
         private Coroutine currentTransition;
 
-        [Header("Canvas")] public Canvas canvaRadio;
+        [Header("UI")] public Canvas canvaRadio;
+        [SerializeField] private TMP_Text chronoInFight;
         
         [Header("List")] public List<NewAi> listOfEveryEnemy;
         
@@ -80,13 +82,8 @@ namespace MANAGER
 
         private void Update()
         {
-            if (!isMatching) return;
-    
-            if (Time.time - lastCheckTime > checkInterval)
-            {
-                CheckWaveMatch();
-                lastCheckTime = Time.time;
-            }
+            TimerCheckInterval();
+            UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
         }
 
         private void Start()
@@ -295,6 +292,30 @@ namespace MANAGER
             mat.SetFloat("_Step", 0);
             mat.SetColor("_Color", _color);
         }
+        #endregion
+
+        #region UI
+
+        public void UpdateText(TMP_Text _targetText,string _targetInnerText)
+        {
+            _targetText.text = _targetInnerText;
+        }
+
+        #endregion
+
+        #region Time Related
+
+        private void TimerCheckInterval()
+        {
+            if (!isMatching) return;
+    
+            if (Time.time - lastCheckTime > checkInterval)
+            {
+                CheckWaveMatch();
+                lastCheckTime = Time.time;
+            }
+        }
+
         #endregion
     }
 }
