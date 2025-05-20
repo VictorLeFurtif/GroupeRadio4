@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using AI.NEW_AI;
 using Controller;
 using INTERACT;
 using INTERFACE;
@@ -40,6 +42,10 @@ namespace MANAGER
         public static NewRadioManager instance;
         
         [Header("Canvas")] public Canvas canvaRadio;
+        
+        [Header("List")] public List<NewAi> listOfEveryEnemy ;
+        
+        
         
         private float lastCheckTime;
         private bool isMatching;

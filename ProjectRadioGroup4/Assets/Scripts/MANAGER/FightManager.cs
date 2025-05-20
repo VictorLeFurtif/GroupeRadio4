@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
-using AI.OLD_AI_BEFORE_FP_V2;
+using AI.NEW_AI;
 using Controller;
 using DATA.Script.Entity_Data.AI;
+using ENUM;
 using INTERFACE;
 using TMPro;
 using UnityEngine;
@@ -30,8 +31,8 @@ namespace MANAGER
     
         private int numberOfTurn = 0;
 
-        private PlayerController player;
-        private RadioController radio;
+        private NewPlayerController player;
+        private NewRadioManager radio;
 
         [Header("Check for enemy in range of Player")] [SerializeField]
         private float rangeDetectEnemy;
@@ -46,8 +47,8 @@ namespace MANAGER
             if (instance == null)instance = this;
             else Destroy(gameObject);
 
-            player = PlayerController.instance;
-            radio = RadioController.instance;
+            player = NewPlayerController.instance;
+            radio = NewRadioManager.instance;
         }
         
         public enum FightAdvantage
@@ -100,35 +101,50 @@ namespace MANAGER
         }
 
 
-        public void InitialiseList() // detect every enemy in a rayon
+        public void InitialiseList() 
         {
             
-            if (player == null)
+            if (player == null) 
             {
+                Debug.LogError("Player reference is null!");
                 return;
             }
             
-            listOfJustEnemiesAlive.AddRange(currentOrder);
-            
-            // Sort en fonction de la distance avec le player pour que les ampoules soit plus logique
-            
-            listOfJustEnemiesAlive.Sort((x, y) =>
-                Vector3.Distance(PlayerController.instance.transform.position, x.entity.transform.position)
-                    .CompareTo(
-                        Vector3.Distance(PlayerController.instance.transform.position, y.entity.transform.position)));
-
+            currentOrder.Clear();
+            listOfJustEnemiesAlive.Clear();
             
             currentOrder.Add(player._abstractEntityDataInstance);
-        
-            currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
-
-            fighterAlive = new List<AbstractEntityDataInstance>(currentOrder); 
+            Debug.Log($"Player added to currentOrder: {player._abstractEntityDataInstance.entity.name}");
             
+            if (NewRadioManager.instance != null)
+            {
+                foreach (NewAi fighter in NewRadioManager.instance.listOfEveryEnemy)
+                {
+                    float distance = Vector3.Distance(fighter.transform.position, player.transform.position);
+                    if (distance <= rangeDetectEnemy)
+                    {
+                        currentOrder.Add(fighter._abstractEntityDataInstance);
+                        fighter._aiFightState = AiFightState.InFight;
+                        Debug.Log($"Enemy added: {fighter.name} at distance {distance}");
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("NewRadioManager instance is null!");
+            }
+            
+            listOfJustEnemiesAlive.AddRange(currentOrder.Where(x => x != player._abstractEntityDataInstance));
+            
+            currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
+            
+            fighterAlive = new List<AbstractEntityDataInstance>(currentOrder);
+
+            Debug.Log($"Total fighters: {currentOrder.Count} (Player + {listOfJustEnemiesAlive.Count} enemies)");
+    
             StartUnitTurn();
             
             
-            
-
             if (soundForFight == null)
             {
                 soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(SoundManager.instance.soundBankData.enemySound.
@@ -139,24 +155,23 @@ namespace MANAGER
                 soundForFight.SetActive(true);
             }
             
-            BehaviorPlayerEnteringFight();
+             
         }
 
-        private void CheckForDeadsFighter() //call end turn can use foreach + IsDead() bool
+        private void CheckForDeadsFighter() 
         {
             fighterAlive.RemoveAll(fighter => fighter.IsDead());
             currentOrder.RemoveAll(fighter => fighter.IsDead());
             listOfJustEnemiesAlive.RemoveAll(fighter => fighter.IsDead());
         }
 
-        private void CheckForEndFight() //Check if player Dead or if every enemy Dead in ListAlive
+        private void CheckForEndFight() 
         {
             if (fighterAlive.Count == 1 && fighterAlive[0] == player._abstractEntityDataInstance)
             {
                 Debug.Log("Player win");
-                PlayerController.instance._abstractEntityDataInstance.turnState = TurnState.NoTurn;
+                player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
-                RadioController.instance.UpdateRadioEnemyWithLight(AmpouleManager.ampouleAllumee);
                 soundForFight.SetActive(false);
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
@@ -167,41 +182,24 @@ namespace MANAGER
             }
             else
             {
-                
-                //TODO ON A ENLEVER L'ANCIENNE LOGIQUE BON DIEU
+                Debug.Log("Nobody Win continue");
             }
         }
-
-        private void BehaviorPlayerEnteringFight()
-        {
-            
-        }
-        
+    
         private void StartUnitTurn()
         {
-            if (currentOrder.Count > 0)
-            {
-                currentFighter = currentOrder[0]; 
-                currentFighter.turnState = TurnState.Turn; 
-            }
-    
-            UpdateUI();
-        }
+            if (currentOrder.Count <= 0) return;
+            currentFighter = currentOrder[0]; 
+            currentFighter.turnState = TurnState.Turn;
 
-        private void UpdateUI()
-        {
+        }
         
-        }
-
         private void ResetFightManagerAfterFight()
         {
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
             
-            /*temporary
-            int index = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(index);*/
         }
     }
 }

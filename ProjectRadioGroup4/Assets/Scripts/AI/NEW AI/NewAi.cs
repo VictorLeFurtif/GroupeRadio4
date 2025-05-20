@@ -11,7 +11,7 @@ namespace AI.NEW_AI
     //NORMAL NEWAI HAS A LOT IN COMMON WITH THE BATTERY I SUPPOSE PLEASE IN THE FUTURE IF THE FIGHTMANAGER FUCKED UP 
     // EVERYTHING I M GONNA HANG MY SELF
     
-    public class NewAi : BatteryInteract
+    public class NewAi : BatteryInteract,IAi
     {
         
         [Header("Attack Settings")]
@@ -39,7 +39,12 @@ namespace AI.NEW_AI
             TimerIfInteractWithPlayer();
         }
 
-        
+        protected override void Start()
+        {
+            base.Start();
+            AddAiToListOfEveryEnemy();
+        }
+
         #region LIFE HANDLER
 
         public float PvEnemy
@@ -78,7 +83,6 @@ namespace AI.NEW_AI
         
         #region OVERRIDE METHODE
         
-        //USEFULL FOR INIT THE FIGHTMANAGER
         protected override void OnCollisionEnter2D(Collision2D other)
         {
             var fightManager = FightManager.instance;
@@ -96,6 +100,8 @@ namespace AI.NEW_AI
 
         protected override void OnTriggerEnter2D(Collider2D other)
         {
+            
+            if (_aiFightState != AiFightState.OutFight) return;
             base.OnTriggerEnter2D(other);
             
             if (!other.CompareTag("Player") || _aiFightState == AiFightState.InFight) return;
@@ -104,7 +110,10 @@ namespace AI.NEW_AI
             isTimerRunning = true;
         }
 
+
         #endregion
+
+        #region INIT FIGHT
 
         private void TimerIfInteractWithPlayer()
         {
@@ -131,6 +140,7 @@ namespace AI.NEW_AI
             FacePlayer();
             
             InitiateCombat();
+            
         }
         
         private void FacePlayer()
@@ -160,6 +170,8 @@ namespace AI.NEW_AI
             
             fightManager.InitialiseList();
         }
+
+        #endregion
         
         public void EndAiTurn()
         {
@@ -171,6 +183,19 @@ namespace AI.NEW_AI
 
             FightManager.instance.EndFighterTurn();
             canAttack = true;
+        }
+
+        public void AddAiToListOfEveryEnemy()
+        {
+            if (NewRadioManager.instance == null)
+            {
+                Debug.LogError("NewRadioManager instance is null!");
+                return;
+            }
+            
+            NewRadioManager.instance.listOfEveryEnemy.Remove(this);
+            NewRadioManager.instance.listOfEveryEnemy.Add(this);
+            Debug.Log($"Enemy {name} added to NewRadioManager list");
         }
     }
 }

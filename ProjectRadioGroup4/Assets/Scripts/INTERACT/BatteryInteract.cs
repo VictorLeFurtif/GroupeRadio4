@@ -48,7 +48,7 @@ namespace INTERACT
         private Transform playerTransform;
         
 
-        private void Start()
+        protected virtual void Start()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             playerTransform = NewPlayerController.instance?.transform;
@@ -177,7 +177,7 @@ namespace INTERACT
             Destroy(gameObject);
         }
 
-        protected void CancelInteractionAfterContact()
+        protected virtual void CancelInteractionAfterContact()
         {
             NewPlayerController.instance.ListOfEveryElementInteractables.Remove(this);
             NewPlayerController.instance.CanTurnOnPhase2Module = false;
@@ -187,6 +187,7 @@ namespace INTERACT
         
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
+            
             if (other == null || NewPlayerController.instance == null) return;
             if (other.CompareTag("Player"))
             {
