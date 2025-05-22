@@ -50,7 +50,7 @@ public class NewPlayerController : MonoBehaviour
     public List<IInteractable> ListOfEveryElementInteractables = new List<IInteractable>();
     
     [Header("Scan Settings")]
-    public ScanType currentScanType = ScanType.Type1;
+    public ScanType currentScanType = ScanType.None;
     
     [Header("Phase 2 Module UI")]
     [SerializeField] private Button phase2Button;
@@ -70,7 +70,8 @@ public class NewPlayerController : MonoBehaviour
     {
         Type1 = 0, 
         Type2 = 1, 
-        Type3 = 2  
+        Type3 = 2,
+        None = 3
     }
     
     public enum Phase2Module
@@ -204,6 +205,7 @@ public class NewPlayerController : MonoBehaviour
         {
             interactable.OnScan();
         }
+        rangeFinderManager.UpdateUiRangeFinder();
     }
 
     public void ScanWeak() => Scan(ScanType.Type3);

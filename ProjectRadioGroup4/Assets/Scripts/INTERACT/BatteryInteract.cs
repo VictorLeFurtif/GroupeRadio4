@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using INTERFACE;
+using MANAGER;
 using UnityEngine;
 
 namespace INTERACT
@@ -56,6 +57,7 @@ namespace INTERACT
             AddToInteractList();
             UpdateSpriteVisibility();
             PositionTriggerZonesRandomly();
+            PutAllColliderInRangeFinderLists();
         }
         
         public void GenerateWavePatterns()
@@ -159,7 +161,6 @@ namespace INTERACT
         public void AddToInteractList()
         {
             NewPlayerController.instance?.ListOfEveryElementInteractables.Add(this);
-            NewPlayerController.instance?.rangeFinderManager.everyScriptInteractable.Add(this);
         }
 
         #region PhysicsAndContact
@@ -271,6 +272,13 @@ namespace INTERACT
             float randomY = Random.Range(-maxY, maxY);
             
             return new Vector2(randomX, randomY);
+        }
+
+        private void PutAllColliderInRangeFinderLists()
+        {
+            NewPlayerController.instance?.rangeFinderManager.listStrongColliders.Add(triggerZones[0].GetComponent<BoxCollider2D>());
+            NewPlayerController.instance?.rangeFinderManager.listMidColliders.Add(triggerZones[1].GetComponent<BoxCollider2D>());
+            NewPlayerController.instance?.rangeFinderManager.listWeakColliders.Add(triggerZones[2].GetComponent<BoxCollider2D>());
         }
         #endregion
         
