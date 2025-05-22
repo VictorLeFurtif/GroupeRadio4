@@ -96,7 +96,7 @@ namespace DATA.Script.Attack_Data.Old_System_Attack_Player
                 case PlayerAttack.AttackEffect.LeGrosBouclier:
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
-                        player._inGameData.grosBouclier = true;
+             //           player._inGameData.grosBouclier = true;
                     }
                     else if (FightManager.instance.fightState == FightManager.FightState.OutFight)
                     {
@@ -106,11 +106,11 @@ namespace DATA.Script.Attack_Data.Old_System_Attack_Player
                 case PlayerAttack.AttackEffect.ClassiqueEcho:
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
-                        player._inGameData.classicEcho = true;
+           //             player._inGameData.classicEcho = true;
                     }
                     else if (FightManager.instance.fightState == FightManager.FightState.OutFight)
                     {
-                        player._inGameData.classicEcho = true;
+         //               player._inGameData.classicEcho = true;
                     }
                     break;
                 default:
@@ -136,7 +136,7 @@ namespace DATA.Script.Attack_Data.Old_System_Attack_Player
                     player.gameObject.layer = 6;
                     break;
                 case PlayerAttack.AttackEffect.ClassiqueEcho:
-                    player._inGameData.classicEcho = false;
+         //           player._inGameData.classicEcho = false;
                     break;
                 case PlayerAttack.AttackEffect.SilenceRadio:
                     break;
@@ -154,8 +154,8 @@ namespace DATA.Script.Attack_Data.Old_System_Attack_Player
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
                         var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
-                        enemySelectedData.postZeroDeal.postZeroBomb = true;
-                        enemySelectedData.postZeroDeal.damageStockForAfterDeath = damageBomb;
+                 //       enemySelectedData.postZeroDeal.postZeroBomb = true;
+                  //      enemySelectedData.postZeroDeal.damageStockForAfterDeath = damageBomb;
                     }
                     break;
                 case PlayerAttack.AttackEffect.DeadHandSignal:
@@ -182,8 +182,8 @@ namespace DATA.Script.Attack_Data.Old_System_Attack_Player
                     if (FightManager.instance.fightState == FightManager.FightState.InFight && player.selectedEnemy != null)
                     {
                         var enemySelectedData = player.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
-                        enemySelectedData.vodkaOndeRadio.isVodka = true;
-                        enemySelectedData.vodkaOndeRadio.compteurVodka = 0;
+               //         enemySelectedData.vodkaOndeRadio.isVodka = true;
+                 //       enemySelectedData.vodkaOndeRadio.compteurVodka = 0;
                     }
                     break;
                 default:

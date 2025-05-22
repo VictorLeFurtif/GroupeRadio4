@@ -216,7 +216,7 @@ namespace Controller
         
         private void DisableActiveEffect()
         {
-            PlayerController.instance._inGameData.classicEcho = false;
+          //  PlayerController.instance._inGameData.classicEcho = false;
             PlayerController.instance.lampTorch.intensity = 0;
             PlayerController.instance.gameObject.layer = 6;
         }

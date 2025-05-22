@@ -117,7 +117,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
             animatorEnemyAi.Play("attackAi");
             CallBackFeedBackPlayer.Instance.ShowMessage($"Enemy use {_attackName}");
             Debug.Log(_attackName);
-            
+            /*
             if (PlayerController.instance._inGameData.grosBouclier)
             {
                 float damageEnemy = _damageDeal / 2;
@@ -139,7 +139,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
                 PlayerController.instance.ManageLife(_damageDeal);
                 _abstractEntityDataInstance.battery += _batteryGain;
                 Debug.Log(_attackName);
-            }
+            }*/
         }
         
         private void NormalAttack() => ClassicAttack(

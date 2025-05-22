@@ -20,18 +20,6 @@ MonoBehaviour:
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
   <Battery>k__BackingField: 0
-  <VodkaOndeRadio>k__BackingField:
-    compteurVodka: 0
-    isVodka: 0
-  <NormalAttack>k__BackingField:
-    damage: -7
-    batteryGain: 2
-  <HeavyAttack>k__BackingField:
-    damage: -9
-    batteryGain: 6
-  <StealBatteries>k__BackingField:
-    damage: -6
-    batteryGain: 6
-  <StealALotBatteries>k__BackingField:
-    damage: -8
-    batteryGain: 8
+  <everyAnimation>k__BackingField:
+    attackAnimation: {fileID: 7400000, guid: 7cdc84ad8f2de0e4894a5c726955f587, type: 2}
+    takeDamageAnimation: {fileID: 7400000, guid: d56a36fe43557144cbeb6c54bff41220, type: 2}

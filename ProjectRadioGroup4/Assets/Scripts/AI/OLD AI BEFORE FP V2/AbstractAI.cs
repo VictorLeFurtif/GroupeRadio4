@@ -108,7 +108,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
 
         private void HandleDeath()
         {
-            TryPostZeroBombEffect();
+       //     TryPostZeroBombEffect();
             RadioController.instance.listOfEveryEnemy.Remove(this);
             TryRemoveFromDetectedList();
             TryRemoveFromListFighterAlive();
@@ -120,7 +120,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
             if (FightManager.instance == null) return;
             // Ici tu peux implémenter si besoin
         }
-
+/*
         private void TryPostZeroBombEffect()
         {
             if (!_abstractEntityDataInstance.postZeroDeal.postZeroBomb) return;
@@ -137,7 +137,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
                 }
             }
         }
-
+*/
         private void TryRemoveFromDetectedList()
         {
             try
@@ -219,7 +219,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
                 Debug.LogError("No player instance found: Singleton problem with PlayerController");
                 return;
             }
-
+/*
             if (_abstractEntityDataInstance.vodkaOndeRadio.isVodka)
             {
                 foreach (var enemyAI in FightManager.instance.listOfJustEnemiesAlive)
@@ -236,7 +236,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
                     _abstractEntityDataInstance.vodkaOndeRadio.isVodka = false;
                 }
             }
-
+*/
             float randomValueForFlash = Random.Range(0f, 1f);
 
             if (randomValueForFlash < 0.25f && _abstractEntityDataInstance.flashed)

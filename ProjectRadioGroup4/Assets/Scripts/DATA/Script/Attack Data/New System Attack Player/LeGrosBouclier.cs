@@ -27,7 +27,7 @@ namespace DATA.Script.Attack_Data.New_System_Attack_Player
             switch (FightManager.instance.fightState)
             {
                 case FightManager.FightState.InFight when player.selectedEnemy != null:
-                    player._inGameData.grosBouclier = true;
+               //     player._inGameData.grosBouclier = true;
                     break;
                 case FightManager.FightState.OutFight:
                     player.gameObject.layer = 7;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AI;
@@ -196,14 +197,14 @@ namespace MANAGER
                 Debug.Log("Player win");
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
-                soundForFight.SetActive(false);
+                soundForFight?.SetActive(false);
                 player.canMove = true;
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
                 Debug.Log("IA win");
                 ResetFightManagerAfterFight();
-                soundForFight.SetActive(false);
+                soundForFight?.SetActive(false);
             }
             else
             {
@@ -213,6 +214,8 @@ namespace MANAGER
     
         private void StartUnitTurn()
         {
+            coroutine = null;
+            
             if (currentOrder.Count <= 0) return;
 
             currentFighter = currentOrder[0];
@@ -236,7 +239,6 @@ namespace MANAGER
                 {
                     AttackPlayer(currentFighter); 
                 }
-                EndFighterTurn();
             }
         }
         
@@ -251,7 +253,15 @@ namespace MANAGER
         {
             player.ManageLife(-10);
             Debug.Log("L'IA attaque le joueur !");
+            NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
+            if (ai != null)
+            {
+               ai.animatorEnemy.Play("attackAi");
+               coroutine = StartCoroutine(EndFighterTurnWithTimeAnimation(ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+            }
         }
+
+        private Coroutine coroutine;
         
         public void PlayerSuccess()
         {
@@ -259,12 +269,13 @@ namespace MANAGER
             if (ai != null)
             {
                 ai.PvEnemy -= 10;
-        
+                Debug.Log("Player attack");
                 ai.GenerateWavePatterns();
             }
     
             playerSuccess = true;
-            EndFighterTurn(); 
+            player.animatorPlayer.Play("goodsize anime attaque spé");
+            coroutine = StartCoroutine(EndFighterTurnWithTimeAnimation(player._inGameData.entityAnimation.attackAnimation));
         }
         #endregion
 
@@ -273,6 +284,12 @@ namespace MANAGER
         private void HandleTimerPlayerForPlay()
         {
             if (currentFighter != player._abstractEntityDataInstance || !(playerTurnTimer > 0)) return;
+
+            if (coroutine != null)
+            {
+                playerTurnTimer = playerTurnDuration;
+            }
+            
             playerTurnTimer -= Time.deltaTime;
 
             if (!(playerTurnTimer <= 0) || playerSuccess) return;
@@ -282,6 +299,12 @@ namespace MANAGER
             EndFighterTurn();
         }
 
+        private IEnumerator EndFighterTurnWithTimeAnimation(AnimationClip _animation)
+        {
+            Debug.Log("OK");
+            yield return new WaitForSeconds(_animation.length);
+            EndFighterTurn();
+        }
         #endregion
 
         

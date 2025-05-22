@@ -204,11 +204,11 @@ namespace Controller
         public void ValidButton()
         {
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.uxSound.click);
-            
+            /*
             if (_inGameData.grosBouclier)
             {
                 _inGameData.grosBouclier = false;
-            }
+            }*/
             
             if (currentPlayerExplorationState == PlayerStateExploration.Guessing &&
                 FightManager.instance.fightState == FightManager.FightState.OutFight) //HORS FIGHT DC EXPLO

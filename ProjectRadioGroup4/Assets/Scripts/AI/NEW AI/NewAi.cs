@@ -29,6 +29,8 @@ namespace AI.NEW_AI
         [Header("Combat Settings")]
         [SerializeField] private float combatDistance = 2f; 
         [SerializeField] private GameObject visualComponent;
+
+        [HideInInspector] public Animator animatorEnemy;
         
         
         #endregion
@@ -44,6 +46,7 @@ namespace AI.NEW_AI
             base.Start();
             AddAiToListOfEveryEnemy();
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
+            animatorEnemy = GetComponent<Animator>();
         }
         #endregion
 
