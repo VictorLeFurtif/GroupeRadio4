@@ -61,6 +61,8 @@ public class NewPlayerController : MonoBehaviour
     
     [Header("Current Selector")] 
     public IInteractable currentInteractableInRange = null;
+
+    public RangeFinderManager rangeFinderManager;
     #endregion
 
     #region Enums
@@ -109,6 +111,7 @@ public class NewPlayerController : MonoBehaviour
         animatorPlayer = GetComponent<Animator>();
         UpdatePhase2ButtonState();
         playerBattery = GetComponent<BatteryPlayer>();
+        rangeFinderManager = GetComponent<RangeFinderManager>();
     }
     #endregion
 

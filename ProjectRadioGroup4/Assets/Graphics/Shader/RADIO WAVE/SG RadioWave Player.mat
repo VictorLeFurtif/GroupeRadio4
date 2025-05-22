@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Step: 0
+    - _Step: 5.6520004
     - _noise_Scale: 0
     - _noise_amp: 0
     - _speed: 0.02

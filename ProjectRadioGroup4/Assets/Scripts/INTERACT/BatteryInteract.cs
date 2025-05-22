@@ -159,6 +159,7 @@ namespace INTERACT
         public void AddToInteractList()
         {
             NewPlayerController.instance?.ListOfEveryElementInteractables.Add(this);
+            NewPlayerController.instance?.rangeFinderManager.everyScriptInteractable.Add(this);
         }
 
         #region PhysicsAndContact
