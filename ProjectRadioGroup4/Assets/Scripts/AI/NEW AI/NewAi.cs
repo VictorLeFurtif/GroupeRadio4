@@ -1,3 +1,4 @@
+using System.Collections;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
@@ -78,7 +79,20 @@ namespace AI.NEW_AI
             {
                 EndAiTurn();
             }
+            StartCoroutine(DelayedDeath(1.2f));
         }
+        
+        private IEnumerator DelayedDeath(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            HandleDeath();
+        }
+
+        private void HandleDeath()
+        {
+            Destroy(gameObject);
+        }
+        
         #endregion
         
         #region Collision Handling
@@ -130,11 +144,10 @@ namespace AI.NEW_AI
         
         private void FacePlayer()
         {
-            var player = NewPlayerController.instance;
-            if (player == null) return;
-            
-            transform.localScale = transform.position.x > 
-                               player.transform.position.x ? new Vector3(-1, 1, 1) : Vector3.one;
+            if (NewPlayerController.instance == null) return;
+    
+            bool playerIsOnLeft = NewPlayerController.instance.transform.position.x < transform.position.x;
+            spriteRenderer.flipX = !playerIsOnLeft;
         }
 
         private void InitiateCombat()

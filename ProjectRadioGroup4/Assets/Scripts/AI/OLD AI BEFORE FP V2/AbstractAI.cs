@@ -118,7 +118,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
         private void TryRemoveFromListFighterAlive()
         {
             if (FightManager.instance == null) return;
-            // Ici tu peux implémenter si besoin
+            
         }
 /*
         private void TryPostZeroBombEffect()

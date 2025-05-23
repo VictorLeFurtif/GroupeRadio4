@@ -107,7 +107,7 @@ namespace MANAGER
             if (currentFighter == player._abstractEntityDataInstance)
             {
                 NewRadioManager.instance.StopMatchingGame();
-                player.canMove = false;
+                player.canMove = true;
             }
             
             UpdateListOfFighter();
@@ -123,8 +123,12 @@ namespace MANAGER
                 currentOrder.AddRange(fighterAlive);
             }
 
-            CheckForEndFight();
-            StartUnitTurn();
+            if (fightState == FightState.InFight )
+            {
+                CheckForEndFight();
+                StartUnitTurn();
+            }
+            
         }
 
         public void InitialiseList() 
@@ -199,6 +203,7 @@ namespace MANAGER
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
                 player.canMove = true;
+                
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
@@ -239,11 +244,17 @@ namespace MANAGER
                 {
                     AttackPlayer(currentFighter); 
                 }
+                else
+                {
+                    EndFighterTurn();
+                }
             }
         }
         
         private void ResetFightManagerAfterFight()
         {
+            Debug.LogError("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            player.canMove = true;
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
@@ -301,7 +312,6 @@ namespace MANAGER
 
         private IEnumerator EndFighterTurnWithTimeAnimation(AnimationClip _animation)
         {
-            Debug.Log("OK");
             yield return new WaitForSeconds(_animation.length);
             EndFighterTurn();
         }
