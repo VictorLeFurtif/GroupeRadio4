@@ -152,6 +152,11 @@ namespace MANAGER
 
         public void UpdateUiRangeFinder()
         {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                return;
+            }
+            
             List<BoxCollider2D> selectedList = GetCollidersForScanType(player.currentScanType);
 
             if (selectedList.Count != uiElements.Count) //CORRIGE BUG DE ERIC

@@ -113,6 +113,7 @@ public class NewPlayerController : MonoBehaviour
         UpdatePhase2ButtonState();
         playerBattery = GetComponent<BatteryPlayer>();
         rangeFinderManager = GetComponent<RangeFinderManager>();
+        currentScanType = ScanType.None;
     }
     #endregion
 
@@ -200,6 +201,11 @@ public class NewPlayerController : MonoBehaviour
     #region Scanning
     private void Scan(ScanType scanType)
     {
+        if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+        {
+            return;
+        }
+        
         currentScanType = scanType;
         foreach (var interactable in ListOfEveryElementInteractables)
         {
