@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class LightPoolTrigger : MonoBehaviour
+public class LightCullingTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {

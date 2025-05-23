@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 819571693221714798}
   - component: {fileID: 3156006668636030879}
   m_Layer: 8
-  m_Name: LightPoolTrigger
+  m_Name: LightCullingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
