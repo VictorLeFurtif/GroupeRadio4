@@ -32,8 +32,8 @@ namespace AI.NEW_AI
         [SerializeField] private GameObject visualComponent;
 
         [HideInInspector] public Animator animatorEnemy;
-        
-        
+
+        [HideInInspector] public Transform originalPos;
         #endregion
 
         #region Unity Methods
@@ -48,6 +48,7 @@ namespace AI.NEW_AI
             AddAiToListOfEveryEnemy();
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
             animatorEnemy = GetComponent<Animator>();
+            originalPos = transform;
         }
         #endregion
 
