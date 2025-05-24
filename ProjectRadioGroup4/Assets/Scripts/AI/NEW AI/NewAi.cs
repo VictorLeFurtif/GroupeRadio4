@@ -208,5 +208,6 @@ namespace AI.NEW_AI
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
         }
         #endregion
+        
     }
 }

@@ -84,30 +84,6 @@ namespace INTERACT
             }
         }
         
-        public void GenerateWavePatterns(Transform _transform)
-        {
-            wavePatterns.Clear();
-            currentPatternIndex = 0;
-
-            if (playerTransform == null) return;
-            
-            float distance = Vector3.Distance(_transform.position, playerTransform.position);
-            int patternCount = Mathf.Clamp(
-                basePatternCount + Mathf.FloorToInt(distance / generationRadius * (maxPatternCount - basePatternCount)),
-                basePatternCount,
-                maxPatternCount
-            );
-            
-            for (int i = 0; i < patternCount; i++)
-            {
-                wavePatterns.Add(new WaveSettings(
-                    Random.Range(minFrequency, maxFrequency),
-                    Random.Range(minAmplitude, maxAmplitude),
-                    Random.Range(minStep, maxStep)
-                ));
-            }
-        }
-        
         public void GenerateWavePatterns(bool avantage)
         {
             wavePatterns.Clear();

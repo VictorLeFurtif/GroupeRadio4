@@ -234,7 +234,7 @@ namespace MANAGER
                 NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
                 if (ai != null)
                 {
-                    ai.GenerateWavePatterns();
+                    //ai.GenerateWavePatterns();
                     NewRadioManager.instance.StartMatchingGameInFight();
                 }
             }
@@ -281,7 +281,7 @@ namespace MANAGER
             {
                 ai.PvEnemy -= 10;
                 Debug.Log("Player attack");
-                ai.GenerateWavePatterns();
+                //ai.GenerateWavePatterns();
             }
     
             playerSuccess = true;
