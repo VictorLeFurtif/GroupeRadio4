@@ -97,13 +97,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="42348">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="42348" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -164,7 +166,7 @@
       <workItem from="1747928013352" duration="2064000" />
       <workItem from="1747940990243" duration="7999000" />
       <workItem from="1747987585148" duration="442000" />
-      <workItem from="1748089100203" duration="1987000" />
+      <workItem from="1748089100203" duration="7084000" />
     </task>
     <servers />
   </component>
@@ -192,6 +194,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs</url>
+          <line>149</line>
+          <properties documentPath="C:\Work\GAMES\GroupeRadio4\ProjectRadioGroup4\Assets\Scripts\MANAGER\NewRadioManager.cs" containingFunctionPresentation="Method 'HandlePatternMatched'">
+            <startOffsets>
+              <option value="4859" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4875" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

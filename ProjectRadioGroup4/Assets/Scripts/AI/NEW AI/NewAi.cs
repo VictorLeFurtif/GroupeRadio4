@@ -102,11 +102,9 @@ namespace AI.NEW_AI
             var fightManager = FightManager.instance;
             if (!other.gameObject.CompareTag("Player")) return;
             
-            CancelInteractionAfterContact();
-            
-            StartCombatSequence();
+            BeginFight();
         }
-
+        
         protected override void OnTriggerEnter2D(Collider2D other)
         {
             if (_aiFightState != AiFightState.OutFight) return;
@@ -116,6 +114,12 @@ namespace AI.NEW_AI
         #endregion
 
         #region Combat Management
+        
+        public void BeginFight()
+        {
+            CancelInteractionAfterContact();
+            StartCombatSequence();
+        }
         private void TimerIfInteractWithPlayer()
         {
             if (!isTimerRunning) return;

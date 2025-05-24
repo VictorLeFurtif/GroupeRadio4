@@ -50,7 +50,7 @@ namespace MANAGER
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
         public float playerTurnTimer { get; private set; }
-        private bool playerSuccess = false;
+        public bool playerSuccess = false;
         
         [Header("Pattern Completion")]
         private int patternsCompleted = 0;

@@ -137,20 +137,26 @@ namespace MANAGER
 
             if (!waveInteractable.HasRemainingPatterns())
             {
-                waveInteractable.Detected = true;
-        
-                if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+                var controller = NewPlayerController.instance;
+                
+                switch (FightManager.instance?.fightState)
                 {
-                    
-                    FightManager.instance.StartCoroutine(CompleteAllPatternsRoutine());
+                    case FightManager.FightState.OutFight when controller != null:
+                        waveInteractable.Detected = true;
+                        controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
+
+                        if (waveInteractable is NewAi ai)
+                        {
+                            ai.BeginFight();    
+                        }
+                        
+                        break;
+                    case FightManager.FightState.InFight:
+                        FightManager.instance.StartCoroutine(CompleteAllPatternsRoutine());
+                        break;
                 }
 
-                var controller = NewPlayerController.instance;
-                if (controller != null) 
-                {
-                    controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
-                }
-        
+
                 yield return HandleRadioTransition(new WaveSettings(0,0,0));
             }
             else
@@ -221,8 +227,11 @@ namespace MANAGER
                 ai.attackTimer = ai.attackTriggerDelay;
                 ai.isTimerRunning = true;
             }
-            
-            if (!waveInteractable.HasRemainingPatterns()) return;
+
+            if (!waveInteractable.HasRemainingPatterns())
+            {
+                return;
+            }
 
             if (currentTransition != null)
                 StopCoroutine(currentTransition);

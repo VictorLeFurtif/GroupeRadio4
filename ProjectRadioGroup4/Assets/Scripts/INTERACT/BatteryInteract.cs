@@ -59,8 +59,8 @@ namespace INTERACT
             PositionTriggerZonesRandomly();
             PutAllColliderInRangeFinderLists();
         }
-        
-        public void GenerateWavePatterns()
+
+        private void GenerateWavePatterns()
         {
             wavePatterns.Clear();
             currentPatternIndex = 0;
@@ -83,8 +83,8 @@ namespace INTERACT
                 ));
             }
         }
-        
-        public void GenerateWavePatterns(bool avantage)
+
+        private void GenerateWavePatterns(bool avantage)
         {
             wavePatterns.Clear();
             currentPatternIndex = 0;
@@ -110,7 +110,17 @@ namespace INTERACT
 
         public void Activate()
         {
-            GenerateWavePatterns();
+            var fightManager = FightManager.instance;
+            if (fightManager == null) return;
+            
+            if (fightManager.fightState == FightManager.FightState.OutFight)
+            {
+                GenerateWavePatterns();
+            }
+            else
+            {
+                GenerateWavePatterns(detected);
+            }
         }
         
         public void MarkAsUsed()
