@@ -147,7 +147,8 @@ namespace MANAGER
 
                         if (waveInteractable is NewAi ai)
                         {
-                            ai.BeginFight();    
+                            ai.BeginFight();
+                            yield break;
                         }
                         
                         break;

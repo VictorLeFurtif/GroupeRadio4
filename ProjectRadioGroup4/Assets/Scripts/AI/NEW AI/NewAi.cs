@@ -183,7 +183,7 @@ namespace AI.NEW_AI
     
             fightManager.InitialiseList();
             
-            NewRadioManager.instance?.StartMatchingGameInFight();
+            //NewRadioManager.instance?.StartMatchingGameInFight();
         }
         #endregion
         
