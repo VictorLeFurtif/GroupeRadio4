@@ -54,6 +54,16 @@ namespace MANAGER
         [SerializeField] private TMP_Text chronoInFight;
         
         [Header("List")] public List<NewAi> listOfEveryEnemy;
+
+        [Header("Light Settings")]
+        [SerializeField] private Image[] lights = new Image[6]; 
+        [SerializeField] private Color offColor = new Color(0.2f, 0.2f, 0.2f, 1f); 
+        [SerializeField] private Color pendingColor = Color.red;
+        [SerializeField] private Color currentColor = Color.yellow;
+        [SerializeField] private Color completedColor = Color.green;
+        [SerializeField] private float lightActivationSpeed = 0.3f;
+
+        private int currentActiveLight = 0;
         
         private float lastCheckTime;
         private bool isMatching;
@@ -129,6 +139,8 @@ namespace MANAGER
 
         private IEnumerator HandlePatternMatched(IWaveInteractable waveInteractable)
         {
+            ActivateNextLight();
+            
             isMatching = false;
     
             yield return PulseEffect();
@@ -242,6 +254,7 @@ namespace MANAGER
 
         public void StartMatchingGameInFight()
         {
+            ResetLights();
             if (NewPlayerController.instance.currentInteractableInRange is not NewAi ai) 
             {
                 return;
@@ -255,10 +268,13 @@ namespace MANAGER
                 StopCoroutine(currentTransition);
             
             currentTransition = StartCoroutine(StartMatchingRoutine(ai));
+            if (lights.Length > 0)
+                lights[0].color = currentColor;
         }
 
         public void StopMatchingGame()
         {
+            ResetLights();
             if (currentTransition != null)
                 StopCoroutine(currentTransition);
             
@@ -328,7 +344,39 @@ namespace MANAGER
         {
             _targetText.text = _targetInnerText;
         }
+        
+        private void InitializeLights()
+        {
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].color = offColor;
+            }
+            currentActiveLight = 0;
+        }
 
+        private void ActivateNextLight()
+        {
+            if (currentActiveLight >= lights.Length) return;
+
+            lights[currentActiveLight].color = completedColor;
+    
+            if (currentActiveLight + 1 < lights.Length)
+            {
+                lights[currentActiveLight + 1].color = currentColor;
+            }
+    
+            currentActiveLight++;
+        }
+
+        public void ResetLights()
+        {
+            InitializeLights();
+            foreach (var light in lights)
+            {
+                light.transform.localScale = Vector3.one;
+            }
+        }
+        
         #endregion
 
         #region Time Related
