@@ -63,6 +63,14 @@ public class NewPlayerController : MonoBehaviour
     public IInteractable currentInteractableInRange = null;
 
     public RangeFinderManager rangeFinderManager;
+    
+    [Header("Life Drain By Scan")] 
+    
+    [SerializeField] private float lifeTakeWeak;
+    [SerializeField] private float lifeTakenMid;
+    [SerializeField] private float lifeTakenStrong;
+
+    [Header("Damage")] [SerializeField] private float maxDamageDone;
     #endregion
 
     #region Enums
@@ -117,7 +125,7 @@ public class NewPlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Life Management
+    #region Life Management & Getter Setter
     public void ManageLife(float valueLifeChanger) 
     {
         HealthPlayer += valueLifeChanger;
@@ -153,6 +161,11 @@ public class NewPlayerController : MonoBehaviour
                 animatorPlayer.Play("HitReceived");
             }
         }
+    }
+
+    public float GetPlayerDamage()
+    {
+        return maxDamageDone;
     }
     
     public void PlayGameOver()
@@ -199,24 +212,28 @@ public class NewPlayerController : MonoBehaviour
     #endregion
 
     #region Scanning
-    private void Scan(ScanType scanType)
+    private void Scan(ScanType scanType, float damageDealToPlayer)
     {
         if (FightManager.instance?.fightState == FightManager.FightState.InFight)
         {
             return;
         }
-        
+        animatorPlayer.Play("ScanAround");
         currentScanType = scanType;
         foreach (var interactable in ListOfEveryElementInteractables)
         {
             interactable.OnScan();
         }
+        ManageLife(-damageDealToPlayer);
         rangeFinderManager.UpdateUiRangeFinder();
     }
 
-    public void ScanWeak() => Scan(ScanType.Type3);
-    public void ScanMid() => Scan(ScanType.Type2);
-    public void ScanStrong() => Scan(ScanType.Type1);
+    
+    
+    
+    public void ScanWeak() => Scan(ScanType.Type3,lifeTakeWeak);
+    public void ScanMid() => Scan(ScanType.Type2,lifeTakenMid);
+    public void ScanStrong() => Scan(ScanType.Type1,lifeTakenStrong);
     #endregion
 
     #region Phase 2 Module

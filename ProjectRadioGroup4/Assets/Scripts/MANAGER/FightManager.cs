@@ -52,9 +52,7 @@ namespace MANAGER
         public float playerTurnTimer { get; private set; }
         public bool playerSuccess = false;
         
-        [Header("Pattern Completion")]
-        private int patternsCompleted = 0;
-        private int totalPatternsToComplete = 3;
+        
         #endregion
 
         #region Enums
@@ -279,8 +277,9 @@ namespace MANAGER
             NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
-                ai.PvEnemy -= 10;
-                Debug.Log("Player attack");
+                float damage = player.GetPlayerDamage() * playerTurnTimer / playerTurnDuration;
+                ai.PvEnemy -= damage;
+                Debug.Log($"Player attack and did {damage}");
                 //ai.GenerateWavePatterns();
             }
     
@@ -306,7 +305,7 @@ namespace MANAGER
             if (!(playerTurnTimer <= 0) || playerSuccess) return;
             NewRadioManager.instance.StopMatchingGame();
             Debug.Log("Temps écoulé !");
-            patternsCompleted = 0; 
+           
             EndFighterTurn();
         }
 

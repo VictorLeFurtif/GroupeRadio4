@@ -30,8 +30,7 @@ namespace Controller
 
         [SerializeField] private RawImage imageRadioEnemy;
         public Material matRadioEnemy;
-
-        private RadioState currentRadioState;
+        
 
         [Header("Radio detection enemy parameters")]
         public List<AbstractAI> listOfEveryEnemy;
@@ -90,7 +89,6 @@ namespace Controller
 
         private void Start()
         {
-            currentRadioState = RadioState.OutFight;
             InitializeSliderFrequency();
             sliderForFrequencyAttack.onValueChanged.AddListener(delegate { ValueChangeCheck();});
             InitializeRadioEnemy();

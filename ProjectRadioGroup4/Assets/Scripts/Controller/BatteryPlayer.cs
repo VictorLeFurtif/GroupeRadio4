@@ -11,7 +11,7 @@ namespace Controller
     {
         private NewPlayerController player;
         private float _timer;
-        [SerializeField] private float batteryCheckInterval = 1f;
+        //[SerializeField] private float batteryCheckInterval = 1f;
         [SerializeField] private TMP_Text lifeText;
         
         private Coroutine transitionCoroutineLife;

@@ -61,7 +61,6 @@ namespace MANAGER
         [SerializeField] private Color pendingColor = Color.red;
         [SerializeField] private Color currentColor = Color.yellow;
         [SerializeField] private Color completedColor = Color.green;
-        [SerializeField] private float lightActivationSpeed = 0.3f;
 
         private int currentActiveLight = 0;
         

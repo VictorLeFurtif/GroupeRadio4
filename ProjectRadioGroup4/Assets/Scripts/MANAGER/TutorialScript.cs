@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 public class TutorialScript : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private Light2D light;
+    [SerializeField] private new Light2D light;
     [SerializeField] private Light2D torchLight;
     [SerializeField] private string succesMessage;
     [SerializeField] private TutorialUIManager tutorialUI;

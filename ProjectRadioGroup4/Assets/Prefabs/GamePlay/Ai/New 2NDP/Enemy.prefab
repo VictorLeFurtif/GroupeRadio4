@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 1276004098474560360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 460842982326318080}
@@ -103,8 +103,8 @@ Transform:
   m_GameObject: {fileID: 2704626032283219045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 1.2300001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 460842982326318080}
@@ -180,8 +180,8 @@ Transform:
   m_GameObject: {fileID: 4352877301182140240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 1.2300001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 460842982326318080}
@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 8206585871188518614}
   - component: {fileID: 5873749566980455051}
   - component: {fileID: 4270810391467650564}
+  - component: {fileID: 1168064175984783220}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -261,7 +262,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.24, y: 1.65, z: 0}
-  m_LocalScale: {x: 0.31, y: 0.31, z: 0.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1290195683814373333}
@@ -309,7 +310,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1228180856, guid: ad1349cd1cbee73439ce6d6bec1ed586, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -380,8 +381,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: 1.2712634}
+  m_Size: {x: 1, y: 2.906466}
   m_Direction: 0
 --- !u!114 &4270810391467650564
 MonoBehaviour:
@@ -396,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePatterns: []
+  currentPatternIndex: 0
   triggerZones:
   - {fileID: 1276004098474560360}
   - {fileID: 4352877301182140240}
@@ -403,7 +405,7 @@ MonoBehaviour:
   lifeAmountToGive: 0
   basePatternCount: 3
   maxPatternCount: 6
-  minFrequency: 1
+  minFrequency: 3
   maxFrequency: 15
   minAmplitude: 0.1
   maxAmplitude: 0.4
@@ -438,11 +440,31 @@ MonoBehaviour:
       damage: 0
       batteryGain: 0
     flashed: 0
-    postZeroDeal:
-      postZeroBomb: 0
-      damageStockForAfterDeath: 0
-    vodkaOndeRadio:
-      compteurVodka: 0
-      isVodka: 0
+    entityAnimation:
+      attackAnimation: {fileID: 0}
+      takeDamageAnimation: {fileID: 0}
   combatDistance: 2
   visualComponent: {fileID: 5741257483416933003}
+  animatorEnemy: {fileID: 0}
+  originalPos: {fileID: 0}
+--- !u!95 &1168064175984783220
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741257483416933003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2190c543f9029324ba09c54e501b3bec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
