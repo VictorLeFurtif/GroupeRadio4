@@ -111,6 +111,13 @@ namespace AI.NEW_AI
             base.OnTriggerEnter2D(other);
             
         }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            NewRadioManager.instance?.listOfEveryEnemy.Remove(this);
+        }
+
         #endregion
 
         #region Combat Management

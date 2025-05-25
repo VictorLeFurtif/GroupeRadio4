@@ -161,6 +161,10 @@ namespace MANAGER
                             ai.BeginFight();
                             yield break;
                         }
+                        else
+                        {
+                            controller.canMove = true;
+                        }
                         
                         break;
                     case FightManager.FightState.InFight:
@@ -242,6 +246,7 @@ namespace MANAGER
 
             if (!waveInteractable.HasRemainingPatterns())
             {
+                Debug.LogError("ICICICIICCII");
                 return;
             }
 

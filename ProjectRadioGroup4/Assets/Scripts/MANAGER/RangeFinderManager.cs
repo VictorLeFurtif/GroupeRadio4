@@ -157,6 +157,7 @@ namespace MANAGER
                 return;
             }
             
+            RemoveDestroyedElements();
             List<BoxCollider2D> selectedList = GetCollidersForScanType(player.currentScanType);
 
             if (selectedList.Count != uiElements.Count) //CORRIGE BUG DE ERIC
@@ -189,6 +190,32 @@ namespace MANAGER
         }
 
         #endregion
+        
+        public void RemoveDestroyedElements()
+        {
+            
+            listWeakColliders.RemoveAll(c => c == null || c.gameObject == null);
+            listMidColliders.RemoveAll(c => c == null || c.gameObject == null);
+            listStrongColliders.RemoveAll(c => c == null || c.gameObject == null);
+            
+            uiElements.RemoveAll(uiData => uiData.uiObject == null);
+            
+            foreach (Transform child in parentRangeFinder.transform)
+            {
+                bool found = false;
+                foreach (var uiData in uiElements)
+                {
+                    if (uiData.uiObject != child.gameObject) continue;
+                    found = true;
+                    break;
+                }
+        
+                if (!found)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+        }
         
         private class UIElementData
         {

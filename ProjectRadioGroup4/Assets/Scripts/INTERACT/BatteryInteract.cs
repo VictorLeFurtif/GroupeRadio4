@@ -183,6 +183,26 @@ namespace INTERACT
             currentActiveZone = -1;
         }
 
+        protected virtual void OnDestroy()
+        {
+            var player = NewPlayerController.instance;
+            if (player == null) return;
+            player.ListOfEveryElementInteractables.Remove(this);
+            
+            var rangeFinder = player.rangeFinderManager;
+            if (rangeFinder == null) return;
+            foreach (var zone in triggerZones)
+            {
+                if (zone == null) continue;
+                var collider = zone.GetComponent<BoxCollider2D>();
+                if (collider == null) continue;
+                
+                rangeFinder.listStrongColliders.Remove(collider);
+                rangeFinder.listMidColliders.Remove(collider);
+                rangeFinder.listWeakColliders.Remove(collider);
+            }
+        }
+        
         #endregion
 
         public void AddToInteractList()
