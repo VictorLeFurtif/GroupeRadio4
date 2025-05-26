@@ -277,7 +277,8 @@ namespace MANAGER
             NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
-                float damage = player.GetPlayerDamage() * playerTurnTimer / playerTurnDuration;
+                float ratio = playerTurnTimer / playerTurnDuration;
+                float damage = ratio > 0.5f ? player.GetPlayerDamage() * 1.5f : player.GetPlayerDamage();
                 ai.PvEnemy -= damage;
                 Debug.Log($"Player attack and did {damage}");
                 //ai.GenerateWavePatterns();

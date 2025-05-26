@@ -103,6 +103,7 @@ namespace MANAGER
         {
             InitializeSliders();
             ResetMaterials();
+            InitializeLights();
         }
         #endregion
 
@@ -156,9 +157,10 @@ namespace MANAGER
                     case FightManager.FightState.OutFight when controller != null:
                         waveInteractable.Detected = true;
                         controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
-
+                        InitializeLights();
                         if (waveInteractable is NewAi ai)
                         {
+                            
                             ai.BeginFight();
                             yield break;
                         }
