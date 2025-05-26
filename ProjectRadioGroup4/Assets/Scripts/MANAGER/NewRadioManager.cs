@@ -165,6 +165,7 @@ namespace MANAGER
                         else
                         {
                             controller.canMove = true;
+                            waveInteractable.CanSecondPhase = false;
                         }
                         
                         break;

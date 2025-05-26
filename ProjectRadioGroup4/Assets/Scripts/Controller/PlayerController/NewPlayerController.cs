@@ -239,23 +239,23 @@ public class NewPlayerController : MonoBehaviour
     #region Phase 2 Module
     public void SwitchRadioPhaseTwo()
     {
-        if (!CanTurnOnPhase2Module || currentInteractableInRange == null) return;
+        if (!CanTurnOnPhase2Module || currentInteractableInRange is not { CanSecondPhase: true }) return;
 
-        if (currentInteractableInRange is IWaveInteractable waveInteractable)
+        if (currentInteractableInRange is not IWaveInteractable waveInteractable) return;
+        switch (currentPhase2ModuleState)
         {
-            if (currentPhase2ModuleState == Phase2Module.Off && waveInteractable.CanBeActivated())
-            {
+            case Phase2Module.Off when waveInteractable.CanBeActivated():
                 canMove = false;
                 currentPhase2ModuleState = Phase2Module.On;
                 NewRadioManager.instance.StartMatchingGameOutFight();
-            }
-            else if (currentPhase2ModuleState == Phase2Module.On)
-            {
+                break;
+            case Phase2Module.On:
                 canMove = true;
+                waveInteractable.CanSecondPhase = false;
                 currentPhase2ModuleState = Phase2Module.Off;
                 NewRadioManager.instance.StopMatchingGame();
                 waveInteractable.MarkAsUsed();
-            }
+                break;
         }
     }
 

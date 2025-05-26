@@ -47,6 +47,7 @@ namespace INTERACT
         protected SpriteRenderer spriteRenderer;
         private bool detected;
         private Transform playerTransform;
+        private bool canSecondPhase;
         
 
         protected virtual void Start()
@@ -58,6 +59,7 @@ namespace INTERACT
             UpdateSpriteVisibility();
             PositionTriggerZonesRandomly();
             PutAllColliderInRangeFinderLists();
+            canSecondPhase = true;
         }
 
         private void GenerateWavePatterns()
@@ -149,6 +151,12 @@ namespace INTERACT
         public void Reveal()
         {
             throw new System.NotImplementedException();
+        }
+
+        public bool CanSecondPhase 
+        { 
+            get => canSecondPhase;
+            set => canSecondPhase = value;
         }
 
         private void SetActiveZone(int zoneIndex)
