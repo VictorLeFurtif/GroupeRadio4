@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c33b9e58716d144a8ec65bf7cbf819f, type: 3}
   m_Name: Static AI Data
   m_EditorClassIdentifier: 
-  <Hp>k__BackingField: 78
+  <Hp>k__BackingField: 1
   <Speed>k__BackingField: 25
   TurnState: 1
   <WaveAmplitudeEnemy>k__BackingField: 0.15
