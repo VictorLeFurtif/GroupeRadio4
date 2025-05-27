@@ -217,7 +217,7 @@ namespace MANAGER
     
         private void StartUnitTurn()
         {
-            coroutine = null;
+            coroutineAnimation = null;
             
             if (currentOrder.Count <= 0) return;
 
@@ -251,7 +251,6 @@ namespace MANAGER
         
         private void ResetFightManagerAfterFight()
         {
-            Debug.LogError("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
             player.canMove = true;
             currentOrder.Clear();
             fighterAlive.Clear();
@@ -266,18 +265,20 @@ namespace MANAGER
             if (ai != null)
             {
                ai.animatorEnemy.Play("attackAi");
-               coroutine = StartCoroutine(EndFighterTurnWithTimeAnimation(ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+               coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation(ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
             }
         }
 
-        private Coroutine coroutine;
+        private Coroutine coroutineAnimation;
+        
         
         public void PlayerSuccess()
         {
             NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
-                float damage = player.GetPlayerDamage() * playerTurnTimer / playerTurnDuration;
+                float ratio = playerTurnTimer / playerTurnDuration;
+                float damage = ratio > 0.5f ? player.GetPlayerDamage() * 1.5f : player.GetPlayerDamage();
                 ai.PvEnemy -= damage;
                 Debug.Log($"Player attack and did {damage}");
                 //ai.GenerateWavePatterns();
@@ -285,7 +286,7 @@ namespace MANAGER
     
             playerSuccess = true;
             player.animatorPlayer.Play("goodsize anime attaque spé");
-            coroutine = StartCoroutine(EndFighterTurnWithTimeAnimation(player._inGameData.entityAnimation.attackAnimation));
+            coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation(player._inGameData.entityAnimation.attackAnimation));
         }
         #endregion
 
@@ -295,7 +296,7 @@ namespace MANAGER
         {
             if (currentFighter != player._abstractEntityDataInstance || !(playerTurnTimer > 0)) return;
 
-            if (coroutine != null)
+            if (coroutineAnimation != null)
             {
                 playerTurnTimer = playerTurnDuration;
             }

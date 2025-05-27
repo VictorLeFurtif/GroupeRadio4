@@ -6,6 +6,7 @@ using INTERACT;
 using INTERFACE;
 using MANAGER;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AI.NEW_AI
 {
@@ -34,6 +35,11 @@ namespace AI.NEW_AI
         [HideInInspector] public Animator animatorEnemy;
 
         [HideInInspector] public Transform originalPos;
+        
+        [Header("Enemy Health Settings")]
+        [SerializeField] private Slider healthSlider;
+        [SerializeField] private float healthLerpDuration = 0.3f;
+        private Coroutine healthLerpCoroutine;
         #endregion
 
         #region Unity Methods
@@ -49,6 +55,7 @@ namespace AI.NEW_AI
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
             animatorEnemy = GetComponent<Animator>();
             originalPos = transform;
+            healthSlider.gameObject.SetActive(false);
         }
         #endregion
 
@@ -58,15 +65,50 @@ namespace AI.NEW_AI
             get => _abstractEntityDataInstance.hp;
             set
             {
-                if (isDead) return;
+                if (isDead || _abstractEntityDataInstance == null) return;
 
-                _abstractEntityDataInstance.hp = value;
+                float newHealth = Mathf.Clamp(value, 0f, _abstractEntityDataInstance.maxHp);
+                float previousHealth = _abstractEntityDataInstance.hp;
+                _abstractEntityDataInstance.hp = newHealth;
+                
+                UpdateHealthSlider(previousHealth, newHealth);
 
                 if (_abstractEntityDataInstance.IsDead())
                 {
                     Die();
                 }
             }
+        }
+        
+        private void UpdateHealthSlider(float fromHealth, float toHealth)
+        {
+            if (healthSlider == null) return;
+
+            if (healthLerpCoroutine != null)
+            {
+                StopCoroutine(healthLerpCoroutine);
+            }
+
+            healthLerpCoroutine = StartCoroutine(LerpHealthSlider(
+                fromHealth / _abstractEntityDataInstance.maxHp,
+                toHealth / _abstractEntityDataInstance.maxHp
+            ));
+        }
+
+        private IEnumerator LerpHealthSlider(float fromValue, float toValue)
+        {
+            float elapsedTime = 0f;
+
+            while (elapsedTime < healthLerpDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsedTime / healthLerpDuration);
+                healthSlider.value = Mathf.Lerp(fromValue, toValue, t);
+                yield return null;
+            }
+
+            healthSlider.value = toValue;
+            healthLerpCoroutine = null;
         }
         
         private void Die()
@@ -111,6 +153,13 @@ namespace AI.NEW_AI
             base.OnTriggerEnter2D(other);
             
         }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            NewRadioManager.instance?.listOfEveryEnemy.Remove(this);
+        }
+
         #endregion
 
         #region Combat Management
@@ -133,6 +182,7 @@ namespace AI.NEW_AI
         
         private void StartCombatSequence()
         {
+            healthSlider.gameObject.SetActive(true);
             NewRadioManager.instance?.StopMatchingGame();
             spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;

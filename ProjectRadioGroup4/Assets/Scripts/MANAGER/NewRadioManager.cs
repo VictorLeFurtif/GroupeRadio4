@@ -29,7 +29,7 @@ namespace MANAGER
         [Header("Sliders")]
         [SerializeField] private Slider sliderAmplitude;
         [SerializeField] private Slider sliderFrequency;
-        [SerializeField] private Slider sliderStep;
+        //[SerializeField] private Slider sliderStep;
 
         [Header("Shader Property Limits")]
         [SerializeField] private float maxAmplitude = 0.4f;
@@ -103,6 +103,7 @@ namespace MANAGER
         {
             InitializeSliders();
             ResetMaterials();
+            InitializeLights();
         }
         #endregion
 
@@ -120,12 +121,13 @@ namespace MANAGER
                 sliderFrequency.maxValue = maxFrequency;
                 sliderFrequency.onValueChanged.AddListener((value) => UpdateShaderParam("_waves_Amount", value));
             }
-
+            /*
             if (sliderStep != null)
             {
                 sliderStep.maxValue = maxStep;
                 sliderStep.onValueChanged.AddListener((value) => UpdateShaderParam("_Step", value));
             }
+            */
         }
         #endregion
 
@@ -155,11 +157,17 @@ namespace MANAGER
                     case FightManager.FightState.OutFight when controller != null:
                         waveInteractable.Detected = true;
                         controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
-
+                        InitializeLights();
                         if (waveInteractable is NewAi ai)
                         {
+                            
                             ai.BeginFight();
                             yield break;
+                        }
+                        else
+                        {
+                            controller.canMove = true;
+                            waveInteractable.CanSecondPhase = false;
                         }
                         
                         break;
@@ -188,7 +196,7 @@ namespace MANAGER
         {
             float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
             float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
-            float startStep = matRadioEnemy.GetFloat("_Step");
+          //  float startStep = matRadioEnemy.GetFloat("_Step");
 
             float elapsed = 0f;
 
@@ -201,8 +209,8 @@ namespace MANAGER
                     Mathf.Lerp(startFreq, targetSettings.frequency, t));
                 matRadioEnemy.SetFloat("_waves_Amp", 
                     Mathf.Lerp(startAmp, targetSettings.amplitude, t));
-                matRadioEnemy.SetFloat("_Step", 
-                    Mathf.Lerp(startStep, targetSettings.step, t));
+             //   matRadioEnemy.SetFloat("_Step", 
+               //     Mathf.Lerp(startStep, targetSettings.step, t));
 
                 yield return null;
             }
@@ -242,6 +250,7 @@ namespace MANAGER
 
             if (!waveInteractable.HasRemainingPatterns())
             {
+                Debug.LogError("ICICICIICCII");
                 return;
             }
 
@@ -292,7 +301,8 @@ namespace MANAGER
             var settings = waveInteractable?.GetCurrentWaveSettings();
 
             if (settings == null || !IsMatch(settings)) return;
-            
+            Debug.Log(matRadioPlayer.GetFloat("_waves_Amount") +"   "+ matRadioPlayer.GetFloat("_waves_Amp"));
+            Debug.Log(matRadioEnemy.GetFloat("_waves_Amount") +"   "+ matRadioEnemy.GetFloat("_waves_Amp"));
             StartCoroutine(HandlePatternMatched(waveInteractable));
         }
         
@@ -300,11 +310,11 @@ namespace MANAGER
         {
             float freqDiff = Mathf.Abs(matRadioPlayer.GetFloat("_waves_Amount") - settings.frequency);
             float ampDiff = Mathf.Abs(matRadioPlayer.GetFloat("_waves_Amp") - settings.amplitude);
-            float stepDiff = Mathf.Abs(matRadioPlayer.GetFloat("_Step") - settings.step);
-
-            return freqDiff < frequencyThreshold 
-                   && ampDiff < amplitudeThreshold 
-                   && stepDiff < stepThreshold;
+           // float stepDiff = Mathf.Abs(matRadioPlayer.GetFloat("_Step") - settings.step);
+        
+           return freqDiff < frequencyThreshold
+                  && ampDiff < amplitudeThreshold;
+           // && stepDiff < stepThreshold;
         }
         #endregion
 
@@ -314,7 +324,7 @@ namespace MANAGER
         {
             mat.SetFloat("_waves_Amount", settings.frequency);
             mat.SetFloat("_waves_Amp", settings.amplitude);
-            mat.SetFloat("_Step", settings.step);
+           // mat.SetFloat("_Step", settings.step);
         }
 
         private void UpdateShaderParam(string param, float value)

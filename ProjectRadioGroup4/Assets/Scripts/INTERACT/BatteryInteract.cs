@@ -47,6 +47,7 @@ namespace INTERACT
         protected SpriteRenderer spriteRenderer;
         private bool detected;
         private Transform playerTransform;
+        private bool canSecondPhase;
         
 
         protected virtual void Start()
@@ -58,6 +59,7 @@ namespace INTERACT
             UpdateSpriteVisibility();
             PositionTriggerZonesRandomly();
             PutAllColliderInRangeFinderLists();
+            canSecondPhase = true;
         }
 
         private void GenerateWavePatterns()
@@ -151,6 +153,12 @@ namespace INTERACT
             throw new System.NotImplementedException();
         }
 
+        public bool CanSecondPhase 
+        { 
+            get => canSecondPhase;
+            set => canSecondPhase = value;
+        }
+
         private void SetActiveZone(int zoneIndex)
         {
             if (zoneIndex < 0 || zoneIndex >= triggerZones.Length)
@@ -183,6 +191,26 @@ namespace INTERACT
             currentActiveZone = -1;
         }
 
+        protected virtual void OnDestroy()
+        {
+            var player = NewPlayerController.instance;
+            if (player == null) return;
+            player.ListOfEveryElementInteractables.Remove(this);
+            
+            var rangeFinder = player.rangeFinderManager;
+            if (rangeFinder == null) return;
+            foreach (var zone in triggerZones)
+            {
+                if (zone == null) continue;
+                var collider = zone.GetComponent<BoxCollider2D>();
+                if (collider == null) continue;
+                
+                rangeFinder.listStrongColliders.Remove(collider);
+                rangeFinder.listMidColliders.Remove(collider);
+                rangeFinder.listWeakColliders.Remove(collider);
+            }
+        }
+        
         #endregion
 
         public void AddToInteractList()
