@@ -543,10 +543,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 460842982326318080}
+  - component: {fileID: 4270810391467650564}
   - component: {fileID: 1520622424576169195}
   - component: {fileID: 8206585871188518614}
   - component: {fileID: 5873749566980455051}
-  - component: {fileID: 4270810391467650564}
   - component: {fileID: 1168064175984783220}
   m_Layer: 8
   m_Name: Enemy
@@ -574,6 +574,71 @@ Transform:
   - {fileID: 1300061691820119381}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4270810391467650564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741257483416933003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7770d76f3e5221a42aabc491c053c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wavePatterns: []
+  currentPatternIndex: 0
+  triggerZones:
+  - {fileID: 1276004098474560360}
+  - {fileID: 4352877301182140240}
+  - {fileID: 2704626032283219045}
+  lifeAmountToGive: 0
+  basePatternCount: 3
+  maxPatternCount: 6
+  minFrequency: 3
+  maxFrequency: 15
+  minAmplitude: 0.1
+  maxAmplitude: 0.4
+  minStep: 0.1
+  maxStep: 6.28
+  generationRadius: 10
+  attackTriggerDelay: 300
+  attackTimer: 0
+  isTimerRunning: 0
+  _aiFightState: 1
+  _abstractEntityData: {fileID: 11400000, guid: 34f352df817fe02459cf1dbf4799cf82, type: 2}
+  _abstractEntityDataInstance:
+    hp: 0
+    speed: 0
+    turnState: 0
+    entity: {fileID: 0}
+    waveAmplitudeEnemy: 0
+    waveFrequency: 0
+    seenByRadio: 0
+    reveal: 0
+    battery: 0
+    normalAttack:
+      damage: 0
+      batteryGain: 0
+    heavyAttack:
+      damage: 0
+      batteryGain: 0
+    stealBatteries:
+      damage: 0
+      batteryGain: 0
+    stealALotBatteries:
+      damage: 0
+      batteryGain: 0
+    flashed: 0
+    entityAnimation:
+      attackAnimation: {fileID: 0}
+      takeDamageAnimation: {fileID: 0}
+  combatDistance: 2
+  visualComponent: {fileID: 5741257483416933003}
+  animatorEnemy: {fileID: 0}
+  originalPos: {fileID: 0}
+  healthSlider: {fileID: 7525908128919033253}
+  healthLerpDuration: 0.3
 --- !u!212 &1520622424576169195
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -688,71 +753,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.2712634}
   m_Size: {x: 1, y: 2.906466}
   m_Direction: 0
---- !u!114 &4270810391467650564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5741257483416933003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7770d76f3e5221a42aabc491c053c12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wavePatterns: []
-  currentPatternIndex: 0
-  triggerZones:
-  - {fileID: 1276004098474560360}
-  - {fileID: 4352877301182140240}
-  - {fileID: 2704626032283219045}
-  lifeAmountToGive: 0
-  basePatternCount: 3
-  maxPatternCount: 6
-  minFrequency: 3
-  maxFrequency: 15
-  minAmplitude: 0.1
-  maxAmplitude: 0.4
-  minStep: 0.1
-  maxStep: 6.28
-  generationRadius: 10
-  attackTriggerDelay: 300
-  attackTimer: 0
-  isTimerRunning: 0
-  _aiFightState: 1
-  _abstractEntityData: {fileID: 11400000, guid: 34f352df817fe02459cf1dbf4799cf82, type: 2}
-  _abstractEntityDataInstance:
-    hp: 0
-    speed: 0
-    turnState: 0
-    entity: {fileID: 0}
-    waveAmplitudeEnemy: 0
-    waveFrequency: 0
-    seenByRadio: 0
-    reveal: 0
-    battery: 0
-    normalAttack:
-      damage: 0
-      batteryGain: 0
-    heavyAttack:
-      damage: 0
-      batteryGain: 0
-    stealBatteries:
-      damage: 0
-      batteryGain: 0
-    stealALotBatteries:
-      damage: 0
-      batteryGain: 0
-    flashed: 0
-    entityAnimation:
-      attackAnimation: {fileID: 0}
-      takeDamageAnimation: {fileID: 0}
-  combatDistance: 2
-  visualComponent: {fileID: 5741257483416933003}
-  animatorEnemy: {fileID: 0}
-  originalPos: {fileID: 0}
-  healthSlider: {fileID: 7525908128919033253}
-  healthLerpDuration: 0.3
 --- !u!95 &1168064175984783220
 Animator:
   serializedVersion: 5
