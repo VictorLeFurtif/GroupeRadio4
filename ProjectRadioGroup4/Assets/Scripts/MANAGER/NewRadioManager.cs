@@ -240,8 +240,10 @@ namespace MANAGER
             if (NewPlayerController.instance.currentInteractableInRange is not
                     IWaveInteractable waveInteractable || !waveInteractable.CanBeActivated()) return;
 
+            
             waveInteractable.Activate();
-
+            InitializeLights(waveInteractable);
+            
             if (waveInteractable is NewAi ai)
             {
                 ai.attackTimer = ai.attackTriggerDelay;
@@ -269,7 +271,7 @@ namespace MANAGER
             }
             
             ai.Activate();
-            
+            InitializeLights(ai);
             if (!ai.HasRemainingPatterns()) return;
             
             if (currentTransition != null)
@@ -301,8 +303,6 @@ namespace MANAGER
             var settings = waveInteractable?.GetCurrentWaveSettings();
 
             if (settings == null || !IsMatch(settings)) return;
-            Debug.Log(matRadioPlayer.GetFloat("_waves_Amount") +"   "+ matRadioPlayer.GetFloat("_waves_Amp"));
-            Debug.Log(matRadioEnemy.GetFloat("_waves_Amount") +"   "+ matRadioEnemy.GetFloat("_waves_Amp"));
             StartCoroutine(HandlePatternMatched(waveInteractable));
         }
         
@@ -354,12 +354,27 @@ namespace MANAGER
             _targetText.text = _targetInnerText;
         }
         
+        private void InitializeLights(IInteractable target)
+        {
+            foreach (var t in lights)
+            {
+                t.color = offColor;
+            }
+            currentActiveLight = 0;
+            if (target is not BatteryInteract bat) return;
+            for (int i = 0; i < bat.wavePatterns.Count; i++)
+            {
+                lights[i].color = pendingColor;
+            }
+        }
+
         private void InitializeLights()
         {
-            for (int i = 0; i < lights.Length; i++)
+            foreach (var t in lights)
             {
-                lights[i].color = offColor;
+                t.color = offColor;
             }
+
             currentActiveLight = 0;
         }
 

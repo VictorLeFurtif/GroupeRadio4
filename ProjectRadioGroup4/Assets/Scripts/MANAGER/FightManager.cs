@@ -235,6 +235,10 @@ namespace MANAGER
                     //ai.GenerateWavePatterns();
                     NewRadioManager.instance.StartMatchingGameInFight();
                 }
+                else
+                {
+                    Debug.LogError("PROBLEM NO AI");
+                }
             }
             else 
             {
@@ -265,7 +269,8 @@ namespace MANAGER
             if (ai != null)
             {
                ai.animatorEnemy.Play("attackAi");
-               coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation(ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+               coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
+                   (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
             }
         }
 
@@ -286,7 +291,8 @@ namespace MANAGER
     
             playerSuccess = true;
             player.animatorPlayer.Play("goodsize anime attaque spé");
-            coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation(player._inGameData.entityAnimation.attackAnimation));
+            coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
+                (player._inGameData.entityAnimation.attackAnimation));
         }
         #endregion
 
