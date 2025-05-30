@@ -8,11 +8,13 @@ namespace INTERACT
     {
         [HideInInspector] public Transform parentAfterDrag;
         public Image image;
+        public int originalSlotIndex;
         
         public void OnBeginDrag(PointerEventData eventData)
         {
             Debug.Log("Begin Drag");
             parentAfterDrag = transform.parent;
+            originalSlotIndex = parentAfterDrag.GetComponent<InvetorySlot>().slotIndex;
             transform.SetParent(transform.root);
             transform.SetAsLastSibling();
             image.raycastTarget = false;
