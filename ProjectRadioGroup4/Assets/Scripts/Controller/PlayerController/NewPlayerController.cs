@@ -71,6 +71,8 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] private float lifeTakenStrong;
 
     [Header("Damage")] [SerializeField] private float maxDamageDone;
+
+    [HideInInspector] public ChipsManager chipsManager;
     #endregion
 
     #region Enums
@@ -122,6 +124,7 @@ public class NewPlayerController : MonoBehaviour
         playerBattery = GetComponent<BatteryPlayer>();
         rangeFinderManager = GetComponent<RangeFinderManager>();
         currentScanType = ScanType.None;
+        chipsManager = GetComponent<ChipsManager>();
     }
     #endregion
 
