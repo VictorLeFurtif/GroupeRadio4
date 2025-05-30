@@ -46,6 +46,7 @@ namespace AI.NEW_AI
         [Header("Enemy Chips")] 
         [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
+        [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
 
         [Header("Monster visual")] [SerializeField]
         private Image monsterEyes;
@@ -71,6 +72,7 @@ namespace AI.NEW_AI
             {
                 chipsDatasList.Add(t.Instance());
             }
+            chipsDatasListSave.AddRange(chipsDatasList);
         }
         #endregion
 
@@ -272,6 +274,15 @@ namespace AI.NEW_AI
             
             NewRadioManager.instance.listOfEveryEnemy.Remove(this);
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
+        }
+        
+        public void RemoveGuessedChips(int count)
+        {
+            if (chipsDatasList == null || count <= 0) return;
+            
+            chipsDatasList.RemoveRange(0, Mathf.Min(count, chipsDatasList.Count));
+    
+            Debug.Log($"Removed {count} chips from enemy sequence. Remaining: {chipsDatasList.Count}");
         }
         #endregion
 

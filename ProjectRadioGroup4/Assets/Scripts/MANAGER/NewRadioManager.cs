@@ -151,32 +151,21 @@ namespace MANAGER
             if (!waveInteractable.HasRemainingPatterns())
             {
                 var controller = NewPlayerController.instance;
-                
-                switch (FightManager.instance?.fightState)
+
+                if (FightManager.instance?.fightState == FightManager.FightState.OutFight && controller != null)
                 {
-                    case FightManager.FightState.OutFight when controller != null:
-                        waveInteractable.Detected = true;
-                        controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
-                        InitializeLights();
-                        if (waveInteractable is NewAi ai)
-                        {
-                            
-                            ai.BeginFight();
-                            yield break;
-                        }
-                        else
-                        {
-                            controller.canMove = true;
-                            waveInteractable.CanSecondPhase = false;
-                        }
-                        
-                        break;
-                    case FightManager.FightState.InFight:
-                        FightManager.instance.StartCoroutine(CompleteAllPatternsRoutine());
-                        break;
+                    waveInteractable.Detected = true;
+                    controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
+                    InitializeLights();
+                    if (waveInteractable is NewAi ai)
+                    {
+                        ai.BeginFight();
+                        yield break;
+                    }
+
+                    controller.canMove = true;
+                    waveInteractable.CanSecondPhase = false;
                 }
-
-
                 yield return HandleRadioTransition(new WaveSettings(0,0,0));
             }
             else
@@ -186,11 +175,7 @@ namespace MANAGER
             }
         }
 
-        private IEnumerator CompleteAllPatternsRoutine()
-        {
-            yield return new WaitForSeconds(0.5f); 
-            FightManager.instance.PlayerSuccess();
-        }
+        
         
         private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {

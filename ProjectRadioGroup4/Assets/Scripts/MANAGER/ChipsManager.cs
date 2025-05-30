@@ -18,7 +18,7 @@ namespace MANAGER
         public ChipsDataInstance[]chipsDatasTab = new ChipsDataInstance[6];
         
         [Header("Player Selection")]
-        [SerializeField] private List<ChipsDataInstance> playerChoiceChipsOrder = new List<ChipsDataInstance>();
+        public List<ChipsDataInstance> playerChoiceChipsOrder = new List<ChipsDataInstance>();
         
         [SerializeField] private GameObject[]itemSlotsGO = new GameObject[6];
         

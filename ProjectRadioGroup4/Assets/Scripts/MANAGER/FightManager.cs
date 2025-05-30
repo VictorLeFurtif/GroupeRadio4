@@ -5,6 +5,7 @@ using System.Linq;
 using AI;
 using AI.NEW_AI;
 using Controller;
+using DATA.Script.Chips_data;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
 using INTERFACE;
@@ -51,6 +52,10 @@ namespace MANAGER
         public float playerTurnDuration = 60f; 
         public float playerTurnTimer { get; private set; }
         public bool playerSuccess = false;
+        
+        [Header("Chip Matching")]
+        private bool isMatchingPhase = false;
+        private NewAi currentEnemyTarget;
         
         
         #endregion
@@ -102,11 +107,6 @@ namespace MANAGER
                 currentFighter.turnState = TurnState.NoTurn;
             }
             
-            if (currentFighter == player._abstractEntityDataInstance)
-            {
-                NewRadioManager.instance.StopMatchingGame();
-                player.canMove = true;
-            }
             
             UpdateListOfFighter();
 
@@ -218,27 +218,15 @@ namespace MANAGER
         private void StartUnitTurn()
         {
             coroutineAnimation = null;
-            
+    
             if (currentOrder.Count <= 0) return;
 
             currentFighter = currentOrder[0];
             currentFighter.turnState = TurnState.Turn;
-    
+
             if (currentFighter == player._abstractEntityDataInstance)
             {
-                playerTurnTimer = playerTurnDuration;
-                playerSuccess = false;
-                
-                NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
-                if (ai != null)
-                {
-                    //ai.GenerateWavePatterns();
-                    NewRadioManager.instance.StartMatchingGameInFight();
-                }
-                else
-                {
-                    Debug.LogError("PROBLEM NO AI");
-                }
+                StartPlayerTurn();
             }
             else 
             {
@@ -251,6 +239,15 @@ namespace MANAGER
                     EndFighterTurn();
                 }
             }
+        }
+        
+        private void StartPlayerTurn()
+        {
+            playerTurnTimer = playerTurnDuration;
+            playerSuccess = false;
+            isMatchingPhase = true;
+            
+            currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
         }
         
         private void ResetFightManagerAfterFight()
@@ -276,44 +273,86 @@ namespace MANAGER
 
         private Coroutine coroutineAnimation;
         
-        
-        public void PlayerSuccess()
+        private void ProcessPlayerGuess()
         {
-            NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
-            if (ai != null)
+            var enemySequence = currentEnemyTarget.chipsDatasList;
+            var playerSelection = ChipsManager.Instance.playerChoiceChipsOrder;
+
+            int correctCount = 0;
+            bool allCorrect = true;
+
+            for (int i = 0; i < Mathf.Min(enemySequence.Count, playerSelection.Count); i++)
             {
-                float ratio = playerTurnTimer / playerTurnDuration;
-                float damage = ratio > 0.5f ? player.GetPlayerDamage() * 1.5f : player.GetPlayerDamage();
-                ai.PvEnemy -= damage;
-                Debug.Log($"Player attack and did {damage}");
-                //ai.GenerateWavePatterns();
+                if (enemySequence[i] == playerSelection[i])
+                {
+                    correctCount++;
+                }
+                else
+                {
+                    allCorrect = false;
+                    break;
+                }
             }
-    
-            playerSuccess = true;
-            player.animatorPlayer.Play("goodsize anime attaque spé");
-            coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
-                (player._inGameData.entityAnimation.attackAnimation));
+
+            if (correctCount > 0)
+            {
+                for (int i = correctCount - 1; i >= 0; i--)
+                {
+                    currentEnemyTarget.chipsDatasList.RemoveAt(i);
+                }
+
+                if (allCorrect && playerSelection.Count >= enemySequence.Count)
+                {
+                    EnemySequenceGuessed();
+                }
+                else
+                {
+                    Debug.Log($"Correctement deviné {correctCount} chips! Continuez!");
+                }
+            }
+            else
+            {
+                currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
+                Debug.Log("Mauvaise sequence!");
+                playerSuccess = false;
+                EndFighterTurn();
+            }
         }
+        
+        private void EnemySequenceGuessed()
+        {
+            Debug.Log("Sequence complete devinee!");
+            playerSuccess = true;
+            
+            currentEnemyTarget.PvEnemy -= player.GetPlayerDamage();
+            
+            if (currentEnemyTarget._abstractEntityDataInstance.IsDead())
+            {
+                listOfJustEnemiesAlive.Remove(currentEnemyTarget._abstractEntityDataInstance);
+                fighterAlive.Remove(currentEnemyTarget._abstractEntityDataInstance);
+                currentOrder.Remove(currentEnemyTarget._abstractEntityDataInstance);
+            }
+            
+            EndFighterTurn();
+        }
+        
+        
         #endregion
 
         #region Time Related
 
         private void HandleTimerPlayerForPlay()
         {
-            if (currentFighter != player._abstractEntityDataInstance || !(playerTurnTimer > 0)) return;
+            if (currentFighter != player._abstractEntityDataInstance || !isMatchingPhase || !(playerTurnTimer > 0)) return;
 
-            if (coroutineAnimation != null)
-            {
-                playerTurnTimer = playerTurnDuration;
-            }
-            
             playerTurnTimer -= Time.deltaTime;
 
-            if (!(playerTurnTimer <= 0) || playerSuccess) return;
-            NewRadioManager.instance.StopMatchingGame();
-            Debug.Log("Temps écoulé !");
-           
-            EndFighterTurn();
+            if (playerTurnTimer <= 0)
+            {
+                Debug.Log("Temps écoulé !");
+                isMatchingPhase = false;
+                EndFighterTurn();
+            }
         }
 
         private IEnumerator EndFighterTurnWithTimeAnimation(AnimationClip _animation)
@@ -323,6 +362,26 @@ namespace MANAGER
         }
         #endregion
 
+        #region Link to Chips Manager Button Logic
+
+        public void OnMatchButtonPressed()
+        {
+            if (!isMatchingPhase || currentEnemyTarget == null) return;
+    
+            ChipsManager.Instance.MatchChips();
+            ProcessPlayerGuess();
+        }
+
+        public void OnReverseButtonPressed()
+        {
+            if (!isMatchingPhase || currentEnemyTarget == null) return;
+    
+            ChipsManager.Instance.ReverseChips();
+            ProcessPlayerGuess();
+        }
+
+
+        #endregion
         
     }
 }
