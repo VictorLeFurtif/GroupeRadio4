@@ -48,8 +48,9 @@ namespace AI.NEW_AI
         [HideInInspector] public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
 
-        [Header("Monster visual")] [SerializeField]
-        private Image monsterEyes;
+        [Header("Eye Settings")]
+        public Image monsterEyes;
+        private int currentSequenceIndex = 0;
         
         #endregion
 
@@ -73,6 +74,7 @@ namespace AI.NEW_AI
                 chipsDatasList.Add(t.Instance());
             }
             chipsDatasListSave.AddRange(chipsDatasList);
+            
         }
         #endregion
 
@@ -275,7 +277,9 @@ namespace AI.NEW_AI
             NewRadioManager.instance.listOfEveryEnemy.Remove(this);
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
         }
+
         
+
         public void RemoveGuessedChips(int count)
         {
             if (chipsDatasList == null || count <= 0) return;
@@ -287,26 +291,43 @@ namespace AI.NEW_AI
         #endregion
 
         #region Color System
-
-        private void ChangeEyeColor()
+        public void UpdateEyeColorToNextChip(List<ChipsDataInstance>targetList)
         {
-            if (chipsDatasList.Count != 0)
+            if (targetList == null || targetList.Count == 0)
             {
-                monsterEyes.material.color = FindColorFromString(chipsDatasList[0].colorLinkChips);
+                monsterEyes.material.color = Color.white; 
+                return;
             }
+        
+            string colorName = targetList[currentSequenceIndex].colorLinkChips;
+            monsterEyes.color = ConvertColorNameToColor(colorName);
+        
         }
-
-        private Color FindColorFromString(string colorName)
+    
+        private Color ConvertColorNameToColor(string colorName)
         {
             return colorName.ToLower() switch
             {
                 "red" => Color.red,
                 "green" => Color.green,
                 "blue" => Color.blue,
+                "yellow" => Color.yellow,
                 "white" => Color.white,
                 "black" => Color.black,
-                _ => Color.magenta //zerma comme dans Garry's Mod
+                _ => Color.magenta 
             };
+        }
+        
+        public void MoveToNextChipInSequence(List<ChipsDataInstance>targetList)
+        {
+            currentSequenceIndex = (currentSequenceIndex + 1) % chipsDatasList.Count;
+            UpdateEyeColorToNextChip(targetList);
+        }
+    
+        public void ResetSequenceIndex(List<ChipsDataInstance>targetList)
+        {
+            currentSequenceIndex = 0;
+            UpdateEyeColorToNextChip(targetList);
         }
         #endregion
         

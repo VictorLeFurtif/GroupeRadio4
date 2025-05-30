@@ -276,5 +276,11 @@ namespace AI.OLD_AI_BEFORE_FP_V2
             RadioController.instance.listOfEveryEnemy.Remove(this);
             RadioController.instance.listOfEveryEnemy.Add(this);
         }
+
+        public void ChangeColorEyes(int index)
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 }

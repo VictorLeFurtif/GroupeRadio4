@@ -57,6 +57,10 @@ namespace MANAGER
         private bool isMatchingPhase = false;
         private NewAi currentEnemyTarget;
         
+        [Header("Eye Settings")]
+        public Renderer monsterEyes;
+        private int currentSequenceIndex = 0;
+        
         
         #endregion
 
@@ -248,8 +252,9 @@ namespace MANAGER
             playerTurnTimer = playerTurnDuration;
             playerSuccess = false;
             isMatchingPhase = true;
-            
+    
             currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
+            currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasList);
         }
         
         private void ResetFightManagerAfterFight()
@@ -309,6 +314,7 @@ namespace MANAGER
 
             if (correctCount > 0)
             {
+                currentEnemyTarget.MoveToNextChipInSequence(currentEnemyTarget.chipsDatasList);
                 NewRadioManager.instance.UpdateCombatLights(correctCount, allCorrect && playerSelection.Count >= originalEnemySequence.Count);
                 
                 if (allCorrect && playerSelection.Count >= originalEnemySequence.Count)
