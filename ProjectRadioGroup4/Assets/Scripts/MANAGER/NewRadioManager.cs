@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using AI.NEW_AI;
 using Controller;
 using INTERACT;
@@ -61,6 +62,12 @@ namespace MANAGER
         [SerializeField] private Color pendingColor = Color.red;
         [SerializeField] private Color currentColor = Color.yellow;
         [SerializeField] private Color completedColor = Color.green;
+        
+        [Header("Combat Light Settings")]
+        [SerializeField] private Color correctColor = Color.green;
+        [SerializeField] private Color wrongColor = Color.red;
+        [SerializeField] private float wrongColorDuration = 0.5f;
+        private Coroutine wrongColorCoroutine;
 
         private int currentActiveLight = 0;
         
@@ -386,6 +393,65 @@ namespace MANAGER
             }
         }
         
+        #endregion
+        
+        #region Combat Light Management
+
+        public void InitializeCombatLights(int sequenceLength)
+        {
+            ResetLights();
+            
+            for (int i = 0; i < sequenceLength && i < lights.Length; i++)
+            {
+                lights[i].color = pendingColor; 
+            }
+        }
+
+        public void UpdateCombatLights(int correctCount, bool allCorrect)
+        {
+            if (wrongColorCoroutine != null)
+                StopCoroutine(wrongColorCoroutine);
+    
+            if (allCorrect)
+            {
+                for (int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].color = correctColor; 
+                }
+            }
+            else if (correctCount > 0)
+            {
+                for (int i = 0; i < correctCount; i++)
+                {
+                    lights[i].color = correctColor; 
+                }
+                for (int i = correctCount; i < lights.Length; i++)
+                {
+                    lights[i].color = pendingColor; 
+                }
+            }
+            else
+            {
+                wrongColorCoroutine = StartCoroutine(FlashWrongColor());
+            }
+        }
+
+        private IEnumerator FlashWrongColor()
+        {
+            foreach (var light in lights.Where(l => l.color != offColor))
+            {
+                light.color = wrongColor; 
+            }
+    
+            yield return new WaitForSeconds(wrongColorDuration);
+            
+            foreach (var light in lights)
+            {
+                if (light.color == wrongColor)
+                    light.color = pendingColor;
+            }
+        }
+
         #endregion
 
         #region Time Related

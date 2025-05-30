@@ -176,6 +176,8 @@ namespace MANAGER
             {
                 soundForFight.SetActive(true);
             }
+
+            firstAttempt = true;
         }
         #endregion
 
@@ -261,7 +263,6 @@ namespace MANAGER
         private void AttackPlayer(AbstractEntityDataInstance attacker)
         {
             player.ManageLife(-10);
-            Debug.Log("L'IA attaque le joueur !");
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
@@ -272,61 +273,66 @@ namespace MANAGER
         }
 
         private Coroutine coroutineAnimation;
-        
+        private bool firstAttempt;
+        //TODO PUTAIN COMMENT JE SUIS CENSER CORRIGER CE BUG DE MERDE
         private void ProcessPlayerGuess()
         {
             if (!isMatchingPhase || currentEnemyTarget == null)
             {
-                Debug.Log("ProcessPlayerGuess appelé hors phase de matching ou sans ennemi cible");
                 return;
             }
-
-            var enemySequence = currentEnemyTarget.chipsDatasList;
+            
+            var originalEnemySequence = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasList);
             var playerSelection = ChipsManager.Instance.playerChoiceChipsOrder;
 
-            Debug.Log($"Début vérification - Séquence ennemie: {string.Join(",", enemySequence.Select(c => c.index))}");
-            Debug.Log($"Sélection joueur: {string.Join(",", playerSelection.Select(c => c.index))}");
-
+            if (firstAttempt)
+            {
+                NewRadioManager.instance.InitializeCombatLights(originalEnemySequence.Count);
+                firstAttempt = false;
+            }
+            
             int correctCount = 0;
             bool allCorrect = true;
-
-            // Vérification de la correspondance
-            for (int i = 0; i < Mathf.Min(enemySequence.Count, playerSelection.Count); i++)
+            
+            for (int i = 0; i < Mathf.Min(originalEnemySequence.Count, playerSelection.Count); i++)
             {
-                if (AreChipsEquivalent(enemySequence[i], playerSelection[i]))
+                if (AreChipsEquivalent(originalEnemySequence[i], playerSelection[i]))
                 {
                     correctCount++;
-                    Debug.Log($"Chip {i} correct: {enemySequence[i].index}");
                 }
                 else
                 {
                     allCorrect = false;
-                    Debug.Log($"Chip {i} incorrect: Attendu {enemySequence[i].index}, Reçu {playerSelection[i]?.index}");
                     break;
                 }
             }
 
             if (correctCount > 0)
             {
-                for (int i = correctCount - 1; i >= 0; i--)
+                NewRadioManager.instance.UpdateCombatLights(correctCount, allCorrect && playerSelection.Count >= originalEnemySequence.Count);
+                
+                if (allCorrect && playerSelection.Count >= originalEnemySequence.Count)
                 {
-                    Debug.Log($"Suppression du chip {i} (Index: {enemySequence[i].index})");
-                    currentEnemyTarget.chipsDatasList.RemoveAt(i);
-                }
-
-                if (allCorrect && playerSelection.Count >= enemySequence.Count)
-                {
-                    Debug.Log("Séquence COMPLÈTEMENT devinée!");
+                    for (int i = correctCount - 1; i >= 0; i--)
+                    {
+                        currentEnemyTarget.chipsDatasList.RemoveAt(i);
+                    }
                     EnemySequenceGuessed();
                 }
                 else
                 {
-                    Debug.Log($"Séquence PARTIELLEMENT devinée ({correctCount} chips corrects)");
+                    
+                    for (int i = correctCount - 1; i >= 0; i--)
+                    {
+                        currentEnemyTarget.chipsDatasList.RemoveAt(i);
+                    }
+                    
+                    playerTurnTimer = playerTurnDuration;
                 }
             }
             else
             {
-                Debug.Log("AUCUN chip correct - restauration de la séquence originale");
+                NewRadioManager.instance.UpdateCombatLights(0, false);
                 currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
                 playerSuccess = false;
                 EndFighterTurn();
@@ -341,16 +347,12 @@ namespace MANAGER
         }
         private void EnemySequenceGuessed()
         {
-            Debug.Log("EnemySequenceGuessed appelé");
             playerSuccess = true;
             
-            float damage = player.GetPlayerDamage();
-            currentEnemyTarget.PvEnemy -= damage;
-            Debug.Log($"Dégâts appliqués: {damage} - PV restants: {currentEnemyTarget.PvEnemy}");
+            currentEnemyTarget.PvEnemy -= currentEnemyTarget.PvEnemy;
             
             if (currentEnemyTarget._abstractEntityDataInstance.IsDead())
             {
-                Debug.Log("Ennemi vaincu!");
                 listOfJustEnemiesAlive.Remove(currentEnemyTarget._abstractEntityDataInstance);
                 fighterAlive.Remove(currentEnemyTarget._abstractEntityDataInstance);
                 currentOrder.Remove(currentEnemyTarget._abstractEntityDataInstance);
@@ -358,8 +360,6 @@ namespace MANAGER
             
             isMatchingPhase = true; 
             playerTurnTimer = playerTurnDuration; 
-            
-            Debug.Log("Le joueur garde son tour pour continuer");
         }
         
         
@@ -371,7 +371,6 @@ namespace MANAGER
         {
             if (currentFighter != player._abstractEntityDataInstance || !isMatchingPhase || !(playerTurnTimer > 0))
             {
-                Debug.Log($"Conditions non remplies: isPlayerTurn={currentFighter == player._abstractEntityDataInstance}, isMatching={isMatchingPhase}, timer={playerTurnTimer}");
                 return;
             }
 
@@ -379,7 +378,7 @@ namespace MANAGER
 
             if (playerTurnTimer <= 0)
             {
-                Debug.Log("Temps écoulé - fin du tour");
+                NewRadioManager.instance.ResetLights();
                 isMatchingPhase = false;
                 EndFighterTurn();
             }
