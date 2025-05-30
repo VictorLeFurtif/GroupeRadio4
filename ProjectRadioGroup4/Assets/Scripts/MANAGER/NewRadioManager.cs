@@ -407,49 +407,40 @@ namespace MANAGER
             }
         }
 
-        public void UpdateCombatLights(int correctCount, bool allCorrect)
+        public void UpdateCombatLight(int index, bool isCorrect)
         {
-            if (wrongColorCoroutine != null)
-                StopCoroutine(wrongColorCoroutine);
+            if (index < 0 || index >= lights.Length) return;
     
-            if (allCorrect)
+            lights[index].color = isCorrect ? completedColor : pendingColor;
+            if (isCorrect)
             {
-                for (int i = 0; i < lights.Length; i++)
-                {
-                    lights[i].color = correctColor; 
-                }
-            }
-            else if (correctCount > 0)
-            {
-                for (int i = 0; i < correctCount; i++)
-                {
-                    lights[i].color = correctColor; 
-                }
-                for (int i = correctCount; i < lights.Length; i++)
-                {
-                    lights[i].color = pendingColor; 
-                }
-            }
-            else
-            {
-                wrongColorCoroutine = StartCoroutine(FlashWrongColor());
+                StartCoroutine(PulseLight(lights[index]));
             }
         }
 
-        private IEnumerator FlashWrongColor()
+        private IEnumerator PulseLight(Image light)
         {
-            foreach (var light in lights.Where(l => l.color != offColor))
+            float duration = 0.2f;
+            Vector3 originalScale = light.transform.localScale;
+            Vector3 targetScale = originalScale * 1.2f;
+    
+            float elapsed = 0f;
+            while (elapsed < duration)
             {
-                light.color = wrongColor; 
+                light.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsed/duration);
+                elapsed += Time.deltaTime;
+                yield return null;
             }
     
-            yield return new WaitForSeconds(wrongColorDuration);
-            
-            foreach (var light in lights)
+            elapsed = 0f;
+            while (elapsed < duration)
             {
-                if (light.color == wrongColor)
-                    light.color = pendingColor;
+                light.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed/duration);
+                elapsed += Time.deltaTime;
+                yield return null;
             }
+    
+            light.transform.localScale = originalScale;
         }
 
         #endregion

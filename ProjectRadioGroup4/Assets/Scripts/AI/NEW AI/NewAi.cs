@@ -50,7 +50,7 @@ namespace AI.NEW_AI
 
         [Header("Eye Settings")]
         public Image monsterEyes;
-        private int currentSequenceIndex = 0;
+        private int currentChipIndex = 0;
         
         #endregion
 
@@ -74,7 +74,7 @@ namespace AI.NEW_AI
                 chipsDatasList.Add(t.Instance());
             }
             chipsDatasListSave.AddRange(chipsDatasList);
-            
+            monsterEyes.material.color = Color.white; 
         }
         #endregion
 
@@ -291,19 +291,35 @@ namespace AI.NEW_AI
         #endregion
 
         #region Color System
-        public void UpdateEyeColorToNextChip(List<ChipsDataInstance>targetList)
+        public void UpdateEyeColorToCurrentChip()
         {
-            if (targetList == null || targetList.Count == 0)
+            if (chipsDatasList == null || chipsDatasList.Count == 0 || currentChipIndex >= chipsDatasList.Count)
             {
-                monsterEyes.material.color = Color.white; 
+                monsterEyes.color = Color.white;
                 return;
             }
-        
-            string colorName = targetList[currentSequenceIndex].colorLinkChips;
-            monsterEyes.color = ConvertColorNameToColor(colorName);
-        
-        }
     
+            string colorName = chipsDatasList[currentChipIndex].colorLinkChips;
+            monsterEyes.color = ConvertColorNameToColor(colorName);
+        }
+
+        public void MoveToNextChip()
+        {
+            if (chipsDatasList == null || currentChipIndex >= chipsDatasList.Count - 1) return;
+    
+            currentChipIndex++;
+            UpdateEyeColorToCurrentChip();
+        }
+
+        public void ResetSequenceIndex(List<ChipsDataInstance> sequenceToUse)
+        {
+            currentChipIndex = 0;
+            if (sequenceToUse != null && sequenceToUse.Count > 0)
+            {
+                UpdateEyeColorToCurrentChip();
+            }
+        }
+        
         private Color ConvertColorNameToColor(string colorName)
         {
             return colorName.ToLower() switch
@@ -316,18 +332,6 @@ namespace AI.NEW_AI
                 "black" => Color.black,
                 _ => Color.magenta 
             };
-        }
-        
-        public void MoveToNextChipInSequence(List<ChipsDataInstance>targetList)
-        {
-            currentSequenceIndex = (currentSequenceIndex + 1) % chipsDatasList.Count;
-            UpdateEyeColorToNextChip(targetList);
-        }
-    
-        public void ResetSequenceIndex(List<ChipsDataInstance>targetList)
-        {
-            currentSequenceIndex = 0;
-            UpdateEyeColorToNextChip(targetList);
         }
         #endregion
         

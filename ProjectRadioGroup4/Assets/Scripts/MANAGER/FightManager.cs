@@ -287,21 +287,22 @@ namespace MANAGER
                 return;
             }
             
-            var originalEnemySequence = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasList);
+            var currentSequence = currentEnemyTarget.chipsDatasList;
             var playerSelection = ChipsManager.Instance.playerChoiceChipsOrder;
 
             if (firstAttempt)
             {
-                NewRadioManager.instance.InitializeCombatLights(originalEnemySequence.Count);
+                NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 firstAttempt = false;
+                currentEnemyTarget.UpdateEyeColorToCurrentChip();
             }
             
             int correctCount = 0;
             bool allCorrect = true;
             
-            for (int i = 0; i < Mathf.Min(originalEnemySequence.Count, playerSelection.Count); i++)
+            for (int i = 0; i < Mathf.Min(currentSequence.Count, playerSelection.Count); i++)
             {
-                if (AreChipsEquivalent(originalEnemySequence[i], playerSelection[i]))
+                if (AreChipsEquivalent(currentSequence[i], playerSelection[i]))
                 {
                     correctCount++;
                 }
@@ -314,30 +315,35 @@ namespace MANAGER
 
             if (correctCount > 0)
             {
-                currentEnemyTarget.MoveToNextChipInSequence(currentEnemyTarget.chipsDatasList);
-                NewRadioManager.instance.UpdateCombatLights(correctCount, allCorrect && playerSelection.Count >= originalEnemySequence.Count);
+                int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;
+                int remainingChips = currentSequence.Count;
+                int firstCorrectIndex = totalSequenceLength - remainingChips;
                 
-                if (allCorrect && playerSelection.Count >= originalEnemySequence.Count)
+                for (int i = 0; i < correctCount; i++)
                 {
-                    for (int i = correctCount - 1; i >= 0; i--)
-                    {
-                        currentEnemyTarget.chipsDatasList.RemoveAt(i);
-                    }
+                    NewRadioManager.instance.UpdateCombatLight(firstCorrectIndex + i, true);
+                }
+                
+                for (int i = 0; i < correctCount; i++)
+                {
+                    currentEnemyTarget.MoveToNextChip();
+                }
+                
+                currentSequence.RemoveRange(0, correctCount);
+                
+                if (currentSequence.Count == 0)
+                {
                     EnemySequenceGuessed();
                 }
                 else
                 {
-                    for (int i = correctCount - 1; i >= 0; i--)
-                    {
-                        currentEnemyTarget.chipsDatasList.RemoveAt(i);
-                    }
-                    
                     playerTurnTimer = playerTurnDuration;
                 }
             }
             else
             {
-                NewRadioManager.instance.UpdateCombatLights(0, false);
+                NewRadioManager.instance.ResetLights();
+                currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
                 currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
                 playerSuccess = false;
                 EndFighterTurn();
