@@ -327,7 +327,6 @@ namespace MANAGER
                 }
                 else
                 {
-                    
                     for (int i = correctCount - 1; i >= 0; i--)
                     {
                         currentEnemyTarget.chipsDatasList.RemoveAt(i);

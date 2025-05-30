@@ -45,7 +45,7 @@ namespace AI.NEW_AI
 
         [Header("Enemy Chips")] 
         [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
-        [HideInInspector] public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
+         public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
 
         [Header("Eye Settings")]
