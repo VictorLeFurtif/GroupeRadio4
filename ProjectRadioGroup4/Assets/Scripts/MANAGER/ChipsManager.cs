@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DATA.Script.Chips_data;
 using INTERACT;
 using UnityEngine;
@@ -15,7 +16,9 @@ namespace MANAGER
         [SerializeField] private ChipsData[]chipsDatas = new ChipsData[6];
         
         public ChipsDataInstance[]chipsDatasTab = new ChipsDataInstance[6];
-        private readonly ChipsDataInstance[] chipsDatasTabReference = new ChipsDataInstance[6];
+        
+        [Header("Player Selection")]
+        [SerializeField] private List<ChipsDataInstance> playerChoiceChipsOrder = new List<ChipsDataInstance>();
         
         [SerializeField] private GameObject[]itemSlotsGO = new GameObject[6];
         
@@ -53,7 +56,6 @@ namespace MANAGER
                 chipsDatasTab[i] = chipsDatas[i].Instance();
                 itemSlotsGO[i].GetComponent<InvetorySlot>().slotIndex = i; 
             }
-            Array.Copy(chipsDatasTab,chipsDatasTabReference,chipsDatasTab.Length);
         }
 
         #endregion
@@ -95,6 +97,35 @@ namespace MANAGER
                 }
             }
         }
+        #endregion
+
+        #region Logic for Fight
+
+        public void MatchChips()
+        {
+            playerChoiceChipsOrder.Clear();
+            foreach (var chip in chipsDatasTab)
+            {
+                if (chip.isSelected)
+                {
+                    playerChoiceChipsOrder.Add(chip);
+                }
+            }
+        }
+        
+        public void ReverseChips()
+        {
+            playerChoiceChipsOrder.Clear();
+            
+            for (int i = chipsDatasTab.Length - 1; i >= 0; i--)
+            {
+                if (chipsDatasTab[i].isSelected)
+                {
+                    playerChoiceChipsOrder.Add(chipsDatasTab[i]);
+                }
+            }
+        }
+        
         #endregion
     }
 }

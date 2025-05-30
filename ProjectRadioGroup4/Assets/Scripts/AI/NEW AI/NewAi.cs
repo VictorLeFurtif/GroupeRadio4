@@ -47,6 +47,9 @@ namespace AI.NEW_AI
         [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
 
+        [Header("Monster visual")] [SerializeField]
+        private Image monsterEyes;
+        
         #endregion
 
         #region Unity Methods
@@ -269,6 +272,30 @@ namespace AI.NEW_AI
             
             NewRadioManager.instance.listOfEveryEnemy.Remove(this);
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
+        }
+        #endregion
+
+        #region Color System
+
+        private void ChangeEyeColor()
+        {
+            if (chipsDatasList.Count != 0)
+            {
+                monsterEyes.material.color = FindColorFromString(chipsDatasList[0].colorLinkChips);
+            }
+        }
+
+        private Color FindColorFromString(string colorName)
+        {
+            return colorName.ToLower() switch
+            {
+                "red" => Color.red,
+                "green" => Color.green,
+                "blue" => Color.blue,
+                "white" => Color.white,
+                "black" => Color.black,
+                _ => Color.magenta //zerma comme dans Garry's Mod
+            };
         }
         #endregion
         
