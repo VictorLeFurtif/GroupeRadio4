@@ -26,9 +26,12 @@ namespace INTERACT
                 
                 currentDraggable.parentAfterDrag = draggableItem.parentAfterDrag;
                 currentDraggable.transform.SetParent(draggableItem.parentAfterDrag);
+                
+                currentDraggable.GetComponent<ChipVisualFeedback>()?.UpdateVisualState();
             }
             draggableItem.parentAfterDrag = transform;
             draggableItem.originalSlotIndex = this.slotIndex; 
+            draggableItem.GetComponent<ChipVisualFeedback>()?.UpdateVisualState();
         }
     }
 }

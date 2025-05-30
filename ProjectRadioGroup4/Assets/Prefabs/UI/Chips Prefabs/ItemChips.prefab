@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3530624559674067435}
   - component: {fileID: 4967866880112897951}
   - component: {fileID: -430300433954461764}
+  - component: {fileID: 1567246008552753683}
   m_Layer: 5
   m_Name: ItemChips
   m_TagString: Untagged
@@ -90,3 +91,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentAfterDrag: {fileID: 0}
   image: {fileID: 4967866880112897951}
+  originalSlotIndex: 0
+--- !u!114 &1567246008552753683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427784893363421874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3071f0546b13984eb266ca604a218f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedYOffset: 0.08
+  animationDuration: 0.3
+  pulseStrength: 0.1
+  pulseSpeed: 2

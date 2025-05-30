@@ -12,7 +12,7 @@ namespace DATA.Script.Chips_data
         public Sprite VisuelChips { get; private set; }
         [field: Header("Name color chips"),SerializeField]
         public string ColorLinkChips { get; private set; }
-
+        
         public ChipsDataInstance Instance()
         {
             return new ChipsDataInstance(this);
@@ -24,12 +24,14 @@ namespace DATA.Script.Chips_data
         public int index;
         public Sprite visuelChips;
         public string colorLinkChips;
+        public bool isSelected;
 
         public ChipsDataInstance(ChipsData data)
         {
             index = data.Index;
             visuelChips = data.VisuelChips;
             colorLinkChips = data.ColorLinkChips;
+            isSelected = false;
         }
     }
 }

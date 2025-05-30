@@ -30,6 +30,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DoorController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/Script/Attack Data/Old System Attack Player/PlayerAttack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/Script/Tutorial/FightTutorialTextData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FEEDBACK/ChipVisualFeedBack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/INTERACT/BatteryInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/INTERACT/InvetorySlot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/INTERFACE/IAi.cs" root0="FORCE_HIGHLIGHTING" />
@@ -176,6 +177,7 @@
       <workItem from="1748296428570" duration="1210000" />
       <workItem from="1748340010873" duration="2087000" />
       <workItem from="1748557224976" duration="10959000" />
+      <workItem from="1748592360287" duration="1819000" />
     </task>
     <servers />
   </component>

@@ -12,12 +12,14 @@ namespace INTERACT
         
         public void OnBeginDrag(PointerEventData eventData)
         {
-            Debug.Log("Begin Drag");
             parentAfterDrag = transform.parent;
             originalSlotIndex = parentAfterDrag.GetComponent<InvetorySlot>().slotIndex;
             transform.SetParent(transform.root);
             transform.SetAsLastSibling();
             image.raycastTarget = false;
+            
+            var feedback = GetComponent<ChipVisualFeedback>();
+            if (feedback != null) feedback.SetSelected(false);
         }
 
         public void OnDrag(PointerEventData eventData)

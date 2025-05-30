@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using Controller;
+using DATA.Script.Chips_data;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
 using INTERACT;
@@ -40,6 +42,11 @@ namespace AI.NEW_AI
         [SerializeField] private Slider healthSlider;
         [SerializeField] private float healthLerpDuration = 0.3f;
         private Coroutine healthLerpCoroutine;
+
+        [Header("Enemy Chips")] 
+        [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
+        [HideInInspector] public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
+
         #endregion
 
         #region Unity Methods
@@ -56,6 +63,11 @@ namespace AI.NEW_AI
             animatorEnemy = GetComponent<Animator>();
             originalPos = transform;
             healthSlider.gameObject.SetActive(false);
+
+            foreach (var t in chipsDatasListTempo)
+            {
+                chipsDatasList.Add(t.Instance());
+            }
         }
         #endregion
 
@@ -141,9 +153,7 @@ namespace AI.NEW_AI
         #region Collision Handling
         protected override void OnCollisionEnter2D(Collision2D other)
         {
-            var fightManager = FightManager.instance;
             if (!other.gameObject.CompareTag("Player")) return;
-            
             BeginFight();
         }
         
@@ -228,12 +238,11 @@ namespace AI.NEW_AI
 
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
-                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,100);
+                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,45);
             }
     
             fightManager.InitialiseList();
             
-            //NewRadioManager.instance?.StartMatchingGameInFight();
         }
         #endregion
         

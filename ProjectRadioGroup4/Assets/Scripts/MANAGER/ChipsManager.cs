@@ -13,7 +13,9 @@ namespace MANAGER
         
         [Header("Tableau")]
         [SerializeField] private ChipsData[]chipsDatas = new ChipsData[6];
-        [SerializeField] private ChipsDataInstance[]chipsDatasTab = new ChipsDataInstance[6];
+        
+        public ChipsDataInstance[]chipsDatasTab = new ChipsDataInstance[6];
+        private readonly ChipsDataInstance[] chipsDatasTabReference = new ChipsDataInstance[6];
         
         [SerializeField] private GameObject[]itemSlotsGO = new GameObject[6];
         
@@ -51,6 +53,7 @@ namespace MANAGER
                 chipsDatasTab[i] = chipsDatas[i].Instance();
                 itemSlotsGO[i].GetComponent<InvetorySlot>().slotIndex = i; 
             }
+            Array.Copy(chipsDatasTab,chipsDatasTabReference,chipsDatasTab.Length);
         }
 
         #endregion
@@ -75,7 +78,23 @@ namespace MANAGER
 
             (chipsDatas[index1], chipsDatas[index2]) = (chipsDatas[index2], chipsDatas[index1]);
         }
-
+        
+        public void DeselectAllChips(bool animate = true)
+        {
+            for (int i = 0; i < chipsDatasTab.Length; i++)
+            {
+                chipsDatasTab[i].isSelected = false;
+                
+                if (itemSlotsGO[i].transform.childCount > 0)
+                {
+                    var feedback = itemSlotsGO[i].GetComponentInChildren<ChipVisualFeedback>();
+                    if (feedback != null)
+                    {
+                        feedback.SetSelected(false, animate);
+                    }
+                }
+            }
+        }
         #endregion
     }
 }
