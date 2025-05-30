@@ -17889,6 +17889,22 @@ PrefabInstance:
       propertyPath: healthLerpDuration
       value: 1.57
       objectReference: {fileID: 0}
+    - target: {fileID: 4270810391467650564, guid: 2d1dcf13c0d2cee40897b99886a6bc04, type: 3}
+      propertyPath: chipsDatasListTempo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270810391467650564, guid: 2d1dcf13c0d2cee40897b99886a6bc04, type: 3}
+      propertyPath: chipsDatasListTempo.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 312b67c95d00bf745bb80b4c707891b8, type: 2}
+    - target: {fileID: 4270810391467650564, guid: 2d1dcf13c0d2cee40897b99886a6bc04, type: 3}
+      propertyPath: chipsDatasListTempo.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbe34eb67cf4e82448e2b9819a0265cc, type: 2}
+    - target: {fileID: 4270810391467650564, guid: 2d1dcf13c0d2cee40897b99886a6bc04, type: 3}
+      propertyPath: chipsDatasListTempo.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 66531ab38f5180a45b30dc7eb79656a0, type: 2}
     - target: {fileID: 5741257483416933003, guid: 2d1dcf13c0d2cee40897b99886a6bc04, type: 3}
       propertyPath: m_Name
       value: Enemy

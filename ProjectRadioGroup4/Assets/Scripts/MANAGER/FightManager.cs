@@ -275,21 +275,33 @@ namespace MANAGER
         
         private void ProcessPlayerGuess()
         {
+            if (!isMatchingPhase || currentEnemyTarget == null)
+            {
+                Debug.Log("ProcessPlayerGuess appelé hors phase de matching ou sans ennemi cible");
+                return;
+            }
+
             var enemySequence = currentEnemyTarget.chipsDatasList;
             var playerSelection = ChipsManager.Instance.playerChoiceChipsOrder;
+
+            Debug.Log($"Début vérification - Séquence ennemie: {string.Join(",", enemySequence.Select(c => c.index))}");
+            Debug.Log($"Sélection joueur: {string.Join(",", playerSelection.Select(c => c.index))}");
 
             int correctCount = 0;
             bool allCorrect = true;
 
+            // Vérification de la correspondance
             for (int i = 0; i < Mathf.Min(enemySequence.Count, playerSelection.Count); i++)
             {
-                if (enemySequence[i] == playerSelection[i])
+                if (AreChipsEquivalent(enemySequence[i], playerSelection[i]))
                 {
                     correctCount++;
+                    Debug.Log($"Chip {i} correct: {enemySequence[i].index}");
                 }
                 else
                 {
                     allCorrect = false;
+                    Debug.Log($"Chip {i} incorrect: Attendu {enemySequence[i].index}, Reçu {playerSelection[i]?.index}");
                     break;
                 }
             }
@@ -298,42 +310,56 @@ namespace MANAGER
             {
                 for (int i = correctCount - 1; i >= 0; i--)
                 {
+                    Debug.Log($"Suppression du chip {i} (Index: {enemySequence[i].index})");
                     currentEnemyTarget.chipsDatasList.RemoveAt(i);
                 }
 
                 if (allCorrect && playerSelection.Count >= enemySequence.Count)
                 {
+                    Debug.Log("Séquence COMPLÈTEMENT devinée!");
                     EnemySequenceGuessed();
                 }
                 else
                 {
-                    Debug.Log($"Correctement deviné {correctCount} chips! Continuez!");
+                    Debug.Log($"Séquence PARTIELLEMENT devinée ({correctCount} chips corrects)");
                 }
             }
             else
             {
+                Debug.Log("AUCUN chip correct - restauration de la séquence originale");
                 currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
-                Debug.Log("Mauvaise sequence!");
                 playerSuccess = false;
                 EndFighterTurn();
             }
         }
-        
+        private bool AreChipsEquivalent(ChipsDataInstance chip1, ChipsDataInstance chip2)
+        {
+            if (chip1 == null || chip2 == null) return false;
+    
+            return chip1.index == chip2.index 
+                   && chip1.colorLinkChips == chip2.colorLinkChips;
+        }
         private void EnemySequenceGuessed()
         {
-            Debug.Log("Sequence complete devinee!");
+            Debug.Log("EnemySequenceGuessed appelé");
             playerSuccess = true;
             
-            currentEnemyTarget.PvEnemy -= player.GetPlayerDamage();
+            float damage = player.GetPlayerDamage();
+            currentEnemyTarget.PvEnemy -= damage;
+            Debug.Log($"Dégâts appliqués: {damage} - PV restants: {currentEnemyTarget.PvEnemy}");
             
             if (currentEnemyTarget._abstractEntityDataInstance.IsDead())
             {
+                Debug.Log("Ennemi vaincu!");
                 listOfJustEnemiesAlive.Remove(currentEnemyTarget._abstractEntityDataInstance);
                 fighterAlive.Remove(currentEnemyTarget._abstractEntityDataInstance);
                 currentOrder.Remove(currentEnemyTarget._abstractEntityDataInstance);
             }
             
-            EndFighterTurn();
+            isMatchingPhase = true; 
+            playerTurnTimer = playerTurnDuration; 
+            
+            Debug.Log("Le joueur garde son tour pour continuer");
         }
         
         
@@ -343,13 +369,17 @@ namespace MANAGER
 
         private void HandleTimerPlayerForPlay()
         {
-            if (currentFighter != player._abstractEntityDataInstance || !isMatchingPhase || !(playerTurnTimer > 0)) return;
+            if (currentFighter != player._abstractEntityDataInstance || !isMatchingPhase || !(playerTurnTimer > 0))
+            {
+                Debug.Log($"Conditions non remplies: isPlayerTurn={currentFighter == player._abstractEntityDataInstance}, isMatching={isMatchingPhase}, timer={playerTurnTimer}");
+                return;
+            }
 
             playerTurnTimer -= Time.deltaTime;
 
             if (playerTurnTimer <= 0)
             {
-                Debug.Log("Temps écoulé !");
+                Debug.Log("Temps écoulé - fin du tour");
                 isMatchingPhase = false;
                 EndFighterTurn();
             }
