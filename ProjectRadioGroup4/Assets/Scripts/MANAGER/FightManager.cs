@@ -294,7 +294,6 @@ namespace MANAGER
             {
                 NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 firstAttempt = false;
-                currentEnemyTarget.UpdateEyeColorToCurrentChip();
             }
             
             int correctCount = 0;
@@ -313,6 +312,7 @@ namespace MANAGER
                 }
             }
 
+            Debug.Log(correctCount);
             if (correctCount > 0)
             {
                 int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;

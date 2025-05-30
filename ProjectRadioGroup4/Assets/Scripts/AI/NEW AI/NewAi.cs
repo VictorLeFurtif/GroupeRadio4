@@ -45,7 +45,7 @@ namespace AI.NEW_AI
 
         [Header("Enemy Chips")] 
         [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
-         public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
+        public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
 
         [Header("Eye Settings")]
@@ -277,35 +277,28 @@ namespace AI.NEW_AI
             NewRadioManager.instance.listOfEveryEnemy.Remove(this);
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
         }
-
         
-
-        public void RemoveGuessedChips(int count)
-        {
-            if (chipsDatasList == null || count <= 0) return;
-            
-            chipsDatasList.RemoveRange(0, Mathf.Min(count, chipsDatasList.Count));
-    
-            Debug.Log($"Removed {count} chips from enemy sequence. Remaining: {chipsDatasList.Count}");
-        }
         #endregion
 
         #region Color System
         public void UpdateEyeColorToCurrentChip()
         {
-            if (chipsDatasList == null || chipsDatasList.Count == 0 || currentChipIndex >= chipsDatasList.Count)
+            if (chipsDatasList == null || chipsDatasList.Count == 0 || currentChipIndex >= chipsDatasListSave.Count)
             {
                 monsterEyes.color = Color.white;
                 return;
             }
     
-            string colorName = chipsDatasList[currentChipIndex].colorLinkChips;
+            string colorName = chipsDatasListSave[currentChipIndex].colorLinkChips;
             monsterEyes.color = ConvertColorNameToColor(colorName);
         }
 
         public void MoveToNextChip()
         {
-            if (chipsDatasList == null || currentChipIndex >= chipsDatasList.Count - 1) return;
+            if (chipsDatasList == null || currentChipIndex >= chipsDatasListSave.Count - 1)
+            {
+                return;
+            }
     
             currentChipIndex++;
             UpdateEyeColorToCurrentChip();
