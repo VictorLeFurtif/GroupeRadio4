@@ -31,7 +31,10 @@ namespace MANAGER
         
         [Header("UI")]
         [SerializeField] private GameObject chipSlotPrefab; 
-        [SerializeField] private Transform inventoryGrid;  
+        [SerializeField] private Transform inventoryGrid; 
+        
+        [Header("List")]
+        private List<GameObject> slotPool = new List<GameObject>();
 
         #endregion
 
@@ -93,6 +96,7 @@ namespace MANAGER
             }
 
             chipsDatasTab = chipsDatasTab.OrderBy(x => Random.value).ToArray();
+            UpdateInventoryUI();
         }
 
         
@@ -102,14 +106,76 @@ namespace MANAGER
 
         private void InitializeInventoryUI()
         {
+            foreach (var slot in itemSlotsGO)
+            {
+                foreach (Transform child in slot.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+
             for (int i = 0; i < chipsDatasTab.Length; i++)
             {
-                GameObject slot = Instantiate(chipSlotPrefab, inventoryGrid);
-                Image chipImage = slot.GetComponentInChildren<Image>();
-                chipImage.sprite = chipsDatasTab[i].visuelChips;
-                slot.transform.SetParent(itemSlotsGO[i].transform);
+                if (i >= itemSlotsGO.Length) continue;
+                
+                GameObject draggableChip = Instantiate(chipSlotPrefab, itemSlotsGO[i].transform);
+                Image chipImage = draggableChip.GetComponentInChildren<Image>();
+                
+                if (chipImage != null && chipsDatasTab[i] != null)
+                {
+                    chipImage.sprite = chipsDatasTab[i].visuelChips;
+                }
             }
         }
+
+        private void UpdateInventoryUI()
+        {
+            for (int i = 0; i < itemSlotsGO.Length; i++)
+            {
+                Transform slot = itemSlotsGO[i].transform;
+                
+                if (slot.childCount == 0 && i < chipsDatasTab.Length)
+                {
+                    GameObject draggableChip = Instantiate(chipSlotPrefab, slot);
+                    UpdateChipImage(draggableChip, chipsDatasTab[i]);
+                }
+            }
+
+            for (int i = 0; i < itemSlotsGO.Length; i++)
+            {
+                if (i >= chipsDatasTab.Length) continue;
+                
+                Transform slot = itemSlotsGO[i].transform;
+                if (slot.childCount > 0)
+                {
+                    GameObject draggableChip = slot.GetChild(0).gameObject;
+                    UpdateChipImage(draggableChip, chipsDatasTab[i]);
+                }
+            }
+
+            for (int i = chipsDatasTab.Length; i < itemSlotsGO.Length; i++)
+            {
+                if (itemSlotsGO[i].transform.childCount > 0)
+                {
+                    itemSlotsGO[i].transform.GetChild(0).gameObject.SetActive(false);
+                }
+            }
+        }
+
+        private void UpdateChipImage(GameObject draggableChip, ChipsDataInstance chipData)
+        {
+            if (draggableChip == null) return;
+            
+            Image chipImage = draggableChip.GetComponentInChildren<Image>();
+            
+            if (chipImage != null)
+            {
+                chipImage.sprite = chipData?.visuelChips;
+                draggableChip.SetActive(chipData != null);
+            }
+        }
+
+        
         
         public void SwapChips(int index1, int index2)
         {
