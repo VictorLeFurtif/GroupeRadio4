@@ -79,7 +79,8 @@ namespace MANAGER
             }
 
             List<ChipsDataInstance> availableChips = everyChips
-                .Where(chip => !ai.chipsDatasList.Contains(chip))
+                .Where(chip => ai.chipsDatasList.All
+                    (aiChip => aiChip.id != chip.id))
                 .ToList();
 
             int startIndex = ai.chipsDatasList.Count;
