@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using AI.NEW_AI;
 using DATA.Script.Chips_data;
 using INTERACT;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random; 
+
 
 namespace MANAGER
 {
@@ -16,6 +20,9 @@ namespace MANAGER
         [SerializeField] private ChipsData[]chipsDatas = new ChipsData[6];
         
         public ChipsDataInstance[]chipsDatasTab = new ChipsDataInstance[6];
+
+        [SerializeField] private ChipsData[] everyChipsNotInstance;
+        [SerializeField] private ChipsDataInstance[] everyChips;
         
         [Header("Player Selection")]
         public List<ChipsDataInstance> playerChoiceChipsOrder = new List<ChipsDataInstance>();
@@ -41,7 +48,7 @@ namespace MANAGER
         
         private void Start()
         {
-            InitTabChipsDataInstance();
+            Init();
             InitializeInventoryUI();
         }
 
@@ -49,15 +56,50 @@ namespace MANAGER
 
         #region Initialization
 
-        private void InitTabChipsDataInstance()
+        private void Init()
         {
-            for (int i = 0; i < chipsDatas.Length; i++)
+            for (int i = 0; i < everyChipsNotInstance.Length; i++)
             {
-                chipsDatasTab[i] = chipsDatas[i].Instance();
-                itemSlotsGO[i].GetComponent<InvetorySlot>().slotIndex = i; 
+                everyChips[i] = everyChipsNotInstance[i].Instance();
+                //itemSlotsGO[i].GetComponent<InvetorySlot>().slotIndex = i; 
             }
         }
 
+        private void IniTabChipsDataInstanceInFight(NewAi ai)
+        {
+            
+            Array.Clear(chipsDatasTab,0,chipsDatasTab.Length);
+            for (int i = 0; i < ai.chipsDatasList.Count; i++)
+            {
+                chipsDatasTab[i] = ai.chipsDatasList[i];
+            }
+
+            if (chipsDatasTab.Length != ai.chipsDatasList.Count)
+            {
+                List<ChipsDataInstance> copyListEveryChips = new List<ChipsDataInstance>();
+
+                foreach (var t in everyChips)
+                {
+                    copyListEveryChips.Add(t);
+                }
+                
+                copyListEveryChips.RemoveAll(chip => chipsDatasTab.Contains(chip));
+                
+                int numberOfChipsToImplement = chipsDatasTab.Length - ai.chipsDatasList.Count;
+
+                for (int i = 0; i < numberOfChipsToImplement; i++)
+                {
+                    int randomIndex = Random.Range(0, copyListEveryChips.Count);
+                    chipsDatasTab[i + ai.chipsDatasList.Count] = copyListEveryChips[randomIndex];
+                    copyListEveryChips.RemoveAt(randomIndex);
+                }
+            }
+            
+            chipsDatasTab = chipsDatasTab.OrderBy(x => Guid.NewGuid()).ToArray();
+            
+        }
+
+        
         #endregion
 
         #region UI
