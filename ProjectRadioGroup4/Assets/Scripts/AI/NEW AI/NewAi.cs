@@ -249,7 +249,7 @@ namespace AI.NEW_AI
             }
     
             fightManager.InitialiseList();
-            
+            ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
         }
         #endregion
         

@@ -61,42 +61,37 @@ namespace MANAGER
             for (int i = 0; i < everyChipsNotInstance.Length; i++)
             {
                 everyChips[i] = everyChipsNotInstance[i].Instance();
-                //itemSlotsGO[i].GetComponent<InvetorySlot>().slotIndex = i; 
+            }
+            
+            for (int i = 0; i < chipsDatas.Length; i++)
+            {
+                itemSlotsGO[i].GetComponent<InvetorySlot>().slotIndex = i; 
             }
         }
 
-        private void IniTabChipsDataInstanceInFight(NewAi ai)
+        public void IniTabChipsDataInstanceInFight(NewAi ai)
         {
-            
-            Array.Clear(chipsDatasTab,0,chipsDatasTab.Length);
-            for (int i = 0; i < ai.chipsDatasList.Count; i++)
+            Array.Clear(chipsDatasTab, 0, chipsDatasTab.Length);
+    
+            for (int i = 0; i < ai.chipsDatasList.Count && i < chipsDatasTab.Length; i++)
             {
                 chipsDatasTab[i] = ai.chipsDatasList[i];
             }
 
-            if (chipsDatasTab.Length != ai.chipsDatasList.Count)
+            List<ChipsDataInstance> availableChips = everyChips
+                .Where(chip => !ai.chipsDatasList.Contains(chip))
+                .ToList();
+
+            int startIndex = ai.chipsDatasList.Count;
+            
+            for (int i = startIndex; i < chipsDatasTab.Length && availableChips.Count > 0; i++)
             {
-                List<ChipsDataInstance> copyListEveryChips = new List<ChipsDataInstance>();
-
-                foreach (var t in everyChips)
-                {
-                    copyListEveryChips.Add(t);
-                }
-                
-                copyListEveryChips.RemoveAll(chip => chipsDatasTab.Contains(chip));
-                
-                int numberOfChipsToImplement = chipsDatasTab.Length - ai.chipsDatasList.Count;
-
-                for (int i = 0; i < numberOfChipsToImplement; i++)
-                {
-                    int randomIndex = Random.Range(0, copyListEveryChips.Count);
-                    chipsDatasTab[i + ai.chipsDatasList.Count] = copyListEveryChips[randomIndex];
-                    copyListEveryChips.RemoveAt(randomIndex);
-                }
+                int randomIndex = Random.Range(0, availableChips.Count);
+                chipsDatasTab[i] = availableChips[randomIndex];
+                availableChips.RemoveAt(randomIndex);
             }
-            
-            chipsDatasTab = chipsDatasTab.OrderBy(x => Guid.NewGuid()).ToArray();
-            
+
+            chipsDatasTab = chipsDatasTab.OrderBy(x => Random.value).ToArray();
         }
 
         
