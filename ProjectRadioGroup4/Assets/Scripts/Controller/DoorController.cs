@@ -11,6 +11,7 @@ namespace Controller
         [SerializeField] private string sceneName;
         [SerializeField] private Vector3 positionForPlayer;
         private Animator doorAnimator;
+        [SerializeField] private float triggerDoor;
         
         private void Start()
         {
@@ -43,10 +44,13 @@ namespace Controller
         
         private void OnMouseDown()
         {
-            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight ||
+                Vector2.Distance(new Vector2(PlayerController.instance.transform.position.x,0),new Vector2(transform.position.x,0)) > triggerDoor)
             {
+                Debug.LogWarning(Vector2.Distance(PlayerController.instance.transform.position,transform.position));
                 return;
             }
+            
             doorAnimator.Play("Door");
         }
     }

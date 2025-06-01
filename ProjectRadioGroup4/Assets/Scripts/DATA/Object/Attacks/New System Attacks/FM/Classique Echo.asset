@@ -22,4 +22,10 @@ MonoBehaviour:
     costBatteryExploration: 2
     costBatteryInFightMax: 0
     costBatteryInFight: 0
+  <DescriptionAttackAndEffect>k__BackingField:
+    descriptionAttack: 
+    descriptionEffectOutFight: "Garantie que j\u2019attaque en premier lorsque l\u2019ennemi
+      n\u2019est pas sorti de l\u2019immat\xE9riel, mais qui co\xFBte cher par seconde"
+    descriptionEffectInFight: "Je prends quand m\xEAme des d\xE9g\xE2ts, mais je
+      renvoie une partie. Ceci dit, elle multiplie mon co\xFBt de beaucoup."
   <MultiplicatorLifeTaken>k__BackingField: 1.75

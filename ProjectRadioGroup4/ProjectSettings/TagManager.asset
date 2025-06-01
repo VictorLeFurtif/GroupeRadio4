@@ -14,7 +14,7 @@ TagManager:
   - UI
   - Player
   - Shield
-  - 
+  - Interact
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2536480809
     locked: 0
   - name: UI
     uniqueID: 8471491

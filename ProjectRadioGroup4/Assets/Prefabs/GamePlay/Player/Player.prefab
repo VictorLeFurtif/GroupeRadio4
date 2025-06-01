@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1758486487
+  m_SortingLayer: 1
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 15378ffd8c90bcd4da723b01864dd04a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -255,6 +255,10 @@ MonoBehaviour:
       costBatteryInFightMax: 0
       costBatteryInFight: 0
     multiplicatorLifeTaken: 0
+    descriptionAttackEffect:
+      descriptionAttack: 
+      descriptionEffectOutFight: 
+      descriptionEffectInFight: 
   selectedAttackEffect:
     attack:
       damage: 0
@@ -267,6 +271,10 @@ MonoBehaviour:
       costBatteryInFightMax: 0
       costBatteryInFight: 0
     multiplicatorLifeTaken: 0
+    descriptionAttackEffect:
+      descriptionAttack: 
+      descriptionEffectOutFight: 
+      descriptionEffectInFight: 
   currentPlayerExplorationState: 0
   animatorPlayer: {fileID: 0}
   lampTorch: {fileID: 5213452711014371218}
@@ -333,6 +341,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryCheckInterval: 1
   lifeText: {fileID: 0}
+  lifeSlider: {fileID: 0}
+  lifeSliderFill: {fileID: 0}
+  fullLifeColor: {r: 0, g: 1, b: 0, a: 1}
+  noLifeColor: {r: 1, g: 0, b: 0, a: 1}
+  midLifeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  durationTimeLerpLife: 1
 --- !u!95 &8186670234064678888
 Animator:
   serializedVersion: 5
@@ -380,7 +394,7 @@ MonoBehaviour:
   - {x: 0.36916208, y: 0.103906155, z: 0}
   m_ShapePathHash: -1156423123
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1668
+  m_InstanceId: -6626
   m_LocalBounds:
     m_Center: {x: -0.11507392, y: 1.2452497, z: 0}
     m_Extent: {x: 0.484236, y: 1.1649222, z: 0}

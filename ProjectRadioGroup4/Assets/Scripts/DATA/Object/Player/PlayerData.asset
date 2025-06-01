@@ -20,16 +20,7 @@ MonoBehaviour:
   <SeenByRadio>k__BackingField: 0
   <NotHidden>k__BackingField: 0
   <Battery>k__BackingField: 0
-  <NormalAttack>k__BackingField:
-    damage: 0
-    batteryGain: 0
-  <HeavyAttack>k__BackingField:
-    damage: 0
-    batteryGain: 0
-  <StealBatteries>k__BackingField:
-    damage: 0
-    batteryGain: 0
-  <StealALotBatteries>k__BackingField:
-    damage: 0
-    batteryGain: 0
+  <everyAnimation>k__BackingField:
+    attackAnimation: {fileID: 7400000, guid: c886e72ab71787845a72457d0357bb39, type: 2}
+    takeDamageAnimation: {fileID: 7400000, guid: e3c65e86ad4b6284d9375f9a3b63b27c, type: 2}
   <MoveSpeed>k__BackingField: 3

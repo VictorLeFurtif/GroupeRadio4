@@ -187,6 +187,4 @@ namespace MANAGER
         [Header("Step Behavior")] 
         public bool requiresPlayerAction; 
     }
-    
-    
 }

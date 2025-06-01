@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c33b9e58716d144a8ec65bf7cbf819f, type: 3}
   m_Name: TUTO DATA AI
   m_EditorClassIdentifier: 
-  <Hp>k__BackingField: 100
+  <Hp>k__BackingField: 50
   <Speed>k__BackingField: 10
   TurnState: 1
   <WaveAmplitudeEnemy>k__BackingField: 0.2
@@ -24,14 +24,14 @@ MonoBehaviour:
     compteurVodka: 0
     isVodka: 0
   <NormalAttack>k__BackingField:
-    damage: -1
+    damage: 0
     batteryGain: 0
   <HeavyAttack>k__BackingField:
-    damage: -1
+    damage: 0
     batteryGain: 0
   <StealBatteries>k__BackingField:
-    damage: -1
+    damage: 0
     batteryGain: 0
   <StealALotBatteries>k__BackingField:
-    damage: -1
+    damage: 0
     batteryGain: 0

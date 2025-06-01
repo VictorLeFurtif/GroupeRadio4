@@ -1,4 +1,5 @@
 ﻿using AI;
+using AI.OLD_AI_BEFORE_FP_V2;
 using Controller;
 using INTERFACE;
 using MANAGER;
@@ -24,8 +25,8 @@ namespace DATA.Script.Attack_Data.New_System_Attack_Player
             if (FightManager.instance == null || PlayerController.instance == null || PlayerController.instance.selectedEnemy == null) return;
 
             var enemySelectedData = PlayerController.instance.selectedEnemy.GetComponent<AbstractAI>()._abstractEntityDataInstance;
-            enemySelectedData.vodkaOndeRadio.isVodka = true;
-            enemySelectedData.vodkaOndeRadio.compteurVodka = 0;
+     //       enemySelectedData.vodkaOndeRadio.isVodka = true;
+       //     enemySelectedData.vodkaOndeRadio.compteurVodka = 0;
         }
     }
 }

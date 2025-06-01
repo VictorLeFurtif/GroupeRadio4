@@ -1,54 +1,34 @@
+using UI;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-// JACQUES gronde pas victor c'est Ethan GD qui as fait le script.
+// JACQUES ne gronde pas victor c'est Ethan GD qui a écrit le script.
 
 public class TutorialScript : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
-    [SerializeField] private Light2D _light;
-    [SerializeField] private Light2D _torchLight;
-
-    private bool _isInLightZone = false;
-
-    public bool IsInLightZone
-    {
-        get => _isInLightZone;
-        set
-        {
-            if (_isInLightZone != value)
-            {
-                _isInLightZone = value;
-                OnLightZoneChanged();
-            }
-        }
-    }
-
-    private void OnLightZoneChanged()
-    {
-        if (_light == null || _torchLight == null) return;
-        
-        if (_torchLight.intensity != 0f)
-        {
-            _light.intensity = 1f;
-        }
-    }
+    [SerializeField] private GameObject player;
+    [SerializeField] private new Light2D light;
+    [SerializeField] private Light2D torchLight;
+    [SerializeField] private string succesMessage;
+    [SerializeField] private TutorialUIManager tutorialUI;
+    
+    private bool done;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == _player)
+        if (other.gameObject == player && !done)
         {
-            IsInLightZone = true;
-            _light.intensity = 0f;
+            light.intensity = 0f;
+            done = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == _player)
+        if (other.gameObject == player && torchLight.intensity != 0f)
         {
-            IsInLightZone = false;
-            _light.intensity = 1f;
+            light.intensity = 1f;
+            tutorialUI.ShowTutorial(succesMessage);
         }
     }
 }

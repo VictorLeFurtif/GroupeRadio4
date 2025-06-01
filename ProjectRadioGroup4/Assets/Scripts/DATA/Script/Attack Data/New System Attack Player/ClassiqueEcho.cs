@@ -21,14 +21,14 @@ namespace DATA.Script.Attack_Data.New_System_Attack_Player
         public void ProcessEffect()
         {
             if (FightManager.instance == null || PlayerController.instance == null) return;
-            PlayerController.instance._inGameData.classicEcho = true;
+        //    PlayerController.instance._inGameData.classicEcho = true;
         }
 
         public void CancelEffectWhenEnterFight()
         {
             if (PlayerController.instance != null)
             {
-                PlayerController.instance._inGameData.classicEcho = false;
+       //         PlayerController.instance._inGameData.classicEcho = false;
             }
         }
     }

@@ -13,7 +13,6 @@ namespace DATA.Script.Entity_Data.AI
         [field: Header("Life"), SerializeField]
         public float Hp { get; private set; }
     
-    
         [field: Header("Hidden Speed"),SerializeField]
         public int Speed { get; private set; }
 
@@ -44,27 +43,8 @@ namespace DATA.Script.Entity_Data.AI
             public float batteryGain;
         }
         
-        [Serializable] public struct PostZeroDeal
-        {
-            public bool postZeroBomb;
-            public float damageStockForAfterDeath;
-        }
-        
-        [Serializable] public struct Vodka
-        {
-            public int compteurVodka;
-            public bool isVodka;
-        }
-        
-        [field: Header("Vodka Onde Radio"),SerializeField] public Vodka VodkaOndeRadio { get; private set; }
-        [field: Header("Normal Attack"),SerializeField] public AttackData NormalAttack { get; private set; }
-        [field: Header("Heavy Attack"),SerializeField] public AttackData HeavyAttack { get; private set; }
-        [field: Header("Steal Batteries"),SerializeField] public AttackData StealBatteries { get; private set; }
-        [field: Header("Steal a lot of Batteries"),SerializeField] public AttackData StealALotBatteries { get; private set; }
-        
-        
-        
-        
+        [field: Header("ANIMATION "),SerializeField]
+        public EntityAnimation everyAnimation { get; private set; }
         
         public virtual AbstractEntityDataInstance Instance(GameObject entity)
         {
@@ -90,10 +70,10 @@ namespace DATA.Script.Entity_Data.AI
         public AbstractEntityData.AttackData stealBatteries;
         public AbstractEntityData.AttackData stealALotBatteries;
         public bool flashed;
-        public AbstractEntityData.PostZeroDeal postZeroDeal;
-        public AbstractEntityData.Vodka vodkaOndeRadio;
-        
 
+        public EntityAnimation entityAnimation;
+ 
+        
         public AbstractEntityDataInstance(AbstractEntityData data, GameObject entity)
         {
             hp = data.Hp;
@@ -105,14 +85,10 @@ namespace DATA.Script.Entity_Data.AI
             seenByRadio = data.SeenByRadio;
             reveal = data.NotHidden;
             battery = data.Battery;
-            normalAttack = data.NormalAttack;
-            heavyAttack = data.HeavyAttack;
-            stealBatteries = data.StealBatteries;
-            stealALotBatteries = data.StealALotBatteries;
             maxHp = hp;
             flashed = false;
-            vodkaOndeRadio = data.VodkaOndeRadio;
-            
+
+            entityAnimation = data.everyAnimation;
         }
 
         public bool IsDead()
@@ -129,5 +105,13 @@ namespace DATA.Script.Entity_Data.AI
         {
             return battery >= 50;
         }
+    }
+    
+    
+    [Serializable]
+    public class EntityAnimation
+    {
+        public AnimationClip attackAnimation;
+        public AnimationClip takeDamageAnimation;
     }
 }
