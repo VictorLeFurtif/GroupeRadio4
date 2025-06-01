@@ -293,6 +293,11 @@ namespace AI.NEW_AI
             monsterEyes.color = ConvertColorNameToColor(colorName);
         }
 
+        public ChipsDataInstance GetActualInstanceChips()
+        {
+            return chipsDatasListSave[currentChipIndex];
+        }
+
         public void MoveToNextChip()
         {
             if (chipsDatasList == null || currentChipIndex >= chipsDatasListSave.Count - 1)
@@ -310,6 +315,7 @@ namespace AI.NEW_AI
             if (sequenceToUse != null && sequenceToUse.Count > 0)
             {
                 UpdateEyeColorToCurrentChip();
+                NewRadioManager.instance?.UpdateOscillationEnemy(this);
             }
         }
         
