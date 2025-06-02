@@ -37,6 +37,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 170554625120655443}
   - {fileID: 601346492744691113}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,3 +481,65 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &2265419272569292339
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 353815956720992489}
+    m_Modifications:
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.739789
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.010465
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9054046673364191819, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+      propertyPath: m_Name
+      value: LightCullingTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+--- !u!4 &170554625120655443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2102490894628085344, guid: 1ea7064ca9826f5499fed6bf3a721416, type: 3}
+  m_PrefabInstance: {fileID: 2265419272569292339}
+  m_PrefabAsset: {fileID: 0}
