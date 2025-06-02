@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Canvas gameOver;
     
     public GameState currentGameState = GameState.Menu;
     private void Awake()
@@ -29,13 +28,13 @@ public class GameManager : MonoBehaviour
         {
             switch (value)
             {
-                case GameState.GameOver : gameOver.enabled = true;
+                case GameState.GameOver :
                     RadioController.instance.canvaRadio.enabled = false;
                     break;
-                case GameState.Game : gameOver.enabled = false;
+                case GameState.Game :
                     RadioController.instance.canvaRadio.enabled = true;
                     break;
-                case GameState.Menu : gameOver.enabled = false;
+                case GameState.Menu :
                     RadioController.instance.canvaRadio.enabled = false;
                     break;
                 default:
