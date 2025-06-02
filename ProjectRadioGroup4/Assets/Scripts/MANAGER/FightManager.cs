@@ -184,6 +184,7 @@ namespace MANAGER
 
             
             firstAttempt = true;
+            NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
         }
         #endregion
 
@@ -269,6 +270,7 @@ namespace MANAGER
             fightState = FightState.OutFight;
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
+            NewRadioManager.instance?.ResetLights();
         }
         
         private void AttackPlayer(AbstractEntityDataInstance attacker)
@@ -298,7 +300,6 @@ namespace MANAGER
 
             if (firstAttempt)
             {
-                NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 firstAttempt = false;
             }
             
@@ -348,13 +349,14 @@ namespace MANAGER
             }
             else
             {
-                NewRadioManager.instance.ResetLights();
+                NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
                 NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
                 currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
                 playerSuccess = false;
                 EndFighterTurn();
             }
+            
         }
         private bool AreChipsEquivalent(ChipsDataInstance chip1, ChipsDataInstance chip2)
         {

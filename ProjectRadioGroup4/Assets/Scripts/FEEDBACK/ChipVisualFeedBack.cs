@@ -13,6 +13,7 @@ namespace INTERACT
 
         private Vector3 originalScale;
         private Tween pulseTween;
+
         private bool isSelected;
 
         private void Awake()
