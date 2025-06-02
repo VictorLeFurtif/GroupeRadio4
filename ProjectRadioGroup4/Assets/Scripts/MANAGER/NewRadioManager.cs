@@ -104,6 +104,8 @@ namespace MANAGER
         {
             TimerCheckInterval();
             UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
+            UpdateTypeOfUiByFightState();
+
         }
 
         private void Start()
@@ -390,6 +392,24 @@ namespace MANAGER
             foreach (var light in lights)
             {
                 light.transform.localScale = Vector3.one;
+            }
+        }
+
+        [Header("Canva Part to Display")] 
+        [SerializeField] private GameObject canvaExploration;
+        [SerializeField] private GameObject canvaFight;
+        
+        private void UpdateTypeOfUiByFightState()
+        {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                canvaExploration.SetActive(false);
+                canvaFight.SetActive(true);
+            }
+            else
+            {
+                canvaExploration.SetActive(true);
+                canvaFight.SetActive(false);
             }
         }
         
