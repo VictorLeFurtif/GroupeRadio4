@@ -104,6 +104,8 @@ namespace MANAGER
         {
             TimerCheckInterval();
             UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
+            UpdateTypeOfUiByFightState();
+
         }
 
         private void Start()
@@ -184,7 +186,7 @@ namespace MANAGER
 
         
         
-        private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
+        public IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {
             float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
             float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
@@ -392,6 +394,24 @@ namespace MANAGER
                 light.transform.localScale = Vector3.one;
             }
         }
+
+        [Header("Canva Part to Display")] 
+        [SerializeField] private GameObject canvaExploration;
+        [SerializeField] private GameObject canvaFight;
+        
+        private void UpdateTypeOfUiByFightState()
+        {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                canvaExploration.SetActive(false);
+                canvaFight.SetActive(true);
+            }
+            else
+            {
+                canvaExploration.SetActive(true);
+                canvaFight.SetActive(false);
+            }
+        }
         
         #endregion
         
@@ -456,6 +476,21 @@ namespace MANAGER
                 CheckWaveMatch();
                 lastCheckTime = Time.time;
             }
+        }
+
+        #endregion
+
+        #region Deal With Fight Oscillation
+
+        [SerializeField] private float fromFrequencyToWaveNumber;
+        public void UpdateOscillationEnemy(NewAi ai)
+        {
+            var targetFrequency = ai.GetActualInstanceChips().index * fromFrequencyToWaveNumber;
+            WaveSettings enemyChipsWaveSettings = new WaveSettings(targetFrequency, 0.3f, 0);
+            Debug.LogError(ai.chipsDatasList[0].index);
+            StartCoroutine(HandleRadioTransition(enemyChipsWaveSettings));
+
+
         }
 
         #endregion

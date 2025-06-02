@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ChipsBlue3
   m_EditorClassIdentifier: 
   <Index>k__BackingField: 3
-  <VisuelChips>k__BackingField: {fileID: 21300000, guid: 8d806b0381b6ba14783d5016fdb52a7a, type: 3}
+  <VisuelChips>k__BackingField: {fileID: 21300000, guid: cd01e9811a959d448a8006375efbe7ee, type: 3}
   <ColorLinkChips>k__BackingField: blue
   <ID>k__BackingField: 3

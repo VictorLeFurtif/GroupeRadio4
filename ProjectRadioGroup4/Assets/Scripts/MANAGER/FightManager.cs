@@ -8,6 +8,7 @@ using Controller;
 using DATA.Script.Chips_data;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
+using INTERACT;
 using INTERFACE;
 using TMPro;
 using UnityEngine;
@@ -166,7 +167,7 @@ namespace MANAGER
             listOfJustEnemiesAlive.AddRange(currentOrder.Where(x => x != player._abstractEntityDataInstance));
             currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
             fighterAlive = new List<AbstractEntityDataInstance>(currentOrder);
-
+            
             player.canMove = false;
             
             StartUnitTurn();
@@ -181,6 +182,7 @@ namespace MANAGER
                 soundForFight.SetActive(true);
             }
 
+            
             firstAttempt = true;
         }
         #endregion
@@ -223,6 +225,7 @@ namespace MANAGER
     
         private void StartUnitTurn()
         {
+           
             coroutineAnimation = null;
     
             if (currentOrder.Count <= 0) return;
@@ -255,6 +258,7 @@ namespace MANAGER
     
             currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
             currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasList);
+            NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
         }
         
         private void ResetFightManagerAfterFight()
@@ -263,6 +267,8 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
+            );
         }
         
         private void AttackPlayer(AbstractEntityDataInstance attacker)
@@ -312,7 +318,6 @@ namespace MANAGER
                 }
             }
 
-            Debug.Log(correctCount);
             if (correctCount > 0)
             {
                 int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;
@@ -327,6 +332,7 @@ namespace MANAGER
                 for (int i = 0; i < correctCount; i++)
                 {
                     currentEnemyTarget.MoveToNextChip();
+                    NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
                 }
                 
                 currentSequence.RemoveRange(0, correctCount);
@@ -344,6 +350,7 @@ namespace MANAGER
             {
                 NewRadioManager.instance.ResetLights();
                 currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
+                NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
                 currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
                 playerSuccess = false;
                 EndFighterTurn();
