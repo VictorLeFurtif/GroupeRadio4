@@ -36,6 +36,9 @@ namespace MANAGER
         [Header("List")]
         private List<GameObject> slotPool = new List<GameObject>();
 
+        public float damageIfSwap;
+        public float damageForEachChip;
+
         #endregion
 
         #region Unity Methods

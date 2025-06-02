@@ -248,7 +248,7 @@ namespace AI.NEW_AI
                 CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,45);
             }
     
-            fightManager.InitialiseList();
+            fightManager.InitialiseFightManager();
             ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
         }
         #endregion

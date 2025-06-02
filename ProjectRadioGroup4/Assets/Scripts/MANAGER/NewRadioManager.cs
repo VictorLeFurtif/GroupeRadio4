@@ -494,5 +494,23 @@ namespace MANAGER
         }
 
         #endregion
+
+        #region Fight State Block
+
+        public void ToggleInteractSlider()
+        {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                sliderAmplitude.interactable = false;
+                sliderFrequency.interactable = false;
+            }
+            else
+            {
+                sliderAmplitude.interactable = true;
+                sliderFrequency.interactable = true;
+            }
+        }
+
+        #endregion
     }
 }
