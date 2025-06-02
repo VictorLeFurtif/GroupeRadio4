@@ -8,9 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Chips Prefabs/ItemSlots.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Chips Prefabs/ItemSlots.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RF MID.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RF MID.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RF STRONG.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RF STRONG.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RF WEAK.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RF WEAK.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +184,7 @@
       <workItem from="1748592360287" duration="3846000" />
       <workItem from="1748722141813" duration="4444000" />
       <workItem from="1748791417878" duration="8143000" />
-      <workItem from="1748866931347" duration="3398000" />
+      <workItem from="1748866931347" duration="4642000" />
     </task>
     <servers />
   </component>
