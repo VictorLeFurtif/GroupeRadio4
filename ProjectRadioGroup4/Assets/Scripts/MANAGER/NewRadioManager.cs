@@ -184,7 +184,7 @@ namespace MANAGER
 
         
         
-        private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
+        public IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {
             float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
             float startAmp = matRadioEnemy.GetFloat("_waves_Amp");

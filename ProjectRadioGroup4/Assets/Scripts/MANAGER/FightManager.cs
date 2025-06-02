@@ -8,6 +8,7 @@ using Controller;
 using DATA.Script.Chips_data;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
+using INTERACT;
 using INTERFACE;
 using TMPro;
 using UnityEngine;
@@ -266,6 +267,8 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
+            );
         }
         
         private void AttackPlayer(AbstractEntityDataInstance attacker)
