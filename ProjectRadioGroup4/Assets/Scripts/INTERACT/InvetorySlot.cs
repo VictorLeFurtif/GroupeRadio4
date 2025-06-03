@@ -1,3 +1,4 @@
+using FEEDBACK;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -30,6 +31,7 @@ namespace INTERACT
                 currentDraggable.GetComponent<ChipVisualFeedback>()?.UpdateVisualState();
                 
                 NewPlayerController.instance?.ManageLife(-ChipsManager.Instance.damageIfSwap);
+                
             }
             draggableItem.parentAfterDrag = transform;
             draggableItem.originalSlotIndex = this.slotIndex; 

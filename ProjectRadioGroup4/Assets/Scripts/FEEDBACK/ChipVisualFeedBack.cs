@@ -1,9 +1,10 @@
 using DG.Tweening;
+using INTERACT;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace INTERACT
+namespace FEEDBACK
 {
     public class ChipVisualFeedback : MonoBehaviour, IPointerClickHandler
     {
@@ -19,6 +20,12 @@ namespace INTERACT
         private void Awake()
         {
             originalScale = transform.localScale;
+        }
+
+        private void Start()
+        {
+            ChipsManager.Instance?.listOfElementForFeedBack.Remove(this);
+            ChipsManager.Instance?.listOfElementForFeedBack.Add(this);
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -75,7 +82,7 @@ namespace INTERACT
                 }
             }
         }
-
+        
         private void OnDestroy()
         {
             pulseTween?.Kill();

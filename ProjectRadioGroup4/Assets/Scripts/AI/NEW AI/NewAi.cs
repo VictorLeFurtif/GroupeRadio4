@@ -40,7 +40,6 @@ namespace AI.NEW_AI
         
         [Header("Enemy Health Settings")]
         [SerializeField] private Slider healthSlider;
-        [SerializeField] private float healthLerpDuration = 0.3f;
         private Coroutine healthLerpCoroutine;
 
         [Header("Enemy Chips")] 
@@ -51,6 +50,11 @@ namespace AI.NEW_AI
         [Header("Eye Settings")]
         public Image monsterEyes;
         private int currentChipIndex = 0;
+        
+        [Header("Damage")]
+        
+        public float damageEnemy;
+        
         
         #endregion
 

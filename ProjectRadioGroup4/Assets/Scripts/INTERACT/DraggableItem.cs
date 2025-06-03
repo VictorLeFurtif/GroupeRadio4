@@ -1,3 +1,4 @@
+using FEEDBACK;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,8 +19,6 @@ namespace INTERACT
             transform.SetAsLastSibling();
             image.raycastTarget = false;
             
-            var feedback = GetComponent<ChipVisualFeedback>();
-            if (feedback != null) feedback.SetSelected(false);
         }
 
         public void OnDrag(PointerEventData eventData)

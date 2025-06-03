@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AI.NEW_AI;
 using DATA.Script.Chips_data;
+using FEEDBACK;
 using INTERACT;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,8 +37,11 @@ namespace MANAGER
         [Header("List")]
         private List<GameObject> slotPool = new List<GameObject>();
 
+        [Header("Damage")]
         public float damageIfSwap;
         public float damageForEachChip;
+
+        [Header("FeedBack")] public List<ChipVisualFeedback> listOfElementForFeedBack = new List<ChipVisualFeedback>();
 
         #endregion
 
@@ -49,6 +53,8 @@ namespace MANAGER
                 Instance = this;
             else
                 Destroy(gameObject);
+
+            listOfElementForFeedBack = new List<ChipVisualFeedback>();
         }
 
         
@@ -202,6 +208,20 @@ namespace MANAGER
                         feedback.SetSelected(false, animate);
                     }
                 }
+            }
+        }
+        
+        public void ResetAllChipsSelected(bool animate = false)
+        {
+            
+            foreach (var t in chipsDatasTab)
+            {
+                t.isSelected = false;
+            }
+
+            foreach (var chipsFeedBack in listOfElementForFeedBack)
+            {
+                chipsFeedBack.SetSelected(false, animate);
             }
         }
         #endregion

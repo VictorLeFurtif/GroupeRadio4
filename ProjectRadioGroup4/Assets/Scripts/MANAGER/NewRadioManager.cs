@@ -37,7 +37,7 @@ namespace MANAGER
         [Header("Shader Property Limits")]
         [SerializeField] private float maxAmplitude = 0.4f;
         [SerializeField] private float maxFrequency = 1f;
-        [SerializeField] private float maxStep = 1f;
+        //[SerializeField] private float maxStep = 1f;
         [SerializeField] private Color playerBaseColor;
         [SerializeField] private Color enemyBaseColor;
         
@@ -49,7 +49,7 @@ namespace MANAGER
         [Header("Matching Thresholds")]
         [SerializeField] private float amplitudeThreshold = 0.05f;
         [SerializeField] private float frequencyThreshold = 1f; 
-        [SerializeField] private float stepThreshold = 1f;
+      //  [SerializeField] private float stepThreshold = 1f;
         
         private Coroutine currentTransition;
 
@@ -68,7 +68,6 @@ namespace MANAGER
         [Header("Combat Light Settings")]
         [SerializeField] private Color correctColor = Color.green;
         [SerializeField] private Color wrongColor = Color.red;
-        [SerializeField] private float wrongColorDuration = 0.5f;
         private Coroutine wrongColorCoroutine;
 
         private int currentActiveLight = 0;
