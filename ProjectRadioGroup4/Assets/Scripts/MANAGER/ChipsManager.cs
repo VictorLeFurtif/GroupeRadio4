@@ -85,11 +85,21 @@ namespace MANAGER
         {
             Array.Clear(chipsDatasTab, 0, chipsDatasTab.Length);
     
-            for (int i = 0; i < ai.chipsDatasList.Count && i < chipsDatasTab.Length; i++)
+            for (int i = 0; i < ai.chipsDatasList.Count ; i++)
             {
                 chipsDatasTab[i] = ai.chipsDatasList[i];
             }
-
+            
+            //TODO ne passe par ici 
+            int index = chipsDatasTab.Length - ai.chipsDatasList.Count;
+            
+            for (int i = 0; i < index; i++)
+            {
+                chipsDatasTab[i + index] = ai.chipsToAddToPatternReal[i];
+            }
+            
+            //chipsDatasTab[i] = ai.chipsToAddToPatternReal[i - (6 - ai.chipsDatasList.Count)];
+                /*
             List<ChipsDataInstance> availableChips = everyChips
                 .Where(chip => ai.chipsDatasList.All
                     (aiChip => aiChip.id != chip.id))
@@ -103,7 +113,8 @@ namespace MANAGER
                 chipsDatasTab[i] = availableChips[randomIndex];
                 availableChips.RemoveAt(randomIndex);
             }
-
+            */
+                
             chipsDatasTab = chipsDatasTab.OrderBy(x => Random.value).ToArray();
             UpdateInventoryUI();
         }

@@ -340,8 +340,6 @@ namespace MANAGER
                 }
             }
             
-            
-            
             if (correctCount > 0 && allCorrect)
             {
                 int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;
@@ -369,7 +367,6 @@ namespace MANAGER
             }
             else
             {
-                //unreacheable part of the code
                 AttackPlayer(currentEnemyTarget);
             }
             

@@ -46,6 +46,10 @@ namespace AI.NEW_AI
         [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
         public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
+        
+        [Header("Enemy Chips but dont include Pattern, just what will be implemented")]
+        public List<ChipsData> chipsToAddToPattern = new List<ChipsData>();
+        [HideInInspector] public List<ChipsDataInstance> chipsToAddToPatternReal = new List<ChipsDataInstance>();
 
         [Header("Eye Settings")]
         public Image monsterEyes;
@@ -77,7 +81,12 @@ namespace AI.NEW_AI
                 chipsDatasList.Add(t.Instance());
             }
             chipsDatasListSave.AddRange(chipsDatasList);
-            monsterEyes.material.color = Color.white; 
+            monsterEyes.material.color = Color.white;
+            
+            foreach (var t in chipsToAddToPattern)
+            {
+                chipsToAddToPatternReal.Add(t.Instance());
+            }
         }
         #endregion
 
