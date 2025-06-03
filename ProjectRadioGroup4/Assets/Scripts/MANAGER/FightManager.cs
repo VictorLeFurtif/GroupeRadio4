@@ -274,10 +274,11 @@ namespace MANAGER
             NewRadioManager.instance?.ResetLights();
             NewRadioManager.instance?.ToggleInteractSlider();
         }
-        
+
+        [SerializeField] private float damageEnemy;
         private void AttackPlayer()
         {
-            player.ManageLife(-10);
+            player.ManageLife(-damageEnemy);
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
@@ -289,7 +290,7 @@ namespace MANAGER
         
         private void AttackPlayer(NewAi ai)
         {
-            player.ManageLife(-10);
+            player.ManageLife(-damageEnemy);
             
             if (ai != null)
             {
