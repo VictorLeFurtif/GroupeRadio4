@@ -317,7 +317,7 @@ namespace MANAGER
             }
             
             int correctCount = 0;
-            bool allCorrect = true;
+            bool allCorrect = !(currentSequence.Count < playerSelection.Count);
             
             for (int i = 0; i < Mathf.Min(currentSequence.Count, playerSelection.Count); i++)
             {
