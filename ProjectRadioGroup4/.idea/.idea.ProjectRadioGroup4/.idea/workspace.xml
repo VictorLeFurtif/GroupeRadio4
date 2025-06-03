@@ -6,12 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RF MID.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RF MID.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RF STRONG.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RF STRONG.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RF WEAK.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RF WEAK.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/ChipsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/ChipsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/RangeFinderManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/RangeFinderManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/Oscillation_et_batterie_centre.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/Oscillation_et_batterie_centre.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/UiRadio_V6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/UiRadio_V6.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/UiRadio_V6_Combat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/UiRadio_V6_Combat.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/UiRadio_v6_Range_finder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/UiRadio_v6_Range_finder.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/lampe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VICTOR SHIT BECAUSE I REALLY NEED THIS FOLDER/VISUALS/lampe.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +70,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "<unknown>",
+    "git-widget-placeholder": "dev/Victor",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -72,7 +83,7 @@
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD RADIO\ProjectRadioGroup4.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD FP V2 ECHO 42\ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -80,7 +91,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -88,7 +99,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -186,6 +197,7 @@
       <workItem from="1748791417878" duration="8143000" />
       <workItem from="1748866931347" duration="4642000" />
       <workItem from="1748895469985" duration="4914000" />
+      <workItem from="1748939082015" duration="1340000" />
     </task>
     <servers />
   </component>

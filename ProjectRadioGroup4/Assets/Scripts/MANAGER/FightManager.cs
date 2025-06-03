@@ -423,13 +423,15 @@ namespace MANAGER
 
         public void OnMatchButtonPressed()
         {
+            
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-    
+
+            
             ChipsManager.Instance.MatchChips();
             ProcessPlayerGuess();
         }
 
-        private void CostForEachChipsAdded()
+        public void CostForEachChipsAdded()
         {
             int numberOfElementInPlayerChoice = ChipsManager.Instance.playerChoiceChipsOrder.Count;
             
@@ -447,7 +449,8 @@ namespace MANAGER
         public void OnReverseButtonPressed()
         {
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-    
+            
+
             ChipsManager.Instance.ReverseChips();
             ProcessPlayerGuess();
         }

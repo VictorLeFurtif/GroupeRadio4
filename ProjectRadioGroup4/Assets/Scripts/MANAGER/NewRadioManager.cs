@@ -487,7 +487,6 @@ namespace MANAGER
         {
             var targetFrequency = ai.GetActualInstanceChips().index * fromFrequencyToWaveNumber;
             WaveSettings enemyChipsWaveSettings = new WaveSettings(targetFrequency, 0.3f, 0);
-            Debug.LogError(ai.chipsDatasList[0].index);
             StartCoroutine(HandleRadioTransition(enemyChipsWaveSettings));
 
 

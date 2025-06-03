@@ -217,6 +217,8 @@ namespace MANAGER
                 {
                     playerChoiceChipsOrder.Add(chip);
                 }
+                Debug.Log(playerChoiceChipsOrder.Count);
+                FightManager.instance?.CostForEachChipsAdded();
             }
         }
         
