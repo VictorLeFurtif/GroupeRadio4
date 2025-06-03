@@ -23,6 +23,8 @@ namespace MANAGER
         [Header("Shader Material Player")]
         [SerializeField] private RawImage imageRadioPlayer;
         [SerializeField] private RawImage imageRadioEnemy;
+
+        [SerializeField] private GameObject playerOscillationHolder;
         
         private Material matRadioPlayer;
         private Material matRadioEnemy;
@@ -502,11 +504,13 @@ namespace MANAGER
             {
                 sliderAmplitude.interactable = false;
                 sliderFrequency.interactable = false;
+                playerOscillationHolder.SetActive(false);
             }
             else
             {
                 sliderAmplitude.interactable = true;
                 sliderFrequency.interactable = true;
+                playerOscillationHolder.SetActive(true);
             }
         }
 
