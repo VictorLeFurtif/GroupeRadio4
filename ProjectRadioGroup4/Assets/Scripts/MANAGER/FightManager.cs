@@ -134,7 +134,7 @@ namespace MANAGER
             
         }
 
-        public void InitialiseList() 
+        public void InitialiseFightManager() 
         {
             if (player == null) 
             {
@@ -184,6 +184,8 @@ namespace MANAGER
 
             
             firstAttempt = true;
+            NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
+            NewRadioManager.instance?.ToggleInteractSlider();
         }
         #endregion
 
@@ -241,7 +243,7 @@ namespace MANAGER
             {
                 if (!playerSuccess) 
                 {
-                    AttackPlayer(currentFighter); 
+                    AttackPlayer(); 
                 }
                 else
                 {
@@ -269,9 +271,11 @@ namespace MANAGER
             fightState = FightState.OutFight;
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
+            NewRadioManager.instance?.ResetLights();
+            NewRadioManager.instance?.ToggleInteractSlider();
         }
         
-        private void AttackPlayer(AbstractEntityDataInstance attacker)
+        private void AttackPlayer()
         {
             player.ManageLife(-10);
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
@@ -280,6 +284,16 @@ namespace MANAGER
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+            }
+        }
+        
+        private void AttackPlayer(NewAi ai)
+        {
+            player.ManageLife(-10);
+            
+            if (ai != null)
+            {
+                ai.animatorEnemy.Play("attackAi");
             }
         }
 
@@ -298,7 +312,6 @@ namespace MANAGER
 
             if (firstAttempt)
             {
-                NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 firstAttempt = false;
             }
             
@@ -318,7 +331,7 @@ namespace MANAGER
                 }
             }
 
-            if (correctCount > 0)
+            if (correctCount > 0 && allCorrect)
             {
                 int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;
                 int remainingChips = currentSequence.Count;
@@ -341,20 +354,14 @@ namespace MANAGER
                 {
                     EnemySequenceGuessed();
                 }
-                else
-                {
-                    playerTurnTimer = playerTurnDuration;
-                }
+                
             }
             else
             {
-                NewRadioManager.instance.ResetLights();
-                currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
-                NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
-                currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
-                playerSuccess = false;
-                EndFighterTurn();
+                //need to attack player
+                AttackPlayer(currentEnemyTarget);
             }
+            
         }
         private bool AreChipsEquivalent(ChipsDataInstance chip1, ChipsDataInstance chip2)
         {
@@ -396,8 +403,11 @@ namespace MANAGER
 
             if (playerTurnTimer <= 0)
             {
-                NewRadioManager.instance.ResetLights();
-                isMatchingPhase = false;
+                NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
+                currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
+                NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
+                currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
+                playerSuccess = false;
                 EndFighterTurn();
             }
         }
@@ -419,6 +429,21 @@ namespace MANAGER
             ProcessPlayerGuess();
         }
 
+        private void CostForEachChipsAdded()
+        {
+            int numberOfElementInPlayerChoice = ChipsManager.Instance.playerChoiceChipsOrder.Count;
+            
+            if (numberOfElementInPlayerChoice is 1 or 0)
+            {
+                return;
+            }
+
+            for (int i = 0; i < numberOfElementInPlayerChoice - 1; i++)
+            {
+                NewPlayerController.instance?.ManageLife(-ChipsManager.Instance.damageForEachChip);
+            }
+        }
+        
         public void OnReverseButtonPressed()
         {
             if (!isMatchingPhase || currentEnemyTarget == null) return;
