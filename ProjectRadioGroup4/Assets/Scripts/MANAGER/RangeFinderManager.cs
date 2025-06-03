@@ -236,35 +236,27 @@ namespace MANAGER
         
         public void RemoveDestroyedElements()
         {
-            listWeakColliders.RemoveAll(c => c == null || c.gameObject == null);
-            listMidColliders.RemoveAll(c => c == null || c.gameObject == null);
-            listStrongColliders.RemoveAll(c => c == null || c.gameObject == null);
-    
-            uiElements.RemoveAll(uiData => {
-                if (uiData.uiObject == null) return true;
+            listWeakColliders.RemoveAll(c => c == null);
+            listMidColliders.RemoveAll(c => c == null);
+            listStrongColliders.RemoveAll(c => c == null);
 
-                if (uiData.uiObject.transform.IsChildOf(parentRangeFinder.transform)) return false;
-                uiData.uiObject.transform.DOKill();
-                Destroy(uiData.uiObject);
-                return true;
-            });
-    
+            var validChildren = new HashSet<GameObject>();
+            foreach (var uiData in uiElements)
+            {
+                if (uiData.uiObject != null && uiData.uiObject.transform.IsChildOf(parentRangeFinder.transform))
+                {
+                    validChildren.Add(uiData.uiObject);
+                }
+            }
             foreach (Transform child in parentRangeFinder.transform)
             {
-                bool found = false;
-                foreach (var uiData in uiElements)
+                if (!validChildren.Contains(child.gameObject))
                 {
-                    if (uiData.uiObject != child.gameObject) continue;
-                    found = true;
-                    break;
+                    child.DOKill(true); 
+                    Destroy(child.gameObject);
                 }
-
-                if (found) continue;
-                child.DOKill(); 
-                child.DOScale(Vector3.zero, disappearDuration)
-                    .SetEase(disappearEase)
-                    .OnComplete(() => Destroy(child.gameObject));
             }
+            uiElements.RemoveAll(uiData => uiData.uiObject == null);
         }
         
         private class UIElementData
