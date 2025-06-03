@@ -185,7 +185,7 @@ namespace MANAGER
             
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
-            NewRadioManager.instance?.ToggleInteractSlider();
+            NewRadioManager.instance?.RadioBehaviorDependingFightState();
         }
         #endregion
 
@@ -272,7 +272,7 @@ namespace MANAGER
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
             NewRadioManager.instance?.ResetLights();
-            NewRadioManager.instance?.ToggleInteractSlider();
+            NewRadioManager.instance?.RadioBehaviorDependingFightState();
         }
 
         [SerializeField] private float damageEnemy;
