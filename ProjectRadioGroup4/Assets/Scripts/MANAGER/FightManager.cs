@@ -8,6 +8,7 @@ using Controller;
 using DATA.Script.Chips_data;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
+using INTERACT;
 using INTERFACE;
 using TMPro;
 using UnityEngine;
@@ -133,7 +134,7 @@ namespace MANAGER
             
         }
 
-        public void InitialiseList() 
+        public void InitialiseFightManager() 
         {
             if (player == null) 
             {
@@ -166,7 +167,7 @@ namespace MANAGER
             listOfJustEnemiesAlive.AddRange(currentOrder.Where(x => x != player._abstractEntityDataInstance));
             currentOrder.Sort((x, y) => y.speed.CompareTo(x.speed));
             fighterAlive = new List<AbstractEntityDataInstance>(currentOrder);
-
+            
             player.canMove = false;
             
             StartUnitTurn();
@@ -181,7 +182,10 @@ namespace MANAGER
                 soundForFight.SetActive(true);
             }
 
+            
             firstAttempt = true;
+            NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
+            NewRadioManager.instance?.RadioBehaviorDependingFightState();
         }
         #endregion
 
@@ -223,6 +227,7 @@ namespace MANAGER
     
         private void StartUnitTurn()
         {
+           
             coroutineAnimation = null;
     
             if (currentOrder.Count <= 0) return;
@@ -238,7 +243,7 @@ namespace MANAGER
             {
                 if (!playerSuccess) 
                 {
-                    AttackPlayer(currentFighter); 
+                    AttackPlayer(); 
                 }
                 else
                 {
@@ -255,6 +260,7 @@ namespace MANAGER
     
             currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
             currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasList);
+            NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
         }
         
         private void ResetFightManagerAfterFight()
@@ -263,17 +269,32 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
+            );
+            NewRadioManager.instance?.ResetLights();
+            NewRadioManager.instance?.RadioBehaviorDependingFightState();
         }
-        
-        private void AttackPlayer(AbstractEntityDataInstance attacker)
+
+        [SerializeField] private float damageEnemy;
+        private void AttackPlayer()
         {
-            player.ManageLife(-10);
+            player.ManageLife(-damageEnemy);
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+            }
+        }
+        
+        private void AttackPlayer(NewAi ai)
+        {
+            player.ManageLife(-damageEnemy);
+            
+            if (ai != null)
+            {
+                ai.animatorEnemy.Play("attackAi");
             }
         }
 
@@ -292,12 +313,11 @@ namespace MANAGER
 
             if (firstAttempt)
             {
-                NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 firstAttempt = false;
             }
             
             int correctCount = 0;
-            bool allCorrect = true;
+            bool allCorrect = !(currentSequence.Count < playerSelection.Count);
             
             for (int i = 0; i < Mathf.Min(currentSequence.Count, playerSelection.Count); i++)
             {
@@ -312,8 +332,7 @@ namespace MANAGER
                 }
             }
 
-            Debug.Log(correctCount);
-            if (correctCount > 0)
+            if (correctCount > 0 && allCorrect)
             {
                 int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;
                 int remainingChips = currentSequence.Count;
@@ -327,6 +346,7 @@ namespace MANAGER
                 for (int i = 0; i < correctCount; i++)
                 {
                     currentEnemyTarget.MoveToNextChip();
+                    NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
                 }
                 
                 currentSequence.RemoveRange(0, correctCount);
@@ -335,19 +355,14 @@ namespace MANAGER
                 {
                     EnemySequenceGuessed();
                 }
-                else
-                {
-                    playerTurnTimer = playerTurnDuration;
-                }
+                
             }
             else
             {
-                NewRadioManager.instance.ResetLights();
-                currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
-                currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
-                playerSuccess = false;
-                EndFighterTurn();
+                //need to attack player
+                AttackPlayer(currentEnemyTarget);
             }
+            
         }
         private bool AreChipsEquivalent(ChipsDataInstance chip1, ChipsDataInstance chip2)
         {
@@ -389,8 +404,11 @@ namespace MANAGER
 
             if (playerTurnTimer <= 0)
             {
-                NewRadioManager.instance.ResetLights();
-                isMatchingPhase = false;
+                NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
+                currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
+                NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
+                currentEnemyTarget.chipsDatasList = new List<ChipsDataInstance>(currentEnemyTarget.chipsDatasListSave);
+                playerSuccess = false;
                 EndFighterTurn();
             }
         }
@@ -406,16 +424,34 @@ namespace MANAGER
 
         public void OnMatchButtonPressed()
         {
+            
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-    
+
+            
             ChipsManager.Instance.MatchChips();
             ProcessPlayerGuess();
         }
 
+        public void CostForEachChipsAdded()
+        {
+            int numberOfElementInPlayerChoice = ChipsManager.Instance.playerChoiceChipsOrder.Count;
+            
+            if (numberOfElementInPlayerChoice is 1 or 0)
+            {
+                return;
+            }
+
+            for (int i = 0; i < numberOfElementInPlayerChoice - 1; i++)
+            {
+                NewPlayerController.instance?.ManageLife(-ChipsManager.Instance.damageForEachChip);
+            }
+        }
+        
         public void OnReverseButtonPressed()
         {
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-    
+            
+
             ChipsManager.Instance.ReverseChips();
             ProcessPlayerGuess();
         }

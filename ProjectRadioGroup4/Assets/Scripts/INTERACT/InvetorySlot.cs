@@ -13,7 +13,7 @@ namespace INTERACT
             GameObject dropped = eventData.pointerDrag;
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
 
-            if (transform.childCount != 0)
+            if (transform.childCount != 0) // dc genre pour le swap ????
             {           
                 GameObject current = transform.GetChild(0).gameObject;
                 DraggableItem currentDraggable = current.GetComponent<DraggableItem>();
@@ -28,6 +28,8 @@ namespace INTERACT
                 currentDraggable.transform.SetParent(draggableItem.parentAfterDrag);
                 
                 currentDraggable.GetComponent<ChipVisualFeedback>()?.UpdateVisualState();
+                
+                NewPlayerController.instance?.ManageLife(-ChipsManager.Instance.damageIfSwap);
             }
             draggableItem.parentAfterDrag = transform;
             draggableItem.originalSlotIndex = this.slotIndex; 

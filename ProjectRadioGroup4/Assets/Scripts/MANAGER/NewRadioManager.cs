@@ -23,6 +23,8 @@ namespace MANAGER
         [Header("Shader Material Player")]
         [SerializeField] private RawImage imageRadioPlayer;
         [SerializeField] private RawImage imageRadioEnemy;
+
+        [SerializeField] private GameObject playerOscillationHolder;
         
         private Material matRadioPlayer;
         private Material matRadioEnemy;
@@ -104,6 +106,8 @@ namespace MANAGER
         {
             TimerCheckInterval();
             UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
+            UpdateTypeOfUiByFightState();
+
         }
 
         private void Start()
@@ -111,6 +115,7 @@ namespace MANAGER
             InitializeSliders();
             ResetMaterials();
             InitializeLights();
+            RadioBehaviorDependingFightState();
         }
         #endregion
 
@@ -184,7 +189,7 @@ namespace MANAGER
 
         
         
-        private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
+        public IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {
             float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
             float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
@@ -392,6 +397,24 @@ namespace MANAGER
                 light.transform.localScale = Vector3.one;
             }
         }
+
+        [Header("Canva Part to Display")] 
+        [SerializeField] private GameObject canvaExploration;
+        [SerializeField] private GameObject canvaFight;
+        
+        private void UpdateTypeOfUiByFightState()
+        {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                canvaExploration.SetActive(false);
+                canvaFight.SetActive(true);
+            }
+            else
+            {
+                canvaExploration.SetActive(true);
+                canvaFight.SetActive(false);
+            }
+        }
         
         #endregion
         
@@ -455,6 +478,44 @@ namespace MANAGER
             {
                 CheckWaveMatch();
                 lastCheckTime = Time.time;
+            }
+        }
+
+        #endregion
+
+        #region Deal With Fight Oscillation
+
+        [SerializeField] private float fromFrequencyToWaveNumber;
+        public void UpdateOscillationEnemy(NewAi ai)
+        {
+            var targetFrequency = ai.GetActualInstanceChips().index * fromFrequencyToWaveNumber;
+            WaveSettings enemyChipsWaveSettings = new WaveSettings(targetFrequency, 0.3f, 0);
+            StartCoroutine(HandleRadioTransition(enemyChipsWaveSettings));
+
+
+        }
+
+        #endregion
+
+        #region Fight State Block
+
+        public void RadioBehaviorDependingFightState()
+        {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                sliderAmplitude.interactable = false;
+                sliderFrequency.interactable = false;
+                playerOscillationHolder.SetActive(false);
+                matRadioEnemy.SetFloat("_speed",0);
+                matRadioPlayer.SetFloat("_speed",0);
+            }
+            else
+            {
+                sliderAmplitude.interactable = true;
+                sliderFrequency.interactable = true;
+                playerOscillationHolder.SetActive(true);
+                matRadioEnemy.SetFloat("_speed",0.02f);
+                matRadioPlayer.SetFloat("_speed",0.02f);
             }
         }
 

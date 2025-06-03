@@ -67,7 +67,6 @@ namespace AI.NEW_AI
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
             animatorEnemy = GetComponent<Animator>();
             originalPos = transform;
-            healthSlider.gameObject.SetActive(false);
 
             foreach (var t in chipsDatasListTempo)
             {
@@ -90,7 +89,7 @@ namespace AI.NEW_AI
                 float previousHealth = _abstractEntityDataInstance.hp;
                 _abstractEntityDataInstance.hp = newHealth;
                 
-                UpdateHealthSlider(previousHealth, newHealth);
+                
 
                 if (_abstractEntityDataInstance.IsDead())
                 {
@@ -99,36 +98,6 @@ namespace AI.NEW_AI
             }
         }
         
-        private void UpdateHealthSlider(float fromHealth, float toHealth)
-        {
-            if (healthSlider == null) return;
-
-            if (healthLerpCoroutine != null)
-            {
-                StopCoroutine(healthLerpCoroutine);
-            }
-
-            healthLerpCoroutine = StartCoroutine(LerpHealthSlider(
-                fromHealth / _abstractEntityDataInstance.maxHp,
-                toHealth / _abstractEntityDataInstance.maxHp
-            ));
-        }
-
-        private IEnumerator LerpHealthSlider(float fromValue, float toValue)
-        {
-            float elapsedTime = 0f;
-
-            while (elapsedTime < healthLerpDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsedTime / healthLerpDuration);
-                healthSlider.value = Mathf.Lerp(fromValue, toValue, t);
-                yield return null;
-            }
-
-            healthSlider.value = toValue;
-            healthLerpCoroutine = null;
-        }
         
         private void Die()
         {
@@ -199,7 +168,6 @@ namespace AI.NEW_AI
         
         private void StartCombatSequence()
         {
-            healthSlider.gameObject.SetActive(true);
             NewRadioManager.instance?.StopMatchingGame();
             spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;
@@ -248,7 +216,7 @@ namespace AI.NEW_AI
                 CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,45);
             }
     
-            fightManager.InitialiseList();
+            fightManager.InitialiseFightManager();
             ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
         }
         #endregion
@@ -293,6 +261,11 @@ namespace AI.NEW_AI
             monsterEyes.color = ConvertColorNameToColor(colorName);
         }
 
+        public ChipsDataInstance GetActualInstanceChips()
+        {
+            return chipsDatasListSave[currentChipIndex];
+        }
+
         public void MoveToNextChip()
         {
             if (chipsDatasList == null || currentChipIndex >= chipsDatasListSave.Count - 1)
@@ -310,6 +283,7 @@ namespace AI.NEW_AI
             if (sequenceToUse != null && sequenceToUse.Count > 0)
             {
                 UpdateEyeColorToCurrentChip();
+                NewRadioManager.instance?.UpdateOscillationEnemy(this);
             }
         }
         

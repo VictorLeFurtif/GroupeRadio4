@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6088496327265717908}
   - component: {fileID: 1425882653860665988}
   m_Layer: 5
-  m_Name: RF WEAK
+  m_Name: Range finder ref
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1802, y: -215.9081}
+  m_AnchoredPosition: {x: 0.1802, y: -172.8221}
   m_SizeDelta: {x: 240.6987, y: 90.1837}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6088496327265717908
@@ -58,14 +58,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.06170094, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6d77f46e217ee0149872b98d29b8c1ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
