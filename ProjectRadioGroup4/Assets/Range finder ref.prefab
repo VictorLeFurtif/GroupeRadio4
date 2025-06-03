@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6088496327265717908}
   - component: {fileID: 1425882653860665988}
   m_Layer: 5
-  m_Name: RF STRONG
+  m_Name: Range finder ref
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
