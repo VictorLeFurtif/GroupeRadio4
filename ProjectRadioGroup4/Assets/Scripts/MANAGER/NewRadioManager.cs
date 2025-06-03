@@ -23,6 +23,8 @@ namespace MANAGER
         [Header("Shader Material Player")]
         [SerializeField] private RawImage imageRadioPlayer;
         [SerializeField] private RawImage imageRadioEnemy;
+
+        [SerializeField] private GameObject playerOscillationHolder;
         
         private Material matRadioPlayer;
         private Material matRadioEnemy;
@@ -113,6 +115,7 @@ namespace MANAGER
             InitializeSliders();
             ResetMaterials();
             InitializeLights();
+            RadioBehaviorDependingFightState();
         }
         #endregion
 
@@ -496,17 +499,23 @@ namespace MANAGER
 
         #region Fight State Block
 
-        public void ToggleInteractSlider()
+        public void RadioBehaviorDependingFightState()
         {
             if (FightManager.instance?.fightState == FightManager.FightState.InFight)
             {
                 sliderAmplitude.interactable = false;
                 sliderFrequency.interactable = false;
+                playerOscillationHolder.SetActive(false);
+                matRadioEnemy.SetFloat("_speed",0);
+                matRadioPlayer.SetFloat("_speed",0);
             }
             else
             {
                 sliderAmplitude.interactable = true;
                 sliderFrequency.interactable = true;
+                playerOscillationHolder.SetActive(true);
+                matRadioEnemy.SetFloat("_speed",0.02f);
+                matRadioPlayer.SetFloat("_speed",0.02f);
             }
         }
 

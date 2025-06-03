@@ -185,7 +185,7 @@ namespace MANAGER
             
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
-            NewRadioManager.instance?.ToggleInteractSlider();
+            NewRadioManager.instance?.RadioBehaviorDependingFightState();
         }
         #endregion
 
@@ -272,12 +272,13 @@ namespace MANAGER
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
             NewRadioManager.instance?.ResetLights();
-            NewRadioManager.instance?.ToggleInteractSlider();
+            NewRadioManager.instance?.RadioBehaviorDependingFightState();
         }
-        
+
+        [SerializeField] private float damageEnemy;
         private void AttackPlayer()
         {
-            player.ManageLife(-10);
+            player.ManageLife(-damageEnemy);
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
             {
@@ -289,7 +290,7 @@ namespace MANAGER
         
         private void AttackPlayer(NewAi ai)
         {
-            player.ManageLife(-10);
+            player.ManageLife(-damageEnemy);
             
             if (ai != null)
             {
@@ -316,7 +317,7 @@ namespace MANAGER
             }
             
             int correctCount = 0;
-            bool allCorrect = true;
+            bool allCorrect = !(currentSequence.Count < playerSelection.Count);
             
             for (int i = 0; i < Mathf.Min(currentSequence.Count, playerSelection.Count); i++)
             {
