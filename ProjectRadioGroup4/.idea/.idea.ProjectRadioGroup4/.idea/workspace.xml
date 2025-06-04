@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FINAL PREFABS/RADIO UI/UI RADIO FINAL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FINAL PREFABS/RADIO UI/UI RADIO FINAL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +182,7 @@
       <workItem from="1748939082015" duration="19480000" />
       <workItem from="1748988209838" duration="695000" />
       <workItem from="1748997200391" duration="2430000" />
-      <workItem from="1749031026039" duration="7211000" />
+      <workItem from="1749031026039" duration="7528000" />
     </task>
     <servers />
   </component>

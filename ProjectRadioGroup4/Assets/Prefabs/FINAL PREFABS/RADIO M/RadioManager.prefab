@@ -69,11 +69,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   offSprite: {fileID: 21300000, guid: f61d8c3dd5c8a1345bab08dc6de4ec44, type: 3}
-  pendingSprite: {fileID: 21300000, guid: 1d59f9e7be3d30d4a96b17e3837ef186, type: 3}
-  currentSprite: {fileID: 21300000, guid: 2c85e54a54d3f574e972b60dad61e884, type: 3}
-  completedSprite: {fileID: 21300000, guid: 94b24279916f85b4a95072176868671d, type: 3}
-  correctSprite: {fileID: 21300000, guid: 94b24279916f85b4a95072176868671d, type: 3}
-  wrongSprite: {fileID: 21300000, guid: 1d59f9e7be3d30d4a96b17e3837ef186, type: 3}
+  pendingSprite: {fileID: 21300000, guid: 2d96f91a7ae86e74cb8a81b788c1faa4, type: 3}
+  currentSprite: {fileID: 21300000, guid: 65e7d9c7b497a204e8df33b2568a30d5, type: 3}
+  completedSprite: {fileID: 21300000, guid: ab5530189476ba74bb7a9c15155df971, type: 3}
+  correctSprite: {fileID: 21300000, guid: ab5530189476ba74bb7a9c15155df971, type: 3}
+  wrongSprite: {fileID: 21300000, guid: 2d96f91a7ae86e74cb8a81b788c1faa4, type: 3}
   canvaExploration: {fileID: 0}
   canvaFight: {fileID: 0}
   fromFrequencyToWaveNumber: 2.3
