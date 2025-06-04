@@ -60,7 +60,7 @@ namespace MANAGER
         
         [Header("Eye Settings")]
         public Renderer monsterEyes;
-        //private int currentSequenceIndex = 0;
+        private int currentSequenceIndex = 0;
         
         
         #endregion
@@ -186,6 +186,11 @@ namespace MANAGER
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
             NewRadioManager.instance?.RadioBehaviorDependingFightState();
+
+            if (currentFightAdvantage == FightAdvantage.Disadvantage)
+            {
+                AttackPlayer(true);
+            }
         }
         #endregion
 
@@ -273,6 +278,7 @@ namespace MANAGER
             );
             NewRadioManager.instance?.ResetLights();
             NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            currentSequenceIndex = 0;
         }
 
         
@@ -286,6 +292,22 @@ namespace MANAGER
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+            }
+            else
+            {
+                float baseDamageIfError = 10;
+                player.ManageLife(-baseDamageIfError);
+            }
+        }
+        
+        private void AttackPlayer(bool isInit)
+        {
+            if (!isInit)return;
+            
+            NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
+            if (ai != null)
+            { 
+                player.ManageLife(-ai.damageEnemy);
             }
             else
             {
@@ -313,6 +335,8 @@ namespace MANAGER
             {
                 return;
             }
+            
+            currentSequenceIndex++;
             
             var currentSequence = currentEnemyTarget.chipsDatasList;
             var playerSelection = ChipsManager.Instance.playerChoiceChipsOrder;
@@ -378,8 +402,16 @@ namespace MANAGER
             return chip1.index == chip2.index 
                    && chip1.colorLinkChips == chip2.colorLinkChips;
         }
+
+        [SerializeField] private float goldenRunLifeGiven = 10f;
         private void EnemySequenceGuessed()
         {
+            if (currentSequenceIndex == 1)
+            {
+                NewPlayerController.instance?.ManageLife(goldenRunLifeGiven);
+                Debug.Log("You did a golden run well play man");
+            }
+            
             playerSuccess = true;
             
             currentEnemyTarget.PvEnemy -= currentEnemyTarget.PvEnemy;
@@ -392,7 +424,10 @@ namespace MANAGER
             }
             
             isMatchingPhase = true; 
-            playerTurnTimer = playerTurnDuration; 
+            playerTurnTimer = playerTurnDuration;
+
+            
+            
         }
         
         

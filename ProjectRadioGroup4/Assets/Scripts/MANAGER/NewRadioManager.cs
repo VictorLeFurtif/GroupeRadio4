@@ -68,6 +68,8 @@ namespace MANAGER
         private int currentActiveLight = 0;
         private float lastCheckTime;
         private bool isMatching;
+        
+        
         #endregion
 
         #region Properties
@@ -492,6 +494,7 @@ namespace MANAGER
         #endregion
 
         #region Fight State Block
+        
         public void RadioBehaviorDependingFightState()
         {
             if (FightManager.instance?.fightState == FightManager.FightState.InFight)
@@ -499,16 +502,26 @@ namespace MANAGER
                 sliderAmplitude.interactable = false;
                 sliderFrequency.interactable = false;
                 playerOscillationHolder.SetActive(false);
-                matRadioEnemy.SetFloat("_speed",0);
-                matRadioPlayer.SetFloat("_speed",0);
+                matRadioEnemy.SetFloat("_speed", 0);
+                matRadioPlayer.SetFloat("_speed", 0);
+        
+                if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
+                {
+                    StartCoroutine(NewPlayerController.instance.rangeFinderManager.rfAnimation.TurnOffRangeFinder());
+                }
             }
             else
             {
                 sliderAmplitude.interactable = true;
                 sliderFrequency.interactable = true;
                 playerOscillationHolder.SetActive(true);
-                matRadioEnemy.SetFloat("_speed",0.02f);
-                matRadioPlayer.SetFloat("_speed",0.02f);
+                matRadioEnemy.SetFloat("_speed", 0.02f);
+                matRadioPlayer.SetFloat("_speed", 0.02f);
+        
+                if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
+                {
+                    StartCoroutine(NewPlayerController.instance.rangeFinderManager.rfAnimation.TurnOnRangeFinder());
+                }
             }
         }
         #endregion

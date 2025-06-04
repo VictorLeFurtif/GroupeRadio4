@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ANIMATION;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -37,6 +38,12 @@ namespace MANAGER
         [SerializeField] private Ease appearEase = Ease.OutBack;
         [SerializeField] private Ease disappearEase = Ease.InBack;
         [SerializeField] private float popScale = 1.1f;
+        public RangeFinderAnimation rfAnimation;
+
+        [Header("GameObject")] [SerializeField]
+        private GameObject rangeFinderObject;
+        
+        
 
         #endregion
 
@@ -257,6 +264,11 @@ namespace MANAGER
                 }
             }
             uiElements.RemoveAll(uiData => uiData.uiObject == null);
+        }
+
+        public void TurnRangeFinder(bool onOrOff)
+        {
+            rangeFinderObject.SetActive(onOrOff);
         }
         
         private class UIElementData

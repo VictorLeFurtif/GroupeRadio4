@@ -144,14 +144,16 @@ MonoBehaviour:
   listMidColliders: []
   listStrongColliders: []
   parentRangeFinder: {fileID: 0}
-  colorWeak: {r: 0.7837753, g: 0.83265835, b: 0.9716981, a: 1}
-  colorMid: {r: 0.5235849, g: 0.5674652, b: 1, a: 1}
-  colorStrong: {r: 0.08018869, g: 0.3867926, b: 1, a: 1}
+  colorWeak: {r: 0.50980395, g: 0.7607844, b: 0.4431373, a: 1}
+  colorMid: {r: 0.5372549, g: 0.44039237, b: 0.13333333, a: 1}
+  colorStrong: {r: 0.52156866, g: 0.208822, b: 0.0862745, a: 1}
   appearDuration: 0.3
   disappearDuration: 0.2
   appearEase: 27
   disappearEase: 26
   popScale: 1.1
+  rfAnimation: {fileID: 0}
+  rangeFinderObject: {fileID: 0}
 --- !u!114 &1294978150820198546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +282,7 @@ MonoBehaviour:
   - {x: 0.36916208, y: 0.103906155, z: 0}
   m_ShapePathHash: -1156423123
   m_Mesh: {fileID: 0}
-  m_InstanceId: 29692
+  m_InstanceId: -2132
   m_LocalBounds:
     m_Center: {x: -0.11507392, y: 1.2452497, z: 0}
     m_Extent: {x: 0.484236, y: 1.1649222, z: 0}

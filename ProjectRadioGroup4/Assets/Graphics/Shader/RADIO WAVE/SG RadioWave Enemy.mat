@@ -42,10 +42,10 @@ Material:
     - _noise_amp: 4.76
     - _speed: 0.02
     - _waves: 12.7
-    - _waves_Amount: 0
-    - _waves_Amp: 0
+    - _waves_Amount: 13.904796
+    - _waves_Amp: 0.3661382
     m_Colors:
-    - _Color: {r: 0.70261496, g: 0.006482259, b: 0, a: 1}
+    - _Color: {r: 0.35130748, g: 0.0032411295, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &148708066201681712
 MonoBehaviour:
