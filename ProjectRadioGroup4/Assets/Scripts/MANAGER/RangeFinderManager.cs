@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace MANAGER
 {
@@ -25,6 +25,18 @@ namespace MANAGER
         public List<BoxCollider2D> listStrongColliders = new List<BoxCollider2D>();
         
         [SerializeField] private GameObject parentRangeFinder;
+
+        [Header("COLOR")] 
+        [SerializeField] private Color colorWeak;
+        [SerializeField] private Color colorMid;
+        [SerializeField] private Color colorStrong;
+
+        [Header("ANIMATION SETTINGS")]
+        [SerializeField] private float appearDuration = 0.3f;
+        [SerializeField] private float disappearDuration = 0.2f;
+        [SerializeField] private Ease appearEase = Ease.OutBack;
+        [SerializeField] private Ease disappearEase = Ease.InBack;
+        [SerializeField] private float popScale = 1.1f;
 
         #endregion
 
@@ -53,6 +65,8 @@ namespace MANAGER
 
         private void Init()
         {
+            DOTween.SetTweensCapacity(1000, 50);
+            
             player = NewPlayerController.instance;
             
             if (player == null)
@@ -63,6 +77,17 @@ namespace MANAGER
     
         private void InitUiRangeFinder()
         {
+          
+            foreach (var uiData in uiElements)
+            {
+                if (uiData.uiObject != null)
+                {
+                    uiData.uiObject.transform.DOKill();
+                    uiData.uiObject.transform.DOScale(Vector3.zero, disappearDuration)
+                        .SetEase(disappearEase)
+                        .OnComplete(() => Destroy(uiData.uiObject));
+                }
+            }
             uiElements.Clear();
 
             if (player.currentScanType == NewPlayerController.ScanType.None) return;
@@ -71,7 +96,7 @@ namespace MANAGER
             GameObject prefabToUse = GetPrefabForScanType(player.currentScanType);
             if (prefabToUse == null) return;
 
-            uiElements.Clear();
+            Color targetColor = GetColorForScanType(player.currentScanType);
 
             foreach (var collider in selectedList)
             {
@@ -90,6 +115,8 @@ namespace MANAGER
                     parentRangeFinder.transform
                 );
 
+                ui.transform.localScale = Vector3.zero;
+
                 RectTransform rect = ui.GetComponent<RectTransform>();
                 Image image = ui.GetComponent<Image>();
 
@@ -97,6 +124,18 @@ namespace MANAGER
                 {
                     rect.sizeDelta = new Vector2(uiWidth, rect.sizeDelta.y);
                 }
+
+                if (image != null)
+                {
+                    image.color = targetColor;
+                }
+
+                ui.transform.DOScale(Vector3.one * popScale, appearDuration)
+                    .SetEase(appearEase)
+                    .OnComplete(() => {
+                  
+                        ui.transform.DOScale(Vector3.one, appearDuration * 0.5f).SetEase(Ease.OutBounce);
+                    });
 
                 uiElements.Add(new UIElementData
                 {
@@ -138,13 +177,12 @@ namespace MANAGER
         {
             return scanType switch
             {
-                NewPlayerController.ScanType.Type1 => Color.red,
-                NewPlayerController.ScanType.Type2 => Color.yellow,
-                NewPlayerController.ScanType.Type3 => Color.green,
+                NewPlayerController.ScanType.Type1 => colorStrong,
+                NewPlayerController.ScanType.Type2 => colorMid,
+                NewPlayerController.ScanType.Type3 => colorWeak,
                 _ => Color.white
             };
         }
-
 
         #endregion
 
@@ -160,7 +198,7 @@ namespace MANAGER
             RemoveDestroyedElements();
             List<BoxCollider2D> selectedList = GetCollidersForScanType(player.currentScanType);
 
-            if (selectedList.Count != uiElements.Count) //CORRIGE BUG DE ERIC
+            if (selectedList.Count != uiElements.Count)
             {
                 InitUiRangeFinder();
                 return;
@@ -175,16 +213,21 @@ namespace MANAGER
                 float uiX = distanceX * ratio;
 
                 Vector3 newPosition = parentRangeFinder.transform.position + new Vector3(uiX, 0, 0);
-                uiElements[i].uiObject.transform.position = newPosition;
+                
+                uiElements[i].uiObject.transform.DOMove(newPosition, 0.3f).SetEase(Ease.OutQuad);
 
                 if (uiElements[i].rectTransform != null)
                 {
-                    uiElements[i].rectTransform.sizeDelta = new Vector2(bounds.size.x * ratio, uiElements[i].rectTransform.sizeDelta.y);
+                    float targetWidth = bounds.size.x * ratio;
+                    uiElements[i].rectTransform.DOSizeDelta(
+                        new Vector2(targetWidth, uiElements[i].rectTransform.sizeDelta.y), 
+                        0.3f).SetEase(Ease.OutQuad);
                 }
 
                 if (uiElements[i].image != null)
                 {
-                    uiElements[i].image.color = GetColorForScanType(player.currentScanType);
+                    Color targetColor = GetColorForScanType(player.currentScanType);
+                    uiElements[i].image.DOColor(targetColor, 0.3f);
                 }
             }
         }
@@ -193,28 +236,27 @@ namespace MANAGER
         
         public void RemoveDestroyedElements()
         {
-            
-            listWeakColliders.RemoveAll(c => c == null || c.gameObject == null);
-            listMidColliders.RemoveAll(c => c == null || c.gameObject == null);
-            listStrongColliders.RemoveAll(c => c == null || c.gameObject == null);
-            
-            uiElements.RemoveAll(uiData => uiData.uiObject == null);
-            
+            listWeakColliders.RemoveAll(c => c == null);
+            listMidColliders.RemoveAll(c => c == null);
+            listStrongColliders.RemoveAll(c => c == null);
+
+            var validChildren = new HashSet<GameObject>();
+            foreach (var uiData in uiElements)
+            {
+                if (uiData.uiObject != null && uiData.uiObject.transform.IsChildOf(parentRangeFinder.transform))
+                {
+                    validChildren.Add(uiData.uiObject);
+                }
+            }
             foreach (Transform child in parentRangeFinder.transform)
             {
-                bool found = false;
-                foreach (var uiData in uiElements)
+                if (!validChildren.Contains(child.gameObject))
                 {
-                    if (uiData.uiObject != child.gameObject) continue;
-                    found = true;
-                    break;
-                }
-        
-                if (!found)
-                {
+                    child.DOKill(true); 
                     Destroy(child.gameObject);
                 }
             }
+            uiElements.RemoveAll(uiData => uiData.uiObject == null);
         }
         
         private class UIElementData
@@ -223,6 +265,5 @@ namespace MANAGER
             public RectTransform rectTransform;
             public Image image;
         }
-
     }
 }

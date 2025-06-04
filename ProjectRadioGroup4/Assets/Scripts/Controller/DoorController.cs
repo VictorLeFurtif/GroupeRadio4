@@ -32,9 +32,9 @@ namespace Controller
                     SceneManager.LoadScene(sceneName);
                     break;
                 case DoorType.Teleport:
-                    if (PlayerController.instance != null)
+                    if (NewPlayerController.instance != null)
                     {
-                        PlayerController.instance.transform.position = positionForPlayer;
+                        NewPlayerController.instance.transform.position = positionForPlayer;
                     }
                     break;
                 default:
@@ -45,9 +45,9 @@ namespace Controller
         private void OnMouseDown()
         {
             if (FightManager.instance?.fightState == FightManager.FightState.InFight ||
-                Vector2.Distance(new Vector2(PlayerController.instance.transform.position.x,0),new Vector2(transform.position.x,0)) > triggerDoor)
+                Vector2.Distance(new Vector2(NewPlayerController.instance.transform.position.x,0),new Vector2(transform.position.x,0)) > triggerDoor)
             {
-                Debug.LogWarning(Vector2.Distance(PlayerController.instance.transform.position,transform.position));
+                Debug.LogWarning(Vector2.Distance(NewPlayerController.instance.transform.position,transform.position));
                 return;
             }
             

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using AI.NEW_AI;
 using Controller;
 using INTERACT;
@@ -22,6 +23,8 @@ namespace MANAGER
         [Header("Shader Material Player")]
         [SerializeField] private RawImage imageRadioPlayer;
         [SerializeField] private RawImage imageRadioEnemy;
+
+        [SerializeField] private GameObject playerOscillationHolder;
         
         private Material matRadioPlayer;
         private Material matRadioEnemy;
@@ -61,6 +64,12 @@ namespace MANAGER
         [SerializeField] private Color pendingColor = Color.red;
         [SerializeField] private Color currentColor = Color.yellow;
         [SerializeField] private Color completedColor = Color.green;
+        
+        [Header("Combat Light Settings")]
+        [SerializeField] private Color correctColor = Color.green;
+        [SerializeField] private Color wrongColor = Color.red;
+        [SerializeField] private float wrongColorDuration = 0.5f;
+        private Coroutine wrongColorCoroutine;
 
         private int currentActiveLight = 0;
         
@@ -97,6 +106,8 @@ namespace MANAGER
         {
             TimerCheckInterval();
             UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
+            UpdateTypeOfUiByFightState();
+
         }
 
         private void Start()
@@ -104,6 +115,7 @@ namespace MANAGER
             InitializeSliders();
             ResetMaterials();
             InitializeLights();
+            RadioBehaviorDependingFightState();
         }
         #endregion
 
@@ -151,32 +163,21 @@ namespace MANAGER
             if (!waveInteractable.HasRemainingPatterns())
             {
                 var controller = NewPlayerController.instance;
-                
-                switch (FightManager.instance?.fightState)
+
+                if (FightManager.instance?.fightState == FightManager.FightState.OutFight && controller != null)
                 {
-                    case FightManager.FightState.OutFight when controller != null:
-                        waveInteractable.Detected = true;
-                        controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
-                        InitializeLights();
-                        if (waveInteractable is NewAi ai)
-                        {
-                            
-                            ai.BeginFight();
-                            yield break;
-                        }
-                        else
-                        {
-                            controller.canMove = true;
-                            waveInteractable.CanSecondPhase = false;
-                        }
-                        
-                        break;
-                    case FightManager.FightState.InFight:
-                        FightManager.instance.StartCoroutine(CompleteAllPatternsRoutine());
-                        break;
+                    waveInteractable.Detected = true;
+                    controller.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
+                    InitializeLights();
+                    if (waveInteractable is NewAi ai)
+                    {
+                        ai.BeginFight();
+                        yield break;
+                    }
+
+                    controller.canMove = true;
+                    waveInteractable.CanSecondPhase = false;
                 }
-
-
                 yield return HandleRadioTransition(new WaveSettings(0,0,0));
             }
             else
@@ -186,13 +187,9 @@ namespace MANAGER
             }
         }
 
-        private IEnumerator CompleteAllPatternsRoutine()
-        {
-            yield return new WaitForSeconds(0.5f); 
-            FightManager.instance.PlayerSuccess();
-        }
         
-        private IEnumerator HandleRadioTransition(WaveSettings targetSettings)
+        
+        public IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {
             float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
             float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
@@ -240,8 +237,10 @@ namespace MANAGER
             if (NewPlayerController.instance.currentInteractableInRange is not
                     IWaveInteractable waveInteractable || !waveInteractable.CanBeActivated()) return;
 
+            
             waveInteractable.Activate();
-
+            InitializeLights(waveInteractable);
+            
             if (waveInteractable is NewAi ai)
             {
                 ai.attackTimer = ai.attackTriggerDelay;
@@ -269,7 +268,7 @@ namespace MANAGER
             }
             
             ai.Activate();
-            
+            InitializeLights(ai);
             if (!ai.HasRemainingPatterns()) return;
             
             if (currentTransition != null)
@@ -301,8 +300,6 @@ namespace MANAGER
             var settings = waveInteractable?.GetCurrentWaveSettings();
 
             if (settings == null || !IsMatch(settings)) return;
-            Debug.Log(matRadioPlayer.GetFloat("_waves_Amount") +"   "+ matRadioPlayer.GetFloat("_waves_Amp"));
-            Debug.Log(matRadioEnemy.GetFloat("_waves_Amount") +"   "+ matRadioEnemy.GetFloat("_waves_Amp"));
             StartCoroutine(HandlePatternMatched(waveInteractable));
         }
         
@@ -354,12 +351,27 @@ namespace MANAGER
             _targetText.text = _targetInnerText;
         }
         
+        private void InitializeLights(IInteractable target)
+        {
+            foreach (var t in lights)
+            {
+                t.color = offColor;
+            }
+            currentActiveLight = 0;
+            if (target is not BatteryInteract bat) return;
+            for (int i = 0; i < bat.wavePatterns.Count; i++)
+            {
+                lights[i].color = pendingColor;
+            }
+        }
+
         private void InitializeLights()
         {
-            for (int i = 0; i < lights.Length; i++)
+            foreach (var t in lights)
             {
-                lights[i].color = offColor;
+                t.color = offColor;
             }
+
             currentActiveLight = 0;
         }
 
@@ -385,7 +397,75 @@ namespace MANAGER
                 light.transform.localScale = Vector3.one;
             }
         }
+
+        [Header("Canva Part to Display")] 
+        [SerializeField] private GameObject canvaExploration;
+        [SerializeField] private GameObject canvaFight;
         
+        private void UpdateTypeOfUiByFightState()
+        {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                canvaExploration.SetActive(false);
+                canvaFight.SetActive(true);
+            }
+            else
+            {
+                canvaExploration.SetActive(true);
+                canvaFight.SetActive(false);
+            }
+        }
+        
+        #endregion
+        
+        #region Combat Light Management
+
+        public void InitializeCombatLights(int sequenceLength)
+        {
+            ResetLights();
+            
+            for (int i = 0; i < sequenceLength && i < lights.Length; i++)
+            {
+                lights[i].color = pendingColor; 
+            }
+        }
+
+        public void UpdateCombatLight(int index, bool isCorrect)
+        {
+            if (index < 0 || index >= lights.Length) return;
+    
+            lights[index].color = isCorrect ? completedColor : pendingColor;
+            if (isCorrect)
+            {
+                StartCoroutine(PulseLight(lights[index]));
+            }
+        }
+
+        private IEnumerator PulseLight(Image light)
+        {
+            float duration = 0.2f;
+            Vector3 originalScale = light.transform.localScale;
+            Vector3 targetScale = originalScale * 1.2f;
+    
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                light.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsed/duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+    
+            elapsed = 0f;
+            while (elapsed < duration)
+            {
+                light.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed/duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+    
+            light.transform.localScale = originalScale;
+        }
+
         #endregion
 
         #region Time Related
@@ -398,6 +478,44 @@ namespace MANAGER
             {
                 CheckWaveMatch();
                 lastCheckTime = Time.time;
+            }
+        }
+
+        #endregion
+
+        #region Deal With Fight Oscillation
+
+        [SerializeField] private float fromFrequencyToWaveNumber;
+        public void UpdateOscillationEnemy(NewAi ai)
+        {
+            var targetFrequency = ai.GetActualInstanceChips().index * fromFrequencyToWaveNumber;
+            WaveSettings enemyChipsWaveSettings = new WaveSettings(targetFrequency, 0.3f, 0);
+            StartCoroutine(HandleRadioTransition(enemyChipsWaveSettings));
+
+
+        }
+
+        #endregion
+
+        #region Fight State Block
+
+        public void RadioBehaviorDependingFightState()
+        {
+            if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+            {
+                sliderAmplitude.interactable = false;
+                sliderFrequency.interactable = false;
+                playerOscillationHolder.SetActive(false);
+                matRadioEnemy.SetFloat("_speed",0);
+                matRadioPlayer.SetFloat("_speed",0);
+            }
+            else
+            {
+                sliderAmplitude.interactable = true;
+                sliderFrequency.interactable = true;
+                playerOscillationHolder.SetActive(true);
+                matRadioEnemy.SetFloat("_speed",0.02f);
+                matRadioPlayer.SetFloat("_speed",0.02f);
             }
         }
 

@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using Controller;
+using DATA.Script.Chips_data;
 using DATA.Script.Entity_Data.AI;
 using ENUM;
 using INTERACT;
@@ -40,6 +42,16 @@ namespace AI.NEW_AI
         [SerializeField] private Slider healthSlider;
         [SerializeField] private float healthLerpDuration = 0.3f;
         private Coroutine healthLerpCoroutine;
+
+        [Header("Enemy Chips")] 
+        [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
+        public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
+        [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
+
+        [Header("Eye Settings")]
+        public Image monsterEyes;
+        private int currentChipIndex = 0;
+        
         #endregion
 
         #region Unity Methods
@@ -55,7 +67,13 @@ namespace AI.NEW_AI
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
             animatorEnemy = GetComponent<Animator>();
             originalPos = transform;
-            healthSlider.gameObject.SetActive(false);
+
+            foreach (var t in chipsDatasListTempo)
+            {
+                chipsDatasList.Add(t.Instance());
+            }
+            chipsDatasListSave.AddRange(chipsDatasList);
+            monsterEyes.material.color = Color.white; 
         }
         #endregion
 
@@ -71,7 +89,7 @@ namespace AI.NEW_AI
                 float previousHealth = _abstractEntityDataInstance.hp;
                 _abstractEntityDataInstance.hp = newHealth;
                 
-                UpdateHealthSlider(previousHealth, newHealth);
+                
 
                 if (_abstractEntityDataInstance.IsDead())
                 {
@@ -80,36 +98,6 @@ namespace AI.NEW_AI
             }
         }
         
-        private void UpdateHealthSlider(float fromHealth, float toHealth)
-        {
-            if (healthSlider == null) return;
-
-            if (healthLerpCoroutine != null)
-            {
-                StopCoroutine(healthLerpCoroutine);
-            }
-
-            healthLerpCoroutine = StartCoroutine(LerpHealthSlider(
-                fromHealth / _abstractEntityDataInstance.maxHp,
-                toHealth / _abstractEntityDataInstance.maxHp
-            ));
-        }
-
-        private IEnumerator LerpHealthSlider(float fromValue, float toValue)
-        {
-            float elapsedTime = 0f;
-
-            while (elapsedTime < healthLerpDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsedTime / healthLerpDuration);
-                healthSlider.value = Mathf.Lerp(fromValue, toValue, t);
-                yield return null;
-            }
-
-            healthSlider.value = toValue;
-            healthLerpCoroutine = null;
-        }
         
         private void Die()
         {
@@ -141,9 +129,7 @@ namespace AI.NEW_AI
         #region Collision Handling
         protected override void OnCollisionEnter2D(Collision2D other)
         {
-            var fightManager = FightManager.instance;
             if (!other.gameObject.CompareTag("Player")) return;
-            
             BeginFight();
         }
         
@@ -182,7 +168,6 @@ namespace AI.NEW_AI
         
         private void StartCombatSequence()
         {
-            healthSlider.gameObject.SetActive(true);
             NewRadioManager.instance?.StopMatchingGame();
             spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;
@@ -228,12 +213,11 @@ namespace AI.NEW_AI
 
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
-                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,100);
+                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,45);
             }
     
-            fightManager.InitialiseList();
-            
-            //NewRadioManager.instance?.StartMatchingGameInFight();
+            fightManager.InitialiseFightManager();
+            ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
         }
         #endregion
         
@@ -260,6 +244,61 @@ namespace AI.NEW_AI
             
             NewRadioManager.instance.listOfEveryEnemy.Remove(this);
             NewRadioManager.instance.listOfEveryEnemy.Add(this);
+        }
+        
+        #endregion
+
+        #region Color System
+        public void UpdateEyeColorToCurrentChip()
+        {
+            if (chipsDatasList == null || chipsDatasList.Count == 0 || currentChipIndex >= chipsDatasListSave.Count)
+            {
+                monsterEyes.color = Color.white;
+                return;
+            }
+    
+            string colorName = chipsDatasListSave[currentChipIndex].colorLinkChips;
+            monsterEyes.color = ConvertColorNameToColor(colorName);
+        }
+
+        public ChipsDataInstance GetActualInstanceChips()
+        {
+            return chipsDatasListSave[currentChipIndex];
+        }
+
+        public void MoveToNextChip()
+        {
+            if (chipsDatasList == null || currentChipIndex >= chipsDatasListSave.Count - 1)
+            {
+                return;
+            }
+    
+            currentChipIndex++;
+            UpdateEyeColorToCurrentChip();
+        }
+
+        public void ResetSequenceIndex(List<ChipsDataInstance> sequenceToUse)
+        {
+            currentChipIndex = 0;
+            if (sequenceToUse != null && sequenceToUse.Count > 0)
+            {
+                UpdateEyeColorToCurrentChip();
+                NewRadioManager.instance?.UpdateOscillationEnemy(this);
+            }
+        }
+        
+        private Color ConvertColorNameToColor(string colorName)
+        {
+            return colorName.ToLower() switch
+            {
+                "red" => Color.red,
+                "green" => Color.green,
+                "blue" => Color.blue,
+                "yellow" => Color.yellow,
+                "white" => Color.white,
+                "black" => Color.black,
+                _ => Color.magenta 
+            };
         }
         #endregion
         
