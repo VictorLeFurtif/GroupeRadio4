@@ -148,7 +148,6 @@ public class NewPlayerController : MonoBehaviour
             _inGameData.hp = Mathf.Max(0, value);
             _inGameData.hp = Mathf.Clamp(value, 0, 100);
             
-            playerBattery.UpdateLifeText();
             playerBattery.UpdateLifeSlider(_inGameData.hp);
             
             if (_inGameData.IsDead())
@@ -218,7 +217,7 @@ public class NewPlayerController : MonoBehaviour
     #region Scanning
     private void Scan(ScanType scanType, float damageDealToPlayer)
     {
-        if (FightManager.instance?.fightState == FightManager.FightState.InFight)
+        if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead())
         {
             return;
         }

@@ -60,7 +60,7 @@ namespace MANAGER
         
         [Header("Eye Settings")]
         public Renderer monsterEyes;
-        private int currentSequenceIndex = 0;
+        //private int currentSequenceIndex = 0;
         
         
         #endregion
@@ -275,22 +275,28 @@ namespace MANAGER
             NewRadioManager.instance?.RadioBehaviorDependingFightState();
         }
 
-        [SerializeField] private float damageEnemy;
+        
         private void AttackPlayer()
         {
-            player.ManageLife(-damageEnemy);
+            
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
-            {
+            { 
+                player.ManageLife(-ai.damageEnemy);
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+            }
+            else
+            {
+                float baseDamageIfError = 10;
+                player.ManageLife(-baseDamageIfError);
             }
         }
         
         private void AttackPlayer(NewAi ai)
         {
-            player.ManageLife(-damageEnemy);
+            player.ManageLife(-ai.damageEnemy);
             
             if (ai != null)
             {
@@ -317,7 +323,9 @@ namespace MANAGER
             }
             
             int correctCount = 0;
-            bool allCorrect = !(currentSequence.Count < playerSelection.Count);
+            bool allCorrect = true;
+            
+            allCorrect = !(currentSequence.Count < playerSelection.Count);
             
             for (int i = 0; i < Mathf.Min(currentSequence.Count, playerSelection.Count); i++)
             {
@@ -331,7 +339,7 @@ namespace MANAGER
                     break;
                 }
             }
-
+            
             if (correctCount > 0 && allCorrect)
             {
                 int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;
@@ -359,7 +367,6 @@ namespace MANAGER
             }
             else
             {
-                //need to attack player
                 AttackPlayer(currentEnemyTarget);
             }
             
@@ -424,12 +431,10 @@ namespace MANAGER
 
         public void OnMatchButtonPressed()
         {
-            
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-
-            
             ChipsManager.Instance.MatchChips();
             ProcessPlayerGuess();
+            ChipsManager.Instance?.ResetAllChipsSelected();
         }
 
         public void CostForEachChipsAdded()
@@ -450,10 +455,9 @@ namespace MANAGER
         public void OnReverseButtonPressed()
         {
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-            
-
             ChipsManager.Instance.ReverseChips();
             ProcessPlayerGuess();
+            ChipsManager.Instance?.ResetAllChipsSelected();
         }
 
 

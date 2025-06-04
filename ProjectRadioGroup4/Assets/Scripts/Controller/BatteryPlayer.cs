@@ -12,7 +12,7 @@ namespace Controller
         private NewPlayerController player;
         private float _timer;
         //[SerializeField] private float batteryCheckInterval = 1f;
-        [SerializeField] private TMP_Text lifeText;
+       
         
         private Coroutine transitionCoroutineLife;
         private float currentDisplayedLife; 
@@ -42,53 +42,14 @@ namespace Controller
             {
                 Debug.LogWarning("No Player Controller instance was found");
             }
-
-            UpdateLifeText();
         }
         private void Update()
         {
             HandlePhase2BatteryDrain();
         }
-
-        #region LifeText
-
-        public void UpdateLifeText()
-        {
-            if (transitionCoroutineLife != null)
-                StopCoroutine(transitionCoroutineLife);
-    
-            if (player == null)
-            {
-                Debug.LogWarning("No PlayerController Was Found");
-                return;
-            }
-            
-            transitionCoroutineLife = StartCoroutine(SmoothTransitionLife(player._abstractEntityDataInstance.hp));
-        }
-
         [SerializeField]
         private float durationTimeLerpLife = 0.5f;
-
-        private IEnumerator SmoothTransitionLife(float targetLife)
-        {
-            float elapsed = 0f;
-            float startLife = currentDisplayedLife; 
-
-            while (elapsed < durationTimeLerpLife)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / durationTimeLerpLife); 
-
-                currentDisplayedLife = Mathf.Lerp(startLife, targetLife, t);
-                lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%"; 
-
-                yield return null;
-            }
-            currentDisplayedLife = targetLife;
-            lifeText.text = currentDisplayedLife.ToString("00.00", CultureInfo.InvariantCulture) + "%";
-        }
-
-        #endregion
+       
 
         #region SliderLife
 
