@@ -158,11 +158,11 @@ public class NewPlayerController : MonoBehaviour
                 return;
             }
             
-            if (FightManager.instance != null && FightManager.instance.fightState == 
-                FightManager.FightState.InFight && _inGameData.turnState != FightManager.TurnState.Turn)
+            if (FightManager.instance.fightState is FightManager.FightState.InFight)
             {
                 animatorPlayer.Play("HitReceived");
             }
+            
         }
     }
 
