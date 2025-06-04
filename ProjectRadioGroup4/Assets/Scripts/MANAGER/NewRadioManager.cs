@@ -306,10 +306,24 @@ namespace MANAGER
             ApplySettingsImmediate(matRadioEnemy, targetSettings);
         }
 
+        
         private IEnumerator PulseEffect()
         {
-            matRadioPlayer.SetColor("_Color", Color.white);
-            yield return new WaitForSeconds(pulseDuration);
+            float elapsedTime = 0f;
+            Color startColor = playerBaseColor;
+            Color targetColor = Color.magenta;
+            
+            while (elapsedTime < pulseDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsedTime / pulseDuration);
+        
+                float pulseValue = Mathf.Sin(t * Mathf.PI); 
+                matRadioPlayer.SetColor("_Color", Color.Lerp(startColor, targetColor, pulseValue));
+        
+                yield return null;
+            }
+    
             matRadioPlayer.SetColor("_Color", playerBaseColor);
         }
         
