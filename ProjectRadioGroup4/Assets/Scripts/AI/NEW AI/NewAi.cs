@@ -226,7 +226,7 @@ namespace AI.NEW_AI
 
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
-                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,45);
+                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,20);
             }
     
             fightManager.InitialiseFightManager();

@@ -60,7 +60,7 @@ namespace MANAGER
         
         [Header("Eye Settings")]
         public Renderer monsterEyes;
-        //private int currentSequenceIndex = 0;
+        private int currentSequenceIndex = 0;
         
         
         #endregion
@@ -278,6 +278,7 @@ namespace MANAGER
             );
             NewRadioManager.instance?.ResetLights();
             NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            currentSequenceIndex = 0;
         }
 
         
@@ -307,7 +308,6 @@ namespace MANAGER
             if (ai != null)
             { 
                 player.ManageLife(-ai.damageEnemy);
-                ai.animatorEnemy.Play("attackAi");;
             }
             else
             {
@@ -335,6 +335,8 @@ namespace MANAGER
             {
                 return;
             }
+            
+            currentSequenceIndex++;
             
             var currentSequence = currentEnemyTarget.chipsDatasList;
             var playerSelection = ChipsManager.Instance.playerChoiceChipsOrder;
@@ -400,8 +402,16 @@ namespace MANAGER
             return chip1.index == chip2.index 
                    && chip1.colorLinkChips == chip2.colorLinkChips;
         }
+
+        [SerializeField] private float goldenRunLifeGiven = 10f;
         private void EnemySequenceGuessed()
         {
+            if (currentSequenceIndex == 1)
+            {
+                NewPlayerController.instance?.ManageLife(goldenRunLifeGiven);
+                Debug.Log("You did a golden run well play man");
+            }
+            
             playerSuccess = true;
             
             currentEnemyTarget.PvEnemy -= currentEnemyTarget.PvEnemy;
@@ -414,7 +424,10 @@ namespace MANAGER
             }
             
             isMatchingPhase = true; 
-            playerTurnTimer = playerTurnDuration; 
+            playerTurnTimer = playerTurnDuration;
+
+            
+            
         }
         
         
