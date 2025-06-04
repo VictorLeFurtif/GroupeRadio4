@@ -320,7 +320,7 @@ namespace INTERACT
         
         private Vector2 GetRandomPositionInsideCollider(BoxCollider2D collider)
         {
-            float maxX = collider.size.x * 0.5f;
+            float maxX = collider.size.x * 0.1f;
             float maxY = collider.size.y * 0.5f;
             
             float randomX = Random.Range(-maxX, maxX);
