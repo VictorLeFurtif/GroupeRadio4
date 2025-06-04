@@ -2130,6 +2130,8 @@ GameObject:
   - component: {fileID: 4510549230114604985}
   - component: {fileID: 6070502388091997061}
   - component: {fileID: 2991776473377107743}
+  - component: {fileID: 5898281062204425387}
+  - component: {fileID: 9098136294565231552}
   m_Layer: 5
   m_Name: Range Finder background
   m_TagString: Untagged
@@ -2194,6 +2196,39 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5898281062204425387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268346364169689738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9a010f89da0774dbaee8786de15fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &9098136294565231552
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268346364169689738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d14c4ee6e14079428386e688da2f505, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5285842327171285932
 GameObject:
   m_ObjectHideFlags: 0
