@@ -186,6 +186,11 @@ namespace MANAGER
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
             NewRadioManager.instance?.RadioBehaviorDependingFightState();
+
+            if (currentFightAdvantage == FightAdvantage.Disadvantage)
+            {
+                AttackPlayer(true);
+            }
         }
         #endregion
 
@@ -286,6 +291,23 @@ namespace MANAGER
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+            }
+            else
+            {
+                float baseDamageIfError = 10;
+                player.ManageLife(-baseDamageIfError);
+            }
+        }
+        
+        private void AttackPlayer(bool isInit)
+        {
+            if (!isInit)return;
+            
+            NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
+            if (ai != null)
+            { 
+                player.ManageLife(-ai.damageEnemy);
+                ai.animatorEnemy.Play("attackAi");;
             }
             else
             {
