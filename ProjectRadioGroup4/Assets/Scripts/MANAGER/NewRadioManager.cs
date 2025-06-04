@@ -23,7 +23,6 @@ namespace MANAGER
         [Header("Shader Material Player")]
         [SerializeField] private RawImage imageRadioPlayer;
         [SerializeField] private RawImage imageRadioEnemy;
-
         [SerializeField] private GameObject playerOscillationHolder;
         
         private Material matRadioPlayer;
@@ -32,12 +31,10 @@ namespace MANAGER
         [Header("Sliders")]
         [SerializeField] private Slider sliderAmplitude;
         [SerializeField] private Slider sliderFrequency;
-        //[SerializeField] private Slider sliderStep;
 
         [Header("Shader Property Limits")]
         [SerializeField] private float maxAmplitude = 0.4f;
         [SerializeField] private float maxFrequency = 1f;
-        //[SerializeField] private float maxStep = 1f;
         [SerializeField] private Color playerBaseColor;
         [SerializeField] private Color enemyBaseColor;
         
@@ -48,30 +45,27 @@ namespace MANAGER
         
         [Header("Matching Thresholds")]
         [SerializeField] private float amplitudeThreshold = 0.05f;
-        [SerializeField] private float frequencyThreshold = 1f; 
-      //  [SerializeField] private float stepThreshold = 1f;
+        [SerializeField] private float frequencyThreshold = 1f;
         
         private Coroutine currentTransition;
 
-        [Header("UI")] public Canvas canvaRadio;
+        [Header("UI")] 
+        public Canvas canvaRadio;
         [SerializeField] private TMP_Text chronoInFight;
         
-        [Header("List")] public List<NewAi> listOfEveryEnemy;
+        [Header("List")] 
+        public List<NewAi> listOfEveryEnemy;
 
         [Header("Light Settings")]
-        [SerializeField] private Image[] lights = new Image[6]; 
-        [SerializeField] private Color offColor = new Color(0.2f, 0.2f, 0.2f, 1f); 
-        [SerializeField] private Color pendingColor = Color.red;
-        [SerializeField] private Color currentColor = Color.yellow;
-        [SerializeField] private Color completedColor = Color.green;
+        [SerializeField] private Image[] lightImages = new Image[6]; 
+        [SerializeField] private Sprite offSprite;
+        [SerializeField] private Sprite pendingSprite;
+        [SerializeField] private Sprite currentSprite;
+        [SerializeField] private Sprite completedSprite;
+        [SerializeField] private Sprite correctSprite;
+        [SerializeField] private Sprite wrongSprite;
         
-        [Header("Combat Light Settings")]
-        [SerializeField] private Color correctColor = Color.green;
-        [SerializeField] private Color wrongColor = Color.red;
-        private Coroutine wrongColorCoroutine;
-
         private int currentActiveLight = 0;
-        
         private float lastCheckTime;
         private bool isMatching;
         #endregion
@@ -106,7 +100,6 @@ namespace MANAGER
             TimerCheckInterval();
             UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
             UpdateTypeOfUiByFightState();
-
         }
 
         private void Start()
@@ -132,13 +125,117 @@ namespace MANAGER
                 sliderFrequency.maxValue = maxFrequency;
                 sliderFrequency.onValueChanged.AddListener((value) => UpdateShaderParam("_waves_Amount", value));
             }
-            /*
-            if (sliderStep != null)
+        }
+
+        private void InitializeLights()
+        {
+            foreach (var light in lightImages)
             {
-                sliderStep.maxValue = maxStep;
-                sliderStep.onValueChanged.AddListener((value) => UpdateShaderParam("_Step", value));
+                if (light != null)
+                {
+                    light.sprite = offSprite;
+                }
             }
-            */
+            currentActiveLight = 0;
+        }
+
+        private void InitializeLights(IInteractable target)
+        {
+            InitializeLights();
+            
+            if (target is not BatteryInteract bat) return;
+            
+            for (int i = 0; i < bat.wavePatterns.Count && i < lightImages.Length; i++)
+            {
+                if (lightImages[i] != null)
+                {
+                    lightImages[i].sprite = pendingSprite;
+                }
+            }
+        }
+        #endregion
+
+        #region Light Management
+        private void ActivateNextLight()
+        {
+            if (currentActiveLight >= lightImages.Length) return;
+            
+            if (lightImages[currentActiveLight] != null)
+            {
+                lightImages[currentActiveLight].sprite = completedSprite;
+                StartCoroutine(PulseLight(lightImages[currentActiveLight]));
+            }
+            
+            if (currentActiveLight + 1 < lightImages.Length && lightImages[currentActiveLight + 1] != null)
+            {
+                lightImages[currentActiveLight + 1].sprite = currentSprite;
+            }
+
+            currentActiveLight++;
+        }
+
+        private IEnumerator PulseLight(Image light)
+        {
+            if (light == null) yield break;
+
+            float duration = 0.2f;
+            Vector3 originalScale = light.transform.localScale;
+            Vector3 targetScale = originalScale * 1.2f;
+    
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                light.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsed/duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+    
+            elapsed = 0f;
+            while (elapsed < duration)
+            {
+                light.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed/duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+    
+            light.transform.localScale = originalScale;
+        }
+
+        public void ResetLights()
+        {
+            InitializeLights();
+            foreach (var light in lightImages)
+            {
+                if (light != null)
+                {
+                    light.transform.localScale = Vector3.one;
+                }
+            }
+        }
+
+        public void InitializeCombatLights(int sequenceLength)
+        {
+            ResetLights();
+            
+            for (int i = 0; i < sequenceLength && i < lightImages.Length; i++)
+            {
+                if (lightImages[i] != null)
+                {
+                    lightImages[i].sprite = pendingSprite;
+                }
+            }
+        }
+
+        public void UpdateCombatLight(int index, bool isCorrect)
+        {
+            if (index < 0 || index >= lightImages.Length || lightImages[index] == null) return;
+    
+            lightImages[index].sprite = isCorrect ? completedSprite : wrongSprite;
+            
+            if (isCorrect)
+            {
+                StartCoroutine(PulseLight(lightImages[index]));
+            }
         }
         #endregion
 
@@ -186,13 +283,10 @@ namespace MANAGER
             }
         }
 
-        
-        
         public IEnumerator HandleRadioTransition(WaveSettings targetSettings)
         {
             float startFreq = matRadioEnemy.GetFloat("_waves_Amount");
             float startAmp = matRadioEnemy.GetFloat("_waves_Amp");
-          //  float startStep = matRadioEnemy.GetFloat("_Step");
 
             float elapsed = 0f;
 
@@ -205,8 +299,6 @@ namespace MANAGER
                     Mathf.Lerp(startFreq, targetSettings.frequency, t));
                 matRadioEnemy.SetFloat("_waves_Amp", 
                     Mathf.Lerp(startAmp, targetSettings.amplitude, t));
-             //   matRadioEnemy.SetFloat("_Step", 
-               //     Mathf.Lerp(startStep, targetSettings.step, t));
 
                 yield return null;
             }
@@ -229,8 +321,6 @@ namespace MANAGER
         #endregion
 
         #region Game State Management
-        
-        
         public void StartMatchingGameOutFight()
         {
             if (NewPlayerController.instance.currentInteractableInRange is not
@@ -274,8 +364,8 @@ namespace MANAGER
                 StopCoroutine(currentTransition);
             
             currentTransition = StartCoroutine(StartMatchingRoutine(ai));
-            if (lights.Length > 0)
-                lights[0].color = currentColor;
+            if (lightImages.Length > 0 && lightImages[0] != null)
+                lightImages[0].sprite = currentSprite;
         }
 
         public void StopMatchingGame()
@@ -306,21 +396,17 @@ namespace MANAGER
         {
             float freqDiff = Mathf.Abs(matRadioPlayer.GetFloat("_waves_Amount") - settings.frequency);
             float ampDiff = Mathf.Abs(matRadioPlayer.GetFloat("_waves_Amp") - settings.amplitude);
-           // float stepDiff = Mathf.Abs(matRadioPlayer.GetFloat("_Step") - settings.step);
         
-           return freqDiff < frequencyThreshold
-                  && ampDiff < amplitudeThreshold;
-           // && stepDiff < stepThreshold;
+            return freqDiff < frequencyThreshold
+                   && ampDiff < amplitudeThreshold;
         }
         #endregion
 
         #region Shader Management
-        
         private void ApplySettingsImmediate(Material mat, WaveSettings settings)
         {
             mat.SetFloat("_waves_Amount", settings.frequency);
             mat.SetFloat("_waves_Amp", settings.amplitude);
-           // mat.SetFloat("_Step", settings.step);
         }
 
         private void UpdateShaderParam(string param, float value)
@@ -344,57 +430,9 @@ namespace MANAGER
         #endregion
 
         #region UI
-
         public void UpdateText(TMP_Text _targetText,string _targetInnerText)
         {
             _targetText.text = _targetInnerText;
-        }
-        
-        private void InitializeLights(IInteractable target)
-        {
-            foreach (var t in lights)
-            {
-                t.color = offColor;
-            }
-            currentActiveLight = 0;
-            if (target is not BatteryInteract bat) return;
-            for (int i = 0; i < bat.wavePatterns.Count; i++)
-            {
-                lights[i].color = pendingColor;
-            }
-        }
-
-        private void InitializeLights()
-        {
-            foreach (var t in lights)
-            {
-                t.color = offColor;
-            }
-
-            currentActiveLight = 0;
-        }
-
-        private void ActivateNextLight()
-        {
-            if (currentActiveLight >= lights.Length) return;
-
-            lights[currentActiveLight].color = completedColor;
-    
-            if (currentActiveLight + 1 < lights.Length)
-            {
-                lights[currentActiveLight + 1].color = currentColor;
-            }
-    
-            currentActiveLight++;
-        }
-
-        public void ResetLights()
-        {
-            InitializeLights();
-            foreach (var light in lights)
-            {
-                light.transform.localScale = Vector3.one;
-            }
         }
 
         [Header("Canva Part to Display")] 
@@ -414,61 +452,9 @@ namespace MANAGER
                 canvaFight.SetActive(false);
             }
         }
-        
         #endregion
         
-        #region Combat Light Management
-
-        public void InitializeCombatLights(int sequenceLength)
-        {
-            ResetLights();
-            
-            for (int i = 0; i < sequenceLength && i < lights.Length; i++)
-            {
-                lights[i].color = pendingColor; 
-            }
-        }
-
-        public void UpdateCombatLight(int index, bool isCorrect)
-        {
-            if (index < 0 || index >= lights.Length) return;
-    
-            lights[index].color = isCorrect ? completedColor : pendingColor;
-            if (isCorrect)
-            {
-                StartCoroutine(PulseLight(lights[index]));
-            }
-        }
-
-        private IEnumerator PulseLight(Image light)
-        {
-            float duration = 0.2f;
-            Vector3 originalScale = light.transform.localScale;
-            Vector3 targetScale = originalScale * 1.2f;
-    
-            float elapsed = 0f;
-            while (elapsed < duration)
-            {
-                light.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsed/duration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-    
-            elapsed = 0f;
-            while (elapsed < duration)
-            {
-                light.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed/duration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-    
-            light.transform.localScale = originalScale;
-        }
-
-        #endregion
-
         #region Time Related
-
         private void TimerCheckInterval()
         {
             if (!isMatching) return;
@@ -479,25 +465,19 @@ namespace MANAGER
                 lastCheckTime = Time.time;
             }
         }
-
         #endregion
 
         #region Deal With Fight Oscillation
-
         [SerializeField] private float fromFrequencyToWaveNumber;
         public void UpdateOscillationEnemy(NewAi ai)
         {
             var targetFrequency = ai.GetActualInstanceChips().index * fromFrequencyToWaveNumber;
             WaveSettings enemyChipsWaveSettings = new WaveSettings(targetFrequency, 0.3f, 0);
             StartCoroutine(HandleRadioTransition(enemyChipsWaveSettings));
-
-
         }
-
         #endregion
 
         #region Fight State Block
-
         public void RadioBehaviorDependingFightState()
         {
             if (FightManager.instance?.fightState == FightManager.FightState.InFight)
@@ -517,7 +497,6 @@ namespace MANAGER
                 matRadioPlayer.SetFloat("_speed",0.02f);
             }
         }
-
         #endregion
     }
 }
