@@ -118,14 +118,32 @@ namespace AI.NEW_AI
 
             isDead = true;
             canAttack = false;
-            
+            animatorEnemy.Play("DeathAi");
+    
+            float deathAnimLength = GetDeathAnimationLength();
+    
             if (_aiFightState == AiFightState.InFight)
             {
                 EndAiTurn();
             }
-            StartCoroutine(DelayedDeath(1.2f));
+            StartCoroutine(DelayedDeath(deathAnimLength + 1f));
         }
-        
+
+        private float GetDeathAnimationLength()
+        {
+            if (animatorEnemy == null)
+            {
+                return 2f; 
+            }
+
+            AnimatorStateInfo stateInfo = animatorEnemy.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("DeathAi"))
+            {
+                return stateInfo.length;
+            }
+            return 1.2f; 
+        }
+
         private IEnumerator DelayedDeath(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -135,6 +153,7 @@ namespace AI.NEW_AI
         private void HandleDeath()
         {
             Destroy(gameObject);
+            NewPlayerController.instance.canMove = true;
         }
         
         #endregion
