@@ -512,14 +512,19 @@ MonoBehaviour:
   animatorEnemy: {fileID: 0}
   originalPos: {fileID: 0}
   healthSlider: {fileID: 0}
-  healthLerpDuration: 0.3
   chipsDatasListTempo:
+  - {fileID: 11400000, guid: ed9ac90b8e1e22648b60b4a05507c39c, type: 2}
+  - {fileID: 11400000, guid: 08cc3256de904a240b1fbdabbc4ed4cf, type: 2}
+  - {fileID: 11400000, guid: 8c0804d6a57af9e48a6286d848093ca5, type: 2}
+  chipsDatasList: []
+  chipsDatasListSave: []
+  chipsToAddToPattern:
   - {fileID: 11400000, guid: 0fada9b11e6e367448d21b1452ceedcf, type: 2}
   - {fileID: 11400000, guid: 5483172bdf2a5324391ebf5b1d277d8d, type: 2}
   - {fileID: 11400000, guid: f7c0afc45de2081458ad6d86cb8ffd87, type: 2}
-  chipsDatasList: []
-  chipsDatasListSave: []
+  chipsToAddToPatternReal: []
   monsterEyes: {fileID: 9061763285793684854}
+  damageEnemy: 0
 --- !u!212 &1520622424576169195
 SpriteRenderer:
   m_ObjectHideFlags: 0

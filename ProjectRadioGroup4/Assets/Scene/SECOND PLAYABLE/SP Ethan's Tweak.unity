@@ -6580,7 +6580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4308485798520917267, guid: a3c8fb81aceaa5246b07479e805d872d, type: 3}
       propertyPath: playerTurnDuration
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5303886979712719697, guid: a3c8fb81aceaa5246b07479e805d872d, type: 3}
       propertyPath: m_LocalPosition.x
