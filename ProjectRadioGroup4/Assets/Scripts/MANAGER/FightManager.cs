@@ -63,6 +63,8 @@ namespace MANAGER
         private int currentSequenceIndex = 0;
 
         private SpotLightFightManager spotLightFightManager;
+
+        [HideInInspector] public int numberOfSwap; 
         
         #endregion
 
@@ -195,6 +197,7 @@ namespace MANAGER
             }
             
             spotLightFightManager.InitLight();
+            
         }
         #endregion
 

@@ -58,7 +58,9 @@ namespace AI.NEW_AI
         [Header("Damage")]
         
         public float damageEnemy;
-        
+
+        [Header("NUMBER OF SWAP")]
+        [SerializeField] private int numberOfSwap;
         
         #endregion
 
@@ -183,6 +185,11 @@ namespace AI.NEW_AI
 
         #region Combat Management
 
+        public void InitSwapNumber()
+        {
+            FightManager.instance.numberOfSwap = numberOfSwap;
+        }
+        
         public void StartFight()
         {
             NewPlayerController.instance.canMove = false;
@@ -266,6 +273,7 @@ namespace AI.NEW_AI
     
             fightManager.InitialiseFightManager();
             ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
+            InitSwapNumber();
         }
         #endregion
         
