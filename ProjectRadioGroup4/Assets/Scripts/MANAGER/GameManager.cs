@@ -1,70 +1,72 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Controller;
-using MANAGER;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+namespace MANAGER
 {
-    public static GameManager instance;
+    public class GameManager : MonoBehaviour
+    {
+        public static GameManager instance;
     
-    public GameState currentGameState = GameState.Menu;
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
-    }
-
-    private void Start()
-    {
-        CurrentGameState = GameState.Game;
-    }
-
-    public GameState CurrentGameState
-    {
-        get => currentGameState;
-        set
+        public GameState currentGameState = GameState.Menu;
+        
+        private void Awake()
         {
-            switch (value)
+            if (instance == null) instance = this;
+            else Destroy(gameObject);
+        }
+
+        private void Start()
+        {
+            CurrentGameState = GameState.Game;
+        }
+
+        public GameState CurrentGameState
+        {
+            get => currentGameState;
+            set
             {
-                case GameState.GameOver :
-                    NewRadioManager.instance.canvaRadio.enabled = false;
-                    break;
-                case GameState.Game :
-                    NewRadioManager.instance.canvaRadio.enabled = true;
-                    break;
-                case GameState.Menu :
-                    NewRadioManager.instance.canvaRadio.enabled = false;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
+                currentGameState = value; 
+                /*
+                switch (value)
+                {
+                    case GameState.GameOver:
+                        NewRadioManager.instance.canvaRadio.enabled = false;
+                        break;
+                    case GameState.Game:
+                        NewRadioManager.instance.canvaRadio.enabled = true;
+                        break;
+                    case GameState.Menu:
+                        NewRadioManager.instance.canvaRadio.enabled = false;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(value), value, null);
+                }*/
             }
         }
-    }
     
-    public enum GameState
-    {
-        Menu,
-        Game,
-        GameOver,
-    }
+        public enum GameState
+        {
+            Menu,
+            Game,
+            GameOver,
+        }
 
-    public void GameOver()
-    {
-        CurrentGameState = GameState.GameOver;
-    }
+        public void GameOver()
+        {
+            CurrentGameState = GameState.GameOver;
+        }
 
-    public void ReloadActualScene()
-    {
-        string nameScene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(nameScene);
-    }
+        public void ReloadActualScene()
+        {
+            string nameScene = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(nameScene);
+        }
     
-    public void LoadSceneByName(string _name)
-    {
-        SceneManager.LoadScene(_name);
+        public void LoadSceneByName(string _name)
+        {
+            SceneManager.LoadScene(_name);
+        }
     }
 }
 

@@ -15,7 +15,7 @@ namespace Controller
 
         private void FixedUpdate()
         {
-            if (GameManager.instance.currentGameState.Equals(GameManager.GameState.GameOver))
+            if (GameManager.instance.CurrentGameState == GameManager.GameState.GameOver)
             {
                 GameOver();
             }
@@ -23,6 +23,7 @@ namespace Controller
 
         private void GameOver()
         {
+            Debug.LogError("ACTIVATION PANEL");
             looseScreenPanel.SetActive(true);
         }
 
