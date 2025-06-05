@@ -68,7 +68,8 @@ namespace MANAGER
         private int currentActiveLight = 0;
         private float lastCheckTime;
         private bool isMatching;
-        
+
+        [SerializeField] private BrasSexController brasSexController;
         
         #endregion
 
@@ -101,7 +102,6 @@ namespace MANAGER
         {
             TimerCheckInterval();
             UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
-            UpdateTypeOfUiByFightState();
         }
 
         private void Start()
@@ -109,7 +109,8 @@ namespace MANAGER
             InitializeSliders();
             ResetMaterials();
             InitializeLights();
-            RadioBehaviorDependingFightState();
+            StartCoroutine(RadioBehaviorDependingFightState());
+            UpdateTypeOfUiByFightState();
         }
         #endregion
 
@@ -495,7 +496,7 @@ namespace MANAGER
 
         #region Fight State Block
         
-        public void RadioBehaviorDependingFightState()
+        public IEnumerator RadioBehaviorDependingFightState()
         {
             if (FightManager.instance?.fightState == FightManager.FightState.InFight)
             {
@@ -504,7 +505,10 @@ namespace MANAGER
                 playerOscillationHolder.SetActive(false);
                 matRadioEnemy.SetFloat("_speed", 0);
                 matRadioPlayer.SetFloat("_speed", 0);
-        
+                StartCoroutine(brasSexController.TransitionBrasSexUi());
+                yield return new WaitForSeconds(0.3f);
+                UpdateTypeOfUiByFightState();
+                
                 if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
                 {
                     StartCoroutine(NewPlayerController.instance.rangeFinderManager.rfAnimation.TurnOffRangeFinder());
@@ -517,6 +521,9 @@ namespace MANAGER
                 playerOscillationHolder.SetActive(true);
                 matRadioEnemy.SetFloat("_speed", 0.02f);
                 matRadioPlayer.SetFloat("_speed", 0.02f);
+                StartCoroutine(brasSexController.TransitionBrasSexUi());
+                yield return new WaitForSeconds(0.3f);
+                UpdateTypeOfUiByFightState();
         
                 if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
                 {
