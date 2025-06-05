@@ -1,38 +1,39 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using MANAGER;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LooseScreenController : MonoBehaviour
+namespace Controller
 {
-    [SerializeField] private GameObject looseScreenPanel;
-
-    private void Awake()
+    public class LooseScreenController : MonoBehaviour
     {
-        looseScreenPanel.SetActive(false);
-    }
+        [SerializeField] private GameObject looseScreenPanel;
 
-    private void FixedUpdate()
-    {
-        if (GameManager.instance.currentGameState.Equals(GameManager.GameState.GameOver))
+        private void Awake()
         {
-            GameOver();
+            looseScreenPanel.SetActive(false);
         }
-    }
 
-    private void GameOver()
-    {
-        looseScreenPanel.SetActive(true);
-    }
+        private void FixedUpdate()
+        {
+            if (GameManager.instance.currentGameState.Equals(GameManager.GameState.GameOver))
+            {
+                GameOver();
+            }
+        }
 
-    public void Retry()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+        private void GameOver()
+        {
+            looseScreenPanel.SetActive(true);
+        }
 
-    public void Menu()
-    {
-        SceneManager.LoadScene("MainMenu");
+        public void Retry()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void Menu()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

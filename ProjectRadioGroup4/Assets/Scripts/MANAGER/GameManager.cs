@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Controller;
+using MANAGER;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,13 +30,13 @@ public class GameManager : MonoBehaviour
             switch (value)
             {
                 case GameState.GameOver :
-                    RadioController.instance.canvaRadio.enabled = false;
+                    NewRadioManager.instance.canvaRadio.enabled = false;
                     break;
                 case GameState.Game :
-                    RadioController.instance.canvaRadio.enabled = true;
+                    NewRadioManager.instance.canvaRadio.enabled = true;
                     break;
                 case GameState.Menu :
-                    RadioController.instance.canvaRadio.enabled = false;
+                    NewRadioManager.instance.canvaRadio.enabled = false;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(value), value, null);
