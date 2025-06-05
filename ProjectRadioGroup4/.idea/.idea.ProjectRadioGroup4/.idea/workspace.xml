@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/COURSE_BONNE_TAILLE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/COURSE_BONNE_TAILLE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/COURSE_BONNE_TAILLE.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/COURSE_BONNE_TAILLE.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/light/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/light/Global Volume Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FINAL PREFABS/RADIO UI/UI RADIO FINAL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FINAL PREFABS/RADIO UI/UI RADIO FINAL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/ChipsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/RangeFinderManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/SpotLightFightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/TutorialFightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/RangeFinderLittleIvanov.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -194,6 +190,7 @@
       <workItem from="1749065603563" duration="1654000" />
       <workItem from="1749067288761" duration="1443000" />
       <workItem from="1749117066784" duration="91000" />
+      <workItem from="1749117177311" duration="2956000" />
     </task>
     <servers />
   </component>

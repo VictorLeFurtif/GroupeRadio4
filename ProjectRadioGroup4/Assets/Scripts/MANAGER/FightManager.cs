@@ -61,7 +61,8 @@ namespace MANAGER
         [Header("Eye Settings")]
         public Renderer monsterEyes;
         private int currentSequenceIndex = 0;
-        
+
+        private SpotLightFightManager spotLightFightManager;
         
         #endregion
 
@@ -94,6 +95,7 @@ namespace MANAGER
 
             player = NewPlayerController.instance;
             radio = NewRadioManager.instance;
+            spotLightFightManager = GetComponent<SpotLightFightManager>();
         }
         
         private void Update()
@@ -191,6 +193,8 @@ namespace MANAGER
             {
                 AttackPlayer(true);
             }
+            
+            spotLightFightManager.InitLight();
         }
         #endregion
 
@@ -277,6 +281,7 @@ namespace MANAGER
             NewRadioManager.instance?.ResetLights();
             NewRadioManager.instance?.RadioBehaviorDependingFightState();
             currentSequenceIndex = 0;
+            spotLightFightManager.CleanLight();
         }
 
         
