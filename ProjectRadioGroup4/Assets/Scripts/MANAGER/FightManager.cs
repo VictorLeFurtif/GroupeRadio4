@@ -215,8 +215,7 @@ namespace MANAGER
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
-                player.canMove = true;
-                
+               
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
@@ -270,7 +269,6 @@ namespace MANAGER
         
         private void ResetFightManagerAfterFight()
         {
-            player.canMove = true;
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
