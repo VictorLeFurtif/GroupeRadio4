@@ -7,6 +7,7 @@ namespace MANAGER
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance;
+        public GlobalVolumeManager globalVolumeManager;
     
         public GameState currentGameState = GameState.Menu;
         
@@ -19,6 +20,7 @@ namespace MANAGER
         private void Start()
         {
             CurrentGameState = GameState.Game;
+            globalVolumeManager = GetComponentInChildren<GlobalVolumeManager>();
         }
 
         public GameState CurrentGameState

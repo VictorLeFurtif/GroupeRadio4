@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5469058816919746175}
   - component: {fileID: 4997790604037487444}
   - component: {fileID: 6119750457731708850}
+  - component: {fileID: 4796879644293726912}
   m_Layer: 8
   m_Name: Enemy CAMILLE type
   m_TagString: Untagged
@@ -21,18 +22,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5021379576743282223
-Transform:
+--- !u!224 &5021379576743282223
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96052926526798242}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1290.8064, y: -392.22333, z: 6.6316156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6.6316156}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2176447241042309935}
   - {fileID: 6436085081189441302}
@@ -40,6 +40,11 @@ Transform:
   - {fileID: 5594563317372764788}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1290.8064, y: -392.22333}
+  m_SizeDelta: {x: 4.4626803, y: 3.78}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5381746533470467115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +73,7 @@ MonoBehaviour:
   minStep: 0.1
   maxStep: 6.28
   generationRadius: 10
-  attackTriggerDelay: 300
+  attackTriggerDelay: 20
   attackTimer: 0
   isTimerRunning: 0
   _aiFightState: 1
@@ -262,6 +267,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.312065, y: 3.78}
   m_EdgeRadius: 0
+--- !u!114 &4796879644293726912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96052926526798242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &802290429736529422
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,17 +639,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8924803498996497896}
-  m_LocalRotation: {x: 0, y: 0, z: -0.12420759, w: 0.9922563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.007, y: 0.007, z: 0.007}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5594563317372764788}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -14.27}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -898.8088, y: -536.66284}
-  m_SizeDelta: {x: 32.2114, y: 45.1256}
+  m_AnchoredPosition: {x: -896.5624, y: -534.79285}
+  m_SizeDelta: {x: 45, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4347117410882296863
 CanvasRenderer:
@@ -660,7 +679,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c8e0021cafa23b241b6911dfb3493049, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

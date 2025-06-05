@@ -23,7 +23,6 @@ namespace Controller
 
         private void GameOver()
         {
-            Debug.LogError("ACTIVATION PANEL");
             looseScreenPanel.SetActive(true);
         }
 

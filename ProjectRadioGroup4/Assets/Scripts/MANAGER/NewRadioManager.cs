@@ -269,7 +269,7 @@ namespace MANAGER
                     InitializeLights();
                     if (waveInteractable is NewAi ai)
                     {
-                        ai.BeginFight();
+                        ai.StartFight();
                         yield break;
                     }
 

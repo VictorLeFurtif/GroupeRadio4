@@ -6,10 +6,46 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/GameOverController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/LooseScreenController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/GameOverController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/LooseScreenController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController/NewPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController/NewPlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/DeathAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/DeathAi.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/IdleAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/IdleAi.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/attackAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/attackAi.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animator/Animator Camille Monster.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animator/Animator Camille Monster.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Death.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Death.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/light/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/light/Global Volume Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Ai/NEW FOR FINAL/Enemy CAMILLE type.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Ai/NEW FOR FINAL/Enemy CAMILLE type.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/FightManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/FightManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/LooseScreenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/LooseScreenController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 3.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 4.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 4.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 5.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 5.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +70,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/INTERFACE/IAi.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/ChipsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/GlobalVolumeManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/RangeFinderManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/SpotLightFightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/TutorialFightManager.cs" root0="FORCE_HIGHLIGHTING" />

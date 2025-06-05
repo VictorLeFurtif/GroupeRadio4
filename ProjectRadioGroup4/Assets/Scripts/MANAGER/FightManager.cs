@@ -282,6 +282,7 @@ namespace MANAGER
             NewRadioManager.instance?.RadioBehaviorDependingFightState();
             currentSequenceIndex = 0;
             spotLightFightManager.CleanLight();
+            GameManager.instance.globalVolumeManager.GvColorToExplo();
         }
 
         
