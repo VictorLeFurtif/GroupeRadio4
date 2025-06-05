@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AI.NEW_AI;
 using DATA.Script.Chips_data;
+using FEEDBACK;
 using INTERACT;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,8 +37,11 @@ namespace MANAGER
         [Header("List")]
         private List<GameObject> slotPool = new List<GameObject>();
 
+        [Header("Damage")]
         public float damageIfSwap;
         public float damageForEachChip;
+
+        [Header("FeedBack")] public List<ChipVisualFeedback> listOfElementForFeedBack = new List<ChipVisualFeedback>();
 
         #endregion
 
@@ -49,6 +53,8 @@ namespace MANAGER
                 Instance = this;
             else
                 Destroy(gameObject);
+
+            listOfElementForFeedBack = new List<ChipVisualFeedback>();
         }
 
         
@@ -79,11 +85,21 @@ namespace MANAGER
         {
             Array.Clear(chipsDatasTab, 0, chipsDatasTab.Length);
     
-            for (int i = 0; i < ai.chipsDatasList.Count && i < chipsDatasTab.Length; i++)
+            for (int i = 0; i < ai.chipsDatasList.Count ; i++)
             {
                 chipsDatasTab[i] = ai.chipsDatasList[i];
             }
-
+            
+            //TODO ne passe par ici 
+            int index = chipsDatasTab.Length - ai.chipsDatasList.Count;
+            
+            for (int i = 0; i < index; i++)
+            {
+                chipsDatasTab[i + index] = ai.chipsToAddToPatternReal[i];
+            }
+            
+            //chipsDatasTab[i] = ai.chipsToAddToPatternReal[i - (6 - ai.chipsDatasList.Count)];
+                /*
             List<ChipsDataInstance> availableChips = everyChips
                 .Where(chip => ai.chipsDatasList.All
                     (aiChip => aiChip.id != chip.id))
@@ -97,7 +113,8 @@ namespace MANAGER
                 chipsDatasTab[i] = availableChips[randomIndex];
                 availableChips.RemoveAt(randomIndex);
             }
-
+            */
+                
             chipsDatasTab = chipsDatasTab.OrderBy(x => Random.value).ToArray();
             UpdateInventoryUI();
         }
@@ -204,6 +221,20 @@ namespace MANAGER
                 }
             }
         }
+        
+        public void ResetAllChipsSelected(bool animate = false)
+        {
+            
+            foreach (var t in chipsDatasTab)
+            {
+                t.isSelected = false;
+            }
+
+            foreach (var chipsFeedBack in listOfElementForFeedBack)
+            {
+                chipsFeedBack.SetSelected(false, animate);
+            }
+        }
         #endregion
 
         #region Logic for Fight
@@ -218,6 +249,7 @@ namespace MANAGER
                     playerChoiceChipsOrder.Add(chip);
                 }
             }
+            FightManager.instance?.CostForEachChipsAdded();
         }
         
         public void ReverseChips()

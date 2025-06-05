@@ -40,17 +40,25 @@ namespace AI.NEW_AI
         
         [Header("Enemy Health Settings")]
         [SerializeField] private Slider healthSlider;
-        [SerializeField] private float healthLerpDuration = 0.3f;
         private Coroutine healthLerpCoroutine;
 
         [Header("Enemy Chips")] 
         [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
         public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
+        
+        [Header("Enemy Chips but dont include Pattern, just what will be implemented")]
+        public List<ChipsData> chipsToAddToPattern = new List<ChipsData>();
+        [HideInInspector] public List<ChipsDataInstance> chipsToAddToPatternReal = new List<ChipsDataInstance>();
 
         [Header("Eye Settings")]
         public Image monsterEyes;
         private int currentChipIndex = 0;
+        
+        [Header("Damage")]
+        
+        public float damageEnemy;
+        
         
         #endregion
 
@@ -67,14 +75,18 @@ namespace AI.NEW_AI
             _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
             animatorEnemy = GetComponent<Animator>();
             originalPos = transform;
-            healthSlider.gameObject.SetActive(false);
 
             foreach (var t in chipsDatasListTempo)
             {
                 chipsDatasList.Add(t.Instance());
             }
             chipsDatasListSave.AddRange(chipsDatasList);
-            monsterEyes.material.color = Color.white; 
+            monsterEyes.material.color = Color.white;
+            
+            foreach (var t in chipsToAddToPattern)
+            {
+                chipsToAddToPatternReal.Add(t.Instance());
+            }
         }
         #endregion
 
@@ -90,7 +102,7 @@ namespace AI.NEW_AI
                 float previousHealth = _abstractEntityDataInstance.hp;
                 _abstractEntityDataInstance.hp = newHealth;
                 
-                UpdateHealthSlider(previousHealth, newHealth);
+                
 
                 if (_abstractEntityDataInstance.IsDead())
                 {
@@ -99,36 +111,6 @@ namespace AI.NEW_AI
             }
         }
         
-        private void UpdateHealthSlider(float fromHealth, float toHealth)
-        {
-            if (healthSlider == null) return;
-
-            if (healthLerpCoroutine != null)
-            {
-                StopCoroutine(healthLerpCoroutine);
-            }
-
-            healthLerpCoroutine = StartCoroutine(LerpHealthSlider(
-                fromHealth / _abstractEntityDataInstance.maxHp,
-                toHealth / _abstractEntityDataInstance.maxHp
-            ));
-        }
-
-        private IEnumerator LerpHealthSlider(float fromValue, float toValue)
-        {
-            float elapsedTime = 0f;
-
-            while (elapsedTime < healthLerpDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsedTime / healthLerpDuration);
-                healthSlider.value = Mathf.Lerp(fromValue, toValue, t);
-                yield return null;
-            }
-
-            healthSlider.value = toValue;
-            healthLerpCoroutine = null;
-        }
         
         private void Die()
         {
@@ -136,14 +118,32 @@ namespace AI.NEW_AI
 
             isDead = true;
             canAttack = false;
-            
+            animatorEnemy.Play("DeathAi");
+    
+            float deathAnimLength = GetDeathAnimationLength();
+    
             if (_aiFightState == AiFightState.InFight)
             {
                 EndAiTurn();
             }
-            StartCoroutine(DelayedDeath(1.2f));
+            StartCoroutine(DelayedDeath(deathAnimLength + 1f));
         }
-        
+
+        private float GetDeathAnimationLength()
+        {
+            if (animatorEnemy == null)
+            {
+                return 2f; 
+            }
+
+            AnimatorStateInfo stateInfo = animatorEnemy.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("DeathAi"))
+            {
+                return stateInfo.length;
+            }
+            return 1.2f; 
+        }
+
         private IEnumerator DelayedDeath(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -153,6 +153,7 @@ namespace AI.NEW_AI
         private void HandleDeath()
         {
             Destroy(gameObject);
+            NewPlayerController.instance.canMove = true;
         }
         
         #endregion
@@ -199,7 +200,6 @@ namespace AI.NEW_AI
         
         private void StartCombatSequence()
         {
-            healthSlider.gameObject.SetActive(true);
             NewRadioManager.instance?.StopMatchingGame();
             spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;
@@ -245,7 +245,7 @@ namespace AI.NEW_AI
 
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
-                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,45);
+                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,20);
             }
     
             fightManager.InitialiseFightManager();
