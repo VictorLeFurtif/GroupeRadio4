@@ -283,6 +283,7 @@ namespace MANAGER
                     if (waveInteractable is NewAi ai)
                     {
                         ai.StartFight();
+                        ai.isTimerRunning = false;
                         yield break;
                     }
 
