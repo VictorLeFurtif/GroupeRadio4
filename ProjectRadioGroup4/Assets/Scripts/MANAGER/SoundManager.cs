@@ -71,12 +71,13 @@ namespace MANAGER
             audioSourceGeneral.playOnAwake = playingAwake;
             audioSourceGeneral.volume = volumeSound;
             audioSourceGeneral.Play();
-
+            
+            
             if (!looping)
             {
                 Destroy(emptyObject, audioClipTarget.length);
             }
-
+            
             return emptyObject;
         }
 
