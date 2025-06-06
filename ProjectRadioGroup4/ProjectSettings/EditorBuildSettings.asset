@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scene/FIRST PLAYABLE/FirstPlayable Test/Salle 1.unity
     guid: 6212eddf841f1be489090880027f1ca7
   - enabled: 1
-    path: Assets/Scene/SECOND PLAYABLE/Levels/LV1 - UI.unity
+    path: Assets/Scene/FINAL/Levels/LV1.unity
     guid: 07defec5ef9ef3147bd90d359aa70919
   - enabled: 1
-    path: Assets/Scene/SECOND PLAYABLE/Levels/LV2 - UI.unity
+    path: Assets/Scene/FINAL/Levels/LV2.unity
     guid: f8312549e43472e458bb8d92e4039048
   m_configObjects: {}

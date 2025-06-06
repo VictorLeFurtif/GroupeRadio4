@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6119750457731708850}
   - component: {fileID: 4796879644293726912}
   m_Layer: 8
-  m_Name: Enemy CAMILLE type
+  m_Name: Enemy CAMILLE 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
