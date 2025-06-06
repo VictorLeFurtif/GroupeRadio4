@@ -303,6 +303,7 @@ namespace MANAGER
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+               numberOfSwap = ai.numberOfSwap;
             }
             else
             {
@@ -422,6 +423,8 @@ namespace MANAGER
                 NewPlayerController.instance?.ManageLife(goldenRunLifeGiven);
                 Debug.Log("You did a golden run well play man");
             }
+            
+            
             
             playerSuccess = true;
             
