@@ -96,7 +96,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "<unknown>",
+    "git-widget-placeholder": "dev/Victor",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -232,6 +232,7 @@
       <workItem from="1749117066784" duration="91000" />
       <workItem from="1749117177311" duration="2956000" />
       <workItem from="1749161601958" duration="6158000" />
+      <workItem from="1749201001150" duration="4000" />
     </task>
     <servers />
   </component>
