@@ -51,10 +51,11 @@ MonoBehaviour:
   fightState: 0
   rangeDetectEnemy: 10.92
   currentFightAdvantage: 2
-  playerTurnDuration: 60
+  playerTurnDuration: 30
   playerSuccess: 0
   monsterEyes: {fileID: 0}
-  goldenRunLifeGiven: 0
+  numberOfSwap: 0
+  goldenRunLifeGiven: 33
 --- !u!114 &3682016124314343323
 MonoBehaviour:
   m_ObjectHideFlags: 0
