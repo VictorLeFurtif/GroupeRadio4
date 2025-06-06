@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df6b522041cdbe478648da418a4c512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offSett: {x: 0, y: 0, z: -10}
+  offSett: {x: -1.25, y: 1, z: -10}
   smoothTime: 0.2
   defaultShakeDuration: 0.5
   defaultShakeMagnitude: 0.15
