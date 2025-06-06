@@ -481,9 +481,9 @@ TextureImporter:
         x: 34
         y: 616
         width: 590
-        height: 530
+        height: 523
       alignment: 9
-      pivot: {x: 0.5147293, y: 0.06498148}
+      pivot: {x: 0.5271012, y: 0.051024925}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -500,11 +500,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 628
-        y: 609
+        y: 616
         width: 590
-        height: 530
+        height: 523
       alignment: 9
-      pivot: {x: 0.51472944, y: 0.07655133}
+      pivot: {x: 0.52215266, y: 0.060024623}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -520,12 +520,12 @@ TextureImporter:
       name: 2Monstre3_export_20
       rect:
         serializedVersion: 2
-        x: 1215
+        x: 1218
         y: 616
         width: 590
-        height: 530
+        height: 523
       alignment: 9
-      pivot: {x: 0.49394283, y: 0.08040818}
+      pivot: {x: 0.51621217, y: 0.06112694}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -542,9 +542,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1798
-        y: 616
+        y: 615
         width: 590
-        height: 530
+        height: 523
       alignment: 9
       pivot: {x: 0.54937434, y: 0.07269483}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -563,9 +563,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2388
-        y: 619
+        y: 615
         width: 590
-        height: 538
+        height: 528
       alignment: 9
       pivot: {x: 0.5320519, y: 0.059318118}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -70,6 +70,9 @@ namespace MANAGER
         private bool isMatching;
 
         [SerializeField] private BrasSexController brasSexController;
+
+        [Header("TEXT UI SWAP")] 
+        [SerializeField] private TMP_Text textSwap;
         
         #endregion
 
@@ -102,6 +105,7 @@ namespace MANAGER
         {
             TimerCheckInterval();
             UpdateText(chronoInFight,FightManager.instance?.playerTurnTimer.ToString("00.00"));
+            UpdateTextSwap();
         }
 
         private void Start()
@@ -468,6 +472,11 @@ namespace MANAGER
                 canvaExploration.SetActive(true);
                 canvaFight.SetActive(false);
             }
+        }
+
+        private void UpdateTextSwap()
+        {
+            textSwap.text = FightManager.instance.numberOfSwap.ToString();
         }
         #endregion
         
