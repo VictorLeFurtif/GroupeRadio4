@@ -1,6 +1,7 @@
 ﻿using System;
 using DATA.Script.Sound_Data;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MANAGER
 {
@@ -9,8 +10,11 @@ namespace MANAGER
     {
         public static SoundManager instance { get; private set; }
         
-        [SerializeField] private AudioSource audioSource;
+        [SerializeField] 
+        private AudioSource audioSource;
 
+        [Range(0,1)] public float sfxVolumeSlider = 1;
+        public float sfxVolume; //after being calculated with the general volume
         [SerializeField]
         private SoundBankData soundBankDataBrut;
 
@@ -33,6 +37,12 @@ namespace MANAGER
         {
             soundBankData = soundBankDataBrut.Instance();
             InitialisationAudioObjectDestroyAtEnd(soundBankData.enviroSound.whiteNoiseVentilation,true,true,1f,"Main Sound");
+        }
+
+        private void Update()
+        {
+            sfxVolume = sfxVolumeSlider;
+            sfxVolume *= audioSource.volume;
         }
 
         public void PlayMusicOneShot(AudioClip _audioClip)
@@ -70,6 +80,14 @@ namespace MANAGER
             return emptyObject;
         }
 
-        
+        public AudioSource GetAudioSourceFromSoundManager()
+        {
+            return audioSource;
+        }
+
+        public void UpdateSfxVolumeSlider(float sliderValue)
+        {
+            sfxVolumeSlider = sliderValue;
+        }
     }
 }

@@ -3516,7 +3516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -225}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -36.28888, y: -568.8772}
+  m_AnchoredPosition: {x: -36.28882, y: -568.8772}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973816723
@@ -5373,10 +5373,26 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1954431007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6120930205119073523, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
+  m_PrefabInstance: {fileID: 950960699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b723dc67f0ab425d848d1bc5197c2907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1954431008 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9015762495202131047, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
+  m_PrefabInstance: {fileID: 950960699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1960633177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5783,10 +5799,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1954431007}
+        m_TargetAssemblyTypeName: MANAGER.SoundManager, Assembly-CSharp
+        m_MethodName: UpdateSfxVolumeSlider
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2068604785
 GameObject:
   m_ObjectHideFlags: 0
@@ -5873,10 +5901,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1954431008}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2070880669
 GameObject:
   m_ObjectHideFlags: 0
