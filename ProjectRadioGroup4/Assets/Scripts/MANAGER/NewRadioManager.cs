@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AI.NEW_AI;
 using Controller;
+using DG.Tweening;
 using INTERACT;
 using INTERFACE;
 using MANAGER;
@@ -185,27 +186,34 @@ namespace MANAGER
         {
             if (light == null) yield break;
 
-            float duration = 0.2f;
             Vector3 originalScale = light.transform.localScale;
-            Vector3 targetScale = originalScale * 1.2f;
-    
-            float elapsed = 0f;
-            while (elapsed < duration)
-            {
-                light.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsed/duration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-    
-            elapsed = 0f;
-            while (elapsed < duration)
-            {
-                light.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed/duration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-    
-            light.transform.localScale = originalScale;
+            Color originalColor = light.color;
+            Sprite originalSprite = light.sprite;
+
+            GameObject flashObj = new GameObject("FlashEffect", typeof(Image));
+            Image flashEffect = flashObj.GetComponent<Image>();
+            flashEffect.transform.SetParent(light.transform, false);
+            flashEffect.rectTransform.anchorMin = Vector2.zero;
+            flashEffect.rectTransform.anchorMax = Vector2.one;
+            flashEffect.rectTransform.offsetMin = Vector2.zero;
+            flashEffect.rectTransform.offsetMax = Vector2.zero;
+            flashEffect.color = new Color(1, 1, 1, 0);
+            flashEffect.sprite = light.sprite;
+
+            Sequence successSequence = DOTween.Sequence();
+
+            successSequence.Append(light.transform.DOPunchScale(Vector3.one * 0.3f, 0.4f, 10, 0.5f));
+
+            successSequence.Join(flashEffect.DOFade(0.9f, 0.1f).SetEase(Ease.OutQuad));
+            successSequence.Append(flashEffect.DOFade(0f, 0.2f).SetEase(Ease.InQuad));
+            
+            successSequence.Join(light.transform.DOScale(1.1f, 0.3f).SetLoops(2, LoopType.Yoyo));
+
+            successSequence.Append(light.transform.DOScale(originalScale, 0.2f));
+
+            yield return successSequence.WaitForCompletion();
+
+            Destroy(flashObj);
         }
 
         public void ResetLights()

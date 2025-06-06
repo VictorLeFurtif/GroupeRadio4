@@ -6,31 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/SAMUEL/ANIMATION/IdleAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/SAMUEL/ANIMATION/IdleAi.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/MACHINE A SEX ALEXIS/animationBrasSex.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/MACHINE A SEX ALEXIS/animationBrasSex.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/COURSE_BONNE_TAILLE.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/COURSE_BONNE_TAILLE.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/FX scan autour.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/FX scan autour.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/IDLE_FINAL.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/IDLE_FINAL.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/Ivanof anime test scan avant.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/Ivanof anime test scan avant.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/Sprite sheet course.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/Sprite sheet course.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/anim scan avant.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/anim scan avant.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/anim_export_ivanov_size_final 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/anim_export_ivanov_size_final 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/anim_mort_sprite_sheet_v2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/anim_mort_sprite_sheet_v2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/damage hit 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/damage hit 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/damage hit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/damage hit.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/dégats reçus.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/dégats reçus.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/export bonne taile fx anim.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/export bonne taile fx anim.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/idle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/idle.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/scan autour 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/scan autour 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/scan autour.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/scan autour.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/surcharge.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/surcharge.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/surchargé.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/surchargé.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/test anim ivanov tir lineup.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/SpriteSheet/test anim ivanov tir lineup.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/HitReceived.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/HitReceived.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Overload.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Overload.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/goodsize anime attaque.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/goodsize anime attaque.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/test anime sam/goodsize anime attaque basic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/test anime sam/goodsize anime attaque basic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Controller/Main Camera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Controller/Main Camera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/AUGUSTIN/ANIMATION/DeathAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/AUGUSTIN/ANIMATION/DeathAi.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/DeathAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/DeathAi.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Ai/NEW FOR FINAL/Enemy SAMUEL type.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Ai/NEW FOR FINAL/Enemy SAMUEL type.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
@@ -208,7 +186,7 @@
       <workItem from="1749161601958" duration="6158000" />
       <workItem from="1749200994500" duration="221000" />
       <workItem from="1749201243590" duration="3030000" />
-      <workItem from="1749207535590" duration="4555000" />
+      <workItem from="1749207535590" duration="6703000" />
     </task>
     <servers />
   </component>

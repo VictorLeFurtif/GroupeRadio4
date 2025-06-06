@@ -60,7 +60,7 @@ namespace AI.NEW_AI
         public float damageEnemy;
 
         [Header("NUMBER OF SWAP")]
-        [SerializeField] private int numberOfSwap;
+        public int numberOfSwap;
         
         #endregion
 
