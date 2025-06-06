@@ -119,9 +119,9 @@ MonoBehaviour:
   disabledColor: {r: 0.8018868, g: 0.19290671, b: 0.19290671, a: 1}
   canTurnOnPhase2Module: 0
   rangeFinderManager: {fileID: 0}
-  lifeTakeWeak: 1
-  lifeTakenMid: 2.5
-  lifeTakenStrong: 4.5
+  lifeTakeWeak: 3
+  lifeTakenMid: 6
+  lifeTakenStrong: 9
   maxDamageDone: 20
   chipsManager: {fileID: 0}
 --- !u!114 &7952719179538484363
@@ -171,7 +171,7 @@ MonoBehaviour:
   fullLifeColor: {r: 0.4392157, g: 0.8117647, b: 0.6627451, a: 1}
   noLifeColor: {r: 0.6698113, g: 0.08973842, b: 0.06634923, a: 1}
   midLifeColor: {r: 0.9150943, g: 0.771439, b: 0.15970986, a: 1}
-  phase2BatteryDrainPerSecond: 1
+  phase2BatteryDrainPerSecond: 0.5
   durationTimeLerpLife: 1
 --- !u!50 &6631025454305315355
 Rigidbody2D:
@@ -282,7 +282,7 @@ MonoBehaviour:
   - {x: 0.36916208, y: 0.103906155, z: 0}
   m_ShapePathHash: -1156423123
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1296
+  m_InstanceId: -287894
   m_LocalBounds:
     m_Center: {x: -0.11507392, y: 1.2452497, z: 0}
     m_Extent: {x: 0.484236, y: 1.1649222, z: 0}
