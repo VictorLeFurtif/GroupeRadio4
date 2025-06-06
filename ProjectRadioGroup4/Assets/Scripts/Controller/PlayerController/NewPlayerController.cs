@@ -229,7 +229,7 @@ public class NewPlayerController : MonoBehaviour
     #region Scanning
     private void Scan(ScanType scanType, float damageDealToPlayer)
     {
-        if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead())
+        if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead() || NewRadioManager.instance.isMatching)
         {
             return;
         }

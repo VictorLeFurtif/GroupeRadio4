@@ -68,7 +68,7 @@ namespace MANAGER
         
         private int currentActiveLight = 0;
         private float lastCheckTime;
-        private bool isMatching;
+        public bool isMatching;
 
         [SerializeField] private BrasSexController brasSexController;
 
