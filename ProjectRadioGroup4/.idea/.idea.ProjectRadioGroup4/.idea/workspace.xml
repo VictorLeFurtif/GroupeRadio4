@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/ANIMATOR/OLD/Player/Player Animator Test.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/ANIMATOR/OLD/Player/Player Animator Test.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/runPlayerv2.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/runPlayerv2.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/Test Gabriel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Test Gabriel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/SoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/SoundController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,11 +23,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2d8783c7af0442318483a199a473c55b175e00/23/d477d04e/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DoorController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/Script/Attack Data/Old System Attack Player/PlayerAttack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/Script/Tutorial/FightTutorialTextData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/INTERFACE/IAi.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/TutorialFightManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/DescriptionAttackEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ModuleDescription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -42,25 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev/Victor&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Gabriel",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD FP V2 ECHO 42\ProjectRadioGroup4.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Build First Playable Echo 42\ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -68,7 +69,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -76,7 +77,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -151,41 +152,11 @@
       <workItem from="1746735998522" duration="2026000" />
       <workItem from="1746781871567" duration="1574000" />
       <workItem from="1746881496058" duration="906000" />
-      <workItem from="1746983096240" duration="10588000" />
-      <workItem from="1747067703706" duration="1046000" />
-      <workItem from="1747124267153" duration="2958000" />
-      <workItem from="1747236217759" duration="450000" />
-      <workItem from="1747561573588" duration="24349000" />
-      <workItem from="1747643493044" duration="19554000" />
-      <workItem from="1747730387088" duration="1000" />
-      <workItem from="1747768108561" duration="6261000" />
-      <workItem from="1747915803584" duration="11165000" />
-      <workItem from="1747928013352" duration="2064000" />
-      <workItem from="1747940990243" duration="7999000" />
-      <workItem from="1747987585148" duration="442000" />
-      <workItem from="1748089100203" duration="9052000" />
-      <workItem from="1748175538756" duration="2743000" />
-      <workItem from="1748247575856" duration="9092000" />
-      <workItem from="1748296428570" duration="1210000" />
-      <workItem from="1748340010873" duration="2087000" />
-      <workItem from="1748557224976" duration="10959000" />
-      <workItem from="1748592360287" duration="3846000" />
-      <workItem from="1748722141813" duration="4444000" />
-      <workItem from="1748791417878" duration="8143000" />
-      <workItem from="1748866931347" duration="4642000" />
-      <workItem from="1748895469985" duration="4914000" />
-      <workItem from="1748939082015" duration="19480000" />
-      <workItem from="1748988209838" duration="695000" />
-      <workItem from="1748997200391" duration="2430000" />
-      <workItem from="1749031026039" duration="9196000" />
-      <workItem from="1749065603563" duration="1654000" />
-      <workItem from="1749067288761" duration="1443000" />
-      <workItem from="1749117066784" duration="91000" />
-      <workItem from="1749117177311" duration="2956000" />
-      <workItem from="1749161601958" duration="6158000" />
-      <workItem from="1749200994500" duration="221000" />
-      <workItem from="1749201243590" duration="3030000" />
-      <workItem from="1749207535590" duration="8467000" />
+      <workItem from="1746988376287" duration="5514000" />
+      <workItem from="1747148074950" duration="1790000" />
+      <workItem from="1748892452928" duration="2195000" />
+      <workItem from="1748965022724" duration="1099000" />
+      <workItem from="1749213643159" duration="9907000" />
     </task>
     <servers />
   </component>
