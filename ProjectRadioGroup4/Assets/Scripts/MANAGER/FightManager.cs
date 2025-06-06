@@ -511,6 +511,10 @@ namespace MANAGER
 
 
         #endregion
-        
+
+        public bool IsInFight()
+        {
+            return fightState == FightState.InFight;
+        }
     }
 }

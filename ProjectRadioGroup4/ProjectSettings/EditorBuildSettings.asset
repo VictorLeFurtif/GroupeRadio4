@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scene/SECOND PLAYABLE/Levels/LV1 - UI.unity
     guid: 07defec5ef9ef3147bd90d359aa70919
   - enabled: 1
-    path: Assets/Scene/SECOND PLAYABLE/Levels/LV2 - UI.unity
+    path: Assets/Scene/SECOND PLAYABLE/Levels/Lv2 - UI.unity
     guid: f8312549e43472e458bb8d92e4039048
+  - enabled: 1
+    path: Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM 1.unity
+    guid: 546b6e32906197142b0f9dd35590dae0
   m_configObjects: {}

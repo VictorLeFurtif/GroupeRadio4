@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
+using DG.Tweening;
 using INTERACT;
 using INTERFACE;
 using MANAGER;
@@ -108,9 +109,15 @@ public class NewPlayerController : MonoBehaviour
     private void Init()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
+        {
             Destroy(gameObject);
+        }
+            
 
         rb = GetComponent<Rigidbody2D>();
         CanTurnOnPhase2Module = false;
@@ -287,5 +294,33 @@ public class NewPlayerController : MonoBehaviour
         if (buttonImage != null)
             buttonImage.color = CanTurnOnPhase2Module ? Color.white : disabledColor;
     }
+    #endregion
+
+    #region Interaction
+
+
+    [Header("Interaction UI")]
+    [SerializeField] private GameObject interactionUI;
+    [SerializeField] private float fadeDuration = 0.3f;
+    
+    public void ToggleInteractionUI(bool show)
+    {
+        if (!interactionUI) return;
+    
+        if (show && !interactionUI.activeSelf)
+        {
+            interactionUI.transform.localScale = Vector3.zero;
+            interactionUI.SetActive(true);
+            interactionUI.transform.DOScale(Vector3.one, fadeDuration)
+                .SetEase(Ease.OutBack);
+        }
+        else if (!show && interactionUI.activeSelf)
+        {
+            interactionUI.transform.DOScale(Vector3.zero, fadeDuration * 0.7f)
+                .SetEase(Ease.OutBack)
+                .OnComplete(() => interactionUI.SetActive(false));
+        }
+    }
+
     #endregion
 }
