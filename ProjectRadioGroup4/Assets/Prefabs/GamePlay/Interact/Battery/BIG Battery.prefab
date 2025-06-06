@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePatterns: []
+  currentPatternIndex: 0
   triggerZones:
   - {fileID: 3864053501266711417}
   - {fileID: 3250338329085815677}
@@ -403,7 +404,7 @@ MonoBehaviour:
   lifeAmountToGive: 15
   basePatternCount: 3
   maxPatternCount: 6
-  minFrequency: 1
+  minFrequency: 3
   maxFrequency: 15
   minAmplitude: 0.1
   maxAmplitude: 0.4
