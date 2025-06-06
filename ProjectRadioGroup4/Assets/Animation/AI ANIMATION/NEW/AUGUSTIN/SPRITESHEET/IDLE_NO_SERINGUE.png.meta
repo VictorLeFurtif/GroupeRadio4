@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c1c6fdc822c32594aa162d55935690b2
+guid: 823dd3eff2372ec40a9e983503ef4b13
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_3
+      name: IDLE_NO_SERINGUE_0
       rect:
         serializedVersion: 2
-        x: 2512
-        y: 0
-        width: 1105
-        height: 471
+        x: 17
+        y: 795
+        width: 445
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ec5e2185fd40ac479504d13a8717d9d
-      internalID: -1837191880
+      spriteID: 3df89a6a634ef774683d5cb09bf81c90
+      internalID: 2020641462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_8
+      name: IDLE_NO_SERINGUE_1
       rect:
         serializedVersion: 2
-        x: 2458
-        y: 0
-        width: 11
-        height: 6
+        x: 509
+        y: 787
+        width: 443
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79ba1abab6906334c8470bd41edf74c2
-      internalID: -2008372547
+      spriteID: e113b82190097474eadf8f7d989b1584
+      internalID: -740266112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_0
+      name: IDLE_NO_SERINGUE_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 5
-        width: 1105
-        height: 471
+        x: 1011
+        y: 788
+        width: 435
+        height: 191
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1587aaed06acd9343b1149f593efe203
-      internalID: -175811877
+      spriteID: 90f91fe4f97514a499cd23e8351236d9
+      internalID: -795738772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_1
+      name: IDLE_NO_SERINGUE_3
       rect:
         serializedVersion: 2
-        x: 1250
-        y: 0
-        width: 1105
-        height: 471
+        x: 1453
+        y: 786
+        width: 425
+        height: 193
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,71 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bcbfce61617db445bbb070a135acf7a
-      internalID: 1235896341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: machineAsexAlexis_anim_2
-      rect:
-        serializedVersion: 2
-        x: 3900
-        y: 0
-        width: 1105
-        height: 471
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9dcd153bdff2c734ea486447cb51e7a7
-      internalID: -689365374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: machineAsexAlexis_anim_4
-      rect:
-        serializedVersion: 2
-        x: 5372
-        y: 0
-        width: 1105
-        height: 471
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17c9d5f8eee6aa7439bdcec8cac19bc4
-      internalID: -1221191176
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: machineAsexAlexis_anim_5
-      rect:
-        serializedVersion: 2
-        x: 7018
-        y: 0
-        width: 1105
-        height: 471
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddd0552076f3ff146a14f74da7e56038
-      internalID: 1655291418
+      spriteID: 7d304b26ca0cd1444be28bf5161db7ac
+      internalID: 345839490
       vertices: []
       indices: 
       edges: []
@@ -254,15 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      machineAsexAlexis_anim_0: -175811877
-      machineAsexAlexis_anim_1: 1235896341
-      machineAsexAlexis_anim_2: -689365374
-      machineAsexAlexis_anim_3: -1837191880
-      machineAsexAlexis_anim_4: -1221191176
-      machineAsexAlexis_anim_5: 1655291418
-      machineAsexAlexis_anim_6: 1863151090
-      machineAsexAlexis_anim_7: -1908286732
-      machineAsexAlexis_anim_8: -2008372547
+      IDLE_NO_SERINGUE_0: 2020641462
+      IDLE_NO_SERINGUE_1: -740266112
+      IDLE_NO_SERINGUE_2: -795738772
+      IDLE_NO_SERINGUE_3: 345839490
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

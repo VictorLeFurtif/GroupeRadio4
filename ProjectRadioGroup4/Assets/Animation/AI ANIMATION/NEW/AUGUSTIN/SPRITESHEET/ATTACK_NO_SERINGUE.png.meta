@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c1c6fdc822c32594aa162d55935690b2
+guid: 6d3832b23ef5f0440872a49fe54add22
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_3
+      name: ATTACK_NO_SERINGUE_0
       rect:
         serializedVersion: 2
-        x: 2512
-        y: 0
-        width: 1105
-        height: 471
+        x: 28
+        y: 795
+        width: 434
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ec5e2185fd40ac479504d13a8717d9d
-      internalID: -1837191880
+      spriteID: d9517e9381934f447948ef8e5acfe578
+      internalID: -1482306025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_8
+      name: ATTACK_NO_SERINGUE_1
       rect:
         serializedVersion: 2
-        x: 2458
-        y: 0
-        width: 11
-        height: 6
+        x: 498
+        y: 795
+        width: 396
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79ba1abab6906334c8470bd41edf74c2
-      internalID: -2008372547
+      spriteID: 0030fa63417cc9747b7bbbba1a05af25
+      internalID: -1891439306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_0
+      name: ATTACK_NO_SERINGUE_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 5
-        width: 1105
-        height: 471
+        x: 918
+        y: 795
+        width: 329
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1587aaed06acd9343b1149f593efe203
-      internalID: -175811877
+      spriteID: 620c0b9626ec18b479e3114667048601
+      internalID: -1849098503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_1
+      name: ATTACK_NO_SERINGUE_3
       rect:
         serializedVersion: 2
-        x: 1250
-        y: 0
-        width: 1105
-        height: 471
+        x: 1259
+        y: 795
+        width: 329
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bcbfce61617db445bbb070a135acf7a
-      internalID: 1235896341
+      spriteID: 115966ffe3470814fa5371cad09de7da
+      internalID: 228137477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_2
+      name: ATTACK_NO_SERINGUE_6
       rect:
         serializedVersion: 2
-        x: 3900
-        y: 0
-        width: 1105
-        height: 471
+        x: 45
+        y: 555
+        width: 417
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dcd153bdff2c734ea486447cb51e7a7
-      internalID: -689365374
+      spriteID: 18c537cc9974bbd4b824b9409182c4da
+      internalID: -657353382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_4
+      name: ATTACK_NO_SERINGUE_8
       rect:
         serializedVersion: 2
-        x: 5372
-        y: 0
-        width: 1105
-        height: 471
+        x: 508
+        y: 540
+        width: 452
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17c9d5f8eee6aa7439bdcec8cac19bc4
-      internalID: -1221191176
+      spriteID: 4a1345b9a18b42b4a9814930fa62f080
+      internalID: -1616255789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: machineAsexAlexis_anim_5
+      name: ATTACK_NO_SERINGUE_9
       rect:
         serializedVersion: 2
-        x: 7018
-        y: 0
-        width: 1105
-        height: 471
+        x: 994
+        y: 540
+        width: 403
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,8 +237,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddd0552076f3ff146a14f74da7e56038
-      internalID: 1655291418
+      spriteID: 0e728975f8f991947badcdf8189ed05c
+      internalID: -1882844795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATTACK_NO_SERINGUE_10
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 535
+        width: 331
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd798a30a28366c4fafd0bc1bb7f0e16
+      internalID: -495844167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATTACK_NO_SERINGUE_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 317
+        width: 331
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1cf43525ef8d8844b4b1d2de9cb06f8
+      internalID: 1768311177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATTACK_NO_SERINGUE_12
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 292
+        width: 329
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ded85c6062f6849982c4bc5b28f227
+      internalID: -798742961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATTACK_NO_SERINGUE_13
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 289
+        width: 434
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47fb77efe902c524eb4ffd5d81cde079
+      internalID: -1537650684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATTACK_NO_SERINGUE_14
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 288
+        width: 446
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ebf6454124ad144a3d476ded628112
+      internalID: -162363370
       vertices: []
       indices: 
       edges: []
@@ -254,15 +359,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      machineAsexAlexis_anim_0: -175811877
-      machineAsexAlexis_anim_1: 1235896341
-      machineAsexAlexis_anim_2: -689365374
-      machineAsexAlexis_anim_3: -1837191880
-      machineAsexAlexis_anim_4: -1221191176
-      machineAsexAlexis_anim_5: 1655291418
-      machineAsexAlexis_anim_6: 1863151090
-      machineAsexAlexis_anim_7: -1908286732
-      machineAsexAlexis_anim_8: -2008372547
+      ATTACK_NO_SERINGUE_0: -1482306025
+      ATTACK_NO_SERINGUE_1: -1891439306
+      ATTACK_NO_SERINGUE_10: -495844167
+      ATTACK_NO_SERINGUE_11: 1768311177
+      ATTACK_NO_SERINGUE_12: -798742961
+      ATTACK_NO_SERINGUE_13: -1537650684
+      ATTACK_NO_SERINGUE_14: -162363370
+      ATTACK_NO_SERINGUE_2: -1849098503
+      ATTACK_NO_SERINGUE_3: 228137477
+      ATTACK_NO_SERINGUE_4: -1578861356
+      ATTACK_NO_SERINGUE_5: 935186388
+      ATTACK_NO_SERINGUE_6: -657353382
+      ATTACK_NO_SERINGUE_7: 414836398
+      ATTACK_NO_SERINGUE_8: -1616255789
+      ATTACK_NO_SERINGUE_9: -1882844795
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
