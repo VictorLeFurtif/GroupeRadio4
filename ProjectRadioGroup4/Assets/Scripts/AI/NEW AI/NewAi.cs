@@ -58,7 +58,9 @@ namespace AI.NEW_AI
         [Header("Damage")]
         
         public float damageEnemy;
-        
+
+        [Header("NUMBER OF SWAP")]
+        [SerializeField] private int numberOfSwap;
         
         #endregion
 
@@ -82,6 +84,7 @@ namespace AI.NEW_AI
             }
             chipsDatasListSave.AddRange(chipsDatasList);
             monsterEyes.material.color = Color.white;
+            monsterEyes.gameObject.SetActive(false);
             
             foreach (var t in chipsToAddToPattern)
             {
@@ -162,7 +165,7 @@ namespace AI.NEW_AI
         protected override void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.CompareTag("Player")) return;
-            BeginFight();
+            StartFight();
         }
         
         protected override void OnTriggerEnter2D(Collider2D other)
@@ -181,9 +184,25 @@ namespace AI.NEW_AI
         #endregion
 
         #region Combat Management
-        
-        public void BeginFight()
+
+        public void InitSwapNumber()
         {
+            FightManager.instance.numberOfSwap = numberOfSwap;
+        }
+        
+        public void StartFight()
+        {
+            NewPlayerController.instance.canMove = false;
+            spriteRenderer.enabled = true;
+            StartCoroutine(BeginFight());
+        }
+        
+         private IEnumerator BeginFight()
+        {
+            animatorEnemy.Play("SpawnAi");
+            float timeToWait = animatorEnemy.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(timeToWait + 0.5f);
+            monsterEyes.gameObject.SetActive(true);
             CancelInteractionAfterContact();
             StartCombatSequence();
         }
@@ -201,7 +220,6 @@ namespace AI.NEW_AI
         private void StartCombatSequence()
         {
             NewRadioManager.instance?.StopMatchingGame();
-            spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;
             if (player == null) return;
 
@@ -246,10 +264,16 @@ namespace AI.NEW_AI
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
                 CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,20);
+                GameManager.instance.globalVolumeManager.GvColorToDesadvantage();
+            }
+            else
+            {
+                GameManager.instance.globalVolumeManager.GvColorToAdvantage();
             }
     
             fightManager.InitialiseFightManager();
             ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
+            InitSwapNumber();
         }
         #endregion
         

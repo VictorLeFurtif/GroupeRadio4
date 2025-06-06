@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5303886979712719697}
   - component: {fileID: 4308485798520917267}
+  - component: {fileID: 3682016124314343323}
   m_Layer: 0
   m_Name: FightManager
   m_TagString: Untagged
@@ -48,5 +49,24 @@ MonoBehaviour:
   fighterAlive: []
   listOfJustEnemiesAlive: []
   fightState: 0
-  rangeDetectEnemy: 7
+  rangeDetectEnemy: 10.92
   currentFightAdvantage: 2
+  playerTurnDuration: 60
+  playerSuccess: 0
+  monsterEyes: {fileID: 0}
+  goldenRunLifeGiven: 0
+--- !u!114 &3682016124314343323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413200351940884930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60000d4a8a822e94eb2777a48736cc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSportLight: {fileID: 4720601349093060859, guid: 8ad9bcf9301e95e42aadcaaf38e1ca50, type: 3}
+  offSettY: 6
+  lightsInstantiate: []

@@ -61,7 +61,10 @@ namespace MANAGER
         [Header("Eye Settings")]
         public Renderer monsterEyes;
         private int currentSequenceIndex = 0;
-        
+
+        private SpotLightFightManager spotLightFightManager;
+
+        [HideInInspector] public int numberOfSwap; 
         
         #endregion
 
@@ -94,6 +97,7 @@ namespace MANAGER
 
             player = NewPlayerController.instance;
             radio = NewRadioManager.instance;
+            spotLightFightManager = GetComponent<SpotLightFightManager>();
         }
         
         private void Update()
@@ -185,12 +189,15 @@ namespace MANAGER
             
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
-            NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
 
             if (currentFightAdvantage == FightAdvantage.Disadvantage)
             {
                 AttackPlayer(true);
             }
+            
+            spotLightFightManager.InitLight();
+            
         }
         #endregion
 
@@ -275,8 +282,11 @@ namespace MANAGER
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
             NewRadioManager.instance?.ResetLights();
-            NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            if (NewRadioManager.instance != null)
+                NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
             currentSequenceIndex = 0;
+            spotLightFightManager.CleanLight();
+            GameManager.instance.globalVolumeManager.GvColorToExplo();
         }
 
         

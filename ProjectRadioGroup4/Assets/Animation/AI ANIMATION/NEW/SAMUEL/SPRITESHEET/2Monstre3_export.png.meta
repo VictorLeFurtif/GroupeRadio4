@@ -1,0 +1,818 @@
+fileFormatVersion: 2
+guid: e5941f8b067a68742b1c1d51a09b9361
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 2Monstre3_export_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1750
+        width: 624
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5294813, y: 0.091192976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95545eb662d5dc4287f62bdb4424a73
+      internalID: 102556054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_1
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1756
+        width: 624
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5131029, y: 0.07576628}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d752b21bad661494a8b6be7457c484f6
+      internalID: -970460996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_2
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 1756
+        width: 624
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5196545, y: 0.07576628}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042f5a8de619001418de01e0b3edc5b3
+      internalID: 1945382224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_3
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1756
+        width: 624
+        height: 530
+      alignment: 9
+      pivot: {x: 0.50982744, y: 0.052626126}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ec03863a0dc6741bf630e82d951d8d
+      internalID: 1594976047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_4
+      rect:
+        serializedVersion: 2
+        x: 2351
+        y: 1756
+        width: 624
+        height: 530
+      alignment: 9
+      pivot: {x: 0.52948195, y: 0.056482855}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab96e76269ce9a41a70ef46a07d3778
+      internalID: 1385716676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_5
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 1756
+        width: 624
+        height: 530
+      alignment: 9
+      pivot: {x: 0.50655186, y: 0.06419632}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd8761a41340c749b216af3635a96c5
+      internalID: -1997050830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_6
+      rect:
+        serializedVersion: 2
+        x: 3531
+        y: 1756
+        width: 580
+        height: 530
+      alignment: 9
+      pivot: {x: 0.50000083, y: 0.07576628}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b6d425b1fd85d4aaa57c2b06c077de
+      internalID: -1278176837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_7
+      rect:
+        serializedVersion: 2
+        x: 3938
+        y: 1756
+        width: 580
+        height: 530
+      alignment: 9
+      pivot: {x: 0.50000083, y: 0.06805282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680a749175aaeb74587da9a13bbb2f43
+      internalID: -664980109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_8
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 1192
+        width: 580
+        height: 530
+      alignment: 9
+      pivot: {x: 0.53876626, y: 0.07576628}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8087fc4587aaf4a8bd87569f993704
+      internalID: 694000364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_9
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 1199
+        width: 580
+        height: 530
+      alignment: 9
+      pivot: {x: 0.57753253, y: 0.06805282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8528311a337184a859ed2ad596396d
+      internalID: 479171059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_10
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 1192
+        width: 549
+        height: 530
+      alignment: 9
+      pivot: {x: 0.6340354, y: 0.08733624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cc84015e63785e44b25fd9557f2573a
+      internalID: 1785867192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_11
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 1207
+        width: 549
+        height: 530
+      alignment: 9
+      pivot: {x: 0.58935726, y: 0.07190955}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e402fdd14d705834e867dc081e3c45f8
+      internalID: 1869712965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_12
+      rect:
+        serializedVersion: 2
+        x: 2354
+        y: 1188
+        width: 714
+        height: 530
+      alignment: 9
+      pivot: {x: 0.7052655, y: 0.08360181}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98fedb85cab1bb446bc8e79519a640c6
+      internalID: 1829299590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_13
+      rect:
+        serializedVersion: 2
+        x: 3131
+        y: 1192
+        width: 714
+        height: 530
+      alignment: 9
+      pivot: {x: 0.65659773, y: 0.08360181}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32de57e534ce4374cb62cf836c2ed07a
+      internalID: -381365458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_14
+      rect:
+        serializedVersion: 2
+        x: 3853
+        y: 1188
+        width: 657
+        height: 530
+      alignment: 9
+      pivot: {x: 0.6526113, y: 0.08745854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f24f08569456c5a4da85f1e1ae076be0
+      internalID: 1425071017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_15
+      rect:
+        serializedVersion: 2
+        x: 4521
+        y: 1195
+        width: 572
+        height: 530
+      alignment: 9
+      pivot: {x: 0.65311456, y: 0.07269471}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04fb66b060a83984baef7e66f471f191
+      internalID: 1083519022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_16
+      rect:
+        serializedVersion: 2
+        x: 5164
+        y: 1191
+        width: 572
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5959396, y: 0.084264904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96abe2bc9788be541bfa700f4cdcb0d4
+      internalID: 316653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_17
+      rect:
+        serializedVersion: 2
+        x: 5781
+        y: 1191
+        width: 590
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5355171, y: 0.06112475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ca1753148413814baa7fc6fcf68a755
+      internalID: 1543092567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_18
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 616
+        width: 590
+        height: 523
+      alignment: 9
+      pivot: {x: 0.5271012, y: 0.051024925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601b26bf6921b764980269f9af5b80a3
+      internalID: 1035619527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_19
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 616
+        width: 590
+        height: 523
+      alignment: 9
+      pivot: {x: 0.52215266, y: 0.060024623}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e3846cdc2ae0643a1c53a8e0071a52
+      internalID: -2000870564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_20
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 616
+        width: 590
+        height: 523
+      alignment: 9
+      pivot: {x: 0.51621217, y: 0.06112694}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ec161c569f4824bb01180ed7d0c005
+      internalID: 724995542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_21
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 615
+        width: 590
+        height: 523
+      alignment: 9
+      pivot: {x: 0.54937434, y: 0.07269483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ded3eff5df22f42afecb6565b41db4
+      internalID: -1493640685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_22
+      rect:
+        serializedVersion: 2
+        x: 2388
+        y: 615
+        width: 590
+        height: 528
+      alignment: 9
+      pivot: {x: 0.5320519, y: 0.059318118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9769b8633e1b7479ffc576f4928e9d
+      internalID: -1087404336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_23
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 81
+        width: 590
+        height: 530
+      alignment: 9
+      pivot: {x: 0.52165824, y: 0.04569784}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bd2f4f11464d94f9b4c089e6c9d702
+      internalID: -1824368877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_24
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 88
+        width: 590
+        height: 530
+      alignment: 9
+      pivot: {x: 0.49740705, y: 0.045697942}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b0d4963430baea44a83162e107593d2
+      internalID: -1671086063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_25
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 59
+        width: 590
+        height: 540
+      alignment: 9
+      pivot: {x: 0.5493745, y: 0.0456977}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348062de8e47db84c9c1a3296c942418
+      internalID: 128553493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_26
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 49
+        width: 680
+        height: 550
+      alignment: 9
+      pivot: {x: 0.533886, y: 0.049274}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5179f6e8a5c19fb4290df352da8a6650
+      internalID: -959108716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_27
+      rect:
+        serializedVersion: 2
+        x: 2493
+        y: 45
+        width: 680
+        height: 550
+      alignment: 9
+      pivot: {x: 0.5519219, y: 0.07157259}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71bde84a2d8903b4090cd694307fa237
+      internalID: 392956978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_28
+      rect:
+        serializedVersion: 2
+        x: 3259
+        y: 56
+        width: 680
+        height: 550
+      alignment: 9
+      pivot: {x: 0.5278744, y: 0.038124807}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e38236ab1f605c4484475293fb655c7
+      internalID: 420706361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_29
+      rect:
+        serializedVersion: 2
+        x: 3924
+        y: 56
+        width: 680
+        height: 550
+      alignment: 9
+      pivot: {x: 0.5248679, y: 0.06785624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a1fdfec7435ec048ad69fdb34f46e30
+      internalID: -380047285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_30
+      rect:
+        serializedVersion: 2
+        x: 4597
+        y: 49
+        width: 680
+        height: 550
+      alignment: 9
+      pivot: {x: 0.55192155, y: 0.07157259}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f5f38e8f2009f49b9c360658c8bd2d
+      internalID: 1724719261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Monstre3_export_31
+      rect:
+        serializedVersion: 2
+        x: 5281
+        y: 53
+        width: 680
+        height: 550
+      alignment: 9
+      pivot: {x: 0.55192155, y: 0.075289}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef5c8003dad8ea4ab0ca5e5e48b1b45
+      internalID: -1444474233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      2Monstre3_export_0: 102556054
+      2Monstre3_export_1: -970460996
+      2Monstre3_export_10: 1785867192
+      2Monstre3_export_11: 1869712965
+      2Monstre3_export_12: 1829299590
+      2Monstre3_export_13: -381365458
+      2Monstre3_export_14: 1425071017
+      2Monstre3_export_15: 1083519022
+      2Monstre3_export_16: 316653
+      2Monstre3_export_17: 1543092567
+      2Monstre3_export_18: 1035619527
+      2Monstre3_export_19: -2000870564
+      2Monstre3_export_2: 1945382224
+      2Monstre3_export_20: 724995542
+      2Monstre3_export_21: -1493640685
+      2Monstre3_export_22: -1087404336
+      2Monstre3_export_23: -1824368877
+      2Monstre3_export_24: -1671086063
+      2Monstre3_export_25: 128553493
+      2Monstre3_export_26: -959108716
+      2Monstre3_export_27: 392956978
+      2Monstre3_export_28: 420706361
+      2Monstre3_export_29: -380047285
+      2Monstre3_export_3: 1594976047
+      2Monstre3_export_30: 1724719261
+      2Monstre3_export_31: -1444474233
+      2Monstre3_export_4: 1385716676
+      2Monstre3_export_5: -1997050830
+      2Monstre3_export_6: -1278176837
+      2Monstre3_export_7: -664980109
+      2Monstre3_export_8: 694000364
+      2Monstre3_export_9: 479171059
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

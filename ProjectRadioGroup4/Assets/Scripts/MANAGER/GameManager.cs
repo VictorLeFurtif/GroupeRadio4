@@ -7,9 +7,10 @@ namespace MANAGER
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance;
-        public Canvas gameOver;
+        public GlobalVolumeManager globalVolumeManager;
     
         public GameState currentGameState = GameState.Menu;
+        
         private void Awake()
         {
             if (instance == null) instance = this;
@@ -19,6 +20,7 @@ namespace MANAGER
         private void Start()
         {
             CurrentGameState = GameState.Game;
+            globalVolumeManager = GetComponentInChildren<GlobalVolumeManager>();
         }
 
         public GameState CurrentGameState
@@ -26,20 +28,22 @@ namespace MANAGER
             get => currentGameState;
             set
             {
+                currentGameState = value; 
+                /*
                 switch (value)
                 {
-                    case GameState.GameOver : gameOver.enabled = true;
+                    case GameState.GameOver:
                         NewRadioManager.instance.canvaRadio.enabled = false;
                         break;
-                    case GameState.Game : gameOver.enabled = false;
+                    case GameState.Game:
                         NewRadioManager.instance.canvaRadio.enabled = true;
                         break;
-                    case GameState.Menu : gameOver.enabled = false;
+                    case GameState.Menu:
                         NewRadioManager.instance.canvaRadio.enabled = false;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);
-                }
+                }*/
             }
         }
     

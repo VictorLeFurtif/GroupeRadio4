@@ -155,6 +155,8 @@ public class NewPlayerController : MonoBehaviour
                 canMove = false;
                 rb.velocity = Vector2.zero;
                 animatorPlayer.Play("Death");
+                StartCoroutine(PlayGameOverAfterDeath());
+                
                 return;
             }
             
@@ -166,15 +168,18 @@ public class NewPlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator PlayGameOverAfterDeath()
+    {
+        float timeToWait = animatorPlayer.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(timeToWait + 0.5f);
+        GameManager.instance.GameOver();
+    }
+
     public float GetPlayerDamage()
     {
         return maxDamageDone;
     }
     
-    public void PlayGameOver()
-    {    
-        GameManager.instance?.GameOver();
-    }
     #endregion
     
     #region Movement
