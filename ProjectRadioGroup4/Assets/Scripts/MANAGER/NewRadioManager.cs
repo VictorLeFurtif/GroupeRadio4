@@ -509,6 +509,10 @@ namespace MANAGER
         {
             if (FightManager.instance?.fightState == FightManager.FightState.InFight)
             {
+                if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
+                {
+                    StartCoroutine(NewPlayerController.instance.rangeFinderManager.rfAnimation.TurnOffRangeFinder());
+                }
                 sliderAmplitude.interactable = false;
                 sliderFrequency.interactable = false;
                 playerOscillationHolder.SetActive(false);
@@ -518,13 +522,14 @@ namespace MANAGER
                 yield return new WaitForSeconds(0.3f);
                 UpdateTypeOfUiByFightState();
                 
-                if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
-                {
-                    StartCoroutine(NewPlayerController.instance.rangeFinderManager.rfAnimation.TurnOffRangeFinder());
-                }
+                
             }
             else
             {
+                if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
+                {
+                    StartCoroutine(NewPlayerController.instance.rangeFinderManager.rfAnimation.TurnOnRangeFinder());
+                }
                 sliderAmplitude.interactable = true;
                 sliderFrequency.interactable = true;
                 playerOscillationHolder.SetActive(true);
@@ -534,10 +539,7 @@ namespace MANAGER
                 yield return new WaitForSeconds(0.3f);
                 UpdateTypeOfUiByFightState();
         
-                if (NewPlayerController.instance?.rangeFinderManager?.rfAnimation != null)
-                {
-                    StartCoroutine(NewPlayerController.instance.rangeFinderManager.rfAnimation.TurnOnRangeFinder());
-                }
+                
             }
         }
         #endregion

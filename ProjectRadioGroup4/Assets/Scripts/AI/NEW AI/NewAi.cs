@@ -109,27 +109,32 @@ namespace AI.NEW_AI
 
                 if (_abstractEntityDataInstance.IsDead())
                 {
-                    Die();
+                    StartCoroutine(Die());
                 }
             }
         }
         
         
-        private void Die()
+        private IEnumerator Die()
         {
-            if (isDead) return;
+            if (isDead) yield break ;
 
             isDead = true;
             canAttack = false;
+            NewPlayerController.instance?.animatorPlayer.Play("goodsize anime attaque");
+
+            yield return new WaitForSeconds(1f);
+            
             animatorEnemy.Play("DeathAi");
-    
+            
+            
             float deathAnimLength = GetDeathAnimationLength();
     
             if (_aiFightState == AiFightState.InFight)
             {
                 EndAiTurn();
             }
-            StartCoroutine(DelayedDeath(deathAnimLength + 1f));
+            StartCoroutine(DelayedDeath(deathAnimLength));
         }
 
         private float GetDeathAnimationLength()
@@ -138,7 +143,6 @@ namespace AI.NEW_AI
             {
                 return 2f; 
             }
-
             AnimatorStateInfo stateInfo = animatorEnemy.GetCurrentAnimatorStateInfo(0);
             if (stateInfo.IsName("DeathAi"))
             {
@@ -208,8 +212,9 @@ namespace AI.NEW_AI
         private IEnumerator BeginFight()
         {
             animatorEnemy.Play("SpawnAi");
-            yield return new WaitForSeconds(animatorEnemy.GetCurrentAnimatorStateInfo(0).length + 0.5f);
-            InitiateCombat();
+            //yield return new WaitForSeconds(animatorEnemy.GetCurrentAnimatorStateInfo(0).length + 0.5f);
+            yield return null;
+            StartCombatSequence();
         }
         private void TimerIfInteractWithPlayer()
         {
@@ -227,7 +232,6 @@ namespace AI.NEW_AI
             NewRadioManager.instance?.StopMatchingGame();
             var player = NewPlayerController.instance;
             if (player == null) return;
-
             Vector3 combatPosition = player.transform.position + 
                                  player.transform.right * combatDistance * 
                                  (player.spriteRendererPlayer.flipX ? -1 : 1);
@@ -235,6 +239,7 @@ namespace AI.NEW_AI
             transform.position = combatPosition;
             FacePlayer();
             InitiateCombat();
+            NewPlayerController.instance.animatorPlayer.Play("Overload");
         }
         
         private void FacePlayer()

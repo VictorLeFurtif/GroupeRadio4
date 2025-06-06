@@ -423,6 +423,8 @@ namespace MANAGER
                 Debug.Log("You did a golden run well play man");
             }
             
+            
+            
             playerSuccess = true;
             
             currentEnemyTarget.PvEnemy -= currentEnemyTarget.PvEnemy;
