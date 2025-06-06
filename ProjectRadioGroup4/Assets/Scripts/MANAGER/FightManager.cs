@@ -64,6 +64,7 @@ namespace MANAGER
 
         private SpotLightFightManager spotLightFightManager;
 
+        
         [HideInInspector] public int numberOfSwap; 
         
         #endregion
@@ -279,6 +280,7 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            numberOfSwap = 0;
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
             NewRadioManager.instance?.ResetLights();
@@ -287,6 +289,7 @@ namespace MANAGER
             currentSequenceIndex = 0;
             spotLightFightManager.CleanLight();
             GameManager.instance.globalVolumeManager.GvColorToExplo();
+            
         }
 
         

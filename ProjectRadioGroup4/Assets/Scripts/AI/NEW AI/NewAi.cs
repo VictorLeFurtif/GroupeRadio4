@@ -192,19 +192,24 @@ namespace AI.NEW_AI
         
         public void StartFight()
         {
+            if (_aiFightState == AiFightState.InFight) return;
+
+            Debug.Log("1 - Method StartFight entered");
             NewPlayerController.instance.canMove = false;
+            Debug.Log("2 - Player movement disabled");
             spriteRenderer.enabled = true;
+            Debug.Log("3 - SpriteRenderer enabled");
+            monsterEyes.gameObject.SetActive(true);
+            Debug.Log("4 - Monster eyes activated");
             StartCoroutine(BeginFight());
+            Debug.Log("5 - Coroutine started");
         }
-        
-         private IEnumerator BeginFight()
+
+        private IEnumerator BeginFight()
         {
             animatorEnemy.Play("SpawnAi");
-            float timeToWait = animatorEnemy.GetCurrentAnimatorStateInfo(0).length;
-            yield return new WaitForSeconds(timeToWait + 0.5f);
-            monsterEyes.gameObject.SetActive(true);
-            CancelInteractionAfterContact();
-            StartCombatSequence();
+            yield return new WaitForSeconds(animatorEnemy.GetCurrentAnimatorStateInfo(0).length + 0.5f);
+            InitiateCombat();
         }
         private void TimerIfInteractWithPlayer()
         {
@@ -250,6 +255,7 @@ namespace AI.NEW_AI
             }
 
             spriteRenderer.enabled = true;
+            monsterEyes.gameObject.SetActive(true);
     
             var fightManager = FightManager.instance;
             if (fightManager == null) return;

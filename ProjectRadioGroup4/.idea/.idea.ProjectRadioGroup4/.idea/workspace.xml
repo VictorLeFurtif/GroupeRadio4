@@ -6,46 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/DeathAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/DeathAi.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/IdleAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/IdleAi.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/attackAi.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animation/attackAi.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animator/Animator Camille Monster.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/AI ANIMATION/NEW/CAMILLE/Animator/Animator Camille Monster.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Death.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/animation/Death.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/light/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/light/Global Volume Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Ai/NEW FOR FINAL/Enemy CAMILLE type.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GamePlay/Ai/NEW FOR FINAL/Enemy CAMILLE type.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/FightManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/FightManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/LooseScreenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/LooseScreenController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Blue/ChipsBlue4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 4.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 4.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 5.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test 5.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Chips Test.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Green/ChipGreen4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Object/Chips/Red/ChipRed4.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2d8783c7af0442318483a199a473c55b175e00/23/d477d04e/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/NEW AI/NewAi.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/BrasSexController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DoorController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -91,25 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev/Victor",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.general",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev/Victor&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD RADIO\ProjectRadioGroup4.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD FP V2 ECHO 42\ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -117,7 +82,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -125,7 +90,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -232,7 +197,8 @@
       <workItem from="1749117066784" duration="91000" />
       <workItem from="1749117177311" duration="2956000" />
       <workItem from="1749161601958" duration="6158000" />
-      <workItem from="1749201001150" duration="4000" />
+      <workItem from="1749200994500" duration="221000" />
+      <workItem from="1749201243590" duration="1607000" />
     </task>
     <servers />
   </component>
