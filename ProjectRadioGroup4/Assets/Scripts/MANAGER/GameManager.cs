@@ -1,4 +1,5 @@
 using System;
+using Controller;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ namespace MANAGER
     {
         public static GameManager instance;
         public GlobalVolumeManager globalVolumeManager;
+        [SerializeField] private LooseScreenController looseScreenController;
     
         public GameState currentGameState = GameState.Menu;
         
@@ -36,21 +38,19 @@ namespace MANAGER
             set
             {
                 currentGameState = value; 
-                /*
+                
                 switch (value)
                 {
                     case GameState.GameOver:
-                        NewRadioManager.instance.canvaRadio.enabled = false;
+                        looseScreenController.looseScreenPanel.SetActive(true);
                         break;
                     case GameState.Game:
-                        NewRadioManager.instance.canvaRadio.enabled = true;
-                        break;
                     case GameState.Menu:
-                        NewRadioManager.instance.canvaRadio.enabled = false;
+                        looseScreenController.looseScreenPanel.SetActive(false);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);
-                }*/
+                }
             }
         }
     
@@ -66,15 +66,10 @@ namespace MANAGER
             CurrentGameState = GameState.GameOver;
         }
 
-        public void ReloadActualScene()
+        public void ResetPlayer()
         {
-            string nameScene = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(nameScene);
-        }
-    
-        public void LoadSceneByName(string _name)
-        {
-            SceneManager.LoadScene(_name);
+            NewPlayerController.instance.InitData();
+            NewPlayerController.instance.animatorPlayer.Play("IdlePlayer");
         }
     }
 }

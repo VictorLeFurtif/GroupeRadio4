@@ -118,21 +118,28 @@ public class NewPlayerController : MonoBehaviour
             Destroy(gameObject);
         }
             
-
+        
         rb = GetComponent<Rigidbody2D>();
+        spriteRendererPlayer = GetComponent<SpriteRenderer>();
+        animatorPlayer = GetComponent<Animator>();
+        playerBattery = GetComponent<BatteryPlayer>();
+        rangeFinderManager = GetComponent<RangeFinderManager>();
+        chipsManager = GetComponent<ChipsManager>();
+        InitData();
+    }
+
+    public void InitData()
+    {
         CanTurnOnPhase2Module = false;
         _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
         _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
-
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-        spriteRendererPlayer = GetComponent<SpriteRenderer>();
-        animatorPlayer = GetComponent<Animator>();
         UpdatePhase2ButtonState();
-        playerBattery = GetComponent<BatteryPlayer>();
-        rangeFinderManager = GetComponent<RangeFinderManager>();
         currentScanType = ScanType.None;
-        chipsManager = GetComponent<ChipsManager>();
+        canMove = true;
+        playerBattery.UpdateLifeSlider(_inGameData.hp);
     }
+    
     #endregion
 
     #region Life Management & Getter Setter
