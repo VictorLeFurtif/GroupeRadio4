@@ -195,7 +195,15 @@ namespace MANAGER
             if (currentFightAdvantage == FightAdvantage.Disadvantage)
             {
                 AttackPlayer(true);
+                
+                if (!NewPlayerController.instance._inGameData.IsDead())
+                {
+                    NewPlayerController.instance.animatorPlayer.Play("Overload");
+                }
+                
             }
+            
+            
             
             spotLightFightManager.InitLight();
             

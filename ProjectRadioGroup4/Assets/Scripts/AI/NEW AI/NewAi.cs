@@ -240,7 +240,8 @@ namespace AI.NEW_AI
             transform.position = combatPosition;
             FacePlayer();
             InitiateCombat();
-            NewPlayerController.instance.animatorPlayer.Play("Overload");
+            
+            
         }
         
         private void FacePlayer()
