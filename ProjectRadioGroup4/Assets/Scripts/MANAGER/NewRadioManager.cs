@@ -469,7 +469,7 @@ namespace MANAGER
         [SerializeField] private GameObject canvaExploration;
         [SerializeField] private GameObject canvaFight;
         
-        private void UpdateTypeOfUiByFightState()
+        public void UpdateTypeOfUiByFightState()
         {
             if (FightManager.instance?.fightState == FightManager.FightState.InFight)
             {

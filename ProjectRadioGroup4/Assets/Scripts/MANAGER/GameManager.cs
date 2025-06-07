@@ -71,6 +71,7 @@ namespace MANAGER
             NewPlayerController.instance.InitData();
             NewPlayerController.instance.animatorPlayer.Play("IdlePlayer");
             NewPlayerController.instance.transform.position = NewPlayerController.instance.spawnPosition;
+            NewRadioManager.instance.UpdateTypeOfUiByFightState(); //should correct error when die in fight ?
         }
     }
 }
