@@ -40,17 +40,27 @@ namespace AI.NEW_AI
         
         [Header("Enemy Health Settings")]
         [SerializeField] private Slider healthSlider;
-        [SerializeField] private float healthLerpDuration = 0.3f;
         private Coroutine healthLerpCoroutine;
 
         [Header("Enemy Chips")] 
         [SerializeField] private List<ChipsData> chipsDatasListTempo = new List<ChipsData>();
         public List<ChipsDataInstance> chipsDatasList = new List<ChipsDataInstance>();
         [HideInInspector] public List<ChipsDataInstance> chipsDatasListSave = new List<ChipsDataInstance>();
+        
+        [Header("Enemy Chips but dont include Pattern, just what will be implemented")]
+        public List<ChipsData> chipsToAddToPattern = new List<ChipsData>();
+        [HideInInspector] public List<ChipsDataInstance> chipsToAddToPatternReal = new List<ChipsDataInstance>();
 
         [Header("Eye Settings")]
         public Image monsterEyes;
         private int currentChipIndex = 0;
+        
+        [Header("Damage")]
+        
+        public float damageEnemy;
+
+        [Header("NUMBER OF SWAP")]
+        public int numberOfSwap;
         
         #endregion
 
@@ -73,7 +83,13 @@ namespace AI.NEW_AI
                 chipsDatasList.Add(t.Instance());
             }
             chipsDatasListSave.AddRange(chipsDatasList);
-            monsterEyes.material.color = Color.white; 
+            monsterEyes.material.color = Color.white;
+            monsterEyes.gameObject.SetActive(false);
+            
+            foreach (var t in chipsToAddToPattern)
+            {
+                chipsToAddToPatternReal.Add(t.Instance());
+            }
         }
         #endregion
 
@@ -93,26 +109,48 @@ namespace AI.NEW_AI
 
                 if (_abstractEntityDataInstance.IsDead())
                 {
-                    Die();
+                    StartCoroutine(Die());
                 }
             }
         }
         
         
-        private void Die()
+        private IEnumerator Die()
         {
-            if (isDead) return;
+            if (isDead) yield break ;
 
             isDead = true;
             canAttack = false;
+            NewPlayerController.instance?.animatorPlayer.Play("goodsize anime attaque");
+
+            yield return new WaitForSeconds(1f);
             
+            animatorEnemy.Play("DeathAi");
+            
+            
+            float deathAnimLength = GetDeathAnimationLength();
+    
             if (_aiFightState == AiFightState.InFight)
             {
                 EndAiTurn();
             }
-            StartCoroutine(DelayedDeath(1.2f));
+            StartCoroutine(DelayedDeath(deathAnimLength));
         }
-        
+
+        private float GetDeathAnimationLength()
+        {
+            if (animatorEnemy == null)
+            {
+                return 2f; 
+            }
+            AnimatorStateInfo stateInfo = animatorEnemy.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("DeathAi"))
+            {
+                return stateInfo.length;
+            }
+            return 1.2f; 
+        }
+
         private IEnumerator DelayedDeath(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -122,6 +160,7 @@ namespace AI.NEW_AI
         private void HandleDeath()
         {
             Destroy(gameObject);
+            NewPlayerController.instance.canMove = true;
         }
         
         #endregion
@@ -130,7 +169,8 @@ namespace AI.NEW_AI
         protected override void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.CompareTag("Player")) return;
-            BeginFight();
+            StartFight();
+            isTimerRunning = false;
         }
         
         protected override void OnTriggerEnter2D(Collider2D other)
@@ -149,10 +189,32 @@ namespace AI.NEW_AI
         #endregion
 
         #region Combat Management
-        
-        public void BeginFight()
+
+        public void InitSwapNumber()
         {
-            CancelInteractionAfterContact();
+            FightManager.instance.numberOfSwap = numberOfSwap;
+        }
+        
+        public void StartFight()
+        {
+            if (_aiFightState == AiFightState.InFight) return;
+
+            Debug.Log("1 - Method StartFight entered");
+            NewPlayerController.instance.canMove = false;
+            Debug.Log("2 - Player movement disabled");
+            spriteRenderer.enabled = true;
+            Debug.Log("3 - SpriteRenderer enabled");
+            monsterEyes.gameObject.SetActive(true);
+            Debug.Log("4 - Monster eyes activated");
+            StartCoroutine(BeginFight());
+            Debug.Log("5 - Coroutine started");
+        }
+
+        private IEnumerator BeginFight()
+        {
+            animatorEnemy.Play("SpawnAi");
+            //yield return new WaitForSeconds(animatorEnemy.GetCurrentAnimatorStateInfo(0).length + 0.5f);
+            yield return null;
             StartCombatSequence();
         }
         private void TimerIfInteractWithPlayer()
@@ -169,10 +231,8 @@ namespace AI.NEW_AI
         private void StartCombatSequence()
         {
             NewRadioManager.instance?.StopMatchingGame();
-            spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;
             if (player == null) return;
-
             Vector3 combatPosition = player.transform.position + 
                                  player.transform.right * combatDistance * 
                                  (player.spriteRendererPlayer.flipX ? -1 : 1);
@@ -180,6 +240,7 @@ namespace AI.NEW_AI
             transform.position = combatPosition;
             FacePlayer();
             InitiateCombat();
+            NewPlayerController.instance.animatorPlayer.Play("Overload");
         }
         
         private void FacePlayer()
@@ -200,6 +261,7 @@ namespace AI.NEW_AI
             }
 
             spriteRenderer.enabled = true;
+            monsterEyes.gameObject.SetActive(true);
     
             var fightManager = FightManager.instance;
             if (fightManager == null) return;
@@ -213,11 +275,17 @@ namespace AI.NEW_AI
 
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
-                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,45);
+                CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,20);
+                GameManager.instance.globalVolumeManager.GvColorToDesadvantage();
+            }
+            else
+            {
+                GameManager.instance.globalVolumeManager.GvColorToAdvantage();
             }
     
             fightManager.InitialiseFightManager();
             ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
+            InitSwapNumber();
         }
         #endregion
         

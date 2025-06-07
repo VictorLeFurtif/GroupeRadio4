@@ -45,7 +45,7 @@ Material:
     - _waves_Amount: 0
     - _waves_Amp: 0
     m_Colors:
-    - _Color: {r: 0, g: 8.582289, b: 5.8210135, a: 1}
+    - _Color: {r: 0, g: 0.11233362, b: 0.36381334, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &148708066201681712
 MonoBehaviour:

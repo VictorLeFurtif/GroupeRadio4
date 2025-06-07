@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,12 +100,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 651
-        width: 218
-        height: 267
-      alignment: 9
-      pivot: {x: 0.4495507, y: 0.12012862}
+        x: 2
+        y: 243
+        width: 225
+        height: 277
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_1
       rect:
         serializedVersion: 2
-        x: 221
-        y: 648
+        x: 255
+        y: 237
         width: 193
-        height: 316
+        height: 281
       alignment: 9
-      pivot: {x: 0.24673668, y: 0.04755218}
+      pivot: {x: 0.25939974, y: 0.017395074}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_2
       rect:
         serializedVersion: 2
-        x: 443
-        y: 647
+        x: 463
+        y: 212
         width: 218
-        height: 266
-      alignment: 9
-      pivot: {x: 0.50560546, y: 0.058979005}
+        height: 289
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_3
       rect:
         serializedVersion: 2
-        x: 687
-        y: 660
+        x: 708
+        y: 219
         width: 217
-        height: 256
-      alignment: 9
-      pivot: {x: 0.46621212, y: 0.032204628}
+        height: 287
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_4
       rect:
         serializedVersion: 2
-        x: 965
-        y: 649
+        x: 985
+        y: 214
         width: 214
-        height: 270
-      alignment: 9
-      pivot: {x: 0.43147692, y: 0.024779595}
+        height: 286
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_5
       rect:
         serializedVersion: 2
-        x: 1207
-        y: 644
+        x: 1227
+        y: 209
         width: 198
-        height: 253
+        height: 280
       alignment: 9
-      pivot: {x: 0.30867758, y: 0.06529797}
+      pivot: {x: 0.2654758, y: 0.037387304}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,12 +226,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_6
       rect:
         serializedVersion: 2
-        x: 1441
-        y: 635
+        x: 1461
+        y: 200
         width: 214
-        height: 261
-      alignment: 9
-      pivot: {x: 0.40863606, y: 0.027120423}
+        height: 290
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,12 +247,12 @@ TextureImporter:
       name: COURSE_BONNE_TAILLE_7
       rect:
         serializedVersion: 2
-        x: 1675
-        y: 640
-        width: 219
-        height: 262
-      alignment: 9
-      pivot: {x: 0.4386215, y: 0.042917732}
+        x: 1695
+        y: 205
+        width: 211
+        height: 285
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

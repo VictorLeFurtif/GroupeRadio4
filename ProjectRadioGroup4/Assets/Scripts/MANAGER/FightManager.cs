@@ -61,7 +61,11 @@ namespace MANAGER
         [Header("Eye Settings")]
         public Renderer monsterEyes;
         private int currentSequenceIndex = 0;
+
+        private SpotLightFightManager spotLightFightManager;
+
         
+        [HideInInspector] public int numberOfSwap; 
         
         #endregion
 
@@ -94,6 +98,7 @@ namespace MANAGER
 
             player = NewPlayerController.instance;
             radio = NewRadioManager.instance;
+            spotLightFightManager = GetComponent<SpotLightFightManager>();
         }
         
         private void Update()
@@ -185,7 +190,15 @@ namespace MANAGER
             
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
-            NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
+
+            if (currentFightAdvantage == FightAdvantage.Disadvantage)
+            {
+                AttackPlayer(true);
+            }
+            
+            spotLightFightManager.InitLight();
+            
         }
         #endregion
 
@@ -210,8 +223,7 @@ namespace MANAGER
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
-                player.canMove = true;
-                
+               
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
             {
@@ -265,32 +277,60 @@ namespace MANAGER
         
         private void ResetFightManagerAfterFight()
         {
-            player.canMove = true;
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            numberOfSwap = 0;
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
             NewRadioManager.instance?.ResetLights();
-            NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            if (NewRadioManager.instance != null)
+                NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
+            currentSequenceIndex = 0;
+            spotLightFightManager.CleanLight();
+            GameManager.instance.globalVolumeManager.GvColorToExplo();
+            
         }
 
-        [SerializeField] private float damageEnemy;
+        
         private void AttackPlayer()
         {
-            player.ManageLife(-damageEnemy);
+            
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
-            {
+            { 
+                player.ManageLife(-ai.damageEnemy);
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+               numberOfSwap = ai.numberOfSwap;
+            }
+            else
+            {
+                float baseDamageIfError = 10;
+                player.ManageLife(-baseDamageIfError);
+            }
+        }
+        
+        private void AttackPlayer(bool isInit)
+        {
+            if (!isInit)return;
+            
+            NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
+            if (ai != null)
+            { 
+                player.ManageLife(-ai.damageEnemy);
+            }
+            else
+            {
+                float baseDamageIfError = 10;
+                player.ManageLife(-baseDamageIfError);
             }
         }
         
         private void AttackPlayer(NewAi ai)
         {
-            player.ManageLife(-damageEnemy);
+            player.ManageLife(-ai.damageEnemy);
             
             if (ai != null)
             {
@@ -308,6 +348,8 @@ namespace MANAGER
                 return;
             }
             
+            currentSequenceIndex++;
+            
             var currentSequence = currentEnemyTarget.chipsDatasList;
             var playerSelection = ChipsManager.Instance.playerChoiceChipsOrder;
 
@@ -317,7 +359,9 @@ namespace MANAGER
             }
             
             int correctCount = 0;
-            bool allCorrect = !(currentSequence.Count < playerSelection.Count);
+            bool allCorrect = true;
+            
+            allCorrect = !(currentSequence.Count < playerSelection.Count);
             
             for (int i = 0; i < Mathf.Min(currentSequence.Count, playerSelection.Count); i++)
             {
@@ -331,7 +375,7 @@ namespace MANAGER
                     break;
                 }
             }
-
+            
             if (correctCount > 0 && allCorrect)
             {
                 int totalSequenceLength = currentEnemyTarget.chipsDatasListSave.Count;
@@ -359,7 +403,6 @@ namespace MANAGER
             }
             else
             {
-                //need to attack player
                 AttackPlayer(currentEnemyTarget);
             }
             
@@ -371,8 +414,18 @@ namespace MANAGER
             return chip1.index == chip2.index 
                    && chip1.colorLinkChips == chip2.colorLinkChips;
         }
+
+        [SerializeField] private float goldenRunLifeGiven = 10f;
         private void EnemySequenceGuessed()
         {
+            if (currentSequenceIndex == 1)
+            {
+                NewPlayerController.instance?.ManageLife(goldenRunLifeGiven);
+                Debug.Log("You did a golden run well play man");
+            }
+            
+            
+            
             playerSuccess = true;
             
             currentEnemyTarget.PvEnemy -= currentEnemyTarget.PvEnemy;
@@ -385,7 +438,10 @@ namespace MANAGER
             }
             
             isMatchingPhase = true; 
-            playerTurnTimer = playerTurnDuration; 
+            playerTurnTimer = playerTurnDuration;
+
+            
+            
         }
         
         
@@ -424,12 +480,10 @@ namespace MANAGER
 
         public void OnMatchButtonPressed()
         {
-            
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-
-            
             ChipsManager.Instance.MatchChips();
             ProcessPlayerGuess();
+            ChipsManager.Instance?.ResetAllChipsSelected();
         }
 
         public void CostForEachChipsAdded()
@@ -450,14 +504,17 @@ namespace MANAGER
         public void OnReverseButtonPressed()
         {
             if (!isMatchingPhase || currentEnemyTarget == null) return;
-            
-
             ChipsManager.Instance.ReverseChips();
             ProcessPlayerGuess();
+            ChipsManager.Instance?.ResetAllChipsSelected();
         }
 
 
         #endregion
-        
+
+        public bool IsInFight()
+        {
+            return fightState == FightState.InFight;
+        }
     }
 }
