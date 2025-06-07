@@ -2062,8 +2062,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MANAGER.FightManager, Assembly-CSharp
-        m_MethodName: OnReverseButtonPressed
+        m_TargetAssemblyTypeName: NewPlayerController, Assembly-CSharp
+        m_MethodName: OnReverse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3438,8 +3438,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MANAGER.FightManager, Assembly-CSharp
-        m_MethodName: OnMatchButtonPressed
+        m_TargetAssemblyTypeName: NewPlayerController, Assembly-CSharp
+        m_MethodName: OnMatch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

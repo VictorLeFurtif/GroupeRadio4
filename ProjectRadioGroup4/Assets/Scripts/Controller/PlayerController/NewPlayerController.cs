@@ -297,29 +297,21 @@ public class NewPlayerController : MonoBehaviour
     #endregion
 
     #region Interaction
-
-
-    [Header("Interaction UI")]
-    [SerializeField] private GameObject interactionUI;
-    [SerializeField] private float fadeDuration = 0.3f;
+    [Header("Interaction")]
+    public bool canInteract = true;
     
-    public void ToggleInteractionUI(bool show)
+    #endregion
+
+    #region Fight
+
+    public void OnMatch()
     {
-        if (!interactionUI) return;
-    
-        if (show && !interactionUI.activeSelf)
-        {
-            interactionUI.transform.localScale = Vector3.zero;
-            interactionUI.SetActive(true);
-            interactionUI.transform.DOScale(Vector3.one, fadeDuration)
-                .SetEase(Ease.OutBack);
-        }
-        else if (!show && interactionUI.activeSelf)
-        {
-            interactionUI.transform.DOScale(Vector3.zero, fadeDuration * 0.7f)
-                .SetEase(Ease.OutBack)
-                .OnComplete(() => interactionUI.SetActive(false));
-        }
+        FightManager.instance?.OnMatchButtonPressed();
+    }
+
+    public void OnReverse()
+    {
+        FightManager.instance?.OnReverseButtonPressed();
     }
 
     #endregion

@@ -1,66 +1,118 @@
-using System.Collections;
-using MANAGER;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using MANAGER;
 
 public class DoorController : MonoBehaviour
 {
     public enum DoorType { SceneLoader, Teleport }
-    
-    [Header("Settings")]
+
+    [Header("Door Settings")]
     [SerializeField] private DoorType currentDoorType;
     [SerializeField] private string sceneName;
     [SerializeField] private Vector3 positionForPlayer;
     [SerializeField] private float interactionRadius = 1.5f;
-    
-    private Animator doorAnimator;
-    private Transform playerTransform;
+    [SerializeField] private float fadeDuration = 0.3f;
+
+    [Header("UI References")]
+    [SerializeField] private GameObject interactionUI;
+    [SerializeField] private Animator doorAnimator;
+
+    private Transform player;
+    private bool playerInRange;
+    private bool isInteracting;
 
     private void Start()
     {
-        doorAnimator = GetComponent<Animator>();
-        playerTransform = NewPlayerController.instance.transform;
+        player = NewPlayerController.instance.transform;
+        
+        // Initialisation UI
+        if (interactionUI != null)
+        {
+            interactionUI.SetActive(false);
+            interactionUI.transform.localScale = Vector3.zero;
+        }
     }
 
     private void Update()
     {
-        if (!NewPlayerController.instance) return;
+        if (!player || isInteracting || !NewPlayerController.instance.canInteract) return;
+
+        float distance = Vector2.Distance(transform.position, player.position);
+        bool shouldShow = distance <= interactionRadius && !FightManager.instance.IsInFight();
         
-        float distance = Vector2.Distance(playerTransform.position, transform.position);
-        bool canInteract = distance <= interactionRadius && 
-                           !FightManager.instance.IsInFight();
-        
-        NewPlayerController.instance.ToggleInteractionUI(canInteract);
-        
-        if (canInteract && Input.GetKeyDown(KeyCode.F))
+        if (shouldShow != playerInRange)
         {
-            StartCoroutine(Interact());
+            playerInRange = shouldShow;
+            ToggleInteractionUI(playerInRange);
+        }
+
+        if (playerInRange && Input.GetKeyDown(KeyCode.F))
+        {
+            StartInteraction();
         }
     }
 
-    private IEnumerator Interact()
+    private void ToggleInteractionUI(bool show)
     {
-        doorAnimator.Play("animDoor");
-        NewPlayerController.instance.canMove = false;
-        yield return null;
-        float timeToWait = doorAnimator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(timeToWait);
-        NewPlayerController.instance.canMove = true;
-        ChangePlayerPosition();
+        if (interactionUI == null) return;
+
+        interactionUI.transform.DOKill();
+
+        if (show)
+        {
+            interactionUI.SetActive(true);
+            interactionUI.transform.DOScale(Vector3.one, fadeDuration)
+                .SetEase(Ease.OutBack);
+        }
+        else
+        {
+            interactionUI.transform.DOScale(Vector3.zero, fadeDuration * 0.7f)
+                .SetEase(Ease.InBack)
+                .OnComplete(() => interactionUI.SetActive(false));
+        }
     }
 
-    private void ChangePlayerPosition()
+    private void StartInteraction()
+    {
+        isInteracting = true;
+        NewPlayerController.instance.canMove = false;
+        
+        if (interactionUI != null)
+        {
+            interactionUI.transform.DOKill();
+            interactionUI.SetActive(false);
+        }
+
+        if (doorAnimator != null)
+        {
+            doorAnimator.Play("animDoor");
+            float animLength = doorAnimator.GetCurrentAnimatorStateInfo(0).length;
+            Invoke(nameof(CompleteInteraction), animLength);
+        }
+        else
+        {
+            CompleteInteraction();
+        }
+    }
+
+    private void CompleteInteraction()
     {
         switch (currentDoorType)
         {
             case DoorType.SceneLoader:
                 SceneManager.LoadScene(sceneName);
-                playerTransform.position = positionForPlayer;
+                NewPlayerController.instance.transform.position = positionForPlayer;
                 break;
+                
             case DoorType.Teleport:
-                playerTransform.position = positionForPlayer;
+                NewPlayerController.instance.transform.position = positionForPlayer;
                 break;
         }
+
+        NewPlayerController.instance.canMove = true;
+        isInteracting = false;
+        playerInRange = false;
     }
 
     private void OnDrawGizmosSelected()
