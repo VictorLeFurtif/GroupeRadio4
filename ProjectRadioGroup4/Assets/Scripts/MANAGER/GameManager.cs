@@ -70,6 +70,7 @@ namespace MANAGER
         {
             NewPlayerController.instance.InitData();
             NewPlayerController.instance.animatorPlayer.Play("IdlePlayer");
+            NewPlayerController.instance.transform.position = NewPlayerController.instance.spawnPosition;
         }
     }
 }

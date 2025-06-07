@@ -74,6 +74,8 @@ public class NewPlayerController : MonoBehaviour
     [Header("Damage")] [SerializeField] private float maxDamageDone;
 
     [HideInInspector] public ChipsManager chipsManager;
+
+    public Vector3 spawnPosition;
     #endregion
 
     #region Enums
@@ -117,8 +119,8 @@ public class NewPlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-            
-        
+
+        spawnPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         spriteRendererPlayer = GetComponent<SpriteRenderer>();
         animatorPlayer = GetComponent<Animator>();

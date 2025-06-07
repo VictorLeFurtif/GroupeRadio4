@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
@@ -49,7 +50,7 @@ public class DoorController : MonoBehaviour
 
         if (playerInRange && Input.GetKeyDown(KeyCode.F))
         {
-            StartInteraction();
+            StartCoroutine(StartInteraction());
         }
     }
 
@@ -73,7 +74,7 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    private void StartInteraction()
+    private IEnumerator StartInteraction()
     {
         isInteracting = true;
         NewPlayerController.instance.canMove = false;
@@ -87,8 +88,11 @@ public class DoorController : MonoBehaviour
         if (doorAnimator != null)
         {
             doorAnimator.Play("animDoor");
+            yield return null;
             float animLength = doorAnimator.GetCurrentAnimatorStateInfo(0).length;
-            Invoke(nameof(CompleteInteraction), animLength);
+            
+            yield return new WaitForSeconds(animLength);
+            CompleteInteraction();
         }
         else
         {
@@ -103,6 +107,7 @@ public class DoorController : MonoBehaviour
             case DoorType.SceneLoader:
                 SceneManager.LoadScene(sceneName);
                 NewPlayerController.instance.transform.position = positionForPlayer;
+                NewPlayerController.instance.spawnPosition = positionForPlayer;
                 break;
                 
             case DoorType.Teleport:

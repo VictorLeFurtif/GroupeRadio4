@@ -170,6 +170,7 @@ namespace AI.NEW_AI
         {
             if (!other.gameObject.CompareTag("Player")) return;
             StartFight();
+            isTimerRunning = false;
         }
         
         protected override void OnTriggerEnter2D(Collider2D other)
