@@ -6,12 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/NEW LAST ANIMATION/IdlePlayer.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/NEW LAST ANIMATION/IdlePlayer.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/NEW LAST ANIMATION/RunPlayer.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PLAYER ANIMATION/NEW LAST ANIMATION/RunPlayer.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Chernobyl SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Chernobyl SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/DepartureMono-1.500/DepartureMono-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/DepartureMono-1.500/DepartureMono-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Glass_TTY_VT220 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Tomorrow/Tomorrow-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Tomorrow/Tomorrow-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Tomorrow/Tomorrow-Medium SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Tomorrow/Tomorrow-Medium SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Tomorrow/Tomorrow-SemiBold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/Tomorrow/Tomorrow-SemiBold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LightCullingTrigger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LightCullingTrigger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/FIRST PLAYABLE/Test Gabriel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FIRST PLAYABLE/Test Gabriel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,25 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;&lt;unknown&gt;&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Gabriel",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Downloads/BUILD ECHO 42 NUIT DE MERDE\ProjectRadioGroup4.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../ProjetRadio_Build/ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -160,6 +172,7 @@
       <workItem from="1749213643159" duration="9907000" />
       <workItem from="1749237019365" duration="20712000" />
       <workItem from="1749295088149" duration="2639000" />
+      <workItem from="1749303857278" duration="6245000" />
     </task>
     <servers />
   </component>
