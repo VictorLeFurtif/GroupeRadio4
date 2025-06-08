@@ -342,14 +342,14 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   chipsDatasListTempo:
   - {fileID: 11400000, guid: 08cc3256de904a240b1fbdabbc4ed4cf, type: 2}
-  - {fileID: 11400000, guid: 88b01a35a217ce3449c95588f3fb4d61, type: 2}
-  - {fileID: 11400000, guid: 8c0804d6a57af9e48a6286d848093ca5, type: 2}
   - {fileID: 11400000, guid: 5483172bdf2a5324391ebf5b1d277d8d, type: 2}
+  - {fileID: 11400000, guid: 8c0804d6a57af9e48a6286d848093ca5, type: 2}
   - {fileID: 11400000, guid: b75b69540a645704ea940c6be410ac25, type: 2}
-  - {fileID: 11400000, guid: 284bbbc4b0fbcdf4cadad19249662bcd, type: 2}
+  - {fileID: 11400000, guid: 88b01a35a217ce3449c95588f3fb4d61, type: 2}
   chipsDatasList: []
   chipsDatasListSave: []
-  chipsToAddToPattern: []
+  chipsToAddToPattern:
+  - {fileID: 11400000, guid: 930205e28aabb4449861d948dedc5bb2, type: 2}
   chipsToAddToPatternReal: []
   monsterEyes: {fileID: 2168892038368321465}
   damageEnemy: 22

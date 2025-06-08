@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: numberOfSwap
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: timerFightManager
@@ -154,11 +154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
