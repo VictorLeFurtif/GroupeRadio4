@@ -527,6 +527,7 @@ namespace MANAGER
                 playerOscillationHolder.SetActive(false);
                 matRadioEnemy.SetFloat("_speed", 0);
                 matRadioPlayer.SetFloat("_speed", 0);
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.apparitionUiCombat);
                 StartCoroutine(brasSexController.TransitionBrasSexUi());
                 yield return new WaitForSeconds(0.3f);
                 UpdateTypeOfUiByFightState();
@@ -544,6 +545,7 @@ namespace MANAGER
                 playerOscillationHolder.SetActive(true);
                 matRadioEnemy.SetFloat("_speed", 0.02f);
                 matRadioPlayer.SetFloat("_speed", 0.02f);
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.disparitionUiCombat);
                 StartCoroutine(brasSexController.TransitionBrasSexUi());
                 yield return new WaitForSeconds(0.3f);
                 UpdateTypeOfUiByFightState();

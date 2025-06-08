@@ -236,7 +236,7 @@ public class NewPlayerController : MonoBehaviour
     #endregion
 
     #region Scanning
-    private void Scan(ScanType scanType, float damageDealToPlayer)
+    private void Scan(ScanType scanType, float damageDealToPlayer, AudioClip _audioClip)
     {
         if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead() || NewRadioManager.instance.isMatching)
         {
@@ -250,14 +250,16 @@ public class NewPlayerController : MonoBehaviour
         }
         ManageLife(-damageDealToPlayer);
         rangeFinderManager.UpdateUiRangeFinder();
+        SoundManager.instance.PlayMusicOneShot(_audioClip);
+        SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.mouvementVetScan);
     }
 
     
     
     
-    public void ScanWeak() => Scan(ScanType.Type3,lifeTakeWeak);
-    public void ScanMid() => Scan(ScanType.Type2,lifeTakenMid);
-    public void ScanStrong() => Scan(ScanType.Type1,lifeTakenStrong);
+    public void ScanWeak() => Scan(ScanType.Type3,lifeTakeWeak, SoundManager.instance.soundBankData.eventSound.scanFaible);
+    public void ScanMid() => Scan(ScanType.Type2,lifeTakenMid,SoundManager.instance.soundBankData.eventSound.scanMoyen);
+    public void ScanStrong() => Scan(ScanType.Type1,lifeTakenStrong,SoundManager.instance.soundBankData.eventSound.scanFort);
     #endregion
 
     #region Phase 2 Module

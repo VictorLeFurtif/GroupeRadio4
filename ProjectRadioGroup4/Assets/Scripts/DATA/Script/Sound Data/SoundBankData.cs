@@ -120,6 +120,7 @@ namespace DATA.Script.Sound_Data
         public EnviroSound EnviroSoundData = new EnviroSound();
         public UxSound UxSoundData = new UxSound();
         public Music MusicSoundData = new Music();
+        public Event EventSoundData = new Event();
 
         public SoundBankDataInstance Instance()
         {
@@ -134,6 +135,7 @@ namespace DATA.Script.Sound_Data
         public SoundBankData.EnviroSound enviroSound;
         public SoundBankData.UxSound uxSound;
         public SoundBankData.Music musicSound;
+        public SoundBankData.Event eventSound;
         
         public SoundBankDataInstance(SoundBankData data)
         {
@@ -142,6 +144,7 @@ namespace DATA.Script.Sound_Data
             enviroSound = data.EnviroSoundData;
             uxSound = data.UxSoundData;
             musicSound = data.MusicSoundData;
+            eventSound = data.EventSoundData;
         }
 
         public AudioClip SelectRandomSoundFromList(List<AudioClip>list)

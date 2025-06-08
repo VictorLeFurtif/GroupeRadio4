@@ -278,10 +278,12 @@ namespace AI.NEW_AI
             {
                 CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,20);
                 GameManager.instance.globalVolumeManager.GvColorToDesadvantage();
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.spawnNmiScreamer);
             }
             else
             {
                 GameManager.instance.globalVolumeManager.GvColorToAdvantage();
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.spawnNmi);
             }
     
             fightManager.InitialiseFightManager();
