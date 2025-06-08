@@ -234,11 +234,9 @@ namespace AI.NEW_AI
             var player = NewPlayerController.instance;
             if (player == null) return;
             Vector3 combatPosition = player.transform.position + 
-                                 player.transform.right * combatDistance * 
-                                 (player.spriteRendererPlayer.flipX ? -1 : 1);
+                                 player.transform.right * combatDistance;
             
             transform.position = combatPosition;
-            FacePlayer();
             InitiateCombat();
             
             
