@@ -152,6 +152,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 7.314
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 7.3225
+      objectReference: {fileID: 0}
     - target: {fileID: 2170652588585857653, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.025
@@ -181,16 +197,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8196243593516026570, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 691598932, guid: 0ce13fa52e632a040b3b374c883b8b85, type: 3}
+    - target: {fileID: 8196243593516026570, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_Color.b
-      value: 0.35826805
+      value: 0.9137255
       objectReference: {fileID: 0}
     - target: {fileID: 8196243593516026570, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_Color.g
-      value: 0.38010436
+      value: 0.9137255
       objectReference: {fileID: 0}
     - target: {fileID: 8196243593516026570, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_Color.r
-      value: 0.9150943
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196243593516026570, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
