@@ -85,37 +85,19 @@ namespace MANAGER
         {
             Array.Clear(chipsDatasTab, 0, chipsDatasTab.Length);
     
-            for (int i = 0; i < ai.chipsDatasList.Count ; i++)
+            int chipsCopied = 0;
+            for (; chipsCopied < ai.chipsDatasList.Count && chipsCopied < chipsDatasTab.Length; chipsCopied++)
             {
-                chipsDatasTab[i] = ai.chipsDatasList[i];
+                chipsDatasTab[chipsCopied] = ai.chipsDatasList[chipsCopied];
             }
-            
-            //TODO ne passe par ici 
-            int index = chipsDatasTab.Length - ai.chipsDatasList.Count;
-            
-            for (int i = 0; i < index; i++)
+            int remainingSlots = chipsDatasTab.Length - chipsCopied;
+            for (int i = 0; i < remainingSlots && i < ai.chipsToAddToPatternReal.Count; i++)
             {
-                chipsDatasTab[i + index] = ai.chipsToAddToPatternReal[i];
+                chipsDatasTab[chipsCopied + i] = ai.chipsToAddToPatternReal[i];
             }
-            
-            //chipsDatasTab[i] = ai.chipsToAddToPatternReal[i - (6 - ai.chipsDatasList.Count)];
-                /*
-            List<ChipsDataInstance> availableChips = everyChips
-                .Where(chip => ai.chipsDatasList.All
-                    (aiChip => aiChip.id != chip.id))
-                .ToList();
-
-            int startIndex = ai.chipsDatasList.Count;
-            
-            for (int i = startIndex; i < chipsDatasTab.Length && availableChips.Count > 0; i++)
-            {
-                int randomIndex = Random.Range(0, availableChips.Count);
-                chipsDatasTab[i] = availableChips[randomIndex];
-                availableChips.RemoveAt(randomIndex);
-            }
-            */
-                
+    
             chipsDatasTab = chipsDatasTab.OrderBy(x => Random.value).ToArray();
+    
             UpdateInventoryUI();
         }
 

@@ -180,7 +180,7 @@ namespace MANAGER
             if (soundForFight == null)
             {
                 soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
-                    SoundManager.instance.soundBankData.enemySound.enemySound, true, true, 1f, "FightSound");
+                    SoundManager.instance.soundBankData.musicSound.DarkerThanDark, true, true, 1f, "FightSound");
             }
             else
             {
@@ -195,7 +195,15 @@ namespace MANAGER
             if (currentFightAdvantage == FightAdvantage.Disadvantage)
             {
                 AttackPlayer(true);
+                
+                if (!NewPlayerController.instance._inGameData.IsDead())
+                {
+                    NewPlayerController.instance.animatorPlayer.Play("Overload");
+                }
+                
             }
+            
+            
             
             spotLightFightManager.InitLight();
             
@@ -295,7 +303,8 @@ namespace MANAGER
         
         private void AttackPlayer()
         {
-            
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.bruitCoupNMI);
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.grognementAttaque);
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
             { 
@@ -315,7 +324,8 @@ namespace MANAGER
         private void AttackPlayer(bool isInit)
         {
             if (!isInit)return;
-            
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.bruitCoupNMI);
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.grognementAttaque);
             NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
             if (ai != null)
             { 
@@ -330,6 +340,8 @@ namespace MANAGER
         
         private void AttackPlayer(NewAi ai)
         {
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.bruitCoupNMI);
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.grognementAttaque);
             player.ManageLife(-ai.damageEnemy);
             
             if (ai != null)
@@ -395,15 +407,23 @@ namespace MANAGER
                 
                 currentSequence.RemoveRange(0, correctCount);
                 
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.takeDamage);
+                
                 if (currentSequence.Count == 0)
                 {
                     EnemySequenceGuessed();
+                    SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.validationFinal);
+                }
+                else
+                {
+                    SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.validation);
                 }
                 
             }
             else
             {
                 AttackPlayer(currentEnemyTarget);
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.failMatchRevers);
             }
             
         }
@@ -511,6 +531,10 @@ namespace MANAGER
 
 
         #endregion
-        
+
+        public bool IsInFight()
+        {
+            return fightState == FightState.InFight;
+        }
     }
 }

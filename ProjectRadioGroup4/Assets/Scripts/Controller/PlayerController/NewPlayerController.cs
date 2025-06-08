@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
+using DG.Tweening;
 using INTERACT;
 using INTERFACE;
 using MANAGER;
@@ -73,6 +74,8 @@ public class NewPlayerController : MonoBehaviour
     [Header("Damage")] [SerializeField] private float maxDamageDone;
 
     [HideInInspector] public ChipsManager chipsManager;
+
+    public Vector3 spawnPosition;
     #endregion
 
     #region Enums
@@ -108,24 +111,37 @@ public class NewPlayerController : MonoBehaviour
     private void Init()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
+        {
             Destroy(gameObject);
+        }
 
+        spawnPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        spriteRendererPlayer = GetComponent<SpriteRenderer>();
+        animatorPlayer = GetComponent<Animator>();
+        playerBattery = GetComponent<BatteryPlayer>();
+        rangeFinderManager = GetComponent<RangeFinderManager>();
+        chipsManager = GetComponent<ChipsManager>();
+        InitData();
+    }
+
+    public void InitData()
+    {
         CanTurnOnPhase2Module = false;
         _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
         _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
-
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-        spriteRendererPlayer = GetComponent<SpriteRenderer>();
-        animatorPlayer = GetComponent<Animator>();
         UpdatePhase2ButtonState();
-        playerBattery = GetComponent<BatteryPlayer>();
-        rangeFinderManager = GetComponent<RangeFinderManager>();
         currentScanType = ScanType.None;
-        chipsManager = GetComponent<ChipsManager>();
+        canMove = true;
+        playerBattery.UpdateLifeSlider(_inGameData.hp);
     }
+    
     #endregion
 
     #region Life Management & Getter Setter
@@ -220,9 +236,9 @@ public class NewPlayerController : MonoBehaviour
     #endregion
 
     #region Scanning
-    private void Scan(ScanType scanType, float damageDealToPlayer)
+    private void Scan(ScanType scanType, float damageDealToPlayer, AudioClip _audioClip)
     {
-        if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead())
+        if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead() || NewRadioManager.instance.isMatching)
         {
             return;
         }
@@ -234,14 +250,16 @@ public class NewPlayerController : MonoBehaviour
         }
         ManageLife(-damageDealToPlayer);
         rangeFinderManager.UpdateUiRangeFinder();
+        SoundManager.instance.PlayMusicOneShot(_audioClip);
+        SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.mouvementVetScan);
     }
 
     
     
     
-    public void ScanWeak() => Scan(ScanType.Type3,lifeTakeWeak);
-    public void ScanMid() => Scan(ScanType.Type2,lifeTakenMid);
-    public void ScanStrong() => Scan(ScanType.Type1,lifeTakenStrong);
+    public void ScanWeak() => Scan(ScanType.Type3,lifeTakeWeak, SoundManager.instance.soundBankData.eventSound.scanFaible);
+    public void ScanMid() => Scan(ScanType.Type2,lifeTakenMid,SoundManager.instance.soundBankData.eventSound.scanMoyen);
+    public void ScanStrong() => Scan(ScanType.Type1,lifeTakenStrong,SoundManager.instance.soundBankData.eventSound.scanFort);
     #endregion
 
     #region Phase 2 Module
@@ -287,5 +305,25 @@ public class NewPlayerController : MonoBehaviour
         if (buttonImage != null)
             buttonImage.color = CanTurnOnPhase2Module ? Color.white : disabledColor;
     }
+    #endregion
+
+    #region Interaction
+    [Header("Interaction")]
+    public bool canInteract = true;
+    
+    #endregion
+
+    #region Fight
+
+    public void OnMatch()
+    {
+        FightManager.instance?.OnMatchButtonPressed();
+    }
+
+    public void OnReverse()
+    {
+        FightManager.instance?.OnReverseButtonPressed();
+    }
+
     #endregion
 }

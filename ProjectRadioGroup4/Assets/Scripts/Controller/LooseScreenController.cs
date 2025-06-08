@@ -6,7 +6,7 @@ namespace Controller
 {
     public class LooseScreenController : MonoBehaviour
     {
-        [SerializeField] private GameObject looseScreenPanel;
+        public GameObject looseScreenPanel;
 
         private void Awake()
         {
@@ -29,11 +29,14 @@ namespace Controller
         public void Retry()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.instance.CurrentGameState = GameManager.GameState.Game;
+            GameManager.instance.ResetPlayer();
         }
 
         public void Menu()
         {
             SceneManager.LoadScene("MainMenu");
+            GameManager.instance.CurrentGameState = GameManager.GameState.Menu;
         }
     }
 }
