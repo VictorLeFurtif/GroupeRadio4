@@ -47,8 +47,8 @@ namespace MANAGER
 
         public FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
-        private GameObject soundForFight;
-        private GameObject soundEnemyInFight;
+        public GameObject soundForFight;
+        public GameObject soundEnemyInFight;
         
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
@@ -137,6 +137,11 @@ namespace MANAGER
                 CheckForEndFight();
                 StartUnitTurn();
             }
+            
+        }
+
+        private void Start()
+        {
             
         }
 
@@ -493,6 +498,8 @@ namespace MANAGER
 
             if (playerTurnTimer <= 0)
             {
+                CancelCurrentDraggableItem();
+                
                 NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
                 NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
@@ -502,6 +509,15 @@ namespace MANAGER
             }
         }
 
+        private void CancelCurrentDraggableItem()
+        {
+            if (NewPlayerController.instance.currentDraggedItem != null)
+            {
+                Destroy(NewPlayerController.instance.currentDraggedItem.gameObject);
+                NewPlayerController.instance.currentDraggedItem = null;
+            }
+        }
+        
         private IEnumerator EndFighterTurnWithTimeAnimation(AnimationClip _animation)
         {
             yield return new WaitForSeconds(_animation.length);

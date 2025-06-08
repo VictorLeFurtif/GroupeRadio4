@@ -22,14 +22,16 @@ public class MainMenuUI : MonoBehaviour
     private void Start()
     {
         ChangeWindowMode(true);
-        //PlayTimeText = 
-        //CompletionPercentageText = 
         DontDestroyOnLoad(gameObject);
     }
 
     public void LoadGameByNameScene(string _nameScene)
     {
         SceneManager.LoadScene(_nameScene);
+        if (_nameScene == "LV1" && NewPlayerController.instance != null)
+        {
+            NewPlayerController.instance.transform.position = new Vector3(6, 0, 0);
+        }
     }
 
     public void Continue()

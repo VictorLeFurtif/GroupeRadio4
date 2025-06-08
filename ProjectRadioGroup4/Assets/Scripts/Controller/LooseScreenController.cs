@@ -35,7 +35,8 @@ namespace Controller
 
         public void Menu()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(0);
+            GameManager.instance.ResetPlayer();
             GameManager.instance.CurrentGameState = GameManager.GameState.Menu;
         }
     }

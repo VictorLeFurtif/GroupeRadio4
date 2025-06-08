@@ -79,6 +79,8 @@ public class NewPlayerController : MonoBehaviour
     public Vector3 spawnPosition;
 
     private GameObject soundInRangeFinderZone;
+
+    [Header("Draggable Item")] public DraggableItem currentDraggedItem;
     #endregion
 
     #region Enums

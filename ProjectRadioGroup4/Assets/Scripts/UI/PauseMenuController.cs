@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MANAGER;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,6 +48,7 @@ public class PauseMenuController : MonoBehaviour
     {
         isPanelDisplayed = false;
         SceneManager.LoadScene(0);
+        GameManager.instance.ResetPlayer();
     }
 
     public void Quit()

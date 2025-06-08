@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using Controller;
+using INTERACT;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +15,8 @@ namespace MANAGER
         [SerializeField] private LooseScreenController looseScreenController;
     
         public GameState currentGameState = GameState.Menu;
+
+        [SerializeField] private GameObject prefabSoundManager;
         
         private void Awake()
         {
@@ -74,8 +78,33 @@ namespace MANAGER
             NewPlayerController.instance.transform.position = NewPlayerController.instance.spawnPosition;
             FightManager.instance.fightState = FightManager.FightState.OutFight; // so under good
             NewRadioManager.instance.UpdateTypeOfUiByFightState(); //should correct error when die in fight ?
+            StartCoroutine(NewRadioManager.instance.HandleRadioTransition(new WaveSettings(0,0,0)));
+            NewRadioManager.instance.ResetLights();
+            StartCoroutine(ResetSoundManager());
+            NewPlayerController.instance.rangeFinderManager.TurnRangeFinder(true);
+            NewPlayerController.instance.rangeFinderManager.rfAnimation.animatorRangeFinder.Play("RfIdle");
         }
 
+        private IEnumerator ResetSoundManager()
+        {
+            yield return null;
+            
+            foreach (Transform sound in SoundManager.instance.transform)
+            {
+                switch (sound.gameObject.name)
+                {
+                    case "FightSound":
+                        FightManager.instance.soundForFight = sound.gameObject;
+                        break;
+                    case "EnemyBreath":
+                        FightManager.instance.soundEnemyInFight = sound.gameObject;
+                        break;
+                }
+                sound.gameObject.SetActive(false);
+            }
+            SoundManager.instance.InitSoundBlanc();
+        }
+        
         public void FullScreen(bool toggled)
         {
             if (toggled) Screen.fullScreen = true;  

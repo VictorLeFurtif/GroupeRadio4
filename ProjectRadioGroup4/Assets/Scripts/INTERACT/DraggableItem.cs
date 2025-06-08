@@ -27,6 +27,7 @@ namespace INTERACT
             transform.SetParent(transform.root);
             transform.SetAsLastSibling();
             image.raycastTarget = false;
+            NewPlayerController.instance.currentDraggedItem = this;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -46,6 +47,7 @@ namespace INTERACT
 
             transform.SetParent(parentAfterDrag);
             image.raycastTarget = true;
+            NewPlayerController.instance.currentDraggedItem = null;
         }
     }
 }
