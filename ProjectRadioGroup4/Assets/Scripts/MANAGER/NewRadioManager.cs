@@ -254,6 +254,43 @@ namespace MANAGER
                 StartCoroutine(PulseLight(lightImages[index]));
             }
         }
+        
+        public IEnumerator GoldenRunLightCelebration()
+        {
+            if (lightImages == null || lightImages.Length == 0) yield break;
+
+            Sprite[] originalSprites = new Sprite[lightImages.Length];
+            for (int i = 0; i < lightImages.Length; i++)
+            {
+                if (lightImages[i] != null)
+                {
+                    originalSprites[i] = lightImages[i].sprite;
+                    lightImages[i].sprite = offSprite;
+                }
+            }
+
+            foreach (var t in lightImages)
+            {
+                if (t != null)
+                {
+                    t.sprite = currentSprite;
+                    StartCoroutine(PulseLight(t));
+
+                    yield return new WaitForSeconds(0.3f);
+                }
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            for (int i = 0; i < lightImages.Length; i++)
+            {
+                if (lightImages[i] != null)
+                {
+                    lightImages[i].sprite = originalSprites[i];
+                }
+            }
+            ResetLights();
+        }
         #endregion
 
         #region Coroutines

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: material shader slected enemy
+  m_Name: material shader slected enemy 1
   m_Shader: {fileID: 4800000, guid: 62505ee61d20098489c6f861ed25cce1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -58,9 +58,9 @@ Material:
     - _OutlineMode: 1
     - _OutlinePosition: 2
     - _OutlineShape: 0
-    - _Thickness: 25.71
+    - _Thickness: 9.7
     - _TileMode: 0
-    - _Weight: 0.554
+    - _Weight: 0.624
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

@@ -425,7 +425,7 @@ namespace MANAGER
                 
                 if (currentSequence.Count == 0)
                 {
-                    EnemySequenceGuessed();
+                    StartCoroutine(EnemySequenceGuessed());
                     SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.validationFinal);
                 }
                 else
@@ -450,12 +450,14 @@ namespace MANAGER
         }
 
         [SerializeField] private float goldenRunLifeGiven = 10f;
-        private void EnemySequenceGuessed()
+        private IEnumerator EnemySequenceGuessed()
         {
             if (currentSequenceIndex == 1)
             {
                 NewPlayerController.instance?.ManageLife(goldenRunLifeGiven);
                 Debug.Log("You did a golden run well play man");
+                NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.GoldenRunLightCelebration());
+                yield return new WaitForSeconds(3);
             }
             
             
@@ -473,9 +475,6 @@ namespace MANAGER
             
             isMatchingPhase = true; 
             playerTurnTimer = playerTurnDuration;
-
-            
-            
         }
         
         
