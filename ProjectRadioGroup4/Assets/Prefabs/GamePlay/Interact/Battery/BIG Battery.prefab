@@ -401,7 +401,7 @@ MonoBehaviour:
   - {fileID: 3864053501266711417}
   - {fileID: 3250338329085815677}
   - {fileID: 3876789675050767561}
-  lifeAmountToGive: 80
+  lifeAmountToGive: 65
   basePatternCount: 3
   maxPatternCount: 6
   minFrequency: 3
