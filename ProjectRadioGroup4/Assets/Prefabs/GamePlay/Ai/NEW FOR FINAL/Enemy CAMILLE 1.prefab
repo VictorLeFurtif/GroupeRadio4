@@ -123,6 +123,7 @@ MonoBehaviour:
   monsterEyes: {fileID: 3114595940770179866}
   damageEnemy: 10
   numberOfSwap: 1
+  timerFightManager: 30
 --- !u!212 &7427727256422890086
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -113,6 +113,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: timerFightManager
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: chipsDatasListTempo.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 88b01a35a217ce3449c95588f3fb4d61, type: 2}
