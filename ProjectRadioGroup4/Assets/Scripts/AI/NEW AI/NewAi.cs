@@ -20,6 +20,8 @@ namespace AI.NEW_AI
         public float attackTimer;
         public bool isTimerRunning;
         
+        
+        
         [Header("State Machine")]
         public AiFightState _aiFightState = AiFightState.OutFight;
         
@@ -61,6 +63,8 @@ namespace AI.NEW_AI
 
         [Header("NUMBER OF SWAP")]
         public int numberOfSwap;
+
+        [Header("TIMER FIGHTMANAGER")] public float timerFightManager;
         
         #endregion
 
