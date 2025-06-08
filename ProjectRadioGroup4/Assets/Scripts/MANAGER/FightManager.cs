@@ -498,6 +498,8 @@ namespace MANAGER
 
             if (playerTurnTimer <= 0)
             {
+                CancelCurrentDraggableItem();
+                
                 NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
                 NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
@@ -507,6 +509,15 @@ namespace MANAGER
             }
         }
 
+        private void CancelCurrentDraggableItem()
+        {
+            if (NewPlayerController.instance.currentDraggedItem != null)
+            {
+                Destroy(NewPlayerController.instance.currentDraggedItem.gameObject);
+                NewPlayerController.instance.currentDraggedItem = null;
+            }
+        }
+        
         private IEnumerator EndFighterTurnWithTimeAnimation(AnimationClip _animation)
         {
             yield return new WaitForSeconds(_animation.length);
