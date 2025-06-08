@@ -101,6 +101,13 @@ namespace MANAGER
             UpdateInventoryUI();
         }
 
+        public void ShuffleCard()
+        {
+            chipsDatasTab = chipsDatasTab.OrderBy(x => Random.value).ToArray();
+    
+            UpdateInventoryUI();
+        }
+        
         
         #endregion
 

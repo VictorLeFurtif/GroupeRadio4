@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MANAGER;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -60,9 +61,12 @@ public class MainMenuUI : MonoBehaviour
         Application.Quit();
     }
 
-    public void ChangeWindowMode(bool fullscreen)
+    public void ChangeWindowMode(bool toggled)
     {
-        if (fullscreen) Screen.fullScreen = true;
-        if (!fullscreen) Screen.fullScreen = false;
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.FullScreen(toggled);
+        }
+        
     }
 }

@@ -74,6 +74,8 @@ namespace MANAGER
 
         [Header("TEXT UI SWAP")] 
         [SerializeField] private TMP_Text textSwap;
+
+        private GameObject matchingSound;
         
         #endregion
 
@@ -252,6 +254,43 @@ namespace MANAGER
                 StartCoroutine(PulseLight(lightImages[index]));
             }
         }
+        
+        public IEnumerator GoldenRunLightCelebration()
+        {
+            if (lightImages == null || lightImages.Length == 0) yield break;
+
+            Sprite[] originalSprites = new Sprite[lightImages.Length];
+            for (int i = 0; i < lightImages.Length; i++)
+            {
+                if (lightImages[i] != null)
+                {
+                    originalSprites[i] = lightImages[i].sprite;
+                    lightImages[i].sprite = offSprite;
+                }
+            }
+
+            foreach (var t in lightImages)
+            {
+                if (t != null)
+                {
+                    t.sprite = currentSprite;
+                    StartCoroutine(PulseLight(t));
+
+                    yield return new WaitForSeconds(0.3f);
+                }
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            for (int i = 0; i < lightImages.Length; i++)
+            {
+                if (lightImages[i] != null)
+                {
+                    lightImages[i].sprite = originalSprites[i];
+                }
+            }
+            ResetLights();
+        }
         #endregion
 
         #region Coroutines
@@ -264,6 +303,7 @@ namespace MANAGER
         private IEnumerator HandlePatternMatched(IWaveInteractable waveInteractable)
         {
             ActivateNextLight();
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.validation);
             
             isMatching = false;
     
@@ -368,13 +408,22 @@ namespace MANAGER
 
             if (!waveInteractable.HasRemainingPatterns())
             {
-                Debug.LogError("ICICICIICCII");
                 return;
             }
 
             if (currentTransition != null)
                 StopCoroutine(currentTransition);
 
+            if (matchingSound == null)
+            {
+                matchingSound = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.enemySound.bruitRadioMatch, true, true, 1f, "EnemyBreath");
+            }
+            else
+            {
+                matchingSound.SetActive(true);
+            }
+            
             currentTransition = StartCoroutine(StartMatchingRoutine(waveInteractable));
         }
 
@@ -409,7 +458,9 @@ namespace MANAGER
                 NewPlayerController.instance.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
                 NewPlayerController.instance.canMove = true;
             }
-
+            
+            matchingSound?.SetActive(false);
+            
             StartCoroutine(StopMatchingRoutine());
         }
         

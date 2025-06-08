@@ -9,6 +9,7 @@ namespace MANAGER
     {
         public static GameManager instance;
         public GlobalVolumeManager globalVolumeManager;
+        
         [SerializeField] private LooseScreenController looseScreenController;
     
         public GameState currentGameState = GameState.Menu;
@@ -73,8 +74,12 @@ namespace MANAGER
             NewPlayerController.instance.transform.position = NewPlayerController.instance.spawnPosition;
             FightManager.instance.fightState = FightManager.FightState.OutFight; // so under good
             NewRadioManager.instance.UpdateTypeOfUiByFightState(); //should correct error when die in fight ?
-            
-            
+        }
+
+        public void FullScreen(bool toggled)
+        {
+            if (toggled) Screen.fullScreen = true;  
+            else Screen.fullScreen = false;  
         }
     }
 }
