@@ -93,6 +93,7 @@ namespace DATA.Script.Sound_Data
         public class Music
         {
             public AudioClip audioMenu;
+            public AudioClip DarkerThanDark;
         }
         
         [Serializable]

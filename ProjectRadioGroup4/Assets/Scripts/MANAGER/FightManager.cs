@@ -180,7 +180,7 @@ namespace MANAGER
             if (soundForFight == null)
             {
                 soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
-                    SoundManager.instance.soundBankData.enemySound.enemySound, true, true, 1f, "FightSound");
+                    SoundManager.instance.soundBankData.musicSound.DarkerThanDark, true, true, 1f, "FightSound");
             }
             else
             {
@@ -423,6 +423,7 @@ namespace MANAGER
             else
             {
                 AttackPlayer(currentEnemyTarget);
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.failMatchRevers);
             }
             
         }
