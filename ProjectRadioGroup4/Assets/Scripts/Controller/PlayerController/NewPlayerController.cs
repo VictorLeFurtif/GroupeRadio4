@@ -77,8 +77,8 @@ public class NewPlayerController : MonoBehaviour
     [HideInInspector] public ChipsManager chipsManager;
 
     public Vector3 spawnPosition;
-   
-    
+
+    private GameObject soundInRangeFinderZone;
     #endregion
 
     #region Enums
@@ -312,8 +312,32 @@ public class NewPlayerController : MonoBehaviour
     {
         if (phase2Button == null) return;
         phase2Button.interactable = CanTurnOnPhase2Module;
+        
+        
         if (buttonImage != null)
             buttonImage.color = CanTurnOnPhase2Module ? Color.white : disabledColor;
+
+        if (CanTurnOnPhase2Module)
+        {
+            if (soundInRangeFinderZone == null)
+            {
+                soundInRangeFinderZone = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.eventSound.zoneRangeFinder, true, true, 1f, "SoundZoneRangeFinder");
+            }
+            else
+            {
+                soundInRangeFinderZone.SetActive(true);
+            }  
+        }
+        else
+        {
+            if (soundInRangeFinderZone != null)
+            {
+                soundInRangeFinderZone.SetActive(false);
+            }
+            
+        }
+            
     }
     #endregion
 
