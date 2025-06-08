@@ -63,6 +63,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void ChangeWindowMode(bool toggled)
     {
-        GameManager.instance.FullScreen(toggled);
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.FullScreen(toggled);
+        }
+        
     }
 }
