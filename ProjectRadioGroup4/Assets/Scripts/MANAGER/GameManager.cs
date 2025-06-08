@@ -81,6 +81,8 @@ namespace MANAGER
             StartCoroutine(NewRadioManager.instance.HandleRadioTransition(new WaveSettings(0,0,0)));
             NewRadioManager.instance.ResetLights();
             StartCoroutine(ResetSoundManager());
+            NewPlayerController.instance.rangeFinderManager.TurnRangeFinder(true);
+            NewPlayerController.instance.rangeFinderManager.rfAnimation.animatorRangeFinder.Play("RfIdle");
         }
 
         private IEnumerator ResetSoundManager()

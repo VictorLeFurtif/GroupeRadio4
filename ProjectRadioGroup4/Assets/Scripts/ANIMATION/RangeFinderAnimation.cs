@@ -7,7 +7,7 @@ namespace ANIMATION
 {
     public class RangeFinderAnimation : MonoBehaviour
     {
-        private Animator animatorRangeFinder;
+        public Animator animatorRangeFinder;
         
         [SerializeField] private float minInterval = 10f; 
         [SerializeField] private float maxInterval = 20f; 

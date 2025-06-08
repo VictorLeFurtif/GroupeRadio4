@@ -7,13 +7,9 @@
     <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Enemy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Shader/RADIO WAVE/SG RadioWave Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/GameManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/SoundManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/SoundManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ANIMATION/RangeFinderAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ANIMATION/RangeFinderAnimation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +60,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Downloads/ECHO 42\ProjectRadioGroup4.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/DDDDD\ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
