@@ -32,6 +32,7 @@ namespace ANIMATION
         {
             NewPlayerController.instance?.rangeFinderManager?.TurnRangeFinder(true);
             yield return PlayAnimation("RfTurnOn");
+            animatorRangeFinder.Play("RfIdle");
         }
     
         public IEnumerator TurnOffRangeFinder()

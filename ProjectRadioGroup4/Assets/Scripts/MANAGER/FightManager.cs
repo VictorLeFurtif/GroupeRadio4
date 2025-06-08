@@ -292,11 +292,12 @@ namespace MANAGER
         
         private void StartPlayerTurn()
         {
-            playerTurnTimer = playerTurnDuration;
+            currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
+            
+            playerTurnTimer = currentEnemyTarget.timerFightManager;
             playerSuccess = false;
             isMatchingPhase = true;
-    
-            currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
+            
             currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasList);
             NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
         }
@@ -479,7 +480,7 @@ namespace MANAGER
             }
             
             isMatchingPhase = true; 
-            playerTurnTimer = playerTurnDuration;
+            playerTurnTimer = currentEnemyTarget.timerFightManager;;
         }
         
         
