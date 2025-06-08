@@ -11,6 +11,7 @@ using MANAGER;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class NewPlayerController : MonoBehaviour
 {
@@ -76,9 +77,17 @@ public class NewPlayerController : MonoBehaviour
     [HideInInspector] public ChipsManager chipsManager;
 
     public Vector3 spawnPosition;
+   
+    
     #endregion
 
     #region Enums
+    private enum BreathingState
+    {
+        Normal,
+        Injured,
+        Combat
+    }
     public enum ScanType
     {
         Type1 = 0, 
@@ -104,6 +113,7 @@ public class NewPlayerController : MonoBehaviour
     {
         PlayerMove();
         CheckForFlipX();
+        HandleBreathing();
     }
     #endregion
 
@@ -325,5 +335,49 @@ public class NewPlayerController : MonoBehaviour
         FightManager.instance?.OnReverseButtonPressed();
     }
 
+    #endregion
+
+    #region Brething
+
+    [Header("Breathing Settings")]
+    private float nextBreathTime;
+    private bool isBreathingActive;
+
+    private void HandleBreathing()
+    {
+        if (_inGameData.IsDead() || !canMove)
+        {
+            isBreathingActive = false;
+            return;
+        }
+        
+        if (!isBreathingActive)
+        {
+            StartBreathing();
+            return;
+        }
+
+        if (Time.time >= nextBreathTime)
+        {
+            PlayBreathingSound();
+        }
+    }
+
+    private void StartBreathing()
+    {
+        isBreathingActive = true;
+        PlayBreathingSound();
+    }
+
+    private void PlayBreathingSound()
+    {
+        AudioClip breathClip = SoundManager.instance.soundBankData.avatarSound.respirationJoueur;
+    
+        SoundManager.instance.PlayMusicOneShot(breathClip);
+    
+        nextBreathTime = Time.time + breathClip.length;
+    }
+
+    
     #endregion
 }
