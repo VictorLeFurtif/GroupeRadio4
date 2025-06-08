@@ -74,6 +74,8 @@ namespace MANAGER
 
         [Header("TEXT UI SWAP")] 
         [SerializeField] private TMP_Text textSwap;
+
+        private GameObject matchingSound;
         
         #endregion
 
@@ -264,6 +266,7 @@ namespace MANAGER
         private IEnumerator HandlePatternMatched(IWaveInteractable waveInteractable)
         {
             ActivateNextLight();
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.validation);
             
             isMatching = false;
     
@@ -368,13 +371,22 @@ namespace MANAGER
 
             if (!waveInteractable.HasRemainingPatterns())
             {
-                Debug.LogError("ICICICIICCII");
                 return;
             }
 
             if (currentTransition != null)
                 StopCoroutine(currentTransition);
 
+            if (matchingSound == null)
+            {
+                matchingSound = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.enemySound.bruitRadioMatch, true, true, 1f, "EnemyBreath");
+            }
+            else
+            {
+                matchingSound.SetActive(true);
+            }
+            
             currentTransition = StartCoroutine(StartMatchingRoutine(waveInteractable));
         }
 
@@ -409,7 +421,9 @@ namespace MANAGER
                 NewPlayerController.instance.currentPhase2ModuleState = NewPlayerController.Phase2Module.Off;
                 NewPlayerController.instance.canMove = true;
             }
-
+            
+            matchingSound?.SetActive(false);
+            
             StartCoroutine(StopMatchingRoutine());
         }
         

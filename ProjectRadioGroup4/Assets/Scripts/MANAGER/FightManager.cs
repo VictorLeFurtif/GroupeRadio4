@@ -48,6 +48,7 @@ namespace MANAGER
         public FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
         private GameObject soundForFight;
+        private GameObject soundEnemyInFight;
         
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
@@ -187,6 +188,16 @@ namespace MANAGER
                 soundForFight.SetActive(true);
             }
 
+            if (soundEnemyInFight == null)
+            {
+                soundEnemyInFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.enemySound.respirationNmiCombat, true, true, 1f, "EnemyBreath");
+            }
+            else
+            {
+                soundEnemyInFight.SetActive(true);
+            }
+
             
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
@@ -231,6 +242,7 @@ namespace MANAGER
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundEnemyInFight?.SetActive(false);
                
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
@@ -238,6 +250,7 @@ namespace MANAGER
                 Debug.Log("IA win");
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundEnemyInFight?.SetActive(false);
             }
             else
             {
