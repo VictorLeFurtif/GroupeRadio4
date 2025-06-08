@@ -47,8 +47,8 @@ namespace MANAGER
 
         public FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
-        private GameObject soundForFight;
-        private GameObject soundEnemyInFight;
+        public GameObject soundForFight;
+        public GameObject soundEnemyInFight;
         
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
@@ -137,6 +137,11 @@ namespace MANAGER
                 CheckForEndFight();
                 StartUnitTurn();
             }
+            
+        }
+
+        private void Start()
+        {
             
         }
 

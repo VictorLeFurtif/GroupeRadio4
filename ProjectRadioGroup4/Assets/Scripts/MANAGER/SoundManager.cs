@@ -19,7 +19,8 @@ namespace MANAGER
         private SoundBankData soundBankDataBrut;
 
         public SoundBankDataInstance soundBankData;
-        
+
+        public GameObject soundBlanc;
         
         private void Awake()
         {
@@ -36,9 +37,23 @@ namespace MANAGER
         private void Start()
         {
             soundBankData = soundBankDataBrut.Instance();
-            InitialisationAudioObjectDestroyAtEnd(soundBankData.enviroSound.whiteNoiseVentilation,true,true,1f,"Main Sound");
+            InitSoundBlanc();
         }
 
+        public void InitSoundBlanc()
+        {
+            if (soundBlanc == null)
+            {
+                soundBlanc = InitialisationAudioObjectDestroyAtEnd
+                (soundBankData.enviroSound.whiteNoiseVentilation,
+                    true, true, 1f, "Main Sound");
+            }
+            else
+            {
+                soundBlanc.SetActive(true);
+            }
+        }
+        
         private void Update()
         {
             sfxVolume = sfxVolumeSlider;

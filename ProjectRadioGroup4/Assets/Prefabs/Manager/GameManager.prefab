@@ -4011,6 +4011,7 @@ MonoBehaviour:
   globalVolumeManager: {fileID: 3107997785715384787}
   looseScreenController: {fileID: 6815915074396934741}
   currentGameState: 1
+  prefabSoundManager: {fileID: 4065016529823320582, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
 --- !u!1 &8697150498451313788
 GameObject:
   m_ObjectHideFlags: 0
