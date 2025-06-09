@@ -26,6 +26,7 @@ namespace Controller
             {
                 GameOver();
             }
+            
         }
 
         private void GameOver()
@@ -37,6 +38,7 @@ namespace Controller
         public void Retry()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            looseScreenPanel.SetActive(false);
             GameManager.instance.CurrentGameState = GameManager.GameState.Game;
             GameManager.instance.ResetPlayer();
         }

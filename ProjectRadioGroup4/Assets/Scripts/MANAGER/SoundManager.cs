@@ -40,6 +40,7 @@ namespace MANAGER
         {
             soundBankData = soundBankDataBrut.Instance();
             InitSoundBlanc();
+            audioSource.volume = 1f;
         }
 
         public void InitSoundBlanc()
@@ -72,6 +73,7 @@ namespace MANAGER
         
         private void Update()
         {
+            Debug.LogError(audioSource.volume);
             foreach (var music in musicsEffects)
             {
                 if (music != null) 

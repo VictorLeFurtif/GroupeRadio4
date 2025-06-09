@@ -26,7 +26,6 @@ public class MasterVolumeHelper : MonoBehaviour
 
         if (volumeSlider != null)
         {
-            Debug.LogError("333333");
             volumeSlider.value = soundManager.masterVolume;
             
             volumeSlider.onValueChanged.AddListener(UpdateMasterVolume);
@@ -50,6 +49,7 @@ public class MasterVolumeHelper : MonoBehaviour
     private void Update()
     {
         volumeSlider.value = soundManager.masterVolume;
+        
     }
 
     private void OnDestroy()
