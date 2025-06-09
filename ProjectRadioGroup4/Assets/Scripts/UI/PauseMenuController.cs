@@ -22,9 +22,10 @@ namespace UI
             if (ShouldTogglePause())
             {
                 ChangePanelState();
+                ShowPanel();
             }
-            ShowPanel();
-            SetTimeScale();
+            
+            //SetTimeScale();
         }
 
         private bool ShouldTogglePause()
@@ -57,10 +58,12 @@ namespace UI
     
         public void ReturnToMenu()
         {
+            GameManager.instance.CurrentGameState = GameManager.GameState.Menu;
             isPanelDisplayed = false;
             Time.timeScale = 1;
             SceneManager.LoadScene("MainMenuNew");
             GameManager.instance.ResetPlayer();
+            PausePanel.SetActive(false);
         }
 
         public void QuitGame()

@@ -54,8 +54,11 @@ namespace MANAGER
                         looseScreenController.looseScreenPanel.SetActive(true);
                         break;
                     case GameState.Game:
+                        NewRadioManager.instance.canvaRadio.SetActive(true);
+                        break;
                     case GameState.Menu:
                         looseScreenController.looseScreenPanel.SetActive(false);
+                        NewRadioManager.instance.canvaRadio.SetActive(false);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);

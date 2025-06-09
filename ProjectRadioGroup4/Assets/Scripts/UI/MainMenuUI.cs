@@ -55,6 +55,8 @@ namespace UI
             {
                 SoundManager.instance.soundMenu.SetActive(true);
             }
+
+            
         }
 
         private IEnumerator TextSequenceCoroutine(string sceneName)
@@ -92,7 +94,10 @@ namespace UI
                 NewPlayerController.instance.transform.position = new Vector3(6, 0, 0);
             }
         
-            //storyLineOb.SetActive(false);
+            if (GameManager.instance != null && sceneName != "MainMenuNew")
+            {
+                GameManager.instance.CurrentGameState = GameManager.GameState.Game;
+            }
         }
 
         private void SkipIntro()

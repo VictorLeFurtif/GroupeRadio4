@@ -1,3 +1,4 @@
+using System;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class MasterVolumeHelper : MonoBehaviour
     private void Start()
     {
         
-        soundManager = FindObjectOfType<SoundManager>();
+        soundManager = SoundManager.instance;
         
         if (soundManager == null)
         {
@@ -25,6 +26,7 @@ public class MasterVolumeHelper : MonoBehaviour
 
         if (volumeSlider != null)
         {
+            Debug.LogError("333333");
             volumeSlider.value = soundManager.masterVolume;
             
             volumeSlider.onValueChanged.AddListener(UpdateMasterVolume);
@@ -34,13 +36,20 @@ public class MasterVolumeHelper : MonoBehaviour
             Debug.LogError("Aucun Slider assigné ou trouvé sur ce GameObject!");
         }
     }
+    
 
     private void UpdateMasterVolume(float newVolume)
     {
         if (soundManager != null)
         {
             soundManager.UpdateMasterVolume(newVolume);
+            
         }
+    }
+
+    private void Update()
+    {
+        volumeSlider.value = soundManager.masterVolume;
     }
 
     private void OnDestroy()

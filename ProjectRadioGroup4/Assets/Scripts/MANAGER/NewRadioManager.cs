@@ -51,7 +51,7 @@ namespace MANAGER
         private Coroutine currentTransition;
 
         [Header("UI")] 
-        public Canvas canvaRadio;
+        public GameObject canvaRadio;
         [SerializeField] private TMP_Text chronoInFight;
         
         [Header("List")] 

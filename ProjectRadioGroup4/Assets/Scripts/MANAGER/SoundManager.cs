@@ -15,8 +15,6 @@ namespace MANAGER
 
         [Range(0,1)] public float masterVolume = 1f;
         
-        [Header("Slider Reference")]
-        [SerializeField] private Slider sliderMaster;
 
         [SerializeField] private SoundBankData soundBankDataBrut;
         public SoundBankDataInstance soundBankData;
@@ -36,7 +34,6 @@ namespace MANAGER
                 return;
             }
             
-            sliderMaster.value = masterVolume;
         }
         
         private void Start()
