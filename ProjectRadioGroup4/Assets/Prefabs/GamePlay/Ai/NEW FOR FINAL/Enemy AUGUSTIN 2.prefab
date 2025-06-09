@@ -529,7 +529,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed9ac90b8e1e22648b60b4a05507c39c, type: 2}
   chipsToAddToPatternReal: []
   monsterEyes: {fileID: 7223174357100557719}
-  damageEnemy: 14
+  damageEnemy: 10
   numberOfSwap: 2
   timerFightManager: 45
 --- !u!212 &9164809541307668396
