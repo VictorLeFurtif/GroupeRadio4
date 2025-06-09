@@ -326,7 +326,10 @@ namespace MANAGER
                         ai.isTimerRunning = false;
                         yield break;
                     }
-
+                    if (matchingSound != null)
+                    {
+                        matchingSound.SetActive(false);
+                    }
                     controller.canMove = true;
                     waveInteractable.CanSecondPhase = false;
                 }
@@ -386,6 +389,10 @@ namespace MANAGER
         private IEnumerator StopMatchingRoutine()
         {
             isMatching = false;
+            if (matchingSound != null)
+            {
+                matchingSound.SetActive(false);
+            }
             yield return HandleRadioTransition(new WaveSettings(0,0,0));
         }
         #endregion
@@ -459,7 +466,7 @@ namespace MANAGER
                 NewPlayerController.instance.canMove = true;
             }
             
-            matchingSound?.SetActive(false);
+            
             
             StartCoroutine(StopMatchingRoutine());
         }

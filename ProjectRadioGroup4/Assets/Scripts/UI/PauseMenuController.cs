@@ -12,7 +12,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0 && Input.GetKeyDown(KeyCode.Escape))
+        if (SceneManager.GetActiveScene().buildIndex != 0 && Input.GetKeyDown(KeyCode.Escape) && FightManager.instance.fightState is not FightManager.FightState.InFight)
         {
             ChangePanelState();
         }
