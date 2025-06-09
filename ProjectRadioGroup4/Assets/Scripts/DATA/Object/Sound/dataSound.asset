@@ -102,4 +102,4 @@ MonoBehaviour:
     validationFinal: {fileID: 8300000, guid: 286be497e752a2b4b9dd968463b7c3cf, type: 3}
     zoneCombat: {fileID: 8300000, guid: ce59167756e66794a9406b6cf8a59dc8, type: 3}
     zoneRangeFinder: {fileID: 8300000, guid: 25a5f540ae364434aad4fae50a2224c2, type: 3}
-    openingDoor: {fileID: 8300000, guid: f244ae4e7811d1a45b7fc472b5b6882a, type: 3}
+    openingDoor: {fileID: 8300000, guid: 8c12f58d01b3d0b4190eba4053be9405, type: 3}
