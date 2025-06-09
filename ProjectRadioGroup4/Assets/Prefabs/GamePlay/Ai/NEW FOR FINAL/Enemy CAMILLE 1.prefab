@@ -64,10 +64,10 @@ MonoBehaviour:
   - {fileID: 2448635448402226732}
   - {fileID: 3863648676772351434}
   lifeAmountToGive: 0
-  basePatternCount: 3
-  maxPatternCount: 6
+  basePatternCount: 1
+  maxPatternCount: 4
   minFrequency: 3
-  maxFrequency: 15
+  maxFrequency: 8
   minAmplitude: 0.1
   maxAmplitude: 0.4
   minStep: 0.1
