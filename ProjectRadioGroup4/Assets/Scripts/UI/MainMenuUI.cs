@@ -46,6 +46,15 @@ namespace UI
         
             targetSceneName = _nameScene;
             currentSequence = StartCoroutine(TextSequenceCoroutine(_nameScene));
+            if (SoundManager.instance.soundMenu != null)
+            {
+                SoundManager.instance.soundMenu.SetActive(false);
+            }
+
+            if (targetSceneName == "MainMenuNew")
+            {
+                SoundManager.instance.soundMenu.SetActive(true);
+            }
         }
 
         private IEnumerator TextSequenceCoroutine(string sceneName)

@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75a2cb84-7319-443e-85ac-1d11fb5a905d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Manager/SoundManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Manager/SoundManager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/MainMenuNew.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/MainMenuNew.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController/NewPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController/NewPlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/SoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/SoundController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Sound Data/SoundBankData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DATA/Script/Sound Data/SoundBankData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/FightManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/NewRadioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MANAGER/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/BUTTON/BouttonFeedBack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/BUTTON/BouttonFeedBack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenuController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
