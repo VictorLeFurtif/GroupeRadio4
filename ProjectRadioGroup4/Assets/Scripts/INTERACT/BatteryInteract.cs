@@ -235,7 +235,7 @@ namespace INTERACT
             }
             
             CancelInteractionAfterContact();
-            Destroy(gameObject,0.1f);
+            Destroy(gameObject);
         }
 
         protected virtual void CancelInteractionAfterContact()
