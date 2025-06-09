@@ -83,6 +83,8 @@ namespace MANAGER
             StartCoroutine(ResetSoundManager());
             NewPlayerController.instance.rangeFinderManager.TurnRangeFinder(true);
             NewPlayerController.instance.rangeFinderManager.rfAnimation.animatorRangeFinder.Play("RfIdle");
+            NewRadioManager.instance.UpdateTypeOfUiByFightState();
+            StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
         }
 
         private IEnumerator ResetSoundManager()
