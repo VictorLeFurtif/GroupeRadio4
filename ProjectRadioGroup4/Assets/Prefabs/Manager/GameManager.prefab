@@ -984,7 +984,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6120930205119073523, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
+        m_TargetAssemblyTypeName: MANAGER.SoundManager, Assembly-CSharp
+        m_MethodName: UpdateVgmVolumeSlider
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4091052446631616491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,7 +2212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2858,8 +2870,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 785c3eb207db1614d9b2d5546fe8222b, type: 3}
   - {fileID: 21300000, guid: 3c5548be4e0d9314da67e2646b93157c, type: 3}
   - {fileID: 21300000, guid: 231cb2058a63948408599e816a67fe35, type: 3}
-  screenShakeRange: 2
-  animationSpeed: 0.4
+  screenShakeRange: 10
+  animationSpeed: 0.1
 --- !u!114 &8412743218422012632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2873,6 +2885,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 5875797358505877564}
+  sliderAll: {fileID: 8490478522710672776}
+  sliderSfx: {fileID: 8774306485224749794}
+  sliderVgm: {fileID: 7376644709174452477}
 --- !u!1 &7169131967013480184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3034,15 +3049,15 @@ RectTransform:
   m_GameObject: {fileID: 7371843945817622582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2572090992269027524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7411458412670483901
 CanvasRenderer:
@@ -4018,7 +4033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalVolumeManager: {fileID: 3107997785715384787}
   looseScreenController: {fileID: 6815915074396934741}
-  currentGameState: 2
+  currentGameState: 1
   prefabSoundManager: {fileID: 4065016529823320582, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
 --- !u!1 &8697150498451313788
 GameObject:

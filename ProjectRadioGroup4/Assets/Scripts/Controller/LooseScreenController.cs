@@ -53,16 +53,19 @@ namespace Controller
             foreach (var sprite in glassAnimFrameList)
             {
                 glassImageReference.sprite = sprite;
-                NewRandomImagePosition();
+                //NewRandomImagePosition();
                 yield return new WaitForSeconds(animationSpeed);
             }
         }
 
         public void NewRandomImagePosition()
         {
-            glassImageReference.gameObject.transform.position = 
+            /*
+             //works like trash
+            glassImageReference.gameObject.transform.position += 
                 new Vector3(Random.Range(0f, screenShakeRange), Random.Range(0f, screenShakeRange), 0);
                 Debug.Log(glassImageReference.gameObject.transform.position);
+            */
         }
     }
 }

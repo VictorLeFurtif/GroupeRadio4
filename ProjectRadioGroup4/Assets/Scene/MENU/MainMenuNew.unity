@@ -3018,6 +3018,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6120930205119073523, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
+      propertyPath: sliderAll
+      value: 
+      objectReference: {fileID: 2068604787}
+    - target: {fileID: 6120930205119073523, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
+      propertyPath: sliderSfx
+      value: 
+      objectReference: {fileID: 2060357115}
+    - target: {fileID: 6120930205119073523, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
+      propertyPath: sliderVgm
+      value: 
+      objectReference: {fileID: 1902650335}
     - target: {fileID: 9069158822516792735, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.032251477
@@ -5449,7 +5461,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1954431007}
+        m_TargetAssemblyTypeName: MANAGER.SoundManager, Assembly-CSharp
+        m_MethodName: UpdateVgmVolumeSlider
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1954431007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6120930205119073523, guid: b8bf1a67196876c43a4589ff2132771d, type: 3}
