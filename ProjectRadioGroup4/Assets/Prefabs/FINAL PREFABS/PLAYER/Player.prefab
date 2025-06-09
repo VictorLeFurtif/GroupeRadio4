@@ -128,6 +128,7 @@ MonoBehaviour:
   maxDamageDone: 20
   chipsManager: {fileID: 0}
   spawnPosition: {x: 0, y: 0, z: 0}
+  currentDraggedItem: {fileID: 0}
   canInteract: 1
 --- !u!114 &7952719179538484363
 MonoBehaviour:
@@ -149,9 +150,9 @@ MonoBehaviour:
   listMidColliders: []
   listStrongColliders: []
   parentRangeFinder: {fileID: 0}
-  colorWeak: {r: 0.50980395, g: 0.7607844, b: 0.4431373, a: 1}
-  colorMid: {r: 0.5372549, g: 0.44039237, b: 0.13333333, a: 1}
-  colorStrong: {r: 0.52156866, g: 0.208822, b: 0.0862745, a: 1}
+  colorWeak: {r: 0.16425121, g: 1, b: 0.9613527, a: 1}
+  colorMid: {r: 0.12841378, g: 0.78400004, b: 0.75358623, a: 1}
+  colorStrong: {r: 0.093833305, g: 0.56299996, b: 0.5403505, a: 1}
   appearDuration: 0.3
   disappearDuration: 0.2
   appearEase: 27
