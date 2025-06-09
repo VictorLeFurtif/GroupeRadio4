@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 915126372914458839}
   - component: {fileID: 2072936799330404361}
   - component: {fileID: 2936020112269747636}
+  - component: {fileID: 2611145268502198655}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -371,16 +372,16 @@ RectTransform:
   m_GameObject: {fileID: 4046843758999873287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.59, y: 3.59, z: 3.59}
+  m_LocalScale: {x: 5.83, y: 5.83, z: 5.83}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2240512954028666481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -7.0713196, y: 0.000011444092}
   m_SizeDelta: {x: 20, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.4393564, y: 0.5}
 --- !u!222 &2072936799330404361
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -404,7 +405,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 5.01, y: 5.63, z: 6.64, w: 4.11}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -419,6 +420,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2611145268502198655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046843758999873287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1807ff416006e5b4dbf0a0a4a2d39ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprite: {fileID: 21300000, guid: 9351c9555c197ae4ba8e14d11a79b6d1, type: 3}
+  hoverSprite: {fileID: 21300000, guid: d2bdda3f2a41bc84cae3fa4734afabfa, type: 3}
+  buttonImage: {fileID: 2936020112269747636}
 --- !u!1 &4357957937533049577
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 687792857364883038}
   - component: {fileID: 5958683129916010895}
+  - component: {fileID: 725734773050321020}
   m_Layer: 5
   m_Name: Slider VOLUME
   m_TagString: Untagged
@@ -808,19 +825,20 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &725734773050321020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630442294251497573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1f1229219557e459a50be2dc4ce554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 5958683129916010895}
 --- !u!1 &7340267829953597965
 GameObject:
   m_ObjectHideFlags: 0

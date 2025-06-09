@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75a2cb84-7319-443e-85ac-1d11fb5a905d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/DepartureMono-1.500/DepartureMono-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/UI/Fonts/DepartureMono-1.500/DepartureMono-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/MENU ASSETS/Slider VOLUME.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/MENU ASSETS/Slider VOLUME.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/MainMenuNew.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/MainMenuNew.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

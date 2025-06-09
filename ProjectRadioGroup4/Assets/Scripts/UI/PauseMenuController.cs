@@ -54,6 +54,7 @@ namespace UI
         private void ShowPanel()
         {
             PausePanel.SetActive(isPanelDisplayed);
+            NewPlayerController.instance.canMove = !isPanelDisplayed;
         }
     
         public void ReturnToMenu()
