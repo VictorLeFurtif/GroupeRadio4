@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="">
+    <list default="true" id="75a2cb84-7319-443e-85ac-1d11fb5a905d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectRadioGroup4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/FINAL/Credits Final.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FINAL/Credits Final.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utility/ScrollingText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utility/ScrollingText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/FINAL/Levels/LV3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/MainMenuNew.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/MainMenuNew.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,70 +16,57 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DpaMonitoringSettings">
-    <option name="firstShow" value="false" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DoorController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/Script/Attack Data/Old System Attack Player/PlayerAttack.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DATA/Script/Tutorial/FightTutorialTextData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/INTERFACE/EventTrigger.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/INTERFACE/IAi.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MANAGER/TutorialFightManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Link To Radio/UiRadioSaver.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/BUTTON/BouttonFeedBack.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 2
-}</component>
-  <component name="ProjectId" id="2vzfKoKV3V3G3rE5mvBTmbULyG6" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2yH61gUqgSJ0QzoDT4WncVgZtWj" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "<unknown>",
-    "ignore.virus.scanning.warn.message": "true",
+    "git-widget-placeholder": "dev/Victor",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Downloads/ECHO 42\ECHO 42.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/FFFFF\ProjectRadioGroup4.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="D:\Victor Goat\Build" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\v.baz\Downloads\FFFFF" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\v.baz\WORK\GroupeRadio4\ProjectRadioGroup4 -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\v.baz\WORK\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.39f1\Editor\Unity.exe" />
-      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Work\GroupeRadio4\ProjectRadioGroup4 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Work\GroupeRadio4\ProjectRadioGroup4" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\v.baz\WORK\GroupeRadio4\ProjectRadioGroup4 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\v.baz\WORK\GroupeRadio4\ProjectRadioGroup4" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -113,61 +101,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="08aa5d62-0d0a-431f-ab99-e239c60e09d5" name="Changes" comment="" />
-      <created>1745152764476</created>
+      <changelist id="75a2cb84-7319-443e-85ac-1d11fb5a905d" name="Changes" comment="" />
+      <created>1749478945672</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1745152764476</updated>
-      <workItem from="1745152767171" duration="9998000" />
-      <workItem from="1745233091610" duration="5812000" />
-      <workItem from="1745311458665" duration="1000" />
-      <workItem from="1745348359089" duration="10503000" />
-      <workItem from="1745397967802" duration="14844000" />
-      <workItem from="1745438578304" duration="8285000" />
-      <workItem from="1745482982615" duration="1177000" />
-      <workItem from="1745484180154" duration="7125000" />
-      <workItem from="1745508639850" duration="809000" />
-      <workItem from="1745516863211" duration="16552000" />
-      <workItem from="1745575111207" duration="3781000" />
-      <workItem from="1745584804601" duration="263000" />
-      <workItem from="1745743362379" duration="9420000" />
-      <workItem from="1745766881365" duration="6907000" />
-      <workItem from="1745828059920" duration="109000" />
-      <workItem from="1745828192643" duration="8077000" />
-      <workItem from="1745856305406" duration="1227000" />
-      <workItem from="1745862043166" duration="3548000" />
-      <workItem from="1745880948384" duration="4450000" />
-      <workItem from="1745913544442" duration="19000" />
-      <workItem from="1745936951491" duration="4736000" />
-      <workItem from="1745999932689" duration="4510000" />
-      <workItem from="1746004506085" duration="122000" />
-      <workItem from="1746004812474" duration="3424000" />
-      <workItem from="1746008552033" duration="8786000" />
-      <workItem from="1746481311393" duration="223000" />
-      <workItem from="1746482124817" duration="296000" />
-      <workItem from="1746482502714" duration="2327000" />
-      <workItem from="1746640621314" duration="7148000" />
-      <workItem from="1746734102011" duration="22000" />
-      <workItem from="1746735998522" duration="2026000" />
-      <workItem from="1746781871567" duration="1574000" />
-      <workItem from="1746881496058" duration="906000" />
-      <workItem from="1746988376287" duration="5514000" />
-      <workItem from="1747148074950" duration="1790000" />
-      <workItem from="1748892452928" duration="2195000" />
-      <workItem from="1748965022724" duration="1099000" />
-      <workItem from="1749213643159" duration="9907000" />
-      <workItem from="1749237019365" duration="20712000" />
-      <workItem from="1749295088149" duration="2639000" />
-      <workItem from="1749368122505" duration="7400000" />
-      <workItem from="1749398427574" duration="4374000" />
-      <workItem from="1749462743776" duration="2946000" />
+      <updated>1749478945672</updated>
+      <workItem from="1749478950506" duration="4442000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -175,22 +120,4 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
-  </component>
 </project>
