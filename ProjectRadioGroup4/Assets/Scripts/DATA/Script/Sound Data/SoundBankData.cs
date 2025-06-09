@@ -114,6 +114,7 @@ namespace DATA.Script.Sound_Data
             public AudioClip validationFinal;
             public AudioClip zoneCombat;
             public AudioClip zoneRangeFinder;
+            public AudioClip openingDoor;
         }
 
         public AvatarSound AvatarSoundData = new AvatarSound();

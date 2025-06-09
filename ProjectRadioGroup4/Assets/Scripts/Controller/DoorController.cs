@@ -88,6 +88,7 @@ public class DoorController : MonoBehaviour
         if (doorAnimator != null)
         {
             doorAnimator.Play("animDoor");
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.openingDoor);
             yield return null;
             float animLength = doorAnimator.GetCurrentAnimatorStateInfo(0).length;
             
