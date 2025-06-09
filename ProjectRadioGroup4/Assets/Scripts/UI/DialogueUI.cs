@@ -1,19 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
-    [SerializeField] 
-    private TextMeshProUGUI textComponent;
-    [SerializeField] 
-    private string[] lines;
-    [SerializeField] [Header("lower value = faster")] 
-    private float textSpeed;
+    [SerializeField] private TextMeshProUGUI textComponent;
+    [SerializeField] private bool playOnStart;
+    [SerializeField] private string[] lines;
+    [Header("lower value = faster")] 
+    [SerializeField] private float textSpeed;
+    [SerializeField] private float offset;
     
     private int index;
+    private bool playerControllerIsNull;
 
     private void Start()
     {
@@ -23,17 +25,37 @@ public class DialogueUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (playOnStart)
         {
-            if (textComponent.text == lines[index])
+            if (Input.GetKeyDown("space"))
             {
-                NextLine();
+                if (textComponent.text == lines[index])
+                {
+                    NextLine();
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    textComponent.text = lines[index];
+                }
             }
-            else
+
+            if (!playerControllerIsNull)
             {
-                StopAllCoroutines();
-                textComponent.text = lines[index];
+                Vector2 currentPos = gameObject.transform.position;
+                currentPos = PlayerController.instance.transform.position;
+                currentPos.y += offset;
+                gameObject.transform.position = currentPos;
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (PlayerController.instance == null)
+        {
+            textComponent.text = "playerController.Instance == null";
+            playerControllerIsNull = true;
         }
     }
 

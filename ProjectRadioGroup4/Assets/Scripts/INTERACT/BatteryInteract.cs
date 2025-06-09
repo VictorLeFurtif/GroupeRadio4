@@ -227,6 +227,11 @@ namespace INTERACT
             if (Detected)
             {
                 ContactWithPlayerAfterDetected();  
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.recupBatterie);
+            }
+            else
+            {
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.batterieCasse);
             }
             
             CancelInteractionAfterContact();

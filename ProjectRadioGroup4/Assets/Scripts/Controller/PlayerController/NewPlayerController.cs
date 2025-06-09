@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using Controller;
 using DATA.Script.Entity_Data.AI;
 using DATA.Script.Entity_Data.Player;
+using DG.Tweening;
 using INTERACT;
 using INTERFACE;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class NewPlayerController : MonoBehaviour
 {
@@ -73,9 +75,21 @@ public class NewPlayerController : MonoBehaviour
     [Header("Damage")] [SerializeField] private float maxDamageDone;
 
     [HideInInspector] public ChipsManager chipsManager;
+
+    public Vector3 spawnPosition;
+
+    private GameObject soundInRangeFinderZone;
+
+    [Header("Draggable Item")] public DraggableItem currentDraggedItem;
     #endregion
 
     #region Enums
+    private enum BreathingState
+    {
+        Normal,
+        Injured,
+        Combat
+    }
     public enum ScanType
     {
         Type1 = 0, 
@@ -101,6 +115,7 @@ public class NewPlayerController : MonoBehaviour
     {
         PlayerMove();
         CheckForFlipX();
+        HandleBreathing();
     }
     #endregion
 
@@ -108,24 +123,37 @@ public class NewPlayerController : MonoBehaviour
     private void Init()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
+        {
             Destroy(gameObject);
+        }
 
+        spawnPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        spriteRendererPlayer = GetComponent<SpriteRenderer>();
+        animatorPlayer = GetComponent<Animator>();
+        playerBattery = GetComponent<BatteryPlayer>();
+        rangeFinderManager = GetComponent<RangeFinderManager>();
+        chipsManager = GetComponent<ChipsManager>();
+        InitData();
+    }
+
+    public void InitData()
+    {
         CanTurnOnPhase2Module = false;
         _abstractEntityDataInstance = _abstractEntityData.Instance(gameObject);
         _inGameData = (PlayerDataInstance)_abstractEntityDataInstance;
-
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-        spriteRendererPlayer = GetComponent<SpriteRenderer>();
-        animatorPlayer = GetComponent<Animator>();
         UpdatePhase2ButtonState();
-        playerBattery = GetComponent<BatteryPlayer>();
-        rangeFinderManager = GetComponent<RangeFinderManager>();
         currentScanType = ScanType.None;
-        chipsManager = GetComponent<ChipsManager>();
+        canMove = true;
+        playerBattery.UpdateLifeSlider(_inGameData.hp);
     }
+    
     #endregion
 
     #region Life Management & Getter Setter
@@ -155,6 +183,8 @@ public class NewPlayerController : MonoBehaviour
                 canMove = false;
                 rb.velocity = Vector2.zero;
                 animatorPlayer.Play("Death");
+                StartCoroutine(PlayGameOverAfterDeath());
+                
                 return;
             }
             
@@ -166,15 +196,18 @@ public class NewPlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator PlayGameOverAfterDeath()
+    {
+        float timeToWait = animatorPlayer.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(timeToWait + 0.5f);
+        GameManager.instance.GameOver();
+    }
+
     public float GetPlayerDamage()
     {
         return maxDamageDone;
     }
     
-    public void PlayGameOver()
-    {    
-        GameManager.instance?.GameOver();
-    }
     #endregion
     
     #region Movement
@@ -215,9 +248,9 @@ public class NewPlayerController : MonoBehaviour
     #endregion
 
     #region Scanning
-    private void Scan(ScanType scanType, float damageDealToPlayer)
+    private void Scan(ScanType scanType, float damageDealToPlayer, AudioClip _audioClip)
     {
-        if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead())
+        if (FightManager.instance?.fightState == FightManager.FightState.InFight || _inGameData.IsDead() || NewRadioManager.instance.isMatching)
         {
             return;
         }
@@ -229,14 +262,16 @@ public class NewPlayerController : MonoBehaviour
         }
         ManageLife(-damageDealToPlayer);
         rangeFinderManager.UpdateUiRangeFinder();
+        SoundManager.instance.PlayMusicOneShot(_audioClip);
+        SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.avatarSound.mouvementVetScan);
     }
 
     
     
     
-    public void ScanWeak() => Scan(ScanType.Type3,lifeTakeWeak);
-    public void ScanMid() => Scan(ScanType.Type2,lifeTakenMid);
-    public void ScanStrong() => Scan(ScanType.Type1,lifeTakenStrong);
+    public void ScanWeak() => Scan(ScanType.Type3,lifeTakeWeak, SoundManager.instance.soundBankData.eventSound.scanFaible);
+    public void ScanMid() => Scan(ScanType.Type2,lifeTakenMid,SoundManager.instance.soundBankData.eventSound.scanMoyen);
+    public void ScanStrong() => Scan(ScanType.Type1,lifeTakenStrong,SoundManager.instance.soundBankData.eventSound.scanFort);
     #endregion
 
     #region Phase 2 Module
@@ -279,8 +314,96 @@ public class NewPlayerController : MonoBehaviour
     {
         if (phase2Button == null) return;
         phase2Button.interactable = CanTurnOnPhase2Module;
+        
+        
         if (buttonImage != null)
             buttonImage.color = CanTurnOnPhase2Module ? Color.white : disabledColor;
+
+        if (CanTurnOnPhase2Module)
+        {
+            if (soundInRangeFinderZone == null)
+            {
+                soundInRangeFinderZone = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.eventSound.zoneRangeFinder, true, true, 1f, "SoundZoneRangeFinder");
+            }
+            else
+            {
+                soundInRangeFinderZone.SetActive(true);
+            }  
+        }
+        else
+        {
+            if (soundInRangeFinderZone != null)
+            {
+                soundInRangeFinderZone.SetActive(false);
+            }
+            
+        }
+            
     }
+    #endregion
+
+    #region Interaction
+    [Header("Interaction")]
+    public bool canInteract = true;
+    
+    #endregion
+
+    #region Fight
+
+    public void OnMatch()
+    {
+        FightManager.instance?.OnMatchButtonPressed();
+    }
+
+    public void OnReverse()
+    {
+        FightManager.instance?.OnReverseButtonPressed();
+    }
+
+    #endregion
+
+    #region Brething
+
+    [Header("Breathing Settings")]
+    private float nextBreathTime;
+    private bool isBreathingActive;
+
+    private void HandleBreathing()
+    {
+        if (_inGameData.IsDead() || !canMove)
+        {
+            isBreathingActive = false;
+            return;
+        }
+        
+        if (!isBreathingActive)
+        {
+            StartBreathing();
+            return;
+        }
+
+        if (Time.time >= nextBreathTime)
+        {
+            PlayBreathingSound();
+        }
+    }
+
+    private void StartBreathing()
+    {
+        isBreathingActive = true;
+        PlayBreathingSound();
+    }
+
+    private void PlayBreathingSound()
+    {
+        AudioClip breathClip = SoundManager.instance.soundBankData.avatarSound.respirationJoueur;
+    
+        SoundManager.instance.PlayMusicOneShot(breathClip);
+    
+        nextBreathTime = Time.time + breathClip.length;
+    }
+
+    
     #endregion
 }

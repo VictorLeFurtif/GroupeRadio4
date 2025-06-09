@@ -7,7 +7,7 @@ namespace ANIMATION
 {
     public class RangeFinderAnimation : MonoBehaviour
     {
-        private Animator animatorRangeFinder;
+        public Animator animatorRangeFinder;
         
         [SerializeField] private float minInterval = 10f; 
         [SerializeField] private float maxInterval = 20f; 
@@ -32,6 +32,7 @@ namespace ANIMATION
         {
             NewPlayerController.instance?.rangeFinderManager?.TurnRangeFinder(true);
             yield return PlayAnimation("RfTurnOn");
+            animatorRangeFinder.Play("RfIdle");
         }
     
         public IEnumerator TurnOffRangeFinder()

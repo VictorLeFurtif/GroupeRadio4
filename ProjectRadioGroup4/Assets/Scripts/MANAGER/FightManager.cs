@@ -47,7 +47,8 @@ namespace MANAGER
 
         public FightAdvantage currentFightAdvantage = FightAdvantage.Neutral;
 
-        private GameObject soundForFight;
+        public GameObject soundForFight;
+        public GameObject soundEnemyInFight;
         
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
@@ -61,7 +62,11 @@ namespace MANAGER
         [Header("Eye Settings")]
         public Renderer monsterEyes;
         private int currentSequenceIndex = 0;
+
+        private SpotLightFightManager spotLightFightManager;
+
         
+        [HideInInspector] public int numberOfSwap; 
         
         #endregion
 
@@ -94,6 +99,7 @@ namespace MANAGER
 
             player = NewPlayerController.instance;
             radio = NewRadioManager.instance;
+            spotLightFightManager = GetComponent<SpotLightFightManager>();
         }
         
         private void Update()
@@ -104,6 +110,11 @@ namespace MANAGER
         }
         #endregion
 
+        public NewAi GetCurrentEnemy()
+        {
+            return currentEnemyTarget != null ? currentEnemyTarget : null;
+        }
+        
         #region Fight Management
         public void EndFighterTurn()
         {
@@ -131,6 +142,11 @@ namespace MANAGER
                 CheckForEndFight();
                 StartUnitTurn();
             }
+            
+        }
+
+        private void Start()
+        {
             
         }
 
@@ -175,22 +191,43 @@ namespace MANAGER
             if (soundForFight == null)
             {
                 soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
-                    SoundManager.instance.soundBankData.enemySound.enemySound, true, true, 1f, "FightSound");
+                    SoundManager.instance.soundBankData.musicSound.DarkerThanDark, true, true, 1f, "FightSound");
             }
             else
             {
                 soundForFight.SetActive(true);
             }
 
+            if (soundEnemyInFight == null)
+            {
+                soundEnemyInFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.enemySound.respirationNmiCombat, true, true, 1f, "EnemyBreath");
+            }
+            else
+            {
+                soundEnemyInFight.SetActive(true);
+            }
+
             
             firstAttempt = true;
             NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
-            NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
 
             if (currentFightAdvantage == FightAdvantage.Disadvantage)
             {
                 AttackPlayer(true);
+                
+                if (!NewPlayerController.instance._inGameData.IsDead())
+                {
+                    NewPlayerController.instance.animatorPlayer.Play("Overload");
+                }
+                
             }
+            
+            
+            
+            spotLightFightManager.InitLight();
+            
         }
         #endregion
 
@@ -215,6 +252,7 @@ namespace MANAGER
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundEnemyInFight?.SetActive(false);
                
             }
             else if (!fighterAlive.Contains(player._abstractEntityDataInstance))
@@ -222,6 +260,7 @@ namespace MANAGER
                 Debug.Log("IA win");
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundEnemyInFight?.SetActive(false);
             }
             else
             {
@@ -258,11 +297,12 @@ namespace MANAGER
         
         private void StartPlayerTurn()
         {
-            playerTurnTimer = playerTurnDuration;
+            currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
+            
+            playerTurnTimer = currentEnemyTarget.timerFightManager;
             playerSuccess = false;
             isMatchingPhase = true;
-    
-            currentEnemyTarget = currentOrder[1].entity.GetComponent<NewAi>();
+            
             currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasList);
             NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
         }
@@ -272,17 +312,23 @@ namespace MANAGER
             currentOrder.Clear();
             fighterAlive.Clear();
             fightState = FightState.OutFight;
+            numberOfSwap = 0;
             StartCoroutine(NewRadioManager.instance?.HandleRadioTransition(new WaveSettings(0, 0, 0))
             );
             NewRadioManager.instance?.ResetLights();
-            NewRadioManager.instance?.RadioBehaviorDependingFightState();
+            if (NewRadioManager.instance != null)
+                NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
             currentSequenceIndex = 0;
+            spotLightFightManager.CleanLight();
+            GameManager.instance.globalVolumeManager.GvColorToExplo();
+            
         }
 
         
         private void AttackPlayer()
         {
-            
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.bruitCoupNMI);
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.grognementAttaque);
             NewAi ai = currentOrder[0]?.entity.GetComponent<NewAi>();
             if (ai != null)
             { 
@@ -290,6 +336,8 @@ namespace MANAGER
                ai.animatorEnemy.Play("attackAi");
                coroutineAnimation = StartCoroutine(EndFighterTurnWithTimeAnimation
                    (ai._abstractEntityDataInstance.entityAnimation.attackAnimation));
+               numberOfSwap = ai.numberOfSwap;
+               ChipsManager.Instance.ShuffleCard(); //TEST ALEXIS
             }
             else
             {
@@ -301,7 +349,8 @@ namespace MANAGER
         private void AttackPlayer(bool isInit)
         {
             if (!isInit)return;
-            
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.bruitCoupNMI);
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.grognementAttaque);
             NewAi ai = currentOrder[1]?.entity.GetComponent<NewAi>();
             if (ai != null)
             { 
@@ -316,6 +365,8 @@ namespace MANAGER
         
         private void AttackPlayer(NewAi ai)
         {
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.bruitCoupNMI);
+            SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.grognementAttaque);
             player.ManageLife(-ai.damageEnemy);
             
             if (ai != null)
@@ -381,15 +432,23 @@ namespace MANAGER
                 
                 currentSequence.RemoveRange(0, correctCount);
                 
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.enemySound.takeDamage);
+                
                 if (currentSequence.Count == 0)
                 {
-                    EnemySequenceGuessed();
+                    StartCoroutine(EnemySequenceGuessed());
+                    SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.validationFinal);
+                }
+                else
+                {
+                    SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.validation);
                 }
                 
             }
             else
             {
                 AttackPlayer(currentEnemyTarget);
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.failMatchRevers);
             }
             
         }
@@ -402,13 +461,16 @@ namespace MANAGER
         }
 
         [SerializeField] private float goldenRunLifeGiven = 10f;
-        private void EnemySequenceGuessed()
+        private IEnumerator EnemySequenceGuessed()
         {
             if (currentSequenceIndex == 1)
             {
                 NewPlayerController.instance?.ManageLife(goldenRunLifeGiven);
                 Debug.Log("You did a golden run well play man");
+                yield return NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.GoldenRunLightCelebration());
             }
+            
+            
             
             playerSuccess = true;
             
@@ -422,10 +484,7 @@ namespace MANAGER
             }
             
             isMatchingPhase = true; 
-            playerTurnTimer = playerTurnDuration;
-
-            
-            
+            playerTurnTimer = currentEnemyTarget.timerFightManager;;
         }
         
         
@@ -444,6 +503,8 @@ namespace MANAGER
 
             if (playerTurnTimer <= 0)
             {
+                CancelCurrentDraggableItem();
+                
                 NewRadioManager.instance.InitializeCombatLights(currentEnemyTarget.chipsDatasListSave.Count);
                 currentEnemyTarget.ResetSequenceIndex(currentEnemyTarget.chipsDatasListSave);
                 NewRadioManager.instance?.UpdateOscillationEnemy(currentEnemyTarget);
@@ -453,6 +514,15 @@ namespace MANAGER
             }
         }
 
+        private void CancelCurrentDraggableItem()
+        {
+            if (NewPlayerController.instance.currentDraggedItem != null)
+            {
+                Destroy(NewPlayerController.instance.currentDraggedItem.gameObject);
+                NewPlayerController.instance.currentDraggedItem = null;
+            }
+        }
+        
         private IEnumerator EndFighterTurnWithTimeAnimation(AnimationClip _animation)
         {
             yield return new WaitForSeconds(_animation.length);
@@ -495,6 +565,10 @@ namespace MANAGER
 
 
         #endregion
-        
+
+        public bool IsInFight()
+        {
+            return fightState == FightState.InFight;
+        }
     }
 }

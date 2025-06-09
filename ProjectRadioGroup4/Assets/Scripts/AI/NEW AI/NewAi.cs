@@ -20,6 +20,8 @@ namespace AI.NEW_AI
         public float attackTimer;
         public bool isTimerRunning;
         
+        
+        
         [Header("State Machine")]
         public AiFightState _aiFightState = AiFightState.OutFight;
         
@@ -58,7 +60,11 @@ namespace AI.NEW_AI
         [Header("Damage")]
         
         public float damageEnemy;
-        
+
+        [Header("NUMBER OF SWAP")]
+        public int numberOfSwap;
+
+        [Header("TIMER FIGHTMANAGER")] public float timerFightManager;
         
         #endregion
 
@@ -82,6 +88,7 @@ namespace AI.NEW_AI
             }
             chipsDatasListSave.AddRange(chipsDatasList);
             monsterEyes.material.color = Color.white;
+            monsterEyes.gameObject.SetActive(false);
             
             foreach (var t in chipsToAddToPattern)
             {
@@ -106,27 +113,32 @@ namespace AI.NEW_AI
 
                 if (_abstractEntityDataInstance.IsDead())
                 {
-                    Die();
+                    StartCoroutine(Die());
                 }
             }
         }
         
         
-        private void Die()
+        private IEnumerator Die()
         {
-            if (isDead) return;
+            if (isDead) yield break ;
 
             isDead = true;
             canAttack = false;
+            NewPlayerController.instance?.animatorPlayer.Play("goodsize anime attaque");
+
+            yield return new WaitForSeconds(1f);
+            
             animatorEnemy.Play("DeathAi");
-    
+            
+            
             float deathAnimLength = GetDeathAnimationLength();
     
             if (_aiFightState == AiFightState.InFight)
             {
                 EndAiTurn();
             }
-            StartCoroutine(DelayedDeath(deathAnimLength + 1f));
+            StartCoroutine(DelayedDeath(deathAnimLength));
         }
 
         private float GetDeathAnimationLength()
@@ -135,7 +147,6 @@ namespace AI.NEW_AI
             {
                 return 2f; 
             }
-
             AnimatorStateInfo stateInfo = animatorEnemy.GetCurrentAnimatorStateInfo(0);
             if (stateInfo.IsName("DeathAi"))
             {
@@ -162,7 +173,8 @@ namespace AI.NEW_AI
         protected override void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.CompareTag("Player")) return;
-            BeginFight();
+            StartFight();
+            isTimerRunning = false;
         }
         
         protected override void OnTriggerEnter2D(Collider2D other)
@@ -181,10 +193,32 @@ namespace AI.NEW_AI
         #endregion
 
         #region Combat Management
-        
-        public void BeginFight()
+
+        public void InitSwapNumber()
         {
-            CancelInteractionAfterContact();
+            FightManager.instance.numberOfSwap = numberOfSwap;
+        }
+        
+        public void StartFight()
+        {
+            if (_aiFightState == AiFightState.InFight) return;
+
+            Debug.Log("1 - Method StartFight entered");
+            NewPlayerController.instance.canMove = false;
+            Debug.Log("2 - Player movement disabled");
+            spriteRenderer.enabled = true;
+            Debug.Log("3 - SpriteRenderer enabled");
+            monsterEyes.gameObject.SetActive(true);
+            Debug.Log("4 - Monster eyes activated");
+            StartCoroutine(BeginFight());
+            Debug.Log("5 - Coroutine started");
+        }
+
+        private IEnumerator BeginFight()
+        {
+            animatorEnemy.Play("SpawnAi");
+            //yield return new WaitForSeconds(animatorEnemy.GetCurrentAnimatorStateInfo(0).length + 0.5f);
+            yield return null;
             StartCombatSequence();
         }
         private void TimerIfInteractWithPlayer()
@@ -201,17 +235,15 @@ namespace AI.NEW_AI
         private void StartCombatSequence()
         {
             NewRadioManager.instance?.StopMatchingGame();
-            spriteRenderer.enabled = true;
             var player = NewPlayerController.instance;
             if (player == null) return;
-
             Vector3 combatPosition = player.transform.position + 
-                                 player.transform.right * combatDistance * 
-                                 (player.spriteRendererPlayer.flipX ? -1 : 1);
+                                 player.transform.right * combatDistance;
             
             transform.position = combatPosition;
-            FacePlayer();
             InitiateCombat();
+            
+            
         }
         
         private void FacePlayer()
@@ -232,6 +264,7 @@ namespace AI.NEW_AI
             }
 
             spriteRenderer.enabled = true;
+            monsterEyes.gameObject.SetActive(true);
     
             var fightManager = FightManager.instance;
             if (fightManager == null) return;
@@ -246,10 +279,18 @@ namespace AI.NEW_AI
             if (fightManager.currentFightAdvantage == FightManager.FightAdvantage.Disadvantage)
             {
                 CameraController.instance?.Shake(CameraController.ShakeMode.Both,1,20);
+                GameManager.instance.globalVolumeManager.GvColorToDesadvantage();
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.spawnNmiScreamer);
+            }
+            else
+            {
+                GameManager.instance.globalVolumeManager.GvColorToAdvantage();
+                SoundManager.instance.PlayMusicOneShot(SoundManager.instance.soundBankData.eventSound.spawnNmi);
             }
     
             fightManager.InitialiseFightManager();
             ChipsManager.Instance?.IniTabChipsDataInstanceInFight(this);
+            InitSwapNumber();
         }
         #endregion
         

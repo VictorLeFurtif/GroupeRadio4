@@ -310,7 +310,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: c64becaa421b66640a33c528d24ac754, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b45596b85057754dab3f22e28613447, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -396,11 +396,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePatterns: []
+  currentPatternIndex: 0
   triggerZones:
   - {fileID: 3918824480005230430}
   - {fileID: 1884731371133650536}
   - {fileID: 4230979760583840067}
-  lifeAmountToGive: 5
+  lifeAmountToGive: 25
   basePatternCount: 2
   maxPatternCount: 5
   minFrequency: 1
