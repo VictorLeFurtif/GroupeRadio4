@@ -73,13 +73,11 @@ namespace MANAGER
         
         private void Update()
         {
-            Debug.LogError(audioSource.volume);
             foreach (var music in musicsEffects)
             {
                 if (music != null) 
                     music.volume = masterVolume;
             }
-            
         }
         
         public void PlayMusicOneShot(AudioClip _audioClip)
