@@ -192,6 +192,7 @@ namespace MANAGER
             {
                 soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
                     SoundManager.instance.soundBankData.musicSound.DarkerThanDark, true, true, 1f, "FightSound");
+                SoundManager.instance.musicsEffects.Add(soundForFight.GetComponent<AudioSource>());
             }
             else
             {
@@ -202,6 +203,7 @@ namespace MANAGER
             {
                 soundEnemyInFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
                     SoundManager.instance.soundBankData.enemySound.respirationNmiCombat, true, true, 1f, "EnemyBreath");
+                SoundManager.instance.musicsEffects.Add(soundEnemyInFight.GetComponent<AudioSource>());
             }
             else
             {

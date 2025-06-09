@@ -1,58 +1,76 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class PauseMenuController : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private GameObject PausePanel;
-    private bool isPanelDisplayed;
-
-    private void Update()
+    public class PauseMenuController : MonoBehaviour
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0 && Input.GetKeyDown(KeyCode.Escape) && FightManager.instance.fightState is not FightManager.FightState.InFight)
-        {
-            ChangePanelState();
-        }
-        ShowPanel();
-        SetTimeScale();
-    }
-
-    private void SetTimeScale()
-    {
-        if (isPanelDisplayed)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
-    }
-
-    public void ChangePanelState()
-    {
-        isPanelDisplayed = !isPanelDisplayed;
-    }
-
-    private void ShowPanel()
-    {
-         PausePanel.SetActive(isPanelDisplayed);
-    }
+        [SerializeField] private GameObject PausePanel;
+        [SerializeField] private Slider sliderMaster; 
     
-    // In-PausePanel buttons
+        private bool isPanelDisplayed;
+    
+        private void Awake()
+        {
+            sliderMaster.value = SoundManager.instance.masterVolume;
+        }
 
-    public void Menu()
-    {
-        isPanelDisplayed = false;
-        SceneManager.LoadScene(0);
-        GameManager.instance.ResetPlayer();
-    }
+        private void Update()
+        {
+            if (ShouldTogglePause())
+            {
+                ChangePanelState();
+            }
+            ShowPanel();
+            SetTimeScale();
+        }
 
-    public void Quit()
-    {
-        Application.Quit();
+        private bool ShouldTogglePause()
+        {
+            return SceneManager.GetActiveScene().buildIndex != 0 
+                   && Input.GetKeyDown(KeyCode.Escape) 
+                   && FightManager.instance.fightState is not FightManager.FightState.InFight;
+        }
+
+        private void SetTimeScale()
+        {
+            Time.timeScale = isPanelDisplayed ? 0 : 1;
+        }
+
+        public void ChangePanelState()
+        {
+            isPanelDisplayed = !isPanelDisplayed;
+        
+       
+            if (!isPanelDisplayed)
+            {
+                SoundManager.instance.UpdateMasterVolume(sliderMaster.value);
+            }
+        }
+
+        private void ShowPanel()
+        {
+            PausePanel.SetActive(isPanelDisplayed);
+        }
+    
+        public void ReturnToMenu()
+        {
+            isPanelDisplayed = false;
+            Time.timeScale = 1;
+            SceneManager.LoadScene("MainMenuNew");
+            GameManager.instance.ResetPlayer();
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+
+        public void OnMasterVolumeChanged(float value)
+        {
+            SoundManager.instance.masterVolume = value;
+        }
     }
 }

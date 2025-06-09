@@ -325,6 +325,7 @@ public class NewPlayerController : MonoBehaviour
             {
                 soundInRangeFinderZone = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
                     SoundManager.instance.soundBankData.eventSound.zoneRangeFinder, true, true, 1f, "SoundZoneRangeFinder");
+                SoundManager.instance.musicsEffects.Add(soundInRangeFinderZone.GetComponent<AudioSource>());
             }
             else
             {
