@@ -17,7 +17,11 @@ namespace MANAGER
         public GameState currentGameState = GameState.Menu;
 
         [SerializeField] private GameObject prefabSoundManager;
-        
+
+        public LooseScreenController GetLooseScreen()
+        {
+            return looseScreenController != null ? looseScreenController : null;
+        }        
         private void Awake()
         {
             if (instance == null)
