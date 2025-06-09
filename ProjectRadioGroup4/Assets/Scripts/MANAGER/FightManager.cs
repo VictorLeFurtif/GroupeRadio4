@@ -110,6 +110,11 @@ namespace MANAGER
         }
         #endregion
 
+        public NewAi GetCurrentEnemy()
+        {
+            return currentEnemyTarget != null ? currentEnemyTarget : null;
+        }
+        
         #region Fight Management
         public void EndFighterTurn()
         {
