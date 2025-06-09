@@ -145,3 +145,4 @@ MonoBehaviour:
   sfxVolumeSlider: 1
   sfxVolume: 0
   soundBankDataBrut: {fileID: 11400000, guid: 5002ed6ce53e4914db2d2464c82d8db4, type: 2}
+  soundBlanc: {fileID: 0}
