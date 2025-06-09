@@ -45,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2346169
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -141,10 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b723dc67f0ab425d848d1bc5197c2907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicsEffects: []
   audioSource: {fileID: 9015762495202131047}
-  sfxVolumeSlider: 1
+  sfxVolumeSlider: 0
   sfxVolume: 0
-  vgmVolumeSlider: 0.53080374
+  vgmVolumeSlider: 0
   vgmVolume: 0
   sliderAll: {fileID: 0}
   sliderSfx: {fileID: 0}

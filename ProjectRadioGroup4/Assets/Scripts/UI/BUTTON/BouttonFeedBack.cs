@@ -44,7 +44,7 @@ namespace UI.BUTTON
         {
             if (buttonImage != null && hoverSprite != null)
             {
-                buttonImage.sprite = hoverSprite;
+                buttonImage.sprite = normalSprite;
             }
 
 

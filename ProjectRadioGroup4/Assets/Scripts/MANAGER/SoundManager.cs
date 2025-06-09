@@ -1,8 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using DATA.Script.Sound_Data;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MANAGER
@@ -11,24 +9,19 @@ namespace MANAGER
     public class SoundManager : MonoBehaviour
     {
         public static SoundManager instance { get; private set; }
-        
+
+        public List<AudioSource> musicsEffects = new List<AudioSource>();
         public AudioSource audioSource;
 
-        [Range(0,1)] public float sfxVolumeSlider = 1;
-        public float sfxVolume; //after being calculated with the general volume
+        [Range(0,1)] public float masterVolume = 1f;
         
-        [Range(0,1)] public float vgmVolumeSlider = 1;
-        public float vgmVolume; //after being calculated with the general volume
-        
-        [Header("Slider References")]
-        [SerializeField] private Slider sliderAll;
-        [SerializeField] private Slider sliderSfx;
-        [SerializeField] private Slider sliderVgm;
+        [Header("Slider Reference")]
+        [SerializeField] private Slider sliderMaster;
 
-        
         [SerializeField] private SoundBankData soundBankDataBrut;
         public SoundBankDataInstance soundBankData;
         public GameObject soundBlanc;
+        public GameObject soundMenu;
         
         private void Awake()
         {
@@ -37,13 +30,13 @@ namespace MANAGER
                 instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-            
             else
+            {
                 Destroy(gameObject);
+                return;
+            }
             
-            sliderAll.value = audioSource.volume;
-            sliderSfx.value = sfxVolumeSlider;
-            sliderVgm.value = vgmVolumeSlider;
+            sliderMaster.value = masterVolume;
         }
         
         private void Start()
@@ -56,25 +49,40 @@ namespace MANAGER
         {
             if (soundBlanc == null)
             {
-                soundBlanc = InitialisationAudioObjectDestroyAtEnd
-                (soundBankData.enviroSound.whiteNoiseVentilation,
-                    true, true, 1f, "Main Sound");
+                soundBlanc = InitialisationAudioObjectDestroyAtEnd(
+                    soundBankData.enviroSound.whiteNoiseVentilation,
+                    true, true, masterVolume, "Main Sound");
+                musicsEffects.Add(soundBlanc.GetComponent<AudioSource>());
             }
             else
             {
                 soundBlanc.SetActive(true);
             }
+            
+            
+            if (soundMenu == null)
+            {
+                soundMenu = InitialisationAudioObjectDestroyAtEnd(
+                    soundBankData.musicSound.audioMenu,
+                    true, true, masterVolume, "Sound Menu");
+                musicsEffects.Add(soundMenu.GetComponent<AudioSource>());
+            }
+            else
+            {
+                soundMenu.SetActive(true);
+            }
         }
         
         private void Update()
         {
-            sfxVolume = sfxVolumeSlider;
-            sfxVolume *= audioSource.volume;
-           
-            vgmVolume = vgmVolumeSlider;
-            vgmVolume *= audioSource.volume;
+            foreach (var music in musicsEffects)
+            {
+                if (music != null) 
+                    music.volume = masterVolume;
+            }
+            
         }
-
+        
         public void PlayMusicOneShot(AudioClip _audioClip)
         {
             if (_audioClip == null)
@@ -85,23 +93,25 @@ namespace MANAGER
             audioSource.PlayOneShot(_audioClip);
         }
         
-        //horror in kind of optimisation but cool for music general
-        public GameObject InitialisationAudioObjectDestroyAtEnd(AudioClip audioClipTarget, bool looping, bool playingAwake, float volumeSound, string _name)
+        
+        public void UpdateMasterVolume(float volume)
         {
-            GameObject emptyObject = new GameObject
-            {
-                name = _name
-            };
+            masterVolume = volume;
+            audioSource.volume = masterVolume;
+        }
 
+        public GameObject InitialisationAudioObjectDestroyAtEnd(AudioClip audioClipTarget, bool looping, 
+            bool playingAwake, float volumeSound, string _name)
+        {
+            GameObject emptyObject = new GameObject(_name);
             emptyObject.transform.SetParent(gameObject.transform);
 
             AudioSource audioSourceGeneral = emptyObject.AddComponent<AudioSource>();
             audioSourceGeneral.clip = audioClipTarget;
             audioSourceGeneral.loop = looping;
             audioSourceGeneral.playOnAwake = playingAwake;
-            audioSourceGeneral.volume = volumeSound;
+            audioSourceGeneral.volume = volumeSound * masterVolume;
             audioSourceGeneral.Play();
-            
             
             if (!looping)
             {
@@ -109,21 +119,6 @@ namespace MANAGER
             }
             
             return emptyObject;
-        }
-
-        public AudioSource GetAudioSourceFromSoundManager()
-        {
-            return audioSource;
-        }
-
-        public void UpdateSfxVolumeSlider(float sliderValue)
-        {
-            sfxVolumeSlider = sliderValue;
-        }
-        
-        public void UpdateVgmVolumeSlider(float sliderValue)
-        {
-            vgmVolumeSlider = sliderValue;
         }
     }
 }
