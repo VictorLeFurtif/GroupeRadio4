@@ -1,6 +1,7 @@
 ﻿using System;
 using DATA.Script.Sound_Data;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MANAGER
 {
@@ -9,13 +10,17 @@ namespace MANAGER
     {
         public static SoundManager instance { get; private set; }
         
-        [SerializeField] private AudioSource audioSource;
+        [SerializeField] 
+        private AudioSource audioSource;
 
+        [Range(0,1)] public float sfxVolumeSlider = 1;
+        public float sfxVolume; //after being calculated with the general volume
         [SerializeField]
         private SoundBankData soundBankDataBrut;
 
         public SoundBankDataInstance soundBankData;
-        
+
+        public GameObject soundBlanc;
         
         private void Awake()
         {
@@ -32,7 +37,27 @@ namespace MANAGER
         private void Start()
         {
             soundBankData = soundBankDataBrut.Instance();
-            InitialisationAudioObjectDestroyAtEnd(soundBankData.enviroSound.whiteNoiseVentilation,true,true,1f,"Main Sound");
+            InitSoundBlanc();
+        }
+
+        public void InitSoundBlanc()
+        {
+            if (soundBlanc == null)
+            {
+                soundBlanc = InitialisationAudioObjectDestroyAtEnd
+                (soundBankData.enviroSound.whiteNoiseVentilation,
+                    true, true, 1f, "Main Sound");
+            }
+            else
+            {
+                soundBlanc.SetActive(true);
+            }
+        }
+        
+        private void Update()
+        {
+            sfxVolume = sfxVolumeSlider;
+            sfxVolume *= audioSource.volume;
         }
 
         public void PlayMusicOneShot(AudioClip _audioClip)
@@ -61,15 +86,24 @@ namespace MANAGER
             audioSourceGeneral.playOnAwake = playingAwake;
             audioSourceGeneral.volume = volumeSound;
             audioSourceGeneral.Play();
-
+            
+            
             if (!looping)
             {
                 Destroy(emptyObject, audioClipTarget.length);
             }
-
+            
             return emptyObject;
         }
 
-        
+        public AudioSource GetAudioSourceFromSoundManager()
+        {
+            return audioSource;
+        }
+
+        public void UpdateSfxVolumeSlider(float sliderValue)
+        {
+            sfxVolumeSlider = sliderValue;
+        }
     }
 }

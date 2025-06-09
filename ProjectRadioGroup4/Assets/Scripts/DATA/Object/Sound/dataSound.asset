@@ -18,6 +18,8 @@ MonoBehaviour:
     ScanSlow: {fileID: 8300000, guid: ea83bade801965b47a26e5db91985097, type: 3}
     ScanFast: {fileID: 8300000, guid: fbaaa3d36a57612458411035848ee955, type: 3}
     walk: {fileID: 8300000, guid: 6214cfbdf708c2e408fd77d20c5a0fc8, type: 3}
+    mouvementVetScan: {fileID: 8300000, guid: 2d012d366d0eb7c4d850d095e350bfaa, type: 3}
+    respirationJoueur: {fileID: 8300000, guid: 0e6b148b162b35b4dac7e9ad4e38ab67, type: 3}
   EnemySoundData:
     listEnemyAttack:
     - {fileID: 8300000, guid: 95aba308ec26aee4783d9a3f4d8198ba, type: 3}
@@ -34,6 +36,11 @@ MonoBehaviour:
     - {fileID: 8300000, guid: bfb37e548b609e04e89deb0a838c8fa6, type: 3}
     - {fileID: 8300000, guid: 7c99c422376a8534581993405edbc86f, type: 3}
     enemySound: {fileID: 8300000, guid: 5cfb66b296e1884488efb29729331a1f, type: 3}
+    bruitCoupNMI: {fileID: 8300000, guid: 2e0c751246c474e4992b316222c06d8d, type: 3}
+    bruitRadioMatch: {fileID: 8300000, guid: 3d690836c5049584dbcf68ae2bddef7b, type: 3}
+    grognementAttaque: {fileID: 8300000, guid: 960b3d001ce811e4f9a199cb673aaf36, type: 3}
+    takeDamage: {fileID: 8300000, guid: c3254a2f593b8e0449126648dc0b17df, type: 3}
+    respirationNmiCombat: {fileID: 8300000, guid: 089e2e4f43005ad47b8b1ac1e05b168b, type: 3}
   EnviroSoundData:
     whiteNoiseVentilation: {fileID: 8300000, guid: d007f77f93da24b44b1151a33e25961a, type: 3}
     NeonBuzz: {fileID: 8300000, guid: a639b622632dc0747bd40d481d432f69, type: 3}
@@ -70,6 +77,29 @@ MonoBehaviour:
     woodCreakig8: {fileID: 8300000, guid: 0e0b7fd3b2c17a144a70320e14876491, type: 3}
     woodCreakig9: {fileID: 8300000, guid: e8ce7d3afb0e8be47b1d181a87cb615e, type: 3}
     woodCreakig10: {fileID: 8300000, guid: 8fa06abdeb6c87b49aaf6d7bc81c3de6, type: 3}
+    signal: {fileID: 8300000, guid: 8c7fabadaf826c140b0ce82e28a55a15, type: 3}
   UxSoundData:
     click: {fileID: 8300000, guid: 4fc40399fad352a4ab9afdb2cfbeabeb, type: 3}
     clickAmpoule: {fileID: 8300000, guid: 53b074a4cde9fc8469e04f4fce3e7feb, type: 3}
+    clikGros: {fileID: 8300000, guid: 0df3d2b8c8bf57c4e824f251604275ed, type: 3}
+    clikPetit: {fileID: 8300000, guid: c706680145158724fbc525da10594c30, type: 3}
+  MusicSoundData:
+    audioMenu: {fileID: 8300000, guid: b44c0ea05fa31a146b3bb27d18c1e409, type: 3}
+    DarkerThanDark: {fileID: 8300000, guid: 494de6e8986ee0849a997205a64cd442, type: 3}
+  EventSoundData:
+    apparitionUiCombat: {fileID: 8300000, guid: be39fe2de49d4bd4185432d378c22d6a, type: 3}
+    batterieCasse: {fileID: 8300000, guid: 9f8ac5b9c6090084c877e69682233fe6, type: 3}
+    disparitionUiCombat: {fileID: 8300000, guid: 302add924f59b5541ac20e75ec081581, type: 3}
+    failMatchRevers: {fileID: 8300000, guid: b9694a19dcd775d46b0d21bd60db4f9d, type: 3}
+    recupBatterie: {fileID: 8300000, guid: 064a130f6ca87c8498b9c16c5973ef3e, type: 3}
+    scanFort: {fileID: 8300000, guid: ba9bbd5109800a743b733f840703f876, type: 3}
+    scanMoyen: {fileID: 8300000, guid: 290d200d6c5cb034a90dfa11ccfc70d7, type: 3}
+    scanFaible: {fileID: 8300000, guid: 80747de1324432546ab4e733a7668f84, type: 3}
+    spawnNmiScreamer: {fileID: 8300000, guid: 3bd103fb3ecfcd04ba94f439fbc1fade, type: 3}
+    spawnNmi: {fileID: 8300000, guid: 9277d851d5f6a434594ec3bc66ab73b6, type: 3}
+    timer: {fileID: 8300000, guid: d1a1b8397c790f045b5da05f8468bffd, type: 3}
+    validation: {fileID: 8300000, guid: cf809106ca7739a4ab8dff1072b4f050, type: 3}
+    validationFinal: {fileID: 8300000, guid: 286be497e752a2b4b9dd968463b7c3cf, type: 3}
+    zoneCombat: {fileID: 8300000, guid: ce59167756e66794a9406b6cf8a59dc8, type: 3}
+    zoneRangeFinder: {fileID: 8300000, guid: 25a5f540ae364434aad4fae50a2224c2, type: 3}
+    openingDoor: {fileID: 8300000, guid: f244ae4e7811d1a45b7fc472b5b6882a, type: 3}

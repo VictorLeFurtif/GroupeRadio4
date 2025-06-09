@@ -58,7 +58,7 @@ Material:
     - _Float_1: -2.58
     - _Float_2: 1
     - _color_resolution: 209.55
-    - _dither_spread: -0.8
+    - _dither_spread: -0.73
     m_Colors:
     - _Color: {r: 0.9433962, g: 0.752047, b: 0.752047, a: 1}
     - _Color_1: {r: 1, g: 1, b: 1, a: 1}

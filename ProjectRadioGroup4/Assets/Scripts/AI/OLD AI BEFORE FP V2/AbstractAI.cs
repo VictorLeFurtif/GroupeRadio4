@@ -180,7 +180,7 @@ namespace AI.OLD_AI_BEFORE_FP_V2
             _aiFightState = AiFightState.InFight;
             enemySpriteRenderer.enabled = true;
             FightManager.instance.fightState = FightManager.FightState.InFight;
-            FightManager.instance.InitialiseList();
+            FightManager.instance.InitialiseFightManager();
 
             SoundManager.instance?.PlayMusicOneShot(SoundManager.instance.soundBankData.SelectRandomSoundFromList(
                 SoundManager.instance.soundBankData.enemySound.listVocalEnemy));

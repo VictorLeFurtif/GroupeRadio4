@@ -18,6 +18,9 @@ namespace DATA.Script.Sound_Data
             public AudioClip ScanFast;
             
             public AudioClip walk;
+
+            public AudioClip mouvementVetScan;
+            public AudioClip respirationJoueur;
         }
         [Serializable]
         public class EnemySound
@@ -26,8 +29,12 @@ namespace DATA.Script.Sound_Data
             public List<AudioClip> listVocalEnemy;
 
             public AudioClip enemySound;
-            
-            
+
+            public AudioClip bruitCoupNMI;
+            public AudioClip bruitRadioMatch;
+            public AudioClip grognementAttaque;
+            public AudioClip takeDamage;
+            public AudioClip respirationNmiCombat;
         }
         [Serializable]
         public class EnviroSound
@@ -70,19 +77,52 @@ namespace DATA.Script.Sound_Data
             public AudioClip woodCreakig8;
             public AudioClip woodCreakig9;
             public AudioClip woodCreakig10;
-            
+
+            public AudioClip signal;
+
         }
         [Serializable]
         public class UxSound
         {
             public AudioClip click;
             public AudioClip clickAmpoule;
+            public AudioClip clikGros;
+            public AudioClip clikPetit;
+        }
+        [Serializable]
+        public class Music
+        {
+            public AudioClip audioMenu;
+            public AudioClip DarkerThanDark;
+        }
+        
+        [Serializable]
+        public class Event
+        {
+            public AudioClip apparitionUiCombat;
+            public AudioClip batterieCasse;
+            public AudioClip disparitionUiCombat;
+            public AudioClip failMatchRevers;
+            public AudioClip recupBatterie;
+            public AudioClip scanFort;
+            public AudioClip scanMoyen;
+            public AudioClip scanFaible;
+            public AudioClip spawnNmiScreamer;
+            public AudioClip spawnNmi;
+            public AudioClip timer;
+            public AudioClip validation;
+            public AudioClip validationFinal;
+            public AudioClip zoneCombat;
+            public AudioClip zoneRangeFinder;
+            public AudioClip openingDoor;
         }
 
         public AvatarSound AvatarSoundData = new AvatarSound();
         public EnemySound EnemySoundData = new EnemySound();
         public EnviroSound EnviroSoundData = new EnviroSound();
         public UxSound UxSoundData = new UxSound();
+        public Music MusicSoundData = new Music();
+        public Event EventSoundData = new Event();
 
         public SoundBankDataInstance Instance()
         {
@@ -96,6 +136,8 @@ namespace DATA.Script.Sound_Data
         public SoundBankData.EnemySound enemySound;
         public SoundBankData.EnviroSound enviroSound;
         public SoundBankData.UxSound uxSound;
+        public SoundBankData.Music musicSound;
+        public SoundBankData.Event eventSound;
         
         public SoundBankDataInstance(SoundBankData data)
         {
@@ -103,6 +145,8 @@ namespace DATA.Script.Sound_Data
             enemySound = data.EnemySoundData;
             enviroSound = data.EnviroSoundData;
             uxSound = data.UxSoundData;
+            musicSound = data.MusicSoundData;
+            eventSound = data.EventSoundData;
         }
 
         public AudioClip SelectRandomSoundFromList(List<AudioClip>list)

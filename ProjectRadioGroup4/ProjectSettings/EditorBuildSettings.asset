@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/MENU/MainMenuTest.unity
-    guid: 1742bf315fe07ff4ebb9af89b6c857bc
+    path: Assets/Scene/MainMenuNew.unity
+    guid: 971e7522021519345819d1d345d284e1
   - enabled: 1
-    path: Assets/Scene/SECOND PLAYABLE/Second Playable GYM ROOM.unity
-    guid: e61d81bcc2acc8c4ea85dec8bf09d3ae
+    path: Assets/Scene/FINAL/Levels/LV1.unity
+    guid: 07defec5ef9ef3147bd90d359aa70919
+  - enabled: 1
+    path: Assets/Scene/FINAL/Levels/LV2.unity
+    guid: f8312549e43472e458bb8d92e4039048
+  - enabled: 1
+    path: Assets/Scene/FINAL/Levels/LV3.unity
+    guid: bdbd369fbee0c354cb9562450dfbb673
+  - enabled: 1
+    path: Assets/Scene/FINAL/Levels/LV4.unity
+    guid: 0e0cb4c3ef96e7c4d9fd80abae9c27e5
+  - enabled: 1
+    path: Assets/Scene/MainMenuNew.unity
+    guid: 971e7522021519345819d1d345d284e1
   m_configObjects: {}
