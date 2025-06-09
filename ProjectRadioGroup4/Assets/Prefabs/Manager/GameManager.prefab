@@ -2871,7 +2871,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3c5548be4e0d9314da67e2646b93157c, type: 3}
   - {fileID: 21300000, guid: 231cb2058a63948408599e816a67fe35, type: 3}
   screenShakeRange: 10
-  animationSpeed: 0.3
+  animationSpeed: 0.1
 --- !u!114 &8412743218422012632
 MonoBehaviour:
   m_ObjectHideFlags: 0
