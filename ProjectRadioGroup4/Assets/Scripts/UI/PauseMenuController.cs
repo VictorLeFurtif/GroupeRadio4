@@ -4,11 +4,22 @@ using System.Collections.Generic;
 using MANAGER;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject PausePanel;
     private bool isPanelDisplayed;
+    [SerializeField] private Slider sliderAll;
+    [SerializeField] private Slider sliderSfx;
+    [SerializeField] private Slider sliderVgm;
+    
+    private void Awake()
+    {
+        sliderAll.value = SoundManager.instance.audioSource.volume;
+        sliderSfx.value = SoundManager.instance.sfxVolumeSlider;
+        sliderVgm.value = SoundManager.instance.vgmVolumeSlider;
+    }
 
     private void Update()
     {
@@ -47,7 +58,7 @@ public class PauseMenuController : MonoBehaviour
     public void Menu()
     {
         isPanelDisplayed = false;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenuNew");
         GameManager.instance.ResetPlayer();
     }
 

@@ -45,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2346169
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -144,4 +144,10 @@ MonoBehaviour:
   audioSource: {fileID: 9015762495202131047}
   sfxVolumeSlider: 1
   sfxVolume: 0
+  vgmVolumeSlider: 0.53080374
+  vgmVolume: 0
+  sliderAll: {fileID: 0}
+  sliderSfx: {fileID: 0}
+  sliderVgm: {fileID: 0}
   soundBankDataBrut: {fileID: 11400000, guid: 5002ed6ce53e4914db2d2464c82d8db4, type: 2}
+  soundBlanc: {fileID: 0}

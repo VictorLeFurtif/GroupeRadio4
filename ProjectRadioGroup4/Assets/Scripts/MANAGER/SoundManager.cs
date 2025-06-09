@@ -1,6 +1,8 @@
 ﻿using System;
 using DATA.Script.Sound_Data;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MANAGER
@@ -10,16 +12,22 @@ namespace MANAGER
     {
         public static SoundManager instance { get; private set; }
         
-        [SerializeField] 
-        private AudioSource audioSource;
+        public AudioSource audioSource;
 
         [Range(0,1)] public float sfxVolumeSlider = 1;
         public float sfxVolume; //after being calculated with the general volume
-        [SerializeField]
-        private SoundBankData soundBankDataBrut;
+        
+        [Range(0,1)] public float vgmVolumeSlider = 1;
+        public float vgmVolume; //after being calculated with the general volume
+        
+        [Header("Slider References")]
+        [SerializeField] private Slider sliderAll;
+        [SerializeField] private Slider sliderSfx;
+        [SerializeField] private Slider sliderVgm;
 
+        
+        [SerializeField] private SoundBankData soundBankDataBrut;
         public SoundBankDataInstance soundBankData;
-
         public GameObject soundBlanc;
         
         private void Awake()
@@ -32,6 +40,10 @@ namespace MANAGER
             
             else
                 Destroy(gameObject);
+            
+            sliderAll.value = audioSource.volume;
+            sliderSfx.value = sfxVolumeSlider;
+            sliderVgm.value = vgmVolumeSlider;
         }
         
         private void Start()
@@ -58,6 +70,9 @@ namespace MANAGER
         {
             sfxVolume = sfxVolumeSlider;
             sfxVolume *= audioSource.volume;
+           
+            vgmVolume = vgmVolumeSlider;
+            vgmVolume *= audioSource.volume;
         }
 
         public void PlayMusicOneShot(AudioClip _audioClip)
@@ -104,6 +119,11 @@ namespace MANAGER
         public void UpdateSfxVolumeSlider(float sliderValue)
         {
             sfxVolumeSlider = sliderValue;
+        }
+        
+        public void UpdateVgmVolumeSlider(float sliderValue)
+        {
+            vgmVolumeSlider = sliderValue;
         }
     }
 }
