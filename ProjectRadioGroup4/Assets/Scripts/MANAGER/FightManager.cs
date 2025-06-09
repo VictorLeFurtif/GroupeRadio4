@@ -467,8 +467,7 @@ namespace MANAGER
             {
                 NewPlayerController.instance?.ManageLife(goldenRunLifeGiven);
                 Debug.Log("You did a golden run well play man");
-                NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.GoldenRunLightCelebration());
-                yield return new WaitForSeconds(3);
+                yield return NewRadioManager.instance.StartCoroutine(NewRadioManager.instance.GoldenRunLightCelebration());
             }
             
             

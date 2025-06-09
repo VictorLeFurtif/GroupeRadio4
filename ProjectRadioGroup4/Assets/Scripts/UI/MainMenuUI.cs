@@ -83,7 +83,7 @@ public class MainMenuUI : MonoBehaviour
             NewPlayerController.instance.transform.position = new Vector3(6, 0, 0);
         }
         
-        storyLineOb.SetActive(false);
+        //storyLineOb.SetActive(false);
     }
 
     private void SkipIntro()
