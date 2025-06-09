@@ -304,7 +304,7 @@ MonoBehaviour:
   minStep: 0.1
   maxStep: 6.28
   generationRadius: 10
-  attackTriggerDelay: 35
+  attackTriggerDelay: 30
   attackTimer: 0
   isTimerRunning: 0
   _aiFightState: 1

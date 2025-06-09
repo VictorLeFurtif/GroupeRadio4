@@ -65,7 +65,7 @@ MonoBehaviour:
   - {fileID: 3863648676772351434}
   lifeAmountToGive: 0
   basePatternCount: 1
-  maxPatternCount: 4
+  maxPatternCount: 3
   minFrequency: 3
   maxFrequency: 8
   minAmplitude: 0.1
@@ -73,7 +73,7 @@ MonoBehaviour:
   minStep: 0.1
   maxStep: 6.28
   generationRadius: 10
-  attackTriggerDelay: 50
+  attackTriggerDelay: 25
   attackTimer: 0
   isTimerRunning: 0
   _aiFightState: 1

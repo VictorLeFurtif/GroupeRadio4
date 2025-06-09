@@ -117,7 +117,15 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: basePatternCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: timerFightManager
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
+      propertyPath: attackTriggerDelay
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1135994658183885319, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
@@ -158,11 +166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.6
+      value: 0.6384458
       objectReference: {fileID: 0}
     - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.07
+      value: 0.051929187
       objectReference: {fileID: 0}
     - target: {fileID: 2071738088773723028, guid: 4f47e3c2ecfb54a408d600cb047d5e39, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
