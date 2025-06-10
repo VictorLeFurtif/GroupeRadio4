@@ -32,12 +32,15 @@ namespace ANIMATION
         {
             NewPlayerController.instance?.rangeFinderManager?.TurnRangeFinder(true);
             yield return PlayAnimation("RfTurnOn");
+            yield return null;
             animatorRangeFinder.Play("RfIdle");
         }
     
         public IEnumerator TurnOffRangeFinder()
         {
             yield return PlayAnimation("RfTurnOn");
+            animatorRangeFinder.Play("RfIdle");
+            yield return null;
             NewPlayerController.instance?.rangeFinderManager?.TurnRangeFinder(false);
         }
 
