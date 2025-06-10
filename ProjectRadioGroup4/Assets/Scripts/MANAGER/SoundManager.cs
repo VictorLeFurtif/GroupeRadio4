@@ -41,8 +41,24 @@ namespace MANAGER
             soundBankData = soundBankDataBrut.Instance();
             InitSoundBlanc();
             audioSource.volume = 1f;
+            InitSoundMenu();
         }
 
+        private void InitSoundMenu()
+        {
+            if (soundMenu == null)
+            {
+                soundMenu = InitialisationAudioObjectDestroyAtEnd(
+                    soundBankData.musicSound.audioMenu,
+                    true, true, masterVolume, "Sound Menu");
+                musicsEffects.Add(soundMenu.GetComponent<AudioSource>());
+            }
+            else
+            {
+                soundMenu.SetActive(true);
+            }
+        }
+        
         public void InitSoundBlanc()
         {
             if (soundBlanc == null)
@@ -58,17 +74,7 @@ namespace MANAGER
             }
             
             
-            if (soundMenu == null)
-            {
-                soundMenu = InitialisationAudioObjectDestroyAtEnd(
-                    soundBankData.musicSound.audioMenu,
-                    true, true, masterVolume, "Sound Menu");
-                musicsEffects.Add(soundMenu.GetComponent<AudioSource>());
-            }
-            else
-            {
-                soundMenu.SetActive(true);
-            }
+            
         }
         
         private void Update()
