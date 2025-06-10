@@ -196,7 +196,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.465, y: 0.12110008, z: 0.010009274}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7304406394034845500}
   - {fileID: 7539129699538775639}
@@ -739,7 +739,7 @@ RectTransform:
   m_GameObject: {fileID: 9031422508398400681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.36, y: 1.36, z: 1.36}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 964254406722473506}
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: -477.1, y: -126.62, z: -492.57, w: -179.45}
+  m_RaycastPadding: {x: -739.33, y: -294.7, z: -778.9, w: -330.5}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
