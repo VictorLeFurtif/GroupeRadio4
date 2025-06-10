@@ -280,7 +280,10 @@ public class NewPlayerController : MonoBehaviour
     public void SwitchRadioPhaseTwo()
     {
         if (!CanTurnOnPhase2Module || currentInteractableInRange is not { CanSecondPhase: true }) return;
-
+        if (reading)
+        {
+            return;
+        }
         if (currentInteractableInRange is not IWaveInteractable waveInteractable) return;
         switch (currentPhase2ModuleState)
         {

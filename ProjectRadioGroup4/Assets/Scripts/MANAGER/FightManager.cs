@@ -267,6 +267,7 @@ namespace MANAGER
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundForFightBoss?.SetActive(false);
                 soundEnemyInFight?.SetActive(false);
                
             }
@@ -275,6 +276,7 @@ namespace MANAGER
                 Debug.Log("IA win");
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundForFightBoss?.SetActive(false);
                 soundEnemyInFight?.SetActive(false);
             }
             else
