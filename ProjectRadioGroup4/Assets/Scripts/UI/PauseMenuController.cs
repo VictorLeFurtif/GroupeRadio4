@@ -32,7 +32,8 @@ namespace UI
         {
             return SceneManager.GetActiveScene().buildIndex != 0 
                    && Input.GetKeyDown(KeyCode.Escape) 
-                   && FightManager.instance.fightState is not FightManager.FightState.InFight;
+                   && FightManager.instance.fightState is not FightManager.FightState.InFight && 
+                   NewPlayerController.instance.reading is not true;
         }
 
         private void SetTimeScale()

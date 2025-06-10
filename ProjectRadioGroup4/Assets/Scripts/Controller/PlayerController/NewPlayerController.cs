@@ -23,7 +23,8 @@ public class NewPlayerController : MonoBehaviour
     [Header("Speed")]
     [SerializeField] private float moveSpeed;
     public bool canMove = true;
-
+    public bool reading = false;
+    public bool isDead = false;
     [Header("Rigidbody2D")]
     public Rigidbody2D rb;
 
@@ -178,11 +179,12 @@ public class NewPlayerController : MonoBehaviour
             
             playerBattery.UpdateLifeSlider(_inGameData.hp);
             
-            if (_inGameData.IsDead())
+            if (_inGameData.IsDead() && !isDead)
             {
                 canMove = false;
                 rb.velocity = Vector2.zero;
                 animatorPlayer.Play("Death");
+                isDead = true;
                 StartCoroutine(PlayGameOverAfterDeath());
                 
                 return;

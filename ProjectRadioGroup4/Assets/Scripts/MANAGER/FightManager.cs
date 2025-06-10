@@ -49,6 +49,7 @@ namespace MANAGER
 
         public GameObject soundForFight;
         public GameObject soundEnemyInFight;
+        public GameObject soundForFightBoss;
         
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
@@ -198,6 +199,18 @@ namespace MANAGER
             {
                 soundForFight.SetActive(true);
             }
+
+            if (soundForFightBoss == null)
+            {
+                soundForFightBoss = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.musicSound.audioBoss, true, true, 1f, "FightSoundBoss");
+                SoundManager.instance.musicsEffects.Add(soundForFight.GetComponent<AudioSource>());
+            }
+
+            bool isItABoss = listOfJustEnemiesAlive[0].entity.GetComponent<NewAi>().isBoss;
+            
+            soundForFightBoss.SetActive(isItABoss);
+            soundForFight.SetActive(!isItABoss);
 
             if (soundEnemyInFight == null)
             {

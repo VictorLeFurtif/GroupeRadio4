@@ -39,6 +39,8 @@ namespace AI.NEW_AI
         [HideInInspector] public Animator animatorEnemy;
 
         [HideInInspector] public Transform originalPos;
+
+        public bool isBoss = false;
         
         [Header("Enemy Health Settings")]
         [SerializeField] private Slider healthSlider;

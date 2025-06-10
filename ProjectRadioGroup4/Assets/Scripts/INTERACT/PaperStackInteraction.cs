@@ -79,6 +79,7 @@ namespace INTERACT
             SetUIState(!willActivate && playerInRange);
         
             NewPlayerController.instance.canMove = !willActivate;
+            NewPlayerController.instance.reading = willActivate;
         }
 
         private void SetCanvasState(bool active)
