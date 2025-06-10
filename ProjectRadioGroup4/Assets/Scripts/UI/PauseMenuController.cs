@@ -10,7 +10,7 @@ namespace UI
         [SerializeField] private GameObject PausePanel;
         [SerializeField] private Slider sliderMaster; 
     
-        private bool isPanelDisplayed;
+        public bool isPanelDisplayed;
     
         private void Awake()
         {

@@ -45,7 +45,7 @@ namespace INTERACT
                 SetUIState(playerInRange && !paperCanvas.gameObject.activeSelf);
             }
 
-            if (playerInRange && Input.GetKeyDown(KeyCode.F))
+            if (playerInRange && Input.GetKeyDown(KeyCode.F) && !GameManager.instance.pauseMenuController.isPanelDisplayed)
             {
                 TogglePaperCanvas();
             }

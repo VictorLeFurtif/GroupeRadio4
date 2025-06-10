@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Controller;
 using INTERACT;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ namespace MANAGER
         public GlobalVolumeManager globalVolumeManager;
         
         [SerializeField] private LooseScreenController looseScreenController;
+        public PauseMenuController pauseMenuController;
     
         public GameState currentGameState = GameState.Menu;
 
