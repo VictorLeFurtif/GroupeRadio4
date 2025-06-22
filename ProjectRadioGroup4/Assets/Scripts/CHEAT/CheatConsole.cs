@@ -106,10 +106,10 @@ namespace CHEAT
         private void ShowHelp()
         {
             string helpText = "Commandes disponibles:\n" +
-                             "tp [index] - Téléportation\n" +
-                             "heal [montant] - Soin\n" +
+                             "tp [index] de 0 à 5- Téléportation\n" +
+                             "heal Player - Soin\n" +
                              "killenemies - Tous éliminer\n" +
-                             "killenemy - Ennemi courant\n" +
+                             "killenemy - Ennemi courant en combat\n" +
                              "kill - Auto-destruction";
             ShowFeedback(helpText);
         }

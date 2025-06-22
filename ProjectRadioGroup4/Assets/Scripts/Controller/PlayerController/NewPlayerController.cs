@@ -23,7 +23,8 @@ public class NewPlayerController : MonoBehaviour
     [Header("Speed")]
     [SerializeField] private float moveSpeed;
     public bool canMove = true;
-
+    public bool reading = false;
+    public bool isDead = false;
     [Header("Rigidbody2D")]
     public Rigidbody2D rb;
 
@@ -178,11 +179,12 @@ public class NewPlayerController : MonoBehaviour
             
             playerBattery.UpdateLifeSlider(_inGameData.hp);
             
-            if (_inGameData.IsDead())
+            if (_inGameData.IsDead() && !isDead)
             {
                 canMove = false;
                 rb.velocity = Vector2.zero;
                 animatorPlayer.Play("Death");
+                isDead = true;
                 StartCoroutine(PlayGameOverAfterDeath());
                 
                 return;
@@ -278,7 +280,10 @@ public class NewPlayerController : MonoBehaviour
     public void SwitchRadioPhaseTwo()
     {
         if (!CanTurnOnPhase2Module || currentInteractableInRange is not { CanSecondPhase: true }) return;
-
+        if (reading)
+        {
+            return;
+        }
         if (currentInteractableInRange is not IWaveInteractable waveInteractable) return;
         switch (currentPhase2ModuleState)
         {
@@ -325,6 +330,7 @@ public class NewPlayerController : MonoBehaviour
             {
                 soundInRangeFinderZone = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
                     SoundManager.instance.soundBankData.eventSound.zoneRangeFinder, true, true, 1f, "SoundZoneRangeFinder");
+                SoundManager.instance.musicsEffects.Add(soundInRangeFinderZone.GetComponent<AudioSource>());
             }
             else
             {

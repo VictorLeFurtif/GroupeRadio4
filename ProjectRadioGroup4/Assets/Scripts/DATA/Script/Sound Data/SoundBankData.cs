@@ -94,6 +94,7 @@ namespace DATA.Script.Sound_Data
         {
             public AudioClip audioMenu;
             public AudioClip DarkerThanDark;
+            public AudioClip audioBoss;
         }
         
         [Serializable]

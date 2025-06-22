@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Controller;
 using INTERACT;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,11 +14,16 @@ namespace MANAGER
         public GlobalVolumeManager globalVolumeManager;
         
         [SerializeField] private LooseScreenController looseScreenController;
+        public PauseMenuController pauseMenuController;
     
         public GameState currentGameState = GameState.Menu;
 
         [SerializeField] private GameObject prefabSoundManager;
-        
+
+        public LooseScreenController GetLooseScreen()
+        {
+            return looseScreenController != null ? looseScreenController : null;
+        }        
         private void Awake()
         {
             if (instance == null)
@@ -50,8 +56,11 @@ namespace MANAGER
                         looseScreenController.looseScreenPanel.SetActive(true);
                         break;
                     case GameState.Game:
+                        NewRadioManager.instance.canvaRadio.SetActive(true);
+                        break;
                     case GameState.Menu:
                         looseScreenController.looseScreenPanel.SetActive(false);
+                        NewRadioManager.instance.canvaRadio.SetActive(false);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);
@@ -85,6 +94,8 @@ namespace MANAGER
             NewPlayerController.instance.rangeFinderManager.rfAnimation.animatorRangeFinder.Play("RfIdle");
             NewRadioManager.instance.UpdateTypeOfUiByFightState();
             StartCoroutine(NewRadioManager.instance.RadioBehaviorDependingFightState());
+            NewPlayerController.instance.isDead = false;
+            NewPlayerController.instance.reading = false;
         }
 
         private IEnumerator ResetSoundManager()

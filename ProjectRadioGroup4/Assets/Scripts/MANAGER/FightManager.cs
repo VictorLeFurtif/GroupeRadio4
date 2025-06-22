@@ -49,6 +49,7 @@ namespace MANAGER
 
         public GameObject soundForFight;
         public GameObject soundEnemyInFight;
+        public GameObject soundForFightBoss;
         
         [Header("Combat Timing")]
         public float playerTurnDuration = 60f; 
@@ -192,16 +193,30 @@ namespace MANAGER
             {
                 soundForFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
                     SoundManager.instance.soundBankData.musicSound.DarkerThanDark, true, true, 1f, "FightSound");
+                SoundManager.instance.musicsEffects.Add(soundForFight.GetComponent<AudioSource>());
             }
             else
             {
                 soundForFight.SetActive(true);
             }
 
+            if (soundForFightBoss == null)
+            {
+                soundForFightBoss = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
+                    SoundManager.instance.soundBankData.musicSound.audioBoss, true, true, 1f, "FightSoundBoss");
+                SoundManager.instance.musicsEffects.Add(soundForFight.GetComponent<AudioSource>());
+            }
+
+            bool isItABoss = listOfJustEnemiesAlive[0].entity.GetComponent<NewAi>().isBoss;
+            
+            soundForFightBoss.SetActive(isItABoss);
+            soundForFight.SetActive(!isItABoss);
+
             if (soundEnemyInFight == null)
             {
                 soundEnemyInFight = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
                     SoundManager.instance.soundBankData.enemySound.respirationNmiCombat, true, true, 1f, "EnemyBreath");
+                SoundManager.instance.musicsEffects.Add(soundEnemyInFight.GetComponent<AudioSource>());
             }
             else
             {
@@ -252,6 +267,7 @@ namespace MANAGER
                 player._abstractEntityDataInstance.turnState = TurnState.NoTurn;
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundForFightBoss?.SetActive(false);
                 soundEnemyInFight?.SetActive(false);
                
             }
@@ -260,6 +276,7 @@ namespace MANAGER
                 Debug.Log("IA win");
                 ResetFightManagerAfterFight();
                 soundForFight?.SetActive(false);
+                soundForFightBoss?.SetActive(false);
                 soundEnemyInFight?.SetActive(false);
             }
             else

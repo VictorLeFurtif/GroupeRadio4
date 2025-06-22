@@ -51,7 +51,7 @@ namespace MANAGER
         private Coroutine currentTransition;
 
         [Header("UI")] 
-        public Canvas canvaRadio;
+        public GameObject canvaRadio;
         [SerializeField] private TMP_Text chronoInFight;
         
         [Header("List")] 
@@ -424,6 +424,7 @@ namespace MANAGER
             {
                 matchingSound = SoundManager.instance?.InitialisationAudioObjectDestroyAtEnd(
                     SoundManager.instance.soundBankData.enemySound.bruitRadioMatch, true, true, 1f, "EnemyBreath");
+                SoundManager.instance.musicsEffects.Add(matchingSound.GetComponent<AudioSource>());
             }
             else
             {
