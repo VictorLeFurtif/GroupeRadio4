@@ -1,9 +1,8 @@
 <h1 align="center">ECHO 42</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/VERSION-1.0.0-white?style=flat-square">
-  <img src="https://img.shields.io/badge/ANNEE-1983-red?style=flat-square">
-  <img src="https://img.shields.io/badge/STATUT-ACTIF-grey?style=flat-square">
+  <img src="https://img.shields.io/badge/DUNGEON CRAWLER-white?style=flat-square">
+  <img src="https://img.shields.io/badge/UNITY-red?style=flat-square">
 </p>
 
 ---
