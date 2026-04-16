@@ -1,5 +1,11 @@
 <h1 align="center">ECHO 42</h1>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/VERSION-1.0.0-white?style=flat-square">
+  <img src="https://img.shields.io/badge/ANNEE-1983-red?style=flat-square">
+  <img src="https://img.shields.io/badge/STATUT-ACTIF-grey?style=flat-square">
+</p>
+
 ---
 
 ## SYNOPSIS
@@ -29,10 +35,6 @@ L'interface mute totalement pour se concentrer sur l'affrontement. Le combat rep
   <img src="https://github.com/user-attachments/assets/0b20b532-8312-46b2-b6dd-c3fb26e40560" width="49%" alt="Exploration" />
   <img src="https://github.com/user-attachments/assets/92a610db-9cb1-42ec-8776-7cf45c8a8861" width="49%" alt="Combat" />
 </p>
-
-
-
-
 
 ---
 <p align="center"><i>ECHO 42 - PROPERTY OF RUBIKA</i></p>
