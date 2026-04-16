@@ -23,13 +23,7 @@ L'interface mute totalement pour se concentrer sur l'affrontement. Le combat rep
 
 ---
 
-## APERCU VISUEL ET DEMONSTRATION
-
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=ID_VIDEO">
-    <img src="https://img.youtube.com/vi/ID_VIDEO/0.jpg" alt="Regarder la démo" width="600">
-  </a>
-</p>
+## APERCU VISUEL
 
 <p align="center">
   <img src="LIEN_IMAGE_1" width="48%" />
