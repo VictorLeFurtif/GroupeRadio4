@@ -26,9 +26,13 @@ L'interface mute totalement pour se concentrer sur l'affrontement. Le combat rep
 ## APERCU VISUEL
 
 <p align="center">
-  <img src="LIEN_IMAGE_1" width="48%" />
-  <img src="LIEN_IMAGE_2" width="48%" />
+  <img src="https://github.com/user-attachments/assets/0b20b532-8312-46b2-b6dd-c3fb26e40560" width="49%" alt="Exploration" />
+  <img src="https://github.com/user-attachments/assets/92a610db-9cb1-42ec-8776-7cf45c8a8861" width="49%" alt="Combat" />
 </p>
 
+
+
+
+
 ---
-<p align="center"><i>ECHO 42 PROPREITY OF RUBIKA</i></p>
+<p align="center"><i>ECHO 42 - PROPERTY OF RUBIKA</i></p>
