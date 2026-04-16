@@ -3,6 +3,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/DUNGEON CRAWLER-white?style=flat-square">
   <img src="https://img.shields.io/badge/UNITY-red?style=flat-square">
+  <img src="https://img.shields.io/badge/1st Year-green?style=flat-square">
 </p>
 
 ---
