@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ffeb29e5-86ab-421d-862e-016fa13f1147" alt="HD2D Project Banner" width="100%" style="border-radius: 8px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);">
+</p>
+
 <h1 align="center">ECHO 42</h1>
 
 <p align="center">
